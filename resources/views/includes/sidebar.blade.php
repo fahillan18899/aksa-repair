@@ -306,10 +306,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="?hal=data_inventaris&fun=dashboard">Dashboard</a></li>
-          <li class=""><a href="?hal=data_kelengkapan&fun=data_kelengkapan">Data Kelengkapan PPM</a></li>
-          <li class=""><a href="?hal=registrasi&fun=registrasi">Registrasi Alat</a></li>
-          <li class=""><a href="?hal=data_inventaris&fun=data_inventaris">Data Inventaris</a></li>
+          <li class=""><a href="/dashboard/ppm/home">Dashboard</a></li>
+          <li class=""><a href="/dashboard/ppm/data_kelengkapan">Data Kelengkapan PPM</a></li>
+          <li class=""><a href="/dashboard/ppm/registrasi">Registrasi Alat</a></li>
+          <li class=""><a href="/dashboard/ppm/data_inventaris">Data Inventaris</a></li>
           <!---->
           <li class="treeview">
             <a href="#">
@@ -327,9 +327,9 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class=""><a href="?hal=aset_teregistrasi&fun=index">Aset Teregistrasi</a></li>
-                  <li class=""><a href="?hal=aset_unregistrasi&fun=aset_unregistrasi">Aset Unregistrasi</a></li>
-                  <li class=""><a href="?hal=non_aset&fun=non_aset">Non-Aset</a></li>
+                  <li class=""><a href="/dashboard/ppm/aset_teregistrasi">Aset Teregistrasi</a></li>
+                  <li class=""><a href="/dashboard/ppm/aset_unregistrasi">Aset Unregistrasi</a></li>
+                  <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li>
                 </ul>
               </li>
               <li class="treeview">
@@ -340,17 +340,17 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class=""><a href="?hal=lembar_pemeliharaan&fun=index">Lembar Pemeliharaan Alat</a></li>
-                  <li class=""><a href="?hal=jadwal_pemeliharaan&fun=index">Jadwal Pemeliharaan</a></li>
+                  <li class=""><a href="/dashboard/ppm/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
+                  <li class=""><a href="/dashboard/ppm/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
                 </ul>
               </li>
             </ul>
           </li>
           <!---->
-          <li class=""><a href="?hal=laporan_kegiatan&fun=index">Laporan Kegiatan</a></li>
-          <li class=""><a href="?hal=operator&fun=index">Operator</a></li>
-          <li class=""><a href="?hal=stock_opname&fun=index">Stock Opname</a></li>
-          <li class=""><a href="?hal=analisis_data&fun=index">Analisis Data</a></li>
+          <li class=""><a href="/dashboard/ppm/laporan_kegiatan">Laporan Kegiatan</a></li>
+          <li class=""><a href="/dashboard/ppm/operator">Operator</a></li>
+          <li class=""><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
+          <li class=""><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
         </ul>
       </li>
 
