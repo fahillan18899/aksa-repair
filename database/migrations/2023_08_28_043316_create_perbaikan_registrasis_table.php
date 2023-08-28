@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('perbaikan_registrasis', function (Blueprint $table) {
+            $table->string('Id_Perbaikan_reg');
+            $table->string('ID_Aset_reg');
+            $table->date('Tanggal_Perbaikan_reg');
+            $table->string('Nama_Alat_reg');
+            $table->string('Merek_Alat_reg');
+            $table->string('Type_Alat_reg');
+            $table->string('Serial_Number_reg');
+            $table->string('Lokasi_Alat_reg');
+            $table->string('Pelapor_reg');
+            $table->string('Keterangan_Kondisi_Alat_reg');
+            $table->string('Ka_Instalasi_reg');
+            $table->string('Teknisi_1_reg');
+            $table->string('Teknisi_2_reg');
+            $table->string('Keluhan_Dari_alat_reg');
+            $table->string('Korektif_reg');
+            $table->string('kode_rs');
+            $table->integer('active');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('perbaikan_registrasis');
+    }
+};
