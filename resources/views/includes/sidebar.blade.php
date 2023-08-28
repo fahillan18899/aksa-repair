@@ -4,7 +4,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel text-center">
       <div class="image">
-        <img src="assets_web/img/placeholder/profile.png" class="img-circle" alt="User Image">
+        <img src="{{ url('assets_web/img/placeholder/profile.png') }}" class="img-circle" alt="User Image">
       </div>
       <div class="info">
         <p> </p>

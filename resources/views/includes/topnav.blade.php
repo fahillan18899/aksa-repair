@@ -4,10 +4,10 @@
   <a href="<?php // echo base_url('dashboard/home') 
             ?>" class="logo"> <!-- Logo -->
     <span class="logo-mini">
-      <img class="img-fluid" src="" alt="">
+      <img class="img-fluid" src="{{ url('assets/images/logo.png') }}" alt="">
     </span>
     <span class="logo-lg">
-      <img class="img-fluid" src="" alt="">
+      <img class="img-fluid" src="{{ url('assets/images/logo.png') }}" alt="">
     </span>
   </a>
 
