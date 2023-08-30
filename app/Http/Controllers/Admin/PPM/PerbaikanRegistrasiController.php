@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
-use App\Models\Registrasi;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RegistrasiController extends Controller
+class PerbaikanRegistrasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class RegistrasiController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.ppm.aset_teregistrasi.index');
     }
 
     /**
@@ -41,10 +41,10 @@ class RegistrasiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Registrasi  $registrasi
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Registrasi $registrasi)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class RegistrasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Registrasi  $registrasi
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registrasi $registrasi)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class RegistrasiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Registrasi  $registrasi
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registrasi $registrasi)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class RegistrasiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Registrasi  $registrasi
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registrasi $registrasi)
+    public function destroy($id)
     {
         //
     }

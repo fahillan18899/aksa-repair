@@ -1,0 +1,153 @@
+<?php
+
+namespace App\Http\Controllers\Admin\PPM;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Registrasi;
+
+class RegistrasiAsetController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $items = Registrasi::all();
+        return view('pages.admin.ppm.registrasi_aset.index', compact('items'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'id_aset' => '',
+            'jenis_alat' => '',
+            'nama_alat' => '',
+            'merek' => '',
+            'type' => '',
+            'serial_number' => '',
+            'lokasi_alat' => '',
+            'tanggal_kalibrasi' => '',
+            'distributor' => '',
+            'alamat_distributor' => '',
+            'tlp_distributor' => '',
+            'email_distributor' => '',
+            'teknisi_distributor' => '',
+            'tlp_t_distributor' => '',
+            'no_sertifikat_kalibrasi' => '',
+            'teknisi_ppm' => '',
+            'harga_perolehan' => '',
+            'sumber_dana' => '',
+            'tahun_perolehan' => '',
+            'kode_rs' => '',
+            'jadwal_pemeliharaan' => '',
+            'umur_alat' => '',
+            'no_inventaris_1' => '',
+            'no_inventaris_2' => '',
+            'penyusutan_aset' => ''
+        ]);
+        Registrasi::create($request->post());
+
+
+        return redirect()->route('registrasi.index')
+            ->with('success', 'registrasi has been created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $item = Registrasi::where('id_aset', $id)->first();
+        return view('pages.admin.ppm.registrasi_aset.update', compact('item'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Registrasi $registrasi)
+    {
+        $request->validate([
+            'jenis_alat' => '',
+            'nama_alat' => '',
+            'merek' => '',
+            'type' => '',
+            'serial_number' => '',
+            'lokasi_alat' => '',
+            'tanggal_kalibrasi' => '',
+            'distributor' => '',
+            'alamat_distributor' => '',
+            'tlp_distributor' => '',
+            'email_distributor' => '',
+            'teknisi_distributor' => '',
+            'tlp_t_distributor' => '',
+            'no_sertifikat_kalibrasi' => '',
+            'teknisi_ppm' => '',
+            'harga_perolehan' => '',
+            'sumber_dana' => '',
+            'tahun_perolehan' => '',
+            'kode_rs' => '',
+            'jadwal_pemeliharaan' => '',
+            'umur_alat' => '',
+            'no_inventaris_1' => '',
+            'no_inventaris_2' => '',
+            'penyusutan_aset' => ''
+        ]);
+
+        $registrasi->fill($request->post())->save();
+
+
+        return redirect()->route('registrasi.index')
+            ->with('success', 'Company has been created successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = Registrasi::where('id_aset',  $id)->first();
+
+        $item->delete();
+        return redirect()->route('registrasi.index');
+    }
+}

@@ -14,26 +14,25 @@ return new class extends Migration
     public function up()
     {
         Schema::create('registrasis', function (Blueprint $table) {
-            $table->string('Id_Aset');
-            $table->string('Jenis_Alat');
-            $table->string('Nama_Alat');
-            $table->string('Merek');
-            $table->string('Type');
-            $table->string('Serial_Number');
-            $table->string('Lokasi_Alat');
-            $table->string('Tanggal_Kalibrasi');
-            $table->string('Distributor');
-            $table->string('Alamat_Distributor');
-            $table->string('TLP_Distributor');
-            $table->string('Email_Distributor');
-            $table->string('Teknisi_Distributor');
-            $table->string('TLP_T_Distributor');
-            $table->string('No_Sertifikat_Kalibrasi');
-            $table->string('Teknisi_PPM');
-            $table->string('Harga_Perolehan');
-            $table->string('Sumber_Dana');
-            $table->string('Tahun_Pembuatan');
-            $table->string('Tahun_Perolehan');
+            $table->string('id_aset');
+            $table->string('jenis_alat');
+            $table->string('nama_alat');
+            $table->string('merek');
+            $table->string('type');
+            $table->string('serial_number');
+            $table->string('lokasi_alat');
+            $table->string('tanggal_kalibrasi');
+            $table->string('distributor');
+            $table->string('alamat_distributor');
+            $table->string('tlp_distributor');
+            $table->string('email_distributor');
+            $table->string('teknisi_distributor');
+            $table->string('tlp_t_distributor');
+            $table->string('no_sertifikat_kalibrasi');
+            $table->string('teknisi_ppm');
+            $table->string('harga_perolehan');
+            $table->string('sumber_dana');
+            $table->integer('tahun_perolehan');
             $table->string('kode_rs');
             $table->date('jadwal_pemeliharaan');
             $table->integer('umur_alat');
