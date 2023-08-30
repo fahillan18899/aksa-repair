@@ -14,7 +14,7 @@ class PemeliharaanAlatController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.admin.ppm.lembar_pemeliharaan.index');
     }
 
     /**
