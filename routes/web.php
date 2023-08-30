@@ -7,12 +7,13 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PPM\RegistrasiAset;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
-use App\Http\Controllers\Admin\PPM\Operator;
+use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
+use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 
 /*
@@ -44,14 +45,13 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/aset_unregistrasi', DashboardController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
-        Route::resource('/jadwal_pemeliharaan', DashboardController::class);
+        Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
-        Route::resource('/operator', Operator::class);
+        Route::resource('/operator', OperatorController::class);
         Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
         Route::get('/home', [DashboardController::class, 'index']);
-        Route::get('/data_kelengkapan', [DashboardController::class, 'index']);
         Route::resource('/registrasi', RegistrasiAset::class);
 
         Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
@@ -62,12 +62,9 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index']);
         Route::get('/aset_unregistrasi', [DashboardController::class, 'index']);
         Route::get('/aset_non_alkes', [DashboardController::class, 'index']);
-        Route::get('/lembar_pemeliharaan', [LembarPemeliharaanController::class, 'index']);
-        Route::get('/jadwal_pemeliharaan', [DashboardController::class, 'index']);
-        Route::get('/laporan_kegiatan', [DashboardController::class, 'index']);
-        Route::get('/operator', [DashboardController::class, 'index']);
-        Route::get('/stock_opname', [DashboardController::class, 'index']);
-        Route::get('/analisis_data', [DashboardController::class, 'index']);
+        Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
+        Route::get('/operator', [OperatorController::class, 'index']);
+
 
     });
 });
