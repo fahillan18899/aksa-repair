@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PerbaikanRegistrasi;
 use App\Models\PengirimanRegistrasi;
+use App\Models\PengembalianRegistrasi;
+use App\Models\PenghapusanRegistrasi;
 use App\Models\Registrasi;
 use Illuminate\Support\Facades\DB;
 
@@ -21,8 +23,12 @@ class PerbaikanRegistrasiController extends Controller
     {
         $items = PerbaikanRegistrasi::all();
         $result_pengiriman = PengirimanRegistrasi::all();
+        $result_penghapusan = PenghapusanRegistrasi::all();
+        $result_pengembalian = PengembalianRegistrasi::all();
         return view('pages.admin.ppm.aset_teregistrasi.index', [
             'items' => $items,
+            'result_pengembalian' => $result_pengembalian,
+            'result_penghapusan' => $result_penghapusan,
             'result_pengiriman' => $result_pengiriman
         ]);
     }

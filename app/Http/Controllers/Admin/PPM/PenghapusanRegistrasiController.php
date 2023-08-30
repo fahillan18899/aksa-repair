@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
+
+use App\Http\Controllers\Controller;
 
 use App\Models\PenghapusanRegistrasi;
 use Illuminate\Http\Request;
@@ -35,7 +37,29 @@ class PenghapusanRegistrasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_perbaikan_reg' => '',
+            'tanggal_perbaikan_reg' => '',
+            'tanggal_penggudangan_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'pelapor_reg' => '',
+            'teknisi_1_reg' => '',
+            'teknisi_2_reg' => '',
+            'teknisi_3_reg' => '',
+            'ka_instalasi_reg' => '',
+            'keterangan_pengguna_reg' => '',
+            'kode_rs' => '',
+        ]);
+
+        PenghapusanRegistrasi::create($request->post());
+
+
+        return redirect()->route('aset_teregistrasi.index')
+            ->with('success', 'Company has been created successfully.');
     }
 
     /**

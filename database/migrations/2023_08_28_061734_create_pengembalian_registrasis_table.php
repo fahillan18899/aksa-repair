@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('harga_perbaikan_reg');
             $table->string('teknisi1_reg');
             $table->string('teknisi2_reg');
+            $table->string('teknisi3_reg');
             $table->string('ka_instalasi_reg');
             $table->string('penyebab_kerusakan_reg');
             $table->string('solusi_perbaikan_reg');
@@ -37,7 +38,10 @@ return new class extends Migration
             $table->string('hasil_fungsi_reg');
             $table->string('pengganti_suku_cadang_reg');
             $table->string('kode_rs');
-            $table->integer('active')->nullable()->change();         
+            $table->integer('active')->nullable()->change();
+
+            $table->timestamps();
+            
         });
     }
 

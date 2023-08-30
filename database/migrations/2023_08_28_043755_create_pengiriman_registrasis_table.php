@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengiriman_registrasis', function (Blueprint $table) {
-            $table->string('id_perbaikan_reg')->primary();;
+            $table->string('id_perbaikan_reg')->primary();
             $table->date('tanggal_perbaikan_reg');
             $table->date('tanggal_pengiriman_reg');
             $table->string('id_aset_reg');

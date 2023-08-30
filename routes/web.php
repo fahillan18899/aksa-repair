@@ -5,9 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataKelengkapanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
+use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
+use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
+use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,15 +45,21 @@ Route::prefix('dashboard')->group(function () {
         Route::put('/registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
         Route::delete('/registrasi/{registrasi}', [RegistrasiAsetController::class, 'destroy']);
 
+
         Route::get('/aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index'])->name('aset_teregistrasi.index');
         Route::post('/aset_teregistrasi', [PerbaikanRegistrasiController::class, 'store']);
+        
         Route::get('/update_perbaikan/{id}/edit', [PerbaikanRegistrasiController::class, 'edit'])->name('update_perbaikan.edit');
         Route::put('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
         Route::delete('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
         Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
 
+        Route::post('/tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
+        Route::post('/tambah_pengembalian', [PengembalianRegistrasiController::class, 'store']);
+        Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
 
         Route::get('/autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
+        Route::get('/autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
 
 
         Route::get('/aset_unregistrasi', [DashboardController::class, 'index']);

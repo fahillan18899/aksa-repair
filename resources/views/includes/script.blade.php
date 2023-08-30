@@ -69,7 +69,7 @@
   function autofillPemelihara() {
     let idars = $("#id_ase1t").val();
     $.ajax({
-      url: '{{ url("/dashboard/ppm/autofill/") }}/' + idars,
+      url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + idars,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         idars: idars
@@ -97,7 +97,7 @@
   function autofill_Pengiriman() {
     let Id_Perbaikan_reg = $("#Perbaikan_reg").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_reg: Id_Perbaikan_reg
@@ -115,6 +115,7 @@
         $("#Teknisi_1_reg1").val(data.Teknisi_1_reg);
         $("#Pelapor_reg1").val(data.Pelapor_reg);
         $("#Teknisi_2_reg1").val(data.Teknisi_2_reg);
+        $("#Teknisi_3_reg1").val(data.Teknisi_3_reg);
         $("#Keterangan_Kondisi_Alat_reg1").val(data.Keterangan_Kondisi_Alat_reg);
         $("#KA_Instalasi_reg1").val(data.Ka_Instalasi_reg);
 
@@ -132,7 +133,7 @@
   function autofill_Pengembalian() {
     let Id_Perbaikan_reg = $("#id_perbaikan_reg2").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_reg: Id_Perbaikan_reg
@@ -150,6 +151,7 @@
         $("#teknisi1_reg2").val(data.Teknisi_1_reg);
         $("#pelapor_reg2").val(data.Pelapor_reg);
         $("#teknisi2_reg2").val(data.Teknisi_2_reg);
+        $("#teknisi3_reg2").val(data.Teknisi_3_reg);
         $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
         $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
 
@@ -167,7 +169,7 @@
   function autofill_Penghapusan() {
     let Id_Perbaikan_reg = $("#Id_Perbaikan_reg3").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_reg: Id_Perbaikan_reg
