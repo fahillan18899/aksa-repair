@@ -649,7 +649,7 @@ $alert="";
                   <td class="table-primary" rowspan="3"><b>Tanggal_Pemeliharaan</b></td>
                   <td class="table-primary" rowspan="3"><b>Kegiatan</b></td>
                   <td class="table-primary" rowspan="3"><b>Engineer</b></td>
-                  <td class="table-info" colspan="6" align="center"><b>Data_Alat</b></td>
+                  <td class="table-info" colspan="7" align="center"><b>Data_Alat</b></td>
                   <td class="table-success" colspan="7" align="center"><b>Persiapan</b></td>
                   <td class="table-active" colspan="18" align="center"><b>pemantauan_fisik_&_fungsi</b></td>
                   <td class="table-danger" colspan="5" align="center"><b>pemeliharaan_preventife</b></td>
@@ -671,7 +671,7 @@ $alert="";
                   <td class="table-info" rowspan="2"><b>Nama_Alat</b></td>
                   <td class="table-info" rowspan="2"><b>Serial_Number</b></td>
                   <td class="table-info" rowspan="2"><b>Merek</b></td>
-                  <!--<td class="table-info" rowspan="2"><b>Instalasi</b></td>-->
+                  <td class="table-info" rowspan="2"><b>Instalasi</b></td>
                   <td class="table-info" rowspan="2"><b>Tipe</b></td>
                   <td class="table-info" rowspan="2"><b>Ruangan</b></td>
                   <td class="table-success" rowspan="2"><b>Hand_Hygiene</b></td>
@@ -723,7 +723,69 @@ $alert="";
                 </tr>
               </thead>
               <tbody>
-               
+              @forelse ($items as $item)
+                    <tr>
+                      <td>{{ $item->id_ppm }}</td>
+                      <td>{{ $item->tanggal }}</td>
+                      <td>{{ $item->kegiatan }}</td>
+                      <td>{{ $item->engineer }}</td>
+                      <td>{{ $item->id_aset }}</td>
+                      <td>{{ $item->nama_alat }}</td>
+                      <td>{{ $item->serial_number }}</td>
+                      <td>{{ $item->merek }}</td>
+                      <td>{{ $item->instalasi }}</td>
+                      <td>{{ $item->tipe }}</td>
+                      <td>{{ $item->ruangan }}</td>
+                      <td>{{ $item->hand_hygiene }}</td>
+                      <td>{{ $item->menyiapkan_alat_dan_bahan }}</td>
+                      <td>{{ $item->alat_pelindung_diri }}</td>
+                      <td>{{ $item->mengoprasikan_alat_kalibrasi }}</td>
+                      <td>{{ $item->ktd }}</td>
+                      <td>{{ $item->mengoprasikan_alat }}</td>
+                      <td>{{ $item->identifikasi_bahaya }}</td>
+                      <td>{{ $item->badan_selungkup1 }}</td>
+                      <td>{{ $item->badan_selungkup2 }}</td>
+                      <td>{{ $item->alat_sistem_interlock1 }}</td>
+                      <td>{{ $item->alat_sistem_interlock2 }}</td>
+                      <td>{{ $item->kabel_kelenturan1 }}</td>
+                      <td>{{ $item->kabel_kelenturan2 }}</td>
+                      <td>{{ $item->sistem_pengunci1 }}</td>
+                      <td>{{ $item->sistem_pengunci2 }}</td>
+                      <td>{{ $item->tombol_saklar1 }}</td>
+                      <td>{{ $item->tombol_saklar2 }}</td>
+                      <td>{{ $item->label_penandaan1 }}</td>
+                      <td>{{ $item->label_penandaan2 }}</td>
+                      <td>{{ $item->display_layar1 }}</td>
+                      <td>{{ $item->display_layar2 }}</td>
+                      <td>{{ $item->aksesoris1 }}</td>
+                      <td>{{ $item->aksesoris2 }}</td>
+                      <td>{{ $item->indikator_bunyi1 }}</td>
+                      <td>{{ $item->indikator_bunyi2 }}</td>
+                      <td>{{ $item->pembersihan }}</td>
+                      <td>{{ $item->pengencangan_bagian_alat }}</td>
+                      <td>{{ $item->pelumasan }}</td>
+                      <td>{{ $item->kalibrasi_berkala }}</td>
+                      <td>{{ $item->penggantian_bahan_habis_pakai }}</td>
+                      <td>{{ $item->cek_alat }}</td>
+                      <td>{{ $item->nama_sukucadang }}</td>
+                      <td>{{ $item->volume }}</td>
+                      <td>{{ $item->harga_satuan }}</td>
+                      <td>{{ $item->jumlah_harga }}</td>
+                      <td>{{ $item->evaluasi }}</td>
+                      <td>{{ $item->status }}</td>
+                      <td>{{ $item->status1 }}</td>
+                      <td>{{ $item->mulai_bekerja }}</td>
+                      <td>{{ $item->selesai_kerja }}</td>
+                      <td>{{ $item->durasi }}</td>
+                      <td>{{ $item->user }}</td>
+                      <td>{{ $item->engginer }}</td>
+
+                    </tr>
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
               </tbody>
             </table>
           </div>
