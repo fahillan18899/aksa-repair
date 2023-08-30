@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\Operator;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
+use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
+use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
+use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
+use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +35,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('ppm')->group(function () {
+
         Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/data_kelengkapan', DataKelengkapanController::class);
         Route::resource('/registrasi', RegistrasiAset::class);
@@ -38,12 +43,32 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/aset_teregistrasi', DashboardController::class);
         Route::resource('/aset_unregistrasi', DashboardController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
-        Route::resource('/lembar_pemeliharaan', DashboardController::class);
+        Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', DashboardController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('/operator', Operator::class);
         Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
+
+        Route::get('/home', [DashboardController::class, 'index']);
+        Route::get('/data_kelengkapan', [DashboardController::class, 'index']);
+        Route::resource('/registrasi', RegistrasiAset::class);
+
+        Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
+        Route::get('/data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
+        Route::get('/data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
+
+
+        Route::get('/aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index']);
+        Route::get('/aset_unregistrasi', [DashboardController::class, 'index']);
+        Route::get('/aset_non_alkes', [DashboardController::class, 'index']);
+        Route::get('/lembar_pemeliharaan', [LembarPemeliharaanController::class, 'index']);
+        Route::get('/jadwal_pemeliharaan', [DashboardController::class, 'index']);
+        Route::get('/laporan_kegiatan', [DashboardController::class, 'index']);
+        Route::get('/operator', [DashboardController::class, 'index']);
+        Route::get('/stock_opname', [DashboardController::class, 'index']);
+        Route::get('/analisis_data', [DashboardController::class, 'index']);
+
     });
 });
 
