@@ -16,7 +16,9 @@ class RegistrasiAsetController extends Controller
     public function index()
     {
         $items = Registrasi::all();
-        return view('pages.admin.ppm.registrasi_aset.index', compact('items'));
+        return view('pages.admin.ppm.registrasi_aset.index', [
+            'items' => $items
+        ]);
     }
 
     /**

@@ -32,8 +32,10 @@ return new class extends Migration
             $table->string('Alamat_Rekan_reg');
             $table->string('Teknisi_Rekanan_reg');
             $table->string('Telp_Teknisi_Rekanan_reg');
-            $table->string('kode_rs');         
-            $table->integer('active');            
+            $table->string('kode_rs');
+            $table->integer('active');
+
+            $table->timestamps();
         });
     }
 

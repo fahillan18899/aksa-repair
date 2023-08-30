@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PerbaikanRegistrasi;
+use App\Models\PengirimanRegistrasi;
+use App\Models\Registrasi;
+use Illuminate\Support\Facades\DB;
+
 
 class PerbaikanRegistrasiController extends Controller
 {
@@ -14,17 +19,12 @@ class PerbaikanRegistrasiController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.ppm.aset_teregistrasi.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $items = PerbaikanRegistrasi::all();
+        $result_pengiriman = PengirimanRegistrasi::all();
+        return view('pages.admin.ppm.aset_teregistrasi.index', [
+            'items' => $items,
+            'result_pengiriman' => $result_pengiriman
+        ]);
     }
 
     /**
@@ -35,18 +35,31 @@ class PerbaikanRegistrasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'id_perbaikan_reg' => '',
+            'id_aset_reg' => '',
+            'tanggal_perbaikan_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'pelapor_reg' => '',
+            'keterangan_kondisi_alat_reg' => '',
+            'ka_instalasi_reg' => '',
+            'teknisi_1_reg' => '',
+            'teknisi_2_reg' => '',
+            'teknisi_3_reg' => '',
+            'keluhan_dari_alat_reg' => '',
+            'korektif_reg' => '',
+            'active' => ''
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        PerbaikanRegistrasi::create($request->post());
+
+
+        return redirect()->route('aset_teregistrasi.index')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**
@@ -57,7 +70,9 @@ class PerbaikanRegistrasiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
+           
     }
 
     /**
@@ -67,19 +82,47 @@ class PerbaikanRegistrasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PerbaikanRegistrasi $perbaikanRegistrasi)
     {
-        //
+        $request->validate([
+            'tanggal_perbaikan_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'pelapor_reg' => '',
+            'keterangan_kondisi_alat_reg' => '',
+            'ka_instalasi_reg' => '',
+            'teknisi_1_reg' => '',
+            'teknisi_2_reg' => '',
+            'teknisi_3_reg' => '',
+            'keluhan_dari_alat_reg' => '',
+            'korektif_reg' => '',
+            'kode_rs' => '',
+            'active' => ''
+        ]);
+
+
+        $perbaikanRegistrasi->fill($request->post())->save();
+
+
+        return redirect()->route('aset_teregistrasi.index')
+        ->with('success', 'Data Perbaikan Teregistrasi berhasil di ubah');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * undocumented function summary
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+     * Undocumented function long description
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function cetak($id)
     {
-        //
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 }

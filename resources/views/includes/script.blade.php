@@ -43,22 +43,18 @@
 <script type="text/javascript">
   function autofill() {
     let idars = $("#id_aset_reg").val();
+
+
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill.php',
-      method: 'GET', // HTTP method (e.g., GET, POST)
-      data: {
-        idars: idars
-      },
+      url: '{{ url("/dashboard/ppm/autofill/") }}/' + idars,
+      method: 'GET',
       dataType: 'json',
       success: function(data) {
-        console.log(data)
         $("#Merek_Alat_reg").val(data.Merek_Alat_reg);
         $("#Nama_Alat_reg").val(data.Nama_Alat_reg);
         $("#Serial_Number_reg").val(data.Serial_Number_reg);
         $("#Lokasi_Alat_reg").val(data.Lokasi_Alat_reg);
         $("#Type_Alat_reg").val(data.Type);
-
-
       },
       error: function(xhr, status, error) {
         console.log(xhr.responseText);
@@ -73,7 +69,7 @@
   function autofillPemelihara() {
     let idars = $("#id_ase1t").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill.php',
+      url: '{{ url("/dashboard/ppm/autofill/") }}/' + idars,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         idars: idars
