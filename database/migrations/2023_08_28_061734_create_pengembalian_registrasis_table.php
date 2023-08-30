@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengembalian_registrasis', function (Blueprint $table) {
-            $table->string('Id_Aset_reg');
+            $table->string('id_aset_reg')->primary();
             $table->string('nama_alat_reg');
             $table->date('tanggal_perbaikan_reg');
             $table->string('merek_reg');
@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('hasil_fungsi_reg');
             $table->string('pengganti_suku_cadang_reg');
             $table->string('kode_rs');
-            $table->integer('active');            
+            $table->integer('active')->nullable()->change();         
         });
     }
 

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('perbaikan_registrasis', function (Blueprint $table) {
-            $table->string('id_perbaikan_reg');
+            $table->string('id_perbaikan_reg')->primary();;
             $table->string('id_aset_reg');
             $table->date('tanggal_perbaikan_reg');
             $table->string('nama_alat_reg');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('keluhan_dari_alat_reg');
             $table->string('korektif_reg');
             $table->string('kode_rs');
-            $table->integer('active');
+            $table->integer('active')->nullable()->change();
 
             $table->timestamps();
 

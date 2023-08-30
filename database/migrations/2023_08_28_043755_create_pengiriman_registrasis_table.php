@@ -14,26 +14,27 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengiriman_registrasis', function (Blueprint $table) {
-            $table->string('Id_Perbaikan_reg');
-            $table->date('Tanggal_Perbaikan_reg');            
-            $table->date('Tanggal_Pengiriman_reg');
-            $table->string('Id_Aset_reg');
-            $table->string('Nama_Alat_reg');
-            $table->string('Merek_Alat_reg');
-            $table->string('Type_Alat_reg');
-            $table->string('Seri_Number_reg');
-            $table->string('Lokasi_Alat_reg');
-            $table->string('Teknisi_1_reg');
-            $table->string('Pelapor_reg');
-            $table->string('Teknisi_2_reg');
-            $table->string('Keterangan_Kondisi_Alat_reg');
-            $table->string('KA_Instalasi_reg');
-            $table->string('Nama_Rekan_reg');
-            $table->string('Alamat_Rekan_reg');
-            $table->string('Teknisi_Rekanan_reg');
-            $table->string('Telp_Teknisi_Rekanan_reg');
+            $table->string('id_perbaikan_reg')->primary();;
+            $table->date('tanggal_perbaikan_reg');
+            $table->date('tanggal_pengiriman_reg');
+            $table->string('id_aset_reg');
+            $table->string('nama_alat_reg');
+            $table->string('merek_alat_reg');
+            $table->string('type_alat_reg');
+            $table->string('seri_number_reg');
+            $table->string('lokasi_alat_reg');
+            $table->string('teknisi_1_reg');
+            $table->string('teknisi_2_reg');
+            $table->string('teknisi_3_reg');
+            $table->string('pelapor_reg');
+            $table->string('keterangan_kondisi_alat_reg');
+            $table->string('ka_instalasi_reg');
+            $table->string('nama_rekan_reg');
+            $table->string('alamat_rekan_reg');
+            $table->string('teknisi_rekanan_reg');
+            $table->string('telp_teknisi_rekanan_reg');
             $table->string('kode_rs');
-            $table->integer('active');
+            $table->integer('active')->nullable()->change();
 
             $table->timestamps();
         });

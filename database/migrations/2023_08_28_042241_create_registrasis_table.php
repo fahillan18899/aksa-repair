@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('registrasis', function (Blueprint $table) {
-            $table->string('id_aset');
+            $table->string('id_aset')->primary();;
             $table->string('jenis_alat');
             $table->string('nama_alat');
             $table->string('merek');
