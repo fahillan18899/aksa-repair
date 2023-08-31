@@ -19,14 +19,21 @@ class HomeController extends Controller
 
     function printDataInventaris($id)
     {
-        $item = Registrasi::where('Id_Aset', $id)->first();
+        $item = Registrasi::where('id_aset', $id)->first();
         return view('pages.admin.ppm.data_inventaris.cetak_aset', compact('item'));
     }
 
+    
     function qrCodeGenerate($id)
     {
-        $item = Registrasi::where('Id_Aset', $id)->first();
+        $item = Registrasi::where('id_aset', $id)->first();
         return view('pages.admin.ppm.data_inventaris.qr_code', compact('item'));
+    }
+
+    function analisData()
+    {
+        $item = Registrasi::all();
+        return view('pages.admin.ppm.analisis_data.index', compact('item'));
     }
 
     public function autofill($idars)

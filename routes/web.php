@@ -84,6 +84,10 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
         Route::get('/autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
 
+        /**
+         * Analis Data
+         */
+        Route::get('/analisis_data', [PPMController::class, 'analisData']);
 
         Route::get('/aset_unregistrasi', [DashboardController::class, 'index']);
         Route::get('/aset_non_alkes', [DashboardController::class, 'index']);
@@ -92,7 +96,6 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/laporan_kegiatan', [DashboardController::class, 'index']);
         Route::get('/operator', [DashboardController::class, 'index']);
         Route::get('/stock_opname', [DashboardController::class, 'index']);
-        Route::get('/analisis_data', [DashboardController::class, 'index']);
     });
 });
 

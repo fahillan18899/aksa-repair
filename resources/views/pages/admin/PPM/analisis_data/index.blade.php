@@ -1,0 +1,198 @@
+@extends('layouts.admin')
+
+@section('content')
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+
+    <div class="p-l-30 p-r-30">
+      <div class="header-icon"><i class="pe-7s-world"></i></div>
+      <div class="header-title">
+        <h1>Analis Data</h1>
+        <small>Analis Data</small>
+      </div>
+    </div>
+  </section>
+  <!-- Main content -->
+  <div class="content">
+    <!-- demo mode enable alert -->
+    <div id="demoModeEnable"></div>
+    <!-- alert message -->
+    <!-- content -->
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="panel panel-default" id="js-timer">
+          <div class="panel-body">
+            <div class="widget-title">
+              <h3><?= "Data Statistik Umur Alat"
+                  ?></h3>
+              <span><?= "Data Statistik Umur Alat" ?></span>
+
+            </div>
+            <canvas id="pieChart" height="170"></canvas>
+
+          </div> <!-- /.panel-body -->
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="panel panel-default" id="js-timer">
+          <div class="panel-body">
+            <div class="widget-title">
+              <h3><?= "Data Statistik Terkalibrasi"
+                  ?></h3>
+              <span><?= "Data Statistik Terkalibrasi" ?></span>
+
+            </div>
+            <canvas id="pieChart2" height="170"></canvas>
+
+          </div> <!-- /.panel-body -->
+        </div>
+      </div>
+
+    </div> <!-- /.content -->
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="panel panel-default" id="js-timer">
+          <div class="panel-body">
+            <div class="widget-title">
+              <h3><?= "Data Statistik Pemeliharaan"
+                  ?></h3>
+              <span></span>
+
+            </div>
+            <canvas id="pieChart3" height="170"></canvas>
+
+          </div> <!-- /.panel-body -->
+        </div>
+      </div>
+
+    </div> <!-- /.content -->
+
+    <!-- content -->
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="panel panel-default" id="js-timer">
+          <div class="panel-body">
+            <div class="widget-title">
+              <h3><?= "Data Statistik"
+                  ?></h3>
+              <span><?= "Data Statistik" ?></span>
+
+            </div>
+            <canvas id="pieChart4" height="170"></canvas>
+
+          </div> <!-- /.panel-body -->
+        </div>
+      </div>
+
+    </div> <!-- /.content -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('pieChart');
+
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ["< 5tahun", "> 5tahun", "> 10tahun"],
+          datasets: [{
+            label: '# of Votes',
+            data: [
+
+
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      const ctx2 = document.getElementById('pieChart2');
+
+      new Chart(ctx2, {
+        type: 'pie',
+        data: {
+          labels: ["Alat Terkalibrasi", "Alat Belum Terkalibrasi"],
+          datasets: [{
+            label: '# of Votes',
+            data: [
+
+
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      const ctx3 = document.getElementById('pieChart3');
+
+      new Chart(ctx3, {
+        type: 'pie',
+        data: {
+          labels: ["Alat Perbaikan", "Alat Terpelihara", "Alat Belum Terpelihara"],
+          datasets: [{
+            label: '# of Votes',
+            data: [
+
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      const ctx4 = document.getElementById('pieChart4');
+
+      new Chart(ctx4, {
+        type: 'pie',
+        data: {
+          labels: ["Alat Perbaikan", "Alat Terpelihara", "Alat Belum Terpelihara"],
+          datasets: [{
+            label: '# of Votes',
+            data: [
+
+            ],
+            borderWidth: 1,
+            backgroundColor: '#7a7a7a',
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+
+  </div> <!-- /.content-wrapper -->
+</div> <!-- /.content-wrapper -->
+@endsection
