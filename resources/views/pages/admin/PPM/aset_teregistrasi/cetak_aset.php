@@ -1,6 +1,8 @@
-@extends('layouts.admin')
-
-@section('content')
+<?php
+$sql = "SELECT * FROM perbaikan_reg WHERE Id_Perbaikan_reg = '$_GET[id_aset]'";
+$result = mysqli_query($db, $sql);
+$row = mysqli_fetch_array($result);
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
@@ -26,6 +28,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="align-center mt-5">
+                <?php $item =  mysqli_fetch_assoc(mysqli_query($db, "SELECT kop_surat FROM rumah_sakit WHERE id = '$kodeRs_'")); ?>
                 <img src="https://wyasaaplikasi.com/super_admin/img/64a6676d605dc.jpg" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">
@@ -38,7 +41,7 @@
                     </tr>
                     <tr>
                       <th width="7%" colspan="2">
-                        <h3 class="text-center ">Laporan Formulir Perbaikan Aset</h3>
+                        <h3 class="text-center ">Report Data Form Perbaikan User</h3>
                       </th>
                       <th width="7%" colspan="2">
                       </th>
@@ -50,35 +53,35 @@
 
                     <tr>
                       <th width="50%">Id Aset</th>
-                      <td><?php echo $item['id_aset_reg'] ?></td>
+                      <td><?php echo $row['ID_Aset_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Tanggal Perbaikan</th>
-                      <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                      <td><?php echo $row['Tanggal_Perbaikan_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Nama Alat</th>
-                      <td><?php echo $item['nama_alat_reg'] ?></td>
+                      <td><?php echo $row['Nama_Alat_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Merk Alat</th>
-                      <td><?php echo $item['merek_alat_reg'] ?></td>
+                      <td><?php echo $row['Merek_Alat_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Type Alat</th>
-                      <td><?php echo $item['type_alat_reg'] ?></td>
+                      <td><?php echo $row['Type_Alat_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Serial Number</th>
-                      <td><?php echo $item['serial_number_reg'] ?></td>
+                      <td><?php echo $row['Serial_Number_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Lokasi Alat</th>
-                      <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                      <td><?php echo $row['Lokasi_Alat_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Pelapor</th>
-                      <td><?php echo $item['pelapor_reg'] ?></td>
+                      <td><?php echo $row['Pelapor_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Waktu Pelaporan</th>
@@ -87,7 +90,7 @@
                     </tr>
                     <tr>
                       <th width="50%">Waktu Teknisi Datang</th>
-                      <td><?php echo $item[''] ?></td>
+                      <td><?php echo $row[''] ?></td>
                     </tr>
                     <tr>
                       <th width="50%"><br></th>
@@ -109,8 +112,8 @@
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-                      <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                      <td><?php echo $row['Keterangan_Kondisi_Alat_reg'] ?></td>
+                      <td><?php echo $row['Ka_Instalasi_reg'] ?></td>
                     </tr>
                     <tr>
                       <td width="7%" colspan="2">
@@ -136,4 +139,3 @@
   </div>
 
 </div> <!-- /.content -->
-@endsection

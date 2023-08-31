@@ -186,6 +186,7 @@
         $("#Teknisi_1_reg3").val(data.Teknisi_1_reg);
         $("#Pelapor_reg3").val(data.Pelapor_reg);
         $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
+        $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
         $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
 
       },

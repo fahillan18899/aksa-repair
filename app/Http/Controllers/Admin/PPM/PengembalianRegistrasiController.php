@@ -89,9 +89,10 @@ class PengembalianRegistrasiController extends Controller
      * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengembalianRegistrasi $pengembalianRegistrasi)
+    public function edit($id)
     {
-        //
+        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
     }
 
     /**
@@ -115,5 +116,11 @@ class PengembalianRegistrasiController extends Controller
     public function destroy(PengembalianRegistrasi $pengembalianRegistrasi)
     {
         //
+    }
+
+    public function cetak($id)
+    {
+        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.cetak_pengembalian', compact('item'));
     }
 }

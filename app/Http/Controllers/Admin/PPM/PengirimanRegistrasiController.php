@@ -81,9 +81,10 @@ class PengirimanRegistrasiController extends Controller
      * @param  \App\Models\PengirimanRegistrasi  $pengirimanRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengirimanRegistrasi $pengirimanRegistrasi)
+    public function edit($id)
     {
-        //
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
     }
 
     /**
@@ -107,5 +108,11 @@ class PengirimanRegistrasiController extends Controller
     public function destroy(PengirimanRegistrasi $pengirimanRegistrasi)
     {
         //
+    }
+
+    public function cetak($id)
+    {
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.cetak_pengiriman', compact('item'));
     }
 }

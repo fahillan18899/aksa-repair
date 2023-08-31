@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                       <th width="7%" colspan="2">
-                        <h3 class="text-center ">Laporan Formulir Perbaikan Aset</h3>
+                        <h3 class="text-center ">Laporan Formulir Penghapusan Aset</h3>
                       </th>
                       <th width="7%" colspan="2">
                       </th>
@@ -49,19 +49,23 @@
                     </tr>
 
                     <tr>
-                      <th width="50%">Id Aset</th>
-                      <td><?php echo $item['id_aset_reg'] ?></td>
+                      <th width="50%">Id Perbaikan</th>
+                      <td><?php echo $item['id_perbaikan_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Tanggal Perbaikan</th>
                       <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
                     </tr>
                     <tr>
+                      <th width="50%">Tanggal Penggudangan</th>
+                      <td><?php echo $item['tanggal_penggudangan_reg'] ?></td>
+                    </tr>
+                    <tr>
                       <th width="50%">Nama Alat</th>
                       <td><?php echo $item['nama_alat_reg'] ?></td>
                     </tr>
                     <tr>
-                      <th width="50%">Merk Alat</th>
+                      <th width="50%">Merek Alat</th>
                       <td><?php echo $item['merek_alat_reg'] ?></td>
                     </tr>
                     <tr>
@@ -69,16 +73,12 @@
                       <td><?php echo $item['type_alat_reg'] ?></td>
                     </tr>
                     <tr>
-                      <th width="50%">Serial Number</th>
+                      <th width="50%">Serial Number t</th>
                       <td><?php echo $item['serial_number_reg'] ?></td>
                     </tr>
                     <tr>
-                      <th width="50%">Lokasi Alat</th>
+                      <th width="50%">Lokasi Alat </th>
                       <td><?php echo $item['lokasi_alat_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Pelapor</th>
-                      <td><?php echo $item['pelapor_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Waktu Pelaporan</th>
@@ -86,8 +86,8 @@
                             echo date('h:i:s a'); ?></td>
                     </tr>
                     <tr>
-                      <th width="50%">Waktu Teknisi Datang</th>
-                      <td><?php echo $item[''] ?></td>
+                      <th width="50%">Keterangan_Penggudangan</th>
+                      <td><?php echo $item['pelapor_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%"><br></th>
@@ -95,29 +95,15 @@
                     </tr>
                     <tr>
                       <th width="25%">Teknisi 1</th>
-                      <th width="25%">Pelapor</th>
-                    </tr>
-                    <tr>
-                      <th width="7%" colspan="2">
-                        Ketua Instalasi
-                      </th>
-                      <th width="7%" colspan="2">
-                      </th>
+                      <th width="25%">Ketua Instalasi</th>
                     </tr>
                     <tr>
                       <th width="25%"><br><br><br><br></th>
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                      <td><?php echo $item['teknisi_1_reg'] ?></td>
                       <td><?php echo $item['ka_instalasi_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <td width="7%" colspan="2">
-                        Ketua Instalasi
-                      </td>
-                      <td width="7%" colspan="2">
-                      </td>
                     </tr>
                   </tbody>
                 </table>

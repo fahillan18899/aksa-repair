@@ -54,10 +54,33 @@ Route::prefix('dashboard')->group(function () {
         Route::delete('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
         Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
 
+        /**
+         * pengembalian Aset Teregistrasi
+         */
         Route::post('/tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
-        Route::post('/tambah_pengembalian', [PengembalianRegistrasiController::class, 'store']);
-        Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
+        Route::get('/update_pengiriman/{id}/edit', [PengirimanRegistrasiController::class, 'edit'])->name('update_pengiriman.edit');
+        Route::put('/update_pengiriman/{id}', [PengirimanRegistrasiController::class, 'update'])->name('update_pengiriman.update');
+        Route::get('/aset_teregistrasi/cetak_pengiriman/{id}', [PengirimanRegistrasiController::class, 'cetak']);
 
+        /**
+         * pengembalian Aset Teregistrasi
+         */     
+        Route::post('/tambah_pengembalian', [PengembalianRegistrasiController::class, 'store']);
+        Route::get('/update_pengembalian/{id}/edit', [PengembalianRegistrasiController::class, 'edit'])->name('update_pengembalian.edit');
+        Route::put('/update_pengembalian/{id}', [PengembalianRegistrasiController::class, 'update'])->name('update_pengembalian.update');
+        Route::get('/aset_teregistrasi/cetak_pengembalian/{id}', [PengembalianRegistrasiController::class, 'cetak']);
+
+        /**
+         * Penghapusan Aset Teregistrasi
+         */
+        Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
+        Route::get('/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit'])->name('update_penghapusan.edit');
+        Route::put('/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
+        Route::get('/aset_teregistrasi/cetak_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'cetak']);
+
+        /**
+         * Autofill
+         */
         Route::get('/autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
         Route::get('/autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
 

@@ -471,8 +471,8 @@
           <td><?php echo $item->teknisi_rekanan_reg ?></td>
           <td><?php echo $item->telp_teknisi_rekanan_reg ?></td>
           <td>
-            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
           </td>
         </tr>
@@ -684,7 +684,6 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
-        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">Nama_Alat</th>
         <th scope="col">Tanggal_Perbaikan</th>
@@ -734,12 +733,9 @@
           <td>{{ $item->hasil_verifikasi_reg }}</td>
           <td>{{ $item->hasil_fungsi_reg }}</td>
           <td>{{ $item->pengganti_suku_cadang_reg }}</td>
-          <td>{{ $item->kode_rs }}</td>
-          <td>{{ $item->active }}</td>
           <td>
-            <a href="id_perbaikan_reg" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-            <a href="id_perbaikan_reg" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-
+            <a href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
           </td>
         </tr>
 
@@ -765,14 +761,14 @@
             <div class="row">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url('/dashboard/ppm/tambah_penghapusan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-
+                  @csrf
                   <input type="hidden" name="kode_rs" value="asd" />
 
 
                   <div class="form-group row">
                     <label for="Id_Perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_derbaikan_reg" type="text" class="form-control" id="Id_Perbaikan_reg3" placeholder="Id Perbaikan" onkeyup="autofill_Penghapusan()">
+                      <input name="id_perbaikan_reg" type="text" class="form-control" id="Id_Perbaikan_reg3" placeholder="Id Perbaikan" onkeyup="autofill_Penghapusan()">
                     </div>
                   </div>
 
@@ -887,7 +883,6 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
-        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">Tanggal_Perbaikan</th>
         <th scope="col">Tanggal_Penggudangan</th>
@@ -899,6 +894,7 @@
         <th scope="col">Pelapor</th>
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
+        <th scope="col">Teknisi_3</th>
         <th scope="col">KA_Instalasi</th>
         <th scope="col">Keterangan_Pengguna</th>
         <th scope="col">Tombol_Aksi_Tabel</th>
@@ -906,8 +902,26 @@
       <tbody>
         @forelse ($result_penghapusan as $item)
         <tr class="odd gradeX">
-        </tr>
+          <td>{{ $item->id_perbaikan_reg }}</td>
+          <td>{{ $item->tanggal_perbaikan_reg }}</td>
+          <td>{{ $item->tanggal_penggudangan_reg }}</td>
+          <td>{{ $item->nama_alat_reg }}</td>
+          <td>{{ $item->merek_alat_reg }}</td>
+          <td>{{ $item->type_alat_reg }}</td>
+          <td>{{ $item->serial_number_reg }}</td>
+          <td>{{ $item->lokasi_alat_reg }}</td>
+          <td>{{ $item->pelapor_reg }}</td>
+          <td>{{ $item->teknisi_1_reg }}</td>
+          <td>{{ $item->teknisi_2_reg }}</td>
+          <td>{{ $item->teknisi_3_reg }}</td>
+          <td>{{ $item->ka_instalasi_reg }}</td>
+          <td>{{ $item->keterangan_pengguna_reg }}</td>
+          <td>
+            <a href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
+          </td>
+        </tr>
         @empty
         <tr>
           <td class="text-center" colspan="7">Data Kosong</td>
