@@ -103,7 +103,15 @@
           datasets: [{
             label: '# of Votes',
             data: [
-
+              <?php
+              echo $t5;
+              ?>,
+              <?php
+              echo $t5;
+              ?>,
+              <?php
+              echo $t10;
+              ?>,
 
             ],
             borderWidth: 1
@@ -128,8 +136,12 @@
           datasets: [{
             label: '# of Votes',
             data: [
-
-
+              <?php
+              echo $registered;
+              ?>,
+              <?php
+              echo $unRegistered;
+              ?>,
             ],
             borderWidth: 1
           }]
@@ -153,7 +165,9 @@
           datasets: [{
             label: '# of Votes',
             data: [
-
+              <?= $terpelihara ?>,
+              <?= $t5_ ?>,
+              <?= $unTerpelihara ?>
             ],
             borderWidth: 1
           }]
@@ -177,7 +191,9 @@
           datasets: [{
             label: '# of Votes',
             data: [
-
+              <?= $terpelihara ?>,
+              <?= $t5_ ?>,
+              <?= $unTerpelihara ?>
             ],
             borderWidth: 1,
             backgroundColor: '#7a7a7a',

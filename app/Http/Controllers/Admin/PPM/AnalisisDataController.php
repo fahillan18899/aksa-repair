@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnalisisDataController extends Controller
 {
@@ -14,7 +15,55 @@ class AnalisisDataController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.ppm.analisis_data.index');
+
+        $t5 = DB::table('registrasis')
+        ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
+        ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) < 5')
+        ->count();
+
+        $t5_ = DB::table('registrasis')
+        ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
+        ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) > 5 AND (YEAR(CURDATE()) - tahun_perolehan) <= 10')
+        ->count();
+
+        $t10 = DB::table('registrasis')
+        ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
+        ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) >= 10')
+        ->count();
+
+        $semuaAlat = DB::table('registrasis')
+        ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
+        ->get();
+
+        $registered = DB::table('registrasis')
+        ->whereNotNull('tanggal_kalibrasi')
+        ->where('tanggal_kalibrasi', '!=', '-')
+            ->count();
+
+        $unRegistered = DB::table('registrasis')
+        ->where('tanggal_kalibrasi', '-')
+            ->count();
+
+        $terpelihara = DB::table('registrasis')
+        ->join('lembar_pemeliharaans', 'registrasis.Id_Aset', '=', 'lembar_pemeliharaans.id_aset')
+        ->select('registrasis.Id_Aset')
+        ->get();
+
+        $unTerpelihara = DB::table('registrasis')->count() - count($terpelihara);
+
+        return view(
+            'pages.admin.ppm.analisis_data.index',
+            [
+                't5' => $t5,
+                't5_' => $t5_,
+                't10' => $t10,
+                'semuaAlat' => $semuaAlat,
+                'registered' => $registered,
+                'unRegistered' => $unRegistered,
+                'terpelihara' => $terpelihara,
+                'unTerpelihara' => $unTerpelihara,
+            ]
+        );
     }
 
     /**

@@ -105,7 +105,7 @@ Route::prefix('dashboard')->group(function () {
         /**
          * Analis Data
          */
-        Route::get('/analisis_data', [PPMController::class, 'analisData']);
+        Route::get('/analisis_data', [AnalisisDataController::class, 'index']);
 
         /**
          * Data Kelengkapan
