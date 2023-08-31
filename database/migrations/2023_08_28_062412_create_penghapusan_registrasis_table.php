@@ -14,20 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::create('penghapusan_registrasis', function (Blueprint $table) {
-            $table->string('Id_Perbaikan_reg');
-            $table->string('Tanggal_Perbaikan_reg');
-            $table->date('Tanggal_Penggudangan_reg');
-            $table->string('Nama_Alat_reg');
-            $table->string('Merek_Alat_reg');
-            $table->string('Type_Alat_reg');
-            $table->string('Serial_Number_reg');
-            $table->string('Lokasi_Alat_reg');
-            $table->string('Pelapor_reg');
-            $table->string('Teknisi_1_reg');
-            $table->string('Teknisi_2_reg');
-            $table->string('KA_Instalasi_reg');
-            $table->string('Keterangan_Pengguna_reg');
-            $table->string('kode_rs');            
+            $table->string('id_perbaikan_reg')->primary();;
+            $table->string('tanggal_perbaikan_reg');
+            $table->date('tanggal_penggudangan_reg');
+            $table->string('nama_alat_reg');
+            $table->string('merek_alat_reg');
+            $table->string('type_alat_reg');
+            $table->string('serial_number_reg');
+            $table->string('lokasi_alat_reg');
+            $table->string('pelapor_reg');
+            $table->string('teknisi_1_reg');
+            $table->string('teknisi_2_reg');
+            $table->string('teknisi_3_reg');
+            $table->string('ka_instalasi_reg');
+            $table->string('keterangan_pengguna_reg');
+            $table->string('kode_rs');
+
+            $table->timestamps();
+            
         });
     }
 

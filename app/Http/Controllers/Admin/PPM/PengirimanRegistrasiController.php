@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
+use App\Http\Controllers\Controller;
 use App\Models\PengirimanRegistrasi;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,32 @@ class PengirimanRegistrasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tanggal_perbaikan_reg' => '',
+            'tanggal_pengiriman_reg' => '',
+            'id_aset_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'seri_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'teknisi_1_reg' => '',
+            'pelapor_reg' => '',
+            'teknisi_2_reg' => '',
+            'keterangan_kondisi_alat_reg' => '',
+            'ka_instalasi_reg' => '',
+            'nama_rekan_reg' => '',
+            'alamat_rekan_reg' => '',
+            'teknisi_rekanan_reg' => '',
+            'telp_teknisi_rekanan_reg' => '',
+            'kode_rs' => ''
+        ]);
+
+        PengirimanRegistrasi::create($request->post());
+
+
+        return redirect()->route('aset_teregistrasi.index')
+            ->with('success', 'Company has been created successfully.');
     }
 
     /**
@@ -55,9 +81,10 @@ class PengirimanRegistrasiController extends Controller
      * @param  \App\Models\PengirimanRegistrasi  $pengirimanRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function edit(PengirimanRegistrasi $pengirimanRegistrasi)
+    public function edit($id)
     {
-        //
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
     }
 
     /**
@@ -81,5 +108,11 @@ class PengirimanRegistrasiController extends Controller
     public function destroy(PengirimanRegistrasi $pengirimanRegistrasi)
     {
         //
+    }
+
+    public function cetak($id)
+    {
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.admin.ppm.aset_teregistrasi.cetak_pengiriman', compact('item'));
     }
 }

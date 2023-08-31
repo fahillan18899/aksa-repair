@@ -119,27 +119,34 @@
             <h1>Form Registrasi Alat</h1>
           </div>
 
+          @if ($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p>{{ $message }}</p>
+          </div>
+          @endif
+
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="/?hal=registrasi&fun=registrasi" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8">
+                  @csrf
+                  @method('post')
 
 
-
-                  <input type="hidden" name="kodeRs" value="" />
+                  <input type="hidden" name="kode_rs" value="asdsad" />
 
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Id_Aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="">
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat </label>
                     <div class="col-xs-9">
-                      <select name="Jenis_Alat" class="form-control" id="Jenis_Alat">
-                        <option value="" selected="selected">Pilih Jenis Alat</option>
+                      <select name="jenis_alat" class="form-control" id="Jenis_Alat">
+                        <option value="a" selected="selected">Pilih Jenis Alat</option>
                       </select>
                     </div>
                   </div>
@@ -147,7 +154,8 @@
                   <div class="form-group row">
                     <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
-                      <select name="Nama_Alat" class="form-control" id="Nama_Alat">
+                      <select name="nama_alat" class="form-control" id="Nama_Alat">
+                        <option value="a" selected="selected">Pilih Alat</option>
                       </select>
                     </div>
                   </div>
@@ -155,28 +163,30 @@
                   <div class="form-group row">
                     <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Merek" class="form-control" type="text" placeholder="Merek" id="Merek" value="">
+                      <input name="merek" class="form-control" type="text" placeholder="Merek" id="Merek">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="type" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Type" class="form-control" type="text" placeholder="Type" id="Type">
+                      <input name="type" class="form-control" type="text" placeholder="Type" id="Type">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Serial_Number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Serial_Number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
+                      <input name="serial_number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
-                      <select name="Lokasi_Alat" class="form-control" id="Lokasi_Alat">
+                      <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
+                        <option value="a" selected="selected">Pilih Alat</option>
+
                       </select>
                     </div>
                   </div>
@@ -184,126 +194,120 @@
                   <div class="form-group row">
                     <label for="Tanggal_Kalibrasi" class="col-xs-3 col-form-label">Tanggal Kalibrasi <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="jadwal_pemeliharaan" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan" value="">
+                      <input name="tanggal_kalibrasi" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jadwal_pemeliharaan" class="col-xs-3 col-form-label">jadwal pemeliharaan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Tanggal_Kalibrasi" type="date" class="form-control" id="Tanggal_Kalibrasi" placeholder="Tanggal_Kalibrasi" value="">
+                      <input name="jadwal_pemeliharaan" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Distributor" class="col-xs-3 col-form-label">Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor" value="">
+                      <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Alamat_Distributor" class="col-xs-3 col-form-label">Alamat Distributor <i class="text-danger">*</i></label>
+                    <label for="alamat_distributor" class="col-xs-3 col-form-label">Alamat Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Alamat_Distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor" value="">
+                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_Distributor" class="col-xs-3 col-form-label">Telphone_Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="TLP_Distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor" value="">
+                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Email_Distributor" class="col-xs-3 col-form-label">Email Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Email_Distributor" type="text" class="form-control" id="Email_Distributor" placeholder="Email Distributor" value="">
+                      <input name="email_distributor" type="text" class="form-control" id="Email_Distributor" placeholder="Email Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_Distributor" class="col-xs-3 col-form-label">Teknisi Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_Distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor" value="">
+                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_T_Distributor" class="col-xs-3 col-form-label">Telephone Teknisi Distributor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="TLP_T_Distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor" value="">
+                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="No_Sertifikat_Kalibrasi" class="col-xs-3 col-form-label">No Sertifikat Kalibrasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="No_Sertifikat_Kalibrasi" type="text" class="form-control" id="No_Sertifikat_Kalibrasi" placeholder="No Sertifikat Kalibrasi" value="">
+                      <input name="no_sertifikat_kalibrasi" type="text" class="form-control" id="No_Sertifikat_Kalibrasi" placeholder="No Sertifikat Kalibrasi">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_PPM" class="col-xs-3 col-form-label">Teknisi PPM <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_PPM" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi PPM" value="">
+                      <input name="teknisi_ppm" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi PPM">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Harga_Perolehan" class="col-xs-3 col-form-label">Harga Perolehan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Harga_Perolehan" type="text" class="form-control" id="Harga_Perolehan" placeholder="Harga Perolehan" value="">
+                      <input name="harga_perolehan" type="text" class="form-control" id="Harga_Perolehan" placeholder="Harga Perolehan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Sumber_Dana" class="col-xs-3 col-form-label">Sumber Dana <i class="text-danger">*</i></label>
+                    <label for="sumber_dana" class="col-xs-3 col-form-label">Sumber Dana <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Sumber_Dana" type="text" class="form-control" id="Sumber_Dana" placeholder="Sumber Dana" value="">
+                      <input name="sumber_dana" type="text" class="form-control" id="Sumber_Dana" placeholder="Sumber Dana">
                     </div>
                   </div>
 
-                  <div class="form-group row">
-                    <label for="Tahun_Pembuatan" class="col-xs-3 col-form-label">Tahun Pembuatan <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="Tahun_Pembuatan" type="text" class="form-control" id="Tahun_Pembuatan" placeholder="Tahun Pembuatan" value="">
-                    </div>
-                  </div>
 
                   <div class="form-group row">
                     <label for="Tahun_Perolehan" class="col-xs-3 col-form-label">Tahun Perolehan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Tahun_Perolehan" type="text" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan" value="">
+                      <input name="tahun_perolehan" type="text" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="umur_alat" class="col-xs-3 col-form-label">umur alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="umur_alat" type="text" class="form-control" id="umur_alat" placeholder="umur alat" value="">
+                      <input name="umur_alat" type="text" class="form-control" id="umur_alat" placeholder="umur alat">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1" value="">
+                      <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2 <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="no inventaris 2" value="">
+                      <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="no inventaris 2">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="penyusutan_aset" class="col-xs-3 col-form-label">penyusutan aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="penyusutan_aset" type="text" class="form-control" id="penyusutan_aset" placeholder="penyusutan aset" value="">
+                      <input name="penyusutan_aset" type="text" class="form-control" id="penyusutan_aset" placeholder="penyusutan aset">
                     </div>
                   </div>
 
@@ -314,7 +318,7 @@
                       <div class="ui buttons">
                         <button type="reset" class="ui button">Reset</button>
                         <div class="or"></div>
-                        <button class="ui positive button" name="tambah_registrasi">Save</button>
+                        <button class="ui positive button" type="submit">Save</button>
                       </div>
                     </div>
                   </div>
@@ -329,7 +333,6 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
-        <th>No</th>
         <th>Id_Aset</th>
         <th>Jenis_Alat</th>
         <th>Nama_Alat</th>
@@ -348,15 +351,58 @@
         <th>Teknisi PPM</th>
         <th>Harga Perolehan</th>
         <th>Sumber_Dana</th>
-        <th>Tahun_Pembuatan</th>
         <th>Tahun_Perolehan</th>
         <th>No._Inventaris </th>
         <th>umur_alat</th>
+        <th>Jadwal</th>
         <th>QR</th>
         <th>Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
-
+        @forelse ($items as $item)
+        <tr>
+          <td>{{ $item->id_aset }}</td>
+          <td>{{ $item->jenis_alat }}</td>
+          <td>{{ $item->nama_alat }}</td>
+          <td>{{ $item->merek }}</td>
+          <td>{{ $item->type }}</td>
+          <td>{{ $item->serial_number }}</td>
+          <td>{{ $item->lokasi_alat }}</td>
+          <td>{{ $item->tanggal_kalibrasi }}</td>
+          <td>{{ $item->distributor }}</td>
+          <td>{{ $item->alamat_distributor }}</td>
+          <td>{{ $item->tlp_distributor }}</td>
+          <td>{{ $item->email_distributor }}</td>
+          <td>{{ $item->teknisi_distributor }}</td>
+          <td>{{ $item->tlp_t_distributor }}</td>
+          <td>{{ $item->no_sertifikat_kalibrasi }}</td>
+          <td>{{ $item->teknisi_ppm }}</td>
+          <td>{{ $item->harga_perolehan }}</td>
+          <td>{{ $item->sumber_dana }}</td>
+          <td>{{ $item->tahun_perolehan }}</td>
+          <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
+          <td>{{ $item->umur_alat }}</td>
+          <td>{{ $item->jadwal_pemeliharaan }}</td>
+          <td>
+            <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+          </td>
+          <td scope="row">
+            <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
+            <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info"> <i class="fa fa-edit"></i> </a>
+            <form action="{{ url('/dashboard/ppm/registrasi', $item->id_aset) }}" method="POST" class="d-inline">
+              @csrf
+              @method('delete')
+              <button class="btn btn-danger">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        @empty
+        <tr>
+          <td class="text-center" colspan="7">Data Kosong</td>
+        </tr>
+        @endforelse
       </tbody>
     </table>
     <!--TABEL-->

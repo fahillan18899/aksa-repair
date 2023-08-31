@@ -329,7 +329,7 @@
                 <ul class="treeview-menu">
                   <li class=""><a href="/dashboard/ppm/aset_teregistrasi">Aset Teregistrasi</a></li>
                   <li class=""><a href="/dashboard/ppm/aset_unregistrasi">Aset Unregistrasi</a></li>
-                  <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li>
+                  <!-- <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li> -->
                 </ul>
               </li>
               <li class="treeview">
