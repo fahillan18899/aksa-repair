@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
+use App\Http\Controllers\Admin\PPM\AsetUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 
 /*
@@ -42,7 +43,7 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/registrasi', RegistrasiAset::class);
         Route::resource('/data_inventaris', DashboardController::class);
         Route::resource('/aset_teregistrasi', DashboardController::class);
-        Route::resource('/aset_unregistrasi', DashboardController::class);
+        Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
@@ -60,7 +61,6 @@ Route::prefix('dashboard')->group(function () {
 
 
         Route::get('/aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index']);
-        Route::get('/aset_unregistrasi', [DashboardController::class, 'index']);
         Route::get('/aset_non_alkes', [DashboardController::class, 'index']);
         Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
         Route::get('/operator', [OperatorController::class, 'index']);
