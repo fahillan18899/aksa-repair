@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
-use App\Models\Teknisi;
+use App\Models\Gedung;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class TeknisiController extends Controller
+class GedungController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +36,28 @@ class TeknisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_gedung' => 'required',
+            'nama_gedung' => 'required',
+            'kode_rs' => 'required',
+        ]);
+
+        Gedung::create([
+            'id_gedung' => $request->id_gedung,
+            'nama_gedung' => $request->nama_gedung,
+            'kode_rs' => $request->kode_rs,
+        ]);
+
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Teknisi  $teknisi
+     * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function show(Teknisi $teknisi)
+    public function show(Gedung $gedung)
     {
         //
     }
@@ -52,10 +65,10 @@ class TeknisiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Teknisi  $teknisi
+     * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teknisi $teknisi)
+    public function edit(Gedung $gedung)
     {
         //
     }
@@ -64,10 +77,10 @@ class TeknisiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Teknisi  $teknisi
+     * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Teknisi $teknisi)
+    public function update(Request $request, Gedung $gedung)
     {
         //
     }
@@ -75,11 +88,14 @@ class TeknisiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Teknisi  $teknisi
+     * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teknisi $teknisi)
+    public function destroy($id)
     {
-        //
+        $item = Gedung::where('id_gedung',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/data_kelengkapan');
     }
 }

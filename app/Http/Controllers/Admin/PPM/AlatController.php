@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
-use App\Models\Gedung;
+use App\Http\Controllers\Controller;
+use App\Models\Alat;
 use Illuminate\Http\Request;
 
-class GedungController extends Controller
+class AlatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +36,28 @@ class GedungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_alat' => 'required',
+            'nama_alat' => 'required',
+            'kode_rs' => 'required',
+        ]);
+
+        Alat::create([
+            'id_alat' => $request->id_alat,
+            'nama_alat' => $request->nama_alat,
+            'kode_rs' => $request->kode_rs,
+        ]);
+
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Gedung  $gedung
+     * @param  \App\Models\Alat  $alat
      * @return \Illuminate\Http\Response
      */
-    public function show(Gedung $gedung)
+    public function show(Alat $alat)
     {
         //
     }
@@ -52,10 +65,10 @@ class GedungController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Gedung  $gedung
+     * @param  \App\Models\Alat  $alat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gedung $gedung)
+    public function edit(Alat $alat)
     {
         //
     }
@@ -64,10 +77,10 @@ class GedungController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Gedung  $gedung
+     * @param  \App\Models\Alat  $alat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gedung $gedung)
+    public function update(Request $request, Alat $alat)
     {
         //
     }
@@ -75,11 +88,14 @@ class GedungController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Gedung  $gedung
+     * @param  \App\Models\Alat  $alat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gedung $gedung)
+    public function destroy($id)
     {
-        //
+        $item = Alat::where('id_alat', $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/data_kelengkapan');
     }
 }

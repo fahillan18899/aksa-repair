@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
-use App\Models\Alat;
+use App\Http\Controllers\Controller;
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
 
-class AlatController extends Controller
+class TeknisiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +36,28 @@ class AlatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_teknisi' => 'required',
+            'nama_teknisi' => 'required',
+            'kode_rs' => 'required',
+        ]);
+
+        Teknisi::create([
+            'id_teknisi' => $request->id_teknisi,
+            'nama_teknisi' => $request->nama_teknisi,
+            'kode_rs' => $request->kode_rs,
+        ]);
+
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Alat  $alat
+     * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function show(Alat $alat)
+    public function show(Teknisi $teknisi)
     {
         //
     }
@@ -52,10 +65,10 @@ class AlatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Alat  $alat
+     * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alat $alat)
+    public function edit(Teknisi $teknisi)
     {
         //
     }
@@ -64,10 +77,10 @@ class AlatController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Alat  $alat
+     * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Alat $alat)
+    public function update(Request $request, Teknisi $teknisi)
     {
         //
     }
@@ -75,11 +88,14 @@ class AlatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Alat  $alat
+     * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alat $alat)
+    public function destroy($id)
     {
-        //
+        $item = Teknisi::where('id_teknisi',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/data_kelengkapan');
     }
 }

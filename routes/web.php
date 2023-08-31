@@ -18,7 +18,12 @@ use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
+use App\Http\Controllers\Admin\PPM\GedungController;
+use App\Http\Controllers\Admin\PPM\AlatController;
+use App\Http\Controllers\Admin\PPM\RuanganController;
+use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\UserController;
+use App\Models\Alat;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +54,6 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
-        Route::resource('/operator', OperatorController::class);
         Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
@@ -110,7 +114,11 @@ Route::prefix('dashboard')->group(function () {
         /**
          * Data Kelengkapan
          */
-        Route::resource('/data_kelengkapan', DataKelengkapanController::class);
+        Route::get('/data_kelengkapan', [DataKelengkapanController::class, 'index']);
+        Route::resource('gedung', GedungController::class);
+        Route::resource('/alat', AlatController::class);
+        Route::resource('/teknisi', TeknisiController::class);
+        Route::resource('/ruangan', RuanganController::class);
 
         /**
          * Data Kelengkapan
@@ -125,8 +133,8 @@ Route::prefix('dashboard')->group(function () {
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('login', [AuthController::class, 'processLogin'])->name('login-proccess');
-Route::get('register', [AuthController::class, 'registration'])->name('register');
-Route::post('register', [AuthController::class, 'processRegistration']);
+Route::get('/register', [AuthController::class, 'registration'])->name('register');
+Route::post('/register', [AuthController::class, 'processRegistration']);
 
 Route::post('logout', [AuthController::class, 'logout'])
     ->name('logout')
