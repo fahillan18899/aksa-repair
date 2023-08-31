@@ -42,7 +42,6 @@
                 <!--TABEL-->
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
-                    <th>No</th>
                     <th>Id_Aset</th>
                     <th>Jenis_Alat</th>
                     <th>Nama_Alat</th>
@@ -61,76 +60,50 @@
                     <th>Teknisi PPM</th>
                     <th>Harga Perolehan</th>
                     <th>Sumber_Dana</th>
-                    <th>Tahun_Pembuatan</th>
                     <th>Tahun_Perolehan</th>
                     <th>No._Inventaris </th>
                     <th>umur_alat</th>
+                    <th>Jadwal</th>
                     <th>QR</th>
                     <th>Tombol_Aksi_Tabel</th>
                   </thead>
                   <tbody>
-                    <?php
-                    $no = 1;
-                    foreach ($items as $item) {
-                      # code...
-
-                      $Id_Aset                   = $item['Id_Aset'];
-                      $Jenis_Alat                = $item['Jenis_Alat'];
-                      $Nama_Alat                 = $item['Nama_Alat'];
-                      $Merek                     = $item['Merek'];
-                      $Type                      = $item['Type'];
-                      $Serial_Number             = $item['Serial_Number'];
-                      $Lokasi_Alat               = $item['Lokasi_Alat'];
-                      $Tanggal_Kalibrasi         = $item['Tanggal_Kalibrasi'];
-                      $Distributor               = $item['Distributor'];
-                      $Alamat_Distributor        = $item['Alamat_Distributor'];
-                      $TLP_Distributor           = $item['TLP_Distributor'];
-                      $Email_Distributor         = $item['Email_Distributor'];
-                      $Teknisi_Distributor       = $item['Teknisi_Distributor'];
-                      $TLP_T_Distributor         = $item['TLP_T_Distributor'];
-                      $No_Sertifikat_Kalibrasi   = $item['No_Sertifikat_Kalibrasi'];
-                      $Teknisi_PPM               = $item['Teknisi_PPM'];
-                      $Harga_Perolehan           = $item['Harga_Perolehan'];
-                      $Sumber_Dana               = $item['Sumber_Dana'];
-                      $Tahun_Pembuatan           = $item['Tahun_Pembuatan'];
-                      $Tahun_Perolehan           = $item['Tahun_Perolehan'];
-                    ?>
-
-                      <tr class="odd gradeX">
-                        <td><?php echo $no++;    ?></td>
-                        <td><?php echo $Id_Aset;                ?></td>
-                        <td><?php echo $Jenis_Alat;             ?></td>
-                        <td><?php echo $Nama_Alat;              ?></td>
-                        <td><?php echo $Merek;                  ?></td>
-                        <td><?php echo $Type;                   ?></td>
-                        <td><?php echo $Serial_Number;          ?></td>
-                        <td><?php echo $Lokasi_Alat;            ?></td>
-                        <td><?php echo $Tanggal_Kalibrasi;      ?></td>
-                        <td><?php echo $TLP_Distributor;        ?></td>
-                        <td><?php echo $Distributor;            ?></td>
-                        <td><?php echo $Alamat_Distributor;     ?></td>
-                        <td><?php echo $Email_Distributor;      ?></td>
-                        <td><?php echo $Teknisi_Distributor;    ?></td>
-                        <td><?php echo $TLP_T_Distributor;      ?></td>
-                        <td><?php echo $No_Sertifikat_Kalibrasi; ?></td>
-                        <td><?php echo $Teknisi_PPM;            ?></td>
-                        <td><?php echo $Harga_Perolehan;        ?></td>
-                        <td><?php echo $Sumber_Dana;           ?></td>
-                        <td><?php echo $Tahun_Pembuatan;        ?></td>
-                        <td><?php echo $Tahun_Perolehan;        ?></td>
-                        <td><?php echo $item['no_inventaris_1']; ?> <br> <?php echo $item['no_inventaris_2']; ?> </td>
-                        <td><?php echo $item['umur_alat'];       ?></td>
-                        <td>
-                          <a href="/dashboard/ppm/data_inventaris/qr_qode/<?php echo $Id_Aset ?>" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
-                        </td>
-                        <td scope="row">
-                          <a href="/dashboard/ppm/data_inventaris/cetak_aset/<?php echo $Id_Aset ?>" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
-                        </td>
-                      </tr>
-
-                    <?php
-                    }
-                    ?>
+                    @forelse ($items as $item)
+                    <tr>
+                      <td>{{ $item->id_aset }}</td>
+                      <td>{{ $item->jenis_alat }}</td>
+                      <td>{{ $item->nama_alat }}</td>
+                      <td>{{ $item->merek }}</td>
+                      <td>{{ $item->type }}</td>
+                      <td>{{ $item->serial_number }}</td>
+                      <td>{{ $item->lokasi_alat }}</td>
+                      <td>{{ $item->tanggal_kalibrasi }}</td>
+                      <td>{{ $item->distributor }}</td>
+                      <td>{{ $item->alamat_distributor }}</td>
+                      <td>{{ $item->tlp_distributor }}</td>
+                      <td>{{ $item->email_distributor }}</td>
+                      <td>{{ $item->teknisi_distributor }}</td>
+                      <td>{{ $item->tlp_t_distributor }}</td>
+                      <td>{{ $item->no_sertifikat_kalibrasi }}</td>
+                      <td>{{ $item->teknisi_ppm }}</td>
+                      <td>{{ $item->harga_perolehan }}</td>
+                      <td>{{ $item->sumber_dana }}</td>
+                      <td>{{ $item->tahun_perolehan }}</td>
+                      <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
+                      <td>{{ $item->umur_alat }}</td>
+                      <td>{{ $item->jadwal_pemeliharaan }}</td>
+                      <td>
+                        <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+                      </td>
+                      <td scope="row">
+                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
+                      </td>
+                    </tr>
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->

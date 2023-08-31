@@ -50,39 +50,39 @@
 
                     <tr>
                       <th width="50%">Id Aset</th>
-                      <td><?php echo $item['Id_Aset'] ?></td>
+                      <td><?php echo $item['id_aset'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Jenis Alat</th>
-                      <td><?php echo $item['Jenis_Alat'] ?></td>
+                      <td><?php echo $item['jenis_alat'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Nama Alat</th>
-                      <td><?php echo $item['Nama_Alat'] ?></td>
+                      <td><?php echo $item['nama_alat'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Merek</th>
-                      <td><?php echo $item['Merek'] ?></td>
+                      <td><?php echo $item['merek'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Type</th>
-                      <td><?php echo $item['Type'] ?></td>
+                      <td><?php echo $item['type'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Serial Number</th>
-                      <td><?php echo $item['Serial_Number'] ?></td>
+                      <td><?php echo $item['serial_number'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Lokasi</th>
-                      <td><?php echo $item['Lokasi_Alat'] ?></td>
+                      <td><?php echo $item['lokasi_alat'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Tanggal Kalibrasi</th>
-                      <td><?php echo $item['Tanggal_Kalibrasi'] ?></td>
+                      <td><?php echo $item['tanggal_kalibrasi'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Nomer Sertifikat Kalibrasi</th>
-                      <td><?php echo $item['No_Sertifikat_Kalibrasi'] ?></td>
+                      <td><?php echo $item['no_sertifikat_kalibrasi'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%"><br></th>
@@ -97,7 +97,7 @@
                       <th width="50%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item['Teknisi_Distributor'] ?></td>
+                      <td><?php echo $item['teknisi_ppm'] ?></td>
                       <td><?php echo $item['No_Sertifikat_Kalibrasi'] ?></td>
                     </tr>
                   </tbody>

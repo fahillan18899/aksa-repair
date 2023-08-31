@@ -356,7 +356,6 @@
         <th>umur_alat</th>
         <th>Jadwal</th>
         <th>QR</th>
-        <!-- <th>Penyusutan Aset</th> -->
         <th>Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
