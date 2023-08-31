@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
+use App\Models\PerbaikanNonAset;
+use App\Models\PerbaikanRegistrasi;
+use App\Models\PerbaikanUnregistrasi;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +13,25 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    function dashboard()
+    {
+        $registrasi = Registrasi::all()->count();
+        $perbaikanRegistrasi = PerbaikanRegistrasi::all()->count();
+        $perbaikanUnregistrasi = PerbaikanUnregistrasi::all()->count();
+        $perbaikanNonAset = PerbaikanNonAset::all()->count();
+
+
+        return view(
+            'pages.admin.ppm.dashboard.index',
+            [
+                'registrasi' => $registrasi,
+                'perbaikanRegistrasi' => $perbaikanRegistrasi,
+                'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
+                'perbaikanNonAset' => $perbaikanNonAset
+            ]
+        );
+    }
+
     function dataInventaris()
     {
         $items = Registrasi::all();

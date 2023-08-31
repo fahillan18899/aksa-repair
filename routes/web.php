@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
-use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
@@ -19,6 +18,7 @@ use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +41,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::prefix('ppm')->group(function () {
 
-        Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('/data_kelengkapan', DataKelengkapanController::class);
-        Route::resource('/registrasi', RegistrasiAset::class);
+        Route::get('/home', [PPMController::class, 'dashboard']);
         Route::resource('/data_inventaris', DashboardController::class);
         Route::resource('/aset_teregistrasi', DashboardController::class);
         Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
@@ -55,7 +53,6 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
-        Route::get('/home', [DashboardController::class, 'index']);
         Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
         Route::get('/data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
         Route::get('/data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
@@ -110,10 +107,27 @@ Route::prefix('dashboard')->group(function () {
          */
         Route::get('/analisis_data', [PPMController::class, 'analisData']);
 
+        /**
+         * Data Kelengkapan
+         */
+        Route::resource('/data_kelengkapan', DataKelengkapanController::class);
+
+        /**
+         * Data Kelengkapan
+         */
+        Route::get('/operator', [UserController::class, 'index']);
+
+
         Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
-        Route::get('/operator', [OperatorController::class, 'index']);
     });
 });
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'processLogin'])->name('login-proccess');
+Route::get('register', [AuthController::class, 'registration'])->name('register');
+Route::post('register', [AuthController::class, 'processRegistration']);
+
+Route::post('logout', [AuthController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
