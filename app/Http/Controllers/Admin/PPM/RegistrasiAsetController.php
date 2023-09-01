@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alat;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
+use App\Models\Ruangan;
+use Illuminate\Support\Facades\DB;
 
 class RegistrasiAsetController extends Controller
 {
@@ -15,9 +18,28 @@ class RegistrasiAsetController extends Controller
      */
     public function index()
     {
+        $kodeRs_ = "RS0001";
+
+        $data = DB::table('registrasis')
+        ->select(DB::raw('max(id_aset) as maxIDASET'))
+        // ->where('kode_rs', $kodeRs_)
+        ->first();
+        $kodeAset = $data->maxIDASET;
+
+        $urutan = (int)substr($kodeAset, 12, 13);
+        $urutan++;
+
+        $date  = date('dmy');
+        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
+
         $items = Registrasi::all();
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
         return view('pages.admin.ppm.registrasi_aset.index', [
-            'items' => $items
+            'items' => $items,
+            'kodeAset' => $kodeAset,
+            'ruangans' => $ruangans,
+            'alats' => $alats,
         ]);
     }
 
@@ -40,13 +62,13 @@ class RegistrasiAsetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_aset' => '',
-            'jenis_alat' => '',
-            'nama_alat' => '',
-            'merek' => '',
-            'type' => '',
-            'serial_number' => '',
-            'lokasi_alat' => '',
+            'id_aset' => 'required',
+            'jenis_alat' => 'required',
+            'nama_alat' => 'required',
+            'merek' => 'required',
+            'type' => 'required',
+            'serial_number' => 'required',
+            'lokasi_alat' => 'required',
             'tanggal_kalibrasi' => '',
             'distributor' => '',
             'alamat_distributor' => '',
@@ -93,7 +115,13 @@ class RegistrasiAsetController extends Controller
     public function edit($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
-        return view('pages.admin.ppm.registrasi_aset.update', compact('item'));
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
+        return view('pages.admin.ppm.registrasi_aset.update', [
+            'ruangans' => $ruangans,
+            'alats' => $alats,
+            'item' => $item,
+        ]);
     }
 
     /**

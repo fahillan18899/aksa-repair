@@ -65,47 +65,47 @@
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ID_Aset_reg" type="text" class="form-control" id="id_aset_reg" placeholder="ID Aset" onkeyup="autofill()">
+                      <input name="id_aset_reg" type="text" class="form-control" id="id_aset_reg" placeholder="ID Aset" onkeyup="autofill()">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Id_Perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
+                    <label for="" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Id_Perbaikan_reg" type="text" class="form-control" id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="123" readonly>
+                      <input name="id_perbaikan_reg" type="text" class="form-control" id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Tanggal_Perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo date(now()) ?>" readonly>
+                      <input name="tanggal_perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo date(now()) ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Nama_Alat_reg" type="text" class="form-control" id="Nama_Alat_reg" placeholder="Nama Alat" value="" readonly>
+                      <input name="nama_alat_reg" type="text" class="form-control" id="Nama_Alat_reg" placeholder="Nama Alat" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Merek_Alat_reg" type="text" class="form-control" id="Merek_Alat_reg" placeholder="Merek Alat" value="" readonly>
+                      <input name="merek_alat_reg" type="text" class="form-control" id="Merek_Alat_reg" placeholder="Merek Alat" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Type_Alat_reg" type="text" class="form-control" id="Type_Alat_reg" placeholder="Type Alat" value="" readonly>
+                      <input name="type_alat_reg" type="text" class="form-control" id="Type_Alat_reg" placeholder="Type Alat" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
+                    <label for="serial_number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="Serial_Number_reg" type="text" class="form-control" id="Serial_Number_reg" placeholder="Serial Number" value="" readonly>
                     </div>
@@ -114,22 +114,25 @@
                   <div class="form-group row">
                     <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Lokasi_Alat_reg" type="text" class="form-control" id="Lokasi_Alat_reg" placeholder="Lokasi Alat" value="" readonly>
+                      <input name="lokasi_alat_reg" type="text" class="form-control" id="Lokasi_Alat_reg" placeholder="Lokasi Alat" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor">
+                      <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                     <div class="col-xs-9">
-                      <select name="Keterangan_Kondisi_Alat_reg" class="form-control" id="Keterangan_Kondisi_Alat_reg">
-                        <option value="as">asd</option>
+                      <select name="keterangan_kondisi_alat_reg" class="form-control" id="keterangan_kondisi_alat_reg">
+                        <option>-- Pilih Keterangan --</option>
+                        <option value="Selesai, Alat Dikembalikan">Selesai, Alat Dikembalikan</option>
+                        <option value="Alat Dalam Perbaikan">Alat Dalam Perbaikan</option>
+                        <option value="Alat Dilanjutkan Perbaikan Kerekanan">Alat Dilanjutkan Perbaikan Kerekanan</option>
                       </select>
                     </div>
                   </div>
@@ -137,15 +140,17 @@
                   <div class="form-group row">
                     <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Ka_Instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Ka Instalasi">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Ka Instalasi">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
-                      <select name="Teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
-                        <option value="as" selected="selected">Select Teknisi</option>
+                      <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
+                        @foreach($teknisis as $teknisi)
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -153,28 +158,36 @@
                   <div class="form-group row">
                     <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_2_reg" type="text" class="form-control" id="Teknisi_2_reg" placeholder="Teknisi 2">
+                      <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
+                        @foreach($teknisis as $teknisi)
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_3_reg" type="text" class="form-control" id="Teknisi_3_reg" placeholder="Teknisi 3">
+                      <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
+                        @foreach($teknisis as $teknisi)
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Keluhan_Dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat">
+                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif">
+                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif">
                     </div>
                   </div>
 
@@ -198,6 +211,7 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
+        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">ID_Aset</th>
         <th scope="col">Tanggal_Perbaikan</th>
@@ -218,8 +232,9 @@
         <th scope="col">Tombol_Eksekusi</th>
       </thead>
       <tbody>
-        @forelse ($items as $item)
+        @forelse ($items as $index => $item)
         <tr class="odd gradeX">
+          <td><?php echo $index  + 1 ?></td>
           <td><?php echo $item['id_perbaikan_reg'] ?></td>
           <td><?php echo $item['id_aset_reg'] ?></td>
           <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
@@ -426,6 +441,7 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
+        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">Tanggal_Perbaikan</th>
         <th scope="col">Tanggal_Pengiriman</th>
@@ -448,9 +464,10 @@
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
-        @forelse ($result_pengiriman as $item)
+        @forelse ($result_pengiriman as $index => $item)
 
         <tr class="odd gradeX">
+          <td><?php echo $index  + 1 ?></td>
           <td><?php echo $item->id_perbaikan_reg ?></td>
           <td><?php echo $item->tanggal_perbaikan_reg ?></td>
           <td><?php echo $item->tanggal_pengiriman_reg ?></td>
@@ -684,6 +701,7 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
+        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">Nama_Alat</th>
         <th scope="col">Tanggal_Perbaikan</th>
@@ -709,9 +727,10 @@
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
-        @forelse ($result_pengembalian as $item)
+        @forelse ($result_pengembalian as $index => $item)
         <tr class="odd gradeX">
-          <td>{{ $item->id_aset_reg }}</td>
+          <td><?php echo $index  + 1 ?></td>
+          <td>{{ $item->id_perbaikan_reg }}</td>
           <td>{{ $item->nama_alat_reg }}</td>
           <td>{{ $item->tanggal_perbaikan_reg }}</td>
           <td>{{ $item->merek_reg }}</td>
@@ -883,6 +902,7 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
+        <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
         <th scope="col">Tanggal_Perbaikan</th>
         <th scope="col">Tanggal_Penggudangan</th>
@@ -900,8 +920,9 @@
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
-        @forelse ($result_penghapusan as $item)
+        @forelse ($result_penghapusan as $index => $item)
         <tr class="odd gradeX">
+          <td><?php echo $index  + 1 ?></td>
           <td>{{ $item->id_perbaikan_reg }}</td>
           <td>{{ $item->tanggal_perbaikan_reg }}</td>
           <td>{{ $item->tanggal_penggudangan_reg }}</td>

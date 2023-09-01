@@ -65,7 +65,9 @@
                     <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
-                        <option value="{{ $item->id_aset }}">{{ $item->id_aset }}</option>
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -95,7 +97,9 @@
                     <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="lokasi_alat">
-                        <option value="<?= $item['lokasi_alat']; ?>"><?= $item['lokasi_alat']; ?></option>
+                        @foreach($ruangans as $ruangan)
+                        <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>

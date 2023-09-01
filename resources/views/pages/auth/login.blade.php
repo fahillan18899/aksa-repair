@@ -36,9 +36,9 @@
 
 
         <div class="panel-body">
-          <p class="login-box-msg text-center"><?php //echo $pesan; 
-                                                ?></p>
-          <form action="" id="loginForm" novalidate method="post" accept-charset="utf-8">
+          <p class="login-box-msg text-center"></p>
+          <form action="{{ route('login-proccess') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
+            @csrf
             <div class="form-group">
               <label class="control-label" for="username">Username</label>
               <input type="username" placeholder="Username" name="username" id="username" class="form-control">
@@ -49,10 +49,8 @@
             </div>
 
             <input type="hidden" name="user_role" value="1">
-
-
             <div>
-              <button type="submit" class="btn btn-success" name="masuk">Log In</button>
+              <button type="submit" class="btn btn-success">Log In</button>
             </div>
           </form>
         </div>

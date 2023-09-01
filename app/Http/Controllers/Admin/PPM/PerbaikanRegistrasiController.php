@@ -9,6 +9,7 @@ use App\Models\PengirimanRegistrasi;
 use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
 use App\Models\Registrasi;
+use App\Models\Teknisi;
 use Illuminate\Support\Facades\DB;
 
 
@@ -25,11 +26,30 @@ class PerbaikanRegistrasiController extends Controller
         $result_pengiriman = PengirimanRegistrasi::all();
         $result_penghapusan = PenghapusanRegistrasi::all();
         $result_pengembalian = PengembalianRegistrasi::all();
+        $teknisis = Teknisi::all();
+
+
+        $data = DB::table('perbaikan_registrasis')
+        ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
+        // ->where('kode_rs', $kodeRs_)
+        ->first();
+        $kodeAset = $data->idPerbaikan;
+
+        $urutan = (int)substr($kodeAset, 7, 8);
+        $urutan++;
+
+        $huruf3 = "B";
+        $date3  = date('dmy');
+        $kode_aset  = $huruf3 . $date3 . sprintf("%04s", $urutan);
+
         return view('pages.admin.ppm.aset_teregistrasi.index', [
             'items' => $items,
             'result_pengembalian' => $result_pengembalian,
             'result_penghapusan' => $result_penghapusan,
-            'result_pengiriman' => $result_pengiriman
+            'result_pengiriman' => $result_pengiriman,
+            'kode_aset' => $kode_aset,
+            'teknisis' => $teknisis,
+
         ]);
     }
 

@@ -92,7 +92,7 @@ class PengembalianRegistrasiController extends Controller
     public function edit($id)
     {
         $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
+        return view('pages.admin.ppm.aset_teregistrasi.update_pengembalian', compact('item'));
     }
 
     /**
@@ -102,9 +102,42 @@ class PengembalianRegistrasiController extends Controller
      * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengembalianRegistrasi $pengembalianRegistrasi)
+    public function update(Request $request, PengembalianRegistrasi  $pengembalianRegistrasi)
     {
-        //
+        $request->validate([
+            'id_aset_reg' => '',
+            'nama_alat_reg' => '',
+            'tanggal_perbaikan_reg' => '',
+            'merek_reg' => '',
+            'id_perbaikan_reg' => '',
+            'tipe_reg' => '',
+            'tanggal_pengembalian_reg' => '',
+            'serial_number_reg' => '',
+            'pelapor_reg' => '',
+            'lokasi_alat_reg' => '',
+            'keterangan_reg' => '',
+            'penerima_reg' => '',
+            'harga_perbaikan_reg' => '',
+            'teknisi1_reg' => '',
+            'teknisi2_reg' => '',
+            'teknisi3_reg' => '',
+            'ka_instalasi_reg' => '',
+            'penyebab_kerusakan_reg' => '',
+            'solusi_perbaikan_reg' => '',
+            'penguji_suku_cadang_reg' => '',
+            'hasil_verifikasi_reg' => '',
+            'hasil_fungsi_reg' => '',
+            'pengganti_suku_cadang_reg' => '',
+        ]);
+
+        dd($request->post());
+
+        $pengembalianRegistrasi->fill($request->post())->save();
+
+
+
+        return redirect()->route('aset_teregistrasi.index')
+        ->with('success', 'Data Perbaikan Teregistrasi berhasil di ubah');
     }
 
     /**

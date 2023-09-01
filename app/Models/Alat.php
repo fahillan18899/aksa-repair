@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Alat extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    protected $primaryKey = "id_alat";
+    protected $keyType = 'string';
+    public $incrementing = false;
+
+
 }

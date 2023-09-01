@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
 use App\Models\Gedung;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class GedungController extends Controller
 {
@@ -35,7 +36,19 @@ class GedungController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_gedung' => 'required',
+            'nama_gedung' => 'required',
+            'kode_rs' => 'required',
+        ]);
+
+        Gedung::create([
+            'id_gedung' => $request->id_gedung,
+            'nama_gedung' => $request->nama_gedung,
+            'kode_rs' => $request->kode_rs,
+        ]);
+
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
     }
 
     /**
@@ -55,9 +68,10 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gedung $gedung)
+    public function edit($gedung)
     {
-        //
+        $item = Gedung::where('id_gedung', $gedung)->first();
+        return view('pages.admin.ppm.data_kelengkapan.update_gedung', compact('item'));
     }
 
     /**
@@ -69,7 +83,17 @@ class GedungController extends Controller
      */
     public function update(Request $request, Gedung $gedung)
     {
-        //
+        $request->validate([
+            'id_alat' => '',
+            'nama_alat' => '',
+            'kode_rs' => '',
+        ]);
+
+        $gedung->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**
@@ -78,8 +102,11 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gedung $gedung)
+    public function destroy($id)
     {
-        //
+        $item = Gedung::where('id_gedung',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/data_kelengkapan');
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\PPM;
 
+use App\Http\Controllers\Controller;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,19 @@ class TeknisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_teknisi' => 'required',
+            'nama_teknisi' => 'required',
+            'kode_rs' => 'required',
+        ]);
+
+        Teknisi::create([
+            'id_teknisi' => $request->id_teknisi,
+            'nama_teknisi' => $request->nama_teknisi,
+            'kode_rs' => $request->kode_rs,
+        ]);
+
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
     }
 
     /**
@@ -55,9 +68,10 @@ class TeknisiController extends Controller
      * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teknisi $teknisi)
+    public function edit($teknisi)
     {
-        //
+        $item = Teknisi::where('id_teknisi', $teknisi)->first();
+        return view('pages.admin.ppm.data_kelengkapan.update_teknisi', compact('item'));
     }
 
     /**
@@ -69,7 +83,17 @@ class TeknisiController extends Controller
      */
     public function update(Request $request, Teknisi $teknisi)
     {
-        //
+        $request->validate([
+            'id_teknisi' => '',
+            'nama_teknisi' => '',
+            'kode_rs' => '',
+        ]);
+
+        $teknisi->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**
@@ -78,8 +102,11 @@ class TeknisiController extends Controller
      * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teknisi $teknisi)
+    public function destroy($id)
     {
-        //
+        $item = Teknisi::where('id_teknisi',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/data_kelengkapan');
     }
 }

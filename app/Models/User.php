@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PengembalianRegistrasi extends Model
+class User extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
-
-    protected $primaryKey = "id_perbaikan_reg";
-    protected $keyType = 'string';
-    public $incrementing = false;
-
 }

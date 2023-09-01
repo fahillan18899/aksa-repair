@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
-use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
@@ -23,6 +22,11 @@ use App\Http\Controllers\Admin\PPM\PerbaikanUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PengirimanUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PengembalianUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PenghapusanUnregistrasiController;
+use App\Http\Controllers\Admin\PPM\GedungController;
+use App\Http\Controllers\Admin\PPM\AlatController;
+use App\Http\Controllers\Admin\PPM\RuanganController;
+use App\Http\Controllers\Admin\PPM\TeknisiController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,21 +49,16 @@ Route::prefix('dashboard')->group(function () {
 
     Route::prefix('ppm')->group(function () {
 
-        Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('/data_kelengkapan', DataKelengkapanController::class);
-        Route::resource('/registrasi', RegistrasiAset::class);
+        Route::get('/home', [PPMController::class, 'dashboard']);
         Route::resource('/data_inventaris', DashboardController::class);
-        Route::resource('/aset_teregistrasi', DashboardController::class);
         Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
-        Route::resource('/operator', OperatorController::class);
         Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
-        Route::get('/home', [DashboardController::class, 'index']);
         Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
         Route::get('/data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
         Route::get('/data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
@@ -112,7 +111,22 @@ Route::prefix('dashboard')->group(function () {
         /**
          * Analis Data
          */
-        Route::get('/analisis_data', [PPMController::class, 'analisData']);
+        Route::get('/analisis_data', [AnalisisDataController::class, 'index']);
+
+        /**
+         * Data Kelengkapan
+         */
+        Route::get('/data_kelengkapan', [DataKelengkapanController::class, 'index']);
+        Route::resource('gedung', GedungController::class);
+        Route::resource('/alat', AlatController::class);
+        Route::resource('/teknisi', TeknisiController::class);
+        Route::resource('/ruangan', RuanganController::class);
+
+        /**
+         * Data Kelengkapan
+         */
+        Route::get('/operator', [UserController::class, 'index']);
+
 
         Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
         Route::get('/operator', [OperatorController::class, 'index']);
@@ -152,3 +166,10 @@ Route::prefix('dashboard')->group(function () {
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'processLogin'])->name('login-proccess');
+Route::get('/register', [AuthController::class, 'registration'])->name('register');
+Route::post('/register', [AuthController::class, 'processRegistration']);
+
+Route::post('logout', [AuthController::class, 'logout'])
+    ->name('logout')
+    ->middleware('auth');
