@@ -68,9 +68,10 @@ class AlatController extends Controller
      * @param  \App\Models\Alat  $alat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alat $alat)
+    public function edit($id)
     {
-        //
+        $item = Alat::where('id_alat', $id)->first();
+        return view('pages.admin.ppm.data_kelengkapan.update_alat', compact('item'));
     }
 
     /**
@@ -82,7 +83,17 @@ class AlatController extends Controller
      */
     public function update(Request $request, Alat $alat)
     {
-        //
+        $request->validate([
+            'id_alat' => '',
+            'nama_alat' => '',
+            'kode_rs' => '',
+        ]);
+
+        $alat->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**

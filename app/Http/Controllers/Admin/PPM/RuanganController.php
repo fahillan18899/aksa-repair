@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gedung;
+use App\Models\Teknisi;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
@@ -78,9 +80,16 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ruangan $ruangan)
+    public function edit($ruangan)
     {
-        //
+        $item = Ruangan::where('id_ruangan', $ruangan)->first();
+        $gedungs = Gedung::all();
+        $teknisis = Teknisi::all();
+        return view('pages.admin.ppm.data_kelengkapan.update_ruangan', [
+            'item' => $item,
+            'teknisis' => $teknisis,
+            'gedungs' => $gedungs,
+        ]);
     }
 
     /**
@@ -92,7 +101,20 @@ class RuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
-        //
+        $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
+        $request->validate([
+            'id_ruangan' => '',
+            'ruangan_alat' => '',
+            'ruangan' => '',
+            'lokasi_alat' => $lokasi_alat,
+            'kode_rs' => ''
+        ]);
+
+        $ruangan->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**

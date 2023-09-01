@@ -68,9 +68,10 @@ class GedungController extends Controller
      * @param  \App\Models\Gedung  $gedung
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gedung $gedung)
+    public function edit($gedung)
     {
-        //
+        $item = Gedung::where('id_gedung', $gedung)->first();
+        return view('pages.admin.ppm.data_kelengkapan.update_gedung', compact('item'));
     }
 
     /**
@@ -82,7 +83,17 @@ class GedungController extends Controller
      */
     public function update(Request $request, Gedung $gedung)
     {
-        //
+        $request->validate([
+            'id_alat' => '',
+            'nama_alat' => '',
+            'kode_rs' => '',
+        ]);
+
+        $gedung->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**

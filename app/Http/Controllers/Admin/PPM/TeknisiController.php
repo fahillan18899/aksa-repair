@@ -68,9 +68,10 @@ class TeknisiController extends Controller
      * @param  \App\Models\Teknisi  $teknisi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Teknisi $teknisi)
+    public function edit($teknisi)
     {
-        //
+        $item = Teknisi::where('id_teknisi', $teknisi)->first();
+        return view('pages.admin.ppm.data_kelengkapan.update_teknisi', compact('item'));
     }
 
     /**
@@ -82,7 +83,17 @@ class TeknisiController extends Controller
      */
     public function update(Request $request, Teknisi $teknisi)
     {
-        //
+        $request->validate([
+            'id_teknisi' => '',
+            'nama_teknisi' => '',
+            'kode_rs' => '',
+        ]);
+
+        $teknisi->fill($request->post())->save();
+
+
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('success', 'Company has been created successfully.');
     }
 
     /**
