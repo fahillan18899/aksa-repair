@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('telphone_teknisi_rek_un');        
             $table->string('ka_instalasi_un');        
             $table->string('kode_rs');        
-            $table->integer('active');            
+            $table->timestamps();            
         });
     }
 

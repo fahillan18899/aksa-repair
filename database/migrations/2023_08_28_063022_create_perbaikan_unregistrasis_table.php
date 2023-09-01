@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('teknisi_3_un');
             $table->string('keluhan_dari_alat_un');
             $table->string('kode_rs');
-            $table->integer('active');
+            $table->timestamps();
         });
     }
 

@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('penggantian_suku_cadang_un');
             $table->string('hasil_verifikasi_un');
             $table->string('kode_rs');
-            $table->integer('active');            
+            $table->timestamps();            
         });
     }
 

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PengembalianUnregistrasi extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
