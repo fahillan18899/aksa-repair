@@ -84,7 +84,7 @@ class PengirimanRegistrasiController extends Controller
     public function edit($id)
     {
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
+        return view('pages.admin.ppm.aset_teregistrasi.update_pengiriman', compact('item'));
     }
 
     /**

@@ -333,6 +333,7 @@
     <!--TABEL-->
     <table class="datatable table table-striped table-bordered" style="width:100%">
       <thead class="table-light">
+        <th>No</th>
         <th>Id_Aset</th>
         <th>Jenis_Alat</th>
         <th>Nama_Alat</th>
@@ -359,8 +360,9 @@
         <th>Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
-        @forelse ($items as $item)
+        @forelse ($items as $index => $item)
         <tr>
+          <td>{{ $index + 1 }}</td>
           <td>{{ $item->id_aset }}</td>
           <td>{{ $item->jenis_alat }}</td>
           <td>{{ $item->nama_alat }}</td>

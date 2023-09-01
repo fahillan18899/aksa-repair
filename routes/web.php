@@ -48,7 +48,6 @@ Route::prefix('dashboard')->group(function () {
 
         Route::get('/home', [PPMController::class, 'dashboard']);
         Route::resource('/data_inventaris', DashboardController::class);
-        Route::resource('/aset_teregistrasi', DashboardController::class);
         Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);

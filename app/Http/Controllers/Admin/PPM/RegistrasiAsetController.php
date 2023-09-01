@@ -29,7 +29,8 @@ class RegistrasiAsetController extends Controller
         $urutan = (int)substr($kodeAset, 12, 13);
         $urutan++;
 
-        $kodeAset = $kodeRs_ . sprintf("%05s", $urutan);
+        $date  = date('dmy');
+        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::all();
         $alats = Alat::all();
@@ -114,7 +115,13 @@ class RegistrasiAsetController extends Controller
     public function edit($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
-        return view('pages.admin.ppm.registrasi_aset.update', compact('item'));
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
+        return view('pages.admin.ppm.registrasi_aset.update', [
+            'ruangans' => $ruangans,
+            'alats' => $alats,
+            'item' => $item,
+        ]);
     }
 
     /**

@@ -1,29 +1,7 @@
-<?php
-$kodeRs = "RS0001";
-/**Fungsi Perbaikan reg */
-$alert = "";
+@extends('layouts.admin')
 
-if (isset($_POST['ubah_penghapusan_reg'])) {
-  $sql_ubah = "UPDATE penggudangan_reg SET Tanggal_Perbaikan_reg='{$_POST['Tanggal_Perbaikan_reg']}', 
-  Tanggal_Penggudangan_reg='{$_POST['Tanggal_Penggudangan_reg']}',
-  Nama_Alat_reg='{$_POST['Nama_Alat_reg']}',Merek_Alat_reg='{$_POST['Merek_Alat_reg']}',
-  Type_Alat_reg='{$_POST['Type_Alat_reg']}',Serial_Number_reg='{$_POST['Serial_Number_reg']}',
-  Lokasi_Alat_reg='{$_POST['Lokasi_Alat_reg']}',Pelapor_reg='{$_POST['Pelapor_reg']}',
-  Teknisi_1_reg='{$_POST['Teknisi_1_reg']}',Teknisi_2_reg='{$_POST['Teknisi_2_reg']}',Teknisi_3_reg='{$_POST['Teknisi_3_reg']}',
-  KA_Instalasi_reg='{$_POST['KA_Instalasi_reg']}',Keterangan_Pengguna_reg='{$_POST['Keterangan_Pengguna_reg']}'
-   WHERE Id_Perbaikan_reg ='{$_POST['Id_Perbaikan_reg']}'";
+@section('content')
 
-  mysqli_query($db, $sql_ubah);
-
-  $alert = "ubah";
-}
-
-
-$sql = "SELECT * FROM penggudangan_reg WHERE Id_Perbaikan_reg ='$_GET[Id_Perbaikan_reg3]'";
-$result = mysqli_query($db, $sql);
-$row = mysqli_fetch_assoc($result);
-
-?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -198,10 +176,4 @@ $row = mysqli_fetch_assoc($result);
 
 </div> <!-- /.content -->
 
-
-
-
-
-<!-- <script src="./assets/js/bs-5.js"></script>
-<script src="../js/scripts.js"></script>
-<script src="./assets/libraries/jquery.min.js"></script> -->
+@endsection
