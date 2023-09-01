@@ -56,7 +56,6 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
-        Route::resource('/stock_opname', StockOpnameController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
         Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
@@ -154,13 +153,17 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/aset_unregistrasi/edit_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
-                /**
+        /**
          * penghapusan unregistrasi
          */
         Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);
         Route::get('/aset_unregistrasi/edit_penghapusan/{id}', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
+        /**
+         * stock opname
+         */
+        Route::resource('/stock_opname', StockOpnameController::class);
     });
 });
 
