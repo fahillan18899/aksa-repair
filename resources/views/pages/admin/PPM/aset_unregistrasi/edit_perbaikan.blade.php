@@ -9,7 +9,7 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="pe-7s-world"></i></div>
       <div class="header-title">
-        <h1>FORM EDIT PERBAIKAN REGISTRASI</h1>
+        <h1>Formulir Perbaikan Aset Unregistrasi</h1>
         <small>Form Teregistrasi</small>
       </div>
     </div>
@@ -20,21 +20,23 @@
     <div id="demoModeEnable"></div>
     <!-- alert message -->
     <!-- content -->
-    
+
     <!-- content -->
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Form Perbaikan Alat Unregistrasi</h1>
+            <div class="btn-group">
+              <a class="btn btn-primary"> <i class="fa fa-list"></i> Form Ubah Aset Unregistrasi</a>
+            </div>
           </div>
 
           <div class="panel-body panel-form">
 
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{id}') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('update_perbaikan_un.update', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <input type="hidden" name="kode_rs" value="rsc" />
@@ -42,42 +44,42 @@
                   <div class="form-group row">
                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="<?php echo $item ['id_perbaikan_un'] ?>" readonly>
+                      <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="<?php echo $item['id_perbaikan_un'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_perbaikan_un" type="date" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo $item ['tanggal_perbaikan_un'] ?>">
+                      <input name="tanggal_perbaikan_un" type="date" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo $item['tanggal_perbaikan_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="<?= $item ['nama_alat_un'] ?>">
+                      <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="<?= $item['nama_alat_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="<?= $item ['merek_alat_un'] ?>">
+                      <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="<?= $item['merek_alat_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="type_alat_un" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="<?= $item ['type_alat_un'] ?>">
+                      <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="<?= $item['type_alat_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="serial_number_un" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="<?= $item ['serial_number_un'] ?>">
+                      <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="<?= $item['serial_number_un'] ?>">
                     </div>
                   </div>
 
@@ -86,7 +88,9 @@
                     <div class="col-xs-9">
                       <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
                         <option value="edit" selected="selected">Pilih Lokasi</option>
-
+                        @foreach($ruangans as $item)
+                        <option value="<?= $item['lokasi_alat']; ?>"><?= $item['lokasi_alat']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -94,7 +98,7 @@
                   <div class="form-group row">
                     <label for="pelapor_un" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="<?= $item ['pelapor_un'] ?>">
+                      <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="<?= $item['pelapor_un'] ?>">
                     </div>
                   </div>
 
@@ -103,9 +107,9 @@
                     <div class="col-xs-9">
                       <select name="keterangan_un" class="form-control" id="keterangan_un">
                         <option value="" selected="selected">Select Keterangan</option>
-                        <option value="Selesai Alat Dikembalikan" >Selesai Alat Dikembalikan</option>
-                        <option value="Alat Dalam Perbaikan" >Alat Dalam Perbaikan</option>
-                        <option value="Alat Dilanjutkan Ke Rekanan" >Alat Dilanjutkan Ke Rekanan</option>
+                        <option value="Selesai Alat Dikembalikan">Selesai Alat Dikembalikan</option>
+                        <option value="Alat Dalam Perbaikan">Alat Dalam Perbaikan</option>
+                        <option value="Alat Dilanjutkan Ke Rekanan">Alat Dilanjutkan Ke Rekanan</option>
                       </select>
                     </div>
                   </div>
@@ -113,7 +117,7 @@
                   <div class="form-group row">
                     <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="<?= $item ['ka_instalasi_un'] ?>">
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="<?= $item['ka_instalasi_un'] ?>">
                     </div>
                   </div>
 
@@ -122,7 +126,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_1_un" class="form-control" id="teknisi_1_un">
                         <option value="edit" selected="selected">Select Teknisi</option>
-                        
+
                       </select>
                     </div>
                   </div>
@@ -142,7 +146,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_3_un" class="form-control" id="teknisi_3_un">
                         <option value="edit" selected="selected">Select Teknisi</option>
- 
+
                       </select>
                     </div>
                   </div>
@@ -150,7 +154,7 @@
                   <div class="form-group row">
                     <label for="keluhan_dari_alat_un" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="keluhan_dari_alat_un" type="text" class="form-control" id="keluhan_dari_alat_un" placeholder="Keluhan Dari Alat" value="<?= $item ['keluhan_dari_alat_un'] ?>">
+                      <input name="keluhan_dari_alat_un" type="text" class="form-control" id="keluhan_dari_alat_un" placeholder="Keluhan Dari Alat" value="<?= $item['keluhan_dari_alat_un'] ?>">
                     </div>
                   </div>
 

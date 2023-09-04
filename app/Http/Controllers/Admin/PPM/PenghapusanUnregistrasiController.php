@@ -43,7 +43,6 @@ class PenghapusanUnregistrasiController extends Controller
     {
 
         $request->validate([
-
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'nama_alat_un' => '',
@@ -59,16 +58,12 @@ class PenghapusanUnregistrasiController extends Controller
             'ka_instalasi_un' => '',
             'keterangan_penggudangan_un' => '',
             'kode_rs' => '',
-            
-
-
-
         ]);
 
         PenghapusanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Company has created been successfully.');
+        ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Tambahkan.');
     }
 
     /**
@@ -103,7 +98,29 @@ class PenghapusanUnregistrasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_perbaikan_un' => '',
+            'tanggal_perbaikan_un' => '',
+            'nama_alat_un' => '',
+            'merek_alat_un' => '',
+            'type_alat_un' => '',
+            'serial_number_un' => '',
+            'lokasi_alat_un' => '',
+            'pelapor_un' => '',
+            'teknisi_1_un' => '',
+            'teknisi_2_un' => '',
+            'teknisi_3_un' => '',
+            'tanggal_penggudangan_un' => '',
+            'ka_instalasi_un' => '',
+            'keterangan_penggudangan_un' => '',
+            'kode_rs' => '',
+        ]);
+
+        $PenghapusanUnRegistrasi = PenghapusanUnregistrasi::findOrFail($id);
+        $PenghapusanUnRegistrasi->update($request->all());
+
+        return redirect()->route('aset_unregistrasi.index')
+        ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Ubah.');
     }
 
     /**

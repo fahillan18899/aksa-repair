@@ -90,7 +90,7 @@ class PerbaikanUnregistrasiController extends Controller
         PerbaikanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Company has created been successfully.');
+        ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 
     /**
@@ -112,8 +112,12 @@ class PerbaikanUnregistrasiController extends Controller
      */
     public function edit($id)
     {
+        $ruangans      = Ruangan::all();
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.edit_perbaikan', compact('item'));
+        return view('pages.admin.ppm.aset_unregistrasi.edit_perbaikan', [
+            'ruangans'     => $ruangans,
+            'item'     => $item,
+        ]);
     }
 
     /**
@@ -123,7 +127,7 @@ class PerbaikanUnregistrasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerbaikanUnregistrasi $perbaikanUnregistrasi)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'tanggal_perbaikan_un' => '',
@@ -144,11 +148,10 @@ class PerbaikanUnregistrasiController extends Controller
         ]);
 
 
-        $perbaikanUnregistrasi->fill($request->post())->save();
-
-
+        $pengirimanRegistrasi = PengirimanUnregistrasi::findOrFail($id);
+        $pengirimanRegistrasi->update($request->all());
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Data Perbaikan Unregistrasi berhasil di ubah');
+        ->with('success', 'Data Perbaikan Unregistrasi berhasil di Ubah');
     }
 
     /**
