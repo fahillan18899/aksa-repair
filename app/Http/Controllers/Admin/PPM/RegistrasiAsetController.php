@@ -92,7 +92,7 @@ class RegistrasiAsetController extends Controller
 
 
         return redirect()->route('registrasi.index')
-            ->with('success', 'registrasi has been created successfully.');
+        ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
     }
 
     /**
@@ -164,7 +164,7 @@ class RegistrasiAsetController extends Controller
 
 
         return redirect()->route('registrasi.index')
-            ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
     }
 
     /**
@@ -178,6 +178,6 @@ class RegistrasiAsetController extends Controller
         $item = Registrasi::where('id_aset',  $id)->first();
 
         $item->delete();
-        return redirect()->route('registrasi.index');
+        return redirect()->route('registrasi.index')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
     }
 }
