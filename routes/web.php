@@ -159,16 +159,17 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/stock_opname', StockOpnameController::class);
 
         /**
-<<<<<<< HEAD
+
          * operator
          */
         Route::resource('operator', OperatorController::class);
-=======
+
+        /**
          * penghapusan unregistrasi
          */
         Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
 
->>>>>>> a505737280532184ab91492ff44aeebfa5f1eeaa
+
     });
 });
 

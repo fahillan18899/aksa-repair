@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$alert="";
+$alert = "";
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -23,26 +23,11 @@ $alert="";
     <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
     <!-- alert message -->
-    <?php if ($alert == "tambah") { ?>
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah ditambahkan.
-      </div>
-    <?php } else if ($alert == "hapus") { ?>
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah dihapus.
-      </div>
-    <?php } else if ($alert == "ubah") { ?>
-      <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah diubah.
-      </div>
-    <?php } ?>
-    <!-- content -->
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
 
     <div class="row">
       <div class="col-sm-3">
@@ -76,10 +61,12 @@ $alert="";
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action=" /?hal=lembar_pemeliharaan&fun=index" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('lembar_pemeliharaan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  @csrf
+                  @method('POST')
 
-                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="id">
-                  <input name="kodeRs" type="hidden" class="form-control" value="">
+                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" value="1" placeholder="id">
+                  <input name="kode_rs" type="hidden" class="form-control" value="123">
 
                   <div class="form-group row">
                     <label for="tanggal" class="col-xs-3 col-form-label">Tanggal Pemeliharaan <i class="text-danger">*</i></label>
@@ -99,12 +86,13 @@ $alert="";
                     <label for="engineer" class="col-xs-3 col-form-label">Nama Teknisi </label>
                     <div class="col-xs-9">
                       <select name="engineer" class="form-control" id="engineer">
-                        
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
 
-                  <input type="hidden" name="kodeRs" value="" />
                   <center>
                     <div class="row" style="border-style: groove;">
                       <h3>DATA ALAT</h3>
@@ -122,8 +110,11 @@ $alert="";
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
-                      <select name="nama_alat" class="form-control" id="nama_alat">
-                        
+                      <select name="nama_alat" class="form-control" id="nama_alat1">
+                        <option>Pilih Alat</option>
+                        @foreach($teknisis as $teknisi)
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -625,7 +616,7 @@ $alert="";
                       <div class="ui buttons">
                         <button type="reset" class="ui button">Reset</button>
                         <div class="or"></div>
-                        <button class="ui positive button" name="tambah_pemeliharaaan">Save</button>
+                        <button class="ui positive button" type="submit">Save</button>
                       </div>
                     </div>
                   </div>
@@ -723,69 +714,69 @@ $alert="";
                 </tr>
               </thead>
               <tbody>
-              @forelse ($items as $item)
-                    <tr>
-                      <td>{{ $item->id_ppm }}</td>
-                      <td>{{ $item->tanggal }}</td>
-                      <td>{{ $item->kegiatan }}</td>
-                      <td>{{ $item->engineer }}</td>
-                      <td>{{ $item->id_aset }}</td>
-                      <td>{{ $item->nama_alat }}</td>
-                      <td>{{ $item->serial_number }}</td>
-                      <td>{{ $item->merek }}</td>
-                      <td>{{ $item->instalasi }}</td>
-                      <td>{{ $item->tipe }}</td>
-                      <td>{{ $item->ruangan }}</td>
-                      <td>{{ $item->hand_hygiene }}</td>
-                      <td>{{ $item->menyiapkan_alat_dan_bahan }}</td>
-                      <td>{{ $item->alat_pelindung_diri }}</td>
-                      <td>{{ $item->mengoprasikan_alat_kalibrasi }}</td>
-                      <td>{{ $item->ktd }}</td>
-                      <td>{{ $item->mengoprasikan_alat }}</td>
-                      <td>{{ $item->identifikasi_bahaya }}</td>
-                      <td>{{ $item->badan_selungkup1 }}</td>
-                      <td>{{ $item->badan_selungkup2 }}</td>
-                      <td>{{ $item->alat_sistem_interlock1 }}</td>
-                      <td>{{ $item->alat_sistem_interlock2 }}</td>
-                      <td>{{ $item->kabel_kelenturan1 }}</td>
-                      <td>{{ $item->kabel_kelenturan2 }}</td>
-                      <td>{{ $item->sistem_pengunci1 }}</td>
-                      <td>{{ $item->sistem_pengunci2 }}</td>
-                      <td>{{ $item->tombol_saklar1 }}</td>
-                      <td>{{ $item->tombol_saklar2 }}</td>
-                      <td>{{ $item->label_penandaan1 }}</td>
-                      <td>{{ $item->label_penandaan2 }}</td>
-                      <td>{{ $item->display_layar1 }}</td>
-                      <td>{{ $item->display_layar2 }}</td>
-                      <td>{{ $item->aksesoris1 }}</td>
-                      <td>{{ $item->aksesoris2 }}</td>
-                      <td>{{ $item->indikator_bunyi1 }}</td>
-                      <td>{{ $item->indikator_bunyi2 }}</td>
-                      <td>{{ $item->pembersihan }}</td>
-                      <td>{{ $item->pengencangan_bagian_alat }}</td>
-                      <td>{{ $item->pelumasan }}</td>
-                      <td>{{ $item->kalibrasi_berkala }}</td>
-                      <td>{{ $item->penggantian_bahan_habis_pakai }}</td>
-                      <td>{{ $item->cek_alat }}</td>
-                      <td>{{ $item->nama_sukucadang }}</td>
-                      <td>{{ $item->volume }}</td>
-                      <td>{{ $item->harga_satuan }}</td>
-                      <td>{{ $item->jumlah_harga }}</td>
-                      <td>{{ $item->evaluasi }}</td>
-                      <td>{{ $item->status }}</td>
-                      <td>{{ $item->status1 }}</td>
-                      <td>{{ $item->mulai_bekerja }}</td>
-                      <td>{{ $item->selesai_kerja }}</td>
-                      <td>{{ $item->durasi }}</td>
-                      <td>{{ $item->user }}</td>
-                      <td>{{ $item->engginer }}</td>
+                @forelse ($lembarPemeliharaans as $item)
+                <tr>
+                  <td>{{ $item->id_ppm }}</td>
+                  <td>{{ $item->tanggal }}</td>
+                  <td>{{ $item->kegiatan }}</td>
+                  <td>{{ $item->engineer }}</td>
+                  <td>{{ $item->id_aset }}</td>
+                  <td>{{ $item->nama_alat }}</td>
+                  <td>{{ $item->serial_number }}</td>
+                  <td>{{ $item->merek }}</td>
+                  <td>{{ $item->instalasi }}</td>
+                  <td>{{ $item->tipe }}</td>
+                  <td>{{ $item->ruangan }}</td>
+                  <td>{{ $item->hand_hygiene }}</td>
+                  <td>{{ $item->menyiapkan_alat_dan_bahan }}</td>
+                  <td>{{ $item->alat_pelindung_diri }}</td>
+                  <td>{{ $item->mengoprasikan_alat_kalibrasi }}</td>
+                  <td>{{ $item->ktd }}</td>
+                  <td>{{ $item->mengoprasikan_alat }}</td>
+                  <td>{{ $item->identifikasi_bahaya }}</td>
+                  <td>{{ $item->badan_selungkup1 }}</td>
+                  <td>{{ $item->badan_selungkup2 }}</td>
+                  <td>{{ $item->alat_sistem_interlock1 }}</td>
+                  <td>{{ $item->alat_sistem_interlock2 }}</td>
+                  <td>{{ $item->kabel_kelenturan1 }}</td>
+                  <td>{{ $item->kabel_kelenturan2 }}</td>
+                  <td>{{ $item->sistem_pengunci1 }}</td>
+                  <td>{{ $item->sistem_pengunci2 }}</td>
+                  <td>{{ $item->tombol_saklar1 }}</td>
+                  <td>{{ $item->tombol_saklar2 }}</td>
+                  <td>{{ $item->label_penandaan1 }}</td>
+                  <td>{{ $item->label_penandaan2 }}</td>
+                  <td>{{ $item->display_layar1 }}</td>
+                  <td>{{ $item->display_layar2 }}</td>
+                  <td>{{ $item->aksesoris1 }}</td>
+                  <td>{{ $item->aksesoris2 }}</td>
+                  <td>{{ $item->indikator_bunyi1 }}</td>
+                  <td>{{ $item->indikator_bunyi2 }}</td>
+                  <td>{{ $item->pembersihan }}</td>
+                  <td>{{ $item->pengencangan_bagian_alat }}</td>
+                  <td>{{ $item->pelumasan }}</td>
+                  <td>{{ $item->kalibrasi_berkala }}</td>
+                  <td>{{ $item->penggantian_bahan_habis_pakai }}</td>
+                  <td>{{ $item->cek_alat }}</td>
+                  <td>{{ $item->nama_sukucadang }}</td>
+                  <td>{{ $item->volume }}</td>
+                  <td>{{ $item->harga_satuan }}</td>
+                  <td>{{ $item->jumlah_harga }}</td>
+                  <td>{{ $item->evaluasi }}</td>
+                  <td>{{ $item->status }}</td>
+                  <td>{{ $item->status1 }}</td>
+                  <td>{{ $item->mulai_bekerja }}</td>
+                  <td>{{ $item->selesai_kerja }}</td>
+                  <td>{{ $item->durasi }}</td>
+                  <td>{{ $item->user }}</td>
+                  <td>{{ $item->engginer }}</td>
 
-                    </tr>
-                    @empty
-                    <tr>
-                      <td class="text-center" colspan="7">Data Kosong</td>
-                    </tr>
-                    @endforelse
+                </tr>
+                @empty
+                <tr>
+                  <td class="text-center" colspan="7">Data Kosong</td>
+                </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
