@@ -64,6 +64,10 @@
 </script>
 <!--AutoFill Registrasi end-->
 
+
+<!--AutoFill Registrasi end-->
+
+
 <!--AutoFill Registrasi-->
 <script type="text/javascript">
   function autofillPemelihara() {
@@ -202,9 +206,9 @@
 <!--AutoFill Registrasi-->
 <script type="text/javascript">
   function autofill_Pengiriman_un() {
-    let Id_Perbaikan_un = $("#Id_perbaikan_un1").val();
+    let Id_Perbaikan_un = $("#id_perbaikan_un1").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan_un.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_un: Id_Perbaikan_un
@@ -212,17 +216,18 @@
       dataType: 'json',
       success: function(data) {
         console.log(data.Nama_Alat_reg)
-        $("#Tanggal_Perbaikan_un1").val(data.Tanggal_Perbaikan_un);
-        $("#Nama_Alat_un1").val(data.Nama_Alat_un);
-        $("#Merek_Alat_un1").val(data.Merek_Alat_un);
-        $("#Type_Alat_un1").val(data.Type_Alat_un);
-        $("#Serial_Number_un1").val(data.Serial_Number_un);
-        $("#Lokasi_Alat_un1").val(data.Lokasi_Alat_un);
-        $("#Pelapor_un1").val(data.Pelapor_un);
-        $("#Teknisi_1_un1").val(data.Teknisi_1_un);
-        $("#Keterangan_un1").val(data.Keterangan_un);
-        $("#Teknisi_2_un1").val(data.Teknisi_2_un);
-        $("#KA_Instalasi_un1").val(data.KA_Instalasi_un);
+        $("#tanggal_perbaikan_un1").val(data.tanggal_perbaikan_un);
+        $("#nama_alat_un1").val(data.nama_alat_un);
+        $("#merek_alat_un1").val(data.merek_alat_un);
+        $("#type_alat_un1").val(data.type_alat_un);
+        $("#serial_number_un1").val(data.serial_number_un);
+        $("#lokasi_alat_un1").val(data.lokasi_alat_un);
+        $("#pelapor_un1").val(data.pelapor_un);
+        $("#teknisi_1_un1").val(data.teknisi_1_un);
+        $("#keterangan_un1").val(data.keterangan_un);
+        $("#teknisi_2_un1").val(data.teknisi_2_un);
+        $("#teknisi_3_un1").val(data.teknisi_3_un);
+        $("#ka_instalasi_un1").val(data.ka_instalasi_un);
 
       },
       error: function(xhr, status, error) {
@@ -236,9 +241,9 @@
 <!--AutoFill Registrasi-->
 <script type="text/javascript">
   function autofill_Pengembalian_un() {
-    let Id_Perbaikan_un = $("#Id_Perbaikan_un2").val();
+    let Id_Perbaikan_un = $("#id_perbaikan_un2").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan_un.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_un: Id_Perbaikan_un
@@ -246,17 +251,18 @@
       dataType: 'json',
       success: function(data) {
         console.log(data.Nama_Alat_reg)
-        $("#Tanggal_Perbaikan_un2").val(data.Tanggal_Perbaikan_un);
-        $("#Nama_Alat_un2").val(data.Nama_Alat_un);
-        $("#Merek_Alat_un2").val(data.Merek_Alat_un);
-        $("#Type_Alat_un2").val(data.Type_Alat_un);
-        $("#Serial_Number_un2").val(data.Serial_Number_un);
-        $("#Lokasi_Alat_un2").val(data.Lokasi_Alat_un);
-        $("#Pelapor_un2").val(data.Pelapor_un);
-        $("#Teknisi_1_un2").val(data.Teknisi_1_un);
-        $("#Keterangan_un2").val(data.Keterangan_un);
-        $("#Teknisi_2_un2").val(data.Teknisi_2_un);
-        $("#Ka_Instalasi_un2").val(data.KA_Instalasi_un);
+        $("#tanggal_perbaikan_un2").val(data.tanggal_perbaikan_un);
+        $("#nama_alat_un2").val(data.nama_alat_un);
+        $("#merek_alat_un2").val(data.merek_alat_un);
+        $("#type_alat_un2").val(data.type_alat_un);
+        $("#serial_number_un2").val(data.serial_number_un);
+        $("#lokasi_alat_un2").val(data.lokasi_alat_un);
+        $("#pelapor_un2").val(data.pelapor_un);
+        $("#teknisi_1_un2").val(data.teknisi_1_un);
+        $("#keterangan_un2").val(data.keterangan_un);
+        $("#teknisi_2_un2").val(data.teknisi_2_un);
+        $("#teknisi_3_un2").val(data.teknisi_3_un);
+        $("#ka_instalasi_un2").val(data.ka_instalasi_un);
 
       },
       error: function(xhr, status, error) {
@@ -271,9 +277,9 @@
 <!--AutoFill Registrasi-->
 <script type="text/javascript">
   function autofill_Penghapusan_un() {
-    let Id_Perbaikan_un = $("#Id_Perbaikan_un3").val();
+    let Id_Perbaikan_un = $("#id_perbaikan_un3").val();
     $.ajax({
-      url: 'http://localhost/wyasa-sim-rs/fill_perbaikan_un.php',
+      url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         Id_Perbaikan_un: Id_Perbaikan_un
@@ -281,16 +287,17 @@
       dataType: 'json',
       success: function(data) {
         console.log(data.Nama_Alat_reg)
-        $("#Tanggal_Perbaikan_un3").val(data.Tanggal_Perbaikan_un);
-        $("#Nama_Alat_un3").val(data.Nama_Alat_un);
-        $("#Merek_Alat_un3").val(data.Merek_Alat_un);
-        $("#Type_Alat_un3").val(data.Type_Alat_un);
-        $("#Serial_Number_un3").val(data.Serial_Number_un);
-        $("#Lokasi_Alat_un3").val(data.Lokasi_Alat_un);
-        $("#Pelapor_un3").val(data.Pelapor_un);
-        $("#Teknisi_1_un3").val(data.Teknisi_1_un);
-        $("#Teknisi_2_un3").val(data.Teknisi_2_un);
-        $("#KA_Instalasi_un3").val(data.KA_Instalasi_un);
+        $("#tanggal_perbaikan_un3").val(data.tanggal_perbaikan_un);
+        $("#nama_alat_un3").val(data.nama_alat_un);
+        $("#merek_alat_un3").val(data.merek_alat_un);
+        $("#type_alat_un3").val(data.type_alat_un);
+        $("#serial_number_un3").val(data.serial_number_un);
+        $("#lokasi_alat_un3").val(data.lokasi_alat_un);
+        $("#pelapor_un3").val(data.pelapor_un);
+        $("#teknisi_1_un3").val(data.teknisi_1_un);
+        $("#teknisi_2_un3").val(data.teknisi_2_un);
+        $("#teknisi_3_un3").val(data.teknisi_3_un);
+        $("#ka_instalasi_un3").val(data.ka_instalasi_un);
 
       },
       error: function(xhr, status, error) {

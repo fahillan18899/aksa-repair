@@ -92,4 +92,27 @@ class HomeController extends Controller
             'Ka_Instalasi_reg'            => $data->ka_instalasi_reg
         ]);
     }
+
+    public function autofillPengirimanUn($id_perbaikan_un)
+    {
+        $data = DB::table('perbaikan_unregistrasis')->where('id_perbaikan_un', $id_perbaikan_un)->first();
+
+        return response()->json([
+            'id_perbaikan_un'             => $data->id_perbaikan_un,
+            'tanggal_perbaikan_un'        => $data->tanggal_perbaikan_un,
+            'nama_alat_un'                => $data->nama_alat_un,
+            'merek_alat_un'               => $data->merek_alat_un,
+            'type_alat_un'                => $data->type_alat_un,
+            'serial_number_un'            => $data->serial_number_un,
+            'lokasi_alat_un'              => $data->lokasi_alat_un,
+            'pelapor_un'                  => $data->pelapor_un,
+            'keterangan_un'               => $data->keterangan_un,
+            'ka_instalasi_un'             => $data->ka_instalasi_un,
+            'teknisi_1_un'                => $data->teknisi_1_un,
+            'teknisi_2_un'                => $data->teknisi_2_un,
+            'teknisi_3_un'                => $data->teknisi_3_un,
+            'keluhan_dari_alat_un'        => $data->keluhan_dari_alat_un
+        ]);
+        var_dump($data);
+    }
 }

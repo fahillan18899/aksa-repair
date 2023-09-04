@@ -8,6 +8,10 @@ use \App\Models\PerbaikanUnregistrasi;
 use \App\Models\PengirimanUnregistrasi;
 use \App\Models\PengembalianUnregistrasi;
 use \App\Models\PenghapusanUnregistrasi;
+use Illuminate\Support\Facades\DB;
+use App\Models\Alat;
+use App\Models\Ruangan;
+use App\Models\Teknisi;
 
 class PerbaikanUnregistrasiController extends Controller
 {
@@ -22,6 +26,23 @@ class PerbaikanUnregistrasiController extends Controller
         $pengiriman    = PengirimanUnregistrasi::all();
         $pengembalian  = PengembalianUnregistrasi::all();
         $penghapusan   = PenghapusanUnregistrasi::all();
+        $alats         = Alat::all();
+        $ruangans      = Ruangan::all();
+        $teknisis      = Teknisi::all();
+
+
+        $data = DB::table('perbaikan_unregistrasis')
+        ->select(DB::raw('max(id_perbaikan_un) as idPerbaikanUn'))
+        // ->where('kode_rs', $kodeRs_)
+        ->first();
+        $kodeAset = $data->idPerbaikanUn;
+
+        $urutan = (int)substr($kodeAset, 7, 8);
+        $urutan++;
+
+        $huruf3 = "U";
+        $date3  = date('dmy');
+        $kode_aset  = $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.admin.ppm.aset_unregistrasi.index', [
             
@@ -29,6 +50,10 @@ class PerbaikanUnregistrasiController extends Controller
             'pengiriman'   => $pengiriman,
             'pengembalian' => $pengembalian,
             'penghapusan'  => $penghapusan,
+            'kode_aset'    => $kode_aset,
+            'alats'        => $alats,
+            'ruangans'     => $ruangans,
+            'teknisis'      => $teknisis,
         
         ]);
     }
@@ -98,9 +123,32 @@ class PerbaikanUnregistrasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PerbaikanUnregistrasi $perbaikanUnregistrasi)
     {
-        //
+        $request->validate([
+            'tanggal_perbaikan_un' => '',
+            'nama_alat_un' => '',
+            'merek_alat_un' => '',
+            'type_alat_un' => '',
+            'serial_number_un' => '',
+            'lokasi_alat_un' => '',
+            'pelapor_un' => '',
+            'keterangan_un' => '',
+            'ka_instalasi_un' => '',
+            'teknisi_1_un' => '',
+            'teknisi_2_un' => '',
+            'teknisi_3_un' => '',
+            'keluhan_dari_alat_un' => '',
+            'kode_rs' => '',
+
+        ]);
+
+
+        $perbaikanUnregistrasi->fill($request->post())->save();
+
+
+        return redirect()->route('aset_unregistrasi.index')
+        ->with('success', 'Data Perbaikan Unregistrasi berhasil di ubah');
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\AsetUnregistrasiController;
+use App\Http\Controllers\Admin\PPM\OperatorController;
 
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
@@ -107,6 +108,7 @@ Route::prefix('dashboard')->group(function () {
          */
         Route::get('/autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
         Route::get('/autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
+        Route::get('/autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
 
         /**
          * Analis Data
@@ -135,7 +137,8 @@ Route::prefix('dashboard')->group(function () {
          * perbaikan unregistrasi
          */
         Route::get('/aset_unregistrasi', [PerbaikanUnregistrasiController::class, 'index'])->name('aset_unregistrasi.index');/*Tampilan*/
-        Route::get('/aset_unregistrasi/edit_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::get('/aset_unregistrasi/edit_perbaikan/{id}/edit', [PerbaikanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::put('/aset_unregistrasi/edit_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'update']);/*Update data */
         Route::post('/tambah_unregistrasi', [PerbaikanUnregistrasiController::class, 'store']);/*fungsi tambah*/
         Route::get('/aset_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
@@ -143,7 +146,7 @@ Route::prefix('dashboard')->group(function () {
          * pengiriman unregistrasi
          */
         Route::post('/tambah_pengiriman_un', [PengirimanUnregistrasiController::class, 'store']);/*fungsi tambah*/
-        Route::get('/aset_unregistrasi/edit_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::get('/aset_unregistrasi/edit_pengiriman/{id}/edit', [PengirimanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
 
@@ -151,14 +154,14 @@ Route::prefix('dashboard')->group(function () {
          * pengembalian unregistrasi
          */
         Route::post('/tambah_pengembalian_un', [PengembalianUnregistrasiController::class, 'store']);/*fungsi tambah*/
-        Route::get('/aset_unregistrasi/edit_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::get('/aset_unregistrasi/edit_pengembalian/{id}/edit', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
                 /**
          * penghapusan unregistrasi
          */
         Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);
-        Route::get('/aset_unregistrasi/edit_penghapusan/{id}', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::get('/aset_unregistrasi/edit_penghapusan/{id}/edit', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
     });
