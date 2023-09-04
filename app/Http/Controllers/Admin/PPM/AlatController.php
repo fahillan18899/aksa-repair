@@ -48,7 +48,7 @@ class AlatController extends Controller
             'kode_rs' => $request->kode_rs,
         ]);
 
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Data Alat Berhasil di Tambahkan.');
     }
 
     /**
@@ -93,7 +93,7 @@ class AlatController extends Controller
 
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Alat Berhasil di Ubah.');
     }
 
     /**
@@ -107,6 +107,6 @@ class AlatController extends Controller
         $item = Alat::where('id_alat', $id)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/data_kelengkapan');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Alat Berhasil Di Hapus.');
     }
 }

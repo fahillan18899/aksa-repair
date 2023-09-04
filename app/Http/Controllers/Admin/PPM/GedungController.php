@@ -48,7 +48,7 @@ class GedungController extends Controller
             'kode_rs' => $request->kode_rs,
         ]);
 
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Data Gedung Berhasil di Tambahkan.');
     }
 
     /**
@@ -93,7 +93,7 @@ class GedungController extends Controller
 
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Gedung Berhasil di Ubah.');
     }
 
     /**
@@ -107,6 +107,6 @@ class GedungController extends Controller
         $item = Gedung::where('id_gedung',  $id)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/data_kelengkapan');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Gedung Berhasil Di Hapus.');
     }
 }

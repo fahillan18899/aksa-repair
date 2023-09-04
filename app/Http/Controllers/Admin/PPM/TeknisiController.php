@@ -48,7 +48,8 @@ class TeknisiController extends Controller
             'kode_rs' => $request->kode_rs,
         ]);
 
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
     }
 
     /**
@@ -93,7 +94,7 @@ class TeknisiController extends Controller
 
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Teknisi Berhasil Tambahkan.');
     }
 
     /**
@@ -107,6 +108,6 @@ class TeknisiController extends Controller
         $item = Teknisi::where('id_teknisi',  $id)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/data_kelengkapan');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Teknisi Berhasil Di Hapus.');
     }
 }
