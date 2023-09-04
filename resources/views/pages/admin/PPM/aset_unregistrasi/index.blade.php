@@ -39,29 +39,42 @@
              <div class="row">
                <div class="col-md-9 col-sm-12">
                  <form action="{{ url('/dashboard/ppm/tambah_unregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                  @csrf
+                 @csrf
+                  @method('post')
                    <input type="hidden" name="kode_rs" value="as" />
 
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="123" readonly>
+                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_perbaikan_un" type="date" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>">
+                       <input name="tanggal_perbaikan_un" type="date" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>" readonly>
                      </div>
                    </div>
 
-                   <div class="form-group row">
+                   <!--<div class="form-group row">
                      <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
                        <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="">
                      </div>
-                   </div>
+                   </div>-->
+
+                   <div class="form-group row">
+                    <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <select name="nama_alat_un" class="form-control" id="nama_alat_un">
+                        <option>Pilih Alat</option>
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
 
                    <div class="form-group row">
                      <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
@@ -88,8 +101,10 @@
                      <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat</label>
                      <div class="col-xs-9">
                        <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
-                         <option value="mawar" selected="selected">Pilih Lokasi</option>
-                         
+                         <option value="" selected="selected">Pilih Lokasi</option>
+                        @foreach($ruangans as $alat)
+                          <option value="<?= $alat['lokasi_alat']; ?>"><?= $alat['lokasi_alat']; ?></option>
+                        @endforeach
                        </select>
                      </div>
                    </div>
@@ -124,8 +139,10 @@
                      <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1 <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
                        <select name="teknisi_1_un" class="form-control" id="teknisi_1_un">
-                         <option value="teknisi1" selected="selected">Select Teknisi </option>
-                        
+                         <option value="" selected="selected">Select Teknisi </option>
+                         @foreach($teknisis as $teknisi)
+                          <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                        </select>
                      </div>
                    </div>
@@ -134,8 +151,10 @@
                      <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                      <div class="col-xs-9">
                        <select name="teknisi_2_un" class="form-control" id="teknisi_2_un">
-                         <option value="teknisi" selected="selected">Select Teknisi</option>
-                        
+                         <option value="" selected="selected">Select Teknisi</option>
+                        @foreach($teknisis as $teknisi)
+                          <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                        </select>
                      </div>
                    </div>
@@ -144,8 +163,10 @@
                      <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                      <div class="col-xs-9">
                        <select name="teknisi_3_un" class="form-control" id="teknisi_3_un">
-                         <option value="teknisi3" selected="selected">Select Teknisi</option>
-                        
+                         <option value="" selected="selected">Select Teknisi</option>
+                        @foreach($teknisis as $teknisi)
+                          <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                        </select>
                      </div>
                    </div>
@@ -177,6 +198,7 @@
      <!--TABEL-->
      <table class="datatable table table-striped table-bordered" style="width:100%">
        <thead class="table-light">
+         <th scope="col">No</th>
          <th scope="col">Id_Perbaikan</th>
          <th scope="col">Tanggal_Perbaikan</th>
          <th scope="col">Nama_Alat</th>
@@ -194,8 +216,9 @@
          <th scope="col">Tombol_Aksi</th>
        </thead>
        <tbody>
-       @forelse ($perbaikan as $item)
+       @forelse ($perbaikan as $index => $item)
        <tr>
+        <td>{{ $index + 1 }}</td>
          <td><?php echo $item ['id_perbaikan_un'] ?></td>
          <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
          <td><?php echo $item ['nama_alat_un'] ?></td>
@@ -211,7 +234,7 @@
          <td><?php echo $item ['teknisi_3_un'] ?></td>
          <td><?php echo $item ['keluhan_dari_alat_un'] ?></td>
          <td>
-            <a href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
          </td>
@@ -245,91 +268,91 @@
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="" onkeyup="autofill_Pengiriman_un()">
+                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un1" placeholder="Id Perbaikan" value="" onkeyup="autofill_Pengiriman_un()">
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>" readonly>
+                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un1" placeholder="Tanggal Perbaikan" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_pengiriman_un" class="col-xs-3 col-form-label">Tanggal Pengiriman<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_pengiriman_un" type="text" class="form-control" id="tanggal_pengiriman_un" placeholder="Tanggal Pengiriman" value="<?php echo date('Y-m-d') ?>" readonly>
+                       <input name="tanggal_pengiriman_un" type="date" class="form-control" id="tanggal_pengiriman_un" placeholder="Tanggal Pengiriman" value="<?php echo date('Y-m-d') ?>" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="123" readonly>
+                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un1" placeholder="Nama Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="123" readonly>
+                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un1" placeholder="Merek Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="type_alat_un" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="123" readonly>
+                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un1" placeholder="Type Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="serial_number_un" class="col-xs-3 col-form-label">Seri Number<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Seri Number" value="123" readonly>
+                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un1" placeholder="Seri Number" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un" placeholder="Lokasi Alat" value="123" readonly>
+                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un1" placeholder="Lokasi Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="pelapor_un" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Teknisi 1" value="123" readonly>
+                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un1" placeholder="Teknisi 1" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="keterangan_un" type="text" class="form-control" id="keterangan_un" placeholder="Pelapor" value="123" readonly>
+                       <input name="keterangan_un" type="text" class="form-control" id="keterangan_un1" placeholder="Pelapor" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un" placeholder="Teknisi 2" value="123" readonly>
+                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un1" placeholder="Teknisi 2" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un" placeholder="Teknisi 2" value="123" readonly>
+                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un1" placeholder="Teknisi 2" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un" placeholder="Teknisi 3" value="123" readonly>
+                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un1" placeholder="Teknisi 3" value="" readonly>
                      </div>
                    </div>
 
@@ -364,7 +387,7 @@
                    <div class="form-group row">
                      <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="KA Instalasi" value="123" readonly>
+                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un1" placeholder="KA Instalasi" value="" readonly>
                      </div>
                    </div>
 
@@ -388,6 +411,7 @@
      <!--TABEL-->
      <table class="datatable table table-striped table-bordered" style="width:100%">
        <thead class="table-light">
+         <th scope="col">No</th>
          <th scope="col">Id_perbaikan</th>
          <th scope="col">Tanggal_Perbaikan</th>
          <th scope="col">Tanggal_Pengiriman</th>
@@ -409,8 +433,9 @@
          <th scope="col">Tombol_Aksi_Tabel</th>
        </thead>
        <tbody>
-       @forelse ($pengiriman as $item)
+       @forelse ($pengiriman as $index => $item)
        <tr>
+        <td>{{ $index + 1 }}</td>
          <td><?php echo $item ['id_perbaikan_un'] ?></td>
          <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
          <td><?php echo $item ['tanggal_pengiriman_un'] ?></td>
@@ -430,7 +455,7 @@
          <td><?php echo $item ['telphone_teknisi_rek_un'] ?></td>
          <td><?php echo $item ['ka_instalasi_un'] ?></td>
          <td>
-            <a href="/dashboard/ppm/aset_unregistrasi/edit_pengiriman/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_unregistrasi/edit_pengiriman/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a href="/dashboard/ppm/aset_unregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
          </td>
@@ -461,30 +486,30 @@
                    <input type="hidden" name="kode_rs" value="as" />
 
                    <div class="form-group row">
-                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">id pengembalian<i class="text-danger">*</i></label>
+                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="id pengembalian" value="" onkeyup="autofill_Pengembalian_un()">
+                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un2" placeholder="Id Perbaikan" value="" onkeyup="autofill_Pengembalian_un()">
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="31-08-23" readonly>
+                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un2" placeholder="Tanggal Perbaikan" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_pengembalian_un" class="col-xs-3 col-form-label">Tanggal Pengembalian<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_pengembalian_un" type="text" class="form-control" id="tanggal_pengembalian_un" placeholder="Tanggal Pengembalian" value="<?php echo date('Y-m-d') ?>" readonly>
+                       <input name="tanggal_pengembalian_un" type="text" class="form-control" id="tanggal_pengembalian_un2" placeholder="Tanggal Pengembalian" value="<?php echo date('Y-m-d') ?>" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="yui" readonly>
+                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un2" placeholder="Nama Alat" value="" readonly>
                      </div>
                    </div>
 
@@ -498,70 +523,70 @@
                    <div class="form-group row">
                      <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek" value="yui" readonly>
+                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un2" placeholder="Merek" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="yui" readonly>
+                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un2" placeholder="Ka Instalasi" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="type_alat_un" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="yui" readonly>
+                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un2" placeholder="Type Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un" placeholder="Teknisi 1" value="yui" readonly>
+                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un2" placeholder="Teknisi 1" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="serial_number_un" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="yui" readonly>
+                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un2" placeholder="Serial Number" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un" placeholder="Teknisi 2" value="yui" readonly>
+                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un2" placeholder="Teknisi 2" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un" placeholder="Teknisi 3" value="yui" readonly>
+                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un2" placeholder="Teknisi 3" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un" placeholder="Lokasi Alat" value="yui" readonly>
+                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un2" placeholder="Lokasi Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="keterangan_un" type="text" class="form-control" id="keterangan_un" placeholder="Keterangan" value="yui" readonly>
+                       <input name="keterangan_un" type="text" class="form-control" id="keterangan_un2" placeholder="Keterangan" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="pelapor_un" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="yui" readonly>
+                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un2" placeholder="Pelapor" value="" readonly>
                      </div>
                    </div>
 
@@ -634,6 +659,7 @@
      <!--TABEL-->
      <table class="datatable table table-striped table-bordered" style="width:100%">
        <thead class="table-light">
+         <th scope="col">No</th>
          <th scope="col">Id_Perbaikan</th>
          <th scope="col">Tanggal_Perbaikan</th>
          <th scope="col">Tanggal_Pengembalian</th>
@@ -659,8 +685,9 @@
          <th scope="col">Tombol_Aksi_Tabel</th>
        </thead>
        <tbody>
-       @forelse ($pengembalian as $item)
+       @forelse ($pengembalian as $index => $item)
        <tr>
+        <td>{{ $index + 1 }}</td>
          <td><?php echo $item ['id_perbaikan_un']  ?></td>
          <td><?php echo $item ['tanggal_perbaikan_un']  ?></td>
          <td><?php echo $item ['tanggal_pengembalian_un']  ?></td>
@@ -684,7 +711,7 @@
          <td><?php echo $item ['penggantian_suku_cadang_un']  ?></td>
          <td><?php echo $item ['hasil_verifikasi_un']  ?></td>
          <td>
-            <a href="/dashboard/ppm/aset_unregistrasi/edit_pengembalian/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_unregistrasi/edit_pengembalian/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a href="/dashboard/ppm/aset_unregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
          </td>
@@ -718,77 +745,77 @@
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="" onkeyup="autofill_Penghapusan_un()">
+                       <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un3" placeholder="Id Perbaikan" value="" onkeyup="autofill_Penghapusan_un()">
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>" readonly>
+                       <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un3" placeholder="Tanggal Perbaikan" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="123" readonly>
+                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un3" placeholder="Nama Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="123" readonly>
+                       <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un3" placeholder="Merek Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="type_alat_un" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="123" readonly>
+                       <input name="type_alat_un" type="text" class="form-control" id="type_alat_un3" placeholder="Type Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="serial_number_un" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="123" readonly>
+                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un3" placeholder="Serial Number" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un" placeholder="Lokasi Alat" value="123" readonly>
+                       <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un3" placeholder="Lokasi Alat" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="pelapor_un" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="123" readonly>
+                       <input name="pelapor_un" type="text" class="form-control" id="pelapor_un3" placeholder="Pelapor" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un" placeholder="Teknisi 1" value="123" readonly>
+                       <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un3" placeholder="Teknisi 1" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un" placeholder="Teknisi 2" value="123" readonly>
+                       <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un3" placeholder="Teknisi 2" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un" placeholder="Teknisi 3" value="123" readonly>
+                       <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un3" placeholder="Teknisi 3" value="" readonly>
                      </div>
                    </div>
 
@@ -802,14 +829,14 @@
                    <div class="form-group row">
                      <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="KA Instalasi" value="123" readonly>
+                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un3" placeholder="KA Instalasi" value="" readonly>
                      </div>
                    </div>
 
                    <div class="form-group row">
                      <label for="keterangan_penggudangan_un" class="col-xs-3 col-form-label">Keterangan<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="keterangan_penggudangan_un" type="text" class="form-control" id="keterangan_penggudangan_un" placeholder="Keterangan" value="123">
+                       <input name="keterangan_penggudangan_un" type="text" class="form-control" id="keterangan_penggudangan_un" placeholder="Keterangan" value="">
                      </div>
                    </div>
 
@@ -833,6 +860,7 @@
      <!--TABEL-->
      <table class="datatable table table-striped table-bordered" style="width:100%">
        <thead class="table-light">
+         <th scope="col">No</th>
          <th scope="col">Id_Perbaikan</th>
          <th scope="col">Tanggal_Perbaikan</th>
          <th scope="col">Nama_Alat</th>
@@ -850,8 +878,9 @@
          <th scope="col">Tombol_Aksi_Tabel</th>
        </thead>
        <tbody>
-       @forelse ($penghapusan as $item)
+       @forelse ($penghapusan as $index => $item)
        <tr>
+        <td>{{ $index + 1 }}</td>
          <td><?php echo $item ['id_perbaikan_un'] ?></td>
          <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
          <td><?php echo $item ['nama_alat_un'] ?></td>
@@ -867,7 +896,7 @@
          <td><?php echo $item ['ka_instalasi_un'] ?></td>
          <td><?php echo $item ['keterangan_penggudangan_un'] ?></td>
          <td>
-            <a href="/dashboard/ppm/aset_unregistrasi/edit_penghapusan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="/dashboard/ppm/aset_unregistrasi/edit_penghapusan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a href="/dashboard/ppm/aset_unregistrasi/cetak_penggudangan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
          </td>

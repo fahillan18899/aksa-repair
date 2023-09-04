@@ -10,5 +10,9 @@ class PerbaikanUnregistrasi extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    protected $primaryKey = "id_perbaikan_un";
+    protected $keyType = 'string';
+    public $incrementing = false;
 
 }

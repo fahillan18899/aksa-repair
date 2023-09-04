@@ -34,7 +34,7 @@
 
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url('/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{id}') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <input type="hidden" name="kode_rs" value="rsc" />
@@ -157,7 +157,7 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button" name="ubah_perbaikan_un">Save</button>
+                        <button class="ui positive button">Save</button>
                         <div class="or"></div>
                         <button type="reset" class="ui button">Reset</button>
                       </div>
