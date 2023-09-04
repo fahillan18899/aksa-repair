@@ -8,81 +8,64 @@ use App\Models\LembarPemeliharaan;
 
 class LembarPemeliharaanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $items= LembarPemeliharaan::all();
-
-        return view('pages.admin.ppm.lembar_pemeliharaan.index', ['items' => $items ]);
+        $lembarPemeliharaans = LembarPemeliharaan::all();
+        return view('pages.admin.ppm.lembar_pemeliharaan.index', compact('lembarPemeliharaans'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('lembar_pemeliharaans.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_ppm' => 'required|unique:lembar_pemeliharaans,id_ppm',
+            'tanggal' => 'required|date',
+            'kegiatan' => 'required|string',
+        ]);
+
+        LembarPemeliharaan::create($request->all());
+
+        return redirect()->route('lembar-pemeliharaan.index')
+        ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($id_ppm)
     {
-        //
+        $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
+        return view('pages.admin.ppm.lembar_pemeliharaan.index', compact('lembarPemeliharaan'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id_ppm)
     {
-        //
+        $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
+        return view('pages.admin.ppm.lembar_pemeliharaan.index', compact('lembarPemeliharaan'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_ppm)
     {
-        //
+        $request->validate([
+            'tanggal' => 'required|date',
+            'kegiatan' => 'required|string',
+        ]);
+
+        $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
+        $lembarPemeliharaan->update($request->all());
+
+        return redirect()->route('lembar-pemeliharaan.index')
+        ->with('success', 'Lembar Pemeliharaan berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($id_ppm)
     {
-        //
+        $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
+        $lembarPemeliharaan->delete();
+
+        return redirect()->route('lembar-pemeliharaan.index')
+        ->with('success', 'Lembar Pemeliharaan berhasil dihapus.');
     }
 }
