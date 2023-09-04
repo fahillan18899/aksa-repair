@@ -140,6 +140,8 @@ class PengembalianRegistrasiController extends Controller
             'hasil_verifikasi_reg' => '',
             'hasil_fungsi_reg' => '',
             'pengganti_suku_cadang_reg' => '',
+            'kode_rs' => '',
+            'active' => '',
         ]);
 
         $perbaikanRegistrasi = PengembalianRegistrasi::findOrFail($id);

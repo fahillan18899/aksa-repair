@@ -78,7 +78,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
 
         /**
-         * pengembalian Aset Teregistrasi
+         * Pengiriman Aset Teregistrasi
          */
         Route::post('/tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
         Route::get('/update_pengiriman/{id}/edit', [PengirimanRegistrasiController::class, 'edit'])->name('update_pengiriman.edit');

@@ -119,6 +119,8 @@ class PerbaikanRegistrasiController extends Controller
     public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
+            'id_perbaikan_reg' => '',
+            'id_aset_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'nama_alat_reg' => '',
             'merek_alat_reg' => '',
@@ -133,7 +135,6 @@ class PerbaikanRegistrasiController extends Controller
             'teknisi_3_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'kode_rs' => '',
             'active' => ''
         ]);
 
