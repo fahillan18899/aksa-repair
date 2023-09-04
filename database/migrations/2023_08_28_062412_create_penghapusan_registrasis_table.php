@@ -17,17 +17,17 @@ return new class extends Migration
             $table->string('id_perbaikan_reg')->primary();;
             $table->string('tanggal_perbaikan_reg');
             $table->date('tanggal_penggudangan_reg');
-            $table->string('nama_alat_reg');
-            $table->string('merek_alat_reg');
-            $table->string('type_alat_reg');
-            $table->string('serial_number_reg');
-            $table->string('lokasi_alat_reg');
-            $table->string('pelapor_reg');
-            $table->string('teknisi_1_reg');
-            $table->string('teknisi_2_reg');
-            $table->string('teknisi_3_reg');
-            $table->string('ka_instalasi_reg');
-            $table->string('keterangan_pengguna_reg');
+            $table->string('nama_alat_reg')->nullable();
+            $table->string('merek_alat_reg')->nullable();
+            $table->string('type_alat_reg')->nullable();
+            $table->string('serial_number_reg')->nullable();
+            $table->string('lokasi_alat_reg')->nullable();
+            $table->string('pelapor_reg')->nullable();
+            $table->string('teknisi_1_reg')->nullable();
+            $table->string('teknisi_2_reg')->nullable();
+            $table->string('teknisi_3_reg')->nullable();
+            $table->string('ka_instalasi_reg')->nullable();
+            $table->string('keterangan_pengguna_reg')->nullable();
             $table->string('kode_rs');
 
             $table->timestamps();
