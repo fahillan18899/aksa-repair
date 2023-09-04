@@ -42,7 +42,6 @@ class PengirimanUnregistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'tanggal_pengiriman_un' => '',
@@ -63,14 +62,12 @@ class PengirimanUnregistrasiController extends Controller
             'ka_instalasi_un' => '',
             'kode_rs' => '',
             'active' => '',
-
-
         ]);
 
         PengirimanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Company has created been successfully.');
+        ->with('success', 'Data Pengiriman Berhasil Di Tambahkan.');
     }
 
     /**
@@ -105,7 +102,34 @@ class PengirimanUnregistrasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_perbaikan_un' => '',
+            'tanggal_perbaikan_un' => '',
+            'tanggal_pengiriman_un' => '',
+            'nama_alat_un' => '',
+            'merek_alat_un' => '',
+            'type_alat_un' => '',
+            'serial_number_un' => '',
+            'lokasi_alat_un' => '',
+            'pelapor_un' => '',
+            'keterangan_un' => '',
+            'teknisi_1_un' => '',
+            'teknisi_2_un' => '',
+            'teknisi_3_un' => '',
+            'nama_rekanan_un' => '',
+            'alamat_rekanan_un' => '',
+            'teknisi_rekanan_un' => '',
+            'telphone_teknisi_rek_un' => '',
+            'ka_instalasi_un' => '',
+            'kode_rs' => '',
+            'active' => '',
+        ]);
+
+        $pengirimanRegistrasi = PengirimanUnregistrasi::findOrFail($id);
+        $pengirimanRegistrasi->update($request->all());
+
+        return redirect()->route('aset_unregistrasi.index')
+        ->with('success', 'Data Pengiriman Unregistrasi Berhasil di Ubah.');
     }
 
     /**

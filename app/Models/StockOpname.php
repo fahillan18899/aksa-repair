@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class StockOpname extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

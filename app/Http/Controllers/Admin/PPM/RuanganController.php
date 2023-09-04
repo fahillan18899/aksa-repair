@@ -47,8 +47,6 @@ class RuanganController extends Controller
         ]);
 
         $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
-
-
         Ruangan::create([
             'id_ruangan' => $request->id_ruangan,
             'ruangan_alat' => $request->ruangan_alat,
@@ -60,7 +58,8 @@ class RuanganController extends Controller
 
 
 
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Your account is created');
+        return redirect('/dashboard/ppm/data_kelengkapan')
+        ->with('message', 'Data Berhasil Tambahkan.');
     }
 
     /**
@@ -114,7 +113,7 @@ class RuanganController extends Controller
 
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Berhasil Ubah.');
     }
 
     /**
@@ -128,6 +127,6 @@ class RuanganController extends Controller
         $item = Ruangan::where('id_ruangan',  $ruangan)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/data_kelengkapan');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Ruangan Berhasil Di Hapus.');
     }
 }

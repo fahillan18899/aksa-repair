@@ -27,7 +27,7 @@ class StockOpnameController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.ppm.stock_opname.create');
     }
 
     /**
@@ -38,7 +38,21 @@ class StockOpnameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'type' => 'required',
+            'jumlah_masuk' => 'required',
+            'lokasi_pemakaian' => 'required',
+            'jumlah_keluar' => 'required',
+            'tanggal_masuk' => 'required',
+            'tanggal_keluar' => 'required',
+        ]);
+        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        StockOpname::create($request->post());
+
+
+        return redirect()->route('stock_opname.index')
+        ->with('success', 'registrasi has been created successfully.');
     }
 
     /**
@@ -60,7 +74,10 @@ class StockOpnameController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = StockOpname::where('id', $id)->first();
+        return view('pages.admin.ppm.stock_opname.update', [
+            'item' => $item,
+        ]);
     }
 
     /**
@@ -70,9 +87,23 @@ class StockOpnameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  StockOpname $stock_opname)
     {
-        //
+        $request->validate([
+            'nama' => '',
+            'type' => '',
+            'jumlah_masuk' => '',
+            'lokasi_pemakaian' => '',
+            'jumlah_keluar' => '',
+            'tanggal_masuk' => '',
+            'tanggal_keluar' => '',
+        ]);
+        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        $stock_opname->fill($request->post())->save();
+
+
+        return redirect()->route('stock_opname.index')
+        ->with('success', 'registrasi has been created successfully.');
     }
 
     /**
@@ -83,6 +114,9 @@ class StockOpnameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = StockOpname::where('id',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/stock_opname');
     }
 }

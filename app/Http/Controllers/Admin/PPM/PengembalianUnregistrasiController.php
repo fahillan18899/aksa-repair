@@ -44,7 +44,6 @@ class PengembalianUnregistrasiController extends Controller
     {
 
         $request->validate([
-
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'tanggal_pengembalian_un' => '',
@@ -69,15 +68,12 @@ class PengembalianUnregistrasiController extends Controller
             'hasil_verifikasi_un' => '',
             'kode_rs' => '',
             'active' => '',
-
-
-
         ]);
 
         PengembalianUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Company has created been successfully.');
+        ->with('success', 'Data Pengemalian Unregistrasi Berhasil di Tambahkan.');
     }
 
     /**
@@ -112,7 +108,38 @@ class PengembalianUnregistrasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_perbaikan_un' => '',
+            'tanggal_perbaikan_un' => '',
+            'tanggal_pengembalian_un' => '',
+            'nama_alat_un' => '',
+            'peneriama_alat_un' => '',
+            'merek_alat_un' => '',
+            'ka_instalasi_un' => '',
+            'type_alat_un' => '',
+            'teknisi_1_un' => '',
+            'serial_number_un' => '',
+            'teknisi_2_un' => '',
+            'teknisi_3_un' => '',
+            'lokasi_alat_un' => '',
+            'keterangan_un' => '',
+            'pelapor_un' => '',
+            'harga_perbaikan_un' => '',
+            'penyebab_kerusakan_un' => '',
+            'pengujian_suku_cadang_un' => '',
+            'uji_fungsi_setelah_perbaikan_un' => '',
+            'solusi_perbaikan_un' => '',
+            'penggantian_suku_cadang_un' => '',
+            'hasil_verifikasi_un' => '',
+            'kode_rs' => '',
+            'active' => '',
+        ]);
+
+        $pengembalianUnRegistrasi = PengembalianUnregistrasi::findOrFail($id);
+        $pengembalianUnRegistrasi->update($request->all());
+
+        return redirect()->route('aset_unregistrasi.index')
+        ->with('success', 'Data Pengemalian Unregistrasi Berhasil di Ubah.');
     }
 
     /**

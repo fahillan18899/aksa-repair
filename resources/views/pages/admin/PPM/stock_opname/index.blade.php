@@ -56,7 +56,7 @@ if (isset($_POST['update_opname'])) {
 
           <div class="panel-heading no-print">
             <div class="btn-group">
-              <a class="btn btn-success" href="?hal=stock_opname&fun=create"><i class="fa fa-plus"></i> Tambah Stock Opname </a>
+              <a class="btn btn-success" href="{{ route('stock_opname.create') }}"><i class="fa fa-plus"></i> Tambah Stock Opname </a>
             </div>
           </div>
 
@@ -93,6 +93,8 @@ if (isset($_POST['update_opname'])) {
                       <th scope="col">Lokasi Pemakaian</th>
                       <th scope="col">Jumlah Masuk</th>
                       <th scope="col">Jumlah Keluar</th>
+                      <th scope="col">Tanggal Masuk</th>
+                      <th scope="col">Tanggal Keluar</th>
                       <th scope="col">Total</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
@@ -102,15 +104,16 @@ if (isset($_POST['update_opname'])) {
                     <tr>
                       <td>{{ $item->id }}</td>
                       <td>{{ $item->nama }}</td>
-                      <td>{{ $item->jenis }}</td>
+                      <td>{{ $item->type }}</td>
                       <td>{{ $item->lokasi_pemakaian }}</td>
                       <td>{{ $item->jumlah_masuk}}</td>
                       <td>{{ $item->jumlah_keluar}}</td>
+                      <td>{{ $item->tanggal_masuk}}</td>
+                      <td>{{ $item->tanggal_keluar}}</td>
                       <td>{{ $item->stock}}</td>
-                      <td>{{ $item->kode_rs }}</td>  
                       <td>
-                        <a href="{{ url('dashboard', $item->id) }}" class="btn btn-info"> <i class="fa fa-pencil-alt"></i> </a>
-                        <form action="{{ url('dashboard', $item->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info"> <i class="fa fa-edit  "></i> </a>
+                        <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger">

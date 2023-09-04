@@ -33,64 +33,66 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('update_penghapusan_un.update', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  @csrf
+                  @method('PUT')
 
-                  <input type="hidden" name="kodeRs" value="src" />
+                  <input type="hidden" name="kode_rs" value="src" />
 
 
                   <div class="form-group row">
                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="<?= $item ['id_perbaikan_un'] ?>">
+                      <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" placeholder="Id Perbaikan" value="<?= $item['id_perbaikan_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="tanggal_perbaikan_un" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?= $item ['tanggal_perbaikan_un']  ?>">
+                      <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" placeholder="Tanggal Perbaikan" value="<?= $item['tanggal_perbaikan_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="<?= $item ['nama_alat_un']  ?>">
+                      <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="<?= $item['nama_alat_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="<?= $item ['merek_alat_un']  ?>">
+                      <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" placeholder="Merek Alat" value="<?= $item['merek_alat_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="type_alat_un" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="<?= $item ['type_alat_un']  ?>">
+                      <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" placeholder="Type Alat" value="<?= $item['type_alat_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="serial_number_un" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="<?= $item ['serial_number_un']  ?>">
+                      <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" placeholder="Serial Number" value="<?= $item['serial_number_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un" placeholder="Lokasi Alat" value="<?= $item ['lokasi_alat_un']  ?>">
+                      <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un" placeholder="Lokasi Alat" value="<?= $item['lokasi_alat_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="pelapor_un" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="<?= $item ['pelapor_un']  ?>">
+                      <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" placeholder="Pelapor" value="<?= $item['pelapor_un']  ?>">
                     </div>
                   </div>
 
@@ -127,28 +129,28 @@
                   <div class="form-group row">
                     <label for="tanggal_penggudangan_un" class="col-xs-3 col-form-label">Tanggal Penggudangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_penggudangan_un" type="text" class="form-control" id="tanggal_penggudangan_un" placeholder="Tanggal Penggudangan" value="<?= $item ['tanggal_penggudangan_un']  ?>">
+                      <input name="tanggal_penggudangan_un" type="text" class="form-control" id="tanggal_penggudangan_un" placeholder="Tanggal Penggudangan" value="<?= $item['tanggal_penggudangan_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="KA Instalasi" value="<?= $item ['ka_instalasi_un']  ?>">
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="KA Instalasi" value="<?= $item['ka_instalasi_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="keterangan_penggudangan_un" class="col-xs-3 col-form-label">Keterangan Penggudangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="keterangan_penggudangan_un" type="text" class="form-control" id="keterangan_penggudangan_un" placeholder="Keterangan Pengguna" value="<?= $item ['keterangan_penggudangan_un']  ?>">
+                      <input name="keterangan_penggudangan_un" type="text" class="form-control" id="keterangan_penggudangan_un" placeholder="Keterangan Pengguna" value="<?= $item['keterangan_penggudangan_un']  ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button" name="ubah_penghapusan_un">Edit</button>
+                        <button class="ui positive button">Edit</button>
                         <div class="or"></div>
                         <a href=""><button type="button" class="ui button">Kembali</button></a>
                       </div>

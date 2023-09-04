@@ -62,12 +62,11 @@ class HomeController extends Controller
     {
         $data = DB::table('registrasis')->where('id_aset', $idars)->first();
 
-        return response()->json([
-            'Merek_Alat_reg' => $data->merek,
-            'Nama_Alat_reg' => $data->nama_alat,
-            'Serial_Number_reg' => $data->serial_number,
-            'Lokasi_Alat_reg' => $data->lokasi_alat,
-            'Type' => $data->type,
+        return response()->json(['nama_alat_reg' => $data->nama_alat,
+            'merek_alat_reg' => $data->merek,
+            'serial_number_reg' => $data->serial_number,
+            'lokasi_alat_reg' => $data->lokasi_alat,
+            'type' => $data->type,
         ]);
     }
 

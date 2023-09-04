@@ -16,12 +16,16 @@ return new class extends Migration
         Schema::create('stock_opnames', function (Blueprint $table) {
             $table->id('id');
             $table->string('nama');
-            $table->string('jenis');
+            $table->string('type');
             $table->string('lokasi_pemakaian');
             $table->integer('jumlah_masuk');
             $table->integer('jumlah_keluar');
+            $table->date('tanggal_masuk');
+            $table->date('tanggal_keluar');
             $table->integer('stock');
             $table->string('kode_rs');
+
+            $table->timestamps();
 
         });
     }
