@@ -130,6 +130,7 @@ class PerbaikanUnregistrasiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'nama_alat_un' => '',
             'merek_alat_un' => '',
@@ -148,8 +149,8 @@ class PerbaikanUnregistrasiController extends Controller
         ]);
 
 
-        $pengirimanRegistrasi = PengirimanUnregistrasi::findOrFail($id);
-        $pengirimanRegistrasi->update($request->all());
+        $perbaikanRegistrasi = PerbaikanUnregistrasi::findOrFail($id);
+        $perbaikanRegistrasi->update($request->all());
         return redirect()->route('aset_unregistrasi.index')
         ->with('success', 'Data Perbaikan Unregistrasi berhasil di Ubah');
     }
