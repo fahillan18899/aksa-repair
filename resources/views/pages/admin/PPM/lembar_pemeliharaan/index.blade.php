@@ -65,7 +65,7 @@ $alert = "";
                   @csrf
                   @method('POST')
 
-                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" value="1" placeholder="id">
+                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="id">
                   <input name="kode_rs" type="hidden" class="form-control" value="123">
 
                   <div class="form-group row">
@@ -86,8 +86,9 @@ $alert = "";
                     <label for="engineer" class="col-xs-3 col-form-label">Nama Teknisi </label>
                     <div class="col-xs-9">
                       <select name="engineer" class="form-control" id="engineer">
-                        @foreach($alats as $alat)
-                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
+                      @foreach($teknisis as $teknisi)
+                      <option>-- Pilih Teknisi --</option>
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -111,9 +112,9 @@ $alert = "";
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="nama_alat1">
-                        <option>Pilih Alat</option>
-                        @foreach($teknisis as $teknisi)
-                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        <option>-- Pilih Alat --</option>
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                         @endforeach
                       </select>
                     </div>

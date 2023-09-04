@@ -31,7 +31,7 @@ class LembarPemeliharaanController extends Controller
     public function store(Request $request)
     {
         $request->validate([    
-            'id_ppm' => 'required|unique:lembar_pemeliharaans,id_ppm',
+            'id_ppm' => '',
             'tanggal' => 'required|date',
             'kegiatan' => '',
             'engineer' => '',
@@ -87,12 +87,12 @@ class LembarPemeliharaanController extends Controller
             'engginer' => '',
             'kode_rs' => ''
         ]);
-        dd($request->post());
+
 
         LembarPemeliharaan::create($request->post());
 
 
-        return redirect()->route('registrasi.index')
+        return redirect()->route('lembar_pemeliharaan.index')
         ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
 

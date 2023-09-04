@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('lembar_pemeliharaans', function (Blueprint $table) {
-            $table->integer('id_ppm')->unsigned()->nullable();
+            $table->increments('id_ppm');
             $table->date('tanggal')->nullable();
             $table->string('kegiatan')->nullable();
             $table->string('engineer')->nullable();
@@ -68,7 +68,8 @@ return new class extends Migration
             $table->string('durasi')->nullable();
             $table->string('user')->nullable();
             $table->string('engginer')->nullable();
-            $table->string('kode_rs')->nullable();          
+            $table->string('kode_rs')->nullable();  
+            $table->timestamps();        
         });
     }
 

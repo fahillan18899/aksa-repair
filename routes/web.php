@@ -173,7 +173,7 @@ Route::prefix('dashboard')->group(function () {
         /**
          * penghapusan unregistrasi
          */
-        Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
+        Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
 
 
     });
