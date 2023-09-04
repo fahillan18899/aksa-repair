@@ -54,7 +54,6 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/data_inventaris', DashboardController::class);
         Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
-        Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('/stock_opname', StockOpnameController::class);
@@ -157,12 +156,17 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/aset_unregistrasi/edit_pengembalian/{id}/edit', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
-                /**
+        /**
          * penghapusan unregistrasi
          */
         Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);
         Route::get('/aset_unregistrasi/edit_penghapusan/{id}/edit', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
+
+        /**
+         * penghapusan unregistrasi
+         */
+        Route::resource('/lembar_pemeliharaan', LembarPemeliharaanController::class);
 
     });
 });
