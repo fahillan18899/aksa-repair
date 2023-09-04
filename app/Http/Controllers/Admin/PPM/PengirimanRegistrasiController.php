@@ -131,8 +131,8 @@ class PengirimanRegistrasiController extends Controller
             'kode_rs' => ''
         ]);
 
-        $perbaikanRegistrasi = PengirimanRegistrasi::findOrFail($pengirimanRegistrasi);
-        $perbaikanRegistrasi->update($request->all());
+        $pengirimanRegistrasi = PengirimanRegistrasi::findOrFail($pengirimanRegistrasi);
+        $pengirimanRegistrasi->update($request->all());
 
         return redirect()->route('aset_teregistrasi.index')
         ->with('success', 'Data Berhasil di Ubah');
