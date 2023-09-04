@@ -61,7 +61,7 @@ class PengirimanRegistrasiController extends Controller
 
 
         return redirect()->route('aset_teregistrasi.index')
-            ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Berhasil Tambahkan.');
     }
 
     /**
@@ -94,9 +94,34 @@ class PengirimanRegistrasiController extends Controller
      * @param  \App\Models\PengirimanRegistrasi  $pengirimanRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengirimanRegistrasi $pengirimanRegistrasi)
+    public function update(Request $request, $pengirimanRegistrasi)
     {
-        //
+        $request->validate([
+            'tanggal_perbaikan_reg' => '',
+            'tanggal_pengiriman_reg' => '',
+            'id_aset_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'seri_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'teknisi_1_reg' => '',
+            'pelapor_reg' => '',
+            'teknisi_2_reg' => '',
+            'keterangan_kondisi_alat_reg' => '',
+            'ka_instalasi_reg' => '',
+            'nama_rekan_reg' => '',
+            'alamat_rekan_reg' => '',
+            'teknisi_rekanan_reg' => '',
+            'telp_teknisi_rekanan_reg' => '',
+            'kode_rs' => ''
+        ]);
+
+        $perbaikanRegistrasi = PengirimanRegistrasi::findOrFail($pengirimanRegistrasi);
+        $perbaikanRegistrasi->update($request->all());
+
+        return redirect()->route('aset_teregistrasi.index')
+        ->with('success', 'Data Berhasil di Ubah');
     }
 
     /**

@@ -85,7 +85,7 @@ class PerbaikanRegistrasiController extends Controller
 
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Berhasil Tambahkan.');
     }
 
     /**
@@ -108,7 +108,7 @@ class PerbaikanRegistrasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PerbaikanRegistrasi $perbaikanRegistrasi)
+    public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
             'tanggal_perbaikan_reg' => '',
@@ -129,12 +129,11 @@ class PerbaikanRegistrasiController extends Controller
             'active' => ''
         ]);
 
-
-        $perbaikanRegistrasi->fill($request->post())->save();
-
+        $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
+        $perbaikanRegistrasi->update($request->all());
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Perbaikan Teregistrasi berhasil di ubah');
+        ->with('success', 'Data Berhasil Ubah.');
     }
 
     /**

@@ -69,7 +69,7 @@ class PengembalianRegistrasiController extends Controller
 
 
         return redirect()->route('aset_teregistrasi.index')
-            ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Berhasil Tambahkan');
     }
 
     /**
@@ -102,7 +102,7 @@ class PengembalianRegistrasiController extends Controller
      * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PengembalianRegistrasi  $pengembalianRegistrasi)
+    public function update(Request $request,  $id)
     {
         $request->validate([
             'id_aset_reg' => '',
@@ -130,14 +130,13 @@ class PengembalianRegistrasiController extends Controller
             'pengganti_suku_cadang_reg' => '',
         ]);
 
-        dd($request->post());
-
-        $pengembalianRegistrasi->fill($request->post())->save();
+        $perbaikanRegistrasi = PengembalianRegistrasi::findOrFail($id);
+        $perbaikanRegistrasi->update($request->all());
 
 
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Perbaikan Teregistrasi berhasil di ubah');
+        ->with('success', 'Data Berhasil di ubah');
     }
 
     /**

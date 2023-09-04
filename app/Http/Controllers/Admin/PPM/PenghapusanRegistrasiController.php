@@ -59,7 +59,7 @@ class PenghapusanRegistrasiController extends Controller
 
 
         return redirect()->route('aset_teregistrasi.index')
-            ->with('success', 'Company has been created successfully.');
+        ->with('success', 'Data Berhasil Tambahkan');
     }
 
     /**
@@ -80,7 +80,7 @@ class PenghapusanRegistrasiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {  
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
     }
@@ -92,9 +92,30 @@ class PenghapusanRegistrasiController extends Controller
      * @param  \App\Models\PenghapusanRegistrasi  $penghapusanRegistrasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PenghapusanRegistrasi $penghapusanRegistrasi)
+    public function update(Request $request,  $id)
     {
-        //
+
+        $request->validate([
+            'id_perbaikan_reg' => '',
+            'tanggal_perbaikan_reg' => '',
+            'tanggal_penggudangan_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'pelapor_reg' => '',
+            'teknisi_1_reg' => '',
+            'teknisi_2_reg' => '',
+            'teknisi_3_reg' => '',
+            'ka_instalasi_reg' => '',
+            'keterangan_pengguna_reg' => '',
+            'kode_rs' => '',
+        ]);
+        $hapusRegistrasi = PenghapusanRegistrasi::findOrFail($id);
+        $hapusRegistrasi->update($request->all());
+        return redirect()->route('aset_teregistrasi.index')
+        ->with('success', 'Data Berhasil Ubah.');
     }
 
     /**
