@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\PPM\GedungController;
 use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
+use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -121,15 +122,9 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/teknisi', TeknisiController::class);
         Route::resource('/ruangan', RuanganController::class);
 
-        /**
-         * Data Kelengkapan
-         */
-        Route::get('/operator', [UserController::class, 'index']);
-
 
         Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
-        Route::get('/operator', [OperatorController::class, 'index']);
-
+        
         /**
          * perbaikan unregistrasi
          */
@@ -144,26 +139,31 @@ Route::prefix('dashboard')->group(function () {
         Route::post('/tambah_pengiriman_un', [PengirimanUnregistrasiController::class, 'store']);/*fungsi tambah*/
         Route::get('/aset_unregistrasi/edit_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'cetak']);/*fungsi print*/
-
-
+        
+        
         /**
          * pengembalian unregistrasi
          */
         Route::post('/tambah_pengembalian_un', [PengembalianUnregistrasiController::class, 'store']);/*fungsi tambah*/
         Route::get('/aset_unregistrasi/edit_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']);/*fungsi print*/
-
+        
         /**
          * penghapusan unregistrasi
          */
         Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);
         Route::get('/aset_unregistrasi/edit_penghapusan/{id}', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
-
+        
         /**
          * stock opname
          */
         Route::resource('/stock_opname', StockOpnameController::class);
+
+        /**
+         * operator
+         */
+        Route::resource('operator', OperatorController::class);
     });
 });
 

@@ -1,7 +1,6 @@
- 
  @extends('layouts.admin')
 
-@section('content')
+ @section('content')
  <?php
   if (isset($_GET['hapus_user_ppm'])) {
     $sql_hapus = "DELETE FROM `users` WHERE id='{$_GET['hapus_user_ppm']}'";
@@ -17,17 +16,17 @@
     $alert = "tambah";
   }
 
-                      if (isset($_POST['update_user_ppm'])) {
-                        $sql_ubah = "UPDATE users SET 
+  if (isset($_POST['update_user_ppm'])) {
+    $sql_ubah = "UPDATE users SET 
             username='{$_POST['username']}', 
             user_role='{$_POST['user_role']}', 
             password='{$_POST['password']}'  WHERE id='{$_POST['id']}'";
-                        mysqli_query($db, $sql_ubah);
+    mysqli_query($db, $sql_ubah);
 
-                        $alert = "ubah";
-                      }
+    $alert = "ubah";
+  }
 
-                      $alert='';
+  $alert = '';
   ?><!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->
@@ -76,7 +75,7 @@
            <div class="panel-body panel-form">
              <div class="row">
                <div class="col-md-9 col-sm-12">
-                 <form action="/?hal=operator&fun=index" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                 <form action="{{ route('operator.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 
 
 
@@ -143,26 +142,29 @@
                      </tr>
                    </thead>
                    <tbody>
-                   @forelse ($items as $item)
-                    <tr>
-                      <td>{{ $item->id }}</td>
-                      <td>{{ $item->username }}</td>
-                      <td>{{ $item->level }}</td>
-                      <td><a href="{{ url('dashboard', $item->id) }}" class="btn btn-info"> <i class="fa fa-pencil-alt"></i> </a>
-                        <form action="{{ url('dashboard', $item->id) }}" method="POST" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button class="btn btn-danger">
-                            <i class="fa fa-trash"></i>
-                          </button></td>
-                        </form>
-                      </td>
-                    </tr>
-                    @empty
-                    <tr>
-                      <td class="text-center" colspan="7">Data Kosong</td>
-                    </tr>
-                    @endforelse
+                     @forelse ($items as $index => $item)
+                     <tr>
+                       <td>{{ $index + 1 }}</td>
+                       <td>{{ $item->username }}</td>
+                       <td>{{ $item->user_role }}</td>
+                       <td>
+                         <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info"> <i class="fa fa-edit"></i></a>
+
+                         <form action="{{ route('operator.destroy', $item->user_id) }}" method="POST" class="d-inline">
+                           @csrf
+                           @method('delete')
+                           <button class="btn btn-danger">
+                             <i class="fa fa-trash"></i>
+                           </button>
+                       </td>
+                       </form>
+                       </td>
+                     </tr>
+                     @empty
+                     <tr>
+                       <td class="text-center" colspan="7">Data Kosong</td>
+                     </tr>
+                     @endforelse
                    </tbody>
                  </table>
                  <!--TABEL-->

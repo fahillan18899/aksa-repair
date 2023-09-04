@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Operator;
+use App\Models\User;
 
 class OperatorController extends Controller
 {
@@ -15,7 +15,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $items = Operator::all();
+        $items = User::all();
 
         return view('pages.admin.ppm.operator.index', ['items' => $items]);
     }
@@ -27,7 +27,7 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.ppm.stock_opname.create');
     }
 
     /**
@@ -38,7 +38,21 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'type' => 'required',
+            'jumlah_masuk' => 'required',
+            'lokasi_pemakaian' => 'required',
+            'jumlah_keluar' => 'required',
+            'tanggal_masuk' => 'required',
+            'tanggal_keluar' => 'required',
+        ]);
+        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        User::create($request->post());
+
+
+        return redirect()->route('stock_opname.index')
+        ->with('success', 'registrasi has been created successfully.');
     }
 
     /**
@@ -60,7 +74,10 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = User::where('id', $id)->first();
+        return view('pages.admin.ppm.stock_opname.update', [
+            'item' => $item,
+        ]);
     }
 
     /**
@@ -72,7 +89,22 @@ class OperatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $request->validate([
+            'nama' => '',
+            'type' => '',
+            'jumlah_masuk' => '',
+            'lokasi_pemakaian' => '',
+            'jumlah_keluar' => '',
+            'tanggal_masuk' => '',
+            'tanggal_keluar' => '',
+        ]);
+        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        $stock_opname->fill($request->post())->save();
+
+
+        return redirect()->route('stock_opname.index')
+        ->with('success', 'registrasi has been created successfully.');
     }
 
     /**
@@ -83,6 +115,9 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = User::where('id',  $id)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/stock_opname');
     }
 }
