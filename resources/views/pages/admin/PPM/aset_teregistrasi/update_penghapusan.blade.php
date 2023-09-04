@@ -21,25 +21,7 @@
     <div id="demoModeEnable"></div>
     <!-- alert message -->
     <!-- content -->
-    <?php if ($alert == "tambah") { ?>
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah ditambahkan.
-      </div>
-    <?php } else if ($alert == "hapus") { ?>
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah dihapus.
-      </div>
-    <?php } else if ($alert == "ubah") { ?>
-      <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah diubah.
-      </div>
-    <?php } ?>
+
     <!-- content -->
     <div class="row">
       <div class="col-sm-12">
@@ -52,115 +34,146 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="<?= BASE_URL ?>/?hal=aset_teregistrasi&fun=update_penghapusan" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-
-                  <input type="hidden" name="kodeRs" value="<?php echo $kodeRs ?>" />
+                <form action="{{ route('update_penghapusan.update' ,$item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="kodeRs" value="asd" />
 
 
                   <div class="form-group row">
-                    <label for="Id_Perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
+                    <label for="id_perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Id_Perbaikan_reg" type="text" class="form-control" id="Id_Perbaikan_reg3" placeholder="Id Perbaikan" value="<?php echo $_GET['Id_Perbaikan_reg3'] ?>" readonly>
+                      <input name="id_perbaikan_reg" type="text" class="form-control" id="id_perbaikan_reg" placeholder="Id Perbaikan" value="<?php echo $item['id_perbaikan_reg'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
+                    <label for="tanggal_perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Tanggal_Perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg3" placeholder="Tanggal Perbaikan" value="<?= $row['Tanggal_Perbaikan_reg'] ?>" readonly>
+                      <input name="tanggal_perbaikan_reg" type="text" class="form-control" id="tanggal_perbaikan_reg3" placeholder="Tanggal Perbaikan" value="<?php echo $item['tanggal_perbaikan_reg'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Tanggal_Penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan<i class="text-danger">*</i></label>
+                    <label for="tanggal_penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Tanggal_Penggudangan_reg" type="text" class="form-control" id="Tanggal_Penggudangan_reg3" placeholder="Tanggal Penggudangan" value="<?= $row['Tanggal_Penggudangan_reg'] ?>" readonly>
+                      <input name="tanggal_penggudangan_reg" type="text" class="form-control" id="tanggal_penggudangan_reg3" placeholder="Tanggal Penggudangan" value="<?php echo $item['tanggal_penggudangan_reg'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
+                    <label for="nama_alat_reg" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Nama_Alat_reg" type="text" class="form-control" id="Nama_Alat_reg3" placeholder="Nama Alat" value="<?= $row['Nama_Alat_reg'] ?>">
+                      <input name="nama_alat_reg" type="text" class="form-control" id="nama_alat_reg3" placeholder="Nama Alat" value="<?php echo $item['nama_alat_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
+                    <label for="merek_alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Merek_Alat_reg" type="text" class="form-control" id="Merek_Alat_reg3" placeholder="Merek Alat" value="<?= $row['Merek_Alat_reg'] ?>">
+                      <input name="merek_alat_reg" type="text" class="form-control" id="merek_alat_reg3" placeholder="Merek Alat" value="<?php echo $item['merek_alat_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
+                    <label for="type_alat_reg" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Type_Alat_reg" type="text" class="form-control" id="Type_Alat_reg3" placeholder="Type Alat" value="<?= $row['Type_Alat_reg'] ?>">
+                      <input name="type_alat_reg" type="text" class="form-control" id="type_alat_reg3" placeholder="Type Alat" value="<?php echo $item['type_alat_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
+                    <label for="serial_number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Serial_Number_reg" type="text" class="form-control" id="Serial_Number_reg3" placeholder="Serial Number" value="<?= $row['Serial_Number_reg'] ?>">
+                      <input name="serial_number_reg" type="text" class="form-control" id="serial_number_reg3" placeholder="Serial Number" value="<?php echo $item['serial_number_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
+                    <label for="lokasi_alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
-                      <input name="Lokasi_Alat_reg" type="text" class="form-control" id="Lokasi_Alat_reg3" placeholder="Lokasi Alat" value="<?= $row['Lokasi_Alat_reg'] ?>">
+                      <select name="lokasi_alat_reg" class="form-control" id="lokasi_alat_reg">
+                        <option>Pilih Lokasi Alat</option>
+                        @foreach($ruangans as $ruangan)
+                        <option value="<?= $ruangan['lokasi_alat']; ?>"
+                        <?php if ($ruangan['lokasi_alat'] == $ruangan['lokasi_alat']) echo "selected" ?>
+                        ><?= $ruangan['lokasi_alat']; ?></option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label for="pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="pelapor_reg" type="text" class="form-control" id="pelapor_reg3" placeholder="Pelapor" value="<?php echo $item['pelapor_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
+                    <label for="teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
-                      <input name="Pelapor_reg" type="text" class="form-control" id="Pelapor_reg3" placeholder="Pelapor" value="<?= $row['Pelapor_reg'] ?>">
+                      <select name="teknisi_1_reg" class="form-control" id="teknisi_1_reg">
+                      @foreach($teknisis as $teknisi)
+                        <option>-- Pilih Teknisi --</option>
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"
+                        <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
+                        ><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1<i class="text-danger">*</i></label>
+                    <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_1_reg" type="text" class="form-control" id="Teknisi_1_reg3" placeholder="Teknisi 1" value="<?= $row['Teknisi_1_reg'] ?>">
+                      <select name="teknisi_2_reg" class="form-control" id="teknisi_2_reg">
+                      @foreach($teknisis as $teknisi)
+                        <option>-- Pilih Teknisi --</option>
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"
+                        <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
+                        ><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
+                    <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_2_reg" type="text" class="form-control" id="Teknisi_2_reg3" placeholder="Teknisi 2" value="<?= $row['Teknisi_2_reg'] ?>">
+                      <select name="teknisi_3_reg" class="form-control" id="teknisi_3_reg">
+                      @foreach($teknisis as $teknisi)
+                        <option>-- Pilih Teknisi --</option>
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"
+                        <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
+                        ><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="ka_instalasi_reg3" placeholder="KA Instalasi" value="<?php echo $item['ka_instalasi_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
+                    <label for="keterangan_pengguna_reg" class="col-xs-3 col-form-label">Keterangan Pengguna<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="Teknisi_3_reg" type="text" class="form-control" id="Teknisi_3_reg3" placeholder="Teknisi 3" value="<?= $row['Teknisi_3_reg'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="KA_Instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg3" placeholder="KA Instalasi" value="<?= $row['KA_Instalasi_reg'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Keterangan_Pengguna_reg" class="col-xs-3 col-form-label">Keterangan Pengguna<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="Keterangan_Pengguna_reg" type="text" class="form-control" id="Keterangan_Pengguna_reg3" placeholder="Keterangan Pengguna" value="<?= $row['Keterangan_Pengguna_reg'] ?>">
+                      <input name="keterangan_pengguna_reg" type="text" class="form-control" id="keterangan_pengguna_reg3" placeholder="Keterangan Pengguna" value="<?php echo $item['keterangan_pengguna_reg'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button" name="ubah_penghapusan_reg">Edit</button>
+                        <button class="ui positive button" >Edit</button>
                         <div class="or"></div>
-                        <a href="<?= BASE_URL ?>/?hal=aset_teregistrasi&fun=index"><button type="button" class="ui button">Kembali</button></a>
+                        <button type="button" class="ui button" type="reset">Kembali</button>
                       </div>
                     </div>
                   </div>

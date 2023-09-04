@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 
 use App\Models\PenghapusanRegistrasi;
 use Illuminate\Http\Request;
+use App\Models\Teknisi;
+use App\Models\Ruangan;
 
 class PenghapusanRegistrasiController extends Controller
 {
@@ -81,8 +83,16 @@ class PenghapusanRegistrasiController extends Controller
      */
     public function edit($id)
     {
+
+        $teknisis      = Teknisi::all();
+        $ruangans      = Ruangan::all();
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
+        return view('pages.admin.ppm.aset_teregistrasi.update_penghapusan', [
+            
+            'item' => $item,
+            'teknisis'      => $teknisis,
+            'ruangans'     => $ruangans,
+        ]);
     }
 
     /**

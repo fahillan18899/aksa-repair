@@ -10,6 +10,7 @@ use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
 use App\Models\Registrasi;
 use App\Models\Teknisi;
+use App\Models\Ruangan;
 use Illuminate\Support\Facades\DB;
 
 
@@ -96,8 +97,15 @@ class PerbaikanRegistrasiController extends Controller
      */
     public function edit($id)
     {
+
+        $teknisis      = Teknisi::all();
+        $ruangans      = Ruangan::all();
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', compact('item'));
+        return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', [
+            'item' => $item,
+            'teknisis'      => $teknisis,
+            'ruangans'     => $ruangans,
+        ]);
            
     }
 
