@@ -69,9 +69,16 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_alat_reg" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
+                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat_reg" type="text" class="form-control" id="nama_alat_reg1" placeholder="Nama Alat" value="<?= $item['nama_alat_reg'] ?>">
+                      <select name="nama_alat_reg" class="form-control" id="nama_alat_reg">
+                        <option>Pilih Alat</option>
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"
+                        <?php if ($alat['nama_alat'] == $alat['nama_alat']) echo "selected" ?>
+                        ><?= $alat['nama_alat']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
@@ -152,12 +159,17 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="keterangan_kondisi_alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat<i class="text-danger">*</i></label>
+                    <label for="keterangan_kondisi_alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                     <div class="col-xs-9">
-                      <input name="keterangan_kondisi_alat_reg" type="text" class="form-control" id="keterangan_kondisi_alat_reg1" placeholder="Keterangan Kondisi Alat" value="<?= $item['keterangan_kondisi_alat_reg'] ?>">
+                      <select name="keterangan_kondisi_alat_reg" class="form-control" id="keterangan_kondisi_alat_reg">
+                        <option selected="selected">Pilih Keterangan</option>
+                        <option value="Selesai Alat Dikembalikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Selesai Alat Dikembalikan') echo "selected" ?>>Selesai Alat Dikembalikan</option>
+                        <option value="Alat Dalam Perbaikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dalam Perbaikan') echo "selected" ?>>Alat Dalam Perbaikan</option>
+                        <option value="Alat Dilanjutkan Ke Rekanan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dilanjutkan Ke Rekanan') echo "selected" ?>>Alat Dilanjutkan Ke Rekanan</option>
+                      </select>
                     </div>
                   </div>
-
+                  
                   <div class="form-group row">
                     <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">

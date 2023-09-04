@@ -58,11 +58,19 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
+                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat_reg" type="text" class="form-control" id="Nama_Alat_reg" placeholder="Nama Alat" value="<?php echo $item['nama_alat_reg'] ?>">
+                      <select name="nama_alat_reg" class="form-control" id="nama_alat_reg">
+                        <option>Pilih Alat</option>
+                        @foreach($alats as $alat)
+                        <option value="<?= $alat['nama_alat']; ?>"
+                        <?php if ($alat['nama_alat'] == $alat['nama_alat']) echo "selected" ?>
+                        ><?= $alat['nama_alat']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
+
 
                   <div class="form-group row">
                     <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
@@ -91,7 +99,9 @@
                       <select name="lokasi_alat_reg" class="form-control" id="Lokasi_Alat_reg">
                         <option>Pilih Lokasi Alat</option>
                         @foreach($ruangans as $ruangan)
-                        <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
+                        <option value="<?= $ruangan['lokasi_alat']; ?>"
+                        <?php if ($ruangan['lokasi_alat'] == $ruangan['lokasi_alat']) echo "selected" ?>
+                        ><?= $ruangan['lokasi_alat']; ?></option>
                         @endforeach
                       </select>
                     </div>

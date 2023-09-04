@@ -149,6 +149,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
                         @foreach($teknisis as $teknisi)
+                        <option >-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -160,6 +161,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
                         @foreach($teknisis as $teknisi)
+                        <option >-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -171,6 +173,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
                         @foreach($teknisis as $teknisi)
+                        <option >-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>

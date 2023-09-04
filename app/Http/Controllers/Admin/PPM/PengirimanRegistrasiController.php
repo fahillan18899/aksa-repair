@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\PengirimanRegistrasi;
 use Illuminate\Http\Request;
+use App\Models\Alat;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
 
@@ -86,11 +87,14 @@ class PengirimanRegistrasiController extends Controller
     public function edit($id)
     {
 
+        $alats         = Alat::all();
         $teknisis      = Teknisi::all();
         $ruangans      = Ruangan::all();
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_pengiriman', [
             
+            
+            'alats'        => $alats,
             'item' => $item,
             'teknisis'      => $teknisis,
             'ruangans'     => $ruangans,
