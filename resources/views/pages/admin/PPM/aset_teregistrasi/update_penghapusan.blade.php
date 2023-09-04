@@ -17,29 +17,7 @@
   </section>
   <!-- Main content -->
   <div class="content">
-    <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
-    <!-- alert message -->
-    <!-- content -->
-    <?php if ($alert == "tambah") { ?>
-      <div class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah ditambahkan.
-      </div>
-    <?php } else if ($alert == "hapus") { ?>
-      <div class="alert alert-danger alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah dihapus.
-      </div>
-    <?php } else if ($alert == "ubah") { ?>
-      <div class="alert alert-warning alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h5> Berhasil</h5>
-        Data sudah diubah.
-      </div>
-    <?php } ?>
     <!-- content -->
     <div class="row">
       <div class="col-sm-12">
@@ -52,9 +30,9 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="<?= BASE_URL ?>/?hal=aset_teregistrasi&fun=update_penghapusan" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('update_penghapusan.update' ,$item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
 
-                  <input type="hidden" name="kodeRs" value="<?php echo $kodeRs ?>" />
+                  <input type="hidden" name="kode_rs" value="1" />
 
 
                   <div class="form-group row">
