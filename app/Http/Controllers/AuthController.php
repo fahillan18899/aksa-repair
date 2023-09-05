@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
-use Session;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
@@ -22,50 +22,35 @@ class AuthController extends Controller
 
     public function processLogin(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'user_role' => 'required',
             'username' => 'required',
             'password' => 'required'
         ]);
-        
-        $credentials = $request->only('password');
-        $user = User::where('password', $request->password)->first();
-        if ($user) {
-            return redirect()->intended('dashboard/home')->withSuccess('Signed in');
+
+        if (!Auth::attempt(array('username' => $data['username'], 'password' => $data['password']), true)) {
+            return redirect()->intended('/dashboard');
         }
-        return Redirect('login');
 
-
-
-        // $credentials = $request->except(['_token']);
-
-        // if (auth()->attempt($credentials)) {
-        //     return redirect()->route('dashboard');
-        // }
-
-        // return redirect()->back()->with('message', 'Invalid credentials');
+        return redirect()->back()->with('message', 'Invalid credentials');
     }
 
     public function registration()
     {
-        return view('register');
+        return view('pages.auth.register');
     }
 
     public function processRegistration(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
+            'username' => 'required|string|max:255',
+            'password' => 'required|string|min:4',
             'user_role' => 'required',
-            'username' => 'required',
-            'password' => 'required'
         ]);
 
-        $user = User::create([
-            'user_role' => trim($request->user_role),
-            'username' => strtolower($request->username),
-            'password' => $request->password
-        ]);
-
-        return redirect()->route('login')->with('message', 'Your account is created');
+        $data['password'] = bcrypt($request->input('password'));
+        User::create($data);
+        return redirect()->route('login')->with('success', 'Registrasi berhasil');
     }
 
     public function logout(Request $request)

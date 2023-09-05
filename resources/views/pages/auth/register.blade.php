@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Wyasa SIMRS</title>
+  <title>Register - Wyasa SIMRS</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -37,7 +37,7 @@
 
         <div class="panel-body">
           <p class="login-box-msg text-center"></p>
-          <form action="{{ route('login-proccess') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
+          <form action="{{ url('/register') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
             @csrf
             @method('POST')
             <div class="form-group">
@@ -48,10 +48,16 @@
               <label class="control-label" for="password">Password</label>
               <input type="password" placeholder="Password" name="password" id="password" class="form-control">
             </div>
+            <div class="form-group">
+              <label class="control-label" for="user_role">Peran Pengguna</label>
+              <select name="user_role" class="form-control" id="user_role">
+                <option value="">Select Peran Pengguna</option>
+                <option value="1">Admin</option>
+              </select>
+            </div>
 
-            <input type="hidden" name="user_role" value="1">
             <div>
-              <button type="submit" class="btn btn-success">Log In</button>
+              <button type="submit" class="btn btn-success">Daftar</button>
             </div>
           </form>
         </div>
