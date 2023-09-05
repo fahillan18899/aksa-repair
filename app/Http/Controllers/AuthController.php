@@ -27,9 +27,9 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-
+        
         $credentials = $request->only('password');
-        $user = User::where('password', $credentials)->first();
+        $user = User::where('password', $request->password)->first();
         if ($user) {
             return redirect()->intended('dashboard/home')->withSuccess('Signed in');
         }
