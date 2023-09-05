@@ -322,28 +322,26 @@
                     <label for="gedung" class="col-xs-3 col-form-label">Gedung <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="ruangan" class="form-control" id="gedung">
-                        @forelse ($gedung as $item)
-                        <option value="{{ $item->nama_gedung }}">{{ $item->nama_gedung }}</option>
-                        @empty
-                        <p>Data Kosong</p>
-                        @endforelse
+                      <option>-- Pilih Gedung --</option>
+                        @forelse ($gedung as $gedung)
+                        <option value="<?= $gedung['nama_gedung']; ?>"><?= $gedung['nama_gedung']; ?></option>
+                        @endforeach
+
                       </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan <i class="text-danger">*</i></label>
+                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="kepala_ruangan" class="form-control" id="kepala_ruangan">
-                        @forelse ($teknisi as $item)
-                        <option value="{{ $item->nama_teknisi }}">{{ $item->nama_teknisi }}</option>
-                        @empty
-                        <p>Data Kosong</p>
-                        @endforelse
+                      <option>-- Pilih Teknisi --</option>
+                        @foreach($teknisi as $teknisi)
+                        <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
-
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">

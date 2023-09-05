@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PerbaikanRegistrasi;
+use App\Models\PerbaikanUnregistrasi;
+use App\Models\LembarPemeliharaan;
 
 class LaporanKegiatanController extends Controller
 {
@@ -14,7 +17,18 @@ class LaporanKegiatanController extends Controller
      */
     public function index()
     {
-        return view('pages.admin.ppm.laporan_kegiatan.index');
+        $regsitrasi          = PerbaikanRegistrasi::all();
+        $unregsitrasi        = PerbaikanUnregistrasi::all();
+        $lembarpemeliharaan  = LembarPemeliharaan::all();
+
+
+        return view('pages.admin.ppm.laporan_kegiatan.index', [
+            
+            'regsitrasi'         => $regsitrasi, 
+            'unregsitrasi'       => $unregsitrasi, 
+            'lembarpemeliharaan' => $lembarpemeliharaan, 
+        
+        ]);
     }
 
     /**

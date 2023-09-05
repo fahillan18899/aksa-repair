@@ -8,6 +8,9 @@ use \App\Models\PerbaikanUnregistrasi;
 use \App\Models\PengirimanUnregistrasi;
 use \App\Models\PengembalianUnregistrasi;
 use \App\Models\PenghapusanUnregistrasi;
+use App\Models\Ruangan;
+use App\Models\Teknisi;
+use App\Models\Alat;
 
 class PenghapusanUnregistrasiController extends Controller
 {
@@ -85,8 +88,19 @@ class PenghapusanUnregistrasiController extends Controller
      */
     public function edit($id)
     {
+
+        $alats         = Alat::all();
+        $teknisis      = Teknisi::all();
+        $ruangans      = Ruangan::all();
         $item = PenghapusanUnregistrasi::where('id_perbaikan_un', $id)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.edit_penghapusan', compact('item'));
+        return view('pages.admin.ppm.aset_unregistrasi.edit_penghapusan', [
+            
+            'alats'    => $alats,
+            'ruangans' => $ruangans,
+            'item'     => $item,
+            'teknisis' => $teknisis,
+
+        ]);
     }
 
     /**

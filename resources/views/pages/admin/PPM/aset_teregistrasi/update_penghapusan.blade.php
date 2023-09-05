@@ -118,8 +118,8 @@
                     <label for="teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="teknisi_1_reg">
+                      <option>-- Pilih Teknisi --</option>
                       @foreach($teknisis as $teknisi)
-                        <option>-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"
                         <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
                         ><?= $teknisi['nama_teknisi']; ?></option>
@@ -132,8 +132,8 @@
                     <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="teknisi_2_reg">
+                      <option>-- Pilih Teknisi --</option>
                       @foreach($teknisis as $teknisi)
-                        <option>-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"
                         <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
                         ><?= $teknisi['nama_teknisi']; ?></option>
@@ -146,8 +146,8 @@
                     <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="teknisi_3_reg">
+                      <option>-- Pilih Teknisi --</option>
                       @foreach($teknisis as $teknisi)
-                        <option>-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"
                         <?php if ($teknisi['nama_teknisi'] == $teknisi['nama_teknisi']) echo "selected" ?>
                         ><?= $teknisi['nama_teknisi']; ?></option>
