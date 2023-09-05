@@ -41,30 +41,20 @@ class StockOpnameController extends Controller
         $request->validate([
             'nama' => 'required',
             'type' => 'required',
-            'jumlah_masuk' => 'required',
-            'lokasi_pemakaian' => 'required',
-            'jumlah_keluar' => 'required',
+            'jumlah_masuk' => 'required|numeric',
+            'lokasi_pemakaian' => '',
+            'jumlah_keluar' => 'numeric',
             'tanggal_masuk' => 'required',
-            'tanggal_keluar' => 'required',
+            'tanggal_keluar' => '',
         ]);
         $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
         StockOpname::create($request->post());
 
 
         return redirect()->route('stock_opname.index')
-        ->with('success', 'registrasi has been created successfully.');
+        ->with('success', 'Data Berhasil Di Tambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -103,7 +93,7 @@ class StockOpnameController extends Controller
 
 
         return redirect()->route('stock_opname.index')
-        ->with('success', 'registrasi has been created successfully.');
+        ->with('success', 'Data Berhasil Di Ubah');
     }
 
     /**
@@ -117,6 +107,6 @@ class StockOpnameController extends Controller
         $item = StockOpname::where('id',  $id)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/stock_opname');
+        return redirect('/dashboard/ppm/stock_opname')->with('success', 'Data Berhasil Di Hapus');;
     }
 }

@@ -38,49 +38,49 @@
                   <input type="hidden" name="id" value="<?= $item['id'] ?>" />
 
                   <div class="form-group row">
-                    <label for="nama" class="col-xs-3 col-form-label">Nama Sperpart <i class="text-danger">*</i></label>
+                    <label for="nama" class="col-xs-3 col-form-label">Nama Sperpart </label>
                     <div class="col-xs-9">
                       <input name="nama" type="text" class="form-control" id="nama" placeholder="Nama Sperpart" value="<?= $item['nama'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="type" class="col-xs-3 col-form-label">Type SparePart <i class="text-danger">*</i></label>
+                    <label for="type" class="col-xs-3 col-form-label">Type SparePart </label>
                     <div class="col-xs-9">
                       <input name="type" type="text" class="form-control" id="type" placeholder="Type Alat" value="<?= $item['type'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_masuk" class="col-xs-3 col-form-label">jumlah masuk <i class="text-danger">*</i></label>
+                    <label for="jumlah_masuk" class="col-xs-3 col-form-label">jumlah masuk </label>
                     <div class="col-xs-9">
                       <input name="jumlah_masuk" class="form-control" type="number" placeholder="jumlah masuk" id="jumlah_masuk" value="<?= $item['jumlah_masuk'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian <i class="text-danger">*</i></label>
+                    <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian </label>
                     <div class="col-xs-9">
                       <input name="lokasi_pemakaian" class="form-control" type="text" placeholder="Lokasi Pemakaian" id="lokasi_pemakaian" value="<?= $item['lokasi_pemakaian'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_keluar" class="col-xs-3 col-form-label">jumlah keluar <i class="text-danger">*</i></label>
+                    <label for="jumlah_keluar" class="col-xs-3 col-form-label">jumlah keluar </label>
                     <div class="col-xs-9">
                       <input name="jumlah_keluar" class="form-control" type="number" placeholder="jumlah keluar" id="jumlah_keluar" value="<?= $item['jumlah_keluar'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk <i class="text-danger">*</i></label>
+                    <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk </label>
                     <div class="col-xs-9">
                       <input name="tanggal_masuk" class="form-control" type="date" placeholder="Tanggal Masuk" id="tanggal_masuk" value="<?= $item['tanggal_masuk'] ?>">
                     </div>
                   </div>
 
                   <div class=" form-group row">
-                    <label for="tanggal_keluar" class="col-xs-3 col-form-label">Tanggal Kelar <i class="text-danger">*</i></label>
+                    <label for="tanggal_keluar" class="col-xs-3 col-form-label">Tanggal Kelar </label>
                     <div class="col-xs-9">
                       <input name="tanggal_keluar" class="form-control" type="date" placeholder="Tanggal Kelar" id="tanggal_keluar" value="<?= $item['tanggal_keluar'] ?>">
                     </div>
