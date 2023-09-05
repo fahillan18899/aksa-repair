@@ -1,99 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<!--Fungsi-->
-<?php
-/*
-  $kodeRs_ = "RS0001";
-  //  pembuatan kode
-  $query = mysqli_query($db, "SELECT max(Id_Aset) as maxIDARS  from registrasi WHERE kode_rs = '$kodeRs_'");
-  $data = mysqli_fetch_array($query);
-  $kode = $data['maxIDARS'];
-  $urutan = (int)substr($kode, 12, 13);
-  $urutan++;
-
-  $date  = date('dmy');
-  $kode_  = $kodeRs_ . $date . sprintf("%05s", $urutan);
-
-  $alert = "";
-
-  if (isset($_GET['hapus_aset'])) {
-    $sql_hapus = "DELETE FROM `registrasi` WHERE Id_Aset='{$_GET['hapus_aset']}'";
-    mysqli_query($db, $sql_hapus);
-
-    $alert = "hapus";
-  }
-
-  if (isset($_POST['tambah_registrasi'])) {
-    $sql_tambah = "INSERT INTO registrasi (Id_Aset, Jenis_Alat, Nama_Alat,
-  Merek, Type, Serial_Number,
-  Lokasi_Alat, Tanggal_Kalibrasi, Distributor,
-  Alamat_Distributor, TLP_Distributor, Email_Distributor,
-  Teknisi_Distributor, TLP_T_Distributor, No_Sertifikat_Kalibrasi,
-  Teknisi_PPM, Harga_Perolehan, Sumber_Dana, Tahun_Pembuatan, kode_rs,
-  Tahun_Perolehan, jadwal_pemeliharaan, umur_alat,
-  no_inventaris_1, no_inventaris_2, penyusutan_aset) VALUES 
-    ('{$_POST['Id_Aset']}', '{$_POST['Jenis_Alat']}', '{$_POST['Nama_Alat']}',
-    '{$_POST['Merek']}', '{$_POST['Type']}', '{$_POST['Serial_Number']}',
-    '{$_POST['Lokasi_Alat']}','{$_POST['Tanggal_Kalibrasi']}','{$_POST['Distributor']}',
-    '{$_POST['Alamat_Distributor']}','{$_POST['TLP_Distributor']}','{$_POST['Email_Distributor']}',
-    '{$_POST['Teknisi_Distributor']}','{$_POST['TLP_T_Distributor']}','{$_POST['No_Sertifikat_Kalibrasi']}',
-    '{$_POST['Teknisi_PPM']}','{$_POST['Harga_Perolehan']}','{$_POST['Sumber_Dana']}','{$_POST['Tahun_Pembuatan']}','{$_POST['kodeRs']}',
-    '{$_POST['Tahun_Perolehan']}','{$_POST['jadwal_pemeliharaan']}','{$_POST['umur_alat']}',
-    '{$_POST['no_inventaris_1']}','{$_POST['no_inventaris_2']}','{$_POST['penyusutan_aset']}')";
-
-    mysqli_query($db, $sql_tambah);
-
-    $alert = "tambah";
-  }
-
-  $sql = "SELECT * FROM registrasi";
-  $result = mysqli_query($db, $sql);
-  ?>
-
-
- <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper">
-   <!-- Content Header (Page header) -->
-   <section class="content-header">
-
-     <div class="p-l-30 p-r-30">
-       <div class="header-icon"><i class="pe-7s-world"></i></div>
-       <div class="header-title">
-         <h1>Registrasi</h1>
-         <small>Registrasi Alat</small>
-       </div>
-     </div>
-   </section>
-   <!-- Main content -->
-   <div class="content">
-     <!-- demo mode enable alert -->
-     <div id="demoModeEnable"></div>
-     <!-- alert message -->
-
-
-
-     <?php if ($alert == "tambah") { ?>
-       <div class="alert alert-success alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah ditambahkan.
-       </div>
-     <?php } else if ($alert == "hapus") { ?>
-       <div class="alert alert-danger alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah dihapus.
-       </div>
-     <?php } else if ($alert == "ubah") { ?>
-       <div class="alert alert-warning alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah diubah.
-       </div>
-     <?php } 
-     */
-?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -110,12 +17,12 @@
   <div class="content">
     <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
-    <!-- content -->
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
       <p>{{ $message }}</p>
     </div>
     @endif
+    <!-- content -->
 
     <div class="row">
       <div class="col-sm-12">

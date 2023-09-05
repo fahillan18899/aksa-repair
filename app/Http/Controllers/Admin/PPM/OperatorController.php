@@ -27,7 +27,7 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.ppm.stock_opname.create');
+        //
     }
 
     /**
@@ -39,20 +39,16 @@ class OperatorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
-            'type' => 'required',
-            'jumlah_masuk' => 'required',
-            'lokasi_pemakaian' => 'required',
-            'jumlah_keluar' => 'required',
-            'tanggal_masuk' => 'required',
-            'tanggal_keluar' => 'required',
+            'username' => 'required|unique:users|max:255',
+            'password' => 'required|min:5',
+            'user_role' => 'numeric',
+            'kode_rs' => '',
         ]);
-        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
         User::create($request->post());
 
 
-        return redirect()->route('stock_opname.index')
-        ->with('success', 'registrasi has been created successfully.');
+        return redirect()->route('operator.index')
+        ->with('success', 'Data User Berhasil di Tambahkan.');
     }
 
     /**
@@ -74,8 +70,8 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        $item = User::where('id', $id)->first();
-        return view('pages.admin.ppm.stock_opname.update', [
+        $item = User::where('user_id', $id)->first();
+        return view('pages.admin.ppm.operator.edit', [
             'item' => $item,
         ]);
     }
@@ -89,22 +85,14 @@ class OperatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $request->validate([
-            'nama' => '',
-            'type' => '',
-            'jumlah_masuk' => '',
-            'lokasi_pemakaian' => '',
-            'jumlah_keluar' => '',
-            'tanggal_masuk' => '',
-            'tanggal_keluar' => '',
+        $request->validate(['username' => 'max:255',
+            'password' => 'min:5',
+            'user_role' => 'numeric',
         ]);
-        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
-        $stock_opname->fill($request->post())->save();
-
-
-        return redirect()->route('stock_opname.index')
-        ->with('success', 'registrasi has been created successfully.');
+        $operator = User::findOrFail($id);
+        $operator->update($request->all());
+        return redirect()->route('operator.index')
+        ->with('success', 'Data User Berhasil di Ubah');
     }
 
     /**
@@ -115,9 +103,10 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-        $item = User::where('id',  $id)->first();
+        $item = User::where('user_id',  $id)->first();
 
         $item->delete();
-        return redirect('/dashboard/ppm/stock_opname');
+        return redirect('/dashboard/ppm/operator')
+        ->with('success', 'Data User Berhasil di Hapus');
     }
 }

@@ -1,33 +1,6 @@
  @extends('layouts.admin')
 
  @section('content')
- <?php
-  if (isset($_GET['hapus_user_ppm'])) {
-    $sql_hapus = "DELETE FROM `users` WHERE id='{$_GET['hapus_user_ppm']}'";
-    mysqli_query($db, $sql_hapus);
-
-    $alert = "hapus";
-  }
-
-  if (isset($_POST['tambah_user'])) {
-    $sql_tambah = "INSERT INTO users(`id`, `firstname`, `lastname`, `username`, `password`, `user_role`, `department_id`, `picture`, `date_of_birth`, `sex`, `blood_group`, `vacation`, `facebook`, `twitter`, `youtube`, `dribbble`, `behance`, `created_by`, `create_date`, `update_date`, `status`) VALUES ('{$_POST['id']}', '{$_POST['firstname']}', '{$_POST['lastname']}','{$_POST['username']}','{$_POST['password']}','{$_POST['user_role']}','{$_POST['department_id']}','{$_POST['picture']}','{$_POST['date_of_birth']}','{$_POST['sex']}','{$_POST['blood_group']}','{$_POST['vacation']}','{$_POST['facebook']}','{$_POST['twitter']}','{$_POST['youtube']}', '{$_POST['dribbble']}','{$_POST['behance']}','{$_POST['created_by']}','{$_POST['create_date']}','{$_POST['update_date']}','{$_POST['status']}')";
-    mysqli_query($db, $sql_tambah);
-
-    $alert = "tambah";
-  }
-
-  if (isset($_POST['update_user_ppm'])) {
-    $sql_ubah = "UPDATE users SET 
-            username='{$_POST['username']}', 
-            user_role='{$_POST['user_role']}', 
-            password='{$_POST['password']}'  WHERE id='{$_POST['id']}'";
-    mysqli_query($db, $sql_ubah);
-
-    $alert = "ubah";
-  }
-
-  $alert = '';
-  ?><!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->
    <section class="content-header">
@@ -42,25 +15,11 @@
    </section>
    <!-- Main content -->
    <div class="content">
-     <?php if ($alert == "tambah") { ?>
-       <div class="alert alert-success alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah ditambahkan.
-       </div>
-     <?php } else if ($alert == "hapus") { ?>
-       <div class="alert alert-danger alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah dihapus.
-       </div>
-     <?php } else if ($alert == "ubah") { ?>
-       <div class="alert alert-warning alert-dismissible">
-         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-         <h5> Berhasil</h5>
-         Data sudah diubah.
-       </div>
-     <?php } ?>
+     @if ($message = Session::get('success'))
+     <div class="alert alert-success">
+       <p>{{ $message }}</p>
+     </div>
+     @endif
      <!-- demo mode enable alert -->
      <div id="demoModeEnable"></div>
      <!-- content -->
@@ -76,9 +35,7 @@
              <div class="row">
                <div class="col-md-9 col-sm-12">
                  <form action="{{ route('operator.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-
-
-
+                   @csrf
                    <input type="hidden" name="user_id" value="" />
 
                    <div class="form-group row">
@@ -110,7 +67,7 @@
                        <div class="ui buttons">
                          <button type="reset" class="ui button">Reset</button>
                          <div class="or"></div>
-                         <button class="ui positive button" name="tambah_user">Save</button>
+                         <button class="ui positive button">Save</button>
                        </div>
                      </div>
                    </div>
@@ -146,14 +103,14 @@
                      <tr>
                        <td>{{ $index + 1 }}</td>
                        <td>{{ $item->username }}</td>
-                       <td>{{ $item->user_role }}</td>
+                       <td> {{ $item->user_role == 9 ? "User" : "Teknisi" }}</td>
                        <td>
-                         <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info"> <i class="fa fa-edit"></i></a>
+                         <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info btn-xs"> <i class="fa fa-edit"></i></a>
 
                          <form action="{{ route('operator.destroy', $item->user_id) }}" method="POST" class="d-inline">
                            @csrf
                            @method('delete')
-                           <button class="btn btn-danger">
+                           <button class="btn btn-danger btn-xs">
                              <i class="fa fa-trash"></i>
                            </button>
                        </td>

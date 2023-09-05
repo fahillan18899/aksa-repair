@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('stock_opnames', function (Blueprint $table) {
-            $table->id('id');
+            $table->increments('id');
             $table->string('nama');
-            $table->string('type');
-            $table->string('lokasi_pemakaian');
-            $table->integer('jumlah_masuk');
-            $table->integer('jumlah_keluar');
-            $table->date('tanggal_masuk');
-            $table->date('tanggal_keluar');
+            $table->string('type')->nullable();
+            $table->string('lokasi_pemakaian')->nullable();
+            $table->integer('jumlah_masuk')->nullable();
+            $table->integer('jumlah_keluar')->nullable();
+            $table->date('tanggal_masuk')->nullable();
+            $table->date('tanggal_keluar')->nullable();
             $table->integer('stock');
             $table->string('kode_rs');
 

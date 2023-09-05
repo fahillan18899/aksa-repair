@@ -1,34 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<?php
-$alert = "";
-
-if (isset($_POST['tambah_opname'])) {
-  $stock = $_POST['jumlah_masuk'] - $_POST['jumlah_keluar'];
-  $sql_tambah = "INSERT INTO stock_opname (`id`, `nama`, `jenis`, `lokasi_pemakaian`, `jumlah_masuk`, `jumlah_keluar`, `stock`, `kode_rs`) VALUES ('{$_POST['id']}', '{$_POST['nama']}', '{$_POST['jenis']}','{$_POST['lokasi_pemakaian']}','{$_POST['jumlah_masuk']}','{$_POST['jumlah_keluar']}','$stock','{$_POST['kodeRs']}')";
-  mysqli_query($db, $sql_tambah);
-
-  $alert = "tambah";
-}
-
-if (isset($_POST['update_opname'])) {
-  $stock = $_POST['jumlah_masuk'] - $_POST['jumlah_keluar'];
-  $sql_ubah = "UPDATE stock_opname SET 
-    nama='{$_POST['nama']}', 
-    jenis='{$_POST['jenis']}', 
-    lokasi_pemakaian='{$_POST['lokasi_pemakaian']}', 
-    jumlah_masuk='{$_POST['jumlah_masuk']}', 
-    stock='$stock', 
-    jumlah_keluar='{$_POST['jumlah_keluar']}'
-    WHERE id='{$_POST['id']}'";
-  mysqli_query($db, $sql_ubah);
-
-  $alert = "ubah";
-}
-
-?>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -50,6 +22,12 @@ if (isset($_POST['update_opname'])) {
     <!-- alert message -->
 
     <!-- content -->
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
+
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
@@ -61,25 +39,6 @@ if (isset($_POST['update_opname'])) {
           </div>
 
           <div class="panel-body panel-form">
-            <?php if ($alert == "tambah") { ?>
-              <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5> Berhasil</h5>
-                Data sudah ditambahkan.
-              </div>
-            <?php } else if ($alert == "hapus") { ?>
-              <div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5> Berhasil</h5>
-                Data sudah dihapus.
-              </div>
-            <?php } else if ($alert == "ubah") { ?>
-              <div class="alert alert-warning alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h5> Berhasil</h5>
-                Data sudah diubah.
-              </div>
-            <?php } ?>
             <div class="row">
               <div class="col-md-12 col-sm-12">
 
@@ -112,11 +71,11 @@ if (isset($_POST['update_opname'])) {
                       <td>{{ $item->tanggal_keluar}}</td>
                       <td>{{ $item->stock}}</td>
                       <td>
-                        <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info"> <i class="fa fa-edit  "></i> </a>
+                        <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info  btn-xs"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="btn btn-danger">
+                          <button class="btn btn-danger btn-xs">
                             <i class="fa fa-trash"></i>
                           </button>
                         </form>
@@ -124,7 +83,7 @@ if (isset($_POST['update_opname'])) {
                     </tr>
                     @empty
                     <tr>
-                      <td class="text-center" colspan="7">Data Kosong</td>
+                      <td class="text-center" colspan="10">Data Kosong</td>
                     </tr>
                     @endforelse
                   </tbody>
@@ -137,8 +96,8 @@ if (isset($_POST['update_opname'])) {
         </div>
       </div>
     </div>
+  </div>
 
 
-  </div> <!-- /.content -->
-</div> <!-- /.content-wrapper -->
+</div> <!-- /.content -->
 @endsection

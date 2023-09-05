@@ -21,7 +21,7 @@
     <!-- alert message -->
     <!-- content -->
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="panel panel-default" id="js-timer">
           <div class="panel-body">
             <div class="widget-title">
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="panel panel-default" id="js-timer">
           <div class="panel-body">
             <div class="widget-title">
@@ -55,7 +55,7 @@
 
     <!-- content -->
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="panel panel-default" id="js-timer">
           <div class="panel-body">
             <div class="widget-title">
@@ -69,12 +69,7 @@
           </div> <!-- /.panel-body -->
         </div>
       </div>
-
-    </div> <!-- /.content -->
-
-    <!-- content -->
-    <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <div class="panel panel-default" id="js-timer">
           <div class="panel-body">
             <div class="widget-title">
