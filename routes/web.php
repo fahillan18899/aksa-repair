@@ -54,10 +54,14 @@ Route::prefix('dashboard')->group(function () {
         Route::resource('/data_inventaris', DashboardController::class);
         Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('/aset_non_alkes', DashboardController::class);
-        Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
         Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('/analisis_data', AnalisisDataController::class);
 
+        // Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
+        Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'state']);
+        Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'store'])->name('jadwal_pemeliharaan.store');
+        Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'city']);
+        
         Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
         Route::get('/data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
         Route::get('/data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
