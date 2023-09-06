@@ -7,9 +7,9 @@
         <img src="{{ url('assets_web/img/placeholder/profile.png') }}" class="img-circle" alt="User Image">
       </div>
       <div class="info">
-        <p> </p>
+        <p>{{ Auth::user()->username }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i>
-          Admin </a>
+          {{ Auth::user()->user_role = "1" ? "Admin" : ""  }} </a>
       </div>
     </div>
 

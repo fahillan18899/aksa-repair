@@ -42,8 +42,6 @@
                 <form action="{{ url('/dashboard/ppm/gedung') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
 
-                  <input type="hidden" name="kode_rs" value="RS0001" />
-
                   <div class="form-group row">
                     <label for="id_gedung" class="col-xs-3 col-form-label">ID Gedung</label>
                     <div class="col-xs-9">
@@ -322,7 +320,7 @@
                     <label for="gedung" class="col-xs-3 col-form-label">Gedung <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="ruangan" class="form-control" id="gedung">
-                      <option>-- Pilih Gedung --</option>
+                        <option>-- Pilih Gedung --</option>
                         @forelse ($gedung as $gedung)
                         <option value="<?= $gedung['nama_gedung']; ?>"><?= $gedung['nama_gedung']; ?></option>
                         @endforeach
@@ -335,7 +333,7 @@
                     <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="kepala_ruangan" class="form-control" id="kepala_ruangan">
-                      <option>-- Pilih Teknisi --</option>
+                        <option>-- Pilih Teknisi --</option>
                         @foreach($teknisi as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach

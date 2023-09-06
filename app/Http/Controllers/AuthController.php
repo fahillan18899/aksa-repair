@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         $credentials = $request->only('username', 'password');
@@ -48,6 +48,7 @@ class AuthController extends Controller
             'username' => 'required|string|max:255',
             'password' => 'required|string|min:4',
             'user_role' => 'required',
+            'kode_rs' => 'required',
         ]);
 
         $data['password'] = bcrypt($request->input('password'));
