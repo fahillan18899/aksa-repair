@@ -34,10 +34,6 @@
                 <form action="{{ route('stock_opname.store') }}" class="form-inner" method="post" accept-charset="utf-8">
                   @csrf
                   @method('POST')
-
-
-                  <input type="hidden" name="kode_rs" value="as" />
-
                   <div class="form-group row">
                     <label for="nama" class="col-xs-3 col-form-label">Nama Sperpart <i class="text-danger">*</i></label>
                     <div class="col-xs-9">

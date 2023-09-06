@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\StockOpname;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StockOpnameController extends Controller
 {
@@ -15,7 +16,7 @@ class StockOpnameController extends Controller
      */
     public function index()
     {
-        $items = StockOpname::all();
+        $items = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.ppm.stock_opname.index', ['items' => $items]);
     }
@@ -47,6 +48,7 @@ class StockOpnameController extends Controller
             'tanggal_masuk' => 'required',
             'tanggal_keluar' => '',
         ]);
+        $request['kode_rs'] = Auth::user()->kode_rs;
         $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
         StockOpname::create($request->post());
 
@@ -64,7 +66,7 @@ class StockOpnameController extends Controller
      */
     public function edit($id)
     {
-        $item = StockOpname::where('id', $id)->first();
+        $item = StockOpname::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.stock_opname.update', [
             'item' => $item,
         ]);
@@ -104,7 +106,7 @@ class StockOpnameController extends Controller
      */
     public function destroy($id)
     {
-        $item = StockOpname::where('id',  $id)->first();
+        $item = StockOpname::where('id',  $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect('/dashboard/ppm/stock_opname')->with('success', 'Data Berhasil Di Hapus');;
