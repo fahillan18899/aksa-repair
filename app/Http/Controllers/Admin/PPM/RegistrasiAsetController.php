@@ -61,7 +61,7 @@ class RegistrasiAsetController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'id_aset' => 'required',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
@@ -88,7 +88,18 @@ class RegistrasiAsetController extends Controller
             'no_inventaris_2' => '',
             'penyusutan_aset' => ''
         ]);
-        Registrasi::create($request->post());
+
+        $data['umur_alat'] = date("Y") - $data['tahun_perolehan'];
+        function hitung($tahunPenyusutan, $harga_perolehan)
+        {
+            $b = 100 / $tahunPenyusutan;
+            $c = $b / 12;
+            $nilai =  $c / 100 * $harga_perolehan;
+            return $nilai;
+        }
+        $data['penyusutan_aset'] = hitung($data['umur_alat'], $data['tahun_perolehan']);
+
+        Registrasi::create($data);
 
 
         return redirect()->route('registrasi.index')
@@ -131,9 +142,9 @@ class RegistrasiAsetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registrasi $registrasi)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+        $data = $request->validate([
             'jenis_alat' => '',
             'nama_alat' => '',
             'merek' => '',
@@ -159,8 +170,18 @@ class RegistrasiAsetController extends Controller
             'no_inventaris_2' => '',
             'penyusutan_aset' => ''
         ]);
+        $data['umur_alat'] = date("Y") - $request->tahun_perolehan;
+        function hitungPenyusutan($tahunPenyusutan, $harga_perolehan)
+        {
+            $b = 100 / $tahunPenyusutan;
+            $c = $b / 12;
+            $nilai =  $c / 100 * $harga_perolehan;
+            return $nilai;
+        }
+        $data['penyusutan_aset'] = hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
 
-        $registrasi->fill($request->post())->save();
+        $registrasi = Registrasi::findOrFail($id);
+        $registrasi->update($data);
 
 
         return redirect()->route('registrasi.index')
