@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@section('title', 'Edit Perbaikan Reg')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->

@@ -1,5 +1,6 @@
  @extends('layouts.admin')
 
+ @section('title', 'Edit Operator')
  @section('content')
  <div class="content-wrapper">
    <!-- Content Header (Page header) -->

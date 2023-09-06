@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-@section('content')<!-- Content Wrapper. Contains page content -->
+@section('content')
+@section('title', 'Aset Teregistrasi')
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">

@@ -2,6 +2,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@section('title', 'Edit Pengiriman Reg')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">

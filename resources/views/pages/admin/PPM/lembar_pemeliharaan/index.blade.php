@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@section('title', 'Lembar Pemeliharaan')
 <?php
 $alert = "";
 ?>

@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
-@section('content')<div class="content-wrapper">
+@section('content')
+@section('title', 'Edit Ruangan')
+<div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
 

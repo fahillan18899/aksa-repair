@@ -2,6 +2,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@section('title', 'Laporan Kegiatan')
 <?php
 
 ?>
