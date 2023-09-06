@@ -22,17 +22,19 @@ class AuthController extends Controller
 
     public function processLogin(Request $request)
     {
-        $data = $request->validate([
-            'user_role' => 'required',
+
+        $request->validate([
             'username' => 'required',
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt(array('username' => $data['username'], 'password' => $data['password']), true)) {
-            return redirect()->intended('/dashboard');
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('/dashboard/home')
+            ->withSuccess('Signed in');
         }
 
-        return redirect()->back()->with('message', 'Invalid credentials');
+        return redirect("/")->withSuccess('Login details are not valid');
     }
 
     public function registration()

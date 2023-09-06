@@ -607,7 +607,7 @@ hr {
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: #031c30;
+    background-color: #042a4a;
     color: #fff;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     -webkit-transition: width 0.3s ease-in-out;
@@ -798,7 +798,7 @@ hr {
     transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-    background-color: #031c30;
+    background-color: #042a4a;
 }
 
 @media (max-width: 767px) {
@@ -926,7 +926,7 @@ hr {
 .sidebar-menu > li:hover > a,
 .sidebar-menu > li.active > a {
     color: #fff;
-    background: #33383e;
+    background: #064579;
 }
 
 .sidebar-menu > li > a > .fa,
@@ -975,7 +975,7 @@ hr {
     padding: 5px 0 10px;
     margin: 0;
     padding-left: 35px;
-    background-color: #031c30;
+    background-color:#031c30;
 }
 
 .sidebar-menu .treeview-menu:before {
@@ -1138,14 +1138,14 @@ hr {
 
 .sidebar-form {
     border-radius: 3px;
-    border: 1px solid #031c30;
+    border: 1px solid #042a4a;
     margin: 10px 10px;
 }
 
 .sidebar-form input[type="text"],
 .sidebar-form .btn {
     box-shadow: none;
-    background-color: #031c30;
+    background-color: #042a4a;
     border: 1px solid transparent;
     height: 35px;
 }
