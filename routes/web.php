@@ -45,7 +45,7 @@ use App\Http\Controllers\UserController;
 // });
 
 
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('ppm')->group(function () {
@@ -185,7 +185,7 @@ Route::prefix('dashboard')->group(function () {
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
-Route::post('login', [AuthController::class, 'processLogin'])->name('login-proccess');
+Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess');
 Route::get('/register', [AuthController::class, 'registration'])->name('register');
 Route::post('/register', [AuthController::class, 'processRegistration']);
 
