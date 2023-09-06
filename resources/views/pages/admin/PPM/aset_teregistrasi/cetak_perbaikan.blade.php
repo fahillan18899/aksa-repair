@@ -109,7 +109,7 @@
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                      <td><?php echo $item['teknisi_1_reg'] ?></td>
                       <td><?php echo $item['ka_instalasi_reg'] ?></td>
                     </tr>
                     <tr>
