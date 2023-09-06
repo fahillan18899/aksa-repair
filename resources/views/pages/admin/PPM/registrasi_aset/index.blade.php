@@ -262,6 +262,7 @@
         <th>Tahun_Perolehan</th>
         <th>No._Inventaris </th>
         <th>umur_alat</th>
+        <th>Penyusutan Aset</th>
         <th>Jadwal</th>
         <th>QR</th>
         <th>Tombol_Aksi_Tabel</th>
@@ -286,11 +287,12 @@
           <td>{{ $item->tlp_t_distributor }}</td>
           <td>{{ $item->no_sertifikat_kalibrasi }}</td>
           <td>{{ $item->teknisi_ppm }}</td>
-          <td>{{ $item->harga_perolehan }}</td>
+          <td>{{ "Rp " . number_format($item->harga_perolehan,0,',','.'); }}</td>
           <td>{{ $item->sumber_dana }}</td>
           <td>{{ $item->tahun_perolehan }}</td>
           <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
-          <td>{{ $item->umur_alat }}</td>
+          <td>{{ $item->umur_alat }} Tahun</td>
+          <td>{{ "Rp " . number_format($item->penyusutan_aset,3,'.','.');  }}</td>
           <td>{{ $item->jadwal_pemeliharaan }}</td>
           <td>
             <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
@@ -309,7 +311,7 @@
         </tr>
         @empty
         <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
+          <td class="text-center" colspan="12">Data Kosong</td>
         </tr>
         @endforelse
       </tbody>
