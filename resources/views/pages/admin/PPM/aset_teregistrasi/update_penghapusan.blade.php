@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', 'Edit Penghapusan Reg')
 @section('content')
 
 <!-- Content Wrapper. Contains page content -->

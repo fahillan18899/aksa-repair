@@ -1,6 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 @extends('layouts.admin')
-
+@section('title', 'Cetak Pengembalian Reg')
 @section('content')
 <div class="content-wrapper">
   <!-- Main content -->

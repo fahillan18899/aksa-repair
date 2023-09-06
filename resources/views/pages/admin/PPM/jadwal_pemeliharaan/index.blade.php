@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@section('title', 'Jadwal Pemeliharaan')
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

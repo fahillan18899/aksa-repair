@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title', 'Edit Pengembalian Reg')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
