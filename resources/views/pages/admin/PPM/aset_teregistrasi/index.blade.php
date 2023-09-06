@@ -718,8 +718,9 @@
         <th scope="col">Keterangan_Kondisi_Alat</th>
         <th scope="col">Penerima</th>
         <th scope="col">Harga_Perbaikan</th>
-        <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_1</th>
+        <th scope="col">Teknisi_2</th>
+        <th scope="col">Teknisi_3</th>
         <th scope="col">KA_Instalasi</th>
         <th scope="col">Penyebab_Kerusakan</th>
         <th scope="col">Solusi_Perbaikan</th>
@@ -748,6 +749,7 @@
           <td>{{ $item->harga_perbaikan_reg }}</td>
           <td>{{ $item->teknisi1_reg }}</td>
           <td>{{ $item->teknisi2_reg }}</td>
+          <td>{{ $item->teknisi3_reg }}</td>
           <td>{{ $item->ka_instalasi_reg }}</td>
           <td>{{ $item->penyebab_kerusakan_reg }}</td>
           <td>{{ $item->solusi_perbaikan_reg }}</td>

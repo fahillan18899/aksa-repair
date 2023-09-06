@@ -641,7 +641,7 @@ $alert = "";
                   <td class="table-primary" rowspan="3"><b>Tanggal_Pemeliharaan</b></td>
                   <td class="table-primary" rowspan="3"><b>Kegiatan</b></td>
                   <td class="table-primary" rowspan="3"><b>Engineer</b></td>
-                  <td class="table-info" colspan="7" align="center"><b>Data_Alat</b></td>
+                  <td class="table-info" colspan="6" align="center"><b>Data_Alat</b></td>
                   <td class="table-success" colspan="7" align="center"><b>Persiapan</b></td>
                   <td class="table-active" colspan="18" align="center"><b>pemantauan_fisik_&_fungsi</b></td>
                   <td class="table-danger" colspan="5" align="center"><b>pemeliharaan_preventife</b></td>
@@ -663,7 +663,6 @@ $alert = "";
                   <td class="table-info" rowspan="2"><b>Nama_Alat</b></td>
                   <td class="table-info" rowspan="2"><b>Serial_Number</b></td>
                   <td class="table-info" rowspan="2"><b>Merek</b></td>
-                  <td class="table-info" rowspan="2"><b>Instalasi</b></td>
                   <td class="table-info" rowspan="2"><b>Tipe</b></td>
                   <td class="table-info" rowspan="2"><b>Ruangan</b></td>
                   <td class="table-success" rowspan="2"><b>Hand_Hygiene</b></td>
@@ -725,7 +724,6 @@ $alert = "";
                   <td>{{ $item->nama_alat }}</td>
                   <td>{{ $item->serial_number }}</td>
                   <td>{{ $item->merek }}</td>
-                  <td>{{ $item->instalasi }}</td>
                   <td>{{ $item->tipe }}</td>
                   <td>{{ $item->ruangan }}</td>
                   <td>{{ $item->hand_hygiene }}</td>

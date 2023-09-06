@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                       <th width="50%">Keterangan_Penggudangan</th>
-                      <td><?php echo $item['pelapor_reg'] ?></td>
+                      <td><?php echo $item['keterangan_pengguna_reg'] ?></td>
                     </tr>
                     <tr>
                       <th width="50%"><br></th>
