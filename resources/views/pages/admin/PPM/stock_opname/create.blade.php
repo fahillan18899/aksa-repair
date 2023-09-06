@@ -67,7 +67,7 @@
                   <div class="form-group row">
                     <label for="jumlah_keluar" class="col-xs-3 col-form-label">jumlah keluar </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_keluar" class="form-control" type="text" placeholder="jumlah keluar" id="jumlah_keluar" value="0">
+                      <input name="jumlah_keluar" class="form-control" type="number" placeholder="jumlah keluar" id="jumlah_keluar" value="">
                     </div>
                   </div>
 

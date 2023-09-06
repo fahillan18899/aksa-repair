@@ -54,9 +54,9 @@
                     <div class="col-xs-9">
                       <select name="jenis_alat" class="form-control" id="Jenis_Alat">
                         <option value="">Pilih Jenis Alat</option>
-                        <option value="Medis" <?php if ($item['Jenis_Alat'] == 'Medis') echo "selected" ?>>Medis</option>
-                        <option value="Non Medis" <?php if ($item['Jenis_Alat'] == 'Non Medis') echo "selected" ?>>Non Medis</option>
-                        <option value="Milik KSO" <?php if ($item['Jenis_Alat'] == 'Milik KSO') echo "selected" ?>>Milik KSO</option>
+                        <option value="Medis" <?php if ($item['jenis_alat'] == 'Medis') echo "selected" ?>>Medis</option>
+                        <option value="Non Medis" <?php if ($item['jenis_alat'] == 'Non Medis') echo "selected" ?>>Non Medis</option>
+                        <option value="Milik KSO" <?php if ($item['jenis_alat'] == 'Milik KSO') echo "selected" ?>>Milik KSO</option>
                       </select>
                     </div>
                   </div>

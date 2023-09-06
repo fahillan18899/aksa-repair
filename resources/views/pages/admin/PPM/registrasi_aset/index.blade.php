@@ -57,9 +57,9 @@
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="jenis_alat" class="form-control" id="Jenis_Alat">
-                        <option value="medis">Medis</option>
-                        <option value="nonmedis">Non Medis</option>
-                        <option value="milik_kso">Milik KSO</option>
+                        <option value="Medis">Medis</option>
+                        <option value="Non Medis">Non Medis</option>
+                        <option value="Milik KSO">Milik KSO</option>
                       </select>
                     </div>
                   </div>

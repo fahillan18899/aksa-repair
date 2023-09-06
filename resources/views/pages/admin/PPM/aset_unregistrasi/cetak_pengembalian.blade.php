@@ -119,7 +119,7 @@
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td></td>
+                      <td><?php echo $item ['teknisi_1_un'] ?></td>
                       <td></td>
                     </tr>
 
