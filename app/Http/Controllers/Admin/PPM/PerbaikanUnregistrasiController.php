@@ -114,12 +114,14 @@ class PerbaikanUnregistrasiController extends Controller
     {
         $teknisis      = Teknisi::all();
         $ruangans      = Ruangan::all();
+        $alats         = Alat::all();
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->first();
         return view('pages.admin.ppm.aset_unregistrasi.edit_perbaikan', [
             
             'ruangans'     => $ruangans,
             'item'     => $item,
             'teknisis'      => $teknisis,
+            'alats'        => $alats,
         ]);
     }
 
