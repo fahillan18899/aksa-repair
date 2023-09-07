@@ -54,11 +54,7 @@
         </a>
         <ul class="treeview-menu">
 
-          <li class=""><a href="#?hal=patient&fun=create">Tambahkan Pasien</a></li>
-          <li class=""><a href="#?hal=patient&fun=index">Daftar Pasien</a></li>
-          <li class=""><a href="#?hal=patient&fun=import_csv_data">Import Data CSV </a></li>
-          <li class=""><a href="#?hal=patient&fun=document_form">Tambahkan Dokumen</a></li>
-          <li class=""><a href="#?hal=patient&fun=document">Daftar Dokumen</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/lembar_kerja') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
 
