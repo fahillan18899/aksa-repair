@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AnalisisDataController extends Controller
@@ -15,41 +16,50 @@ class AnalisisDataController extends Controller
      */
     public function index()
     {
+        $kode_rs = Auth::user()->kode_rs;
 
         $t5 = DB::table('registrasis')
         ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
         ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) < 5')
+            ->whereRaw("kode_rs = '$kode_rs'")
         ->count();
+
 
         $t5_ = DB::table('registrasis')
         ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
         ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) > 5 AND (YEAR(CURDATE()) - tahun_perolehan) <= 10')
+            ->whereRaw("kode_rs = '$kode_rs'")
         ->count();
 
         $t10 = DB::table('registrasis')
         ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
         ->whereRaw('(YEAR(CURDATE()) - tahun_perolehan) >= 10')
+            ->whereRaw("kode_rs = '$kode_rs'")
         ->count();
 
         $semuaAlat = DB::table('registrasis')
         ->select(DB::raw('(YEAR(CURDATE()) - tahun_perolehan) AS umurAlat'))
+            ->whereRaw("kode_rs = '$kode_rs'")
         ->get();
 
         $registered = DB::table('registrasis')
         ->whereNotNull('tanggal_kalibrasi')
         ->where('tanggal_kalibrasi', '!=', '-')
+            ->whereRaw("kode_rs = '$kode_rs'")
             ->count();
 
         $unRegistered = DB::table('registrasis')
         ->where('tanggal_kalibrasi', '-')
+            ->whereRaw("kode_rs = '$kode_rs'")
             ->count();
 
         $terpelihara = DB::table('registrasis')
-        ->join('lembar_pemeliharaans', 'registrasis.Id_Aset', '=', 'lembar_pemeliharaans.id_aset')
-        ->select('registrasis.Id_Aset')
+            ->join('lembar_pemeliharaans', 'registrasis.id_aset', '=', 'lembar_pemeliharaans.id_aset')
+            ->select('registrasis.id_aset')
+            ->whereRaw("registrasis.kode_rs = '$kode_rs'")
         ->get();
 
-        $unTerpelihara = DB::table('registrasis')->count() - count($terpelihara);
+        $unTerpelihara = DB::table('registrasis')->whereRaw("registrasis.kode_rs = '$kode_rs'")->count() - count($terpelihara);
 
         return view(
             'pages.admin.ppm.analisis_data.index',
@@ -64,71 +74,5 @@ class AnalisisDataController extends Controller
                 'unTerpelihara' => $unTerpelihara,
             ]
         );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

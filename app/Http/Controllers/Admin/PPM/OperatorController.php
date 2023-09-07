@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class OperatorController extends Controller
 {
@@ -15,7 +16,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $items = User::all();
+        $items = User::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.ppm.operator.index', ['items' => $items]);
     }
@@ -42,8 +43,8 @@ class OperatorController extends Controller
             'username' => 'required|unique:users|max:255',
             'password' => 'required|min:5',
             'user_role' => 'numeric',
-            'kode_rs' => '',
         ]);
+        $request['kode_rs'] = Auth::user()->kode_rs;
         User::create($request->post());
 
 
@@ -70,7 +71,7 @@ class OperatorController extends Controller
      */
     public function edit($id)
     {
-        $item = User::where('user_id', $id)->first();
+        $item = User::where('user_id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.operator.edit', [
             'item' => $item,
         ]);
@@ -103,7 +104,7 @@ class OperatorController extends Controller
      */
     public function destroy($id)
     {
-        $item = User::where('user_id',  $id)->first();
+        $item = User::where('user_id',  $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect('/dashboard/ppm/operator')

@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Wyasa SIMRS</title>
+  <title>Login - Wyasa Kalibrasi</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -38,7 +38,7 @@
 
         <div class="panel-body">
           <p class="login-box-msg text-center"></p>
-          <form action="{{ route('login-proccess') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
+          <form action="{{ route('login-proccess-kalibrasi') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
             @csrf
             @method('POST')
             <div class="form-group">
@@ -52,10 +52,8 @@
             <div class="form-group">
               <label class="control-label" for="kode_rs">Fasilitas Kesehatan</label>
               <select name="kode_rs" class="form-control" id="kode_rs">
-                <option value="">Select Peran Pengguna</option>
+                <option value="">Select Fasilitas Kesehatan</option>
                 <option value="RS0001">RS Demo</option>
-                <option value="RS0002">RSI Wonosobo</option>
-                <option value="RS0003">RS Panti Wilasa</option>
               </select>
             </div>
             <div class="form-group">
@@ -70,7 +68,6 @@
 
             <div>
               <button type="submit" class="btn btn-success">Log In</button>
-              <a href="/kalibrasi/login">Wyasa Kalibrasi</a>
             </div>
           </form>
         </div>

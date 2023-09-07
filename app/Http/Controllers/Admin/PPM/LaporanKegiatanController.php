@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\PerbaikanRegistrasi;
 use App\Models\PerbaikanUnregistrasi;
 use App\Models\LembarPemeliharaan;
+use Illuminate\Support\Facades\Auth;
 
 class LaporanKegiatanController extends Controller
 {
@@ -17,9 +18,9 @@ class LaporanKegiatanController extends Controller
      */
     public function index()
     {
-        $regsitrasi          = PerbaikanRegistrasi::all();
-        $unregsitrasi        = PerbaikanUnregistrasi::all();
-        $lembarpemeliharaan  = LembarPemeliharaan::all();
+        $regsitrasi          = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $unregsitrasi        = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $lembarpemeliharaan  = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
 
         return view('pages.admin.ppm.laporan_kegiatan.index', [

@@ -37,7 +37,6 @@
                <div class="col-md-9 col-sm-12">
                  <form action="{{ route('operator.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                    @csrf
-                   <input type="hidden" name="user_id" value="" />
 
                    <div class="form-group row">
                      <label for="username" class="col-xs-3 col-form-label">Username <i class="text-danger">*</i></label>

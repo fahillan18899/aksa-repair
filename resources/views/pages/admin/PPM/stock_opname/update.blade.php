@@ -34,9 +34,6 @@
                 <form action="{{ route('stock_opname.update', $item->id) }}" class="form-inner" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-
-
-                  <input type="hidden" name="kode_rs" value="asd" />
                   <input type="hidden" name="id" value="<?= $item['id'] ?>" />
 
                   <div class="form-group row">
