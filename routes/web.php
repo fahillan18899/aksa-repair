@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
+use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
 use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
 use App\Http\Controllers\AuthKalibrasiController;
 use App\Http\Controllers\UserController;
@@ -200,6 +201,7 @@ Route::prefix('kalibrasi')->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
+    Route::resource('berita_acara', BeritaAcaraController::class);
 
 
 

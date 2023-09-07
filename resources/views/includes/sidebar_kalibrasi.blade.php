@@ -82,11 +82,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-
-          <li class=""><a href="#?hal=pharmacy&fun=category_form"> Tambahkan Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=category_index">Daftar Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_form"> Tambahkan Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_index">Daftar Obat</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/berita_acara') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
 
