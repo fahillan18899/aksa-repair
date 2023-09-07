@@ -7,6 +7,7 @@ use App\Models\Gedung;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RuanganController extends Controller
 {
@@ -53,7 +54,7 @@ class RuanganController extends Controller
             'ruangan' => $request->ruangan,
             'kepala_ruangan' => $request->kepala_ruangan,
             'lokasi_alat' => $lokasi_alat,
-            'kode_rs' => $request->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
         ]);
 
 
@@ -106,7 +107,6 @@ class RuanganController extends Controller
             'ruangan_alat' => '',
             'ruangan' => '',
             'lokasi_alat' => $lokasi_alat,
-            'kode_rs' => ''
         ]);
 
         $ruangan->fill($request->post())->save();
@@ -122,9 +122,9 @@ class RuanganController extends Controller
      * @param  \App\Models\Ruangan  $ruangan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($ruangan)
+    public function destroy($id)
     {
-        $item = Ruangan::where('id_ruangan',  $ruangan)->first();
+        $item = Ruangan::where('id_ruangan', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Ruangan Berhasil Di Hapus.');

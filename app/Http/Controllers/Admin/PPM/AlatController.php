@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AlatController extends Controller
 {
@@ -45,7 +46,7 @@ class AlatController extends Controller
         Alat::create([
             'id_alat' => $request->id_alat,
             'nama_alat' => $request->nama_alat,
-            'kode_rs' => $request->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
         ]);
 
         return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Data Alat Berhasil di Tambahkan.');
@@ -86,7 +87,6 @@ class AlatController extends Controller
         $request->validate([
             'id_alat' => '',
             'nama_alat' => '',
-            'kode_rs' => '',
         ]);
 
         $alat->fill($request->post())->save();
@@ -104,7 +104,8 @@ class AlatController extends Controller
      */
     public function destroy($id)
     {
-        $item = Alat::where('id_alat', $id)->first();
+        $item = Alat::where('id_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        
 
         $item->delete();
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Alat Berhasil Di Hapus.');

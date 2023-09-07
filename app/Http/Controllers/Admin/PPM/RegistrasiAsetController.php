@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrasiAsetController extends Controller
 {
@@ -98,6 +99,7 @@ class RegistrasiAsetController extends Controller
             return $nilai;
         }
         $data['penyusutan_aset'] = hitung($data['umur_alat'], $data['tahun_perolehan']);
+        $data['kode_rs'] =  Auth::user()->kode_rs;
 
         Registrasi::create($data);
 
@@ -196,7 +198,8 @@ class RegistrasiAsetController extends Controller
      */
     public function destroy($id)
     {
-        $item = Registrasi::where('id_aset',  $id)->first();
+
+        $item = Registrasi::where('id_aset', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect()->route('registrasi.index')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');

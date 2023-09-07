@@ -8,6 +8,7 @@ use App\Models\PerbaikanRegistrasi;
 use App\Models\PerbaikanUnregistrasi;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -34,7 +35,7 @@ class HomeController extends Controller
 
     function dataInventaris()
     {
-        $items = Registrasi::all();
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.ppm.data_inventaris.index', ['items' => $items]);
     }

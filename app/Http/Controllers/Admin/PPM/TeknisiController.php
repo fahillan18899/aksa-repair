@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeknisiController extends Controller
 {
@@ -45,7 +46,7 @@ class TeknisiController extends Controller
         Teknisi::create([
             'id_teknisi' => $request->id_teknisi,
             'nama_teknisi' => $request->nama_teknisi,
-            'kode_rs' => $request->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
         ]);
 
         return redirect('/dashboard/ppm/data_kelengkapan')
@@ -87,7 +88,6 @@ class TeknisiController extends Controller
         $request->validate([
             'id_teknisi' => '',
             'nama_teknisi' => '',
-            'kode_rs' => '',
         ]);
 
         $teknisi->fill($request->post())->save();
@@ -105,7 +105,8 @@ class TeknisiController extends Controller
      */
     public function destroy($id)
     {
-        $item = Teknisi::where('id_teknisi',  $id)->first();
+
+        $item = Teknisi::where('id_teknisi', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Teknisi Berhasil Di Hapus.');

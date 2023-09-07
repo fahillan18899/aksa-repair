@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Models\Gedung;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GedungController extends Controller
 {
@@ -36,16 +37,15 @@ class GedungController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'id_gedung' => 'required',
             'nama_gedung' => 'required',
-            'kode_rs' => 'required',
         ]);
 
         Gedung::create([
             'id_gedung' => $request->id_gedung,
             'nama_gedung' => $request->nama_gedung,
-            'kode_rs' => $request->kode_rs,
+            'kode_rs'  => Auth::user()->kode_rs,
         ]);
 
         return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Data Gedung Berhasil di Tambahkan.');
@@ -86,7 +86,6 @@ class GedungController extends Controller
         $request->validate([
             'id_alat' => '',
             'nama_alat' => '',
-            'kode_rs' => '',
         ]);
 
         $gedung->fill($request->post())->save();
@@ -104,7 +103,8 @@ class GedungController extends Controller
      */
     public function destroy($id)
     {
-        $item = Gedung::where('id_gedung',  $id)->first();
+
+        $item = Gedung::where('id_gedung', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Gedung Berhasil Di Hapus.');
