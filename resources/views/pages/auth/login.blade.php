@@ -70,7 +70,7 @@
 
             <div>
               <button type="submit" class="btn btn-success">Log In</button>
-              <a href="/kalibrasi/login">Wyasa Kalibrasi</a>
+              <a href="/kalibrasi/">Wyasa Kalibrasi</a>
             </div>
           </form>
         </div>
