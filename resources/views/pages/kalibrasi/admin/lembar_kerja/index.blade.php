@@ -652,6 +652,32 @@
                   </div>
 
 
+                  <table class="table table-hover table-bordered " id="scollDatatable" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <td class="table-info" colspan="1" align="center"><b>Data_Alat</b></td>
+                        <td class="table-success" colspan="3" align="center"><b>Persiapan</b></td>
+                        <td class="table-info" colspan="2" rowspan="2" align="center"><b>Data_Alat</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" rowspan="2"><b>Id_Aset_Registrasi</b></td>
+                        <td class="table-success" rowspan="2"><b>Hand_Hygiene</b></td>
+                        <td class="table-success" rowspan="2"><b>Menyiapkan_Alat_&_Bahan_Kerja</b></td>
+                        <td class="table-success" rowspan="1"><b>Menyiapkan_Alat_&_Bahan_Kerja</b></td>
+                        <td class="table-success" rowspan="1"></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text"  style="border: 0" placeholder="id"></td>
+                        <td><input type="text"  style="border: 0" placeholder="id"></td>
+                        <td><input type="text"  style="border: 0" placeholder="id"></td>
+                        <td><input type="text"  style="border: 0" placeholder="id"></td>
+                        <td><input type="text"  style="border: 0" placeholder="id"></td>+
+                      </tr>
+                    </tbody>
+
+                  </table>
 
 
 
