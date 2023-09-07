@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('nama_instansi')->nullable();
             $table->string('tempat_kalibrasi')->nullable();
             $table->date('tanggal')->nullable();
+            $table->string('nama_petugas')->nullable();
+            $table->string('rentang_ukur')->nullable();
+            $table->string('milik')->nullable();
             /**Pendataan Alat */
                 /**Daftar alat yang digunakan */
                 $table->date('merek_1')->nullable();
