@@ -198,13 +198,15 @@ Route::post('logout', [AuthController::class, 'logout'])
 ->name('logout')
 ->middleware('auth');
 
-
+/**Kalibrasi */
 Route::prefix('kalibrasi')->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
     Route::resource('berita_acara', BeritaAcaraController::class);
     Route::resource('lembar_kerja', LembarKerjaController::class);
+    Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
+
 
 
 
