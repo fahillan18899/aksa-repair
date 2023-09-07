@@ -27,6 +27,8 @@ use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
+use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
+use App\Http\Controllers\AuthKalibrasiController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -190,5 +192,20 @@ Route::get('/register', [AuthController::class, 'registration'])->name('register
 Route::post('/register', [AuthController::class, 'processRegistration']);
 
 Route::post('logout', [AuthController::class, 'logout'])
-    ->name('logout')
-    ->middleware('auth');
+->name('logout')
+->middleware('auth');
+
+
+Route::prefix('kalibrasi')->group(function () {
+
+    Route::get('/home', [HomeKalibrasiController::class, 'index']);
+    Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
+
+
+
+
+    Route::get('/', [AuthKalibrasiController::class, 'index'])->name('login-kalibrasi');
+    Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess-kalibrasi');
+    Route::get('/register', [AuthController::class, 'registration'])->name('register-kalibrasi');
+    Route::post('/register', [AuthController::class, 'processRegistration-kalibrasi']);
+});

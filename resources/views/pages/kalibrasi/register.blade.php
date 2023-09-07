@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Wyasa SIMRS</title>
+  <title>Register - Wyasa SIMRS</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -26,11 +26,10 @@
             </div>
           </div>
           <div class="">
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-              <p>{{ $message }}</p>
-            </div>
-            @endif
+            <br><br>
+            <!-- alert message -->
+
+
 
           </div>
         </div>
@@ -38,7 +37,7 @@
 
         <div class="panel-body">
           <p class="login-box-msg text-center"></p>
-          <form action="{{ route('login-proccess') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
+          <form action="{{ url('/register') }}" id="loginForm" novalidate method="post" accept-charset="utf-8">
             @csrf
             @method('POST')
             <div class="form-group">
@@ -64,13 +63,12 @@
                 <option value="">Select Peran Pengguna</option>
                 <option value="1">Admin</option>
                 <option value="2">Teknisi</option>
-                <option value="2">User</option>
+                <option value="3">User</option>
               </select>
             </div>
 
             <div>
-              <button type="submit" class="btn btn-success">Log In</button>
-              <a href="/kalibrasi/login">Wyasa Kalibrasi</a>
+              <button type="submit" class="btn btn-success">Daftar</button>
             </div>
           </form>
         </div>
