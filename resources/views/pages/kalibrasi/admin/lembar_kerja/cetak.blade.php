@@ -42,649 +42,488 @@
                   @csrf
                   @method('POST')
 
-                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="id">
+                  <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="-">
                   <input name="kode_rs" type="hidden" class="form-control" value="123">
 
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PELAKSANA KALIBRASI</h3>
-                    </div>
-                    <br>
-                  </center>
+                  <h3>PELAKSANA KALIBRASI</h3>
 
-                  <div class="form-group row">
-                    <label for="nama_instansi" class="col-xs-3 col-form-label">Nama Instansi<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="nama_instansi" type="text" class="form-control" id="nama_instansi" placeholder="Nama Instansi" value="<?php echo $row['nama_instansi'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="tempat_kalibrasi" class="col-xs-3 col-form-label">Tempat Kalibrasi <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="tempat_kalibrasi" type="text" class="form-control" id="tempat_kalibrasi" placeholder="Tempat Kalibrasi" value="<?php echo $row['tempat_kalibrasi'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="tanggal" class="col-xs-3 col-form-label">Tanggal <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="tanggal" type="date" class="form-control" id="tanggal" placeholder="Tanggal" value="<?php echo $row['tanggal'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="nama_petugas" class="col-xs-3 col-form-label">Nama Petugas<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="nama_petugas" type="text" class="form-control" id="nama_petugas" placeholder="Nama Petugas" value="<?php echo $row['nama_petugas'] ?>" >
-                    </div>
-                  </div>
-
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PENDATAAN ALAT</h3>
-                    </div>
-                    <br>
-                  </center>
-                  <div class="my-4">
-                    <h4>DAFTAR ALAT YANG DIGUNAKAN</h4>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-3 col-form-label">Nama </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Merek </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Type </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Serial Number </label>
-                    <div class="col-xs-3">
-                      <input name="Digital Moneter" type="text" class="form-control" id="serial_number1" placeholder="Serial Number" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="merek_1" type="text" class="form-control" id="merek_1" value="<?php echo $row['merek_1'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="tipe_1" type="text" class="form-control" id="tipe_1" value="<?php echo $row['tipe_1'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="no_seri_1" type="text" class="form-control" id="no_seri_1" value="<?php echo $row['no_seri_1'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-
-                    <div class="col-xs-3">
-                      <input name="Rigid Silinder" type="text" class="form-control" id="Rigid Silinder" value="Rigid Silinder">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="merek_2" type="text" class="form-control" id="merek_2" value="<?php echo $row['merek_2'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="tipe_2" type="text" class="form-control" id="tipe_2" value="<?php echo $row['tipe_2'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="no_seri_2" type="text" class="form-control" id="no_seri_2" value="<?php echo $row['no_seri_2'] ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-
-                    <div class="col-xs-3">
-                      <input name="Stopwatch" type="text" class="form-control" id="Stopwatch" value="Stopwatch">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="merek_3" type="text" class="form-control" id="merek_3" value="<?php echo $row['merek_3'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="tipe_3" type="text" class="form-control" id="tipe_3" value="<?php echo $row['tipe_3'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="no_seri_3" type="text" class="form-control" id="no_seri_3" value="<?php echo $row['no_seri_3'] ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-
-                    <div class="col-xs-3">
-                      <input name="Thermohygrometer" type="text" class="form-control" id="serial_number1" value="Thermohygrometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="merek_4" type="text" class="form-control" id="merek_4" value="<?php echo $row['merek_4'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="tipe_4" type="text" class="form-control" id="tipe_4" value="<?php echo $row['tipe_4'] ?>">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="no_seri_4" type="text" class="form-control" id="no_seri_4" value="<?php echo $row['no_seri_4'] ?>">
-                    </div>
-                  </div>
-
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PELAKSANA KALIBRASI</h3>
-                    </div>
-                    <br>
-                  </center>
-
-                  <div class="form-group row">
-                    <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat</label>
-                    <div class="col-xs-6">
-                      <input name="nama_alat" type="text" class="form-control" id="nama_alat" placeholder="Nama Alat" value="<?php echo $row['no_seri_4'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="tipe" class="col-xs-3 col-form-label">Merek/Tipe </label>
-                    <div class="col-xs-6">
-                      <input name="tipe" type="text" class="form-control" id="tipe" placeholder="Merek" value="<?php echo $row['tipe'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="no_seri" class="col-xs-3 col-form-label">Nomor Seri </label>
-                    <div class="col-xs-6">
-                      <input name="no_seri" type="text" class="form-control" id="no_seri" placeholder="Nomer Seri" value="<?php echo $row['no_seri'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="resolusi" class="col-xs-3 col-form-label">Resolusi</label>
-                    <div class="col-xs-9">
-                      <input name="resolusi" type="text" class="form-control" id="resolusi" placeholder="Resolusi" value="<?php echo $row['resolusi'] ?>">
-                    </div>
-                  </div>
-
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PENGUKURAN KONDISI LINGKUNGAN</h3>
-                    </div>
-                    <br>
-                  </center>
-
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-4 col-form-label">Parameter </label>
-                    <label for="serial_number" class="col-xs-4 col-form-label">Sebelum Kalibrasi </label>
-                    <label for="serial_number" class="col-xs-4 col-form-label">Sesudah Kalibrasi </label>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-xs-4">
-                      <input name="Suhu" type="text" class="form-control" id="Suhu" value="Suhu" >
-                    </div>
-                    <div class="col-xs-4">
-                      <input name="suhu_1" type="text" class="form-control" id="suhu_1" value="<?php echo $row['suhu_1'] ?>">
-                    </div>
-                    <div class="col-xs-4">
-                      <input name="suhu_2" type="text" class="form-control" id="suhu_2" value="<?php echo $row['suhu_2'] ?>">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-xs-4">
-                      <input name="Kelembapan" type="text" class="form-control" id="Kelembapan" value="Kelembapan" >
-                    </div>
-                    <div class="col-xs-4">
-                      <input name="kelembapan_1" type="text" class="form-control" id="kelembapan_1" value="<?php echo $row['kelembapan_1'] ?>">
-                    </div>
-                    <div class="col-xs-4">
-                      <input name="kelembapan_2" type="text" class="form-control" id="kelembapan_2" value="<?php echo $row['kelembapan_2'] ?>">
-                    </div>
-                  </div>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT PELANGGAN</h3>
-                    </div>
-                    <br>
-                  </center>
-
-
-                  <div>
-                    <div class="form-group row">
-                      <label for="serial_number" class="col-xs-3 col-form-label">Parameter </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fisik </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fungsi </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Keterangan </label>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Badan dan Permukaan" type="text" class="form-control" id="serial_number1" value="Badan dan Permukaan">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_1" type="text" class="form-control" id="hasil_pemeriksaan_fisik_1" value="<?php echo $row['hasil_pemeriksaan_fisik_1'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_1" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_1" value="<?php echo $row['hasil_pemeriksaan_fungsi_1'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_1" type="text" class="form-control" id="keterangan_1" value="<?php echo $row['keterangan_1'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Balon Tensi, Tabung, Selang" type="text" class="form-control" id="serial_number1" value="Balon Tensi, Tabung, Selang">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_2" type="text" class="form-control" id="hasil_pemeriksaan_fisik_2" value="<?php echo $row['hasil_pemeriksaan_fisik_2'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_2" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_2" value="<?php echo $row['hasil_pemeriksaan_fungsi_2'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_2" type="text" class="form-control" id="keterangan_2" value="<?php echo $row['keterangan_2'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Bantalan/Rem" type="text" class="form-control" id="Bantalan/Rem" value="Bantalan/Rem">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_3" type="text" class="form-control" id="hasil_pemeriksaan_fisik_3" value="<?php echo $row['hasil_pemeriksaan_fisik_3'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_3" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_3" value="<?php echo $row['hasil_pemeriksaan_fungsi_3'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_3" type="text" class="form-control" id="keterangan_3" value="<?php echo $row['keterangan_3'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Filter" type="text" class="form-control" id="Filter" value="Filter">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_4" type="text" class="form-control" id="hasil_pemeriksaan_fisik_4" value="<?php echo $row['hasil_pemeriksaan_fisik_4'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_4" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_4" value="<?php echo $row['hasil_pemeriksaan_fungsi_4'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_4" type="text" class="form-control" id="keterangan_4" value="<?php echo $row['keterangan_4'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Gauge/Tabung" type="text" class="form-control" id="Gauge/Tabung" value="Gauge/Tabung">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_5" type="text" class="form-control" id="hasil_pemeriksaan_fisik_5" value="<?php echo $row['hasil_pemeriksaan_fisik_5'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_5" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_5" value="<?php echo $row['hasil_pemeriksaan_fungsi_5'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_5" type="text" class="form-control" id="keterangan_5" value="<?php echo $row['keterangan_5'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Indikator" type="text" class="form-control" id="Indikator" value="Indikator">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_6" type="text" class="form-control" id="hasil_pemeriksaan_fisik_6" value="<?php echo $row['hasil_pemeriksaan_fisik_6'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_6" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_6" value="<?php echo $row['hasil_pemeriksaan_fungsi_6'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_6" type="text" class="form-control" id="keterangan_6" value="<?php echo $row['keterangan_6'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Konektor" type="text" class="form-control" id="Konektor" value="Konektor">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_7" type="text" class="form-control" id="hasil_pemeriksaan_fisik_7" value="<?php echo $row['hasil_pemeriksaan_fisik_7'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_7" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_7" value="<?php echo $row['hasil_pemeriksaan_fungsi_7'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_7" type="text" class="form-control" id="keterangan_7" value="<?php echo $row['keterangan_7'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Label" type="text" class="form-control" id="Label" value="Label">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_8" type="text" class="form-control" id="hasil_pemeriksaan_fisik_8" value="<?php echo $row['hasil_pemeriksaan_fisik_8'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_8" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_8" value="<?php echo $row['hasil_pemeriksaan_fungsi_8'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_8" type="text" class="form-control" id="keterangan_8" value="<?php echo $row['keterangan_8'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Manset" type="text" class="form-control" id="Manset" value="Manset">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_9" type="text" class="form-control" id="hasil_pemeriksaan_fisik_9" value="<?php echo $row['hasil_pemeriksaan_fisik_9'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_9" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_9" value="<?php echo $row['hasil_pemeriksaan_fungsi_9'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_9" type="text" class="form-control" id="keterangan_9" value="<?php echo $row['keterangan_9'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Pengaturan Titik 0">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_10" type="text" class="form-control" id="hasil_pemeriksaan_fisik_10" value="<?php echo $row['hasil_pemeriksaan_fisik_10'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_10" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_10" value="<?php echo $row['hasil_pemeriksaan_fungsi_10'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_10" type="text" class="form-control" id="keterangan_10" value="<?php echo $row['keterangan_10'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Pengencang" type="text" class="form-control" id="Pengencang" value="Pengencang">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_11" type="text" class="form-control" id="hasil_pemeriksaan_fisik_11" value="<?php echo $row['hasil_pemeriksaan_fisik_11'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_11" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_11" value="<?php echo $row['hasil_pemeriksaan_fungsi_11'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_11" type="text" class="form-control" id="keterangan_11" value="<?php echo $row['keterangan_11'] ?>">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="Valve Penutup" type="text" class="form-control" id="Valve Penutup" value="Valve Penutup">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fisik_12" type="text" class="form-control" id="hasil_pemeriksaan_fisik_12" value="<?php echo $row['keterangan_11'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="hasil_pemeriksaan_fungsi_12" type="text" class="form-control" id="hasil_pemeriksaan_fungsi_12" value="<?php echo $row['keterangan_11'] ?>">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="keterangan_12" type="text" class="form-control" id="keterangan_12" value="<?php echo $row['keterangan_11'] ?>">
-                      </div>
-                    </div>
-                  </div>
-
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>PENGUKURAN KINERJA </h3>
-                    </div>
-                    <br>
-                  </center>
-                  <h3>1. Kebocoran Tekanan </h3>
-                  <div>
-
-                    <div class="form-group row">
-                      <label for="serial_number" class="col-xs-3 col-form-label">Parameter </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Titik Setting UUT (mmHg) </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fungsi </label>
-                      <label for="serial_number" class="col-xs-3 col-form-label">Keterangan </label>
-                    </div>
-
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                      <div class="col-xs-3">
-                        <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                      </div>
-                    </div>
-                  </div>
-                  <h3>2. Laju buang cepat</h3>
-
-
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-4 col-form-label">Parameter </label>
-                    <label for="serial_number" class="col-xs-4 col-form-label">Hasil Pemeriksaan Fisik </label>
-                    <label for="serial_number" class="col-xs-4 col-form-label">Hasil Pemeriksaan Fungsi </label>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                  </div>
-
-                  <h3>3. Akurasi Tekanan</h3>
-
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-3 col-form-label">Parameter </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fisik </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fungsi </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Hasil Pemeriksaan Fungsi </label>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kelembapan" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                  </div>
-
-
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>Akurasi Tekanan</h3>
-                    </div>
-                    <br>
-                  </center>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>Kebocoran Tekanan
-                      </h3>
-                    </div>
-                    <br>
-                  </center>
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-4 col-form-label">Setting MMhg </label>
-                    <label for="serial_number" class="col-xs-4 col-form-label">Hasil Pemeriksaan </label>
-                    <label for="serial_number" class="col-xs-2 col-form-label">mean</label>
-                    <label for="serial_number" class="col-xs-2 col-form-label">Stdv </label>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kondisi Lingkungan" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-1">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                  </div>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h1>Laju Buang Cepat
-                        </h3>
-                    </div>
-                    <br>
-                  </center>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>Akurasi Tekanan
-                      </h3>
-                    </div>
-                    <br>
-                  </center>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>KESIMPULAN DAN TELAAH TEKNIS
-
-                      </h3>
-                    </div>
-                    <br>
-                  </center>
-                  <center>
-                    <div class="row" style="border-style: groove;">
-                      <h3>REKOMENDASI</h3>
-                    </div>
-                    <br>
-                  </center>
-
-                  <div class="form-group row">
-                    <label for="serial_number" class="col-xs-3 col-form-label">Parameter </label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Pemeriksaan dan Pengukuran</label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Rekomendasi</label>
-                    <label for="serial_number" class="col-xs-3 col-form-label">Keterangan </label>
-                  </div>
-
-                  <div class="form-group row">
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kondisi Lingkungan" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="Kondisi Fisik dan Komponen" value="Digital Manometer">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                    <div class="col-xs-3">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" value="">
-                    </div>
-                  </div>
-
-
-                  <table class="table table-hover table-bordered " id="scollDatatable" style="width:100%">
-                    <thead class="table-light">
-                      <tr>
-                        <td class="table-info" colspan="1" align="center"><b>Data_Alat</b></td>
-                        <td class="table-success" colspan="3" align="center"><b>Persiapan</b></td>
-                        <td class="table-info" colspan="2" rowspan="2" align="center"><b>Data_Alat</b></td>
-                      </tr>
-                      <tr>
-                        <td class="table-info" rowspan="2"><b>Id_Aset_Registrasi</b></td>
-                        <td class="table-success" rowspan="2"><b>Hand_Hygiene</b></td>
-                        <td class="table-success" rowspan="2"><b>Menyiapkan_Alat_&_Bahan_Kerja</b></td>
-                        <td class="table-success" rowspan="1"><b>Menyiapkan_Alat_&_Bahan_Kerja</b></td>
-                        <td class="table-success" rowspan="1"></td>
-                      </tr>
-                    </thead>
+                  <table class="table table-hover table-bordered style=" width:100%">
                     <tbody>
                       <tr>
-                        <td><input type="text"  style="border: 0" placeholder="id"></td>
-                        <td><input type="text"  style="border: 0" placeholder="id"></td>
-                        <td><input type="text"  style="border: 0" placeholder="id"></td>
-                        <td><input type="text"  style="border: 0" placeholder="id"></td>
-                        <td><input type="text"  style="border: 0" placeholder="id"></td>+
+                        <td class="table-info" colspan="1" align="left"><b>Nama Instansi</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Tempat/Ruangan Kalibrasi</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Tanggal</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                     </tbody>
 
                   </table>
 
 
+                  <h3>PELAKSANA KALIBRASI</h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Nama Alat</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Tipe/Model</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>No. Seri</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Tertelusur</b></td>
+                      </tr>
+                      <tr>
+
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left">Digital Manometer </td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left">Rigid Silinder </td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left">Stopwatch </td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
 
 
+                  <h3>PELAKSANA KALIBRASI</h3>
+
+                  <h3>Data Alat Pelanggan</h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b> Nama Alat</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Merek/Tipe</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Nomor Seri</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Rentang Ukur</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Resolusi</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h3>PENGUKURAN KONDISI LINGKUNGAN</h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Parameter</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Sebelum Kalibrasi</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Sesudah Kalibrasi</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Suhu</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Kelembapan</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h3>PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT PELANGGAN</h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Bagian Alat</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Hasil Pemeriksaan Fisik</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Hasil Pemeriksaan Fungsi </b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Keterangan </b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Bantalan/Rem</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Filter</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
 
 
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Gauge/Tabung</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Indikator</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Konektor</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Label</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Manset</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Pengaturan Titik 0</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Pengencang</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>Valve Penutup</b></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                        <td><input type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
 
+                  <h3>PENGUKURAN KINERJA </h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" rowspan="2" align="center"><b>titik setting</b></td>
+                        <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                        <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>6</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>50</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="5" class="text-center">20mmHg/300 Sec</td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>100</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>150</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>200</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>250</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
 
+                  <h3>LAJU BUANG CEPAT </h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" rowspan="2" align="center"><b>Setting mmHg</b></td>
+                        <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                        <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>6</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>260</b></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="5" class="text-center">20mmHg/300 Sec</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
+                  <h3>Akurasi Tekanan </h3>
+                  <table class="table table-hover table-bordered style=" width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="2" rowspan="2" align="center"><b>titik setting</b></td>
+                        <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                        <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                        <td class="table-info" colspan="1" align="left"><b>6</b></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" rowspan="6" align="left"><b>1</b></td>
+                        <td class="table-info" colspan="1" rowspan="6" align="left"><b>Naik </b></td>
+                        <td rowspan="1" class="text-center">0</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">50</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">100</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">150</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">200</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">250</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" rowspan="6" align="left"><b>2</b></td>
+                        <td class="table-info" colspan="1" rowspan="6" align="left"><b>Turun </b></td>
+                        <td rowspan="1" class="text-center">0</td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">50</td>
 
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">100</td>
 
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">150</td>
+
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">200</td>
+
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" class="text-center">250</td>
+
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                        <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                      </tr>
+                    </tbody>
+                  </table>
 
 
                   <div class="form-group row">

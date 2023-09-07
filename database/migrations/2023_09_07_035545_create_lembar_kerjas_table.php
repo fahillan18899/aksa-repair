@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('tempat_kalibrasi')->nullable();
             $table->date('tanggal')->nullable();
             $table->string('nama_petugas')->nullable();
-            $table->string('rentang_ukur')->nullable();
             $table->string('milik')->nullable();
+            $table->string('rentang_ukur')->nullable();
             /**Pendataan Alat */
                 /**Daftar alat yang digunakan */
                 $table->date('merek_1')->nullable();
@@ -37,6 +37,10 @@ return new class extends Migration
                 $table->date('no_seri_2')->nullable();
                 $table->date('no_seri_3')->nullable();
                 $table->date('no_seri_4')->nullable();
+                $table->date('tertelusur_1')->nullable();
+                $table->date('tertelusur_2')->nullable();
+                $table->date('tertelusur_3')->nullable();
+                $table->date('tertelusur_4')->nullable();
                 /**Data alat pelanggan */
                 $table->string('nama_alat')->nullable();
                 $table->string('tipe')->nullable();
