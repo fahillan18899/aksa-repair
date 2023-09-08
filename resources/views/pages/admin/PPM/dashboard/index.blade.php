@@ -25,6 +25,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="info-box bg-olive">
+        <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-edit"></i></span> -->
 
           <div class="info-box-content">
@@ -49,6 +50,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class=" info-box bg-blue">
+          <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span> -->
 
           <div class="info-box-content">
@@ -75,6 +77,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="info-box bg-navy-blue">
+        <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
 
           <div class="info-box-content">
@@ -100,6 +103,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="info-box bg-light-green">
+          <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
 
           <div class="info-box-content">

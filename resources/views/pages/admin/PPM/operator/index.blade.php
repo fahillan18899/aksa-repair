@@ -7,7 +7,7 @@
    <section class="content-header">
 
      <div class="p-l-30 p-r-30">
-       <div class="header-icon"><i class="pe-7s-world"></i></div>
+       <div class="header-icon"><i class="pe-7s-add-user"></i></div>
        <div class="header-title">
          <h1>Menu Operator</h1>
          <small>Operator</small>
