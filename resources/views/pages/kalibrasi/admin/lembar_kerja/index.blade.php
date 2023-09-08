@@ -38,7 +38,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-10 col-sm-12">
-                <form action="{{ route('lembar_pemeliharaan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('lembar_kerja.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('POST')
                   <h3>PELAKSANA KALIBRASI</h3>
@@ -55,7 +55,7 @@
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>Tanggal</b></td>
-                        <td><input name="tanggal" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="tanggal" type="date" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
