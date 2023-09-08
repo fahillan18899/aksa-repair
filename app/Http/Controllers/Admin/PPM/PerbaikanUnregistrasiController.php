@@ -31,19 +31,20 @@ class PerbaikanUnregistrasiController extends Controller
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
 
+        $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_unregistrasis')
         ->select(DB::raw('max(id_perbaikan_un) as idPerbaikanUn'))
-        // ->where('kode_rs', $kodeRs_)
+        ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->idPerbaikanUn;
 
-        $urutan = (int)substr($kodeAset, 7, 8);
+        $urutan = (int)substr($kodeAset, 15, 16);
         $urutan++;
 
         $huruf3 = "U";
         $date3  = date('dmy');
-        $kode_aset  = $huruf3 . $date3 . sprintf("%04s", $urutan);
+        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.admin.ppm.aset_unregistrasi.index', [
             

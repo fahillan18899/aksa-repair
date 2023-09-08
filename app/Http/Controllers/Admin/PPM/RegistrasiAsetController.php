@@ -19,11 +19,11 @@ class RegistrasiAsetController extends Controller
      */
     public function index()
     {
-        $kodeRs_ = "RS0001";
+        $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('registrasis')
         ->select(DB::raw('max(id_aset) as maxIDASET'))
-        // ->where('kode_rs', $kodeRs_)
+         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->maxIDASET;
 
@@ -33,7 +33,7 @@ class RegistrasiAsetController extends Controller
         $date  = date('dmy');
         $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
-        $items = Registrasi::all();
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
         return view('pages.admin.ppm.registrasi_aset.index', [

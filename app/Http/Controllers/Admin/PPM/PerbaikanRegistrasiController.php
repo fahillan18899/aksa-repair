@@ -31,18 +31,20 @@ class PerbaikanRegistrasiController extends Controller
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
 
+        $kodeRs_ = Auth::user()->kode_rs;
+
         $data = DB::table('perbaikan_registrasis')
         ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
             ->where('kode_rs', Auth::user()->kode_rs)
         ->first();
         $kodeAset = $data->idPerbaikan;
 
-        $urutan = (int)substr($kodeAset, 7, 8);
+        $urutan = (int)substr($kodeAset, 15, 16);
         $urutan++;
 
         $huruf3 = "B";
         $date3  = date('dmy');
-        $kode_aset  = $huruf3 . $date3 . sprintf("%04s", $urutan);
+        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.admin.ppm.aset_teregistrasi.index', [
             'items' => $items,
