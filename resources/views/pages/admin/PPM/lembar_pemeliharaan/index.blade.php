@@ -67,7 +67,6 @@ $alert = "";
                   @method('POST')
 
                   <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="id">
-                  <input name="kode_rs" type="hidden" class="form-control" value="123">
 
                   <div class="form-group row">
                     <label for="tanggal" class="col-xs-3 col-form-label">Tanggal Pemeliharaan <i class="text-danger">*</i></label>
@@ -87,8 +86,8 @@ $alert = "";
                     <label for="engineer" class="col-xs-3 col-form-label">Nama Teknisi </label>
                     <div class="col-xs-9">
                       <select name="engineer" class="form-control" id="engineer">
-                      @foreach($teknisis as $teknisi)
-                      <option>-- Pilih Teknisi --</option>
+                        @foreach($teknisis as $teknisi)
+                        <option>-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
