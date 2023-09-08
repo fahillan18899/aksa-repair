@@ -16,34 +16,6 @@
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
 
-      <li class="active">
-        <a href="?hal=dashboard&fun=index"><i class="fa fa ti-home"></i> Dashboard</a>
-      </li>
-
-      <li class="treeview ">
-        <a href="#">
-          <i class="fa fa-sitemap"></i> <span>Pesanan Masuk</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/kalibrasi/pesanan') }}">Formulir Pesanan Masuk</a></li>
-        </ul>
-      </li>
-
-      <li class="treeview ">
-        <a href="#">
-          <i class="fa fa-user-md"></i> <span>Alat Ukur</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/kalibrasi/alat_ukur') }}">Formulir Alat Ukur</a></li>
-        </ul>
-      </li>
-
       <!-- patient info -->
 
       <li class="treeview ">
@@ -82,22 +54,6 @@
         </a>
         <ul class="treeview-menu">
           <li class=""><a href="{{ url('/kalibrasi/berita_acara') }}">Formulir Lembar Kerja</a></li>
-        </ul>
-      </li>
-
-      <li class="treeview ">
-        <a href="#">
-          <i class="fa fa-arrow-circle-right"></i> <span>Sertifikat Kalibrasi </span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-
-          <li class=""><a href="#?hal=pharmacy&fun=category_form"> Tambahkan Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=category_index">Daftar Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_form"> Tambahkan Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_index">Daftar Obat</a></li>
         </ul>
       </li>
 
