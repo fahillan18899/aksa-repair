@@ -40,8 +40,6 @@
                 <form action="{{ route('update_pengembalian.update' ,$item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input type="hidden" name="kode_rs" value="asd" />
-
                   <div class="form-group row">
                     <label for="id_perbaikan_reg" class="col-xs-3 col-form-label">id perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">

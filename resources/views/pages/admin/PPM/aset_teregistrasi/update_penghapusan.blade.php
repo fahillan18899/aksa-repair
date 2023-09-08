@@ -33,8 +33,6 @@
                 <form action="{{ route('update_penghapusan.update' ,$item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input type="hidden" name="kode_rs" value="asd" />
-
 
                   <div class="form-group row">
                     <label for="id_perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -67,7 +65,7 @@
                       </select>
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <label for="merek_alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -134,7 +132,7 @@
                     <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="teknisi_3_reg">
-                       @foreach($teknisis as $teknisi)
+                        @foreach($teknisis as $teknisi)
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
                         @endforeach
                     </div>
@@ -158,7 +156,7 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button" >Edit</button>
+                        <button class="ui positive button">Edit</button>
                         <div class="or"></div>
                         <button type="button" class="ui button" type="reset">Kembali</button>
                       </div>

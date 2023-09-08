@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Alat;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
+use Illuminate\Support\Facades\Auth;
 
 class PenghapusanRegistrasiController extends Controller
 {
@@ -57,6 +58,7 @@ class PenghapusanRegistrasiController extends Controller
             'keterangan_pengguna_reg' => '',
             'kode_rs' => '',
         ]);
+        $request['kode_rs'] = Auth::user()->kode_rs;
 
         PenghapusanRegistrasi::create($request->post());
 
@@ -83,11 +85,11 @@ class PenghapusanRegistrasiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {  
-        $alats         = Alat::all();
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
-        $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->first();
+    {
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_penghapusan', [
             
             'alats'        => $alats,
@@ -143,7 +145,7 @@ class PenghapusanRegistrasiController extends Controller
 
     public function cetak($id)
     {
-        $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.cetak_penghapusan', compact('item'));
     }
 }

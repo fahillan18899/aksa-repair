@@ -39,8 +39,6 @@
                   @csrf
                   @method('PUT')
 
-                  <input type="hidden" name="kode_rs" value="koders" />
-
                   <div class="form-group row">
                     <label for="id_perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -165,7 +163,7 @@
                       </select>
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">

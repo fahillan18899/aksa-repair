@@ -61,8 +61,6 @@
                 <form action="{{ url('/dashboard/ppm/aset_teregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
 
-                  <input type="hidden" name="kode_rs" value="as" />
-
 
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
@@ -121,7 +119,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
+                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
                     <div class="col-xs-9">
                       <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor">
                     </div>
@@ -140,14 +138,14 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
+                    <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Ka Instalasi</label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Ka Instalasi">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1</label>
+                    <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
                         <option>-- Pilih Teknisi --</option>
@@ -159,10 +157,10 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2<i class="text-danger">*</i></label>
+                    <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
-                      <option>-- Pilih Teknisi --</option>
+                        <option>-- Pilih Teknisi --</option>
                         @foreach($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
@@ -171,10 +169,10 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3<i class="text-danger">*</i></label>
+                    <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
-                      <option>-- Pilih Teknisi --</option>
+                        <option>-- Pilih Teknisi --</option>
                         @foreach($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
@@ -183,14 +181,14 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
+                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
                     <div class="col-xs-9">
                       <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif<i class="text-danger">*</i></label>
+                    <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
                     <div class="col-xs-9">
                       <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif">
                     </div>
@@ -288,8 +286,6 @@
                 <form action="{{ url('/dashboard/ppm/tambah_pengiriman') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
 
-                  <input type="hidden" name="kode_rs" value="rsc" />
-
                   <div class="form-group row">
                     <label for="Id_Perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -369,56 +365,56 @@
 
 
                   <div class="form-group row">
-                    <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2<i class="text-danger">*</i></label>
+                    <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <input name="teknisi_2_reg" type="text" class="form-control" id="Teknisi_2_reg1" placeholder="Teknisi 2" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3<i class="text-danger">*</i></label>
+                    <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <input name="teknisi_3_reg" type="text" class="form-control" id="Teknisi_3_reg1" placeholder="Teknisi 3" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat<i class="text-danger">*</i></label>
+                    <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                     <div class="col-xs-9">
                       <input name="keterangan_kondisi_alat_reg" type="text" class="form-control" id="Keterangan_Kondisi_Alat_reg1" placeholder="Keterangan Kondisi Alat" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
+                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi</label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg1" placeholder="KA Instalasi" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Nama_Rekan_reg" class="col-xs-3 col-form-label">Nama Rekan<i class="text-danger">*</i></label>
+                    <label for="Nama_Rekan_reg" class="col-xs-3 col-form-label">Nama Rekan</label>
                     <div class="col-xs-9">
                       <input name="nama_rekan_reg" type="text" class="form-control" id="Nama_Rekan_reg" placeholder="Nama Rekan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Alamat_Rekan_reg" class="col-xs-3 col-form-label">Alamat Rekan<i class="text-danger">*</i></label>
+                    <label for="Alamat_Rekan_reg" class="col-xs-3 col-form-label">Alamat Rekan </label>
                     <div class="col-xs-9">
                       <input name="alamat_rekan_reg" type="text" class="form-control" id="Alamat_Rekan_reg" placeholder="Alamat Rekan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_Rekanan_reg" class="col-xs-3 col-form-label">Teknisi Rekanan<i class="text-danger">*</i></label>
+                    <label for="Teknisi_Rekanan_reg" class="col-xs-3 col-form-label">Teknisi Rekanan </label>
                     <div class="col-xs-9">
                       <input name="teknisi_rekanan_reg" type="text" class="form-control" id="Teknisi_Rekanan_reg" placeholder="Teknisi Rekanan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Telp_Teknisi_Rekanan_reg" class="col-xs-3 col-form-label">Telp_Teknisi_Rekanan_reg<i class="text-danger">*</i></label>
+                    <label for="Telp_Teknisi_Rekanan_reg" class="col-xs-3 col-form-label">Telp_Teknisi_Rekanan_reg </label>
                     <div class="col-xs-9">
                       <input name="telp_teknisi_rekanan_reg" type="text" class="form-control" id="Telp_Teknisi_Rekanan_reg" placeholder="Telp_Teknisi_Rekanan_reg">
                     </div>
@@ -522,8 +518,6 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url('/dashboard/ppm/tambah_pengembalian') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-
-                  <input type="hidden" name="kode_rs" value="a" />
 
                   <div class="form-group row">
                     <label for="id_perbaikan_reg" class="col-xs-3 col-form-label">id perbaikan<i class="text-danger">*</i></label>
@@ -788,8 +782,6 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url('/dashboard/ppm/tambah_penghapusan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-                  <input type="hidden" name="kode_rs" value="asd" />
-
 
                   <div class="form-group row">
                     <label for="Id_Perbaikan_reg" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -862,28 +854,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2<i class="text-danger">*</i></label>
+                    <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <input name="teknisi_2_reg" type="text" class="form-control" id="Teknisi_2_reg3" placeholder="Teknisi 2" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3<i class="text-danger">*</i></label>
+                    <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <input name="teknisi_3_reg" type="text" class="form-control" id="Teknisi_3_reg3" placeholder="Teknisi 3" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
+                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi</label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg3" placeholder="KA Instalasi" value="" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Keterangan_Pengguna_reg" class="col-xs-3 col-form-label">Keterangan Pengguna<i class="text-danger">*</i></label>
+                    <label for="Keterangan_Pengguna_reg" class="col-xs-3 col-form-label">Keterangan Pengguna</label>
                     <div class="col-xs-9">
                       <input name="keterangan_pengguna_reg" type="text" class="form-control" id="Keterangan_Pengguna_reg3" placeholder="Keterangan Pengguna" value="">
                     </div>

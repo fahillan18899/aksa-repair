@@ -12,6 +12,7 @@ use App\Models\Registrasi;
 use App\Models\Alat;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -24,16 +25,15 @@ class PerbaikanRegistrasiController extends Controller
      */
     public function index()
     {
-        $items = PerbaikanRegistrasi::all();
-        $result_pengiriman = PengirimanRegistrasi::all();
-        $result_penghapusan = PenghapusanRegistrasi::all();
-        $result_pengembalian = PengembalianRegistrasi::all();
-        $teknisis = Teknisi::all();
-
+        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         $data = DB::table('perbaikan_registrasis')
         ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
-        // ->where('kode_rs', $kodeRs_)
+            ->where('kode_rs', Auth::user()->kode_rs)
         ->first();
         $kodeAset = $data->idPerbaikan;
 
@@ -83,6 +83,7 @@ class PerbaikanRegistrasiController extends Controller
             'active' => ''
         ]);
 
+        $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
 
 
@@ -99,9 +100,9 @@ class PerbaikanRegistrasiController extends Controller
     public function edit($id)
     {
 
-        $alats         = Alat::all();
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_perbaikan', [
             
@@ -143,7 +144,7 @@ class PerbaikanRegistrasiController extends Controller
         ]);
 
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
-        $perbaikanRegistrasi->update($request->all());
+        $perbaikanRegistrasi->update($request->post());
 
         return redirect()->route('aset_teregistrasi.index')
         ->with('success', 'Data Berhasil Ubah.');
@@ -160,7 +161,7 @@ class PerbaikanRegistrasiController extends Controller
      **/
     public function cetak($id)
     {
-        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 }

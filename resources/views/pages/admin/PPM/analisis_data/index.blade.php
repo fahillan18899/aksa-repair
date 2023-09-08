@@ -139,7 +139,9 @@
               echo $unRegistered;
               ?>,
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            backgroundColor: '#3FD01C',
+
           }]
         },
         options: {
@@ -161,11 +163,13 @@
           datasets: [{
             label: '# of Votes',
             data: [
-              <?= $terpelihara ?>,
+              <?= 6 ?>,
               <?= $t5_ ?>,
               <?= $unTerpelihara ?>
             ],
-            borderWidth: 1
+            borderWidth: 1,
+            backgroundColor: '#3FD01C',
+
           }]
         },
         options: {

@@ -28,7 +28,6 @@ $row = mysqli_fetch_array($result);
           <div class="col-md-12">
             <div class="card">
               <div class="align-center mt-5">
-                <?php $item =  mysqli_fetch_assoc(mysqli_query($db, "SELECT kop_surat FROM rumah_sakit WHERE id = '$kodeRs_'")); ?>
                 <img src="https://wyasaaplikasi.com/super_admin/img/64a6676d605dc.jpg" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Alat;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
+use Illuminate\Support\Facades\Auth;
 
 class PengembalianRegistrasiController extends Controller
 {
@@ -67,6 +68,7 @@ class PengembalianRegistrasiController extends Controller
             'kode_rs' => '',
             'active' => '',
         ]);
+        $request['kode_rs'] = Auth::user()->kode_rs;
 
         PengembalianRegistrasi::create($request->post());
 
@@ -95,10 +97,10 @@ class PengembalianRegistrasiController extends Controller
     public function edit($id)
     {
 
-        $alats         = Alat::all();
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
-        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_pengembalian', [
             
             'alats'        => $alats,
@@ -168,7 +170,7 @@ class PengembalianRegistrasiController extends Controller
 
     public function cetak($id)
     {
-        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.cetak_pengembalian', compact('item'));
     }
 }

@@ -34,8 +34,6 @@
                 <form action="{{ route('update_perbaikan.update' ,$item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input type="hidden" name="kode_rs" value="rsc" />
-
 
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
@@ -88,7 +86,7 @@
                     <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat_reg" class="form-control" id="Lokasi_Alat_reg">
-                       @foreach($ruangans as $ruangan)
+                        @foreach($ruangans as $ruangan)
                         <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : ''}}>{{ $ruangan->lokasi_alat }}</option>
                         @endforeach
                       </select>

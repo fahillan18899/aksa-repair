@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Alat;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
+use Illuminate\Support\Facades\Auth;
 
 class PengirimanRegistrasiController extends Controller
 {
@@ -59,6 +60,7 @@ class PengirimanRegistrasiController extends Controller
             'telp_teknisi_rekanan_reg' => '',
             'kode_rs' => ''
         ]);
+        $request['kode_rs'] = Auth::user()->kode_rs;
 
         PengirimanRegistrasi::create($request->post());
 
@@ -87,10 +89,10 @@ class PengirimanRegistrasiController extends Controller
     public function edit($id)
     {
 
-        $alats         = Alat::all();
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
-        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.update_pengiriman', [
             
             
@@ -128,7 +130,6 @@ class PengirimanRegistrasiController extends Controller
             'alamat_rekan_reg' => '',
             'teknisi_rekanan_reg' => '',
             'telp_teknisi_rekanan_reg' => '',
-            'kode_rs' => ''
         ]);
 
         $pengirimanRegistrasi = PengirimanRegistrasi::findOrFail($pengirimanRegistrasi);
@@ -151,7 +152,7 @@ class PengirimanRegistrasiController extends Controller
 
     public function cetak($id)
     {
-        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_teregistrasi.cetak_pengiriman', compact('item'));
     }
 }
