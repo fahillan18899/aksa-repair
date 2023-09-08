@@ -181,6 +181,7 @@ class RegistrasiAsetController extends Controller
             return $nilai;
         }
         $data['penyusutan_aset'] = hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
+        $data['kode_rs'] =  Auth::user()->kode_rs;
 
         $registrasi = Registrasi::findOrFail($id);
         $registrasi->update($data);

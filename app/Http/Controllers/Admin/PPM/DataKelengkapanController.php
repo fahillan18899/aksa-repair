@@ -9,6 +9,7 @@ use App\Models\Teknisi;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DataKelengkapanController extends Controller
 {
@@ -19,10 +20,10 @@ class DataKelengkapanController extends Controller
      */
     public function index()
     {
-        $gedung  = Gedung::all();
-        $alat    = Alat::all();
-        $teknisi = Teknisi::all();
-        $items = Ruangan::all();
+        $gedung  = Gedung::where('kode_rs',Auth::user()->kode_rs)->get();
+        $alat    = Alat::where('kode_rs',Auth::user()->kode_rs)->get();
+        $teknisi = Teknisi::where('kode_rs',Auth::user()->kode_rs)->get();
+        $items = Ruangan::where('kode_rs',Auth::user()->kode_rs)->get();
 
 
         $kodeRs_ = "RSC0001";
