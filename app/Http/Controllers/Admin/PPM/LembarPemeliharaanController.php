@@ -7,15 +7,16 @@ use Illuminate\Http\Request;
 use App\Models\LembarPemeliharaan;
 use App\Models\Alat;
 use App\Models\Teknisi;
+use Illuminate\Support\Facades\Auth;
 
 class LembarPemeliharaanController extends Controller
 {
 
     public function index()
     {
-        $alats = Alat::all();
-        $teknisis = Teknisi::all();
-        $lembarPemeliharaans = LembarPemeliharaan::all();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $lembarPemeliharaans = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.ppm.lembar_pemeliharaan.index', [
             'lembarPemeliharaans' => $lembarPemeliharaans,
             'teknisis' => $teknisis,
@@ -88,7 +89,7 @@ class LembarPemeliharaanController extends Controller
             'kode_rs' => ''
         ]);
 
-
+        $request['kode_rs'] = Auth::user()->kode_rs;
         LembarPemeliharaan::create($request->post());
 
 
