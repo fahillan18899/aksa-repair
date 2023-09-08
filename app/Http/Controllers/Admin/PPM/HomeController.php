@@ -16,10 +16,10 @@ class HomeController extends Controller
 {
     function dashboard()
     {
-        $registrasi = Registrasi::all()->count();
-        $perbaikanRegistrasi = PerbaikanRegistrasi::all()->count();
-        $perbaikanUnregistrasi = PerbaikanUnregistrasi::all()->count();
-        $perbaikanNonAset = PerbaikanNonAset::all()->count();
+        $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $perbaikanNonAset = PerbaikanNonAset::where('kode_rs',Auth::user()->kode_rs)->count();
 
 
         return view(

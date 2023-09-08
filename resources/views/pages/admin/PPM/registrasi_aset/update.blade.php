@@ -39,10 +39,6 @@
                   @csrf
                   @method('PUT')
 
-
-
-                  <input type="hidden" name="kode_rs" value="s" />
-
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
