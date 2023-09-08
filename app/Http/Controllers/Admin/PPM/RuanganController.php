@@ -82,9 +82,9 @@ class RuanganController extends Controller
      */
     public function edit($ruangan)
     {
-        $item = Ruangan::where('id_ruangan', $ruangan)->first();
-        $gedungs = Gedung::all();
-        $teknisis = Teknisi::all();
+        $item = Ruangan::where('id_ruangan', $ruangan)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $gedungs = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.ppm.data_kelengkapan.update_ruangan', [
             'item' => $item,
             'teknisis' => $teknisis,

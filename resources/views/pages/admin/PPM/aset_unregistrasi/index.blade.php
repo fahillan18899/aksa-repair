@@ -42,7 +42,6 @@
                  <form action="{{ url('/dashboard/ppm/tambah_unregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                  @csrf
                   @method('post')
-                   <input type="hidden" name="kode_rs" value="as" />
 
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -263,8 +262,6 @@
                <div class="col-md-9 col-sm-12">
                  <form action="{{ url('/dashboard/ppm/tambah_pengiriman_un') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                  @csrf
-                   <input type="hidden" name="kode_rs" value="as" />
-
 
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -484,7 +481,6 @@
                <div class="col-md-9 col-sm-12">
                  <form action="{{ url('/dashboard/ppm/tambah_pengembalian_un') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                  @csrf
-                   <input type="hidden" name="kode_rs" value="as" />
 
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -740,8 +736,6 @@
                <div class="col-md-9 col-sm-12">
                  <form action="{{ url('/dashboard/ppm/tambah_penghapusan_un') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                  @csrf
-                   <input type="hidden" name="kode_rs" value="as" />
-
 
                    <div class="form-group row">
                      <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
@@ -911,11 +905,6 @@
      </table>
      <!--TABEL-->
 
-
    </div> <!-- /.content -->
-
-
-
-
  </div> <!-- /.content-wrapper -->
  @endsection

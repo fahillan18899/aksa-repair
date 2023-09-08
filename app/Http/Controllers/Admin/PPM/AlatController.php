@@ -71,7 +71,7 @@ class AlatController extends Controller
      */
     public function edit($id)
     {
-        $item = Alat::where('id_alat', $id)->first();
+        $item = Alat::where('id_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.data_kelengkapan.update_alat', compact('item'));
     }
 

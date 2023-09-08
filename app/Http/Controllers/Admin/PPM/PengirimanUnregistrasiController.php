@@ -11,6 +11,7 @@ use \App\Models\PenghapusanUnregistrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
 use App\Models\Alat;
+use Illuminate\Support\Facades\Auth;
 
 class PengirimanUnregistrasiController extends Controller
 {
@@ -21,10 +22,10 @@ class PengirimanUnregistrasiController extends Controller
      */
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::all();
-        $pengiriman    = PengirimanUnregistrasi::all();
-        $pengembalian  = PengembalianUnregistrasi::all();
-        $penghapusan   = PenghapusanUnregistrasi::all();
+        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.ppm.aset_unregistrasi.index', [
             
@@ -66,7 +67,7 @@ class PengirimanUnregistrasiController extends Controller
             'kode_rs' => '',
             'active' => '',
         ]);
-
+        $request['kode_rs'] = Auth::user()->kode_rs;
         PengirimanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
@@ -93,9 +94,9 @@ class PengirimanUnregistrasiController extends Controller
     public function edit($id)
     {
 
-        $alats         = Alat::all();
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->first();
         return view('pages.admin.ppm.aset_unregistrasi.edit_pengiriman', [
             
@@ -159,7 +160,7 @@ class PengirimanUnregistrasiController extends Controller
 
     public function cetak($id)
     {
-        $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->first();
+        $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_unregistrasi.cetak_pengiriman', compact('item'));
     }
 }

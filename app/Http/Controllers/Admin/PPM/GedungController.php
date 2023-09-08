@@ -70,7 +70,7 @@ class GedungController extends Controller
      */
     public function edit($gedung)
     {
-        $item = Gedung::where('id_gedung', $gedung)->first();
+        $item = Gedung::where('id_gedung', $gedung)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.data_kelengkapan.update_gedung', compact('item'));
     }
 

@@ -39,7 +39,6 @@
                 <form action="{{ route('update_perbaikan_un.update', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input type="hidden" name="kode_rs" value="rsc" />
 
                   <div class="form-group row">
                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
