@@ -7,7 +7,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-world"></i></div>
+      <div class="header-icon"><i class="fa fa-wrench"></i></div>
       <div class="header-title">
         <h1>Form Edit Pengembalian Unregistrasi</h1>
         <small>Form Pengembalian</small>
@@ -35,7 +35,6 @@
                 <form action="{{ route('update_pengembalian_un.update', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input type="hidden" name="kode_rs" value="src" />
 
                   <div class="form-group row">
                     <label for="id_perbaikan_un" class="col-xs-3 col-form-label">id pengembalian<i class="text-danger">*</i></label>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Alat;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
+use Illuminate\Support\Facades\Auth;
 
 class PerbaikanUnregistrasiController extends Controller
 {
@@ -22,27 +23,28 @@ class PerbaikanUnregistrasiController extends Controller
      */
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::all();
-        $pengiriman    = PengirimanUnregistrasi::all();
-        $pengembalian  = PengembalianUnregistrasi::all();
-        $penghapusan   = PenghapusanUnregistrasi::all();
-        $alats         = Alat::all();
-        $ruangans      = Ruangan::all();
-        $teknisis      = Teknisi::all();
+        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
 
+        $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_unregistrasis')
         ->select(DB::raw('max(id_perbaikan_un) as idPerbaikanUn'))
-        // ->where('kode_rs', $kodeRs_)
+        ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->idPerbaikanUn;
 
-        $urutan = (int)substr($kodeAset, 7, 8);
+        $urutan = (int)substr($kodeAset, 15, 16);
         $urutan++;
 
         $huruf3 = "U";
         $date3  = date('dmy');
-        $kode_aset  = $huruf3 . $date3 . sprintf("%04s", $urutan);
+        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.admin.ppm.aset_unregistrasi.index', [
             
@@ -86,7 +88,7 @@ class PerbaikanUnregistrasiController extends Controller
             'active' => '',
 
         ]);
-
+        $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
@@ -112,9 +114,9 @@ class PerbaikanUnregistrasiController extends Controller
      */
     public function edit($id)
     {
-        $teknisis      = Teknisi::all();
-        $ruangans      = Ruangan::all();
-        $alats         = Alat::all();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->first();
         return view('pages.admin.ppm.aset_unregistrasi.edit_perbaikan', [
             
@@ -173,7 +175,7 @@ class PerbaikanUnregistrasiController extends Controller
 
     public function cetak($id)
     {
-        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->first();
+        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.ppm.aset_unregistrasi.cetak_perbaikan', compact('item'));
     }
 }

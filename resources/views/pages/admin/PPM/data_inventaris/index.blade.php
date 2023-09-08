@@ -8,7 +8,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-world"></i></div>
+      <div class="header-icon"><i class="pe-7s-albums"></i></div>
       <div class="header-title">
         <h1>Data Inventaris</h1>
         <small>Inventaris</small>

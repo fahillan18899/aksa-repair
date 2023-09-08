@@ -9,7 +9,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-world"></i></div>
+      <div class="header-icon"><i class="pe-7s-date"></i></div>
       <div class="header-title">
         <h1>Jadwal</h1>
         <small>Tambah Jadwal</small>

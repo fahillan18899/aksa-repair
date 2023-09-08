@@ -7,7 +7,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-world"></i></div>
+      <div class="header-icon"><i class="pe-7s-drawer"></i></div>
       <div class="header-title">
         <h1>Ubah Ruangan</h1>
         <small>Form Ruangan </small>

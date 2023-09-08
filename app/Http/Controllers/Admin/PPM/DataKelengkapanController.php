@@ -26,12 +26,12 @@ class DataKelengkapanController extends Controller
         $items = Ruangan::where('kode_rs',Auth::user()->kode_rs)->get();
 
 
-        $kodeRs_ = "RSC0001";
+        $kodeRs_ = Auth::user()->kode_rs;
 
         // KODE GEDUNG
         $dataGedung = DB::table('gedungs')
         ->select(DB::raw('max(id_gedung) as maxIDGEDUNG'))
-        // ->where('kode_rs', $kodeRs_)
+         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeGedung = $dataGedung->maxIDGEDUNG;
 
@@ -43,7 +43,7 @@ class DataKelengkapanController extends Controller
         // KODE TEKNISI
         $dataTeknisi = DB::table('teknisis')
         ->select(DB::raw('max(id_teknisi) as maxIDTEKNISI'))
-        // ->where('kode_rs', $kodeRs_)
+         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeTeknisi = $dataTeknisi->maxIDTEKNISI;
 
@@ -55,7 +55,7 @@ class DataKelengkapanController extends Controller
         // Kode Alat
         $dataAlat = DB::table('alats')
             ->select(DB::raw('max(id_alat) as maxIDALAT'))
-            // ->where('kode_rs', $kodeRs_)
+             ->where('kode_rs', $kodeRs_)
             ->first();
         $kodeAlat = $dataAlat->maxIDALAT;
 
@@ -67,7 +67,7 @@ class DataKelengkapanController extends Controller
         // Kode Lokasi
         $dataLokasi = DB::table('ruangans')
         ->select(DB::raw('max(id_ruangan) as maxIDLOKASI'))
-        // ->where('kode_rs', $kodeRs_)
+         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeLokasi = $dataLokasi->maxIDLOKASI;
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PerbaikanNonAset;
 use App\Models\PerbaikanRegistrasi;
 use App\Models\PerbaikanUnregistrasi;
+use App\Models\LembarPemeliharaan;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class HomeController extends Controller
         $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
-        $perbaikanNonAset = PerbaikanNonAset::where('kode_rs',Auth::user()->kode_rs)->count();
+        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs',Auth::user()->kode_rs)->count();
 
 
         return view(
@@ -28,7 +29,7 @@ class HomeController extends Controller
                 'registrasi' => $registrasi,
                 'perbaikanRegistrasi' => $perbaikanRegistrasi,
                 'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
-                'perbaikanNonAset' => $perbaikanNonAset
+                'lembarPemeliharaan' => $lembarPemeliharaan
             ]
         );
     }
