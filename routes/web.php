@@ -31,12 +31,19 @@ use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
 use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
 use App\Http\Controllers\AdminKalibrasi\LembarKerjaController;
+
 use App\Http\Controllers\AdminKalibrasi\TimbanganBayiController;
 
+
+
+use App\Http\Controllers\AdminKalibrasi\PesananController;
 
 use App\Http\Controllers\AuthKalibrasiController;
 use App\Http\Controllers\UserController;
 use App\Models\LembarPemeliharaan;
+
+// kalibrasi
+use App\Http\Controllers\TeknisiKalibrasi\HomeController as Teknisi;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,7 +210,7 @@ Route::post('logout', [AuthController::class, 'logout'])
 ->middleware('auth');
 
 /**Kalibrasi */
-Route::prefix('kalibrasi')->group(function () {
+Route::prefix('kalibrasi')->middleware(['auth', 'admin_kalibrasi'])->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
@@ -212,10 +219,14 @@ Route::prefix('kalibrasi')->group(function () {
     Route::resource('timbangan_bayi', TimbanganBayiController::class);
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
 
+    Route::resource('pesanan', PesananController::class);
+});
+Route::prefix('dashboard_teknisi')->middleware(['auth', 'teknisi'])->group(function () {
 
+    Route::get('/', [Teknisi::class, 'index']);
+});
 
-
-
+Route::prefix('kalibrasi')->group(function () {
     Route::get('/', [AuthKalibrasiController::class, 'index'])->name('login-kalibrasi');
     Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess-kalibrasi');
     Route::get('/register', [AuthController::class, 'registration'])->name('register-kalibrasi');

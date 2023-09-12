@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('berita_acaras', function (Blueprint $table) {
             $table->id();
+            $table->string('kepada');
+            $table->string('nama');
+            $table->integer('qyt');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

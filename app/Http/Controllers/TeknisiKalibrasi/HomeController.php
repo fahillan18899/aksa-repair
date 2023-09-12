@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\AdminKalibrasi;
+namespace App\Http\Controllers\TeknisiKalibrasi;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kalibrasi\AlatUkur;
-use App\Models\Kalibrasi\BeritaAcara;
 use Illuminate\Http\Request;
 
-class BeritaAcaraController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +14,8 @@ class BeritaAcaraController extends Controller
      */
     public function index()
     {
-        $berita_acara = AlatUkur::all();
-        return view('pages.kalibrasi.admin.berita_acara.index', [
-            'berita_acara' => $berita_acara
-        ]);
+
+        return view('pages.kalibrasi.teknisi.home');
     }
 
     /**
@@ -40,8 +36,7 @@ class BeritaAcaraController extends Controller
      */
     public function store(Request $request)
     {
-
-       //
+        //
     }
 
     /**
