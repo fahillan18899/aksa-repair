@@ -27,9 +27,13 @@ use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
+
 use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
 use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
 use App\Http\Controllers\AdminKalibrasi\LembarKerjaController;
+use App\Http\Controllers\AdminKalibrasi\TimbanganBayiController;
+
+
 use App\Http\Controllers\AuthKalibrasiController;
 use App\Http\Controllers\UserController;
 use App\Models\LembarPemeliharaan;
@@ -205,6 +209,7 @@ Route::prefix('kalibrasi')->group(function () {
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
     Route::resource('berita_acara', BeritaAcaraController::class);
     Route::resource('lembar_kerja', LembarKerjaController::class);
+    Route::resource('timbangan_bayi', TimbanganBayiController::class);
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
 
 
