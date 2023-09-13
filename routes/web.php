@@ -210,7 +210,7 @@ Route::post('logout', [AuthController::class, 'logout'])
 ->middleware('auth');
 
 /**Kalibrasi */
-Route::prefix('kalibrasi')->middleware(['auth', 'admin_kalibrasi'])->group(function () {
+Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);

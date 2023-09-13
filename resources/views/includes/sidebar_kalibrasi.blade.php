@@ -17,7 +17,7 @@
     <ul class="sidebar-menu">
 
       <li class="active">
-        <a href="?hal=dashboard&fun=index"><i class="fa fa ti-home"></i> Dashboard</a>
+        <a href="{{ url('/kalibrasi/home') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
       <li class="treeview ">
@@ -65,9 +65,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="#?hal=schedule&fun=create_slot">Tambahkan Time Slot</a></li>
-          <li class=""><a href="#?hal=schedule&fun=create">Tambahkan Jadwal</a></li>
-          <li class=""><a href="#?hal=schedule&fun=index">Daftarkan Jadwal</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/lembar_kerja') }}">Hasil Ukur Kalibrasi</a></li>
+
         </ul>
       </li>
 
@@ -93,11 +92,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-
-          <li class=""><a href="#?hal=pharmacy&fun=category_form"> Tambahkan Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=category_index">Daftar Jenis Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_form"> Tambahkan Obat</a></li>
-          <li class=""><a href="#?hal=pharmacy&fun=medicine_index">Daftar Obat</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/berita_acara') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
 
