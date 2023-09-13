@@ -41,11 +41,12 @@ return new class extends Migration
             $table->string('tipe_3')->nullable();
             $table->string('no_seri_3')->nullable();
             $table->string('tertelusur_3')->nullable();
-            /**Pengukuran kondisi */
+            /**Pengukuran kondisi ruangan */
             $table->string('suhu_1')->nullable();
             $table->string('suhu_2')->nullable();
             $table->string('kelembapan_1')->nullable();
             $table->string('kelembapan_2')->nullable();
+            /**Hasil Pemeriksaan kondisi fisik dan fungsi */
             $table->string('hasil_pemeriksaan_fisik_1')->nullable();
             $table->string('hasil_pemeriksaan_fungsi_1')->nullable();
             $table->string('keterangan_1')->nullable();
