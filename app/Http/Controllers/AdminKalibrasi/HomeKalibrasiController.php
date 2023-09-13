@@ -36,4 +36,21 @@ class HomeKalibrasiController extends Controller
             'id_number' => $id_number,
         ]);
     }
+    
+    public function store(Request $request) {
+        $validatedData = $request->validate([
+            'id_number' => '',
+            'nama_alat' => '',
+            'serial_number' => '',
+            'merek' => '',
+            'type' => ''
+        ]);
+
+        AlatUkur::create($request->post());
+
+
+
+        return redirect('/kalibrasi/alat_ukur')
+        ->with('success', 'Data Berhasil Di Tambahkan.');
+    }
 }

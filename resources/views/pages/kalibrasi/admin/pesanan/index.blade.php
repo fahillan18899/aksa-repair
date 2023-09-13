@@ -32,7 +32,7 @@
 
           <div class="panel-heading no-print">
             <div class="btn-group">
-              <a class="btn btn-primary" href=""> <i class="fa fa-list"></i> Daftar Pesanan </a>
+              <a class="btn btn-primary" href=""> <i class="fa fa-list"></i> Formulir Pesanan </a>
             </div>
           </div>
 
@@ -58,11 +58,11 @@
                     <label for="nama alat" class="col-xs-3 col-form-label">Items <i class="text-danger">*</i></label>
                     <div class="col-xs-3">
                       <select name="nama[]" class="form-control" id="nama">
-                        <option>Spygmomanometer</option>
-                        <option>ECG</option>
-                        <option>Centrifuge</option>
-                        <option>Blood Presure monitor dgtal</option>
-                        <option>Timbangan Bayi</option>
+                        <option value="spygmomanometer">Spygmomanometer</option>
+                        <option value="ecg">ECG</option>
+                        <option value="centrifuge">Centrifuge</option>
+                        <option value="blood_presure">Blood Presure monitor dgtal</option>
+                        <option value="timbangan_bayi">Timbangan Bayi</option>
                       </select>
                     </div>
                     <div class="col-xs-2">
@@ -126,11 +126,12 @@
         
                   <label for="nama alat" class="col-xs-3 col-form-label"></label>
                     <div class="col-xs-3">
-                      <select name="nama_alat[]" class="form-control" id="Nama_Alat">
-                        <option>Pilih Alat</option>
-                        <option>Pilih Alat</option>
-                        <option>Pilih Alat</option>
-                        <option>Pilih Alat</option>
+                    <select name="nama[]" class="form-control" id="nama">
+                        <option value="spygmomanometer">Spygmomanometer</option>
+                        <option value="ecg">ECG</option>
+                        <option value="centrifuge">Centrifuge</option>
+                        <option value="blood_presure">Blood Presure monitor dgtal</option>
+                        <option value="timbangan_bayi">Timbangan Bayi</option>
                       </select>
                     </div>
                     <div class="col-xs-2">
@@ -159,7 +160,6 @@
 
       // ending for remove fields code
     </script>
-
 
 
     <!--TABEL-->

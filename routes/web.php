@@ -214,6 +214,7 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
+    Route::post('/alat_ukur', [HomeKalibrasiController::class, 'store']);
     Route::resource('berita_acara', BeritaAcaraController::class);
     Route::resource('lembar_kerja', LembarKerjaController::class);
     Route::resource('timbangan_bayi', TimbanganBayiController::class);
