@@ -9,7 +9,7 @@
       <div class="info">
         <p>{{ Auth::user()->username }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i>
-          {{ Auth::user()->user_role = "1" ? "Admin" : ""  }} </a>
+          {{ Auth::user()->user_role}} </a>
       </div>
     </div>
 
@@ -24,7 +24,6 @@
           <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
         </a>
         <ul class="treeview-menu">
-
           <li class=""><a href="{{ url('/kalibrasi/lembar_kerja') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
@@ -37,9 +36,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="#?hal=schedule&fun=create_slot">Tambahkan Time Slot</a></li>
-          <li class=""><a href="#?hal=schedule&fun=create">Tambahkan Jadwal</a></li>
-          <li class=""><a href="#?hal=schedule&fun=index">Daftarkan Jadwal</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/hasil_ukur_kalibrasi') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
 

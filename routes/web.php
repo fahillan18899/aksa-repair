@@ -222,7 +222,7 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
 
     Route::resource('pesanan', PesananController::class);
 });
-Route::prefix('dashboard_teknisi')->middleware(['auth', 'teknisi'])->group(function () {
+Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
 
     Route::get('/', [Teknisi::class, 'index']);
 });

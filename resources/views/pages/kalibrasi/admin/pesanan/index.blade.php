@@ -61,7 +61,7 @@
                         <option value="spygmomanometer">Spygmomanometer</option>
                         <option value="ecg">ECG</option>
                         <option value="centrifuge">Centrifuge</option>
-                        <option value="blood_presure">Blood Presure monitor dgtal</option>
+                        <option value="blood_presure">Blood Presure monitor digital</option>
                         <option value="timbangan_bayi">Timbangan Bayi</option>
                       </select>
                     </div>
