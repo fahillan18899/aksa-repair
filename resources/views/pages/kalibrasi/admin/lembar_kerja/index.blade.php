@@ -3001,7 +3001,6 @@
                               <h3>G. PENGUKURAN KINERJA </h3>
                               <h4>1. 1. Irradiance pada jarak 200 cm* </h4>
 
-<<<<<<< HEAD
                     <table class="table table-hover table-bordered">
                       <tbody>
                         <tr>
@@ -3106,117 +3105,9 @@
                           <td><b><input name="koreksi_brmp_6" type="text" style="border: 0" placeholder="-"></b></td>
                           <td><b><input name="ketidakpastian_brmp_6" type="text" style="border: 0" placeholder="-"></b></td>
                         </tr>
-=======
-                              <table class="table table-hover table-bordered">
-                                <tbody>
-                                  <tr>
-                                    <td><b>Parameter</b></td>
-                                    <td><b>Setting Standar </b></td>
-                                    <td><b>Rata-rata Hasil Ukur</b></td>
-                                    <td><b>Koreksi</b></td>
-                                    <td><b>Ketidakpastian ( 95% CL, k=2) </b></td>
-                                  </tr>
-                                  <tr>
-                                    <td rowspan="12" colspan=""><b>Saturasi Oksigen ( % ) O2 </b></td>
-                                    <td><b>98 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>93 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>92 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>85 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>30 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>90 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>70 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>88 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>90 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
 
-                                </tbody>
-                                <tbody>
-                                  <tr>
-                                    <td rowspan="6" colspan=""><b>Respirasi (BrPM)</b></td>
-                                    <td><b>30 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>60 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>80 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>120 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>180 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>240 </b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                    <td><b><input name="" type="text" style="border: 0" placeholder="-"></b></td>
-                                  </tr>
->>>>>>> ba3b3fdc19f92ac68e23a4607d2beb039963bc67
-
-                                </tbody>
-                              </table>
                               <h4>1. 1. Irradiance pada jarak 200 cm* </h4>
 
-<<<<<<< HEAD
                     <table class="table table-hover table-bordered">
                       <tbody>
                         <tr>
