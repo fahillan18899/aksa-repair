@@ -43,27 +43,20 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <th>No</th>
+                    <th>Kepada</th>
                     <th>Nama Alat</th>
                     <th>Jumlah</th>
-                    <th>Tombol_Aksi_Tabel</th>
+                    <th>Total</th>
                   </thead>
                   <tbody>
                     @forelse ($berita_acara as $index => $item)
                     <tr>
                       <td>{{ $index + 1 }}</td>
-                      <td>{{ $item->id_number }}</td>
-                      <td>{{ $item->type }}</td>
-                      <td scope="row">
-                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_number }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-edit"></i> print</button></a>
-                        <a href="{{ route('registrasi',$item->id_number) }}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> </a>
-                        <form action="{{ url('/dashboard/ppm/registrasi', $item->id_number) }}" method="POST" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button class="btn btn-danger btn-sm">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </form>
-                      </td>
+                      <td>{{ $item->kepada }}</td>
+                      <td>{{ $item->nama }}</td>
+                      <td>{{ $item->qyt }}</td>
+                      <td>Rp. {{ number_format($item->harga, 2, ',', '.'); }}</td>
+                      <td>Rp. {{ number_format($item->qyt * $item->harga, 2, ',', '.'); }}</td>
                     </tr>
                     @empty
                     <tr>

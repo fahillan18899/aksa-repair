@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\AdminKalibrasi;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kalibrasi\AlatUkur;
 use App\Models\Kalibrasi\BeritaAcara;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class BeritaAcaraController extends Controller
      */
     public function index()
     {
-        $berita_acara = AlatUkur::all();
+        $berita_acara = BeritaAcara::all();
         return view('pages.kalibrasi.admin.berita_acara.index', [
             'berita_acara' => $berita_acara
         ]);

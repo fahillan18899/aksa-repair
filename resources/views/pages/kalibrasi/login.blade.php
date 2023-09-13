@@ -60,9 +60,8 @@
               <label class="control-label" for="user_role">Peran Pengguna</label>
               <select name="user_role" class="form-control" id="user_role">
                 <option value="">Select Peran Pengguna</option>
-                <option value="1">Admin</option>
-                <option value="2">Teknisi</option>
-                <option value="2">User</option>
+                <option value="admin">Admin</option>
+                <option value="teknisi">Teknisi</option>
               </select>
             </div>
 

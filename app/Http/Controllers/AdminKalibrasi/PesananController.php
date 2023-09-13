@@ -38,21 +38,49 @@ class PesananController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'kepada' => '',
-            'nama' => '',
-            'qyt' => '',
-            'harga' => '',
+        // Validate the request data (you should add more validation rules as needed)
+        $validatedData = $request->validate([
+            'kepada' => 'required|string',
+            'nama.*' => 'required|string',
+            'qyt.*' => 'required|integer',
+            'harga.*' => 'required|string',
         ]);
 
-        BeritaAcara::create($data);
+        
+        // Loop through the form data to insert into the database
+        foreach ($validatedData['nama'] as $index => $nama) {
+            $pesanan = new BeritaAcara();
+            $pesanan->kepada = $validatedData['kepada'];
+            $pesanan->nama = $nama;
+            $pesanan->qyt = $validatedData['qyt'][$index];
+            $pesanan->harga = $validatedData['harga'][$index];
+            $pesanan->save();
+        }
 
-
-        return redirect()->route('pesanan.index')
-            ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
+        // Redirect or return a response as needed
+        // For example, you can redirect to a success page
+        return redirect('/kalibrasi/pesanan')->with('success', 'OK');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $data = $request->validate([
+    //         'kepada' => '',
+    //         'nama' => '',
+    //         'qyt' => '',
+    //         'harga' => '',
+    //     ]);
+
+    //     BeritaAcara::create($data);
+
+
+    //     return redirect()->route('pesanan.index')
+    //         ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
+    // }
 
     /**
      * Display the specified resource.

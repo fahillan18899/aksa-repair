@@ -30,24 +30,21 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Form Registrasi Alat</h1>
+            <h1>Formulir Alat Ukur</h1>
           </div>
 
 
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8">
+                <form action="{{ url('kalibrasi/alat_ukur') }}" class="form-inner" method="post" accept-charset="utf-8">
                   @csrf
                   @method('post')
-
-
-                  <input type="hidden" name="kode_rs" value="KODE" />
 
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="{{ $id_number }}" readonly>
+                      <input name="id_number" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="{{ $id_number }}" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -57,7 +54,7 @@
                   <div class="form-group row">
                     <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" type="text" class="form-control" id="firstname" placeholder="Nama Alat Ukur">
+                      <input name="nama" type="text" class="form-control" id="firstname" placeholder="Nama Alat Ukur">
 
                     </div>
                   </div>
