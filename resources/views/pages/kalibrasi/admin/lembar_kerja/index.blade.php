@@ -608,7 +608,7 @@
                               </table>
 
                               <h3>Data Alat Pelanggan</h3>
-                              <table class="table table-hover table-bordered style=" width:100%">
+                              <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b> Nama Alat</b></td>
@@ -675,11 +675,6 @@
                                     <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
                                 </tbody>
                               </table>
-
-
-
-
-
 
 
                               <h3>PENGUKURAN KONDISI LINGKUNGAN</h3>
@@ -799,10 +794,6 @@
                                 </tbody>
                               </table>
 
-
-                              "
-
-
                               <h3>G. Hasil Pengukuran Kinerja Alat</h3>
                               <h4>1. Lead</h4>
                               <table class="table table-hover table-bordered style=" width:"100%">
@@ -819,11 +810,11 @@
                                   <td rowspan="1" class="text-center"><b>aVL</b></td>
                                 </tr>
                                 <tr>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="II" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="III" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVr" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVR" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVL" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                 </tr>
                                 <tr>
                                   <td rowspan="1" class="text-center"><b>V2</b></td>
@@ -833,11 +824,11 @@
                                   <td rowspan="1" class="text-center"><b>V6</b></td>
                                 </tr>
                                 <tr>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                 </tr>
 
                                 </tbody>
@@ -855,37 +846,37 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="3" align="center"><b>Sensitivitas ( mV )</b></td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="3" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><input name="kesalahan_aksimal_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="2" align="left"><b>Kecepatan Kertas (mm/s)</b></td>
-                                    <td><input name="pengukuran_titik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td rowspan="2"><input name="pengukuran_titik_50_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="setting_pada_standar_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td rowspan="2"><input name="kesalahan_aksimal_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td><input name="pengukuran_titik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="setting_pada_standar_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
 
                                 </tbody>
@@ -904,36 +895,36 @@
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="5" align="center"><b>Frekuensi
                                         Heart Rate (BPM)</b></td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="3" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><input name="BPM_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_7" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_8" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_9" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_10" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_11" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_12" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_13" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="2" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_14" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_15" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_16" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="2" align="center"><input name="BPM_17" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_18" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_19" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_20" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_21" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_22" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
 
                                 </tbody>
@@ -1071,10 +1062,10 @@
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>4</b></td>
                                     <td class="table-info" colspan="1" align="left">Termohygrometer	</td>
-                                    <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="merek_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tipe_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tertelusur_4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -1249,11 +1240,11 @@
                                   <td rowspan="1" class="text-center"><b>aVL</b></td>
                                 </tr>
                                 <tr>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="II" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="III" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVr" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVR" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="aVL" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                 </tr>
                                 <tr>
                                   <td rowspan="1" class="text-center"><b>V2</b></td>
@@ -1263,16 +1254,16 @@
                                   <td rowspan="1" class="text-center"><b>V6</b></td>
                                 </tr>
                                 <tr>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  <td><input name="pembacaan_alat_naik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  <td><input name="V6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                 </tr>
 
                                 </tbody>
                               </table>
-                              <h4>2. Hasil Pengukuran Kinerja ECG*</h4>
+                              <h4>2. Hasil Pengukuran Kinerja Centrifuge*</h4>
                               <table class="table table-hover table-bordered style=" width:100%">
                                 <tbody>
                                   <tr>
@@ -1285,37 +1276,37 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="3" align="center"><b>Sensitivitas ( mV )</b></td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="3" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><input name="kesalahan_aksimal_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_1" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_2" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="setting_pada_standar_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_3" maxlength="4" size="4"  type="text" style="border: 0" placeholder="-"></td>  
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="2" align="left"><b>Kecepatan Kertas (mm/s)</b></td>
-                                    <td><input name="pengukuran_titik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td rowspan="2"><input name="pengukuran_titik_50_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_50_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="setting_pada_standar_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td rowspan="2"><input name="kesalahan_aksimal_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td><input name="pengukuran_titik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="pengukuran_titik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="setting_pada_standar_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="terukur_rata_rata_pada_standar_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="koreksi_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="ketidakpastian_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
 
                                 </tbody>
@@ -1334,36 +1325,36 @@
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="5" align="center"><b>Frekuensi
                                         Heart Rate (BPM)</b></td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="3" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><input name="BPM_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_7" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_8" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_9" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_10" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_11" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_12" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_13" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" rowspan="2" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                    <td><input name="BPM_14" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_15" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_16" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><input name="BPM_17" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_18" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
-                                    <td class="table-info" colspan="1" align="center">-</td>
+                                  <td><input name="BPM_19" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_20" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_21" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="BPM_22" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
 
                                 </tbody>
