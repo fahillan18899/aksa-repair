@@ -44,7 +44,7 @@
                 <a href="#centrifuge" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Centrifuge</a>
               </li>
               <li role="presentation">
-                <a href="#timbangan_bayi" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Timbangan Bayi</a>
+                <a href="#inkubator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> inkubator</a>
               </li>
               <!-- <li role="presentation">
                 <a href="#blood" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Blood Presure monitor digital</a>
@@ -307,13 +307,8 @@
               <li role="presentation">
                 <a href="#neo_puff" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Neo Puff</a>
               </li>
-
               <li role="presentation">
-                <a href="#scaller" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Scaller</a>
-              </li>
-
-              <li role="presentation">
-                <a href="#x_ray" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>X-Ray</a>
+                <a href="#SpygmomanometerAneroid" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Spygmomanometer Aneroid</a>
               </li>
             </ul>
 
@@ -1648,7 +1643,7 @@
                   </div>
                 </div>
               </div>
-              <div role="tabpanel" class="tab-pane" id="timbangan_bayi">
+              <div role="tabpanel" class="tab-pane" id="inkubator">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
@@ -1664,19 +1659,19 @@
                               @csrf
                               @method('POST')
 
-                              <h3>A. DATA ALAT PELANGGAN</h3>
+                              <h3>A. Data Alat Pelanggan</h3>
                               <table class="table table-hover table-bordered" style="width:100%">
                                 <tbody>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b> Nama Alat</b></td>
-                                    <td><input name="nama_alat" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
                                     <td><input name="milik" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>Merek/Tipe</b></td>
+                                    <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>Model</b></td>
                                     <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
@@ -1695,7 +1690,7 @@
                               </table>
 
 
-                              <h3>B. PELAKSANA KALIBRASI</h3>
+                              <h3>B. Pelaksana Kalibrasi</h3>
 
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
@@ -1722,7 +1717,7 @@
                                 </tbody>
                               </table>
 
-                              <h3>C. KONDISI RUANG</h3>
+                              <h3>C. Kondisi Ruang</h3>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
@@ -1755,9 +1750,8 @@
                                     <td class="table-info" colspan="1" align="left"><b>Tertelusur</b></td>
                                   </tr>
                                   <tr>
-
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                                    <td class="table-info" colspan="1" align="left">Anak Timbangan 10Kg </td>
+                                    <td class="table-info" colspan="1" align="left"><b>Electrical Safety Analyzer	</b></td>
                                     <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
@@ -1765,52 +1759,24 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left">Anak Timbangan 20Kg </td>
-                                    <td><input name="merek_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_2" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Thermohygrometer	</b></td>
+                                    <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tertelusur_1" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                                    <td class="table-info" colspan="1" align="left">Anak Timbangan 20Kg </td>
-                                    <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left">Anak Timbangan 20Kg </td>
-                                    <td><input name="merek_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left">Anak Timbangan 20Kg </td>
-                                    <td><input name="merek_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_5" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left">Termohygrometer </td>
-                                    <td><input name="merek_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_6" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Incubator Analyzer	</b></td>
+                                    <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="tertelusur_1" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
                               </table>
 
-
-
-
-
-                              <h3>E. PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT PELANGGAN</h3>
+                              <h3>E. Pemeriksaan Kondisi Fisik dan Fungsi Alat</h3>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
@@ -1823,267 +1789,341 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Kabel Power</b></td>
                                     <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Tampilan dan Indikator</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Tombol On/Off</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Panel Kontrol</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Temperature Display</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Skin Temperature Probe</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>6</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Air Temperature Probe</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>7</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Canopy/Hood (Baby Box)</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>8</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Troley</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                              <h3>F. Hasil Pengukuran Keselamatan Listrik</h3>
+                              <table class="table table-hover table-bordered" style="width:100%">
+                                <tbody>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Bagian Alat</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Hasil Ukur</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Toleransi </b></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b> Tegangan Jala-jala Terukur</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>2</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Resistansi Pembumian Protektif</b></td>
                                     <td><input name="hasil_pemeriksaan_fisik_2" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="hasil_pemeriksaan_fungsi_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_2" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>3</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Arus bocor Peralatan</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_3" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_3" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Arus bocor bagian yang diaplikasikan</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+
+
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>5</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Resistansi Isolasi</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_5" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
                               </table>
 
-                              <h3>F. HASIL PENGUKURAN KINERJA ALAT</h3>
+                              <h3>G. Hasil Pengukuran Kinerja Alat</h3>
 
-                              <h4>1. <b>Daya ulang pembacaan</b></h4>
-                              <h5>Beban 10,00 Kg</h5>
-                              <table class="table table-hover table-bordered" style=" width:100%">
+                              <h3>1. Kalibrasi Suhu Udara</h3>  
+                              <table class="table table-hover table-bordered">
                                 <tbody>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>No</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>z1 Kg</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>m1 Kg</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>r=m1-z1 Kg</b></td>
+                                    <td rowspan="2"><b>Parameter</b></td>
+                                    <td rowspan="2"><b>Setting Standar </b></td>
+                                    <td colspan="6"><b>Pembacaan Pada Standar</b></td>
+                                    <td rowspan="2"><b>Rata-rata Hasil Ukur</b></td>
+                                    <td rowspan="2"><b>Koreksi</b></td>
+                                    <td rowspan="2"><b>Ketidakpastian ( 95% CL, k=2) </b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>1</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>I</b></td>
+                                    <td><b>II</b></td>
+                                    <td><b>III</b></td>
+                                    <td><b>IV</b></td>
+                                    <td><b>V</b></td>
+                                    <td><b>VI</b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>2</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td rowspan="2"><b>Suhu T1 ( ºC)</b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>3</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b></td>  
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>4</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td rowspan="2"><b> Suhu T2 ( ºC)</b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>  
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>5</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b></td>  
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>6</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td rowspan="2"><b> Suhu T3 ( ºC)</b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>  
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>7</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    
+                                  </tr> 
+                                  <tr>
+                                    <td rowspan="2"><b> Suhu T4 ( ºC) </b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>8</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>9</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td rowspan="2"><b> Suhu T5 ( ºC)</b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
-
+                                  <tr>
+                                    <td colspan="2">Kebisingan (db)	</td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Aliran Udara (m/s)		</td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan="2">Kelembaban (%)		</td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                  </tr>
                                 </tbody>
+
                               </table>
 
-
-                              <h5>Beban 20,00 Kg</h5>
-                              <table class="table table-hover table-bordered" style=" width:100%">
+                              <h4>2. <b>2. kalibrasi Sensor temperatur kulit</b></h4>
+                              <table class="table table-hover table-bordered">
                                 <tbody>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>No</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>z1 Kg</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>m1 Kg</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>r=m1-z1 Kg</b></td>
+                                    <td rowspan="2"><b>Parameter</b></td>
+                                    <td rowspan="2"><b>Setting Standar </b></td>
+                                    <td colspan="6"><b>Pembacaan Pada Standar</b></td>
+                                    <td rowspan="2"><b>Rata-rata Hasil Ukur</b></td>
+                                    <td rowspan="2"><b>Koreksi</b></td>
+                                    <td rowspan="2"><b>Ketidakpastian ( 95% CL, k=2) </b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>1</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td><b>I</b></td>
+                                    <td><b>II</b></td>
+                                    <td><b>III</b></td>
+                                    <td><b>IV</b></td>
+                                    <td><b>V</b></td>
+                                    <td><b>VI</b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>2</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td ><b>Akurasi temperatur Kulit Bayi dengan temperatur kontrol ( ºC)"</b></td>
+                                    <td><b>36 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>3</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
+                                    <td ><b>Sensor temperatur Kulit Bayi</b></td>
+                                    <td><b>32 </b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
+                                    <td><b><input  size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
                                   </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>4</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>5</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>6</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>7</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>8</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>9</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>10</b></td>
-                                  </tr>
-
                                 </tbody>
-                              </table>
 
-                              <h4>2. <b>Penyimpangan Penunjukan</b></h4>
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" rowspan="2" colspan="" align="center"><b>No</b></td>
-                                    <td class="table-info" rowspan="2" colspan="" align="center"><b>Massa (g)</b></td>
-                                    <td class="table-info" rowspan="" colspan="4" align="center"><b>Penunjuk Standar (Kg)</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>z1</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>m1</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>m2</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>z2</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>1</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>2</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>2</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>4</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>3</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>6</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>4</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>8</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>5</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>10</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>6</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>12</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>7</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>14</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>8</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>16</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>9</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>18</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>10</b></td>
-                                    <td class="table-info" colspan="" align="center"><b>20</b></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="BIL_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  
-                                </tbody>
                               </table>
                               <div class="form-group row">
                                 <div class="col-sm-offset-3 col-sm-6">
@@ -11594,6 +11634,7 @@
 
 
               </div>
+
               <div role="tabpanel" class="tab-pane" id="urine_analyzer">
 
                 <div class="row">
@@ -25452,7 +25493,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Bloode Bank</h1>
+                        <h1>Lembar Kerja Pengujian dan Bloode Bank</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -25792,7 +25833,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Bloode Bank</h1>
+                        <h1>Lembar Kerja Pengujian dan Bloode Bank</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -26132,7 +26173,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Vapolizer Isoflurane</h1>
+                        <h1>Lembar Kerja Pengujian dan Vapolizer Isoflurane</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -26417,7 +26458,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi vaporizer Sevoflurane</h1>
+                        <h1>Lembar Kerja Pengujian dan vaporizer Sevoflurane</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -26703,7 +26744,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Electro Surgery Unit (ESU)</h1>
+                        <h1>Lembar Kerja Pengujian dan Electro Surgery Unit (ESU)</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -27040,7 +27081,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi  Lampu Oprasi</h1>
+                        <h1>Lembar Kerja Pengujian dan Lampu Oprasi</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -27295,7 +27336,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibreasi Lampu Tindakan</h1>
+                        <h1>Lembar Kerja Pengujian dan Lampu Tindakan</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -27550,7 +27591,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Slit Lamp</h1>
+                        <h1>Lembar Kerja Pengujian dan Slit Lamp</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -27805,7 +27846,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Sepeda Treadmil</h1>
+                        <h1>Lembar Kerja Pengujian dan Sepeda Treadmil</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -28287,7 +28328,7 @@
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Neo Puff</h1>
+                        <h1>Lembar Kerja Pengujian dan Neo Puff</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -28639,15 +28680,14 @@
                 </div>
               </div>
 
-
-              <div role="tabpanel" class="tab-pane" id="scaller">
+              <div role="tabpanel" class="tab-pane" id="SpygmomanometerAneroid">
 
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
 
                       <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi Scaller</h1>
+                        <h1>Lembar Kerja Pengujian dan Kalibrasi Spygmomanometer Aneroid</h1>
                       </div>
 
                       <div class="panel-body panel-form">
@@ -28707,6 +28747,10 @@
                                     <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
                                     <td><input name="nama_petugas" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>No. Label</b></td>
+                                    <td><input name="no_label" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
                                 </tbody>
 
                               </table>
@@ -28716,7 +28760,7 @@
                                 <tbody>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                                    <td class="table-info" colspan="1" align="left"> <b>Tachometer</b> </td>
+                                    <td class="table-info" colspan="1" align="left"> <b>Digital Pressure Meter	</b> </td>
                                     <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
@@ -28724,29 +28768,12 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left"> <b>Electrical Safety Analyzer</b> </td>
+                                    <td class="table-info" colspan="1" align="left"> <b>Termohygrometer	</b> </td>
                                     <td><input name="merek_2" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="tipe_2" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="tertelusur_2" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                                    <td class="table-info" colspan="1" align="left"> <b>Termohygrometer</b> </td>
-                                    <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left"> <b>Stopwatch </b> </td>
-                                    <td><input name="merek_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
                                 </tbody>
                               </table>
 
@@ -28784,455 +28811,229 @@
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Badan dan permukaan</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
+                                    <td><input name="bagian_alat_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Kotak kontak alat</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Kabel catu utama</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_3" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Label</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_4" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>5</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Tombol,saklar dan kontrol</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_5" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>6</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Tampilan dan indikator</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_6" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>7</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Parameter</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_7" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_7" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_7" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>8</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Motor</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_8" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_8" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_8" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
-                                </tbody>
-                              </table>
-
-                              <h3>F. Hasil Pengukuran Keselamatan Listrik</h3>
-                              <table class="table table-hover table-bordered" style="width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>No</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Bagian Alat</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Hasil Ukur</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Toleransi </b></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b> Tegangan Jala-jala Terukur</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b></td>
                                     <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Bantalan/Rem</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Filter</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Gauge/Tabung</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Indikator</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Konektor</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Label</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Manset</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Pengaturan Titik 0</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Pengencang</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>Valve penutup</b></td>
+                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  
+
+                                </tbody>
+                              </table>
+
+                                <h3>F. PENGUKURAN KINERJA </h3>
+                              <table class="table table-hover table-bordered style=" width:100%">
+                                <tbody>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                                    <td class="table-info" colspan="1" rowspan="2" align="center"><b>titik setting</b></td>
+                                    <td class="table-info text-center" colspan="1" align="left"><b>Pengukuran</b></td>
+                                    <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>50</b></td>
+                                    <td><input name="pengukuran_titik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td rowspan="5" class="text-center">20mmHg/300 Sec</td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Resistansi Pembumian Protektif</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_2" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>100</b></td>
+                                    <td><input name="pengukuran_titik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Arus bocor Peralatan</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_3" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>150</b></td>
+                                    <td><input name="pengukuran_titik_150_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Arus bocor bagian yang diaplikasikan</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>200</b></td>
+                                    <td><input name="pengukuran_titik_200_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>5</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Resistansi Isolasi</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>250</b></td>
+                                    <td><input name="pengukuran_titik_250_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
                               </table>
 
-                              <h3>G. Hasil Pengukuran kinerja </h3>
-                              <h4>Kecepatan Putaran Speed Bor(rpm)</h4>
+                              <h3>LAJU BUANG CEPAT </h3>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>Setting</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>Setting AlatIndikator Alat</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>Data 1</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>Data 2</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>Data 3</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b></b></td>
-
+                                    <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                                    <td class="table-info" align="center"><b>Setting mmHg</b></td>
+                                    <td class="table-info text-center" align="left"><b>Pengukuran</b></td>
+                                    <td class="table-info" align="center"><b>Toleransi</b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>100%</b></td>
-                                    <td class="table-info" colspan="" rowspan="" align="center"><b>1200</b></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" maxlength="4" size="4" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" maxlength="4" size="4" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" maxlength="4" size="4" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_pemeriksaan_fungsi_5" type="text" maxlength="4" size="4" style="border: 0" placeholder="-"></td>
-
+                                    <td class="table-info" colspan="1" align="left"><b>1</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>200</b></td>
+                                    <td><input name="pengukuran_setting_mmhg_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td rowspan="1" class="text-center">20mmHg/300 Sec</td>
                                   </tr>
-
-                                  
-
                                 </tbody>
                               </table>
 
-
-
-
-                            </form>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div role="tabpanel" class="tab-pane" id="x_ray">
-
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="panel panel-default thumbnail">
-
-                      <div class="panel-heading no-print">
-                        <h1>Lembar Kerja Pengujian dan Kalibrasi X-Ray</h1>
-                      </div>
-
-                      <div class="panel-body panel-form">
-                        <div class="row">
-                          <div class="col-md-10 col-sm-12">
-                            <form action="{{ route('lembar_kerja.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                              @csrf
-                              @method('POST')
-
-                              <h3>A. Data Alat Pelanggan</h3>
-                              <table class="table table-hover table-bordered" style="width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
-                                    <td><input name="milik" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
-                                    <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Tipe / Model</b></td>
-                                    <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Nomor Seri</b></td>
-                                    <td><input name="no_seri" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Alamat</b></td>
-                                    <td><input name="alamat" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
-                                </tbody>
-                              </table>
-
-                              <h3>B. PELAKSANAAN KALIBRASI</h3>
-
+                              <h3>Akurasi Tekanan </h3>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Tempat/Ruangan Kalibrasi</b></td>
-                                    <td><input name="tempat_kalibrasi" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" rowspan="3" align="center"><b>Pembacaan Alat ( mmHg)</b></td>
+                                    <td class="table-info text-center" colspan="6" align="left"><b>Pembacaan Standar  (mmHg)</b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Tanggal</b></td>
-                                    <td><input name="tanggal" type="date" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="2" align="left"><b>Penunjukan 1</b></td>
+                                    <td class="table-info" colspan="2" align="left"><b>Penunjukan 2</b></td>
+                                    <td class="table-info" colspan="2" align="left"><b>Penunjukan 3</b></td>
                                   </tr>
                                   <tr>
-                                    <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
-                                    <td><input name="nama_petugas" type="text" style="border: 0" placeholder="-"></td>
+                                    <td class="table-info" colspan="1" align="left"><b>naik</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>turun</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>naik</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>turun</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>naik</b></td>
+                                    <td class="table-info" colspan="1" align="left"><b>turun</b></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">0</td>
+                                    <td><input name="pembacaan_alat_naik_0_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_0_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_0_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_0_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_0_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_0_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">50</td>
+                                    <td><input name="pembacaan_alat_naik_50_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_50_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_50_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_50_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_50_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_50_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">100</td>
+                                    <td><input name="pembacaan_alat_naik_100_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_100_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_100_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_100_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_100_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_100_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">150</td>
+                                    <td><input name="pembacaan_alat_naik_150_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_150_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_150_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_150_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_150_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_150_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">200</td>
+                                    <td><input name="pembacaan_alat_naik_200_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_200_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_200_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_200_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_200_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_200_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                  </tr>
+                                  <tr>
+                                    <td rowspan="1" class="text-center">250</td>
+                                    <td><input name="pembacaan_alat_naik_250_1" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_250_2" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_250_3" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_250_4" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_250_5" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="pembacaan_alat_naik_250_6" maxlength="4" size="4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
-
                               </table>
-
-                              <h3>C. Standar dan Peralatan yang Digunakan</h3>
-                              <h5>Prengujian</h5>
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>kolimator</b></td>
-                                    <td class="table-info" colspan="" align="left"> <b>visible</b> </td>
-                                    <td class="table-info" colspan="" align="left"> <b>x-ray</b> </td>
-                                    <td class="table-info" colspan="" align="left"> <b>selisih</b> </td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>x1</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" colspan="" align="center"><b>-1</b> </td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>x2</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" colspan="" align="center"><b>-1</b>-0,4</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>y1</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" colspan="" align="center"><b>-1</b>-0,7</td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="center"><b>y2</b></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" colspan="" align="center"><b>-1</b>-0,6</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <!---->
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="4" align="center"><b>kolimator lux</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="4" align="center"><b>kwadran</b></td>
-                                  </tr>
-
-                                  <tr>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>1</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>2</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>3</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>4</b></td>
-                                    <td class="table-info" rowspan="" colspan="" align="center"><b>sat</b></td>
-                                    <td class="table-info" rowspan="2" colspan="" align="center"><b>bg</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="" type="text" style="border: 0" placeholder="-"></td>
-                                    <td class="table-info" colspan="" align="center"><b>lux</b></td>
-                                  </tr>
-                                  
-
-                                </tbody>
-                              </table>
-
-                              <h3>Kalibrasi</h3>
-                              <h5>focus besar mAs 10</h5>
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-
-                                    <td class="table-info" rowspan="3" colspan="" align="left"><b></b></td>
-                                    <td class="table-info" colspan="" align="left"><b>kV</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>kV terukur</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>dosis</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>s</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>HVL</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>50</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>60</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="5" colspan="" align="left"><b>Repo</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
-                                  
-                                </tbody>
-                              </table>
-
-
-                              <h5>focus kecil mAs 10</h5>
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-
-                                    <td class="table-info" rowspan="3" colspan="" align="left"><b></b></td>
-                                    <td class="table-info" colspan="" align="left"><b>kV</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>kV terukur</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>dosis</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>s</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>HVL</b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>50</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>60</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="5" colspan="" align="left"><b>Repo</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b>70</b></td>
-                                    <td><input name="suhu_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="suhu_2" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
-                                  
-                                </tbody>
-                              </table>
-
-                              <h3>Uji Linearitas radiasi</h3>
-                              <table class="table table-hover table-bordered" style=" width:100%">
-                                <tbody>
-                                  <tr>
-                                    <td class="table-info" colspan="" align="left"><b></b></td>
-                                    <td class="table-info" colspan="" align="left"><b>kV terukur</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>mAs/mA</b></td>
-                                    <td class="table-info" colspan="" align="left"><b>pilih ></b></td>
-                                  </tr>
-                                  <tr>
-                                    <td class="table-info" rowspan="5" colspan="" align="left"><b>Linieritas pada 70 kV</b></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-                                  <tr>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
-                                  </tr>
-
-                                </tbody>
-                              </table>
-
-                              
-
-                              
 
 
 
