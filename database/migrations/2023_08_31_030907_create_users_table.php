@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('user_id');
             $table->string('username', 50)->unique();
             $table->string('password');
-            $table->integer('user_role')->default(2);
+            $table->string('user_role', 20)->default('user');
             $table->date('tanggal_lahir')->nullable()->change();
             $table->string('kode_rs')->default('RS1');
             $table->timestamps();

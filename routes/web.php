@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 
 use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
+use App\Http\Controllers\AdminKalibrasi\HasilKalibrasi;
 use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
 use App\Http\Controllers\AdminKalibrasi\LembarKerjaController;
 
@@ -220,8 +221,10 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
     Route::resource('lembar_kerja', LembarKerjaController::class);
     Route::resource('timbangan_bayi', TimbanganBayiController::class);
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
-
+    
     Route::resource('pesanan', PesananController::class);
+    Route::resource('hasil_kalibrasi', HasilKalibrasi::class);
+    Route::post('sphygmomanometer', [LembarKerjaController::class, 'sphygmomanometer']);
 });
 Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
 
