@@ -24745,7 +24745,7 @@
                 </div>
               </div>
 
-               <div role="tabpanel" class="tab-pane" id="ElectroSimulator">
+              <div role="tabpanel" class="tab-pane" id="ElectroSimulator">
 
                 <div class="row">
                   <div class="col-sm-12">
@@ -25119,7 +25119,7 @@
                 </div>
               </div>
 
-               <div role="tabpanel" class="tab-pane" id="TENS">
+              <div role="tabpanel" class="tab-pane" id="TENS">
 
                 <div class="row">
                   <div class="col-sm-12">

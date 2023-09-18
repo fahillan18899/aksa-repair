@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('serial_number');
             $table->string('merek');
             $table->string('type');
+            $table->string('parameter_ukur');
 
             $table->string('kode_rs')->nullable();
             $table->timestamps();

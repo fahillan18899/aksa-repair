@@ -84,6 +84,13 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="type" class="col-xs-3 col-form-label">Parameter Ukur <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="parameter_ukur" class="form-control" type="text" placeholder="Parameter Ukur" id="Type">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button type="reset" class="ui button">Reset</button>
