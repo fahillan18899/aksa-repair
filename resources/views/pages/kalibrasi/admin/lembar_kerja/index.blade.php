@@ -28812,7 +28812,7 @@
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
-                                    <td><input name="hasil_pemeriksaan_fisik_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td><input name="bagian_alat_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="hasil_pemeriksaan_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
