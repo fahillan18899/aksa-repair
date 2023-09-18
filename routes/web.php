@@ -219,8 +219,9 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
     Route::resource('lembar_kerja', LembarKerjaController::class);
     Route::resource('timbangan_bayi', TimbanganBayiController::class);
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
-
+    
     Route::resource('pesanan', PesananController::class);
+    Route::post('sphygmomanometer', [LembarKerjaController::class, 'sphygmomanometer']);
 });
 Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
 
