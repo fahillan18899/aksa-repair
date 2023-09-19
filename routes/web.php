@@ -41,6 +41,7 @@ use App\Http\Controllers\AdminKalibrasi\TimbanganBayiController;
 use App\Http\Controllers\AdminKalibrasi\PesananController;
 
 use App\Http\Controllers\AuthKalibrasiController;
+use App\Http\Controllers\TeknisiController as ControllersTeknisiController;
 use App\Http\Controllers\UserController;
 use App\Models\LembarPemeliharaan;
 
@@ -212,7 +213,9 @@ Route::post('logout', [AuthController::class, 'logout'])
 ->middleware('auth');
 
 /**Kalibrasi */
-Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
+Route::prefix('kalibrasi')
+->middleware(['auth'])
+    ->group(function () {
 
     Route::get('/home', [HomeKalibrasiController::class, 'index']);
     Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
@@ -223,7 +226,7 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
     
     Route::resource('pesanan', PesananController::class);
-    Route::resource('hasil_kalibrasi', HasilKalibrasi::class);
+    Route::resource('teknisi_k', ControllersTeknisiController::class);
     Route::post('sphygmomanometer', [LembarKerjaController::class, 'sphygmomanometer']);
 });
 Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
