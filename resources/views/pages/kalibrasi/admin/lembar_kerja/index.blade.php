@@ -463,63 +463,57 @@
     
                               </table>
     
-    
-                              <h3>PELAKSANA KALIBRASI</h3>
+                              <h3>PENDATAAN ALAT</h3>
+                              <h5>1. DAFTAR ALAT YANG DIGUNAKAN</h5>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>No</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Nama Alat</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Tipe/Model</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>No. Seri</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Tertelusur</b></td>
                                   </tr>
                                   <tr>
     
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
                                     <td class="table-info" colspan="1" align="left">Digital Manometer </td>
                                     <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_1" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
                                     <td class="table-info" colspan="1" align="left">Rigid Silinder </td>
                                     <td><input name="merek_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_2" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_2" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>3</b></td>
                                     <td class="table-info" colspan="1" align="left">Stopwatch </td>
                                     <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>4</b></td>
                                     <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
                                     <td><input name="merek_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tipe_4" type="text" style="border: 0" placeholder="-"></td>
                                     <td><input name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="tertelusur_4" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                 </tbody>
                               </table>
-    
-    
-                              <h3>PELAKSANA KALIBRASI</h3>
-    
-                              <h3>Data Alat Pelanggan</h3>
+        
+                              <h5>2. DATA ALAT PELANGGAN</h5>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
-                                    <td><input name="milik" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select name="" id="" style="border:0">
+                                        <option>-- Pilih Instansi --</option>
+                                        @foreach($berita_acara as $berita_acara)
+                                        <option value="<?= $berita_acara['kepada']; ?>"><?= $berita_acara['kepada']; ?></option>
+                                        @endforeach
+                                      </select>
+                                    </td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
@@ -544,7 +538,7 @@
                                 </tbody>
                               </table>
     
-                              <h3>PENGUKURAN KONDISI LINGKUNGAN</h3>
+                              <h5>3. PENGUKURAN KONDISI LINGKUNGAN</h5>
                               <table class="table table-hover table-bordered" style=" width:100%">
                                 <tbody>
                                   <tr>
@@ -582,88 +576,205 @@
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
-                                    <td><input name="hasil_fisik_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_1" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
+
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                                    <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b>
+                                    <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
                                     </td>
-                                    <td><input name="hasil_fisik_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_2" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_2" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>3</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Bantalan/Rem</b></td>
-                                    <td><input name="hasil_fisik_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_3" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_3" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>4</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Filter</b></td>
-                                    <td><input name="hasil_fisik_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_4" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_4" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>5</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Gauge/Tabung</b></td>
-                                    <td><input name="hasil_fisik_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_5" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_5" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>6</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Indikator</b></td>
-                                    <td><input name="hasil_fisik_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_6" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_6" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>7</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Konektor</b></td>
-                                    <td><input name="hasil_fisik_7" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_7" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_7" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>8</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Label</b></td>
-                                    <td><input name="hasil_fisik_8" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_8" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_8" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>9</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Manset</b></td>
-                                    <td><input name="hasil_fisik_9" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_9" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="keterangan_9" type="text" style="border: 0" placeholder="-"></td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>10</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Pengaturan Titik 0</b></td>
-                                    <td><input name="hasil_fisik_10" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_10" type="text" style="border: 0" placeholder="-">
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
                                     </td>
                                     <td><input name="keterangan_10" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>11</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Pengencang</b></td>
-                                    <td><input name="hasil_fisik_11" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_11" type="text" style="border: 0" placeholder="-">
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
                                     </td>
                                     <td><input name="keterangan_11" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" align="left"><b>12</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Valve Penutup</b></td>
-                                    <td><input name="hasil_fisik_12" type="text" style="border: 0" placeholder="-"></td>
-                                    <td><input name="hasil_fungsi_12" type="text" style="border: 0" placeholder="-">
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <select style="border: 0" name="" id="">
+                                        <option value="Baik">Baik</option>
+                                        <option value="Tidak">Tidak</option>
+                                      </select>
                                     </td>
                                     <td><input name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
                                   </tr>
@@ -847,7 +958,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_0_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">50</td>
@@ -863,7 +974,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_50_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">100</td>
@@ -879,7 +990,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_100_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">150</td>
@@ -895,7 +1006,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_150_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">200</td>
@@ -911,7 +1022,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_200_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">250</td>
@@ -927,7 +1038,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_naik_250_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td class="table-info" colspan="1" rowspan="6" align="left"><b>2</b></td>
@@ -945,7 +1056,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_0_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">50</td>
@@ -962,7 +1073,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_50_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">100</td>
@@ -979,7 +1090,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_100_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">150</td>
@@ -996,7 +1107,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_150_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">200</td>
@@ -1013,7 +1124,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_200_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                   <tr>
                                     <td rowspan="1" class="text-center">250</td>
@@ -1029,7 +1140,7 @@
                                         style="border: 0" placeholder="-"></td>
                                     <td><input name="pengukuran_turun_250_6" maxlength="4" size="4" type="text"
                                         style="border: 0" placeholder="-"></td>
-                                    <td rowspan="1" class="text-center">≤ 3 mmHg </td>
+                                    <td rowspan="1" class="text-center">≤ 5 mmHg </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -31505,15 +31616,8 @@
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
 
               <div role="tabpanel" class="tab-pane" id="ElectroSimulator">
-
-=======
-    
-              <div role="tabpanel" class="tab-pane" id="ElectroSimulator">
-    
->>>>>>> 18db19cbee9b145ff4ecf3eea171a0cd7d086374
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
@@ -31938,15 +32042,9 @@
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-
-              <div role="tabpanel" class="tab-pane" id="TENS">
-
-=======
     
               <div role="tabpanel" class="tab-pane" id="TENS">
     
->>>>>>> 18db19cbee9b145ff4ecf3eea171a0cd7d086374
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">

@@ -223,7 +223,7 @@ Route::prefix('kalibrasi')->middleware(['auth'])->group(function () {
     Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
     
     Route::resource('pesanan', PesananController::class);
-    Route::resource('hasil_kalibrasi', HasilKalibrasi::class);
+    Route::resource('hasil_ukur', HasilKalibrasi::class);
     Route::post('sphygmomanometer', [LembarKerjaController::class, 'sphygmomanometer']);
 });
 Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {

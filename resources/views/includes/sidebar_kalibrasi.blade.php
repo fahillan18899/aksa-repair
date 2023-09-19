@@ -65,7 +65,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/kalibrasi/lembar_kerja') }}">Hasil Ukur Kalibrasi</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/hasil_ukur') }}">Hasil Ukur Kalibrasi</a></li>
 
         </ul>
       </li>

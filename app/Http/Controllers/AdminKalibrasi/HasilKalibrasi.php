@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminKalibrasi;
 use App\Http\Controllers\Controller;
 use App\Models\LembarKerja;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HasilKalibrasi extends Controller
 {
@@ -16,7 +17,7 @@ class HasilKalibrasi extends Controller
     public function index()
     {
         $berita_acara = LembarKerja::all();
-        return view('pages.kalibrasi.admin.lembar_kerja.index', [
+        return view('pages.kalibrasi.admin.hasil_ukur.index', [
             'berita_acara' => $berita_acara
         ]);
     }
@@ -85,5 +86,20 @@ class HasilKalibrasi extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * undocumented function summary
+     *
+     * Undocumented function long description
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function detail($id)
+    {
+        $item = LembarKerja::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        return view('pages.kalibrasi.admin.hasil_ukur.index', compact('item'));
     }
 }
