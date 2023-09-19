@@ -422,11 +422,12 @@
             <div class="col-xs-12 tab-content">
               <br>
               <!-- INFORMATION -->
+
               @include('pages.kalibrasi.admin.lembar_kerja.spygmo')
               @include('pages.kalibrasi.admin.lembar_kerja.elecrtocardiograph')
               @include('pages.kalibrasi.admin.lembar_kerja.centrifuge')
               @include('pages.kalibrasi.admin.lembar_kerja.inkubator')
-              
+
               <div role="tabpanel" class="tab-pane" id="uv">
     
                 <div class="row">
