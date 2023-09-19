@@ -577,13 +577,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>1</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik1" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi1" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -595,13 +595,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>2</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik2" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi2" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -612,13 +612,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>3</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Bantalan/Rem</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik3" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi3" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -629,13 +629,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>4</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Filter</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik4" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi4" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -646,13 +646,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>5</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Gauge/Tabung</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik5" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi5" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -663,13 +663,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>6</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Indikator</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik6" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi6" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -680,13 +680,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>7</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Konektor</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik7" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi7" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -697,13 +697,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>8</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Label</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik8" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi8" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -714,13 +714,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>9</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Manset</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik9" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi9" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -731,13 +731,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>10</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Pengaturan Titik 0</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik10" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi10" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -748,13 +748,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>11</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Pengencang</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik11" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi11" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
@@ -765,13 +765,13 @@
                                     <td class="table-info" colspan="1" align="left"><b>12</b></td>
                                     <td class="table-info" colspan="1" align="left"><b>Valve Penutup</b></td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fisik12" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
                                     </td>
                                     <td>
-                                      <select style="border: 0" name="" id="">
+                                      <select style="border: 0" name="fungsi12" id="">
                                         <option value="Baik">Baik</option>
                                         <option value="Tidak">Tidak</option>
                                       </select>
