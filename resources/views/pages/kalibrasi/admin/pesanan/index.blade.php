@@ -9,8 +9,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="pe-7s-world"></i></div>
       <div class="header-title">
-        <h1>Berita Acara</h1>
-        <small>Berita Acara</small>
+        <h1>Pesanan</h1>
+        <small>Pesanan</small>
       </div>
     </div>
   </section>
@@ -45,7 +45,7 @@
 
 
                   <div class="form-group row">
-                    <label for="kepada" class="col-xs-3 col-form-label">Kepada <i class="text-danger">*</i></label>
+                    <label for="kepada" class="col-xs-3 col-form-label">Nama Instansi <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="kepada" type="text" class="form-control" id="kepada" placeholder="Nama Instansi" value="">
                     </div>
