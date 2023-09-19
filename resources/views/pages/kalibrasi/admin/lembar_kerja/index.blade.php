@@ -2,6 +2,12 @@
 
 @section('content')
 @section('title', 'Lembar Kerja')
+ <style>
+    /* Ubah warna border input yang tidak valid menjadi merah */
+    .form-control.is-invalid {
+      border-color: red;
+    }
+  </style>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -35071,17 +35077,90 @@
     </div>
   </div>
 </div>
+ <script>
+      var inputElements50 = document.getElementsByClassName("input-number-50");
+      var inputElements100 = document.getElementsByClassName("input-number-100");
+      var inputElements150 = document.getElementsByClassName("input-number-150");
+      var inputElements200 = document.getElementsByClassName("input-number-200");
+      var inputElements250 = document.getElementsByClassName("input-number-250");
+      var inputElements260 = document.getElementsByClassName("input-number-260");
 
-<script>
-  function validasi() {
-    const inputN = document.getElementById('input').value;
-    const inputN3 = document.getElementById('input')
+      for (var i = 0; i < inputElements50.length; i++) {
+        inputElements50[i].addEventListener("input", validateNumber);
+      }
 
-    if (inputN > 55 || inputN < 45 ) {
-       inputN3.style.backgroundColor = 'red';
-    } else {
-       inputN3.style.backgroundColor = 'transparent';
-    }
-  }
-</script>
+      for (var i = 0; i < inputElements100.length; i++) {
+        inputElements100[i].addEventListener("input", validateNumber);
+      }
+
+      for (var i = 0; i < inputElements150.length; i++) {
+        inputElements150[i].addEventListener("input", validateNumber);
+      }
+
+      for (var i = 0; i < inputElements200.length; i++) {
+        inputElements200[i].addEventListener("input", validateNumber);
+      }
+
+      for (var i = 0; i < inputElements250.length; i++) {
+        inputElements250[i].addEventListener("input", validateNumber);
+      }
+      for (var i = 0; i < inputElements260.length; i++) {
+        inputElements260[i].addEventListener("input", validateNumber);
+      }
+
+      function validateNumber() {
+        for (var i = 0; i < inputElements50.length; i++) {
+          var inputValue = inputElements50[i].value;
+
+          if (inputValue < 45 || inputValue > 55) {
+            inputElements50[i].classList.add("is-invalid");
+          } else {
+            inputElements50[i].classList.remove("is-invalid"); 
+          }
+        }
+        for (var i = 0; i < inputElements100.length; i++) {
+          var inputValue100 = inputElements100[i].value;
+          if (inputValue100 < 95 || inputValue100 > 105) {
+            inputElements100[i].classList.add("is-invalid");
+          } else {
+            inputElements100[i].classList.remove("is-invalid"); 
+          }
+        }
+        for (var i = 0; i < inputElements150.length; i++) {
+          var inputValue150 = inputElements150[i].value;
+          if (inputValue150 < 145 || inputValue150 > 155) {
+            inputElements150[i].classList.add("is-invalid");
+          } else {
+            inputElements150[i].classList.remove("is-invalid"); 
+          }
+        }
+        for (var i = 0; i < inputElements200.length; i++) {
+          var inputValue200 = inputElements200[i].value;
+          if (inputValue200 < 195 || inputValue200 > 205) {
+            inputElements200[i].classList.add("is-invalid");
+          } else {
+            inputElements200[i].classList.remove("is-invalid"); 
+          }
+        }
+        for (var i = 0; i < inputElements250.length; i++) {
+          var inputValue250 = inputElements250[i].value;
+          if (inputValue250 < 245 || inputValue250 > 255) {
+            inputElements250[i].classList.add("is-invalid");
+          } else {
+            inputElements250[i].classList.remove("is-invalid"); 
+          }
+        }
+        for (var i = 0; i < inputElements260.length; i++) {
+          var inputValue260 = inputElements260[i].value;
+          if (inputValue260 < 255 || inputValue260 > 265) {
+            inputElements260[i].classList.add("is-invalid");
+          } else {
+            inputElements260[i].classList.remove("is-invalid"); 
+          }
+        }
+      }
+
+      
+    </script>
+
 @endsection
