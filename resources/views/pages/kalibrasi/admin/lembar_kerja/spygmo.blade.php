@@ -34,7 +34,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
-                      <td><input class="form-control input-number" name="nama_petugas" type="text" style="border: 0" placeholder="-"></td>
+                      <td><input class="form-control input-number" name="nama_petugas" type="text" style="border: 0" value="{{  Auth::user()->username }}" readonly></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>No Label</b></td>
