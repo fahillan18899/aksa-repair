@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminKalibrasi;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kalibrasi\AlatUkur;
+use App\Models\Kalibrasi\BeritaAcara;
 use App\Models\LembarKerja;
 use App\Models\Sphygmomanometer;
 use Illuminate\Http\Request;
@@ -18,9 +19,11 @@ class LembarKerjaController extends Controller
      */
     public function index()
     {
-        $berita_acara = AlatUkur::all();
+        $berita_acara = BeritaAcara::all();
+        $alatUkur = AlatUkur::all();
         return view('pages.kalibrasi.admin.lembar_kerja.index', [
-            'berita_acara' => $berita_acara
+            'berita_acara' => $berita_acara,
+            'alatUkur' => $alatUkur
         ]);
     }
 

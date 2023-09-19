@@ -51,6 +51,7 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Nama Alat</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>ID Alat</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
                       <td class="table-info" colspan="1" align="left"><b>No. Seri</b></td>
                     </tr>
@@ -58,24 +59,49 @@
 
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left">Digital Manometer </td>
-                      <td><input class="form-control input-number" name="merek_1" type="text" style="border: 0" placeholder="-"></td>
+                      <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                          @foreach($alatUkur as $item)
+                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                          @endforeach
+                        </select></td>
                       <td><input class="form-control input-number" name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
+                      <td><input class="form-control input-number" name="merek_1" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left">Rigid Silinder </td>
+                      <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                          @foreach($alatUkur as $item)
+                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                          @endforeach
+                        </select></td>
                       <td><input class="form-control input-number" name="merek_2" type="text" style="border: 0" placeholder="-"></td>
                       <td><input class="form-control input-number" name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
                       <td class="table-info" colspan="1" align="left">Stopwatch </td>
+                      <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                          dd
+                          @foreach($alatUkur as $item)
+                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                          @endforeach
+                        </select></td>
                       <td><input class="form-control input-number" name="merek_3" type="text" style="border: 0" placeholder="-"></td>
                       <td><input class="form-control input-number" name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>4</b></td>
                       <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
+                      <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                          @foreach($alatUkur as $item)
+                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                          @endforeach
+                        </select></td>
                       <td><input class="form-control input-number" name="merek_4" type="text" style="border: 0" placeholder="-"></td>
                       <td><input class="form-control input-number" name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
@@ -88,8 +114,11 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
                       <td>
-                        <select name="" id="" style="border:0">
-                          <option>-- Pilih Instansi --</option> @foreach($berita_acara as $berita_acara) <option value="<?= $berita_acara['kepada']; ?>"> <?= $berita_acara['kepada']; ?> </option> @endforeach
+                        <select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih Instansi --</option>
+                          @foreach($berita_acara as $item)
+                          <option value="<?= $item['kepada']; ?>"> <?= $item['kepada']; ?> </option>
+                          @endforeach
                         </select>
                       </td>
                     </tr>

@@ -38,7 +38,6 @@
 
           <div class="panel-body">
             <!-- Nav tabs -->
-            <br>
             <!-- Tab panes -->
             <div class="col-xs-6 tab-content">
               <label for="floorplanSelect">Pilih Lembar Kerja</label>
@@ -132,9 +131,6 @@
             </div>
             <div class="col-xs-12 tab-content">
               <br>
-              <br>
-              <!-- INFORMATION -->
-
               @include('pages.kalibrasi.admin.lembar_kerja.spygmo')
               @include('pages.kalibrasi.admin.lembar_kerja.elecrtocardiograph')
               @include('pages.kalibrasi.admin.lembar_kerja.centrifuge')
