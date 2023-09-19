@@ -38,354 +38,100 @@
 
           <div class="panel-body">
             <!-- Nav tabs -->
-            <select id="floorplanSelect" class="form-control" name="floorplan">
-              <option value="home">tab1</option>
-              <option value="language">tab2</option>
-              <option value="tab-pane3">tab3</option>
-
-              <ul class="col-xs-12 nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                  <a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Sphygmomanometer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#language" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    ECG</a>
-                </li>
-                <li role="presentation">
-                  <a href="#centrifuge" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Centrifuge</a>
-                </li>
-                <li role="presentation">
-                  <a href="#inkubator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    inkubator</a>
-                </li>
-                <li role="presentation">
-                  <a href="#uv" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> UV</a>
-                </li>
-                <li role="presentation">
-                  <a href="#amasthesi" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Amasthesi</a>
-                </li>
-                <li role="presentation">
-                  <a href="#patient_monitor" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Patient Monitor</a>
-                </li>
-                <li role="presentation">
-                  <a href="#vital_monitor" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Presentation</a>
-                </li>
-                <li role="presentation">
-                  <a href="#chemistry" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Chemistr</a>
-                </li>
-                <li role="presentation">
-                  <a href="#cardiotocograph" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Cardiotocograph</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Defibrilator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Defibrilator</a>
-                </li>
-                <li role="presentation">
-                  <a href="#DefibrilatorMonitor" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Defibrilator Monitor</a>
-                </li>
-                <li role="presentation">
-                  <a href="#DentralUnit" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Dentral Unit</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Electrolit" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Electrolit</a>
-                </li>
-                <li role="presentation">
-                  <a href="#ENT" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> ENT
-                    Treatment</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Hematoloy" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Hematoloy</a>
-                </li>
-                <li role="presentation">
-                  <a href="#IncubatorTransport" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Incubator Transport</a>
-                </li>
-                <li role="presentation">
-                  <a href="#InfusePump" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Infuse Pump</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Spirometri" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Spirometri</a>
-                </li>
-                <li role="presentation">
-                  <a href="#SuctionPumpKpa" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    SuctionPumpKpa</a>
-                </li>
-                <li role="presentation">
-                  <a href="#infant_warmer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    infant_warmer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#suction_pump_InHg" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    suction_pump_InHg</a>
-                </li>
-                <li role="presentation">
-                  <a href="#suction_pump_mmhg" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    suction_pump_mmhg</a>
-                </li>
-                <li role="presentation">
-                  <a href="#timbanganDewasa" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    timbangan Dewasa</a>
-                </li>
-                <li role="presentation">
-                  <a href="#USG" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> USG</a>
-                </li>
-                <li role="presentation">
-                  <a href="#WaterBath" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Water Bath</a>
-                </li>
-                <li role="presentation">
-                  <a href="#DentalPanoramic" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Dental Panoramic</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Rotator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Rotator</a>
-                </li>
-                <li role="presentation">
-                  <a href="#SWD" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> SWD</a>
-                </li>
-                </li>
-                <li role="presentation">
-                  <a href="#syringe_pump" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Syringe Pump</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#urine_analyzer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Urine Analizer</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#AED" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> AED</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#refrakto_keratometer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Refrakto Keratometer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Audiometer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Audiometer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#CPAP" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    CPAP</a>
-                </li>
-                <li role="presentation">
-                  <a href="#OxygenConcentrator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Oxygen
-                    Concentrator</a>
-                </li>
-                <li role="presentation">
-                  <a href="#FetalDoplerBaterai" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Fetal
-                    Dopler Baterai</a>
-                </li>
-                <li role="presentation">
-                  <a href="#infraredLamp" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Infrared Lamp</a>
-                </li>
-                <li role="presentation">
-                  <a href="#BSC" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> BSC</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#vortex" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Vortex</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#flow_meter" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Flow
-                    Meter</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#dopler" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Fetal
-                    Dopler</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#hfnc" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>HFNC</a>
-                </li>
-                <li role="presentation">
-                  <a href="#MWD" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>MWD</a>
-                </li>
-                <li role="presentation">
-                  <a href="#KLS" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>KLS
-                    Kelistrikan</a>
-                </li>
-                <li role="presentation">
-                  <a href="#LampuOperasi" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Lampu
-                    Operasi</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Phototeraphy" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Phototeraphy</a>
-                </li>
-                <li role="presentation">
-                  <a href="#binocularTHT" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Binocular
-                    THT</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Microscope" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>
-                    Microscope</a>
-                </li>
-                <li role="presentation">
-                  <a href="#laminar_air" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Laminar Air
-                    Flow</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#microscope_mata" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Microscope
-                    Mata</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#nebulizer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Nebulizer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#MicropipetFix" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Microscope
-                    Fix</a>
-                </li>
-                <li role="presentation">
-                  <a href="#PulseOxymetry" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Pulse
-                    Oxymetry</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Termohygrometer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Termohygrometer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#BloodWarmer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Blood
-                    Warmer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#micropipet" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Micropipet
-                    Variable</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#autoclave" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Autoclave</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#chiller" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Chiller</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#cold_chain" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Cold
-                    Chain</a>
-                </li>
-                <li role="presentation">
-                  <a href="#refigretor" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>refigretor</a>
-                </li>
-                <li role="presentation">
-                  <a href="#Sterilisator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Sterilisator</a>
-                </li>
-                <li role="presentation">
-                  <a href="#TermometerDigital" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Termometer Digital</a>
-                </li>
-                <li role="presentation">
-                  <a href="#TermometerKlinik" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Termometer Klinik</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#oven" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Oven</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#kulkas_vaksin" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Kulkas
-                    Vaksin</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#thermometer_infrared" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Thermometer Infrared</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#freezer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Freezer</a>
-                </li>
-                <li role="presentation">
-                  <a href="#TermometerKulkas" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Termometer Kulkas</a>
-                </li>
-                <li role="presentation">
-                  <a href="#ElectroSimulator" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>ElectroSimulator (EST)</a>
-                </li>
-                <li role="presentation">
-                  <a href="#TENS" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Transcutaneous
-                    Electrical Nerve Stimulation (TENS)</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#blood_bank" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Blood
-                    Bank</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#blood_plasma_freezer" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Blood
-                    Plasma Freezer</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#vaporizer_isoflurane" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Vapolizer Isoflurane</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#vaporizer_sevoflurane" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Vapolizer Sevoflurane</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#electro_surgery_unit" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Electro Surgery Unit (ESU)</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#lampu_oprasi" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Lampu
-                    Oprasi</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#lampu_tindakan" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Lampu
-                    Tindakan</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#slit_lamp" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Slit
-                    Lamp</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#sepeda_treadmil" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Sepeda
-                    Treadmil</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#neo_puff" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Neo
-                    Puff</a>
-                </li>
-                <li role="presentation">
-                  <a href="#SpygmomanometerAneroid" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Spygmomanometer Aneroid</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#scaller" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>Scaller</a>
-                </li>
-
-                <li role="presentation">
-                  <a href="#x_ray" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i>X-Ray</a>
-                </li>
-              </ul>
-            </select>
             <br>
             <!-- Tab panes -->
+            <div class="col-xs-6 tab-content">
+              <label for="floorplanSelect">Pilih Lembar Kerja</label>
+              <select id="floorplanSelect" class="form-control" name="floorplan">
+                <option value="home">Sphygmomanometer</option>
+                <option value="language">ECG</option>
+                <option value="centrifuge">Centrifuge</option>
+                <option value="inkubator">inkubator</option>
+                <option value="uv">UV</option>
+                <option value="amasthesi">Amasthesi</option>
+                <option value="patient_monitor">Patient Monitor</option>
+                <option value="vital_monitor">Presentation</option>
+                <option value="chemistry">Chemistr</option>
+                <option value="cardiotocograph">Cardiotocograph</option>
+                <option value="Defibrilator">Defibrilator</option>
+                <option value="DefibrilatorMonitor">Defibrilator Monitor</option>
+                <option value="DentralUnit"> Dentral Unit</option>
+                <option value="Electrolit">Electrolit</option>
+                <option value="ENT">ENT Treatment</option>
+                <option value="Hematoloy">Hematoloy</option>
+                <option value="IncubatorTransport">Incubator Transport</option>
+                <option value="InfusePump">Infuse Pum</option>
+                <option value="Spirometri"> Spirometri</option>
+                <option value="SuctionPumpKpa">SuctionPumpKpa</option>
+                <option value="infant_warmer"> infant_warmer</option>
+                <option value="suction_pump_InHg"> suction_pump_InHg</option>
+                <option value="suction_pump_mmhg">suction_pump_mmhg</option>
+                <option value="timbanganDewasa">timbangan Dewasa</option>
+                <option value="USG">USG</option>
+                <option value="WaterBath">Water Bath</option>
+                <option value="DentalPanoramic"> Dental Panoramic</option>
+                <option value="Rotator"> Rotator</option>
+                <option value="SWD">SWD</option>
+                <option value="syringe_pump">Syringe Pump</option>
+                <option value="urine_analyzer"> Urine Analizer</option>
+                <option value="AED">AED</option>
+                <option value="refrakto_keratometer">Refrakto Keratometer</option>
+                <option value="Audiometer">Audiometer</option>
+                <option value="CPAP"> CPAP</option>
+                <option value="OxygenConcentrator">Oxygen Concentrator</option>
+                <option value="FetalDoplerBaterai"> Fetal Dopler Batera</option>
+                <option value="infraredLamp"> Infrared Lamp</option>
+                <option value="BSC">BSC</option>
+                <option value="vortex">Vortex</option>
+                <option value="flow_meter">Flow Meter</option>
+                <option value="dopler">Fetal Dopler</option>
+                <option value="hfnc">HFNC</option>
+                <option value="MWD">MWD</option>
+                <option value="KLS">KLS Kelistrikan</option>
+                <option value="LampuOperasi">LampuOperasi</option>
+                <option value="Phototeraphy">Phototeraphy</option>
+                <option value="binocularTHT">Binocular THT</option>
+                <option value="Microscope">Microscope</option>
+                <option value="laminar_air">Laminar Air Flow</option>
+                <option value="microscope_mata">Microscope Mata<< /option>
+                <option value="nebulizer">Nebulizer</option>
+                <option value="MicropipetFix">Microscope Fix</option>
+                <option value="PulseOxymetry">ulse Oxymetry</option>
+                <option value="Termohygrometer">Termohygrometer</option>
+                <option value="BloodWarmer">Blood Warmer</option>
+                <option value="micropipet">Micropipet Variable</option>
+                <option value="autoclave">Autoclave</option>
+                <option value="chiller">Chiller</option>
+                <option value="cold_chain">Cold Chain</option>
+                <option value="refigretor">refigretor</option>
+                <option value="Sterilisator">Sterilisator</option>
+                <option value="TermometerDigital">Termometer Digital</option>
+                <option value="TermometerKlinik">Termometer Klinik</option>
+                <option value="oven">Oven</option>
+                <option value="kulkas_vaksin">Kulkas Vaksin</option>
+                <option value="thermometer_infrared">Thermometer Infrared</option>
+                <option value="freezer">Freezer</option>
+                <option value="TermometerKulkas">Termometer Kulkas</option>
+                <option value="ElectroSimulator">ElectroSimulator (EST)</option>
+                <option value="TENS">Transcutaneous Electrical Nerve Stimulation (TENS)</option>
+                <option value="blood_bank">Blood Bank</option>
+                <option value="blood_plasma_freezer">Blood Plasma Freezer</option>
+                <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
+                <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
+                <option value="electro_surgery_unit">Electro Surgery Unit (ESU)</option>
+                <option value="lampu_oprasi">Lampu Oprasi</option>
+                <option value="lampu_tindakan">Lampu Tindakan</option>
+                <option value="slit_lamp">Slit Lamp</option>
+                <option value="sepeda_treadmil">Sepeda Treadmi</option>
+                <option value="neo_puff">Neo Puff</option>
+                <option value="SpygmomanometerAneroid">Spygmomanometer Aneroid</option>
+                <option value="scaller">Scaller</option>
+                <option value="x_ray">X-Ra</option>
+
+              </select>
+            </div>
             <div class="col-xs-12 tab-content">
+              <br>
               <br>
               <!-- INFORMATION -->
 
