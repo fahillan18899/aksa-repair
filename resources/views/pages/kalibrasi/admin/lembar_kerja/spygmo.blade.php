@@ -644,6 +644,40 @@
                     </tr>
                   </tbody>
                 </table>
+                <table class="table table-hover table-bordered" style=" width:100%">
+                  <tbody>
+                    <tr colspan="4">
+                      <td><b>Kesimpulan</b></td>
+                    </tr>
+                    <tr>
+                      <td>No</td>
+                      <td>Parameter</td>
+                      <td>NILAI</td>
+                      <td>HASIL</td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Pemeriksaan</td>
+                      <td>9</td>
+                      <td rowspan="4">Laik</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Kebocoran Tekanan </td>
+                      <td>20</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Laju Buang Cepat </td>
+                      <td>20</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Akurasi Tekanan </td>
+                      <td>50</td>
+                    </tr>
+                  </tbody>
+                </table>
 
 
                 <div class="form-group row">
@@ -652,6 +686,8 @@
                       <button type="reset" class="ui button">Reset</button>
                       <div class="or"></div>
                       <button class="ui positive button" type="submit">Save</button>
+                      <div class="or"></div>
+                      <button class="ui button">Print</button>
                     </div>
                   </div>
                 </div>
