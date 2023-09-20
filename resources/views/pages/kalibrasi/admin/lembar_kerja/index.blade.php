@@ -47,6 +47,7 @@
                 <option value="AnesthesiUnit">Anesthesi Unit</option>
                 <option value="Audiometer">Audiometer</option>
                 <option value="autoclave">Autoclave</option>
+                <option value="Autorefrakto">Autorefrakto</option>
                 <option value="binocularTHT">Binocular THT</option>
                 <option value="blood_bank">Blood Bank</option>
                 <option value="blood_plasma_freezer">Blood Plasma Freezer</option>
@@ -148,6 +149,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.inkubator')
               @include('pages.kalibrasi.admin.lembar_kerja.uv_sterialsator')
               @include('pages.kalibrasi.admin.lembar_kerja.anesthesi')
+              @include('pages.kalibrasi.admin.lembar_kerja.Autorefrakto')
               @include('pages.kalibrasi.admin.lembar_kerja.patient_monitor')
               @include('pages.kalibrasi.admin.lembar_kerja.vital_monitor')
               @include('pages.kalibrasi.admin.lembar_kerja.chemistry_analaizer')
