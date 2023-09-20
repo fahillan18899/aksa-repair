@@ -4,7 +4,7 @@
       <div class="panel panel-default thumbnail">
 
         <div class="panel-heading no-print">
-          <h1>Lembar Kerja Pengujian dan Kalibrasi Timbangan Bayi</h1>
+          <h1>Lembar Kerja Pengujian dan Kalibrasi Incubator</h1>
         </div>
 
         <div class="panel-body panel-form">

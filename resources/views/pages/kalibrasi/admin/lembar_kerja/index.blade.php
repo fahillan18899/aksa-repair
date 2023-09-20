@@ -65,6 +65,7 @@
                 <option value="electro_surgery_unit">Electro Surgery Unit (ESU)</option>
                 <option value="Electrolit">Electrolit</option>
                 <option value="ElectroSimulator">ElectroSimulator (EST)</option>
+                <option value="Elektrostimulator">Elektrostimulator</option>
                 <option value="ENT">ENT Treatment</option>
                 <option value="FetalDoplerBaterai"> Fetal Dopler Baterai</option>
                 <option value="dopler">Fetal Dopler</option>
@@ -215,6 +216,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.SpygmomanometerAneroid')
               @include('pages.kalibrasi.admin.lembar_kerja.scaller')
               @include('pages.kalibrasi.admin.lembar_kerja.x_ray')
+              @include('pages.kalibrasi.admin.lembar_kerja.Elektrostimulator')
             </div>
           </div>
         </div>

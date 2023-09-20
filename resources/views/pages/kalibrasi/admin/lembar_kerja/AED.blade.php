@@ -16,7 +16,7 @@
                   @csrf
                   @method('POST')
 
-                  <h3>A. Data Alat Pelanggan</h3>
+                  <h3>A. DATA ALAT PELANGGAN</h3>
                   <table class="table table-hover table-bordered" style="width:100%">
                     <tbody>
                       <tr>
@@ -61,7 +61,7 @@
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>Nama Petugas</b></td>
-                        <td><input name="nama_petugas" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="nama_petugas" type="text" style="border: 0" placeholder="-" value="{{  Auth::user()->username }}" readonly></td>
                       </tr>
                     </tbody>
 
@@ -70,38 +70,64 @@
                   <h3>C. Alat Yang digunakan</h3>
                   <table class="table table-hover table-bordered" style=" width:100%">
                     <tbody>
+                    <tr>
+                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Nama Alat</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>ID Alat</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>No. Seri</b></td>
+                    </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                        <td class="table-info" colspan="1" align="left"> <b>Electrical Safety Analyzer</b>
+                        <td class="table-info" colspan="1" align="left"> <b>Electrical Safety Analyzer</b></td>
+                        <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                            @foreach($alatUkur as $item)
+                            <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                            @endforeach
+                            </select>
                         </td>
-                        <td><input name="merek_1" type="text" style="border: 0" placeholder="-"></td>
                         <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
                         <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tertelusur_1" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>2</b></td>
                         <td class="table-info" colspan="1" align="left"> <b>Thermohygrometer</b> </td>
-                        <td><input name="merek_2" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tipe_2" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tertelusur_2" type="text" style="border: 0" placeholder="-"></td>
+                        <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                            @foreach($alatUkur as $item)
+                            <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                            @endforeach
+                            </select>
+                        </td>
+                        <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>3</b></td>
                         <td class="table-info" colspan="1" align="left"> <b>Defibrilator Analyzer</b> </td>
-                        <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
+                        <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                            @foreach($alatUkur as $item)
+                            <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                            @endforeach
+                            </select>
+                        </td>
+                        <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td class="table-info" colspan="1" align="left"><b>4</b></td>
                         <td class="table-info" colspan="1" align="left"> <b>Stopwatch</b> </td>
-                        <td><input name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tipe_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                        <td><input name="tertelusur_3" type="text" style="border: 0" placeholder="-"></td>
+                        <td><select name="" class="form-control" id="" style="border:0">
+                          <option>-- Pilih ID Aset --</option>
+                            @foreach($alatUkur as $item)
+                            <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
+                            @endforeach
+                            </select>
+                        </td>
+                        <td><input name="tipe_1" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="no_seri_1" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                     </tbody>
                   </table>

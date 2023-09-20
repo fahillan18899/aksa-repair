@@ -392,14 +392,14 @@
                 <table class="table table-hover table-bordered" style=" width:100%">
                   <tbody>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
+                      <td class="table-info" rowspan="2" colspan="" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" rowspan="2" align="center"><b>titik setting</b>
                       </td>
                       <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                      <td class="table-info" colspan="1" rowspan="2" align="center"><b>Hasil Ukur</b></td>
                       <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
                     </tr>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
@@ -415,6 +415,7 @@
                       <td><input class="form-control input-number-50" name="pengukuran_50_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_50_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-50" name="pengukuran_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_50_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="5" class="text-center">± 5 mmHg</td>
                     </tr>
@@ -426,6 +427,7 @@
                       <td><input class="form-control input-number-100" name="pengukuran_100_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_100_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-100" name="pengukuran_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_100_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                     </tr>
                     <tr>
@@ -435,6 +437,7 @@
                       <td><input class="form-control input-number-150" name="pengukuran_150_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-150" name="pengukuran_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                     </tr>
@@ -446,6 +449,7 @@
                       <td><input class="form-control input-number-200" name="pengukuran_200_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_200_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-200" name="pengukuran_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_200_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                     </tr>
                     <tr>
@@ -454,6 +458,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-">
@@ -467,14 +472,13 @@
                 <table class="table table-hover table-bordered" style=" width:100%">
                   <tbody>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
-                      <td class="table-info" colspan="1" rowspan="2" align="center"><b>Setting mmHg</b>
-                      </td>
+                      <td class="table-info" rowspan="2" colspan="1" align="left"><b>No</b></td>
+                      <td class="table-info" colspan="1" rowspan="2" align="center"><b>Setting mmHg</b></td>
                       <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                      <td class="table-info" colspan="1" rowspan="2" align="center"><b>Hasil Ukur</b></td>
                       <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
                     </tr>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
@@ -490,6 +494,7 @@
                       <td><input class="form-control input-number-260" name="pengukuran_260_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-260" name="pengukuran_260_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-260" name="pengukuran_260_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-260" name="pengukuran_260_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-260" name="pengukuran_260_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="5" class="text-center">± 5 mmHg</td>
                     </tr>
@@ -499,14 +504,13 @@
                 <table class="table table-hover table-bordered" style=" width:100%">
                   <tbody>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
-                      <td class="table-info" colspan="2" rowspan="2" align="center"><b>titik setting</b>
-                      </td>
+                      <td class="table-info" rowspan="2" colspan="1" align="left"><b>No</b></td>
+                      <td class="table-info" colspan="2" rowspan="2" align="center"><b>titik setting</b></td>
                       <td class="table-info text-center" colspan="6" align="left"><b>Pengukuran</b></td>
+                      <td class="table-info" colspan="1" rowspan="2" align="center"><b>Hasil Ukur</b></td>
                       <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
                     </tr>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
@@ -524,6 +528,7 @@
                       <td><input class="form-control input-number" name="pengukuran_naik_0_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number" name="pengukuran_naik_0_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number" name="pengukuran_naik_0_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number" name="pengukuran_naik_0_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
                     <tr>
@@ -533,6 +538,7 @@
                       <td><input class="form-control input-number-50" name="pengukuran_naik_50_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_naik_50_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_naik_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-50" name="pengukuran_naik_50_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_naik_50_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -544,6 +550,7 @@
                       <td><input class="form-control input-number-100" name="pengukuran_naik_100_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_naik_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_naik_100_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-100" name="pengukuran_naik_100_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
                     <tr>
@@ -553,6 +560,7 @@
                       <td><input class="form-control input-number-150" name="pengukuran_naik_150_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_naik_150_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_naik_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-150" name="pengukuran_naik_150_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_naik_150_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -564,6 +572,7 @@
                       <td><input class="form-control input-number-200" name="pengukuran_naik_200_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_naik_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_naik_200_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-200" name="pengukuran_naik_200_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
                     <tr>
@@ -573,6 +582,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_naik_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_naik_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_naik_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_naik_250_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_naik_250_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -585,6 +595,7 @@
                       <td><input class="form-control input-number" name="pengukuran_turun_0_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number" name="pengukuran_turun_0_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number" name="pengukuran_turun_0_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number" name="pengukuran_turun_0_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number" name="pengukuran_turun_0_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -595,6 +606,7 @@
                       <td><input class="form-control input-number-50" name="pengukuran_turun_50_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_turun_50_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_turun_50_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-50" name="pengukuran_turun_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_turun_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_turun_50_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
@@ -607,6 +619,7 @@
                       <td><input class="form-control input-number-100" name="pengukuran_turun_100_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_turun_100_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_turun_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-100" name="pengukuran_turun_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_turun_100_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -617,6 +630,7 @@
                       <td><input class="form-control input-number-150" name="pengukuran_turun_150_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_turun_150_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_turun_150_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-150" name="pengukuran_turun_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_turun_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_turun_150_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
@@ -629,6 +643,7 @@
                       <td><input class="form-control input-number-200" name="pengukuran_turun_200_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_turun_200_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_turun_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-200" name="pengukuran_turun_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_turun_200_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
                     </tr>
@@ -638,6 +653,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_turun_250_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_turun_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_turun_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_turun_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_turun_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_turun_250_6" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td rowspan="1" class="text-center">± 5 mmHg </td>
