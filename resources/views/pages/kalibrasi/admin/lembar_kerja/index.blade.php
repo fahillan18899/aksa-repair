@@ -44,6 +44,7 @@
               <select id="floorplanSelect" class="form-control" name="floorplan">
                 <option value="AED">AED</option>
                 <option value="amasthesi">Anasthesi</option>
+                <option value="AnesthesiUnit">Anesthesi Unit</option>
                 <option value="Audiometer">Audiometer</option>
                 <option value="autoclave">Autoclave</option>
                 <option value="binocularTHT">Binocular THT</option>
@@ -94,6 +95,7 @@
                 <option value="oven">Oven</option>
                 <option value="OxygenConcentrator">Oxygen Concentrator</option>
                 <option value="patient_monitor">Patient Monitor</option>
+                <option value="Photometer">Photometer</option>
                 <option value="Phototeraphy">Phototeraphy</option>
                 <option value="PulseOxymetry">ulse Oxymetry</option>
                 <option value="refigretor">refigretor</option>
@@ -118,10 +120,9 @@
                 <option value="TermometerKulkas">Termometer Kulkas</option>
                 <option value="thermometer_infrared">Thermometer Infrared</option>
                 <option value="timbanganDewasa">timbangan Dewasa</option>
+                <option value="Ultrasonograph">Ultrasonograph (USG)</option>
                 <option value="urine_analyzer"> Urine Analizer</option>
                 <option value="USG">USG</option>
-                <option value="Photometer">Photometer</option>
-                <option value="AnesthesiUnit">Anesthesi Unit</option>
                 <option value="uv">UV</option>
                 <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
                 <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
@@ -221,6 +222,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.scaller')
               @include('pages.kalibrasi.admin.lembar_kerja.x_ray')
               @include('pages.kalibrasi.admin.lembar_kerja.Elektrostimulator')
+              @include('pages.kalibrasi.admin.lembar_kerja.ultrasonograph')
             </div>
           </div>
         </div>
