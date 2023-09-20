@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
-          
+
           <div class="panel-body">
             <!-- Nav tabs -->
             <!-- Tab panes -->
@@ -120,6 +120,8 @@
                 <option value="timbanganDewasa">timbangan Dewasa</option>
                 <option value="urine_analyzer"> Urine Analizer</option>
                 <option value="USG">USG</option>
+                <option value="Photometer">Photometer</option>
+                <option value="AnesthesiUnit">Anesthesi Unit</option>
                 <option value="uv">UV</option>
                 <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
                 <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
@@ -211,6 +213,8 @@
               @include('pages.kalibrasi.admin.lembar_kerja.lampu_oprasi')
               @include('pages.kalibrasi.admin.lembar_kerja.lampu_tindakan')
               @include('pages.kalibrasi.admin.lembar_kerja.slit_lamp')
+              @include('pages.kalibrasi.admin.lembar_kerja.Photometer')
+              @include('pages.kalibrasi.admin.lembar_kerja.AnesthesiUnit')
               @include('pages.kalibrasi.admin.lembar_kerja.sepeda_treadmil')
               @include('pages.kalibrasi.admin.lembar_kerja.neo_puff')
               @include('pages.kalibrasi.admin.lembar_kerja.SpygmomanometerAneroid')

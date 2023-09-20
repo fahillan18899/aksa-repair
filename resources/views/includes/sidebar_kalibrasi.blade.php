@@ -59,13 +59,13 @@
 
       <li class="treeview ">
         <a href="#">
-          <i class="fa fa ti-calendar"></i> <span>Hasil Ukur Kalibrasi</span>
+          <i class="fa fa ti-calendar"></i> <span>Teknisi</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/kalibrasi/hasil_ukur') }}">Hasil Ukur Kalibrasi</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/teknisi_k') }}">Teknisi</a></li>
 
         </ul>
       </li>
@@ -92,7 +92,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/kalibrasi/berita_acara') }}">Formulir Lembar Kerja</a></li>
+          <li class=""><a href="{{ url('/kalibrasi/sertifikat') }}">Formulir Lembar Kerja</a></li>
         </ul>
       </li>
 
