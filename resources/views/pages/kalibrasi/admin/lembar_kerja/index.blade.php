@@ -125,6 +125,7 @@
                 <option value="thermometer_infrared">Thermometer Infrared</option>
                 <option value="timbanganDewasa">timbangan Dewasa</option>
                 <option value="Ultrasonograph">Ultrasonograph (USG)</option>
+                <option value="UltrasoundTeraphy ">Ultrasound Teraphy </option>
                 <option value="urine_analyzer"> Urine Analizer</option>
                 <option value="USG">USG</option>
                 <option value="uv">UV</option>
@@ -134,7 +135,7 @@
                 <option value="ventilator">Ventilator</option>
                 <option value="vortex">Vortex</option>
                 <option value="WaterBath">Water Bath</option>
-                <option value="x_ray">X-Ra</option>
+                <option value="ElectroEnchepaloGraph">ElectroEnchepaloGraph ( EEG )</option>
 
               </select>
             </div>
@@ -233,6 +234,8 @@
               @include('pages.kalibrasi.admin.lembar_kerja.mesin_hemodialisa')
               @include('pages.kalibrasi.admin.lembar_kerja.ventilator')
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_mpa')
+              @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
+              @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
             </div>
           </div>
         </div>
