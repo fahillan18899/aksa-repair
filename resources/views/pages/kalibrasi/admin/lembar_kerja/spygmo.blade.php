@@ -747,33 +747,33 @@
   let hasil_fisik_11 = document.getElementsByName("hasil_fisik_11")[0].options[0].value;
   let hasil_fisik_12 = document.getElementsByName("hasil_fisik_12")[0].options[0].value;
 
-  let h1 = hasil_fungsi_1 = 'Baik' ? 0.4 : 0;
-  let h2 = hasil_fungsi_2 = 'Baik' ? 0.4 : 0;
-  let h3 = hasil_fungsi_3 = 'Baik' ? 0.4 : 0;
-  let h4 = hasil_fungsi_4 = 'Baik' ? 0.4 : 0;
-  let h5 = hasil_fungsi_5 = 'Baik' ? 0.4 : 0;
-  let h6 = hasil_fungsi_6 = 'Baik' ? 0.4 : 0;
-  let h7 = hasil_fungsi_7 = 'Baik' ? 0.4 : 0;
-  let h8 = hasil_fungsi_8 = 'Baik' ? 0.4 : 0;
-  let h9 = hasil_fungsi_9 = 'Baik' ? 0.4 : 0;
-  let h10 = hasil_fungsi_10 = 'Baik' ? 0.4 : 0;
-  let h11 = hasil_fungsi_11 = 'Baik' ? 0.4 : 0;
-  let h12 = hasil_fungsi_12 = 'Baik' ? 0.4 : 0;
+  let h1 = hasil_fungsi_1 = 'Baik' ? 0.5 : 0;
+  let h2 = hasil_fungsi_2 = 'Baik' ? 0.5 : 0;
+  let h3 = hasil_fungsi_3 = 'Baik' ? 0.5 : 0;
+  let h4 = hasil_fungsi_4 = 'Baik' ? 0.5 : 0;
+  let h5 = hasil_fungsi_5 = 'Baik' ? 0.5 : 0;
+  let h6 = hasil_fungsi_6 = 'Baik' ? 0.5 : 0;
+  let h7 = hasil_fungsi_7 = 'Baik' ? 0.5 : 0;
+  let h8 = hasil_fungsi_8 = 'Baik' ? 0.5 : 0;
+  let h9 = hasil_fungsi_9 = 'Baik' ? 0.5 : 0;
+  let h10 = hasil_fungsi_10 = 'Baik' ? 0.5 : 0;
+  let h11 = hasil_fungsi_11 = 'Baik' ? 0.5 : 0;
+  let h12 = hasil_fungsi_12 = 'Baik' ? 0.5 : 0;
 
-  let hf1 = hasil_fisik_1 = 'Baik' ? 0.4 : 0;
-  let hf2 = hasil_fisik_2 = 'Baik' ? 0.4 : 0;
-  let hf3 = hasil_fisik_3 = 'Baik' ? 0.4 : 0;
-  let hf4 = hasil_fisik_4 = 'Baik' ? 0.4 : 0;
-  let hf5 = hasil_fisik_5 = 'Baik' ? 0.4 : 0;
-  let hf6 = hasil_fisik_6 = 'Baik' ? 0.4 : 0;
-  let hf7 = hasil_fisik_7 = 'Baik' ? 0.4 : 0;
-  let hf8 = hasil_fisik_8 = 'Baik' ? 0.4 : 0;
-  let hf9 = hasil_fisik_9 = 'Baik' ? 0.4 : 0;
-  let hf10 = hasil_fisik_10 = 'Baik' ? 0.4 : 0;
-  let hf11 = hasil_fisik_11 = 'Baik' ? 0.4 : 0;
-  let hf12 = hasil_fisik_12 = 'Baik' ? 0.4 : 0;
+  let hf1 = hasil_fisik_1 = 'Baik' ? 0.5 : 0;
+  let hf2 = hasil_fisik_2 = 'Baik' ? 0.5 : 0;
+  let hf3 = hasil_fisik_3 = 'Baik' ? 0.5 : 0;
+  let hf4 = hasil_fisik_4 = 'Baik' ? 0.5 : 0;
+  let hf5 = hasil_fisik_5 = 'Baik' ? 0.5 : 0;
+  let hf6 = hasil_fisik_6 = 'Baik' ? 0.5 : 0;
+  let hf7 = hasil_fisik_7 = 'Baik' ? 0.5 : 0;
+  let hf8 = hasil_fisik_8 = 'Baik' ? 0.5 : 0;
+  let hf9 = hasil_fisik_9 = 'Baik' ? 0.5 : 0;
+  let hf10 = hasil_fisik_10 = 'Baik' ? 0.5 : 0;
+  let hf11 = hasil_fisik_11 = 'Baik' ? 0.5 : 0;
+  let hf12 = hasil_fisik_12 = 'Baik' ? 0.5 : 0;
 
   const jumlah = h1 + h2 + h3 + h4 + h5 + h6 + h7 + h8 + h9 + h10 + h11 + h12 + hf1 + hf2 + hf3 + hf4 + hf5 + hf6 + hf7 + hf8 + hf9 + hf10 + hf11 + hf12;
-  const nilai = document.getElementById('nilai').textContent = jumlah;
+  const nilai = document.getElementById('nilai').textContent = jumlah / 1.2;
 </script>
 @endpush

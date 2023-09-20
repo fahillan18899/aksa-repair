@@ -49,6 +49,7 @@
                 <option value="autoclave">Autoclave</option>
                 <option value="Autorefrakto">Autorefrakto</option>
                 <option value="binocularTHT">Binocular THT</option>
+                <option value="biometri">Biometri</option>
                 <option value="blood_bank">Blood Bank</option>
                 <option value="blood_plasma_freezer">Blood Plasma Freezer</option>
                 <option value="BloodWarmer">Blood Warmer</option>
@@ -240,6 +241,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
               @include('pages.kalibrasi.admin.lembar_kerja.HemodialisaSinarRoda ')
               @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
+              @include('pages.kalibrasi.admin.lembar_kerja.biometri ')
             </div>
           </div>
         </div>
