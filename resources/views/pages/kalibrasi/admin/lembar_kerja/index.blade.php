@@ -74,6 +74,7 @@
                 <option value="flow_meter">Flow Meter</option>
                 <option value="freezer">Freezer</option>
                 <option value="Hematoloy">Hematoloy</option>
+                <option value="HemodialisaSinarRoda">Hemodialisa Sinar Roda</option>
                 <option value="hfnc">HFNC</option>
                 <option value="IncubatorTransport">Incubator Transport</option>
                 <option value="infant_warmer"> infant_warmer</option>
@@ -235,6 +236,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ventilator')
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_mpa')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
+              @include('pages.kalibrasi.admin.lembar_kerja.HemodialisaSinarRoda ')
               @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
             </div>
           </div>

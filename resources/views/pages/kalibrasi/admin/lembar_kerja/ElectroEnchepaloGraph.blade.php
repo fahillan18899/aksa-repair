@@ -1,4 +1,4 @@
-<div role="tabpanel" class="tab-pane active" id="ElectroEnchepaloGraph">
+<div role="tabpanel" class="tab-pane" id="ElectroEnchepaloGraph">
 
   <div class="row">
     <div class="col-sm-12">
