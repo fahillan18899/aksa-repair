@@ -1,11 +1,11 @@
-<div role="tabpanel" class="tab-pane" id="Elektrostimulator">
+<div role="tabpanel" class="tab-pane" id="mesin_hemodialisa">
 
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-default thumbnail">
 
         <div class="panel-heading no-print">
-          <h1>Lembar Kerja Pengujian dan Kalibrasi Elektrostimulator</h1>
+          <h1>Lembar Kerja Pengujian dan Kalibrasi Mesin Hemodialisa</h1>
         </div>
 
         <div class="panel-body panel-form">
@@ -96,7 +96,7 @@
                     <tr>
 
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                      <td class="table-info" colspan="1" align="left">Stopwatch</td>
+                      <td class="table-info" colspan="1" align="left">Electro Safety Analyzer</td>
                       <td><select name="" class="form-control" id="" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                      <td class="table-info" colspan="1" align="left">Electro Safety Analyzer</td>
+                      <td class="table-info" colspan="1" align="left">Termohygrometer</td>
                       <td><select name="" class="form-control" id="" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
@@ -118,31 +118,7 @@
                       <td><input class="form-control input-number" name="merek_2" type="text" style="border: 0" placeholder="-"></td>
                       <td><input class="form-control input-number" name="no_seri_2" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                      <td class="table-info" colspan="1" align="left">Osciloscope </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
-                          <option>-- Pilih ID Aset --</option>
-                          dd
-                          @foreach($alatUkur as $item)
-                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
-                          @endforeach
-                        </select></td>
-                      <td><input class="form-control input-number" name="merek_3" type="text" style="border: 0" placeholder="-"></td>
-                      <td><input class="form-control input-number" name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                      <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
-                          <option>-- Pilih ID Aset --</option>
-                          @foreach($alatUkur as $item)
-                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
-                          @endforeach
-                        </select></td>
-                      <td><input class="form-control input-number" name="merek_4" type="text" style="border: 0" placeholder="-"></td>
-                      <td><input class="form-control input-number" name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
+                    
                   </tbody>
                 </table>
 
@@ -185,7 +161,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Power Cord</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Badan dan permukaan alat</b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_1" id="">
                           <option value="Baik">Baik</option>
@@ -203,7 +179,7 @@
 
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Timer</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Kotak kontak alat</b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_2" id="">
                           <option value="Baik">Baik</option>
@@ -220,7 +196,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Power Adjuster</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Kabel catu utama</b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_3" id="">
                           <option value="Baik">Baik</option>
@@ -237,7 +213,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Indicator Power Meter</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Sekering pengaman</b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_4" id="">
                           <option value="Baik">Baik</option>
@@ -254,7 +230,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>5</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Cable Electroda</b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Tombol, saklar dan kontrol</b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_5" id="">
                           <option value="Baik">Baik</option>
@@ -269,40 +245,7 @@
                       </td>
                       <td><input class="form-control input-number" name="keterangan_5" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>6</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Sound Indicator</b></td>
-                      <td>
-                        <select style="border: 0" name="hasil_fisik_6" id="">
-                          <option value="Baik">Baik</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select style="border: 0" name="hasil_fungsi_6" id="">
-                          <option value="Baik">Baik</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </td>
-                      <td><input class="form-control input-number" name="keterangan_6" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>7</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Lamp Indicator</b></td>
-                      <td>
-                        <select style="border: 0" name="hasil_fisik_7" id="">
-                          <option value="Baik">Baik</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select style="border: 0" name="hasil_fungsi_7" id="">
-                          <option value="Baik">Baik</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </td>
-                      <td><input class="form-control input-number" name="keterangan_7" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
+                
                   </tbody>
                 </table>
 
@@ -350,121 +293,6 @@
                   </tbody>
                 </table>
 
-
-                <h3>HASIL PENGUKURAN KINERJA ALAT</h3>
-                <h5>a Frekuensi(Hz)</h5>
-                <table class="table table-hover table-bordered" style=" width:100%">
-                  <tbody>
-                    <tr>
-                      <td class="table-info" colspan=""  rowspan="2" align="left"><b>Setting Alat</b></td>
-                      <td class="table-info" colspan="5" rowspan="" align="center"><b>Penunjukan standar</b></td>
-                      <td class="table-info" colspan=""  rowspan="2"align="left"><b>Toleransi</b></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>1</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>2</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>3</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>4</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>5</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>50</b></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>30%</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h5>b Pengukuran Tegangan(V)</h5>
-                <table class="table table-hover table-bordered" style=" width:100%">
-                  <tbody>
-                    <tr>
-                      <td class="table-info" colspan=""  rowspan="2" align="left"><b>Setting Alat</b></td>
-                      <td class="table-info" colspan="5" rowspan="" align="center"><b>Penunjukan standar (V)</b></td>
-                      <td class="table-info" colspan=""  rowspan="2"align="left"><b>Toleransi</b></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>1</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>2</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>3</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>4</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>5</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>20</b></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>30%</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h5>c Perhitungan Intensitas (mA)</h5>
-                <table class="table table-hover table-bordered" style=" width:100%">
-                  <tbody>
-                    <tr>
-                      <td class="table-info" colspan=""  rowspan="2" align="left"><b>Setting Alat</b></td>
-                      <td class="table-info" colspan="5" rowspan="" align="center"><b>Penunjukan standar (mA)</b></td>
-                      <td class="table-info" colspan=""  rowspan="2"align="left"><b>Toleransi</b></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>1</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>2</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>3</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>4</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>5</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>20</b></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>30%</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <h5>d Pewaktu (s)</h5>
-                <table class="table table-hover table-bordered" style=" width:100%">
-                  <tbody>
-                    <tr>
-                      <td class="table-info" colspan="2"  rowspan="" align="left"><b>Setting Alat</b></td>
-                      <td class="table-info" colspan="5" rowspan="" align="center"><b>Penunjukan standar (mA)</b></td>
-                      <td class="table-info" colspan=""  rowspan="2"align="left"><b>Toleransi</b></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>Menit</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>Detik</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>1</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>2</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>3</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>4</b></td>
-                      <td class="table-info" rowspan="" colspan="" align="left"><b>5</b></td>
-                    </tr>
-                    <tr>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>10</b></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td><input class="form-control" name="" type="text" placeholder="-"></td>
-                        <td class="table-info" rowspan="" colspan="" align="left"><b>30%</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-
-
-                
                 <table class="table table-hover table-bordered" style=" width:100%">
                   <tbody>
                     <tr colspan="4">

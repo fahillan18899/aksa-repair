@@ -1,4 +1,4 @@
-<div role="tabpanel" class="tab-pane active" id="otoscope">
+<div role="tabpanel" class="tab-pane" id="otoscope">
 
   <div class="row">
     <div class="col-sm-12">

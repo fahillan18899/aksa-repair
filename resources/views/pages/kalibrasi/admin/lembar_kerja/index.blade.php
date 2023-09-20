@@ -86,6 +86,7 @@
                 <option value="lampu_oprasi">Lampu Oprasi</option>
                 <option value="LampuOperasi">Lampu Operasi 2 kepala</option>
                 <option value="lampu_tindakan">Lampu Tindakan</option>
+                <option value="mesin_hemodialisa">Mesin Hemodialisa</option>
                 <option value="micropipet">Micropipet Variable</option>
                 <option value="MicropipetFix">Microscope Fix</option>
                 <option value="microscope_mata">Microscope Mata</option>
@@ -112,6 +113,7 @@
                 <option value="Sterilisator">Sterilisator</option>
                 <option value="suction_pump_InHg"> suction_pump_InHg</option>
                 <option value="suction_pump_mmhg">suction_pump_mmhg</option>
+                <option value="suction_pump_mpa">suction_pump_mpa</option>
                 <option value="SuctionPumpKpa">SuctionPumpKpa</option>
                 <option value="SWD">SWD</option>
                 <option value="syringe_pump">Syringe Pump</option>
@@ -129,6 +131,7 @@
                 <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
                 <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
                 <option value="vital_monitor">Presentation</option>
+                <option value="ventilator">Ventilator</option>
                 <option value="vortex">Vortex</option>
                 <option value="WaterBath">Water Bath</option>
                 <option value="x_ray">X-Ra</option>
@@ -227,6 +230,9 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasonograph')
               @include('pages.kalibrasi.admin.lembar_kerja.endoscopy_light')
               @include('pages.kalibrasi.admin.lembar_kerja.otoscope')
+              @include('pages.kalibrasi.admin.lembar_kerja.mesin_hemodialisa')
+              @include('pages.kalibrasi.admin.lembar_kerja.ventilator')
+              @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_mpa')
             </div>
           </div>
         </div>

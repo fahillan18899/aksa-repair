@@ -1,4 +1,4 @@
-<div role="tabpanel" class="tab-pane active" id="Ultrasonograph">
+<div role="tabpanel" class="tab-pane" id="Ultrasonograph">
 
   <div class="row">
     <div class="col-sm-12">
