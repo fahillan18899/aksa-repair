@@ -75,6 +75,7 @@
                 <option value="dopler">Fetal Dopler</option>
                 <option value="flow_meter">Flow Meter</option>
                 <option value="freezer">Freezer</option>
+                <option value="heatlamp">Heat Lamp</option>
                 <option value="Hematoloy">Hematoloy</option>
                 <option value="HemodialisaSinarRoda">Hemodialisa Sinar Roda</option>
                 <option value="hfnc">HFNC</option>
@@ -210,6 +211,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.TermometerDigital')
               @include('pages.kalibrasi.admin.lembar_kerja.TermometerKlinik')
               @include('pages.kalibrasi.admin.lembar_kerja.oven')
+              @include('pages.kalibrasi.admin.lembar_kerja.heatlamp')
               @include('pages.kalibrasi.admin.lembar_kerja.kulkas_vaksin')
               @include('pages.kalibrasi.admin.lembar_kerja.thermometer_infrared')
               @include('pages.kalibrasi.admin.lembar_kerja.freezer')
