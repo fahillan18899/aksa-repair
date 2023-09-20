@@ -67,6 +67,7 @@
                 <option value="Electrolit">Electrolit</option>
                 <option value="ElectroSimulator">ElectroSimulator (EST)</option>
                 <option value="Elektrostimulator">Elektrostimulator</option>
+                <option value="endoscopy_light">Endoscopy Light</option>
                 <option value="ENT">ENT Treatment</option>
                 <option value="FetalDoplerBaterai"> Fetal Dopler Baterai</option>
                 <option value="dopler">Fetal Dopler</option>
@@ -223,6 +224,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.x_ray')
               @include('pages.kalibrasi.admin.lembar_kerja.Elektrostimulator')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasonograph')
+              @include('pages.kalibrasi.admin.lembar_kerja.endoscopy_light')
             </div>
           </div>
         </div>
