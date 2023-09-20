@@ -93,6 +93,7 @@
                 <option value="MWD">MWD</option>
                 <option value="nebulizer">Nebulizer</option>
                 <option value="neo_puff">Neo Puff</option>
+                <option value="otoscope">Otoscope</option>
                 <option value="oven">Oven</option>
                 <option value="OxygenConcentrator">Oxygen Concentrator</option>
                 <option value="patient_monitor">Patient Monitor</option>
@@ -225,6 +226,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.Elektrostimulator')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasonograph')
               @include('pages.kalibrasi.admin.lembar_kerja.endoscopy_light')
+              @include('pages.kalibrasi.admin.lembar_kerja.otoscope')
             </div>
           </div>
         </div>

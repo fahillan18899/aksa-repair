@@ -14,6 +14,37 @@
               <form action="{{ url('/kalibrasi/sphygmomanometer') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                 @csrf
                 @method('POST')
+
+                <h3>DATA ALAT PELANGGAN</h3>
+                  <table class="table table-hover table-bordered" style="width:100%">
+                    <tbody>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
+                        <td><input name="milik" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Merek</b></td>
+                        <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Tipe / Model</b></td>
+                        <td><input name="tipe" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Nomor Seri</b></td>
+                        <td><input name="no_seri" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Rentang Ukur</b></td>
+                        <td><input name="rentang_ukur" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                      <tr>
+                        <td class="table-info" colspan="1" align="left"><b>Resolusi</b></td>
+                        <td><input name="resolusi" type="text" style="border: 0" placeholder="-"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                 <h3>PELAKSANA KALIBRASI</h3>
 
                 <table class="table table-hover table-bordered" style=" width:100%">
