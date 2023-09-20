@@ -59,7 +59,7 @@
 
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left">Digital Manometer </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
+                      <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
                           <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
@@ -71,7 +71,7 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left">Rigid Silinder </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
+                      <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
                           <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
@@ -83,7 +83,7 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
                       <td class="table-info" colspan="1" align="left">Stopwatch </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
+                      <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           dd
                           @foreach($alatUkur as $item)
@@ -96,7 +96,7 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>4</b></td>
                       <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
-                      <td><select name="" class="form-control" id="" style="border:0">
+                      <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
                           <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
@@ -114,7 +114,7 @@
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>Milik</b></td>
                       <td>
-                        <select name="" class="form-control" id="" style="border:0">
+                        <select name="" class="form-control" style="border:0">
                           <option>-- Pilih Instansi --</option>
                           @foreach($berita_acara as $item)
                           <option value="<?= $item['kepada']; ?>"> <?= $item['kepada']; ?> </option>
@@ -184,15 +184,15 @@
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_1" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_1" id="hasil_fisik_1">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_1" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_1">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_1" type="text" style="border: 0" placeholder="-"></td>
@@ -202,15 +202,15 @@
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Balon Tensi, Tabung, Selang</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_2" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_2">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_2" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_2">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_2" type="text" style="border: 0" placeholder="-"></td>
@@ -219,15 +219,15 @@
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Bantalan/Rem</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_3" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_3">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_3" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_3">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_3" type="text" style="border: 0" placeholder="-"></td>
@@ -236,15 +236,15 @@
                       <td class="table-info" colspan="1" align="left"><b>4</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Filter</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_4" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_4">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_4" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_4">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_4" type="text" style="border: 0" placeholder="-"></td>
@@ -253,15 +253,15 @@
                       <td class="table-info" colspan="1" align="left"><b>5</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Gauge/Tabung</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_5" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_5">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_5" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_5">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_5" type="text" style="border: 0" placeholder="-"></td>
@@ -270,15 +270,15 @@
                       <td class="table-info" colspan="1" align="left"><b>6</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Indikator</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_6" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_6">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_6" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_6">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_6" type="text" style="border: 0" placeholder="-"></td>
@@ -287,15 +287,15 @@
                       <td class="table-info" colspan="1" align="left"><b>7</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Konektor</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_7" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_7">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_7" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_7">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_7" type="text" style="border: 0" placeholder="-"></td>
@@ -304,15 +304,15 @@
                       <td class="table-info" colspan="1" align="left"><b>8</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Label</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_8" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_8">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_8" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_8">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_8" type="text" style="border: 0" placeholder="-"></td>
@@ -321,15 +321,15 @@
                       <td class="table-info" colspan="1" align="left"><b>9</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Manset</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_9" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_9">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_9" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_9">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_9" type="text" style="border: 0" placeholder="-"></td>
@@ -338,15 +338,15 @@
                       <td class="table-info" colspan="1" align="left"><b>10</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Pengaturan Titik 0</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_10" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_10">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_10" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_10">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_10" type="text" style="border: 0" placeholder="-"></td>
@@ -355,15 +355,15 @@
                       <td class="table-info" colspan="1" align="left"><b>11</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Pengencang</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_11" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_11">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_11" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_11">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_11" type="text" style="border: 0" placeholder="-"></td>
@@ -372,15 +372,15 @@
                       <td class="table-info" colspan="1" align="left"><b>12</b></td>
                       <td class="table-info" colspan="1" align="left"><b>Valve Penutup</b></td>
                       <td>
-                        <select style="border: 0" name="hasil_fisik_12" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fisik_12">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td>
-                        <select style="border: 0" name="hasil_fungsi_12" id="">
-                          <option value="Baik">Baik</option>
+                        <select style="border: 0" name="hasil_fungsi_12">
                           <option value="Tidak">Tidak</option>
+                          <option value="Baik">Baik</option>
                         </select>
                       </td>
                       <td><input class="form-control input-number" name="keterangan_12" type="text" style="border: 0" placeholder="-"></td>
@@ -658,8 +658,10 @@
                     <tr>
                       <td>1</td>
                       <td>Pemeriksaan</td>
-                      <td>9</td>
-                      <td rowspan="4">Laik</td>
+                      <td>
+                        <p id="nilai"></p>
+                      </td>
+                      <td rowspan="4">Tidak Laik</td>
                     </tr>
                     <tr>
                       <td>2</td>
@@ -700,3 +702,62 @@
     </div>
   </div>
 </div>
+
+@push('addon-script')
+<script>
+  let hasil_fungsi_1 = document.getElementsByName("hasil_fungsi_1")[0].options[0].value;
+  let hasil_fungsi_2 = document.getElementsByName("hasil_fungsi_2")[0].options[0].value;
+  let hasil_fungsi_3 = document.getElementsByName("hasil_fungsi_3")[0].options[0].value;
+  let hasil_fungsi_4 = document.getElementsByName("hasil_fungsi_4")[0].options[0].value;
+  let hasil_fungsi_5 = document.getElementsByName("hasil_fungsi_5")[0].options[0].value;
+  let hasil_fungsi_6 = document.getElementsByName("hasil_fungsi_6")[0].options[0].value;
+  let hasil_fungsi_7 = document.getElementsByName("hasil_fungsi_7")[0].options[0].value;
+  let hasil_fungsi_8 = document.getElementsByName("hasil_fungsi_8")[0].options[0].value;
+  let hasil_fungsi_9 = document.getElementsByName("hasil_fungsi_9")[0].options[0].value;
+  let hasil_fungsi_10 = document.getElementsByName("hasil_fungsi_10")[0].options[0].value;
+  let hasil_fungsi_11 = document.getElementsByName("hasil_fungsi_11")[0].options[0].value;
+  let hasil_fungsi_12 = document.getElementsByName("hasil_fungsi_12")[0].options[0].value;
+
+  let hasil_fisik_1 = document.getElementsByName("hasil_fisik_1")[0].options[0].value;
+  let hasil_fisik_2 = document.getElementsByName("hasil_fisik_2")[0].options[0].value;
+  let hasil_fisik_3 = document.getElementsByName("hasil_fisik_3")[0].options[0].value;
+  let hasil_fisik_4 = document.getElementsByName("hasil_fisik_4")[0].options[0].value;
+  let hasil_fisik_5 = document.getElementsByName("hasil_fisik_5")[0].options[0].value;
+  let hasil_fisik_6 = document.getElementsByName("hasil_fisik_6")[0].options[0].value;
+  let hasil_fisik_7 = document.getElementsByName("hasil_fisik_7")[0].options[0].value;
+  let hasil_fisik_8 = document.getElementsByName("hasil_fisik_8")[0].options[0].value;
+  let hasil_fisik_9 = document.getElementsByName("hasil_fisik_9")[0].options[0].value;
+  let hasil_fisik_10 = document.getElementsByName("hasil_fisik_10")[0].options[0].value;
+  let hasil_fisik_11 = document.getElementsByName("hasil_fisik_11")[0].options[0].value;
+  let hasil_fisik_12 = document.getElementsByName("hasil_fisik_12")[0].options[0].value;
+
+  let h1 = hasil_fungsi_1 = 'Baik' ? 0.4 : 0;
+  let h2 = hasil_fungsi_2 = 'Baik' ? 0.4 : 0;
+  let h3 = hasil_fungsi_3 = 'Baik' ? 0.4 : 0;
+  let h4 = hasil_fungsi_4 = 'Baik' ? 0.4 : 0;
+  let h5 = hasil_fungsi_5 = 'Baik' ? 0.4 : 0;
+  let h6 = hasil_fungsi_6 = 'Baik' ? 0.4 : 0;
+  let h7 = hasil_fungsi_7 = 'Baik' ? 0.4 : 0;
+  let h8 = hasil_fungsi_8 = 'Baik' ? 0.4 : 0;
+  let h9 = hasil_fungsi_9 = 'Baik' ? 0.4 : 0;
+  let h10 = hasil_fungsi_10 = 'Baik' ? 0.4 : 0;
+  let h11 = hasil_fungsi_11 = 'Baik' ? 0.4 : 0;
+  let h12 = hasil_fungsi_12 = 'Baik' ? 0.4 : 0;
+
+  let hf1 = hasil_fisik_1 = 'Baik' ? 0.4 : 0;
+  let hf2 = hasil_fisik_2 = 'Baik' ? 0.4 : 0;
+  let hf3 = hasil_fisik_3 = 'Baik' ? 0.4 : 0;
+  let hf4 = hasil_fisik_4 = 'Baik' ? 0.4 : 0;
+  let hf5 = hasil_fisik_5 = 'Baik' ? 0.4 : 0;
+  let hf6 = hasil_fisik_6 = 'Baik' ? 0.4 : 0;
+  let hf7 = hasil_fisik_7 = 'Baik' ? 0.4 : 0;
+  let hf8 = hasil_fisik_8 = 'Baik' ? 0.4 : 0;
+  let hf9 = hasil_fisik_9 = 'Baik' ? 0.4 : 0;
+  let hf10 = hasil_fisik_10 = 'Baik' ? 0.4 : 0;
+  let hf11 = hasil_fisik_11 = 'Baik' ? 0.4 : 0;
+  let hf12 = hasil_fisik_12 = 'Baik' ? 0.4 : 0;
+
+  const jumlah = h1 + h2 + h3 + h4 + h5 + h6 + h7 + h8 + h9 + h10 + h11 + h12 + hf1 + hf2 + hf3 + hf4 + hf5 + hf6 + hf7 + hf8 + hf9 + hf10 + hf11 + hf12;
+  const nilai = document.getElementById('nilai').textContent = jumlah;
+</script>
+@endpush
