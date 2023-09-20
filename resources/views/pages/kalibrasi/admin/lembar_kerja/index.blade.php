@@ -123,6 +123,7 @@
                 <option value="thermometer_infrared">Thermometer Infrared</option>
                 <option value="timbanganDewasa">timbangan Dewasa</option>
                 <option value="Ultrasonograph">Ultrasonograph (USG)</option>
+                <option value="UltrasoundTeraphy ">Ultrasound Teraphy </option>
                 <option value="urine_analyzer"> Urine Analizer</option>
                 <option value="USG">USG</option>
                 <option value="uv">UV</option>
@@ -227,6 +228,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasonograph')
               @include('pages.kalibrasi.admin.lembar_kerja.endoscopy_light')
               @include('pages.kalibrasi.admin.lembar_kerja.otoscope')
+              @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
             </div>
           </div>
         </div>
