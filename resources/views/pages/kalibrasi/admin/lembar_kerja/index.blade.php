@@ -132,7 +132,7 @@
                 <option value="vital_monitor">Presentation</option>
                 <option value="vortex">Vortex</option>
                 <option value="WaterBath">Water Bath</option>
-                <option value="x_ray">X-Ra</option>
+                <option value="ElectroEnchepaloGraph">ElectroEnchepaloGraph ( EEG )</option>
 
               </select>
             </div>
@@ -229,6 +229,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.endoscopy_light')
               @include('pages.kalibrasi.admin.lembar_kerja.otoscope')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
+              @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
             </div>
           </div>
         </div>
