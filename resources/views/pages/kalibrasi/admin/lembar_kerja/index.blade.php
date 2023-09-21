@@ -47,7 +47,9 @@
                 <option value="AnesthesiUnit">Anesthesi Unit</option>
                 <option value="Audiometer">Audiometer</option>
                 <option value="autoclave">Autoclave</option>
+                <option value="Autorefrakto">Autorefrakto</option>
                 <option value="binocularTHT">Binocular THT</option>
+                <option value="biometri">Biometri</option>
                 <option value="blood_bank">Blood Bank</option>
                 <option value="blood_plasma_freezer">Blood Plasma Freezer</option>
                 <option value="BloodWarmer">Blood Warmer</option>
@@ -73,7 +75,9 @@
                 <option value="dopler">Fetal Dopler</option>
                 <option value="flow_meter">Flow Meter</option>
                 <option value="freezer">Freezer</option>
+                <option value="heatlamp">Heat Lamp</option>
                 <option value="Hematoloy">Hematoloy</option>
+                <option value="HemodialisaSinarRoda">Hemodialisa Sinar Roda</option>
                 <option value="hfnc">HFNC</option>
                 <option value="IncubatorTransport">Incubator Transport</option>
                 <option value="infant_warmer"> infant_warmer</option>
@@ -150,6 +154,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.inkubator')
               @include('pages.kalibrasi.admin.lembar_kerja.uv_sterialsator')
               @include('pages.kalibrasi.admin.lembar_kerja.anesthesi')
+              @include('pages.kalibrasi.admin.lembar_kerja.Autorefrakto')
               @include('pages.kalibrasi.admin.lembar_kerja.patient_monitor')
               @include('pages.kalibrasi.admin.lembar_kerja.vital_monitor')
               @include('pages.kalibrasi.admin.lembar_kerja.chemistry_analaizer')
@@ -209,6 +214,7 @@
               @include('pages.kalibrasi.admin.lembar_kerja.TermometerDigital')
               @include('pages.kalibrasi.admin.lembar_kerja.TermometerKlinik')
               @include('pages.kalibrasi.admin.lembar_kerja.oven')
+              @include('pages.kalibrasi.admin.lembar_kerja.heatlamp')
               @include('pages.kalibrasi.admin.lembar_kerja.kulkas_vaksin')
               @include('pages.kalibrasi.admin.lembar_kerja.thermometer_infrared')
               @include('pages.kalibrasi.admin.lembar_kerja.freezer')
@@ -238,9 +244,12 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ventilator')
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_mpa')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
+              @include('pages.kalibrasi.admin.lembar_kerja.HemodialisaSinarRoda ')
               @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
               @include('pages.kalibrasi.admin.lembar_kerja.pesawat_sinar-x ')
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_Cmhg ')
+              @include('pages.kalibrasi.admin.lembar_kerja.biometri ')
+
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
-<div role="tabpanel" class="tab-pane" id="UltrasoundTeraphy">
+<div role="tabpanel" class="tab-pane" id="Autorefrakto">
 
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-default thumbnail">
 
         <div class="panel-heading no-print">
-          <h1>Lembar Kerja Pengujian dan Kalibrasi Ultrasound Teraphy </h1>
+          <h1>Lembar Kerja Pengujian dan Kalibrasi Autorefrakto</h1>
         </div>
 
         <div class="panel-body panel-form">
@@ -58,7 +58,7 @@
                     <tr>
 
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                      <td class="table-info" colspan="1" align="left">Ultrasound Watt Meter </td>
+                      <td class="table-info" colspan="1" align="left">Electrical Safety Analyzer </td>
                       <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
@@ -70,7 +70,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                      <td class="table-info" colspan="1" align="left">Stopwatch </td>
+                      <td class="table-info" colspan="1" align="left">Eye Test </td>
                       <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           @foreach($alatUkur as $item)
@@ -82,7 +82,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
-                      <td class="table-info" colspan="1" align="left">Electrical Safety Analyzer </td>
+                      <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
                       <td><select name="" class="form-control" style="border:0">
                           <option>-- Pilih ID Aset --</option>
                           dd
@@ -92,18 +92,6 @@
                         </select></td>
                       <td><input class="form-control input-number" name="merek_3" type="text" style="border: 0" placeholder="-"></td>
                       <td><input class="form-control input-number" name="no_seri_3" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>4</b></td>
-                      <td class="table-info" colspan="1" align="left">Thermohygrometer </td>
-                      <td><select name="" class="form-control" style="border:0">
-                          <option>-- Pilih ID Aset --</option>
-                          @foreach($alatUkur as $item)
-                          <option value="<?= $item['id_number']; ?>"> <?= $item['id_number']; ?> </option>
-                          @endforeach
-                        </select></td>
-                      <td><input class="form-control input-number" name="merek_4" type="text" style="border: 0" placeholder="-"></td>
-                      <td><input class="form-control input-number" name="no_seri_4" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -162,8 +150,7 @@
                       <td class="table-info" colspan="1" align="left"><b>Kelembapan</b></td>
                       <td><input class="form-control input-number" name="kelembapan_sebelum" type="text" style="border: 0" placeholder="-">
                       </td>
-                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-">
-                      </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
                     </tr>
                   </tbody>
                 </table>
@@ -182,7 +169,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Badan dan Permukaan </b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Badan dan permukaan alat </b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_1" id="hasil_fisik_1">
                           <option value="Tidak">Tidak</option>
@@ -200,7 +187,7 @@
 
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Kotak Kontak Alat </b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Kotak kontak alat </b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_2">
                           <option value="Tidak">Tidak</option>
@@ -251,7 +238,7 @@
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>5</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Kabel Tranduser </b></td>
+                      <td class="table-info" colspan="1" align="left"><b>Tombol, saklar dan kontrol </b></td>
                       <td>
                         <select style="border: 0" name="hasil_fisik_5">
                           <option value="Tidak">Tidak</option>
@@ -266,40 +253,6 @@
                       </td>
                       <td><input class="form-control input-number" name="keterangan_5" type="text" style="border: 0" placeholder="-"></td>
                     </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>6</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Tombol saklar dan kontrol </b></td>
-                      <td>
-                        <select style="border: 0" name="hasil_fisik_6">
-                          <option value="Tidak">Tidak</option>
-                          <option value="Baik">Baik</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select style="border: 0" name="hasil_fungsi_6">
-                          <option value="Tidak">Tidak</option>
-                          <option value="Baik">Baik</option>
-                        </select>
-                      </td>
-                      <td><input class="form-control input-number" name="keterangan_6" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
-                    <tr>
-                      <td class="table-info" colspan="1" align="left"><b>7</b></td>
-                      <td class="table-info" colspan="1" align="left"><b>Tampilan dan indikator </b></td>
-                      <td>
-                        <select style="border: 0" name="hasil_fisik_7">
-                          <option value="Tidak">Tidak</option>
-                          <option value="Baik">Baik</option>
-                        </select>
-                      </td>
-                      <td>
-                        <select style="border: 0" name="hasil_fungsi_7">
-                          <option value="Tidak">Tidak</option>
-                          <option value="Baik">Baik</option>
-                        </select>
-                      </td>
-                      <td><input class="form-control input-number" name="keterangan_7" type="text" style="border: 0" placeholder="-"></td>
-                    </tr>
                   </tbody>
                 </table>
 
@@ -307,118 +260,8 @@
                 <table class="table table-hover table-bordered">
                   <tbody>
                     <tr>
-                      <td rowspan="2"><b>Parameter</b></td>
-                      <td rowspan="2"><b>Setting Standar </b></td>
-                      <td colspan="6"><b>Pembacaan Pada Standar</b></td>
-                      <td rowspan="2"><b>Rata-rata Hasil Ukur</b></td>
-                      <td rowspan="2"><b>Koreksi</b></td>
-                      <td rowspan="2"><b>Ketidakpastian ( 95% CL, k=2) </b></td>
-                    </tr>
-                    <tr>
-                      <td><b>I</b></td>
-                      <td><b>II</b></td>
-                      <td><b>III</b></td>
-                      <td><b>IV</b></td>
-                      <td><b>V</b></td>
-                      <td><b>VI</b></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="4"><b>Power (Watt/cm²)</b></td>
-                      <td><b>0.5 </b></td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>1 </b></td>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>1.5</b></td>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>2</b></td>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi60_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b>
-                      </td>
-                    </tr>
-                  </tbody>
-
-                </table>
-                <table class="table table-hover table-bordered">
-                  <tbody>
-                    <tr>
-                      <td rowspan="2"><b>Parameter</b></td>
-                      <td rowspan="2" colspan="2"><b>Setting Standar </b></td>
-                      <td colspan="3"><b>Pembacaan Pada Standar</b></td>
-                      <td rowspan="2"><b>Rata-rata Hasil Ukur</b></td>
-                      <td rowspan="2"><b>Koreksi</b></td>
-                      <td rowspan="2"><b>Ketidakpastian ( 95% CL, k=2) </b></td>
+                      <td rowspan="2"><b>Dioptri (D)</b></td>
+                      <td colspan="3"><b>Rata Rata Pengukuran</b></td>
                     </tr>
                     <tr>
                       <td><b>I</b></td>
@@ -426,85 +269,51 @@
                       <td><b>III</b></td>
                     </tr>
                     <tr>
-                      <td rowspan="2"><b> Timer ( menit )</b></td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                      <td>-4,47</td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
                     </tr>
                     <tr>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi60_1" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi60_2" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi40_1" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi40_2" type="text" style="border: 0" placeholder="-"></b> </td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b> </td>
+                      <td>0,12 </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                    </tr>
+                    <tr>
+                      <td>0,25 </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
                     </tr>
                   </tbody>
-
                 </table>
-
                 <table class="table table-hover table-bordered">
                   <tbody>
                     <tr>
-
-                      <td><b> Penunjukan Alat</b></td>
-                      <td></td>
-                      <td colspan="2"><b> Setting pada alat</b></td>
-                      <td><b> Petunjuk alat</b></td>
+                      <td rowspan="2"><b>Distance %</b></td>
+                      <td colspan="3"><b>Rata Rata Pengukuran</b></td>
                     </tr>
                     <tr>
-                      <td colspan="2"></td>
-                      <td>Menit</td>
-                      <td>Detik</td>
-                      <td>Detik</td>
+                      <td><b>I</b></td>
+                      <td><b>II</b></td>
+                      <td><b>III</b></td>
                     </tr>
                     <tr>
-                      <td rowspan="3">5</td>
-                      <td>1</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                      <td>0</td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
                     </tr>
                     <tr>
-                      <td>2</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="3">10</td>
-                      <td>1</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
-                      <td><b><input size="5" name="frekuensi40_3" type="text" style="border: 0" placeholder="-"></b></td>
+                      <td>10</td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
+                      <td><input class="form-control input-number" name="kelembapan_sesudah" type="text" style="border: 0" placeholder="-"> </td>
                     </tr>
                   </tbody>
                 </table>
+
 
 
                 <div class="form-group row">
