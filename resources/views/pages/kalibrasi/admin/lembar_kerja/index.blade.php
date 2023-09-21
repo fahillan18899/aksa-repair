@@ -98,6 +98,7 @@
                 <option value="oven">Oven</option>
                 <option value="OxygenConcentrator">Oxygen Concentrator</option>
                 <option value="patient_monitor">Patient Monitor</option>
+                <option value="pesawat_sinar-x">Pesawat Sinar-X</option>
                 <option value="Photometer">Photometer</option>
                 <option value="Phototeraphy">Phototeraphy</option>
                 <option value="PulseOxymetry">ulse Oxymetry</option>
@@ -111,9 +112,10 @@
                 <option value="home">Sphygmomanometer</option>
                 <option value="SpygmomanometerAneroid">Spygmomanometer Aneroid</option>
                 <option value="Sterilisator">Sterilisator</option>
-                <option value="suction_pump_InHg"> suction_pump_InHg</option>
-                <option value="suction_pump_mmhg">suction_pump_mmhg</option>
-                <option value="suction_pump_mpa">suction_pump_mpa</option>
+                <option value="suction_pump_Cmhg"> Suction Pump Cmhg</option>
+                <option value="suction_pump_InHg"> Suction Pump InHg</option>
+                <option value="suction_pump_mmhg">Suction Pump Mmhg</option>
+                <option value="suction_pump_mpa">Suction Pump Mpa</option>
                 <option value="SuctionPumpKpa">SuctionPumpKpa</option>
                 <option value="SWD">SWD</option>
                 <option value="syringe_pump">Syringe Pump</option>
@@ -131,6 +133,7 @@
                 <option value="uv">UV</option>
                 <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
                 <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
+                <option value="ventilator">Ventilator</option>
                 <option value="vital_monitor">Presentation</option>
                 <option value="ventilator">Ventilator</option>
                 <option value="vortex">Vortex</option>
@@ -236,6 +239,8 @@
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_mpa')
               @include('pages.kalibrasi.admin.lembar_kerja.ultrasound_teraphy ')
               @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
+              @include('pages.kalibrasi.admin.lembar_kerja.pesawat_sinar-x ')
+              @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_Cmhg ')
             </div>
           </div>
         </div>
