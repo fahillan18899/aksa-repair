@@ -44,7 +44,10 @@
               <select id="floorplanSelect" class="form-control" name="floorplan">
                 <option value="AED">AED</option>
                 <option value="amasthesi">Anasthesi</option>
+                <option value="anastesi_machine">Anastesi Machine</option>
+                <option value="analitical_balance">Analitical Balance</option>
                 <option value="AnesthesiUnit">Anesthesi Unit</option>
+                <option value="anesthesi_vaporizer">Anesthesi Vaporizer</option>
                 <option value="Audiometer">Audiometer</option>
                 <option value="autoclave">Autoclave</option>
                 <option value="Autorefrakto">Autorefrakto</option>
@@ -84,6 +87,7 @@
                 <option value="infraredLamp"> Infrared Lamp</option>
                 <option value="InfusePump">Infuse Pum</option>
                 <option value="inkubator">inkubator</option>
+                <option value="inkubatro_laboratorium">Inkubatro Laboratorium</option>
                 <option value="KLS">KLS Kelistrikan</option>
                 <option value="kulkas_vaksin">Kulkas Vaksin</option>
                 <option value="laminar_air">Laminar Air Flow</option>
@@ -105,6 +109,7 @@
                 <option value="pesawat_sinar-x">Pesawat Sinar-X</option>
                 <option value="Photometer">Photometer</option>
                 <option value="Phototeraphy">Phototeraphy</option>
+                <option value="platelet_agiator_incubator">Platelet Agiator Incubator</option>
                 <option value="PulseOxymetry">ulse Oxymetry</option>
                 <option value="refigretor">refigretor</option>
                 <option value="refrakto_keratometer">Refrakto Keratometer</option>
@@ -128,6 +133,8 @@
                 <option value="TermometerDigital">Termometer Digital</option>
                 <option value="TermometerKlinik">Termometer Klinik</option>
                 <option value="TermometerKulkas">Termometer Kulkas</option>
+                <option value="traksi">Traksi</option>
+                <option value="treadmil_ecg">Treadmil ECG</option>
                 <option value="thermometer_infrared">Thermometer Infrared</option>
                 <option value="timbanganDewasa">timbangan Dewasa</option>
                 <option value="Ultrasonograph">Ultrasonograph (USG)</option>
@@ -138,6 +145,7 @@
                 <option value="vaporizer_isoflurane">Vapolizer Isoflurane</option>
                 <option value="vaporizer_sevoflurane">Vapolizer Sevoflurane</option>
                 <option value="ventilator">Ventilator</option>
+                <option value="ventilator_anesthesi">Ventilator Anesthesi</option>
                 <option value="vital_monitor">Presentation</option>
                 <option value="ventilator">Ventilator</option>
                 <option value="vortex">Vortex</option>
@@ -248,8 +256,15 @@
               @include('pages.kalibrasi.admin.lembar_kerja.ElectroEnchepaloGraph ')
               @include('pages.kalibrasi.admin.lembar_kerja.pesawat_sinar-x ')
               @include('pages.kalibrasi.admin.lembar_kerja.suction_pump_Cmhg ')
+              @include('pages.kalibrasi.admin.lembar_kerja.anastesi_machine ')
               @include('pages.kalibrasi.admin.lembar_kerja.biometri ')
-
+              @include('pages.kalibrasi.admin.lembar_kerja.anesthesi_vaporizer ')
+              @include('pages.kalibrasi.admin.lembar_kerja.platelet_agiator_incubator ')
+              @include('pages.kalibrasi.admin.lembar_kerja.analitical_balance ')
+              @include('pages.kalibrasi.admin.lembar_kerja.ventilator_anesthesi ')
+              @include('pages.kalibrasi.admin.lembar_kerja.treadmil_ecg ')
+              @include('pages.kalibrasi.admin.lembar_kerja.traksi ')
+              @include('pages.kalibrasi.admin.lembar_kerja.inkubatro_laboratorium ')
             </div>
           </div>
         </div>

@@ -392,14 +392,13 @@
                 <table class="table table-hover table-bordered" style=" width:100%">
                   <tbody>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
-                      <td class="table-info" colspan="1" rowspan="2" align="center"><b> setting Unit</b>
-                      </td>
+                      <td class="table-info" rowspan="2" colspan="" align="left"><b>No</b></td>
+                      <td class="table-info" colspan="1" rowspan="2" align="center"><b> setting Unit</b></td>
                       <td class="table-info text-center" colspan="5" align="left"><b>Pengukuran</b></td>
+                      <td class="table-info text-center" rowspan="2" colspan="" align="left"><b>Hasil Ukur</b></td>
                       <td class="table-info" colspan="1" rowspan="2" align="center"><b>Toleransi</b></td>
                     </tr>
                     <tr>
-                      <td class="table-info" colspan="1" align="left"><b>No</b></td>
                       <td class="table-info" colspan="1" align="left"><b>1</b></td>
                       <td class="table-info" colspan="1" align="left"><b>2</b></td>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
@@ -414,6 +413,7 @@
                       <td><input class="form-control input-number-50" name="pengukuran_50_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_50_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-50" name="pengukuran_50_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-50" name="pengukuran_50_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       <td rowspan="15" class="text-center">± 10%</td>
                     </tr>
                     <tr>
@@ -424,6 +424,7 @@
                       <td><input class="form-control input-number-100" name="pengukuran_100_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_100_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-100" name="pengukuran_100_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-100" name="pengukuran_100_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>3</b></td>
@@ -433,6 +434,7 @@
                       <td><input class="form-control input-number-150" name="pengukuran_150_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-150" name="pengukuran_150_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-150" name="pengukuran_150_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>4</b></td>
@@ -442,6 +444,7 @@
                       <td><input class="form-control input-number-200" name="pengukuran_200_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_200_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-200" name="pengukuran_200_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-200" name="pengukuran_200_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                     </tr>
                     <tr>
                       <td class="table-info" colspan="1" align="left"><b>5</b></td>
@@ -451,6 +454,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -461,6 +465,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -471,6 +476,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -481,6 +487,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -491,6 +498,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -501,6 +509,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -511,6 +520,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -521,6 +531,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -531,6 +542,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -541,6 +553,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                     <tr>
@@ -551,6 +564,7 @@
                       <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                      <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-" readonly></td>
                       </td>
                     </tr>
                   </tbody>

@@ -297,160 +297,105 @@
                       <tr>
                         <td><b>125 </b></td>
                         <td><b>50</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-125" name="pengukuran_125_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-125" name="pengukuran_125_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-125" name="pengukuran_125_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-125" name="pengukuran_125_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-125" name="pengukuran_125_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>250 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-250" name="pengukuran_250_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-250" name="pengukuran_250_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-250" name="pengukuran_250_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-250" name="pengukuran_250_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-250" name="pengukuran_250_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>500 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-500" name="pengukuran_500_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-500" name="pengukuran_500_2" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-500" name="pengukuran_500_3" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-500" name="pengukuran_500_4" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-500" name="pengukuran_500_5" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>750 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>1000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>1500 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"  placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"  placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"  placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"  placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"  placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>2000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>3000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>4000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>6000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>8000 </b></td>
                         <td><b>70</b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
+                        <td><input class="form-control input-number-50" name="pengukuran_50_1" type="number" min="1" max="999" id="input" placeholder="-"></td>
                       </tr>
 
                     </tbody>
@@ -474,150 +419,95 @@
                       </tr>
                       <tr>
                         <td><b>125 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>250 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>500 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>750 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>1000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>1500 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
                       <tr>
                         <td><b>2000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>3000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>4000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>6000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
 
                       <tr>
                         <td><b>8000 </b></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
-                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0"
-                            placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
+                        <td><input name="hasil_pemeriksaan_fungsi_4" size="6" type="text" style="border: 0" placeholder="-"></td>
                       </tr>
 
                     </tbody>
