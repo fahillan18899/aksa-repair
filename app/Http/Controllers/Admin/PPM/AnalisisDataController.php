@@ -62,7 +62,7 @@ class AnalisisDataController extends Controller
         $unTerpelihara = DB::table('registrasis')->whereRaw("registrasis.kode_rs = '$kode_rs'")->count() - count($terpelihara);
 
         return view(
-            'pages.admin.ppm.analisis_data.index',
+            'pages.admin.PPM.analisis_data.index',
             [
                 't5' => $t5,
                 't5_' => $t5_,

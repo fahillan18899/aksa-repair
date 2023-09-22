@@ -27,7 +27,7 @@ class PengirimanUnregistrasiController extends Controller
         $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.ppm.aset_unregistrasi.index', [
+        return view('pages.admin.PPM.aset_unregistrasi.index', [
             
             'perbaikan'    => $perbaikan,
             'pengiriman'   => $pengiriman,
@@ -98,7 +98,7 @@ class PengirimanUnregistrasiController extends Controller
         $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.edit_pengiriman', [
+        return view('pages.admin.PPM.aset_unregistrasi.edit_pengiriman', [
             
             'alats'    => $alats,
             'ruangans' => $ruangans,
@@ -161,6 +161,6 @@ class PengirimanUnregistrasiController extends Controller
     public function cetak($id)
     {
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.cetak_pengiriman', compact('item'));
+        return view('pages.admin.PPM.aset_unregistrasi.cetak_pengiriman', compact('item'));
     }
 }

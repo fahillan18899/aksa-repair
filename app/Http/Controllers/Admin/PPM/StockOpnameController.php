@@ -18,7 +18,7 @@ class StockOpnameController extends Controller
     {
         $items = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.ppm.stock_opname.index', ['items' => $items]);
+        return view('pages.admin.PPM.stock_opname.index', ['items' => $items]);
     }
 
     /**
@@ -28,7 +28,7 @@ class StockOpnameController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.ppm.stock_opname.create');
+        return view('pages.admin.PPM.stock_opname.create');
     }
 
     /**
@@ -67,7 +67,7 @@ class StockOpnameController extends Controller
     public function edit($id)
     {
         $item = StockOpname::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.stock_opname.update', [
+        return view('pages.admin.PPM.stock_opname.update', [
             'item' => $item,
         ]);
     }

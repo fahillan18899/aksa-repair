@@ -23,7 +23,7 @@ class AsetUnregistrasiController extends Controller
         $pengembalian  = PengembalianUnregistrasi::all();
         $penghapusan   = PenghapusanUnregistrasi::all();
 
-        return view('pages.admin.ppm.aset_unregistrasi.index', [
+        return view('pages.admin.PPM.aset_unregistrasi.index', [
             
             'perbaikan'    => $perbaikan,
             'pengiriman'   => $pengiriman,

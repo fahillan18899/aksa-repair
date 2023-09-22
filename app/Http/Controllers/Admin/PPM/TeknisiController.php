@@ -73,7 +73,7 @@ class TeknisiController extends Controller
     public function edit($teknisi)
     {
         $item = Teknisi::where('id_teknisi', $teknisi)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.data_kelengkapan.update_teknisi', compact('item'));
+        return view('pages.admin.PPM.data_kelengkapan.update_teknisi', compact('item'));
     }
 
     /**

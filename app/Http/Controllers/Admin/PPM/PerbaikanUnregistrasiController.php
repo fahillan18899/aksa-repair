@@ -46,7 +46,7 @@ class PerbaikanUnregistrasiController extends Controller
         $date3  = date('dmy');
         $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
-        return view('pages.admin.ppm.aset_unregistrasi.index', [
+        return view('pages.admin.PPM.aset_unregistrasi.index', [
             
             'perbaikan'    => $perbaikan,
             'pengiriman'   => $pengiriman,
@@ -118,7 +118,7 @@ class PerbaikanUnregistrasiController extends Controller
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.edit_perbaikan', [
+        return view('pages.admin.PPM.aset_unregistrasi.edit_perbaikan', [
             
             'ruangans'     => $ruangans,
             'item'     => $item,
@@ -176,7 +176,7 @@ class PerbaikanUnregistrasiController extends Controller
     public function cetak($id)
     {
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.aset_unregistrasi.cetak_perbaikan', compact('item'));
+        return view('pages.admin.PPM.aset_unregistrasi.cetak_perbaikan', compact('item'));
     }
 }
 

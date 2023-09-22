@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         $items = User::all();
 
-        return view('pages.admin.ppm.operator.index', ['items' => $items]);
+        return view('pages.admin.PPM.operator.index', ['items' => $items]);
     }
 
     /**
