@@ -91,31 +91,9 @@ class PerbaikanUserUnregistrasiController extends Controller
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanUnregistrasi::create($request->post());
+      
 
-        $kodeRs_ = Auth::user()->kode_rs;
-
-        $data = DB::table('registrasis')
-        ->select(DB::raw('max(id_aset) as maxIDASET'))
-        ->where('kode_rs', $kodeRs_)
-        ->first();
-        $kodeAset = $data->maxIDASET;
-
-        $urutan = (int)substr($kodeAset, 12, 13);
-        $urutan++;
-
-        $date  = date('dmy');
-        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
-
-        Registrasi::create([
-            'id_aset' => $kodeAset,
-            'jenis_alat' => '',
-            'nama_alat' => $request->nama_alat_un,
-            'merek' => $request->merek_alat_un,
-            'type' => $request->type_alat_un,
-            'serial_number' => $request->serial_number_un,
-            'lokasi_alat' => $request->lokasi_alat_un,
-            'kode_rs' => $request['kode_rs'] = Auth::user()->kode_rs,
-        ]);
+        
 
         return redirect('/dashboard_user/perbaikan_unregistrasi')
         ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');

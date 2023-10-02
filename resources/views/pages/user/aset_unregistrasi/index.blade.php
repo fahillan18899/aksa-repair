@@ -39,7 +39,7 @@
 
              <div class="row">
                <div class="col-md-9 col-sm-12">
-                 <form action="{{ url('/dashboard/ppm/tambah_unregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                 <form action="{{ url('/dashboard_user/perbaikan_unregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                  @csrf
                   @method('post')
 

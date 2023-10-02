@@ -227,6 +227,7 @@ Route::prefix('dashboard_user')
         Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
 
         Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+        Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
         Route::resource('stock_opname_user', StockOpnameUserController::class);
 
     Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);

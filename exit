@@ -1,0 +1,89 @@
+[33m052cfa2[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m memperbaiki middleware admin
+[33m934b356[m mengubah id
+[33m7ff697c[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33mb3ff559[m penambahan user
+[33m4c2b6b6[m membuat fitur human resource dan link daftar
+[33m931f46c[m mengganti perubahan nama ppm di semua controller
+[33mc0fa234[m penambahan lk baru
+[33m3dae69b[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m5f6f1c7[m lk anastesi_machine, pesawat sinar x, suction cmhg
+[33m608b341[m add LK: heat lamp
+[33m0074200[m add: LK biometri
+[33m1d25707[m add: LK Autorefatro
+[33mfe21675[m add: LK Hemodialisa Sinar Roda
+[33m9189835[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33mde78cf1[m penambahan lk ventilator & mesin
+[33ma946bf5[m addL LK EEG
+[33m0a6d63e[m add: LK ultrasound therapy
+[33m2725087[m lk elektrostimulator & otoscope
+[33ma16bace[m add: LK Endoscopy Light
+[33mcb69153[m add: Ultrasonograph (USG)
+[33m778e7b7[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m4edbde9[m menambah lk baru
+[33m7b543db[m add: LK AnesthesiUnit
+[33m6bb080c[m add: LK photometer
+[33mc0b049b[m membuat perhitungan hasil fungsi dan fisik LK spygmomanometer
+[33m26d0f19[m membuat tampilan sertifikat kalibrasi
+[33mbde53a3[m membuat tampilan hasil score
+[33m3bf63ca[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m42a01d0[m id teknisi
+[33m68664ae[m penambahan nama petugas berdasarkan login
+[33m7a13435[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m54b1930[m perubahan ID Alat
+[33m45f8abc[m urutan lk
+[33m99e9e60[m merpikan dropdwn select LK
+[33m0957ff3[m membuat select berdasarkan LK
+[33m5819986[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33mf472ac3[m pemisahan lk
+[33m1dfa6cc[m Merge branches 'main' and 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m9b0cf7b[m membuat validasi toleransi spyghmometer
+[33m162e636[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33mcaa958f[m penamaan field select di uji fisik & fungsi
+[33m696aede[m merikan halaman LK
+[33mf10f3e7[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m05e9e72[m Penambahan hasil kalibrasi & perubahan lk
+[33m2d2d440[m membuat tampilan dan fungsi teknisi "admin"
+[33m1f1e3f1[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m1a795f1[m menambah parameter ukur
+[33m18db19c[m membuat route hasil kalibrasi
+[33m00f8139[m membuat fungsi tambah LK spygmomanometer
+[33md740c36[m gabungan
+[33m3548363[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m98aa3dd[m x-ray dan perbaikan dll
+[33mfcf4259[m UPDATE: mengubah struktur database
+[33m1712c5d[m update: LK Inkubator
+[33m41a7de9[m add: LK thermohygromanometer aneroid
+[33m7fd24f6[m gabungan
+[33m3660530[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m2138ac2[m vs,esu,lamp oprasi,tindakan,slit,sepeda,neo
+[33m1282378[m add: LK Stopwatch Electro Safety Analyzer Osciloscope Termohygrometer
+[33mf53b0fa[m add: LK  ElectroSimulator
+[33mdcb405b[m add LK Termometer Kulkas
+[33m9fd234f[m freezer
+[33m87a5cf1[m add:c LK Termometer Klinik
+[33m5ac8859[m tremometer digital - thermometer infrared
+[33m35e9257[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m760ccf0[m oven,kulkas vaksin,thermometer infrared
+[33m9f88ead[m add: LK  Termometer Digital
+[33ma196946[m sterilisator
+[33m0dca274[m add LK refigretor
+[33m37c8cbf[m gabung bloodwarmer - cold_chain
+[33m48ad99d[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m6fdcaff[m micropipet,autoclave,chiler,cold chain
+[33m73a3b0e[m add: LK blood warmer
+[33m61081fa[m add: LK Termohygrometer
+[33md3bdc1e[m add: LK pulse oxymetry
+[33m241f17b[m add: LK Miccropipet FIX
+[33m3d044ea[m kabungan microscope - nebulizer
+[33m841c237[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m6acd53f[m laminar air,microscope mata,nebulizer
+[33m118767e[m add: LK Microscope
+[33m798448f[m add: LK Microscope Binocular THT
+[33md38cab5[m add: LK phototerapi
+[33m261103a[m add: LK Lampu Operasi
+[33m58abdca[m add LK Kelistrikan
+[33mb4b4ee8[m add LK MWD
+[33m1543b64[m gabungan bsc - hfnc
+[33m1600c67[m Merge branch 'main' of https://github.com/ilzamafif/wyasa-simrs
+[33m121c46d[m BSC,vortex,flow meter,fetal dopler,HFNC
+[33mecda893[m add: LK infrared Lamp
