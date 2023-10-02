@@ -9,7 +9,7 @@
       <div class="info">
         <p>{{ Auth::user()->username }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i>
-          {{ Auth::user()->user_role = "1" ? "Admin" : ""  }} </a>
+          {{ Auth::user()->user_role  }} </a>
       </div>
     </div>
 

@@ -72,7 +72,7 @@ use App\Models\Admin\HumanResource;
 // });
 
 
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('ppm')->group(function () {
