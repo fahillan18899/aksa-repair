@@ -28,6 +28,12 @@ use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 
+use App\Http\Controllers\Admin\HumanResourcesController;
+use App\Http\Controllers\User\PPM\DashboardUserController;
+use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
+use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
+use App\Http\Controllers\User\PPM\StockOpnameUserController;
+
 use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
 use App\Http\Controllers\AdminKalibrasi\HasilKalibrasi;
 use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
@@ -200,7 +206,23 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 
 
     });
+
+    Route::resource('human_resource', HumanResourcesController::class);
 });
+
+Route::prefix('dashboard_user')
+->middleware(['auth', 'user_role'])
+    ->group(function () {
+        Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
+
+        Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
+
+        Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+        Route::resource('stock_opname_user', StockOpnameUserController::class);
+
+    Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+
+    });
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
