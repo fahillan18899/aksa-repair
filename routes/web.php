@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HumanResourceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
@@ -53,6 +54,7 @@ use App\Models\LembarPemeliharaan;
 
 // kalibrasi
 use App\Http\Controllers\TeknisiKalibrasi\HomeController as Teknisi;
+use App\Models\Admin\HumanResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -203,11 +205,18 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
          * penghapusan unregistrasi
          */
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
-
-
+        
+        
     });
 
+
     Route::resource('human_resource', HumanResourcesController::class);
+
+    /**
+     * penghapusan unregistrasi
+     */
+    Route::resource('human_resource', HumanResourceController::class);
+
 });
 
 Route::prefix('dashboard_user')

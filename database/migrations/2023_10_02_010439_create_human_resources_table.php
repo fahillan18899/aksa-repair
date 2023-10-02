@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('user_id');
-            $table->string('username', 50)->unique();
-            $table->string('password');
-            $table->string('user_role', 20)->default('user');
-            $table->date('tanggal_lahir')->nullable()->change();
-            $table->string('kode_rs')->default('RS1');
+        Schema::create('human_resources', function (Blueprint $table) {
+            $table->id();
+            $table->string('user_role', 20)->nullable();
             $table->string('firstname', 20)->nullable();
             $table->string('lastname', 20)->nullable();
+            $table->string('username', 20)->nullable();
+            $table->string('password', 20)->nullable();
             $table->string('sex', 20)->nullable();
             $table->string('designation', 20)->nullable();
             $table->string('address', 20)->nullable();
@@ -33,6 +31,7 @@ return new class extends Migration
             $table->string('degree', 20)->nullable();
             $table->string('picture', 20)->nullable();
             $table->string('tambah_employee', 20)->nullable();
+            $table->string('kode_rs', 20)->nullable();
             $table->timestamps();
         });
     }
@@ -44,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('human_resources');
     }
 };

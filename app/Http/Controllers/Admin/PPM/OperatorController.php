@@ -18,7 +18,7 @@ class OperatorController extends Controller
     {
         $items = User::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.ppm.operator.index', ['items' => $items]);
+        return view('pages.admin.PPM.operator.index', ['items' => $items]);
     }
 
     /**
@@ -72,7 +72,7 @@ class OperatorController extends Controller
     public function edit($id)
     {
         $item = User::where('user_id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.operator.edit', [
+        return view('pages.admin.PPM.operator.edit', [
             'item' => $item,
         ]);
     }

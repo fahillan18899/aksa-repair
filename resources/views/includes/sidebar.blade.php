@@ -214,8 +214,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="?hal=human_resources&fun=employee_form">Tambahkan Karyawan</a></li>
-          <li class=""><a href="?hal=human_resources&fun=employee">Daftar Karyawan</a></li>
+          <li class=""><a href="{{ url('/dashboard/human_resource/create') }}">Tambahkan Karyawan</a></li>
+          <li class=""><a href="{{ url('/dashboard/human_resource') }}">Daftar Karyawan</a></li>
         </ul>
       </li>
 

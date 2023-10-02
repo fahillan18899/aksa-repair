@@ -93,7 +93,7 @@ class PengirimanRegistrasiController extends Controller
         $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.update_pengiriman', [
+        return view('pages.admin.PPM.aset_teregistrasi.update_pengiriman', [
             
             
             'alats'        => $alats,
@@ -153,6 +153,6 @@ class PengirimanRegistrasiController extends Controller
     public function cetak($id)
     {
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.cetak_pengiriman', compact('item'));
+        return view('pages.admin.PPM.aset_teregistrasi.cetak_pengiriman', compact('item'));
     }
 }

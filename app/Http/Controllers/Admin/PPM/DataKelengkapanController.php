@@ -77,7 +77,7 @@ class DataKelengkapanController extends Controller
         $kodeLokasi = $kodeRs_ . sprintf("%03s", $urutanLokasi);
 
 
-        return view('pages.admin.ppm.data_kelengkapan.index',  [
+        return view('pages.admin.PPM.data_kelengkapan.index',  [
             'gedung' => $gedung,
             'alats' => $alat,
             'teknisi' => $teknisi,

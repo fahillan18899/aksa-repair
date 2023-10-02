@@ -17,7 +17,7 @@ class LembarPemeliharaanController extends Controller
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $lembarPemeliharaans = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        return view('pages.admin.ppm.lembar_pemeliharaan.index', [
+        return view('pages.admin.PPM.lembar_pemeliharaan.index', [
             'lembarPemeliharaans' => $lembarPemeliharaans,
             'teknisis' => $teknisis,
             'alats' => $alats,
@@ -105,7 +105,7 @@ class LembarPemeliharaanController extends Controller
     public function edit($id_ppm)
     {
         $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
-        return view('pages.admin.ppm.lembar_pemeliharaan.index', compact('lembarPemeliharaan'));
+        return view('pages.admin.PPM.lembar_pemeliharaan.index', compact('lembarPemeliharaan'));
     }
 
     public function update(Request $request, $id_ppm)

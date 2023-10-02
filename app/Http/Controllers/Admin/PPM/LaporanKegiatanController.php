@@ -23,7 +23,7 @@ class LaporanKegiatanController extends Controller
         $lembarpemeliharaan  = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
 
-        return view('pages.admin.ppm.laporan_kegiatan.index', [
+        return view('pages.admin.PPM.laporan_kegiatan.index', [
             
             'regsitrasi'         => $regsitrasi, 
             'unregsitrasi'       => $unregsitrasi, 

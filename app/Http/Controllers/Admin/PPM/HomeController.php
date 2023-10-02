@@ -24,7 +24,7 @@ class HomeController extends Controller
 
 
         return view(
-            'pages.admin.ppm.dashboard.index',
+            'pages.admin.PPM.dashboard.index',
             [
                 'registrasi' => $registrasi,
                 'perbaikanRegistrasi' => $perbaikanRegistrasi,
@@ -38,26 +38,26 @@ class HomeController extends Controller
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.ppm.data_inventaris.index', ['items' => $items]);
+        return view('pages.admin.PPM.data_inventaris.index', ['items' => $items]);
     }
 
     function printDataInventaris($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
-        return view('pages.admin.ppm.data_inventaris.cetak_aset', compact('item'));
+        return view('pages.admin.PPM.data_inventaris.cetak_aset', compact('item'));
     }
 
     
     function qrCodeGenerate($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
-        return view('pages.admin.ppm.data_inventaris.qr_code', compact('item'));
+        return view('pages.admin.PPM.data_inventaris.qr_code', compact('item'));
     }
 
     function analisData()
     {
         $item = Registrasi::all();
-        return view('pages.admin.ppm.analisis_data.index', compact('item'));
+        return view('pages.admin.PPM.analisis_data.index', compact('item'));
     }
 
     public function autofill($idars)

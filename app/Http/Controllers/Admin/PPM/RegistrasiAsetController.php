@@ -36,7 +36,7 @@ class RegistrasiAsetController extends Controller
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
-        return view('pages.admin.ppm.registrasi_aset.index', [
+        return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
             'ruangans' => $ruangans,
@@ -130,7 +130,7 @@ class RegistrasiAsetController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
-        return view('pages.admin.ppm.registrasi_aset.update', [
+        return view('pages.admin.PPM.registrasi_aset.update', [
             'ruangans' => $ruangans,
             'alats' => $alats,
             'item' => $item,
