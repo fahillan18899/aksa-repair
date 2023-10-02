@@ -18,14 +18,14 @@ class JadwalPemeliharaanController extends Controller
     {
         $items = JadwalPemeliharaan::all();
 
-        return view('pages.admin.ppm/jadwal_pemeliharaan.index', ['items' => $items]);
+        return view('pages.admin.PPM.jadwal_pemeliharaan.index', ['items' => $items]);
     }
 
     public function state()
     {
         $items = JadwalPemeliharaan::all();
         $states = DB::table("registrasis")->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
-        return view('pages.admin.ppm/jadwal_pemeliharaan.index', [
+        return view('pages.admin.PPM/jadwal_pemeliharaan.index', [
             'items' => $items,
             'states' => $states,
         ]);
@@ -65,7 +65,7 @@ class JadwalPemeliharaanController extends Controller
 
         JadwalPemeliharaan::create($data);
 
-        return redirect('/dashboard/ppm/jadwal_pemeliharaan')
+        return redirect('/dashboard/PPM/jadwal_pemeliharaan')
         ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 
