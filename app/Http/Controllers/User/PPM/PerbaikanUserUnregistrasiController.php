@@ -44,7 +44,7 @@ class PerbaikanUserUnregistrasiController extends Controller
         $urutan++;
 
         $huruf3 = "U";
-        $date3  = date('dmy');
+        $date3  = date('ymd');
         $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.user.aset_unregistrasi.index', [

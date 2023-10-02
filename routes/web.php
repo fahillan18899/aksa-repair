@@ -220,7 +220,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
 });
 
 Route::prefix('dashboard_user')
-->middleware(['auth', 'user_role'])
+->middleware(['auth'])
     ->group(function () {
         Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
 

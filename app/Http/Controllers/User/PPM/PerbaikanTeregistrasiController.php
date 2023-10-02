@@ -44,7 +44,7 @@ class PerbaikanTeregistrasiController extends Controller
         $urutan++;
 
         $huruf3 = "B";
-        $date3  = date('dmy');
+        $date3  = date('ymd');
         $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.user.aset_teregistrasi.index', [

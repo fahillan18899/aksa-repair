@@ -43,7 +43,7 @@ class PerbaikanUnregistrasiController extends Controller
         $urutan++;
 
         $huruf3 = "U";
-        $date3  = date('dmy');
+        $date3  = date('ymd');
         $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
 
         return view('pages.admin.PPM.aset_unregistrasi.index', [

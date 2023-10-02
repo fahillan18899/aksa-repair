@@ -30,7 +30,7 @@ class RegistrasiAsetController extends Controller
         $urutan = (int)substr($kodeAset, 12, 13);
         $urutan++;
 
-        $date  = date('dmy');
+        $date  = date('ymd');
         $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
