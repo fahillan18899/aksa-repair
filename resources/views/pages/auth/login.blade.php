@@ -21,7 +21,7 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>RS Cilegon Wyasa</h3>
+              <h3>Wyasa RS Badarudin Kasim Tabalong</h3>
               <small><strong>Please Log In</strong></small>
             </div>
           </div>
