@@ -130,4 +130,10 @@ class LembarPemeliharaanController extends Controller
         return redirect()->route('lembar-pemeliharaan.index')
         ->with('success', 'Lembar Pemeliharaan berhasil dihapus.');
     }
+
+    public function cetak($id)
+    {
+        $item = LembarPemeliharaan::where('id_ppm', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        return view('pages.admin.PPM.lembar_pemeliharaan.cetak_pemeliharaan', compact('item'));
+    }
 }

@@ -25,7 +25,7 @@ class JadwalPemeliharaanController extends Controller
     {
         $items = JadwalPemeliharaan::all();
         $states = DB::table("registrasis")->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
-        return view('pages.admin.ppm/jadwal_pemeliharaan.index', [
+        return view('pages.admin.ppm.jadwal_pemeliharaan.index', [
             'items' => $items,
             'states' => $states,
         ]);

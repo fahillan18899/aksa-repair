@@ -205,6 +205,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
          * penghapusan unregistrasi
          */
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
+        Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanController::class, 'cetak']);/*fungsi print*/
         
         
     });

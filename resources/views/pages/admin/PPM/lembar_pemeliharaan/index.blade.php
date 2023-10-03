@@ -111,12 +111,7 @@ $alert = "";
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
-                      <select name="nama_alat" class="form-control" id="nama_alat1">
-                        <option>-- Pilih Alat --</option>
-                        @foreach($alats as $alat)
-                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
-                        @endforeach
-                      </select>
+                      <input name="nama_alat" type="text" class="form-control" id="nama_alat1" placeholder="Nama Alat">
                     </div>
                   </div>
 
@@ -655,6 +650,7 @@ $alert = "";
                   <td class="table-primary" rowspan="3"><b>Durasi</b></td>
                   <td class="table-primary" rowspan="3"><b>User</b></td>
                   <td class="table-primary" rowspan="3"><b>Engineer</b></td>
+                  <td class="table-primary" rowspan="3"><b>Tombol_Aksi</b></td>
 
                 </tr>
 
@@ -769,6 +765,9 @@ $alert = "";
                   <td>{{ $item->durasi }}</td>
                   <td>{{ $item->user }}</td>
                   <td>{{ $item->engginer }}</td>
+                  <td>
+                  <a href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                  </td>
 
                 </tr>
                 @empty
