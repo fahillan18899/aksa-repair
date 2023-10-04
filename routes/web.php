@@ -39,6 +39,9 @@ use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisi
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PerbaikanUserUnregistrasiController as PerbaikanUserUnregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemeliharaanTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -225,9 +228,18 @@ Route::prefix('dashboard_user')
         Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
         
         Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
+        Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
         
         Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
         Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
+
+
+        Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);
+        Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'store'])->name('jadwal_pemeliharaan.store');
+        Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanTeknisiController::class, 'city']);
+        Route::resource('lembar_pemeliharaan', LembarPemeliharaanTeknisiController::class);
+        Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
+        Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
 
     });
 

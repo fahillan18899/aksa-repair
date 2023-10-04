@@ -93,6 +93,30 @@
     });
   }
 </script>
+<script type="text/javascript">
+  function autofillPemeliharaTeknisi() {
+    let idars = $("#id_ase1t").val();
+    $.ajax({
+      url: '{{ url("/dashboard_teknisi/autofill/") }}/' + idars,
+      method: 'GET', // HTTP method (e.g., GET, POST)
+      data: {
+        idars: idars
+      },
+      dataType: 'json',
+      success: function(data) {
+        $("#nama_alat1").val(data.nama_alat_reg);
+        $("#merek1").val(data.merek_alat_reg);
+        $("#serial_number1").val(data.serial_number_reg);
+        $("#tipe1").val(data.type);
+        $("#ruangan1").val(data.lokasi_alat_reg);
+
+      },
+      error: function(xhr, status, error) {
+        console.log(xhr.responseText);
+      }
+    });
+  }
+</script>
 <!--AutoFill Registrasi end-->
 
 <!--AutoFill Registrasi-->
