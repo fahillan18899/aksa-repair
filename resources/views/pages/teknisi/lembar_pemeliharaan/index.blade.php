@@ -766,7 +766,7 @@ $alert = "";
                   <td>{{ $item->user }}</td>
                   <td>{{ $item->engginer }}</td>
                   <td>
-                  <a href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                  <a href="/dashboard_teknisi/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
                   </td>
 
                 </tr>

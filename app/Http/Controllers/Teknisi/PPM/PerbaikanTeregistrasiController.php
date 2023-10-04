@@ -112,10 +112,10 @@ class PerbaikanTeregistrasiController extends Controller
      * @return type
      * @throws conditon
      **/
-    public function cetak($id)
+    public function cetak_teknisi($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        return view('pages.admin.ppm.aset_teregistrasi.cetak_perbaikan', compact('item'));
+        return view('pages.teknisi.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 
     function qrCodeGenerate($id)
