@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.teknisi')
 
 @section('content')
 @section('title', 'Stock Opname')

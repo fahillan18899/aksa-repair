@@ -35,26 +35,10 @@ use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
 
-use App\Http\Controllers\AdminKalibrasi\BeritaAcaraController;
-use App\Http\Controllers\AdminKalibrasi\HasilKalibrasi;
-use App\Http\Controllers\AdminKalibrasi\HomeKalibrasiController;
-use App\Http\Controllers\AdminKalibrasi\LembarKerjaController;
-
-
-use App\Http\Controllers\AdminKalibrasi\TimbanganBayiController;
-
-
-
-use App\Http\Controllers\AdminKalibrasi\PesananController;
-use App\Http\Controllers\AdminKalibrasi\SertifikatController;
-use App\Http\Controllers\AuthKalibrasiController;
-use App\Http\Controllers\TeknisiController as ControllersTeknisiController;
-use App\Http\Controllers\UserController;
-use App\Models\LembarPemeliharaan;
-
-// kalibrasi
-use App\Http\Controllers\TeknisiKalibrasi\HomeController as Teknisi;
-use App\Models\Admin\HumanResource;
+use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\PerbaikanUserUnregistrasiController as PerbaikanUserUnregistrasiTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -230,19 +214,20 @@ Route::prefix('dashboard_user')
         Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
         Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
         Route::resource('stock_opname_user', StockOpnameUserController::class);
-
-    Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
-
+        
+        Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+        
     });
-
-Route::prefix('dashboard_teknisi')
-->middleware(['auth'])
+    
+    Route::prefix('dashboard_teknisi')
+    ->middleware(['auth'])
     ->group(function () {
-        Route::get('/', [DashboardUserController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
-
-        Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
-
-        Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+        Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
+        
+        Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
+        
+        Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
+        Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
     });
 

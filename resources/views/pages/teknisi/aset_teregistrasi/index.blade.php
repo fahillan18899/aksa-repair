@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.teknisi')
 
 @section('content')
 @section('title', 'Aset Teregistrasi')
@@ -87,7 +87,7 @@
                       <td>{{ $item->umur_alat }}</td>
                       <td>{{ $item->jadwal_pemeliharaan }}</td>
                       <td>
-                        <a href="/dashboard_user/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+                        <a href="/dashboard_teknisi/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
                       </td>
                       <td scope="row">
                         <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
@@ -139,7 +139,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('/dashboard_user/perbaikan_teregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url('/dashboard_teknisi/perbaikan_teregistrasi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
 
 
