@@ -235,6 +235,17 @@ Route::prefix('dashboard_user')
 
     });
 
+Route::prefix('dashboard_teknisi')
+->middleware(['auth'])
+    ->group(function () {
+        Route::get('/', [DashboardUserController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
+
+        Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
+
+        Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+
+    });
+
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess');
@@ -244,33 +255,3 @@ Route::post('/register', [AuthController::class, 'processRegistration']);
 Route::post('logout', [AuthController::class, 'logout'])
 ->name('logout')
 ->middleware('auth');
-
-/**Kalibrasi */
-Route::prefix('kalibrasi')
-->middleware(['auth'])
-    ->group(function () {
-
-    Route::get('/home', [HomeKalibrasiController::class, 'index']);
-    Route::get('/alat_ukur', [HomeKalibrasiController::class, 'alatUkur']);
-    Route::post('/alat_ukur', [HomeKalibrasiController::class, 'store']);
-    Route::resource('berita_acara', BeritaAcaraController::class);
-    Route::resource('lembar_kerja', LembarKerjaController::class);
-    Route::resource('timbangan_bayi', TimbanganBayiController::class);
-    Route::get('cetak/{id}', [LembarKerjaController::class, 'cetak']);/*fungsi print*/
-
-    Route::resource('pesanan', PesananController::class);
-    Route::resource('teknisi_k', ControllersTeknisiController::class);
-    Route::get('/sertifikat', [SertifikatController::class, 'index']);
-    Route::post('sphygmomanometer', [LembarKerjaController::class, 'sphygmomanometer']);
-});
-Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
-
-    Route::get('/', [Teknisi::class, 'index']);
-});
-
-Route::prefix('kalibrasi')->group(function () {
-    Route::get('/', [AuthKalibrasiController::class, 'index'])->name('login-kalibrasi');
-    Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess-kalibrasi');
-    Route::get('/register', [AuthController::class, 'registration'])->name('register-kalibrasi');
-    Route::post('/register', [AuthController::class, 'processRegistration-kalibrasi']);
-});

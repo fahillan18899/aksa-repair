@@ -32,6 +32,21 @@ class DashboardUserController extends Controller
         ]);
     }
 
+    public function dashboard_teknisi()
+    {
+        $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs',Auth::user()->kode_rs)->count();
+        return view('pages.teknisi.dashboard.index',
+        [
+            'registrasi' => $registrasi,
+            'perbaikanRegistrasi' => $perbaikanRegistrasi,
+            'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
+            'lembarPemeliharaan' => $lembarPemeliharaan
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
