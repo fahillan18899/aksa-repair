@@ -33,8 +33,8 @@ return new class extends Migration
             $table->string('alamat_rekan_reg')->nullable();
             $table->string('teknisi_rekanan_reg')->nullable();
             $table->string('telp_teknisi_rekanan_reg')->nullable();
-            $table->string('kode_rs');
-            $table->integer('active')->nullable()->change();
+            $table->string('kode_rs', 10);
+            $table->integer('active', 2)->nullable()->default(1);
 
             $table->timestamps();
         });

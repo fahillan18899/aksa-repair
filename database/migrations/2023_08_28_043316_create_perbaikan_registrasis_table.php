@@ -30,8 +30,8 @@ return new class extends Migration
             $table->string('teknisi_3_reg')->nullable();
             $table->string('keluhan_dari_alat_reg')->nullable();
             $table->string('korektif_reg')->nullable();
-            $table->string('kode_rs');
-            $table->integer('active')->nullable()->change();
+            $table->string('kode_rs', 10);
+            $table->integer('active', 2)->nullable()->default(1);
 
             $table->timestamps();
 

@@ -31,8 +31,10 @@ return new class extends Migration
             $table->string('alamat_rekanan_un');        
             $table->string('teknisi_rekanan_un');        
             $table->string('telphone_teknisi_rek_un');        
-            $table->string('ka_instalasi_un');        
-            $table->string('kode_rs');        
+            $table->string('ka_instalasi_un');
+            $table->string('kode_rs', 10);
+            $table->integer('active', 2)->nullable()->default(1);
+
             $table->timestamps();            
         });
     }
