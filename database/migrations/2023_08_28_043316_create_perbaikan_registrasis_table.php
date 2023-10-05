@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('keluhan_dari_alat_reg')->nullable();
             $table->string('korektif_reg')->nullable();
             $table->string('kode_rs', 10);
-            $table->integer('active', 2)->nullable()->default(1);
+            $table->integer('active')->default(1);
 
             $table->timestamps();
 

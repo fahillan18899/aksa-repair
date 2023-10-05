@@ -29,7 +29,8 @@ return new class extends Migration
             $table->string('ka_instalasi_reg')->nullable();
             $table->string('keterangan_pengguna_reg')->nullable();
             $table->string('kode_rs', 10);
-            $table->integer('active', 2)->nullable()->default(1);
+            $table->integer('active')->default(1);
+
 
 
             $table->timestamps();
