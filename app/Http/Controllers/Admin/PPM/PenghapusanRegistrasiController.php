@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\PenghapusanRegistrasi;
 use Illuminate\Http\Request;
 use App\Models\Alat;
+use App\Models\PengembalianRegistrasi;
+use App\Models\PengirimanRegistrasi;
+use App\Models\PerbaikanRegistrasi;
 use App\Models\Teknisi;
 use App\Models\Ruangan;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +63,9 @@ class PenghapusanRegistrasiController extends Controller
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
 
+        PerbaikanRegistrasi::where('id_perbaikan_reg', $request->id_perbaikan_reg)->update(['active' => 0]);
+        PengirimanRegistrasi::where('id_perbaikan_reg', $request->id_perbaikan_reg)->update(['active' => 0]);
+        PengembalianRegistrasi::where('id_perbaikan_reg', $request->id_perbaikan_reg)->update(['active' => 0]);
         PenghapusanRegistrasi::create($request->post());
 
 

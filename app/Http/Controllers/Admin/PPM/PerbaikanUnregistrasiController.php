@@ -23,10 +23,10 @@ class PerbaikanUnregistrasiController extends Controller
      */
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
+        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
+        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
+        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
         $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();

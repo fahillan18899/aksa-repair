@@ -64,6 +64,9 @@ class PenghapusanUnregistrasiController extends Controller
             'kode_rs' => '',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
+        PerbaikanUnregistrasi::where('id_perbaikan_un', $request->id_perbaikan_un)->update(['active' => 0]);
+        PengirimanUnregistrasi::where('id_perbaikan_un', $request->id_perbaikan_un)->update(['active' => 0]);
+        PengembalianUnregistrasi::where('id_perbaikan_un', $request->id_perbaikan_un)->update(['active' => 0]);
         PenghapusanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
