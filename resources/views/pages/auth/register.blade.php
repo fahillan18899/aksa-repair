@@ -63,6 +63,7 @@
                 <option value="RS0001">RS Demo</option>
                 <option value="RS0002">RSI Wonosobo</option>
                 <option value="RS0003">RS Panti Wilasa</option>
+                <option value="RS0004">RS Badarudin Kasim Tabalong</option>
               </select>
             </div>
             <div class="form-group">
