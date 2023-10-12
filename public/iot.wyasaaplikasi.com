@@ -1,1 +1,1 @@
-/home/wyak5789/wyasa-iot/public
+D:/home/wyak5789/wyasa-iot/public

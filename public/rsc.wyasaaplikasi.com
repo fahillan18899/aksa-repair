@@ -1,1 +1,1 @@
-/home/wyak5789/wyasa-rscilegon/public
+D:/home/wyak5789/wyasa-rscilegon/public
