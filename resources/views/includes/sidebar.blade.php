@@ -17,7 +17,7 @@
     <ul class="sidebar-menu">
 
       <li class="active">
-        <a href="?hal=dashboard&fun=index"><i class="fa fa ti-home"></i> Dashboard</a>
+        <a href="/dashboard/home"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
       <li class="treeview ">

@@ -1,0 +1,1 @@
+/home/wyak5789/wyasa-iot/public

@@ -100,6 +100,14 @@
                       </td>
                       <td scope="row">
                         <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
+                        <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> </a>
+            <form action="{{ url('/dashboard/ppm/registrasi', $item->id_aset) }}" method="POST" class="d-inline">
+              @csrf
+              @method('delete')
+              <button class="btn btn-danger btn-sm">
+                <i class="fa fa-trash"></i>
+              </button>
+            </form>
                       </td>
                     </tr>
                     @empty
