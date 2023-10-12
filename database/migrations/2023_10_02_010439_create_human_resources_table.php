@@ -22,11 +22,11 @@ return new class extends Migration
             $table->string('password', 20)->nullable();
             $table->string('sex', 20)->nullable();
             $table->string('designation', 20)->nullable();
-            $table->string('address', 20)->nullable();
+            $table->string('address', 50)->nullable();
             $table->string('phone', 20)->nullable();
             $table->string('mobile', 20)->nullable();
             $table->string('career_title', 20)->nullable();
-            $table->string('short_biography', 20)->nullable();
+            $table->string('short_biography', 100)->nullable();
             $table->string('specialist', 20)->nullable();
             $table->string('degree', 20)->nullable();
             $table->string('picture', 20)->nullable();

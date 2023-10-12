@@ -31,37 +31,23 @@
             <div class="row">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('human_resource.update', $item->user_id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  @csrf
+                  @method('PUT')
 
                   <div class="form-group row">
                     <label for="user_role" class="col-xs-3 col-form-label">User Role <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name='user_role' class="form-control" id="user_role">
-                        <option value="1">Admin</option>
-                        <option value="2">Doctor</option>
-                        <option value="3">Accountant</option>
-                        <option value="4">Laboratorist</option>
-                        <option value="5">Nurse</option>
-                        <option value="6" selected>Pharmacist</option>
-                        <option value="7">Receptionist</option>
-                        <option value="8">Representative</option>
-                        <option value="9">Case Manager</option>
-                        <option value="10">Duty Office</option>
-                        <option value="11">test</option>
+                        <option value="admin">Admin</option>
+                        <option value="dokter">Dokter</option>
+                        <option value="akuntan">Akuntan</option>
+                        <option value="laboratoris">Laboratoris</option>
+                        <option value="perawat">Perawat</option>
+                        <option value="apoteker">Apoteker</option>
+                        <option value="resepsionis">Resepsionis</option>
+                        <option value="wakil_manajer">Wakil Manajer</option>
+                        <option value="kasus_kantor">Kasus Kantor</option>
                       </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="firstname" class="col-xs-3 col-form-label">First Name <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="firstname" type="text" class="form-control" id="firstname" placeholder="First Name" value="<?= $item['firstname'] ?>">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="lastname" class="col-xs-3 col-form-label">Last Name <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last Name" value="<?= $item['lastname'] ?>">
                     </div>
                   </div>
 
@@ -73,9 +59,16 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="password" class="col-xs-3 col-form-label">Password <i class="text-danger">*</i></label>
+                    <label for="firstname" class="col-xs-3 col-form-label">Nama Depan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="password" class="form-control" type="password" placeholder="Password" id="password">
+                      <input name="firstname" type="text" class="form-control" id="firstname" placeholder="First Name" value="<?= $item['firstname'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="lastname" class="col-xs-3 col-form-label">Nama Belakang <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Last Name" value="<?= $item['lastname'] ?>">
                     </div>
                   </div>
 
@@ -91,23 +84,13 @@
                     </div>
                   </div>
 
-                  <!-- if employee picture is already uploaded -->
-
-                  <div class="form-group row">
-                    <label for="picture" class="col-xs-3 col-form-label">Foto</label>
-                    <div class="col-xs-9">
-                      <input type="file" name="picture" id="picture" value="">
-                      <input type="hidden" name="old_picture" value="">
-                    </div>
-                  </div>
-
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button type="reset" class="ui button">Reset</button>
                         <div class="or"></div>
-                        <button class="ui positive button" name="update_employee">Save</button>
+                        <button class="ui positive button">Save</button>
                       </div>
                     </div>
                   </div>
