@@ -45,10 +45,14 @@ class AuthController extends Controller
     public function processRegistration(Request $request)
     {
         $data = $request->validate([
-            'username' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
             'password' => 'required|string|min:4',
             'user_role' => 'required',
             'kode_rs' => 'required',
+        ], [
+            'username.unique' => 'Username Sudah Di Gunakan',
+            'user_role.required' => 'Peran Pengguna Wajib Di Pilih',
+            'kode_rs.required' => 'Fasilitas Kesehatan Wajib Di Pilih',
         ]);
 
         $data['password'] = bcrypt($request->input('password'));

@@ -21,14 +21,25 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa RS Badarudin Kasim Tabalong</h3>
+              <h3>Wyasa</h3>
               <small><strong>Please Log In</strong></small>
             </div>
           </div>
           <div class="">
+            <br>
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
               <p>{{ $message }}</p>
+            </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
             </div>
             @endif
 
