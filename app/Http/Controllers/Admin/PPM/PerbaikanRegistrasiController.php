@@ -66,7 +66,7 @@ class PerbaikanRegistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_perbaikan_reg' => '',
+            'id_perbaikan_reg' => 'unique:perbaikan_registrasis|required',
             'id_aset_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'nama_alat_reg' => '',
@@ -80,6 +80,10 @@ class PerbaikanRegistrasiController extends Controller
             'teknisi_1_reg' => '',
             'teknisi_2_reg' => '',
             'teknisi_3_reg' => '',
+            'suku_cadang' => '',
+            'volume' => '',
+            'harga_satuan' => '',
+            'jumlah_harga' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
             'active' => ''
@@ -126,7 +130,7 @@ class PerbaikanRegistrasiController extends Controller
     public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
-            'id_perbaikan_reg' => '',
+            'id_perbaikan_reg' => 'unique:perbaikan_registrasis',
             'id_aset_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'nama_alat_reg' => '',

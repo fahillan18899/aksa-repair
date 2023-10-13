@@ -27,6 +27,16 @@
     </div>
     @endif
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+
     <div class="row">
       <div class="col-sm-3">
         <div class="panel panel-default thumbnail">
@@ -181,6 +191,34 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
                     <div class="col-xs-9">
                       <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat">
@@ -229,6 +267,10 @@
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
+        <th scope="col">suku Cadang</th>
+        <th scope="col">volume</th>
+        <th scope="col">Harga Satuan</th>
+        <th scope="col">Jumlah Harga</th>
         <th scope="col">Keluhan_Dari_alat</th>
         <th scope="col">Korektif</th>
         <th scope="col">Tombol_Eksekusi</th>
@@ -252,6 +294,10 @@
           <td><?php echo $item['teknisi_1_reg'] ?></td>
           <td><?php echo $item['teknisi_2_reg'] ?></td>
           <td><?php echo $item['teknisi_3_reg'] ?></td>
+          <td><?php echo $item['suku_cadang'] ?></td>
+          <td><?php echo $item['volume'] ?></td>
+          <td><?php echo $item['harga_satuan'] ?></td>
+          <td><?php echo $item['jumlah_harga'] ?></td>
           <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
           <td><?php echo $item['korektif_reg'] ?></td>
           <td><?php echo $item['kode_rs'] ?></td>
@@ -379,6 +425,34 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                     <div class="col-xs-9">
                       <input name="keterangan_kondisi_alat_reg" type="text" class="form-control" id="Keterangan_Kondisi_Alat_reg1" placeholder="Keterangan Kondisi Alat" readonly>
@@ -455,6 +529,10 @@
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
+        <th scope="col">suku Cadang</th>
+        <th scope="col">volume</th>
+        <th scope="col">Harga Satuan</th>
+        <th scope="col">Jumlah Harga</th>
         <th scope="col">Pelapor</th>
         <th scope="col">Keterangan_Kondisi_Alat</th>
         <th scope="col">KA_Instalasi</th>
@@ -481,6 +559,10 @@
           <td><?php echo $item->teknisi_1_reg ?></td>
           <td><?php echo $item->teknisi_2_reg ?></td>
           <td><?php echo $item->teknisi_3_reg ?></td>
+          <td><?php echo $item['suku_cadang'] ?></td>
+          <td><?php echo $item['volume'] ?></td>
+          <td><?php echo $item['harga_satuan'] ?></td>
+          <td><?php echo $item['jumlah_harga'] ?></td>
           <td><?php echo $item->pelapor_reg ?></td>
           <td><?php echo $item->keterangan_kondisi_alat_reg ?></td>
           <td><?php echo $item->ka_instalasi_reg ?></td>
@@ -639,6 +721,34 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="penyebab_kerusakan_reg" class="col-xs-3 col-form-label">Penyebab Kerusakan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="penyebab_kerusakan_reg" type="text" class="form-control" id="penyebab_kerusakan_reg2" placeholder="Penyebab Kerusakan" value="">
@@ -717,6 +827,10 @@
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
+        <th scope="col">suku Cadang</th>
+        <th scope="col">volume</th>
+        <th scope="col">Harga Satuan</th>
+        <th scope="col">Jumlah Harga</th>
         <th scope="col">KA_Instalasi</th>
         <th scope="col">Penyebab_Kerusakan</th>
         <th scope="col">Solusi_Perbaikan</th>
@@ -746,6 +860,10 @@
           <td>{{ $item->teknisi1_reg }}</td>
           <td>{{ $item->teknisi2_reg }}</td>
           <td>{{ $item->teknisi3_reg }}</td>
+          <td><?php echo $item['suku_cadang'] ?></td>
+          <td><?php echo $item['volume'] ?></td>
+          <td><?php echo $item['harga_satuan'] ?></td>
+          <td><?php echo $item['jumlah_harga'] ?></td>
           <td>{{ $item->ka_instalasi_reg }}</td>
           <td>{{ $item->penyebab_kerusakan_reg }}</td>
           <td>{{ $item->solusi_perbaikan_reg }}</td>
@@ -868,6 +986,34 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi</label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg3" placeholder="KA Instalasi" value="" readonly>
@@ -914,6 +1060,10 @@
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
+        <th scope="col">suku Cadang</th>
+        <th scope="col">volume</th>
+        <th scope="col">Harga Satuan</th>
+        <th scope="col">Jumlah Harga</th>
         <th scope="col">KA_Instalasi</th>
         <th scope="col">Keterangan_Pengguna</th>
         <th scope="col">Tombol_Aksi_Tabel</th>
@@ -934,6 +1084,10 @@
           <td>{{ $item->teknisi_1_reg }}</td>
           <td>{{ $item->teknisi_2_reg }}</td>
           <td>{{ $item->teknisi_3_reg }}</td>
+          <td>{{ $item['suku_cadang'] }}</td>
+          <td>{{ $item['volume'] }}</td>
+          <td>{{ $item['harga_satuan'] }}</td>
+          <td>{{ $item['jumlah_harga'] }}</td>
           <td>{{ $item->ka_instalasi_reg }}</td>
           <td>{{ $item->keterangan_pengguna_reg }}</td>
           <td>
