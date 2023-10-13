@@ -36,6 +36,8 @@ return new class extends Migration
             $table->string('kode_rs')->nullable();
             $table->date('jadwal_pemeliharaan')->nullable();
             $table->integer('umur_alat')->nullable();
+            $table->string('akl')->nullable();
+            $table->string('akd')->nullable();
             $table->string('no_inventaris_1')->nullable();
             $table->string('no_inventaris_2')->nullable();
             $table->integer('penyusutan_aset')->nullable();

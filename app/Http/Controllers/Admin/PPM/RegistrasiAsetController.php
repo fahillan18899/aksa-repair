@@ -87,6 +87,8 @@ class RegistrasiAsetController extends Controller
             'umur_alat' => '',
             'no_inventaris_1' => '',
             'no_inventaris_2' => '',
+            'akl' => '',
+            'akd' => '',
             'penyusutan_aset' => ''
         ]);
 

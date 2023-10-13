@@ -23,6 +23,16 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <!-- content -->
 
     <div class="row">
@@ -203,6 +213,20 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="akl" class="col-xs-3 col-form-label">AKL <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="akd" class="col-xs-3 col-form-label">AKD <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
@@ -258,6 +282,8 @@
         <th>Harga Perolehan</th>
         <th>Sumber_Dana</th>
         <th>Tahun_Perolehan</th>
+        <th>AKL</th>
+        <th>AKD</th>
         <th>No._Inventaris </th>
         <th>umur_alat</th>
         <th>Penyusutan Aset</th>
@@ -288,6 +314,8 @@
           <td>{{ "Rp " . number_format($item->harga_perolehan,0,',','.'); }}</td>
           <td>{{ $item->sumber_dana }}</td>
           <td>{{ $item->tahun_perolehan }}</td>
+          <td>{{ $item->akl }}</td>
+          <td>{{ $item->akd }}</td>
           <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
           <td>{{ $item->umur_alat }} Tahun</td>
           <td>{{ "Rp " . number_format($item->penyusutan_aset,3,'.','.');  }}</td>
