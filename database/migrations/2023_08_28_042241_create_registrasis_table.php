@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('merek');
             $table->string('type');
             $table->string('serial_number');
+            $table->string('gambar')->nullable();
             $table->string('lokasi_alat');
             $table->string('tanggal_kalibrasi')->nullable();
             $table->string('distributor')->nullable();

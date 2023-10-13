@@ -47,7 +47,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8">
+                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                   @csrf
                   @method('post')
 
@@ -105,6 +105,13 @@
                     <label for="Serial_Number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="serial_number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
+                    <div class="col-xs-9">
+                      <input name="gambar" class="form-control" type="file" id="gambar">
                     </div>
                   </div>
 
@@ -268,6 +275,7 @@
         <th>Nama_Alat</th>
         <th>Merek</th>
         <th>Type</th>
+        <th>Gambar</th>
         <th>Serial_Number</th>
         <th>Ruangan</th>
         <th>Tanggal_Kalibrasi</th>
@@ -300,6 +308,7 @@
           <td>{{ $item->nama_alat }}</td>
           <td>{{ $item->merek }}</td>
           <td>{{ $item->type }}</td>
+          <td><img src="{{ url('storage/' . $item->gambar) }}" width="100px" /></td>
           <td>{{ $item->serial_number }}</td>
           <td>{{ $item->lokasi_alat }}</td>
           <td>{{ $item->tanggal_kalibrasi }}</td>
