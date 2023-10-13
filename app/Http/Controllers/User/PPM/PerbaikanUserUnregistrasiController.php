@@ -70,16 +70,15 @@ class PerbaikanUserUnregistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'id_perbaikan_un' => '',
+            'id_perbaikan_un' => 'required',
             'tanggal_perbaikan_un' => '',
-            'nama_alat_un' => '',
+            'nama_alat_un' => 'required',
             'merek_alat_un' => '',
             'type_alat_un' => '',
             'serial_number_un' => '',
-            'lokasi_alat_un' => '',
+            'lokasi_alat_un' => 'required',
             'pelapor_un' => '',
-            'keterangan_un' => '',
+            'keterangan_un' => 'required',
             'ka_instalasi_un' => '',
             'teknisi_1_un' => '',
             'teknisi_2_un' => '',
