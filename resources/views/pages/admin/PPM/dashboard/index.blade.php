@@ -109,7 +109,7 @@
           <div class="info-box-content">
             <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged') 
                                         ?></span>
-            <span class="info-box-number">{{ $lembarPemeliharaan }}</span>
+            <span class="info-box-number">{{ $registrasiKalBar }}</span>
 
             <div class="progress">
               <div class="progress-bar" style="width: 50%"></div>
