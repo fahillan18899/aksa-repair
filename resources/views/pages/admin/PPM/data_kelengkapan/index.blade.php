@@ -84,11 +84,11 @@
                   <td scope="row">{{ $item->id_gedung }}</td>
                   <td scope="row">{{ $item->nama_gedung }}</td>
                   <td scope="row d-inline">
-                    <a href="{{ route('gedung.edit',$item->id_gedung) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('gedung.edit',$item->id_gedung) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
                     <form action="{{ route('gedung.destroy',$item->id_gedung) }}" method="POST" class="d-inline">
                       @csrf
                       @method('DELETE')
-                      <button class="btn btn-danger btn-xs">
+                      <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash "></i>
                       </button>
                     </form>
@@ -169,13 +169,13 @@
                   <td scope="row">{{ $item->id_alat }}</td>
                   <td scope="row">{{ $item->nama_alat }}</td>
                   <td scope="row">
-                    <a href="{{ route('alat.edit',$item->id_alat) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('alat.edit',$item->id_alat) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
 
                     <form action="{{ route('alat.destroy',$item->id_alat) }}" method="POST" class="">
                       @csrf
                       @method('delete')
-                      <button class="btn btn-danger btn-xs">
+                      <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>
@@ -256,12 +256,12 @@
                   <td scope="row">{{ $item->id_teknisi }}</td>
                   <td scope="row">{{ $item->nama_teknisi }}</td>
                   <td scope="row">
-                    <a href="{{ route('teknisi.edit',$item->id_teknisi) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('teknisi.edit',$item->id_teknisi) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
                     <form action="{{ route('teknisi.destroy',$item->id_teknisi) }}" method="POST" class="d-inline">
                       @csrf
                       @method('delete')
-                      <button class="btn btn-danger btn-xs">
+                      <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>
@@ -298,11 +298,6 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url('/dashboard/ppm/ruangan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-
-
-
-                  <input type="hidden" name="kode_rs" value="0" />
-
                   <div class="form-group row">
                     <label for="id_ruangan" class="col-xs-3 col-form-label">ID Ruangan </label>
                     <div class="col-xs-9" readonly>
@@ -376,12 +371,12 @@
                   <td scope="row">{{ $item->kepala_ruangan }}</td>
                   <td scope="row">{{ $item->ruangan_alat}}, {{ $item->ruangan }}</td>
                   <td scope="row">
-                    <a href="{{ route('ruangan.edit',$item->id_ruangan) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('ruangan.edit',$item->id_ruangan) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
                     <form action="{{ route('ruangan.destroy',$item->id_ruangan) }}" method="POST" class="d-inline">
                       @csrf
                       @method('delete')
-                      <button class="btn btn-danger btn-xs">
+                      <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>

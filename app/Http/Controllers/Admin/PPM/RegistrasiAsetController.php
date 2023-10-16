@@ -69,6 +69,7 @@ class RegistrasiAsetController extends Controller
             'merek' => 'required',
             'type' => 'required',
             'serial_number' => 'required',
+            'gambar' => 'required|image|mimes:jpg,png,jpeg,svg|max:4096',
             'lokasi_alat' => 'required',
             'tanggal_kalibrasi' => '',
             'distributor' => '',
@@ -87,8 +88,19 @@ class RegistrasiAsetController extends Controller
             'umur_alat' => '',
             'no_inventaris_1' => '',
             'no_inventaris_2' => '',
+            'akl' => '',
+            'akd' => '',
             'penyusutan_aset' => ''
+        ], [
+            'gambar.image' => 'Yang diupload bukan gambar',
+            'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
+            'gambar.max' => 'Ukuran Gambar Maksimal 4MB'
         ]);
+
+        $data['gambar'] = $request->file('gambar')->store(
+            'assets/gallery',
+            'public'
+        );
 
         $data['umur_alat'] = date("Y") - $data['tahun_perolehan'];
         function hitung($tahunPenyusutan, $harga_perolehan)
@@ -151,6 +163,7 @@ class RegistrasiAsetController extends Controller
             'nama_alat' => '',
             'merek' => '',
             'type' => '',
+            'gambar' => 'required|image|mimes:jpg,png,jpeg,svg|max:4096',
             'serial_number' => '',
             'lokasi_alat' => '',
             'tanggal_kalibrasi' => '',
@@ -171,7 +184,15 @@ class RegistrasiAsetController extends Controller
             'no_inventaris_1' => '',
             'no_inventaris_2' => '',
             'penyusutan_aset' => ''
+        ], [
+            'gambar.image' => 'Yang diupload bukan gambar',
+            'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
+            'gambar.max' => 'Ukuran Gambar Maksimal 4MB'
         ]);
+        $data['gambar'] = $request->file('gambar')->store(
+            'assets/gallery',
+            'public'
+        );
         $data['umur_alat'] = date("Y") - $request->tahun_perolehan;
         function hitungPenyusutan($tahunPenyusutan, $harga_perolehan)
         {

@@ -21,14 +21,25 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa RS Badarudin Kasim Tabalong</h3>
+              <h3>Wyasa</h3>
               <small><strong>Please Log In</strong></small>
             </div>
           </div>
           <div class="">
+            <br>
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
               <p>{{ $message }}</p>
+            </div>
+            @endif
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
             </div>
             @endif
 
@@ -50,7 +61,14 @@
               <input type="password" placeholder="Password" name="password" id="password" class="form-control">
             </div>
             <div class="form-group">
-              <input type="hidden" name="kode_rs" value="RSC">
+              <label class="control-label" for="kode_rs">Fasilitas Kesehatan</label>
+              <select name="kode_rs" class="form-control" id="kode_rs">
+                <option value="">Select Peran Pengguna</option>
+                <option value="RS0001">RS Demo</option>
+                <option value="RS0002">RSI Wonosobo</option>
+                <option value="RS0003">RS Cilegon</option>
+                <option value="RS0004">RS Badarudin Kasim Tabalong</option>
+              </select>
             </div>
             <div class="form-group">
               <label class="control-label" for="user_role">Peran Pengguna</label>

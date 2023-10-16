@@ -39,15 +39,14 @@ class HumanResourceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'username' => '',
-            'password' => '',
-            'user_role' => '',
-            'tanggal_lahir' => '',
-            'kode_rs' => '',
+    $request->validate(['username' => 'required|string|max:255|unique:users',
+      'password' => 'required',
+      'user_role' => 'required',
             'firstname' => '',
             'lastname' => '',
             'sex' => '',
+      'tanggal_lahir' => '',
+      'kode_rs' => '',
             'designation' => '',
             'address' => '',
             'phone' => '',
@@ -58,6 +57,10 @@ class HumanResourceController extends Controller
             'degree' => '',
             'picture' => '',
             'tambah_employee' => '',
+    ], [
+      'username.unique' => 'Username Sudah Di Gunakan',
+      'username.required' => 'Username Wajib Di isi',
+      'user_role.required' => 'Peran Pengguna Wajib Di Pilih',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         $data['password'] = bcrypt($request->input('password'));
@@ -98,32 +101,37 @@ class HumanResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  User $stock_opname)
+  public function update(Request $request,   $id)
     {
-        $request->validate([
-            'username' => '',
-            'password' => '',
-            'user_role' => '',
-            'tanggal_lahir' => '',
-            'kode_rs' => '',
-            'firstname' => '',
-            'lastname' => '',
-            'sex' => '',
-            'designation' => '',
-            'address' => '',
-            'phone' => '',
-            'mobile' => '',
-            'career_title' => '',
-            'short_biography' => '',
-            'specialist' => '',
-            'degree' => '',
-            'picture' => '',
-            'tambah_employee' => '',
+    $request->validate(
+      [
+        'username' => '',
+        'password' => '',
+        'user_role' => '',
+        'tanggal_lahir' => '',
+        'kode_rs' => '',
+        'firstname' => '',
+        'lastname' => '',
+        'sex' => '',
+        'designation' => '',
+        'address' => '',
+        'phone' => '',
+        'mobile' => '',
+        'career_title' => '',
+        'short_biography' => '',
+        'specialist' => '',
+        'degree' => '',
+        'picture' => '',
+        'tambah_employee' => '',
+      ],
+      [
+        'username.unique' => 'Username Sudah Di Gunakan'
         ]);
-        $stock_opname->fill($request->post())->save();
+    $user = User::findOrFail($id);
+    $user->update($request->all());
 
 
-        return redirect()->route('stock_opname.index')
+    return redirect()->route('human_resource.index')
             ->with('success', 'Data Berhasil Di Ubah');
     }
 

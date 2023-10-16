@@ -21,12 +21,24 @@
     <div id="demoModeEnable"></div>
     <!-- alert message -->
 
-
+    <br>
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
       <p>{{ $message }}</p>
     </div>
     @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+    <br>
+
 
     <!-- content -->
     <div class="row">
@@ -39,16 +51,6 @@
           </div>
 
           <div class="panel-body">
-            <!-- Nav tabs -->
-            <ul class="col-xs-12 nav nav-tabs" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Employee List</a>
-              </li>
-              <li role="presentation">
-                <a href="#language" aria-controls="language" role="tab" data-toggle="tab"> <i class="fa fa-list"></i> Language</a>
-              </li>
-            </ul>
-
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>

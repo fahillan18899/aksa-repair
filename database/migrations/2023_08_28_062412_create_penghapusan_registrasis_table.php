@@ -26,6 +26,10 @@ return new class extends Migration
             $table->string('teknisi_1_reg')->nullable();
             $table->string('teknisi_2_reg')->nullable();
             $table->string('teknisi_3_reg')->nullable();
+            $table->string('suku_cadang')->nullable();
+            $table->string('volume')->nullable();
+            $table->string('harga_satuan')->nullable();
+            $table->string('jumlah_harga')->nullable();
             $table->string('ka_instalasi_reg')->nullable();
             $table->string('keterangan_pengguna_reg')->nullable();
             $table->string('kode_rs', 10);

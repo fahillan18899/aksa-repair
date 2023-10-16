@@ -21,14 +21,22 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa RS Badarudin Kasim Tabalong</h3>
+              <h3>Wyasa SIMRS</h3>
               <small><strong>Please Log In</strong></small>
             </div>
           </div>
           <div class="">
-            <br><br>
+            <br>
             <!-- alert message -->
-
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
 
 
           </div>
@@ -55,6 +63,7 @@
                 <option value="RS0001">RS Demo</option>
                 <option value="RS0002">RSI Wonosobo</option>
                 <option value="RS0003">RS Panti Wilasa</option>
+                <option value="RS0004">RS Badarudin Kasim Tabalong</option>
               </select>
             </div>
             <div class="form-group">

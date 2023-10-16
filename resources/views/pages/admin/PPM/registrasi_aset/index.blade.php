@@ -23,6 +23,16 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <!-- content -->
 
     <div class="row">
@@ -37,7 +47,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8">
+                <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                   @csrf
                   @method('post')
 
@@ -95,6 +105,13 @@
                     <label for="Serial_Number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="serial_number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
+                    <div class="col-xs-9">
+                      <input name="gambar" class="form-control" type="file" id="gambar">
                     </div>
                   </div>
 
@@ -203,6 +220,20 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="akl" class="col-xs-3 col-form-label">AKL <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="akd" class="col-xs-3 col-form-label">AKD <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
@@ -244,6 +275,7 @@
         <th>Nama_Alat</th>
         <th>Merek</th>
         <th>Type</th>
+        <th>Gambar</th>
         <th>Serial_Number</th>
         <th>Ruangan</th>
         <th>Tanggal_Kalibrasi</th>
@@ -258,6 +290,8 @@
         <th>Harga Perolehan</th>
         <th>Sumber_Dana</th>
         <th>Tahun_Perolehan</th>
+        <th>AKL</th>
+        <th>AKD</th>
         <th>No._Inventaris </th>
         <th>umur_alat</th>
         <th>Penyusutan Aset</th>
@@ -274,6 +308,7 @@
           <td>{{ $item->nama_alat }}</td>
           <td>{{ $item->merek }}</td>
           <td>{{ $item->type }}</td>
+          <td><img src="{{ url('storage/' . $item->gambar) }}" width="100px" /></td>
           <td>{{ $item->serial_number }}</td>
           <td>{{ $item->lokasi_alat }}</td>
           <td>{{ $item->tanggal_kalibrasi }}</td>
@@ -288,20 +323,22 @@
           <td>{{ "Rp " . number_format($item->harga_perolehan,0,',','.'); }}</td>
           <td>{{ $item->sumber_dana }}</td>
           <td>{{ $item->tahun_perolehan }}</td>
+          <td>{{ $item->akl }}</td>
+          <td>{{ $item->akd }}</td>
           <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
           <td>{{ $item->umur_alat }} Tahun</td>
           <td>{{ "Rp " . number_format($item->penyusutan_aset,3,'.','.');  }}</td>
           <td>{{ $item->jadwal_pemeliharaan }}</td>
           <td>
-            <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+            <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Buat QR">Buat</button></a>
           </td>
           <td scope="row">
-            <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-edit"></i> print</button></a>
-            <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> </a>
+            <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-edit"></i> print</button></a>
+            <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit"></i> </a>
             <form action="{{ url('/dashboard/ppm/registrasi', $item->id_aset) }}" method="POST" class="d-inline">
               @csrf
               @method('delete')
-              <button class="btn btn-danger btn-sm">
+              <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
                 <i class="fa fa-trash"></i>
               </button>
             </form>

@@ -16,36 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PenghapusanRegistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'id_perbaikan_reg' => '',
+            'id_perbaikan_reg' => 'unique:penghapusan_registrasis|required',
             'tanggal_perbaikan_reg' => '',
             'tanggal_penggudangan_reg' => '',
             'nama_alat_reg' => '',
@@ -57,9 +31,16 @@ class PenghapusanRegistrasiController extends Controller
             'teknisi_1_reg' => '',
             'teknisi_2_reg' => '',
             'teknisi_3_reg' => '',
+            'suku_cadang' => '',
+            'volume' => '',
+            'harga_satuan' => '',
+            'jumlah_harga' => '',
             'ka_instalasi_reg' => '',
             'keterangan_pengguna_reg' => '',
             'kode_rs' => '',
+        ], [
+            'id_perbaikan_reg.required' => 'Kode Perbaikan Harus Diisi',
+            'id_perbaikan_reg.unique' => 'Kode Perbaikan Sudah Ada',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
 
@@ -70,26 +51,9 @@ class PenghapusanRegistrasiController extends Controller
 
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Tambahkan');
+        ->with('success', 'Data Berhasil Tambahkan ');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PenghapusanRegistrasi  $penghapusanRegistrasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PenghapusanRegistrasi $penghapusanRegistrasi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PenghapusanRegistrasi  $penghapusanRegistrasi
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -101,22 +65,14 @@ class PenghapusanRegistrasiController extends Controller
             'alats'        => $alats,
             'item' => $item,
             'teknisis'      => $teknisis,
-            'ruangans'     => $ruangans,
+            'ruangans '     => $ruangans,
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PenghapusanRegistrasi  $penghapusanRegistrasi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,  $id)
     {
 
-        $request->validate([
-            'id_perbaikan_reg' => '',
+        $request->validate(['id_perbaikan_reg' => 'unique:penghapusan_registrasis',
             'tanggal_perbaikan_reg' => '',
             'tanggal_penggudangan_reg' => '',
             'nama_alat_reg' => '',
@@ -135,20 +91,9 @@ class PenghapusanRegistrasiController extends Controller
         $hapusRegistrasi = PenghapusanRegistrasi::findOrFail($id);
         $hapusRegistrasi->update($request->all());
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Ubah.');
+        ->with('success', 'Data Berhasil Ubah. ');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PenghapusanRegistrasi  $penghapusanRegistrasi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PenghapusanRegistrasi $penghapusanRegistrasi)
-    {
-        //
-    }
-
+    
     public function cetak($id)
     {
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();

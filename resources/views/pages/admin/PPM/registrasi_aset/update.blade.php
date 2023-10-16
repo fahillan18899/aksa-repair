@@ -35,7 +35,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('dashboard/ppm/registrasi',$item->id_aset) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url('dashboard/ppm/registrasi',$item->id_aset) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
 
@@ -80,6 +80,13 @@
                     <label for="type" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="type" class="form-control" type="text" placeholder="Type" id="Type" value="<?= $item['type'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
+                    <div class="col-xs-9">
+                      <input name="gambar" class="form-control" type="file" id="gambar">
                     </div>
                   </div>
 

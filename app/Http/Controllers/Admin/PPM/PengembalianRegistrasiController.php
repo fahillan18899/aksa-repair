@@ -13,32 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PengembalianRegistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -46,7 +20,7 @@ class PengembalianRegistrasiController extends Controller
             'nama_alat_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'merek_reg' => '',
-            'id_perbaikan_reg' => '',
+            'id_perbaikan_reg' => 'unique:pengembalian_registrasis|required',
             'tipe_reg' => '',
             'tanggal_pengembalian_reg' => '',
             'serial_number_reg' => '',
@@ -58,6 +32,10 @@ class PengembalianRegistrasiController extends Controller
             'teknisi1_reg' => '',
             'teknisi2_reg' => '',
             'teknisi3_reg' => '',
+            'suku_cadang' => '',
+            'volume' => '',
+            'harga_satuan' => '',
+            'jumlah_harga' => '',
             'ka_instalasi_reg' => '',
             'penyebab_kerusakan_reg' => '',
             'solusi_perbaikan_reg' => '',
@@ -77,23 +55,6 @@ class PengembalianRegistrasiController extends Controller
         ->with('success', 'Data Berhasil Tambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PengembalianRegistrasi $pengembalianRegistrasi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
@@ -111,13 +72,6 @@ class PengembalianRegistrasiController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request,  $id)
     {
         $request->validate([
@@ -125,7 +79,7 @@ class PengembalianRegistrasiController extends Controller
             'nama_alat_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'merek_reg' => '',
-            'id_perbaikan_reg' => '',
+            'id_perbaikan_reg' => 'unique:pengembalian_registrasis',
             'tipe_reg' => '',
             'tanggal_pengembalian_reg' => '',
             'serial_number_reg' => '',
@@ -155,17 +109,6 @@ class PengembalianRegistrasiController extends Controller
 
         return redirect()->route('aset_teregistrasi.index')
         ->with('success', 'Data Berhasil di ubah');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PengembalianRegistrasi  $pengembalianRegistrasi
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PengembalianRegistrasi $pengembalianRegistrasi)
-    {
-        //
     }
 
     public function cetak($id)
