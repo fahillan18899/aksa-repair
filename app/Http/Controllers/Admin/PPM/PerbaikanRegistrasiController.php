@@ -166,4 +166,15 @@ class PerbaikanRegistrasiController extends Controller
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
+
+    public function sperpart()
+    {
+        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
+
+        return view('pages.admin.PPM.aset_teregistrasi.sperpart_perbaikan', [
+            'items' => $items,
+
+
+        ]);
+    }
 }

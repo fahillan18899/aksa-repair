@@ -54,7 +54,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN TERGESITRASI" ?></span>
+            <span class="info-box-text"><a href="/dashboard/ppm/aset_teregistrasi/sperpart_perbaikan" style="color: white;"><?= "JUMLAH ASSET PERBAIKAN TERGESITRASI" ?></a></span>
             <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
 
             <div class="progress">
