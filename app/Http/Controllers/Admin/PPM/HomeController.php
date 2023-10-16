@@ -18,6 +18,7 @@ class HomeController extends Controller
     function dashboard()
     {
         $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();
+        $registrasiKalBar = Registrasi::where('kode_rs',Auth::user()->kode_rs)->whereNotNull('tanggal_kalibrasi')->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs',Auth::user()->kode_rs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs',Auth::user()->kode_rs)->count();
@@ -27,6 +28,7 @@ class HomeController extends Controller
             'pages.admin.PPM.dashboard.index',
             [
                 'registrasi' => $registrasi,
+                'registrasiKalBar' => $registrasiKalBar,
                 'perbaikanRegistrasi' => $perbaikanRegistrasi,
                 'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
                 'lembarPemeliharaan' => $lembarPemeliharaan
