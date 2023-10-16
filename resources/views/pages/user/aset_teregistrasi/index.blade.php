@@ -87,10 +87,10 @@
                       <td>{{ $item->umur_alat }}</td>
                       <td>{{ $item->jadwal_pemeliharaan }}</td>
                       <td>
-                        <a href="/dashboard_user/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard_user/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
                       </td>
                       <td scope="row">
-                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
+                        <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
                       </td>
                     </tr>
                     @empty
@@ -337,9 +337,9 @@
           <td><?php echo $item['korektif_reg'] ?></td>
           <td><?php echo $item['kode_rs'] ?></td>
           <td>
-            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
           </td>
         </tr>
 

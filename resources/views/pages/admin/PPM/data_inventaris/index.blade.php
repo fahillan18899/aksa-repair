@@ -98,15 +98,15 @@
                       <td>{{ $item->umur_alat }}</td>
                       <td>{{ $item->jadwal_pemeliharaan }}</td>
                       <td>
-                        <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+                        <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Buat QR">Buat</button></a>
                       </td>
                       <td scope="row">
-                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
-                        <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> </a>
+                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-print"></i> print</button></a>
+                        <a href="{{ route('registrasi',$item->id_aset) }}" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info btn-sm"> <i class="fa fa-edit"></i> </a>
                         <form action="{{ url('/dashboard/ppm/registrasi', $item->id_aset) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
-                          <button class="btn btn-danger btn-sm">
+                          <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
                             <i class="fa fa-trash"></i>
                           </button>
                         </form>

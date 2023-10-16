@@ -105,12 +105,12 @@
                        <td>{{ $item->username }}</td>
                        <td> {{ $item->user_role }}</td>
                        <td>
-                         <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info btn-xs"> <i class="fa fa-edit"></i></a>
+                         <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit"></i></a>
 
                          <form action="{{ route('operator.destroy', $item->user_id) }}" method="POST" class="d-inline">
                            @csrf
                            @method('delete')
-                           <button class="btn btn-danger btn-xs">
+                           <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                              <i class="fa fa-trash"></i>
                            </button>
                        </td>

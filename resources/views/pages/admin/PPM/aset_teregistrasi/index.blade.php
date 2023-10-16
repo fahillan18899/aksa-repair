@@ -302,9 +302,9 @@
           <td><?php echo $item['korektif_reg'] ?></td>
           <td><?php echo $item['kode_rs'] ?></td>
           <td>
-            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"></i></a>
           </td>
         </tr>
 
@@ -571,8 +571,8 @@
           <td><?php echo $item->teknisi_rekanan_reg ?></td>
           <td><?php echo $item->telp_teknisi_rekanan_reg ?></td>
           <td>
-            <a href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
           </td>
         </tr>
@@ -872,8 +872,8 @@
           <td>{{ $item->hasil_fungsi_reg }}</td>
           <td>{{ $item->pengganti_suku_cadang_reg }}</td>
           <td>
-            <a href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
           </td>
         </tr>
 
@@ -1091,8 +1091,8 @@
           <td>{{ $item->ka_instalasi_reg }}</td>
           <td>{{ $item->keterangan_pengguna_reg }}</td>
           <td>
-            <a href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
           </td>
         </tr>
