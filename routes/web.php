@@ -198,6 +198,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
   });
 
   Route::resource('human_resource', HumanResourceController::class);
+  Route::get('export', [RegistrasiAsetController::class, "export"]);
+  Route::post('import', [RegistrasiAsetController::class, "import"]);
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
@@ -209,7 +211,7 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
 });
 
-Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
+Route::name('terknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
   Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
 
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);

@@ -39,10 +39,23 @@
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print">
-            <h1>Form Registrasi Alat</h1>
-          </div>
+          <div class="panel-heading no-print d-inline">
+            <div class="row">
+              <div class="col-md-8">
 
+                <h1>Form Registrasi Alat</h1>
+              </div>
+              <div class="col-md-4">
+
+                <form action="{{ url('/dashboard/import') }}" method="post" enctype="multipart/form-data" style="display: flex;">
+                  @csrf
+                  <input class="form-control" type="file" name="file">
+                  <button type="submit" class="btn-primary btn">Import</button>
+                </form>
+              </div>
+            </div>
+            <!-- <a href="{{ url('/dashboard/export') }}">Export</a> -->
+          </div>
 
           <div class="panel-body panel-form">
             <div class="row">
@@ -320,7 +333,7 @@
           <td>{{ $item->tlp_t_distributor }}</td>
           <td>{{ $item->no_sertifikat_kalibrasi }}</td>
           <td>{{ $item->teknisi_ppm }}</td>
-          <td>{{ "Rp " . number_format($item->harga_perolehan,0,',','.'); }}</td>
+          <td>{{ "Rp " . number_format((float)$item->harga_perolehan,0,',','.'); }}</td>
           <td>{{ $item->sumber_dana }}</td>
           <td>{{ $item->tahun_perolehan }}</td>
           <td>{{ $item->akl }}</td>

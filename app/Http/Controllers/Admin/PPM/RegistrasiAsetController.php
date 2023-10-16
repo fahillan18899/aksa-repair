@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
+use App\Exports\RegistrasiAssetsExport;
 use App\Http\Controllers\Controller;
+use App\Imports\RegistrasiAsetsImport;
 use App\Models\Alat;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegistrasiAsetController extends Controller
 {
@@ -69,7 +72,7 @@ class RegistrasiAsetController extends Controller
             'merek' => 'required',
             'type' => 'required',
             'serial_number' => 'required',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg,svg|max:4096',
+            'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
             'lokasi_alat' => 'required',
             'tanggal_kalibrasi' => '',
             'distributor' => '',
@@ -226,4 +229,17 @@ class RegistrasiAsetController extends Controller
         $item->delete();
         return redirect()->route('registrasi.index')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
     }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new RegistrasiAsetsImport, $file);
+        return back()->with('success', 'Products imported successfully.');
+    }
+
+    public function export()
+    {
+        return Excel::download(new RegistrasiAssetsExport, 'products.xlsx');
+    }
+    
 }
