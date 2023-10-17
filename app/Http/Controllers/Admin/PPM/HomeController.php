@@ -9,12 +9,94 @@ use App\Models\PerbaikanUnregistrasi;
 use App\Models\LembarPemeliharaan;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
 {
+    public function send_notification_FCM($notification_id, $title, $message, $id, $type)
+    {
+
+        $accesstoken = env('FCM_KEY');
+
+        $URL = 'https://fcm.googleapis.com/fcm/send';
+
+
+        $post_data = '{
+            "registration_ids" : ["d_wrPayK7qI:APA91bH3rtzqDf_vJ6GvpmwVZgRT6PTi9AFqd91v0Nm64bRXV_eoJge0_luBqAHjUJCj3GDkyIZerKgk53ppkS033b7j0eyXzY9fa27cTZK1zJ6iMvnqE4i4XUGhQY-6oolXcbCTkWn0"],
+            "data" : {
+              "body" : "",
+              "title" : "' . $title . '",
+              "type" : "' . $type . '",
+              "id" : "' . $id . '",
+              "message" : "' . $message . '",
+            },
+            "notification" : {
+                 "body" : "' . $message . '",
+                 "title" : "' . $title . '",
+                  "type" : "' . $type . '",
+                 "id" : "' . $id . '",
+                 "message" : "' . $message . '",
+                "icon" : "new",
+                "sound" : "default"
+                },
+ 
+          }';
+        // print_r($post_data);die;
+
+        $crl = curl_init();
+
+        $headr = array();
+        $headr[] = 'Content-type: application/json';
+        $headr[] = 'Authorization: ' . $accesstoken;
+        curl_setopt($crl, CURLOPT_SSL_VERIFYPEER, false);
+
+        curl_setopt($crl, CURLOPT_URL, $URL);
+        curl_setopt($crl, CURLOPT_HTTPHEADER, $headr);
+
+        curl_setopt($crl, CURLOPT_POST, true);
+        curl_setopt($crl, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
+
+        $rest = curl_exec($crl);
+
+        if ($rest === false) {
+            // throw new Exception('Curl error: ' . curl_error($crl));
+            //print_r('Curl error: ' . curl_error($crl));
+            $result_noti = 0;
+        } else {
+
+            $result_noti = 1;
+        }
+
+        //curl_close($crl);
+        //print_r($result_noti);die;
+        return $result_noti;
+    }
+
+    public function notifyUser(Request $request)
+    {
+
+        $user = User::where('user_id', '1')->first();
+
+        $notification_id =
+            'd_wrPayK7qI:APA91bH3rtzqDf_vJ6GvpmwVZgRT6PTi9AFqd91v0Nm64bRXV_eoJge0_luBqAHjUJCj3GDkyIZerKgk53ppkS033b7j0eyXzY9fa27cTZK1zJ6iMvnqE4i4XUGhQY-6oolXcbCTkWn0';
+        $title = "Greeting Notification";
+        $message = "Have good day!";
+        $id = $user->user_id;
+        $type = "basic";
+
+        $res = $this->send_notification_FCM($notification_id, $title, $message, $id, $type);
+
+        if ($res == 1) {
+        } else {
+
+            // fail code
+        }
+    }
+    
     function dashboard()
     {
         $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();

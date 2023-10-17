@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
-
+use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
@@ -229,6 +229,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 });
 
 
+Route::get('/asd', [HomeController::class, 'notifyUser']);
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess');
 Route::get('/register', [AuthController::class, 'registration'])->name('register');
