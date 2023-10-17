@@ -82,7 +82,7 @@
 
             <div style="display: inline-block;">
               <button type="submit" class="btn btn-success">Log In</button>
-              <button type="submit" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button>
+              <button type="button" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button>
             </div>
           </form>
         </div>

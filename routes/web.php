@@ -211,8 +211,8 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
 });
 
-Route::name('terknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
-  Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
+Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
+  Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
 
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
