@@ -18,11 +18,50 @@ use Illuminate\Support\Facades\DB;
 
 class PerbaikanRegistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
+    {
+        define('SERVER_API_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl');
+
+        $header = [
+            'Authorization: Key=' . SERVER_API_KEY,
+            'Content-Type: Application/json'
+        ];
+
+
+        $msg = [
+            'title' => $title,
+            'body' => $message,
+            'sound' => 'default',
+            'icon' => '/999.png',
+            'click_action' => $clickActionUrl
+        ];
+
+        $payload = [
+            'condition' => "'$topic' in topics",
+            'data' => $msg
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => $header
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            "cURL Error #:" . $err;
+        } else {
+            $response;
+        }
+    }
     public function index()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
@@ -56,13 +95,6 @@ class PerbaikanRegistrasiController extends Controller
 
         ]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -91,6 +123,13 @@ class PerbaikanRegistrasiController extends Controller
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
+        $token = Auth::user()->kode_rs;
+        $level = "user";
+        $topik = $token . $level;
+        $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
+        $title = $request['nama_alat_reg'];
+        $message = "Alat " . $title;
+        $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
 
 
         return redirect()->route('aset_teregistrasi.index')

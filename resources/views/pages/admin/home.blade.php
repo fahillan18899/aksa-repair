@@ -510,6 +510,8 @@
     <!-- /.row -->
   </div>
 
+
+
   <?php
   // if ($this->permission->method('graph', 'read')->access()) {
   ?>
@@ -574,3 +576,98 @@
 </div>
 
 @endsection
+
+@push('addon-script')
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+<link rel="manifest" href="manifest.json">
+
+<script>
+  // Initialize Firebase
+  /*Update this config*/
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY",
+    authDomain: "wyasa-simrs-notification.firebaseapp.com",
+    projectId: "wyasa-simrs-notification",
+    storageBucket: "wyasa-simrs-notification.appspot.com",
+    messagingSenderId: "1011976405810",
+    appId: "1:1011976405810:web:25247a63f17c7dac88cd2b",
+    measurementId: "G-HL1GLJM4SW"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const messaging = firebase.messaging();
+  messaging.requestPermission()
+    .then(function() {
+      console.log('Izin notifikasi diberikan.');
+      //   if (isTokenSentToServer()) {
+      //     console.log('Token telah disimpan.');
+      //   subscribeTokenToTopic("cTyR5spvB78nwUrQ_L5t-5:APA91bEuWPNZW99bB_gUOVVxnVlDt8OytcQdmaDZIVd06VskdDaf1jTTCeSD1mX3Xdwuyq-4TYV9snMeXvSkh5bDt9lHHO3bbcEqV__Oy6nihbxYkz091lPPdvi918o6XRNUu7w3HUpP", "userRS0001");
+      //   } else {
+      getRegToken();
+      //   }
+    })
+    .catch(function(err) {
+      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.', err);
+    });
+
+  function getRegToken() {
+    messaging.getToken()
+      .then(function(currentToken) {
+        console.log(currentToken)
+        if (currentToken) {
+          saveToken(currentToken);
+          setTokenSentToServer(true);
+          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
+          console.log(userCode);
+          subscribeTokenToTopic(currentToken, userCode)
+        } else {
+          console.log('Tidak ada token Instance ID yang tersedia. Meminta izin untuk menghasilkan satu.');
+          setTokenSentToServer(false);
+        }
+      })
+      .catch(function(err) {
+        console.log('Terjadi kesalahan saat mengambil token. ', err);
+        setTokenSentToServer(false);
+      });
+  }
+
+  function subscribeTokenToTopic(token, topic) {
+    fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': 'key=' +
+          'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl',
+      })
+    }).then(response => {
+      if (response.status < 200 || response.status >= 400) {
+        throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
+      }
+      console.log('Subscribed to "' + topic + '"');
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
+  function setTokenSentToServer(sent) {
+    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+  }
+
+  function isTokenSentToServer() {
+    return window.localStorage.getItem('sentToServer') == 1;
+  }
+
+  function saveToken(currentToken) {
+    $.ajax({
+      url: 'action.php',
+      method: 'post',
+      data: 'token=' + currentToken
+    }).done(function(result) {
+      console.log(result);
+    })
+  }
+</script>
+
+@endpush

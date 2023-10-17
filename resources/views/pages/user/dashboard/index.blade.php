@@ -3,21 +3,21 @@
 @section('content')
 @push('prepend-style')
 <!-- xzoom -->
-  <!--Boostrap5-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--Boostrap5-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
 @section('title', 'Dashboard')
 <style>
-        .c-item {
-        height: 480px;
-      }
-    
-      .c-img {
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.6);
-      }
+  .c-item {
+    height: 480px;
+  }
+
+  .c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
 </style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -32,12 +32,12 @@
     </div>
   </section>
 
-<!--Slide-->
-<div class="mb-5">
+  <!--Slide-->
+  <div class="mb-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active c-item">
-          <img src=" {{ url('assets/images/cilegon4.png') }}"  class="d-block w-100 c-img" alt="...">
+          <img src=" {{ url('assets/images/cilegon4.png') }}" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
           <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
@@ -62,7 +62,7 @@
       </button>
     </div>
   </div>
-<!--Slide-->
+  <!--Slide-->
   <!-- /.content-header -->
 
   <!-- Main content -->
@@ -74,7 +74,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="info-box bg-olive">
-        <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
+          <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-edit"></i></span> -->
 
           <div class="info-box-content">
@@ -126,7 +126,7 @@
       ?>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="info-box bg-navy-blue">
-        <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
+          <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
 
           <div class="info-box-content">
@@ -238,3 +238,85 @@
   <!-- /.content -->
 </div>
 @endsection
+
+@push('addon-script')
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+<link rel="manifest" href="manifest.json">
+
+<script>
+  // Initialize Firebase
+  /*Update this config*/
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY",
+    authDomain: "wyasa-simrs-notification.firebaseapp.com",
+    projectId: "wyasa-simrs-notification",
+    storageBucket: "wyasa-simrs-notification.appspot.com",
+    messagingSenderId: "1011976405810",
+    appId: "1:1011976405810:web:25247a63f17c7dac88cd2b",
+    measurementId: "G-HL1GLJM4SW"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  const messaging = firebase.messaging();
+  messaging.requestPermission()
+    .then(function() {
+      console.log('Izin notifikasi diberikan.');
+      //   if (isTokenSentToServer()) {
+      //     console.log('Token telah disimpan.');
+      //   subscribeTokenToTopic("cTyR5spvB78nwUrQ_L5t-5:APA91bEuWPNZW99bB_gUOVVxnVlDt8OytcQdmaDZIVd06VskdDaf1jTTCeSD1mX3Xdwuyq-4TYV9snMeXvSkh5bDt9lHHO3bbcEqV__Oy6nihbxYkz091lPPdvi918o6XRNUu7w3HUpP", "userRS0001");
+      //   } else {
+      getRegToken();
+      //   }
+    })
+    .catch(function(err) {
+      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.', err);
+    });
+
+  function getRegToken() {
+    messaging.getToken()
+      .then(function(currentToken) {
+        console.log(currentToken)
+        if (currentToken) {
+          setTokenSentToServer(true);
+          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
+          console.log(userCode);
+          subscribeTokenToTopic(currentToken, userCode)
+        } else {
+          console.log('Tidak ada token Instance ID yang tersedia. Meminta izin untuk menghasilkan satu.');
+          setTokenSentToServer(false);
+        }
+      })
+      .catch(function(err) {
+        console.log('Terjadi kesalahan saat mengambil token. ', err);
+        setTokenSentToServer(false);
+      });
+  }
+
+  function subscribeTokenToTopic(token, topic) {
+    fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
+      method: 'POST',
+      headers: new Headers({
+        'Authorization': 'key=' +
+          'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl',
+      })
+    }).then(response => {
+      if (response.status < 200 || response.status >= 400) {
+        throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
+      }
+      console.log('Subscribed to "' + topic + '"');
+    }).catch(error => {
+      console.error(error);
+    })
+  }
+
+  function setTokenSentToServer(sent) {
+    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+  }
+
+  function isTokenSentToServer() {
+    return window.localStorage.getItem('sentToServer') == 1;
+  }
+</script>
