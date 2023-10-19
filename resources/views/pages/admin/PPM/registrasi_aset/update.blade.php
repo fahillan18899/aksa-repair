@@ -35,7 +35,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url('dashboard/ppm/registrasi',$item->id_aset) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                <form action="{{ url('dashboard/ppm/registrasi', $item->id_aset) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
 

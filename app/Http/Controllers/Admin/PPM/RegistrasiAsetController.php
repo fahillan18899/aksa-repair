@@ -232,7 +232,7 @@ class RegistrasiAsetController extends Controller
             'nama_alat' => '',
             'merek' => '',
             'type' => '',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg,svg|max:4096',
+            'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
             'serial_number' => '',
             'lokasi_alat' => '',
             'tanggal_kalibrasi' => '',
@@ -258,10 +258,12 @@ class RegistrasiAsetController extends Controller
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
             'gambar.max' => 'Ukuran Gambar Maksimal 4MB'
         ]);
-        $data['gambar'] = $request->file('gambar')->store(
-            'assets/gallery',
-            'public'
-        );
+        if (isset($data['gambar'])) {
+            $data['gambar'] = $request->file('gambar')->store(
+                'assets/gallery',
+                'public'
+            );
+        }
         $data['umur_alat'] = date("Y") - $request->tahun_perolehan;
         function hitungPenyusutan($tahunPenyusutan, $harga_perolehan)
         {
