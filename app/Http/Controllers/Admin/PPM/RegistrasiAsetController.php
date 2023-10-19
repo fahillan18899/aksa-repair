@@ -12,6 +12,7 @@ use App\Models\Registrasi;
 use App\Models\Ruangan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RegistrasiAsetController extends Controller
@@ -307,7 +308,9 @@ class RegistrasiAsetController extends Controller
 
     public function export()
     {
-        return Excel::download(new RegistrasiAssetsExport, 'products.xlsx');
+        $file = 'template_reg.xlsx';
+        $path = storage_path('app/public/' . $file);
+        return response()->download($path);
     }
     
 }

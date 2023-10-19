@@ -41,12 +41,14 @@
 
           <div class="panel-heading no-print d-inline">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-7">
 
                 <h1>Form Registrasi Alat</h1>
               </div>
-              <div class="col-md-4">
-
+              <div class="col-md-2">
+                <a href="{{ url('/dashboard/export') }}" class="btn btn-info">Example Import</a>
+              </div>
+              <div class="col-md-3">
                 <form action="{{ url('/dashboard/import') }}" method="post" enctype="multipart/form-data" style="display: flex;">
                   @csrf
                   <input class="form-control" type="file" name="file">
@@ -54,7 +56,6 @@
                 </form>
               </div>
             </div>
-            <!-- <a href="{{ url('/dashboard/export') }}">Export</a> -->
           </div>
 
           <div class="panel-body panel-form">
