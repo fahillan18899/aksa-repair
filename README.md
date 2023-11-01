@@ -1,4 +1,4 @@
-## About Wyasa Kalibration
+## About Wyasa SIMRS
 
 wyasa SIMRS adalah software ...
 
@@ -9,17 +9,25 @@ wyasa SIMRS adalah software ...
 - GIT
 - code editor
 - imagick xampp
+- composer
 
 ## Cara Instalasi
 
 - clone project
   `https://github.com/ilzamafif/wyasa-simrs.git`
 - buka *GIT bash atau terminal* jalankan `cd wyasa-kalibrasi`
-- jalankan `composer install`
+- jalankan `composer install --ignore-platform-req=ext-gd`
 - copy file `.env.example` menjadi `.env`
-- ubah konfigurasi database
+- ubah konfigurasi database dan buat database di phpmyadmin
+- jalankan `php artisan migrate`
 - jalankan `php artisan key:generate`
 - jalankan `php artisan serve`
+
+## Konfigurasi QR Code
+- install software imagick
+- extract `php_imagick.dll` copy ke `htdocs/php/ext`
+- tambahkan `extension=php_imagick` di php.ini
+- tambahkan file file bin dengan extension `extension aplication`
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The software licensed under the [MIT license](https://opensource.org/licenses/MIT).
