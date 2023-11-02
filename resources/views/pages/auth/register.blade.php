@@ -60,10 +60,12 @@
               <label class="control-label" for="kode_rs">Fasilitas Kesehatan</label>
               <select name="kode_rs" class="form-control" id="kode_rs">
                 <option value="">Select Peran Pengguna</option>
-                <option value="RS0001">RS Demo</option>
+                <option value="RS0000">RS Demo</option>
                 <option value="RS0002">RSI Wonosobo</option>
+                <option value="RS0004">RS Cilegon</option>
                 <option value="RS0003">RS Panti Wilasa</option>
-                <option value="RS0004">RS Badarudin Kasim Tabalong</option>
+                <option value="RS0001">RS Badarudin Kasim Tabalong</option>
+                <option value="RS0005">RSI Pondok Kopi</option>
               </select>
             </div>
             <div class="form-group">

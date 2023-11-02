@@ -40,7 +40,7 @@ class AlatController extends Controller
         $request->validate([
             'id_alat' => 'required',
             'nama_alat' => 'required',
-            'kode_rs' => 'required',
+            'kode_rs' => '',
         ]);
 
         Alat::create([
@@ -49,7 +49,7 @@ class AlatController extends Controller
             'kode_rs' => Auth::user()->kode_rs,
         ]);
 
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('message', 'Data Alat Berhasil di Tambahkan.');
+        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Alat Berhasil di Tambahkan.');
     }
 
     /**

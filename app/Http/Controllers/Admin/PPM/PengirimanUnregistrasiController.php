@@ -54,8 +54,8 @@ class PengirimanUnregistrasiController extends Controller
             'type_alat_un' => '',
             'serial_number_un' => '',
             'lokasi_alat_un' => '',
-            'pelapor_un' => '',
-            'keterangan_un' => '',
+            'pelapor_un' => 'required',
+            'keterangan_un' => 'required',
             'teknisi_1_un' => '',
             'teknisi_2_un' => '',
             'teknisi_3_un' => '',
@@ -66,7 +66,10 @@ class PengirimanUnregistrasiController extends Controller
             'ka_instalasi_un' => '',
             'kode_rs' => '',
             'active' => '',
-        ]);
+        ], [
+            'pelapor_un.required' => 'Pelapor Tidak Boleh Kosong',
+            'keterangan_un.required' => 'Keterangan Tidak Boleh Kosong'
+            ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         PengirimanUnregistrasi::create($request->post());
 

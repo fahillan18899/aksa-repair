@@ -234,28 +234,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="akl" class="col-xs-3 col-form-label">AKL <i class="text-danger">*</i></label>
+                    <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
                       <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="akd" class="col-xs-3 col-form-label">AKD <i class="text-danger">*</i></label>
+                    <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
                       <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 <i class="text-danger">*</i></label>
+                    <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 </label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2 <i class="text-danger">*</i></label>
+                    <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2</label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="no inventaris 2">
                     </div>

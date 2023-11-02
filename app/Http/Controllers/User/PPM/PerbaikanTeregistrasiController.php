@@ -137,7 +137,7 @@ class PerbaikanTeregistrasiController extends Controller
         $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
 
 
-        return redirect('/dashboard_user/perbaikan_unregistrasi')
+        return redirect('/dashboard_user/perbaikan_teregistrasi')
         ->with('success', 'Data Berhasil Tambahkan.');
     }
 

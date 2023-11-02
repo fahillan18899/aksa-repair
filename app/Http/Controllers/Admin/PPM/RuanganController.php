@@ -40,11 +40,11 @@ class RuanganController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_ruangan' => 'required',
+            'id_ruangan' => '',
             'ruangan_alat' => 'required',
             'ruangan' => 'required',
             'kepala_ruangan' => 'required',
-            'kode_rs' => 'required',
+            'kode_rs' => '',
         ]);
 
         $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
@@ -60,7 +60,7 @@ class RuanganController extends Controller
 
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('message', 'Data Berhasil Tambahkan.');
+        ->with('success', 'Data Ruangan Berhasil di Tambahkan.');
     }
 
     /**

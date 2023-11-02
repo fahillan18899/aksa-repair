@@ -39,8 +39,8 @@ class RegistrasiAsetController extends Controller
         $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = Alat::all();
-        $ruangans = Ruangan::all();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
@@ -118,7 +118,11 @@ class RegistrasiAsetController extends Controller
             $nilai =  $c / 100 * $harga_perolehan;
             return $nilai;
         }
-        $data['penyusutan_aset'] = hitung($data['umur_alat'], $data['tahun_perolehan']);
+        if($data['umur_alat'] > 0 ){ 
+            $data['penyusutan_aset'] = hitung($data['umur_alat'], $data['tahun_perolehan']);
+        } else {
+            $data['penyusutan_aset'] = 0;
+        }
         $data['kode_rs'] =  Auth::user()->kode_rs;
 
         $res = [
@@ -210,8 +214,8 @@ class RegistrasiAsetController extends Controller
     public function edit($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
-        $alats = Alat::all();
-        $ruangans = Ruangan::all();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.registrasi_aset.update', [
             'ruangans' => $ruangans,
             'alats' => $alats,
