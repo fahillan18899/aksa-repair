@@ -14,6 +14,18 @@ define('BASE_URL', 'http://127.0.0.1:8000');
 
 ?>
 
+<style>
+        .c-item {
+        height: 480px;
+      }
+    
+      .c-img {
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+      }
+</style>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -27,7 +39,37 @@ define('BASE_URL', 'http://127.0.0.1:8000');
     </div>
   </section>
   <!-- /.content-header -->
-
+<!--Slide-->
+<div class="mb-5">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active c-item">
+          <img src=" {{ url('public/assets/images/rsc/cilegon4.png') }}"  class="d-block w-100 c-img" alt="...">
+        </div>
+        <div class="carousel-item c-item">
+          <img src="{{ url('public/assets/images/rsc/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
+        </div>
+        <div class="carousel-item c-item">
+          <img src="{{ url('public/assets/images/rsc/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
+        </div>
+        <div class="carousel-item c-item">
+          <img src="{{ url('public/assets/images/rsc/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
+        </div>
+        <div class="carousel-item c-item">
+          <img src="{{ url('/public/assets/images/rsc/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+<!--Slide-->
   <!-- Main content -->
   <div class="content">
     <div class="row">
