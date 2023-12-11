@@ -9,12 +9,72 @@ use App\Models\PerbaikanUnregistrasi;
 use App\Models\LembarPemeliharaan;
 use Illuminate\Http\Request;
 use App\Models\Registrasi;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\Helper\Helper;
 
 class HomeController extends Controller
 {
+
+    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
+    {
+        define('SERVER_API_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl');
+
+        $header = [
+            'Authorization: Key=' . SERVER_API_KEY,
+            'Content-Type: Application/json'
+        ];
+
+
+        $msg = [
+            'title' => $title,
+            'body' => $message,
+            'sound' => 'default',
+            'icon' => '/999.png',
+            'click_action' => $clickActionUrl
+        ];
+
+        $payload = [
+            'condition' => "'$topic' in topics",
+            'data' => $msg
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => $header
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            "cURL Error #:" . $err;
+        } else {
+            $response;
+        }
+    }
+
+    public function notifyUser(Request $request)
+    {
+        $token = Auth::user()->kode_rs;;
+        $level = "user";
+        $topik = $token . $level;
+        $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
+        $title = "a";
+        $message = "Alat " . $title;
+        // create run the method from App/Helpers.php
+
+        $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
+    }
+    
     function dashboard()
     {
         $registrasi = Registrasi::where('kode_rs',Auth::user()->kode_rs)->count();

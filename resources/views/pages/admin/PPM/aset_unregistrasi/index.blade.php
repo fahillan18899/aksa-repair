@@ -26,6 +26,15 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
     <!-- content -->
     <div class="row">
       <div class="col-sm-12">
@@ -306,7 +315,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="serial_number_un" class="col-xs-3 col-form-label">Seri Number<i class="text-danger">*</i></label>
+                    <label for="serial_number_un" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="serial_number_un" type="text" class="form-control" id="serial_number_un1" placeholder="Seri Number" value="" readonly>
                     </div>
@@ -329,7 +338,7 @@
                   <div class="form-group row">
                     <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="keterangan_un" type="text" class="form-control" id="keterangan_un1" placeholder="Pelapor" value="" readonly>
+                      <input name="keterangan_un" type="text" class="form-control" id="keterangan_un1" placeholder="Keterangan" value="" readonly>
                     </div>
                   </div>
 
@@ -355,35 +364,35 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_rekanan_un" class="col-xs-3 col-form-label">Nama Rekan<i class="text-danger">*</i></label>
+                    <label for="nama_rekanan_un" class="col-xs-3 col-form-label">Nama Rekan</label>
                     <div class="col-xs-9">
                       <input name="nama_rekanan_un" type="text" class="form-control" id="nama_rekanan_un" placeholder="Nama Rekan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="alamat_rekanan_un" class="col-xs-3 col-form-label">Alamat Rekan<i class="text-danger">*</i></label>
+                    <label for="alamat_rekanan_un" class="col-xs-3 col-form-label">Alamat Rekan</label>
                     <div class="col-xs-9">
                       <input name="alamat_rekanan_un" type="text" class="form-control" id="alamat_rekanan_un" placeholder="Alamat Rekan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_rekanan_un" class="col-xs-3 col-form-label">Teknisi Rekanan<i class="text-danger">*</i></label>
+                    <label for="teknisi_rekanan_un" class="col-xs-3 col-form-label">Teknisi Rekanan</label>
                     <div class="col-xs-9">
                       <input name="teknisi_rekanan_un" type="text" class="form-control" id="teknisi_rekanan_un" placeholder="Teknisi Rekanan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="telphone_teknisi_rek_un" class="col-xs-3 col-form-label">Telp_Teknisi_Rekanan_reg<i class="text-danger">*</i></label>
+                    <label for="telphone_teknisi_rek_un" class="col-xs-3 col-form-label">Telp_Teknisi_Rekanan_reg</label>
                     <div class="col-xs-9">
                       <input name="telphone_teknisi_rek_un" type="text" class="form-control" id="telphone_teknisi_rek_un" placeholder="Telp_Teknisi_Rekanan_reg" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi</label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un1" placeholder="KA Instalasi" value="" readonly>
                     </div>
@@ -588,49 +597,49 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_perbaikan_un" class="col-xs-3 col-form-label">Harga Perbaikan <i class="text-danger">*</i></label>
+                    <label for="harga_perbaikan_un" class="col-xs-3 col-form-label">Harga Perbaikan </label>
                     <div class="col-xs-9">
                       <input name="harga_perbaikan_un" type="text" class="form-control" id="harga_perbaikan_un" placeholder="Harga Perbaikan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="penyebab_kerusakan_un" class="col-xs-3 col-form-label">Penyebab Kerusakan <i class="text-danger">*</i></label>
+                    <label for="penyebab_kerusakan_un" class="col-xs-3 col-form-label">Penyebab Kerusakan</label>
                     <div class="col-xs-9">
                       <input name="penyebab_kerusakan_un" type="text" class="form-control" id="penyebab_kerusakan_un" placeholder="Penyebab Kerusakan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="pengujian_suku_cadang_un" class="col-xs-3 col-form-label">Pengujian Suku Cadang<i class="text-danger">*</i></label>
+                    <label for="pengujian_suku_cadang_un" class="col-xs-3 col-form-label">Pengujian Suku Cadang</label>
                     <div class="col-xs-9">
                       <input name="pengujian_suku_cadang_un" type="text" class="form-control" id="pengujian_suku_cadang_un" placeholder="Pengujian Suku Cadang" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="uji_fungsi_setelah_perbaikan_un" class="col-xs-3 col-form-label">Uji Fungsi Setelah Perbaikan<i class="text-danger">*</i></label>
+                    <label for="uji_fungsi_setelah_perbaikan_un" class="col-xs-3 col-form-label">Uji Fungsi Setelah Perbaikan</label>
                     <div class="col-xs-9">
                       <input name="uji_fungsi_setelah_perbaikan_un" type="text" class="form-control" id="uji_fungsi_setelah_perbaikan_un" placeholder="Uji Fungsi Setelah Perbaikan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="solusi_perbaikan_un" class="col-xs-3 col-form-label">Solusi Perbaikan<i class="text-danger">*</i></label>
+                    <label for="solusi_perbaikan_un" class="col-xs-3 col-form-label">Solusi Perbaikan</label>
                     <div class="col-xs-9">
                       <input name="solusi_perbaikan_un" type="text" class="form-control" id="solusi_perbaikan_un" placeholder="Solusi Perbaikan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="penggantian_suku_cadang_un" class="col-xs-3 col-form-label">Penggantian Suku Cadang<i class="text-danger">*</i></label>
+                    <label for="penggantian_suku_cadang_un" class="col-xs-3 col-form-label">Penggantian Suku Cadang</label>
                     <div class="col-xs-9">
                       <input name="penggantian_suku_cadang_un" type="text" class="form-control" id="penggantian_suku_cadang_un" placeholder="Penggantian Suku Cadang" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="hasil_verifikasi_un" class="col-xs-3 col-form-label">Hasil Verifikasi<i class="text-danger">*</i></label>
+                    <label for="hasil_verifikasi_un" class="col-xs-3 col-form-label">Hasil Verifikasi</label>
                     <div class="col-xs-9">
                       <input name="hasil_verifikasi_un" type="text" class="form-control" id="hasil_verifikasi_un" placeholder="Hasil Verifikasi" value="">
                     </div>

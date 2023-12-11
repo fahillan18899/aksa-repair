@@ -39,10 +39,24 @@
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print">
-            <h1>Form Registrasi Alat</h1>
-          </div>
+          <div class="panel-heading no-print d-inline">
+            <div class="row">
+              <div class="col-md-7">
 
+                <h1>Form Registrasi Alat</h1>
+              </div>
+              <div class="col-md-2">
+                <a href="{{ url('/dashboard/export') }}" class="btn btn-info">Example Import</a>
+              </div>
+              <div class="col-md-3">
+                <form action="{{ url('/dashboard/import') }}" method="post" enctype="multipart/form-data" style="display: flex;">
+                  @csrf
+                  <input class="form-control" type="file" name="file">
+                  <button type="submit" class="btn-primary btn">Import</button>
+                </form>
+              </div>
+            </div>
+          </div>
 
           <div class="panel-body panel-form">
             <div class="row">
@@ -220,28 +234,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="akl" class="col-xs-3 col-form-label">AKL <i class="text-danger">*</i></label>
+                    <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
                       <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="akd" class="col-xs-3 col-form-label">AKD <i class="text-danger">*</i></label>
+                    <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
                       <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 <i class="text-danger">*</i></label>
+                    <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 </label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2 <i class="text-danger">*</i></label>
+                    <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2</label>
                     <div class="col-xs-9">
                       <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="no inventaris 2">
                     </div>
@@ -320,7 +334,7 @@
           <td>{{ $item->tlp_t_distributor }}</td>
           <td>{{ $item->no_sertifikat_kalibrasi }}</td>
           <td>{{ $item->teknisi_ppm }}</td>
-          <td>{{ "Rp " . number_format($item->harga_perolehan,0,',','.'); }}</td>
+          <td>{{ "Rp " . number_format((float)$item->harga_perolehan,0,',','.'); }}</td>
           <td>{{ $item->sumber_dana }}</td>
           <td>{{ $item->tahun_perolehan }}</td>
           <td>{{ $item->akl }}</td>

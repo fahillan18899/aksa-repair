@@ -10,8 +10,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-wrench"></i></div>
       <div class="header-title">
-        <h1>MENU FORM TEREGISTRASI</h1>
-        <small>Form Teregistrasi</small>
+        <h1>MENU FORM ASET TEREGISTRASI</h1>
+        <small>Form Aset Teregistrasi</small>
       </div>
     </div>
   </section>
@@ -191,28 +191,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
                     </div>
@@ -274,7 +274,6 @@
         <th scope="col">Keluhan_Dari_alat</th>
         <th scope="col">Korektif</th>
         <th scope="col">Tombol_Eksekusi</th>
-        <th scope="col">Tombol_Eksekusi</th>
       </thead>
       <tbody>
         @forelse ($items as $index => $item)
@@ -300,7 +299,6 @@
           <td><?php echo $item['jumlah_harga'] ?></td>
           <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
           <td><?php echo $item['korektif_reg'] ?></td>
-          <td><?php echo $item['kode_rs'] ?></td>
           <td>
             <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
@@ -425,28 +423,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
                     </div>
@@ -679,14 +677,14 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="penerima_reg" class="col-xs-3 col-form-label">peneriman<i class="text-danger">*</i></label>
+                    <label for="penerima_reg" class="col-xs-3 col-form-label">peneriman</label>
                     <div class="col-xs-9">
                       <input name="penerima_reg" type="text" class="form-control" id="penerima_reg2" placeholder="penerima" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_perbaikan_reg" class="col-xs-3 col-form-label">harga perbaikan<i class="text-danger">*</i></label>
+                    <label for="harga_perbaikan_reg" class="col-xs-3 col-form-label">harga perbaikan</label>
                     <div class="col-xs-9">
                       <input name="harga_perbaikan_reg" type="text" class="form-control" id="harga_perbaikan_reg2" placeholder="harga perbaikan" value="">
                     </div>
@@ -721,70 +719,70 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="penyebab_kerusakan_reg" class="col-xs-3 col-form-label">Penyebab Kerusakan <i class="text-danger">*</i></label>
+                    <label for="penyebab_kerusakan_reg" class="col-xs-3 col-form-label">Penyebab Kerusakan </label>
                     <div class="col-xs-9">
                       <input name="penyebab_kerusakan_reg" type="text" class="form-control" id="penyebab_kerusakan_reg2" placeholder="Penyebab Kerusakan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="solusi_perbaikan_reg" class="col-xs-3 col-form-label">Solusi_Perbaikan <i class="text-danger">*</i></label>
+                    <label for="solusi_perbaikan_reg" class="col-xs-3 col-form-label">Solusi_Perbaikan </label>
                     <div class="col-xs-9">
                       <input name="solusi_perbaikan_reg" type="text" class="form-control" id="solusi_perbaikan_reg2" placeholder="Solusi_Perbaikan" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="penguji_suku_cadang_reg" class="col-xs-3 col-form-label">Penguji Suku Cadang <i class="text-danger">*</i></label>
+                    <label for="penguji_suku_cadang_reg" class="col-xs-3 col-form-label">Penguji Suku Cadang </label>
                     <div class="col-xs-9">
                       <input name="penguji_suku_cadang_reg" type="text" class="form-control" id="penguji_suku_cadang_reg2" placeholder="Penguji Suku Cadang" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="hasil_verifikasi_reg" class="col-xs-3 col-form-label">Hasil Verifikasi <i class="text-danger">*</i></label>
+                    <label for="hasil_verifikasi_reg" class="col-xs-3 col-form-label">Hasil Verifikasi</label>
                     <div class="col-xs-9">
                       <input name="hasil_verifikasi_reg" type="text" class="form-control" id="hasil_verifikasi_reg2" placeholder="Hasil_Verifikasi" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="hasil_fungsi_reg" class="col-xs-3 col-form-label">Hasil Fungsi <i class="text-danger">*</i></label>
+                    <label for="hasil_fungsi_reg" class="col-xs-3 col-form-label">Hasil Fungsi </label>
                     <div class="col-xs-9">
                       <input name="hasil_fungsi_reg" type="text" class="form-control" id="hasil_fungsi_reg2" placeholder="Hasil Fungsi" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="pengganti_suku_cadang_reg" class="col-xs-3 col-form-label"> Pengganti_Suku_Cadang<i class="text-danger">*</i></label>
+                    <label for="pengganti_suku_cadang_reg" class="col-xs-3 col-form-label"> Pengganti_Suku_Cadang</label>
                     <div class="col-xs-9">
                       <input name="pengganti_suku_cadang_reg" type="text" class="form-control" id="pengganti_suku_cadang_reg2" placeholder="Pengganti_Suku_Cadang" value="">
                     </div>
@@ -986,28 +984,28 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan</label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
                     </div>

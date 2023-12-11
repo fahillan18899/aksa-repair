@@ -124,7 +124,7 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url('/dashboard/ppm/alat') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-                  <input type="hidden" name="kode_rs" value="as" />
+                  <input type="hidden" name="kode_rs" />
 
                   <div class="form-group row">
                     <label for="id_alat" class="col-xs-3 col-form-label">ID Alat </label>

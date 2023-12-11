@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
-
+use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
@@ -198,6 +198,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
   });
 
   Route::resource('human_resource', HumanResourceController::class);
+  Route::get('export', [RegistrasiAsetController::class, "export"]);
+  Route::post('import', [RegistrasiAsetController::class, "import"]);
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
@@ -209,8 +211,8 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
 });
 
-Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
-  Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('teknisi_dashboard');
+Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
+  Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
 
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
@@ -227,6 +229,7 @@ Route::prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
 });
 
 
+Route::get('/asd', [HomeController::class, 'notifyUser']);
 Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/', [AuthController::class, 'processLogin'])->name('login-proccess');
 Route::get('/register', [AuthController::class, 'registration'])->name('register');

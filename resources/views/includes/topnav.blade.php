@@ -23,22 +23,6 @@
         <li class="dropdown dropdown-user">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="pe-7s-angle-down-circle"></i></a>
           <ul class="dropdown-menu">
-            <?php
-            //if ($this->permission->method('profile', 'read')->access() || $this->permission->method('profile', 'update')->access()) {
-            ?>
-            <li><a href=""><i class="pe-7s-users"></i> <?php echo ('profile')
-                                                        ?></a></li>
-            <?php
-            //}
-            ?>
-
-            <?php
-            //if ($this->permission->method('edit_profile', 'update')->access()) {
-            ?>
-            <li><a href=""><i class="pe-7s-tools"></i> <?php echo ('edit_profile') ?></a></li>
-            <?php // } 
-            ?>
-
             <li>
               <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="pe-7s-close-circle"></i>
