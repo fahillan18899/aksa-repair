@@ -1,1 +1,1 @@
-/home/wyak5789/timbangan-bayi/public/
+D:/home/wyak5789/timbangan-bayi/public/
