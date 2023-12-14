@@ -20,12 +20,12 @@
         <a href="/dashboard_user"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
-      
 
 
 
 
-      
+
+
 
       <li class="treeview">
         <a href="#">
@@ -35,9 +35,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          
+
           <!---->
-          <li class="treeview">
+          <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
             <a href="#">
               <span>Kegiatan</span>
               <span class="pull-right-container">
@@ -45,7 +45,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview">
+              <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
                 <a href="#">
                   <span>Pemeliharaan Korektif</span>
                   <span class="pull-right-container">
@@ -53,14 +53,14 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class=""><a href="/dashboard_user/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
-                  <li class=""><a href="/dashboard_user/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
+                  <li class="{{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
+                  <li class="{{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
                 </ul>
               </li>
             </ul>
           </li>
           <!---->
-          <li class=""><a href="/dashboard_user/stock_opname_user">Stock Opname</a></li>
+          <li class="{{ request()->is('dashboard_user/stock_opname_user*') ? 'active' : '' }}"><a href="/dashboard_user/stock_opname_user">Stock Opname</a></li>
         </ul>
       </li>
 
