@@ -243,7 +243,9 @@ $alert = "";
                       <select name="badan_selungkup1" class="form-control" id="badan_selungkup1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan1" id="catatan1" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -253,7 +255,9 @@ $alert = "";
                       <select name="badan_selungkup2" class="form-control" id="badan_selungkup2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan2" id="catatan2" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -266,7 +270,9 @@ $alert = "";
                       <select name="alat_sistem_interlock1" class="form-control" id="alat_sistem_interlock1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan3" id="catatan3" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -276,7 +282,9 @@ $alert = "";
                       <select name="alat_sistem_interlock2" class="form-control" id="alat_sistem_interlock2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan4" id="catatan4" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -289,7 +297,9 @@ $alert = "";
                       <select name="kabel_kelenturan1" class="form-control" id="kabel_kelenturan1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan5" id="catatan5" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -299,7 +309,9 @@ $alert = "";
                       <select name="kabel_kelenturan2" class="form-control" id="kabel_kelenturan2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan6" id="catatan6" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -312,7 +324,9 @@ $alert = "";
                       <select name="sistem_pengunci1" class="form-control" id="sistem_pengunci1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan7" id="catatan7" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -322,7 +336,9 @@ $alert = "";
                       <select name="sistem_pengunci2" class="form-control" id="sistem_pengunci2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan8" id="catatan8" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -335,7 +351,9 @@ $alert = "";
                       <select name="tombol_saklar1" class="form-control" id="tombol_saklar1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan9" id="catatan9" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -345,7 +363,9 @@ $alert = "";
                       <select name="tombol_saklar2" class="form-control" id="tombol_saklar2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan10" id="catatan10" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -358,7 +378,9 @@ $alert = "";
                       <select name="label_penandaan1" class="form-control" id="label_penandaan1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan11" id="catatan11" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -368,7 +390,9 @@ $alert = "";
                       <select name="label_penandaan2" class="form-control" id="label_penandaan2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan12" id="catatan12" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -381,7 +405,9 @@ $alert = "";
                       <select name="display_layar1" class="form-control" id="display_layar1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan13" id="catatan13" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -391,7 +417,9 @@ $alert = "";
                       <select name="display_layar2" class="form-control" id="display_layar2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan14" id="catatan14" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -404,7 +432,9 @@ $alert = "";
                       <select name="aksesoris1" class="form-control" id="aksesoris1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan15" id="catatan15" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -414,7 +444,9 @@ $alert = "";
                       <select name="aksesoris2" class="form-control" id="aksesoris2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan16" id="catatan16" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -427,7 +459,9 @@ $alert = "";
                       <select name="indikator_bunyi1" class="form-control" id="indikator_bunyi1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan17" id="catatan17" placeholder="Catatan">
                     </div>
                   </div>
 
@@ -437,7 +471,9 @@ $alert = "";
                       <select name="indikator_bunyi2" class="form-control" id="indikator_bunyi2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
+                        <option value='lainya'>Lainya</option>
                       </select>
+                      <input class="form-control" type="text" name="catatan18" id="catatan18" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -638,7 +674,7 @@ $alert = "";
                   <td class="table-primary" rowspan="3"><b>Engineer</b></td>
                   <td class="table-info" colspan="6" align="center"><b>Data_Alat</b></td>
                   <td class="table-success" colspan="7" align="center"><b>Persiapan</b></td>
-                  <td class="table-active" colspan="18" align="center"><b>pemantauan_fisik_&_fungsi</b></td>
+                  <td class="table-active" colspan="36" align="center"><b>pemantauan_fisik_&_fungsi</b></td>
                   <td class="table-danger" colspan="5" align="center"><b>pemeliharaan_preventife</b></td>
                   <td class="table-info" rowspan="3" align="center"><b>tindakan</b></td>
                   <td class="table-warning" colspan="4" align="center"><b>Suku_Cadang</b></td>
@@ -668,15 +704,15 @@ $alert = "";
                   <td class="table-success" rowspan="2"><b>KTD</b></td>
                   <td class="table-success" rowspan="2"><b>Mengoprasikan_Alat</b></td>
                   <td class="table-success" rowspan="2"><b>Idntifikasi_Bahaya</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Badan/Selungkup</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Alarm_&_Sistem_Interlock</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Kabel_&_Kelenturannya</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Sistem_Pengunci</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Tombol_&_Saklar</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Label/Penandaan</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Display/Layar</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Aksesoris</b></td>
-                  <td class="table-dark" colspan="2" align="center"><b>Indikator_Bunyi</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Badan/Selungkup</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Alarm_&_Sistem_Interlock</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Kabel_&_Kelenturannya</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Sistem_Pengunci</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Tombol_&_Saklar</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Label/Penandaan</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Display/Layar</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Aksesoris</b></td>
+                  <td class="table-dark" colspan="4" align="center"><b>Indikator_Bunyi</b></td>
                   <td class="table-danger" rowspan="2"><b>Pembersihan</b></td>
                   <td class="table-danger" rowspan="2"><b>Pengencangan_Bagian_Alat</b></td>
                   <td class="table-danger" rowspan="2"><b>Pelumasan</b></td>
@@ -690,23 +726,41 @@ $alert = "";
 
                 <tr class="text-center">
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fisik</b></td>
+                  <td class="light"><b>catatan</b></td>
                   <td class="light"><b>Fungsi</b></td>
+                  <td class="light"><b>catatan</b></td>
                 </tr>
               </thead>
               <tbody>
@@ -730,23 +784,41 @@ $alert = "";
                   <td>{{ $item->mengoprasikan_alat }}</td>
                   <td>{{ $item->identifikasi_bahaya }}</td>
                   <td>{{ $item->badan_selungkup1 }}</td>
+                  <td>{{ $item->catatan1 }}</td>
                   <td>{{ $item->badan_selungkup2 }}</td>
+                  <td>{{ $item->catatan2 }}</td>
                   <td>{{ $item->alat_sistem_interlock1 }}</td>
+                  <td>{{ $item->catatan3 }}</td>
                   <td>{{ $item->alat_sistem_interlock2 }}</td>
+                  <td>{{ $item->catatan4 }}</td>
                   <td>{{ $item->kabel_kelenturan1 }}</td>
+                  <td>{{ $item->catatan5 }}</td>
                   <td>{{ $item->kabel_kelenturan2 }}</td>
+                  <td>{{ $item->catatan6 }}</td>
                   <td>{{ $item->sistem_pengunci1 }}</td>
+                  <td>{{ $item->catatan7 }}</td>
                   <td>{{ $item->sistem_pengunci2 }}</td>
+                  <td>{{ $item->catatan8 }}</td>
                   <td>{{ $item->tombol_saklar1 }}</td>
+                  <td>{{ $item->catatan9 }}</td>
                   <td>{{ $item->tombol_saklar2 }}</td>
+                  <td>{{ $item->catatan10}}</td>
                   <td>{{ $item->label_penandaan1 }}</td>
+                  <td>{{ $item->catatan11}}</td>
                   <td>{{ $item->label_penandaan2 }}</td>
+                  <td>{{ $item->catatan12}}</td>
                   <td>{{ $item->display_layar1 }}</td>
+                  <td>{{ $item->catatan13}}</td>
                   <td>{{ $item->display_layar2 }}</td>
+                  <td>{{ $item->catatan14}}</td>
                   <td>{{ $item->aksesoris1 }}</td>
+                  <td>{{ $item->catatan15}}</td>
                   <td>{{ $item->aksesoris2 }}</td>
+                  <td>{{ $item->catatan16}}</td>
                   <td>{{ $item->indikator_bunyi1 }}</td>
+                  <td>{{ $item->catatan17}}</td>
                   <td>{{ $item->indikator_bunyi2 }}</td>
+                  <td>{{ $item->catatan18}}</td>
                   <td>{{ $item->pembersihan }}</td>
                   <td>{{ $item->pengencangan_bagian_alat }}</td>
                   <td>{{ $item->pelumasan }}</td>
@@ -788,4 +860,203 @@ $alert = "";
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+@push('addon-script')
+<script>
+
+
+/*badan_selungkup1*/
+   $("input[id=catatan1]").hide();
+$('#badan_selungkup1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan1]").show();
+        $("select[id=badan_selungkup1]").hide();
+    } else {
+      $("input[id=catatan1]").hide();
+    }
+});
+
+// create script select wirh id badan_selungkup1?
+
+var getSelect = document.querySelectorAll('.form-control');
+  
+  getSelect.forEach(function(option) {
+  option.addEventListener('change', function(e) {
+    var target = e.target.id;
+    console.log(target);
+  })
+ });
+
+/*badan_selungkup2*/
+   $("input[id=catatan2]").hide();
+$('#badan_selungkup2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan2]").show();
+        $("select[id=badan_selungkup2]").hide();
+    } else {
+      $("input[id=catatan2]").hide();
+    }
+});
+/*alat_sistem_interlock1*/
+   $("input[id=catatan3]").hide();
+$('#alat_sistem_interlock1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan3]").show();
+        $("select[id=alat_sistem_interlock1]").hide();
+    } else {
+      $("input[id=catatan3]").hide();
+    }
+});
+/*alat_sistem_interlock2*/
+   $("input[id=catatan4]").hide();
+$('#alat_sistem_interlock2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan4]").show();
+        $("select[id=alat_sistem_interlock2]").hide();
+    } else {
+      $("input[id=catatan4]").hide();
+    }
+});
+/*kabel_kelenturan1*/
+   $("input[id=catatan5]").hide();
+$('#kabel_kelenturan1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan5]").show();
+        $("select[id=kabel_kelenturan1]").hide();
+    } else {
+      $("input[id=catatan5]").hide();
+    }
+});
+/*kabel_kelenturan2*/
+   $("input[id=catatan6]").hide();
+$('#kabel_kelenturan2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan6]").show();
+        $("select[id=kabel_kelenturan2]").hide();
+    } else {
+      $("input[id=catatan6]").hide();
+    }
+});
+/*sistem_pengunci1*/
+   $("input[id=catatan7]").hide();
+$('#sistem_pengunci1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan7]").show();
+        $("select[id=sistem_pengunci1]").hide();
+    } else {
+      $("input[id=catatan7]").hide();
+    }
+});
+/*sistem_pengunci2*/
+   $("input[id=catatan8]").hide();
+$('#sistem_pengunci2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan8]").show();
+        $("select[id=sistem_pengunci2]").hide();
+    } else {
+      $("input[id=catatan8]").hide();
+    }
+});
+/*tombol_saklar1*/
+   $("input[id=catatan9]").hide();
+$('#tombol_saklar1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan9]").show();
+        $("select[id=tombol_saklar1]").hide();
+    } else {
+      $("input[id=catatan9]").hide();
+    }
+});
+/*tombol_saklar2*/
+   $("input[id=catatan10]").hide();
+$('#tombol_saklar2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan10]").show();
+        $("select[id=tombol_saklar2]").hide();
+    } else {
+      $("input[id=catatan10]").hide();
+    }
+});
+/*label_penandaan1*/
+   $("input[id=catatan11]").hide();
+$('#label_penandaan1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan11]").show();
+        $("select[id=label_penandaan1]").hide();
+    } else {
+      $("input[id=catatan11]").hide();
+    }
+});
+/*label_penandaan2*/
+   $("input[id=catatan12]").hide();
+$('#label_penandaan2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan12]").show();
+        $("select[id=label_penandaan2]").hide();
+    } else {
+      $("input[id=catatan12]").hide();
+    }
+});
+/*display_layar1*/
+   $("input[id=catatan13]").hide();
+$('#display_layar1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan13]").show();
+        $("select[id=display_layar1]").hide();
+    } else {
+      $("input[id=catatan13]").hide();
+    }
+});
+/*display_layar2*/
+   $("input[id=catatan14]").hide();
+$('#display_layar2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan14]").show();
+        $("select[id=display_layar2]").hide();
+    } else {
+      $("input[id=catatan14]").hide();
+    }
+});
+/*aksesoris1*/
+   $("input[id=catatan15]").hide();
+$('#aksesoris1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan15]").show();
+        $("select[id=aksesoris1]").hide();
+    } else {
+      $("input[id=catatan15]").hide();
+    }
+});
+/*aksesoris2*/
+   $("input[id=catatan16]").hide();
+$('#aksesoris2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan16]").show();
+        $("select[id=aksesoris2]").hide();
+    } else {
+      $("input[id=catatan16]").hide();
+    }
+});
+/*indikator_bunyi1*/
+   $("input[id=catatan17]").hide();
+$('#indikator_bunyi1').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan17]").show();
+        $("select[id=indikator_bunyi1]").hide();
+    } else {
+      $("input[id=catatan17]").hide();
+    }
+});
+/*indikator_bunyi2*/
+   $("input[id=catatan18]").hide();
+$('#indikator_bunyi2').on('change', function () {
+    if ((this.value) == 'lainya') {
+        $("input[id=catatan18]").show();
+        $("select[id=indikator_bunyi2]").hide();
+    } else {
+      $("input[id=catatan18]").hide();
+    }
+});
+
+</script>
+@endpush
 @endsection
