@@ -68,6 +68,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'state']);
     Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'store'])->name('jadwal_pemeliharaan.store');
     Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'city']);
+    Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanController::class, 'updateStatus']);
 
     Route::get('/data_inventaris', [PPMController::class, 'dataInventaris']);
     Route::get('/data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);

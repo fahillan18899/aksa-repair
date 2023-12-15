@@ -16,8 +16,14 @@
       </div>
     </div>
   </section>
+
   <!-- Main content -->
   <div class="content">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
     <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
     <!-- alert message -->
@@ -90,7 +96,8 @@
         <th scope="col">No</th>
         <th scope="col">Lokasi Alat</th>
         <th scope="col">Nama Alat</th>
-        <th scope="col">Jadwal</th>>
+        <th scope="col">Jadwal</th>
+        <th scope="col">Keterangan</th>
       </thead>
       <tbody>
         @forelse ($items as $item)
@@ -99,6 +106,13 @@
           <td>{{ $item->lokasi_alat }}</td>
           <td>{{ $item->nama_alat }}</td>
           <td>{{ $item->jadwal }}</td>
+          <td>
+            <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $item->id) }}" class="form-inner" method="post">
+              @csrf
+              @method('PUT')
+              <button class="btn btn-{{ $item->status == 1 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 1 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
+            </form>
+          </td>
         </tr>
         @empty
         <tr>

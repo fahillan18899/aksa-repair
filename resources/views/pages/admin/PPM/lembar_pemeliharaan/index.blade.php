@@ -2,9 +2,6 @@
 
 @section('content')
 @section('title', 'Lembar Pemeliharaan')
-<?php
-$alert = "";
-?>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -52,7 +49,7 @@ $alert = "";
     </div>
 
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-9">
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
@@ -61,7 +58,7 @@ $alert = "";
 
           <div class="panel-body panel-form">
             <div class="row">
-              <div class="col-md-9 col-sm-12">
+              <div class="col-md-12 col-sm-12">
                 <form action="{{ route('lembar_pemeliharaan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('POST')
@@ -618,7 +615,6 @@ $alert = "";
                   </div>
                 </form>
               </div>
-              <div class="col-md-3"></div>
             </div>
           </div>
         </div>

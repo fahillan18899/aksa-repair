@@ -46,7 +46,7 @@
                 <h1>Form Registrasi Alat</h1>
               </div>
               <div class="col-md-2">
-                <a href="{{ url('/dashboard/export') }}" class="btn btn-info">Example Import</a>
+                <a href="{{ url('/dashboard/export') }}" class="btn btn-info"> Template Import</a>
               </div>
               <div class="col-md-3">
                 <form action="{{ url('/dashboard/import') }}" method="post" enctype="multipart/form-data" style="display: flex;">
