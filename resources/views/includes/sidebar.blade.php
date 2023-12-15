@@ -16,7 +16,7 @@
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
 
-      <li class="active">
+      <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a href="/dashboard/home"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
@@ -206,7 +206,7 @@
       </li> -->
 
 
-      <li class="treeview  ">
+      <li class="treeview {{ request()->routeIs('human_resource.*') ? 'active' : '' }}">
         <a href="#">
           <i class="fa fa-users"></i> <span>Sumber Daya Manusia</span>
           <span class="pull-right-container">
@@ -214,8 +214,9 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="{{ url('/dashboard/human_resource/create') }}">Tambahkan Karyawan</a></li>
-          <li class=""><a href="{{ url('/dashboard/human_resource') }}">Daftar Karyawan</a></li>
+
+          <li class="{{ request()->routeIs('human_resource.create') ? 'active' : '' }}"><a href="{{ url('/dashboard/human_resource/create') }}">Tambahkan Karyawan</a></li>
+          <li class="{{ request()->routeIs('human_resource.index') ? 'active' : '' }}"><a href="{{ url('/dashboard/human_resource') }}">Daftar Karyawan</a></li>
         </ul>
       </li>
 
@@ -298,7 +299,7 @@
         </ul>
       </li>-->
 
-      <li class="treeview">
+      <li class="treeview {{ request()->is('dashboard/ppm*') ? 'active' : '' }}">
         <a href="#">
           <i class="fa fa-wrench" aria-hidden="true"></i><span>PPM</span>
           <span class="pull-right-container">
@@ -306,12 +307,13 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class=""><a href="/dashboard/ppm/home">Dashboard</a></li>
-          <li class=""><a href="/dashboard/ppm/data_kelengkapan">Data Kelengkapan PPM</a></li>
-          <li class=""><a href="/dashboard/ppm/registrasi">Registrasi Alat</a></li>
-          <li class=""><a href="/dashboard/ppm/data_inventaris">Data Inventaris</a></li>
+          <li class="{{ request()->is('dashboard/ppm/home') ? 'active' : '' }}"><a href="/dashboard/ppm/home">Dashboard</a></li>
+          <li class="{{ request()->is('dashboard/ppm/data_kelengkapan') ? 'active' : '' }}"><a href="/dashboard/ppm/data_kelengkapan">Data Kelengkapan PPM</a></li>
+          <li class="{{ request()->is('dashboard/ppm/registrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi">Registrasi Alat</a></li>
+          <li class="{{ request()->is('dashboard/ppm/data_inventaris') ? 'active' : '' }}"><a href="/dashboard/ppm/data_inventaris">Data Inventaris</a></li>
           <!---->
-          <li class="treeview">
+          <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}
+{{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
             <a href="#">
               <span>Kegiatan</span>
               <span class="pull-right-container">
@@ -319,7 +321,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview">
+              <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}">
                 <a href="#">
                   <span>Pemeliharaan Korektif</span>
                   <span class="pull-right-container">
@@ -327,12 +329,13 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class=""><a href="/dashboard/ppm/aset_teregistrasi">Aset Teregistrasi</a></li>
-                  <li class=""><a href="/dashboard/ppm/aset_unregistrasi">Aset Unregistrasi</a></li>
+                  <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Aset Teregistrasi</a></li>
+                  <li class="{{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_unregistrasi">Aset Unregistrasi</a></li>
                   <!-- <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li> -->
                 </ul>
               </li>
-              <li class="treeview">
+
+              <li class="treeview {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
                 <a href="#">
                   <span>Pemeliharaan Preverentive</span>
                   <span class="pull-right-container">
@@ -340,17 +343,17 @@
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li class=""><a href="/dashboard/ppm/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
-                  <li class=""><a href="/dashboard/ppm/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
+                  <li class="{{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
+                  <li class="{{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
                 </ul>
               </li>
             </ul>
           </li>
           <!---->
-          <li class=""><a href="/dashboard/ppm/laporan_kegiatan">Laporan Kegiatan</a></li>
-          <li class=""><a href="/dashboard/ppm/operator">Operator</a></li>
-          <li class=""><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
-          <li class=""><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
+          <li class="{{ request()->is('dashboard/ppm/laporan_kegiatan') ? 'active' : '' }}"><a href="/dashboard/ppm/laporan_kegiatan">Laporan Kegiatan</a></li>
+          <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}"><a href="/dashboard/ppm/operator">Operator</a></li>
+          <li class="{{ request()->is('dashboard/ppm/stock_opname') ? 'active' : '' }}"><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
+          <li class="{{ request()->is('dashboard/ppm/analisis_data') ? 'active' : '' }}"><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
         </ul>
       </li>
 
