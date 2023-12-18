@@ -46,9 +46,19 @@ class JadwalPemeliharaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function updateStatus($id)
     {
-        //
+        $item = JadwalPemeliharaan::where('id', $id)->first();
+        if ($item) {
+            if ($item->status == '0') {
+                $item->status = '1';
+            } else {
+                $item->status = '0';
+            }
+
+            $item->save();
+        }
+        return back();
     }
 
     /**
@@ -64,10 +74,10 @@ class JadwalPemeliharaanController extends Controller
             'nama_alat' => '',
             'jadwal' => '',
         ]);
-
+        
         JadwalPemeliharaan::create($data);
 
-        return redirect('/dashboard/PPM/jadwal_pemeliharaan')
+        return redirect('/dashboard/ppm/jadwal_pemeliharaan')
         ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('lokasi_alat');
             $table->string('nama_alat');
             $table->date('jadwal');
+            $table->string('status', 4)->default('1');
             $table->timestamps();
         });
     }
