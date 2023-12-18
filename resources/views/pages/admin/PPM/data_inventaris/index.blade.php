@@ -145,4 +145,5 @@
 
     </div> <!-- /.content -->
   </div> <!-- /.content-wrapper -->
+</div>
   @endsection
