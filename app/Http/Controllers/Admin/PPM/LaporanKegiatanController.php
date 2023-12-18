@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LaporanKegiatanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $regsitrasi          = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();

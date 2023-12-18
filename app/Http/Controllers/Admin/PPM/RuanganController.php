@@ -10,33 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RuanganController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+{ 
     public function store(Request $request)
     {
         $request->validate([
@@ -63,23 +37,6 @@ class RuanganController extends Controller
         ->with('success', 'Data Ruangan Berhasil di Tambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ruangan  $ruangan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ruangan $ruangan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ruangan  $ruangan
-     * @return \Illuminate\Http\Response
-     */
     public function edit($ruangan)
     {
         $item = Ruangan::where('id_ruangan', $ruangan)->where('kode_rs', Auth::user()->kode_rs)->first();
@@ -92,13 +49,6 @@ class RuanganController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ruangan  $ruangan
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Ruangan $ruangan)
     {
         $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
@@ -116,12 +66,6 @@ class RuanganController extends Controller
         ->with('success', 'Data Berhasil Ubah.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ruangan  $ruangan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $item = Ruangan::where('id_ruangan', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
