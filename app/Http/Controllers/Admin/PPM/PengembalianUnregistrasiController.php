@@ -15,11 +15,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PengembalianUnregistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -28,25 +23,15 @@ class PengembalianUnregistrasiController extends Controller
         $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.aset_unregistrasi.index', [
-            
             'perbaikan'    => $perbaikan,
             'pengiriman'   => $pengiriman,
             'pengembalian' => $pengembalian,
             'penghapusan'  => $penghapusan,
-        
         ]);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-
         $request->validate([
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
@@ -80,23 +65,6 @@ class PengembalianUnregistrasiController extends Controller
         ->with('success', 'Data Pengemalian Unregistrasi Berhasil di Tambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
@@ -105,23 +73,13 @@ class PengembalianUnregistrasiController extends Controller
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengembalianUnregistrasi::where('id_perbaikan_un', $id)->first();
         return view('pages.admin.PPM.aset_unregistrasi.edit_pengembalian', [
-            
             'alats'    => $alats,
             'ruangans' => $ruangans,
             'item'     => $item,
             'teknisis' => $teknisis,
-
-
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -156,17 +114,6 @@ class PengembalianUnregistrasiController extends Controller
 
         return redirect()->route('aset_unregistrasi.index')
         ->with('success', 'Data Pengemalian Unregistrasi Berhasil di Ubah.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function cetak($id)

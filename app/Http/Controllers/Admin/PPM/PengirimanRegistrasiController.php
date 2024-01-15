@@ -43,7 +43,6 @@ class PengirimanRegistrasiController extends Controller
 
         PengirimanRegistrasi::create($request->post());
 
-
         return redirect()->route('aset_teregistrasi.index')
         ->with('success', 'Data Berhasil Tambahkan.');
     }
@@ -56,8 +55,6 @@ class PengirimanRegistrasiController extends Controller
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_teregistrasi.update_pengiriman', [
-            
-            
             'alats'        => $alats,
             'item' => $item,
             'teknisis'      => $teknisis,

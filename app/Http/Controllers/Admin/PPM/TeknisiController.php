@@ -9,32 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TeknisiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -53,36 +27,12 @@ class TeknisiController extends Controller
         ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Teknisi  $teknisi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Teknisi $teknisi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Teknisi  $teknisi
-     * @return \Illuminate\Http\Response
-     */
     public function edit($teknisi)
     {
         $item = Teknisi::where('id_teknisi', $teknisi)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.data_kelengkapan.update_teknisi', compact('item'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Teknisi  $teknisi
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Teknisi $teknisi)
     {
         $request->validate([
@@ -97,12 +47,6 @@ class TeknisiController extends Controller
         ->with('success', 'Data Teknisi Berhasil Tambahkan.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Teknisi  $teknisi
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
 

@@ -18,11 +18,6 @@ use Illuminate\Support\Facades\DB;
 
 class PerbaikanTeregistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -59,12 +54,6 @@ class PerbaikanTeregistrasiController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -95,23 +84,6 @@ class PerbaikanTeregistrasiController extends Controller
         ->with('success', 'Data Berhasil Tambahkan.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-
-    /**
-     * undocumented function summary
-     *
-     * Undocumented function long description
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
     public function cetak_teknisi($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();

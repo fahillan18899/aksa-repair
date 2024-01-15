@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DataKelengkapanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $gedung  = Gedung::where('kode_rs',Auth::user()->kode_rs)->get();

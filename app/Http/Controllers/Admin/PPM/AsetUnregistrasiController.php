@@ -11,11 +11,6 @@ use \App\Models\PenghapusanUnregistrasi;
 
 class AsetUnregistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $perbaikan     = PerbaikanUnregistrasi::all();
