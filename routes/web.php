@@ -26,6 +26,10 @@ use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
+use App\Http\Controllers\Admin\PPM\SOPPemakaianController;
+use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
+use App\Http\Controllers\Admin\PPM\SOPPerbaikanController;
+use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
@@ -63,6 +67,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/aset_non_alkes', DashboardController::class);
     Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
     Route::resource('/analisis_data', AnalisisDataController::class);
+    Route::resource('/sop_pemakaian', SOPPemakaianController::class);
+    Route::resource('/sop_pemeliharaan', SOPPemeliharaanController::class);
+    Route::resource('/sop_perbaikan', SOPPerbaikanController::class);
+    Route::resource('/sop_administrasi', SOPAdministrasi::class);
+
 
     // Route::resource('/jadwal_pemeliharaan', JadwalPemeliharaanController::class);
     Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'state']);
