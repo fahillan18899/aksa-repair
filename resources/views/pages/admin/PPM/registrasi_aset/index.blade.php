@@ -285,22 +285,23 @@
         <div class="panel panel-default thumbnail">
           <table id="table-register" class="table table-bordered table-hover">
             <thead class="table-light">
-              <th>Id_Aset</th>
-              <th>Jenis_Alat</th>
-              <th>Nama_Alat</th>
-              <th>Merek</th>
-              <th>Type</th>
-              <th>Gambar</th>
-              <th>Serial_Number</th>
-              <th>Ruangan</th>
-              <th>Tanggal_Kalibrasi</th>
-              <th>Distributor</th>
-              <th>Alamat_Distributor</th>
-              <th>TLP_Distributor</th>
-              <th>Email_Distributor</th>
-              <th>Teknisi_Distributor</th>
-              <th>TLP_T_Distributor</th>
-              <th>No_Sertifikat_Kalibrasi</ <th>Teknisi PPM</th>
+              <th class="all">Id_Aset</th>
+              <th class="none">Jenis_Alat</th>
+              <th class="all">Nama_Alat</th>
+              <th class="none">Merek</th>
+              <th class="all">Type</th>
+              <th class="none">Gambar</th>
+              <th class="all">Serial_Number</th>
+              <th class="none">Ruangan</th>
+              <th class="all">Tanggal_Kalibrasi</th>
+              <th class="none">Distributor</th>
+              <th class="all">Alamat_Distributor</th>
+              <th class="none">TLP_Distributor</th>
+              <th class="all">Email_Distributor</th>
+              <th class="none">Teknisi_Distributor</th>
+              <th class="all">TLP_T_Distributor</th>
+              <th class="none">No_Sertifikat_Kalibrasi</th>
+              <!-- <th>Teknisi PPM</th>
               <th>Harga Perolehan</th>
               <th>Sumber_Dana</th>
               <th>Tahun_Perolehan</th>
@@ -310,7 +311,7 @@
               <th>umur_alat</th>
               <th>Jadwal</th>
               <th>QR</th>
-              <th>Tombol_Aksi_Tabel</th>
+              <th>Tombol_Aksi_Tabel</th> -->
             </thead>
           </table>
         </div>
@@ -322,31 +323,32 @@
       $(document).ready(function() {
         $('#table-register').DataTable({
           processing: true,
+          responsive: true,
           serverSide: true,
           ajax: '{{ url('/dashboard/ppm/aset') }}',
           columns: [{
               data: 'id_aset',
-              name: 'DT_RowIndex'
+              name: 'Id_Aset'
             },
             {
               data: 'jenis_alat',
-              name: 'DT_RowIndex'
+              name: 'Jenis_Alat'
             },
             {
               data: 'nama_alat',
-              name: 'DT_RowIndex'
+              name: 'Nama_Alat'
             },
             {
               data: 'merek',
-              name: 'DT_RowIndex'
+              name: 'Merek'
             },
             {
               data: 'type',
-              name: 'DT_RowIndex'
+              name: 'Type'
             },
             {
               data: 'gambar',
-              name: 'DT_RowIndex',
+              name: 'Gambar',
               render: function(data, type, full, meta) {
                 return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
               }
@@ -354,80 +356,80 @@
             },
             {
               data: 'serial_number',
-              name: 'DT_RowIndex'
+              name: 'Serial_Number'
             },
             {
               data: 'lokasi_alat',
-              name: 'DT_RowIndex'
+              name: 'Ruangan'
             },
             {
               data: 'tanggal_kalibrasi',
-              name: 'DT_RowIndex'
+              name: 'Tanggal_Kalibrasi'
             },
             {
               data: 'distributor',
-              name: 'DT_RowIndex'
+              name: 'Distributor'
             },
             {
               data: 'alamat_distributor',
-              name: 'DT_RowIndex'
+              name: 'Alamat_Distributor'
             },
             {
               data: 'tlp_distributor',
-              name: 'DT_RowIndex'
+              name: 'TLP_Distributor'
             },
             {
               data: 'email_distributor',
-              name: 'DT_RowIndex'
+              name: 'Email_Distributor'
             },
             {
               data: 'teknisi_distributor',
-              name: 'DT_RowIndex'
+              name: 'Teknisi_Distributor'
             },
             {
               data: 'tlp_t_distributor',
-              name: 'DT_RowIndex'
+              name: 'TLP_T_Distributor'
             },
             {
               data: 'no_sertifikat_kalibrasi',
               name: 'DT_RowIndex'
             },
-            {
-              data: 'teknisi_ppm',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'harga_perolehan',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'sumber_dana',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'tahun_perolehan',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'akl',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'akd',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'no_inventaris_1',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'umur_alat',
-              name: 'DT_RowIndex'
-            },
-            {
-              data: 'jadwal_pemeliharaan',
-              name: 'DT_RowIndex'
-            },
+            // {
+            //   data: 'teknisi_ppm',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'harga_perolehan',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'sumber_dana',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'tahun_perolehan',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'akl',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'akd',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'no_inventaris_1',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'umur_alat',
+            //   name: 'DT_RowIndex'
+            // },
+            // {
+            //   data: 'jadwal_pemeliharaan',
+            //   name: 'DT_RowIndex'
+            // },
 
           ]
         });
