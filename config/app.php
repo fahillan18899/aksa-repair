@@ -178,7 +178,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         RenatoMarinho\LaravelPageSpeed\ServiceProvider::class,
-        Clockwork\Support\Laravel\ClockworkServiceProvider::class
+        Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+
 
 
     ],
@@ -198,6 +200,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Helper' => App\Helper\Helper::class,
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ])->toArray(),
 
 ];

@@ -280,94 +280,158 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th>No</th>
-        <th>Id_Aset</th>
-        <th>Jenis_Alat</th>
-        <th>Nama_Alat</th>
-        <th>Merek</th>
-        <th>Type</th>
-        <th>Gambar</th>
-        <th>Serial_Number</th>
-        <th>Ruangan</th>
-        <th>Tanggal_Kalibrasi</th>
-        <th>Distributor</th>
-        <th>Alamat_Distributor</th>
-        <th>TLP_Distributor</th>
-        <th>Email_Distributor</th>
-        <th>Teknisi_Distributor</th>
-        <th>TLP_T_Distributor</th>
-        <th>No_Sertifikat_Kalibrasi</th>
-        <th>Teknisi PPM</th>
-        <th>Harga Perolehan</th>
-        <th>Sumber_Dana</th>
-        <th>Tahun_Perolehan</th>
-        <th>AKL</th>
-        <th>AKD</th>
-        <th>No._Inventaris </th>
-        <th>umur_alat</th>
-        <th>Penyusutan Aset</th>
-        <th>Jadwal</th>
-        <th>QR</th>
-        <th>Tombol_Aksi_Tabel</th>
-      </thead>
-      <tbody>
-        @forelse ($items as $index => $item)
-        <tr>
-          <td>{{ $index + 1 }}</td>
-          <td>{{ $item->id_aset }}</td>
-          <td>{{ $item->jenis_alat }}</td>
-          <td>{{ $item->nama_alat }}</td>
-          <td>{{ $item->merek }}</td>
-          <td>{{ $item->type }}</td>
-          <td><img src="{{ url('storage/' . $item->gambar) }}" width="100px" /></td>
-          <td>{{ $item->serial_number }}</td>
-          <td>{{ $item->lokasi_alat }}</td>
-          <td>{{ $item->tanggal_kalibrasi }}</td>
-          <td>{{ $item->distributor }}</td>
-          <td>{{ $item->alamat_distributor }}</td>
-          <td>{{ $item->tlp_distributor }}</td>
-          <td>{{ $item->email_distributor }}</td>
-          <td>{{ $item->teknisi_distributor }}</td>
-          <td>{{ $item->tlp_t_distributor }}</td>
-          <td>{{ $item->no_sertifikat_kalibrasi }}</td>
-          <td>{{ $item->teknisi_ppm }}</td>
-          <td>{{ "Rp " . number_format((float)$item->harga_perolehan,0,',','.'); }}</td>
-          <td>{{ $item->sumber_dana }}</td>
-          <td>{{ $item->tahun_perolehan }}</td>
-          <td>{{ $item->akl }}</td>
-          <td>{{ $item->akd }}</td>
-          <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
-          <td>{{ $item->umur_alat }} Tahun</td>
-          <td>{{ "Rp " . number_format($item->penyusutan_aset,3,'.','.');  }}</td>
-          <td>{{ $item->jadwal_pemeliharaan }}</td>
-          <td>
-            <a href="/dashboard/ppm/data_inventaris/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Buat QR">Buat</button></a>
-          </td>
-          <td scope="row">
-            <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-edit"></i> print</button></a>
-            <a href="{{ route('registrasi',$item->id_aset) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit"></i> </a>
-            <form action="{{ url('/dashboard/ppm/registrasi', $item->id_aset) }}" method="POST" class="d-inline">
-              @csrf
-              @method('delete')
-              <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
-                <i class="fa fa-trash"></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="12">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+          <table id="table-register" class="table table-bordered table-hover">
+            <thead class="table-light">
+              <th>Id_Aset</th>
+              <th>Jenis_Alat</th>
+              <th>Nama_Alat</th>
+              <th>Merek</th>
+              <th>Type</th>
+              <th>Gambar</th>
+              <th>Serial_Number</th>
+              <th>Ruangan</th>
+              <th>Tanggal_Kalibrasi</th>
+              <th>Distributor</th>
+              <th>Alamat_Distributor</th>
+              <th>TLP_Distributor</th>
+              <th>Email_Distributor</th>
+              <th>Teknisi_Distributor</th>
+              <th>TLP_T_Distributor</th>
+              <th>No_Sertifikat_Kalibrasi</ <th>Teknisi PPM</th>
+              <th>Harga Perolehan</th>
+              <th>Sumber_Dana</th>
+              <th>Tahun_Perolehan</th>
+              <th>AKL</th>
+              <th>AKD</th>
+              <th>No._Inventaris </th>
+              <th>umur_alat</th>
+              <th>Jadwal</th>
+              <th>QR</th>
+              <th>Tombol_Aksi_Tabel</th>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
     <!--TABEL-->
     <script type="text/javascript">
+      // create function with jquery to get api form dashboard/ppm/registrasi yajra laravel?
+      $(document).ready(function() {
+        $('#table-register').DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: '{{ url('/dashboard/ppm/aset') }}',
+          columns: [{
+              data: 'id_aset',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'jenis_alat',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'nama_alat',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'merek',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'type',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'gambar',
+              name: 'DT_RowIndex',
+              render: function(data, type, full, meta) {
+                return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
+              }
 
+            },
+            {
+              data: 'serial_number',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'lokasi_alat',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'tanggal_kalibrasi',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'alamat_distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'tlp_distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'email_distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'teknisi_distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'tlp_t_distributor',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'no_sertifikat_kalibrasi',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'teknisi_ppm',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'harga_perolehan',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'sumber_dana',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'tahun_perolehan',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'akl',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'akd',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'no_inventaris_1',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'umur_alat',
+              name: 'DT_RowIndex'
+            },
+            {
+              data: 'jadwal_pemeliharaan',
+              name: 'DT_RowIndex'
+            },
+
+          ]
+        });
+      })
     </script>
 
   </div> <!-- /.content -->

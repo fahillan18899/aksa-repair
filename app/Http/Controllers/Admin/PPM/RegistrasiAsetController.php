@@ -14,16 +14,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+ use DataTables;
 
 class RegistrasiAsetController extends Controller
 {
+
+    public function json (){
+        return  Datatables::of(Registrasi::where('kode_rs', Auth::user()->kode_rs)->get())->make(true);
+        
+    }
+    
     public function index()
     {
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('registrasis')
         ->select(DB::raw('max(id_aset) as maxIDASET'))
-         ->where('kode_rs', $kodeRs_)
+        ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->maxIDASET;
 
