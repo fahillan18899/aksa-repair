@@ -1,1 +1,0 @@
-*/10	*	*	*	*	wget http://hospital.bdtask.com/demo/Refresh/index

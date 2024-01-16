@@ -21,8 +21,8 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa</h3>
-              <small><strong>Please Log In</strong></small>
+              <h3>Wyasa Sim RS</h3>
+              <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
           <div class="">
@@ -70,7 +70,7 @@
                 <option value="RS0003">RS Panti Wilasa</option>
                 <option value="RS0001">RS Badarudin Kasim Tabalong</option>
                 <option value="RS0005">RSI Pondok Kopi</option>
-                
+                <option value="RS0006">RSUD Temanggung</option>
               </select>
             </div>
             <div class="form-group">

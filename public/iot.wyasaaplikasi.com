@@ -1,1 +1,0 @@
-D:/home/wyak5789/timbangan-bayi/public/
