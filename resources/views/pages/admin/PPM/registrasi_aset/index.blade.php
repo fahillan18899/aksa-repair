@@ -283,35 +283,35 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
-          <table id="table-register" class="table table-bordered table-hover">
+          <table id="table-register" class="datatable table table-striped table-bordered" style="width:100%"">
             <thead class="table-light">
-              <th class="all">Id_Aset</th>
-              <th class="none">Jenis_Alat</th>
-              <th class="all">Nama_Alat</th>
-              <th class="none">Merek</th>
-              <th class="all">Type</th>
+              <th>Id Aset</th>
+              <th>Jenis</th>
+              <th>Nama</th>
+              <th>Merek</th>
+              <th class="none">Type</th>
               <th class="none">Gambar</th>
-              <th class="all">Serial_Number</th>
+              <th class="none">Serial Number</th>
               <th class="none">Ruangan</th>
-              <th class="all">Tanggal_Kalibrasi</th>
+              <th class="none">Tanggal_Kalibrasi</th>
               <th class="none">Distributor</th>
-              <th class="all">Alamat_Distributor</th>
+              <th class="none" >Alamat_Distributor</th>
               <th class="none">TLP_Distributor</th>
-              <th class="all">Email_Distributor</th>
+              <th class="none">Email_Distributor</th>
               <th class="none">Teknisi_Distributor</th>
-              <th class="all">TLP_T_Distributor</th>
+              <th class="none">TLP_T_Distributor</th>
               <th class="none">No_Sertifikat_Kalibrasi</th>
-              <!-- <th>Teknisi PPM</th>
-              <th>Harga Perolehan</th>
-              <th>Sumber_Dana</th>
-              <th>Tahun_Perolehan</th>
-              <th>AKL</th>
-              <th>AKD</th>
-              <th>No._Inventaris </th>
-              <th>umur_alat</th>
-              <th>Jadwal</th>
+              <th class="none">Teknisi PPM</th>
+              <th class="none">Harga Perolehan</th>
+              <th class="none">Sumber_Dana</th>
+              <th class="none">Tahun_Perolehan</th>
+              <th class="none">AKL</th>
+              <th class="none">AKD</th>
+              <th class="none">No_Inventaris </th>
+              <th class="none">umur_alat</th>
+              <th  class="none">Jadwal</th>
               <th>QR</th>
-              <th>Tombol_Aksi_Tabel</th> -->
+              <th>Tombol_Aksi_Tabel</th>
             </thead>
           </table>
         </div>
@@ -334,11 +334,11 @@
               data: 'jenis_alat',
               name: 'Jenis_Alat'
             },
-            {
+           {
               data: 'nama_alat',
               name: 'Nama_Alat'
             },
-            {
+             {
               data: 'merek',
               name: 'Merek'
             },
@@ -352,7 +352,6 @@
               render: function(data, type, full, meta) {
                 return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
               }
-
             },
             {
               data: 'serial_number',
@@ -362,7 +361,7 @@
               data: 'lokasi_alat',
               name: 'Ruangan'
             },
-            {
+             {
               data: 'tanggal_kalibrasi',
               name: 'Tanggal_Kalibrasi'
             },
@@ -392,47 +391,61 @@
             },
             {
               data: 'no_sertifikat_kalibrasi',
-              name: 'DT_RowIndex'
+              name: 'No_Sertifikat_Kalibrasi'
             },
-            // {
-            //   data: 'teknisi_ppm',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'harga_perolehan',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'sumber_dana',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'tahun_perolehan',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'akl',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'akd',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'no_inventaris_1',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'umur_alat',
-            //   name: 'DT_RowIndex'
-            // },
-            // {
-            //   data: 'jadwal_pemeliharaan',
-            //   name: 'DT_RowIndex'
-            // },
+            {
+              data: 'teknisi_ppm',
+              name: 'Teknisi PPM'
+            },
+            {
+              data: 'harga_perolehan',
+              name: 'Harga Perolehan'
+            },
+            {
+              data: 'sumber_dana',
+              name: 'Sumber_Dana'
+            },
+            {
+              data: 'tahun_perolehan',
+              name: 'Tahun_Perolehan'
+            },
+            {
+              data: 'akl',
+              name: 'AKL'
+            },
+            {
+              data: 'akd',
+              name: 'AKD'
+            },
+            {
+              data: 'no_inventaris_1',
+              name: 'No_Inventaris'
+            },
+            {
+              data: 'umur_alat',
+              name: 'umur_alat'
+            },
+            {
+              data: 'jadwal_pemeliharaan',
+              name: 'Jadwal'
+            },
+            {
+              data: 'id_aset',
+              name: 'QR',
+              render: function(data, type, full, meta) {
+                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" +data +"\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
+              }
+            },
+            {
+              data: 'id_aset',
+              name: 'QR',
+              render: function(data, type, full, meta) {
+                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" +data +"\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
+              }
+            },
 
           ]
-        });
+        }).fnDestroy();;
       })
     </script>
 
