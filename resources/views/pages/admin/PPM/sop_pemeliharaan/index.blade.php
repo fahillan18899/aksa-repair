@@ -42,16 +42,13 @@
           <div class="panel-heading no-print d-inline">
             <div class="row">
               <div class="col-md-7">
-
                 <h1>SOP Pemeliharaan</h1>
               </div>
-              <div class="col-md-2">
-                <a href="{{ url('/dashboard/export') }}" class="btn btn-info"> Template Import</a>
-              </div>
               <div class="col-md-3">
-                <form action="{{ url('/dashboard/import') }}" method="post" enctype="multipart/form-data" style="display: flex;">
+                <form action="{{ url('/dashboard/ppm/sop_pemeliharaan', 1) }}" method="post" enctype="multipart/form-data" style="display: flex;">
                   @csrf
-                  <input class="form-control" type="file" name="file">
+                  @method('PUT')
+                  <input class="form-control" type="file" name="sop_pemeliharaan">
                   <button type="submit" class="btn-primary btn">Import</button>
                 </form>
               </div>
@@ -64,7 +61,7 @@
                 <div class="row">
                   <!--  form area -->
                   <div class="col-sm-12">
-                    <embed type="application/pdf" src="{{ url('storage/lap20240109032337.pdf') }}" width="100%" height="1000"></embed>
+                    <embed type="application/pdf" src="{{ url('storage/' . $sopPemeliharaan) }}" width="100%" height="1000"></embed>
                   </div>
                 </div>
               </div>

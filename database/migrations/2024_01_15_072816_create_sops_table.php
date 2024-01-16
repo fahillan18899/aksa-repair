@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('sops', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('sop_pemakaian', 10);
-            $table->string('sop_pemeliharaan', 10);
-            $table->string('sop_perbaikan', 10);
-            $table->string('sop_administrasi', 10);
+            $table->string('sop_pemakaian', 200)->nullable();
+            $table->string('sop_pemeliharaan', 200)->nullable();
+            $table->string('sop_perbaikan', 200)->nullable();
+            $table->string('sop_administrasi', 200)->nullable();
             $table->timestamps();
         });
     }

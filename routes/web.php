@@ -63,6 +63,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/aset_non_alkes', DashboardController::class);
     Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
     Route::resource('/analisis_data', AnalisisDataController::class);
+
+    // menu SOP
     Route::resource('/sop_pemakaian', SOPPemakaianController::class);
     Route::resource('/sop_pemeliharaan', SOPPemeliharaanController::class);
     Route::resource('/sop_perbaikan', SOPPerbaikanController::class);
