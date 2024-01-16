@@ -9,11 +9,6 @@ use App\Models\StockOpname;
 
 class StockOpnameUserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $items = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();

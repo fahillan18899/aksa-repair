@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class AnalisisDataController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $kode_rs = Auth::user()->kode_rs;

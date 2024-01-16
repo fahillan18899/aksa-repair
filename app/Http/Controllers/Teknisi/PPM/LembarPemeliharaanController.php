@@ -24,11 +24,6 @@ class LembarPemeliharaanController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
         $request->validate([    
@@ -95,11 +90,6 @@ class LembarPemeliharaanController extends Controller
 
         return redirect()->route('lembar_pemeliharaan.index')
         ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
-    }
-
-    public function show($id_ppm)
-    {
-       //
     }
 
     public function edit($id_ppm)

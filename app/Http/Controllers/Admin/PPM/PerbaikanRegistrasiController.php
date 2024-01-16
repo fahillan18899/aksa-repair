@@ -136,12 +136,6 @@ class PerbaikanRegistrasiController extends Controller
         ->with('success', 'Data Berhasil Tambahkan.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
 
@@ -159,13 +153,6 @@ class PerbaikanRegistrasiController extends Controller
            
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
@@ -195,15 +182,6 @@ class PerbaikanRegistrasiController extends Controller
         ->with('success', 'Data Berhasil Ubah.');
     }
 
-    /**
-     * undocumented function summary
-     *
-     * Undocumented function long description
-     *
-     * @param Type $var Description
-     * @return type
-     * @throws conditon
-     **/
     public function cetak($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();

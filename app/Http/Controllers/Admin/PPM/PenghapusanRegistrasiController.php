@@ -61,7 +61,6 @@ class PenghapusanRegistrasiController extends Controller
         $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_teregistrasi.update_penghapusan', [
-            
             'alats'        => $alats,
             'item' => $item,
             'teknisis'      => $teknisis,

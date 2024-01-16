@@ -4,28 +4,17 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \App\Models\PerbaikanUnregistrasi;
-use \App\Models\PengirimanUnregistrasi;
-use \App\Models\PengembalianUnregistrasi;
-use \App\Models\PenghapusanUnregistrasi;
 
-class AsetUnregistrasiController extends Controller
+class SOPAdministrasi extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::all();
-        $pengiriman    = PengirimanUnregistrasi::all();
-        $pengembalian  = PengembalianUnregistrasi::all();
-        $penghapusan   = PenghapusanUnregistrasi::all();
-
-        return view('pages.admin.PPM.aset_unregistrasi.index', [
-            
-            'perbaikan'    => $perbaikan,
-            'pengiriman'   => $pengiriman,
-            'pengembalian' => $pengembalian,
-            'penghapusan'  => $penghapusan,
-        
-        ]);
+        return view('pages.admin.PPM.sop_administrasi.index', []);
     }
 
     /**

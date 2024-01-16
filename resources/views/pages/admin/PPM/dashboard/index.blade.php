@@ -29,11 +29,11 @@
           <!-- <span class="info-box-icon"><i class="fa fa-edit"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERGESITRASI" ?></span>
+            <span class="info-box-text"><?= "JUMLAH ALAT TEREGISTRASI" ?></span>
             <span class="info-box-number">{{ $registrasi }}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+              <div class="progress-bar" style="width: <?= $registrasi . '%' ?>"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -54,11 +54,11 @@
           <!-- <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><a href="/dashboard/ppm/aset_teregistrasi/sperpart_perbaikan" style="color: white;"><?= "JUMLAH ASSET PERBAIKAN TERGESITRASI" ?></a></span>
-            <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
+            <span class="info-box-text"><a href="/dashboard/ppm/aset_teregistrasi/sperpart_perbaikan" style="color: white;"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a></span>
+            <span class="info-box-number">{{ $perbaikanRegistrasi  }}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+              <div class="progress-bar" style="width: <?= $perbaikanRegistrasi. '%' ?>"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -81,12 +81,12 @@
           <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" // display('free_bed_list') 
+            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI" // display('free_bed_list') 
                                         ?></span>
             <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+              <div class="progress-bar" style="width: <?= $perbaikanUnregistrasi.'%' ?>"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -112,7 +112,7 @@
             <span class="info-box-number">{{ $registrasiKalBar }}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+              <div class="progress-bar" style="width: <?= $registrasiKalBar . '%' ?>"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>

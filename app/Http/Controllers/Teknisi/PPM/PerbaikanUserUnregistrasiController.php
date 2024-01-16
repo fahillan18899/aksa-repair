@@ -10,18 +10,12 @@ use \App\Models\PengembalianUnregistrasi;
 use \App\Models\PenghapusanUnregistrasi;
 use Illuminate\Support\Facades\DB;
 use App\Models\Alat;
-use App\Models\Registrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
 use Illuminate\Support\Facades\Auth;
 
 class PerbaikanUserUnregistrasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -61,12 +55,6 @@ class PerbaikanUserUnregistrasiController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -92,22 +80,8 @@ class PerbaikanUserUnregistrasiController extends Controller
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanUnregistrasi::create($request->post());
       
-
-        
-
         return redirect('/dashboard_teknisi/perbaikan_unregistrasi')
         ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function cetak($id)

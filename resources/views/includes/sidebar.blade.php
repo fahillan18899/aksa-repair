@@ -354,6 +354,22 @@
           <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}"><a href="/dashboard/ppm/operator">Operator</a></li>
           <li class="{{ request()->is('dashboard/ppm/stock_opname') ? 'active' : '' }}"><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
           <li class="{{ request()->is('dashboard/ppm/analisis_data') ? 'active' : '' }}"><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
+
+          <li class="treeview ">
+            <a href="#">
+              <i class=""></i> <span>SOP</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class=""><a href="/dashboard/ppm/sop_pemakaian">SOP Pemakaian</a></li>
+              <li class=""><a href="/dashboard/ppm/sop_pemeliharaan">SOP Pemeliharaan</a></li>
+              <li class=""><a href="/dashboard/ppm/sop_perbaikan">SOP Perbaikan</a></li>
+              <li class=""><a href="/dashboard/ppm/sop_administrasi">SOP Administrasi</a></li>
+
+            </ul>
+          </li>
         </ul>
       </li>
 
