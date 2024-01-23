@@ -5,20 +5,22 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\JadwalPemeliharaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class JadwalPemeliharaanController extends Controller
 {
     public function index()
     {
-        $items = JadwalPemeliharaan::all();
+        $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
+        dd($items);
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', ['items' => $items]);
     }
 
     public function state()
     {
-        $items = JadwalPemeliharaan::all();
+        $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
         $states = DB::table("registrasis")->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', [
