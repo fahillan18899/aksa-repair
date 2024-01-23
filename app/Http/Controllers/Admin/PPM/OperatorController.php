@@ -21,7 +21,7 @@ class OperatorController extends Controller
         $request->validate([
             'username' => 'required|unique:users|max:255',
             'password' => 'required|min:5',
-            'user_role' => 'numeric',
+            'user_role' => '',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         User::create($request->post());
