@@ -13,7 +13,6 @@ class JadwalPemeliharaanController extends Controller
     public function index()
     {
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        dd($items);
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', ['items' => $items]);
     }
@@ -33,14 +32,14 @@ class JadwalPemeliharaanController extends Controller
     public function city($id)
     {
         $cities = DB::table("registrasis")
-        ->where("lokasi_alat", $id)
+        ->where("lokasi_alat", $id)->where('kode_rs', Auth::user()->kode_rs)->get()
             ->pluck('nama_alat', 'id_aset');
         return json_encode($cities);
     }
 
     public function updateStatus($id)
     {
-        $item = JadwalPemeliharaan::where('id', $id)->first();
+        $item = JadwalPemeliharaan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->get()->first();
         if ($item) {
             if ($item->status == '0') {
                 $item->status = '1';
