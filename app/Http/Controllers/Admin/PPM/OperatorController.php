@@ -43,7 +43,7 @@ class OperatorController extends Controller
     {
         $request->validate(['username' => 'max:255',
             'password' => 'min:5',
-            'user_role' => 'numeric',
+            'user_role' => '',
         ]);
         $operator = User::findOrFail($id);
         $operator->update($request->all());

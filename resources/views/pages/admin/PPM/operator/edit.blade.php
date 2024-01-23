@@ -46,8 +46,8 @@
                      <label for="user_role" class="col-xs-3 col-form-label">Level user </label>
                      <div class="col-xs-9">
                        <select name="user_role" class="form-control" id="user_role">
-                         <option value="9">User</option>
-                         <option value="8">Teknisi</option>
+                         <option value="user">User</option>
+                         <option value="teknisi">Teknisi</option>
                        </select>
                      </div>
                    </div>
