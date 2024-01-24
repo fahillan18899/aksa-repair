@@ -303,6 +303,14 @@
             <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
             <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"></i></a>
+
+            <form action="{{ route('perbaikan_teregistrasi.destroy',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
 
@@ -571,7 +579,14 @@
           <td>
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-
+            
+            <form action="" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
 

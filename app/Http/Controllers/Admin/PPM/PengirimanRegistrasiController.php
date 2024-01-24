@@ -97,4 +97,13 @@ class PengirimanRegistrasiController extends Controller
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_teregistrasi.cetak_pengiriman', compact('item'));
     }
+
+    public function destroy($id)
+    {
+
+        $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_teregistrasi')->with('success', 'Data Berhasil Di Hapus.');
+    }
 }
