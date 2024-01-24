@@ -116,4 +116,13 @@ class PengembalianRegistrasiController extends Controller
         $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_teregistrasi.cetak_pengembalian', compact('item'));
     }
+
+    public function destroy($id)
+    {
+
+        $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_teregistrasi')->with('success', 'Data Berhasil Di Hapus.');
+    }
 }

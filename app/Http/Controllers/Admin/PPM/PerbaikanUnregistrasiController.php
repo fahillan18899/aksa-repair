@@ -186,5 +186,13 @@ class PerbaikanUnregistrasiController extends Controller
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_unregistrasi.cetak_perbaikan', compact('item'));
     }
+
+    public function destroy($id)
+    {
+        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
+    }
 }
 

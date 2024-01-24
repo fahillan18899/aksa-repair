@@ -106,21 +106,22 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // perbaikansan aset teregistrasi
     Route::get('/update_perbaikan/{id}/edit', [PerbaikanRegistrasiController::class, 'edit'])->name('update_perbaikan.edit');
     Route::put('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
-    Route::delete('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
     Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
+    Route::delete('/perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
 
     // Pengiriman Aset Teregistrasi
     Route::post('/tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
     Route::get('/update_pengiriman/{id}/edit', [PengirimanRegistrasiController::class, 'edit'])->name('update_pengiriman.edit');
     Route::put('/update_pengiriman/{id}', [PengirimanRegistrasiController::class, 'update'])->name('update_pengiriman.update');
     Route::get('/aset_teregistrasi/cetak_pengiriman/{id}', [PengirimanRegistrasiController::class, 'cetak']);
-    Route::delete('/aset_teregistrasi/{id}', [PengirimanRegistrasiController::class, 'destroy'])->name('aset_teregistrasi.delete');
+    Route::delete('/pengiriman_teregistrasi/{id}', [PengirimanRegistrasiController::class, 'destroy']);
 
     // pengembalian Aset Teregistrasi
     Route::post('/tambah_pengembalian', [PengembalianRegistrasiController::class, 'store']);
     Route::get('/update_pengembalian/{id}/edit', [PengembalianRegistrasiController::class, 'edit'])->name('update_pengembalian.edit');
     Route::put('/update_pengembalian/{id}', [PengembalianRegistrasiController::class, 'update'])->name('update_pengembalian.update');
     Route::get('/aset_teregistrasi/cetak_pengembalian/{id}', [PengembalianRegistrasiController::class, 'cetak']);
+    Route::delete('/pengembalian_teregistrasi/{id}', [PengembalianRegistrasiController::class, 'destroy']);
 
     // Penghapusan Aset Teregistrasi
     Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
@@ -139,18 +140,21 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/aset_unregistrasi/edit_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'update'])->name('update_perbaikan_un.update');
     Route::post('/tambah_unregistrasi', [PerbaikanUnregistrasiController::class, 'store']);/*fungsi tambah*/
     Route::get('/aset_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'cetak']);/*fungsi print*/
+    Route::delete('/perbaikan_unegistrasi/{id}', [PerbaikanUnregistrasiController::class, 'destroy']);
 
     //  pengiriman unregistrasi
     Route::post('/tambah_pengiriman_un', [PengirimanUnregistrasiController::class, 'store']);/*fungsi tambah*/
     Route::get('/aset_unregistrasi/edit_pengiriman/{id}/edit', [PengirimanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
     Route::put('/aset_unregistrasi/edit_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'update'])->name('update_pengiriman_un.update');
     Route::get('/aset_unregistrasi/cetak_pengiriman/{id}', [PengirimanUnregistrasiController::class, 'cetak']);/*fungsi print*/
+    Route::delete('/pengiriman_unegistrasi/{id}', [PengirimanUnregistrasiController::class, 'destroy']);
 
     // pengembalian unregistrasi
     Route::post('/tambah_pengembalian_un', [PengembalianUnregistrasiController::class, 'store']);/*fungsi tambah*/
     Route::get('/aset_unregistrasi/edit_pengembalian/{id}/edit', [PengembalianUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
     Route::put('/aset_unregistrasi/edit_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'update'])->name('update_pengembalian_un.update');
     Route::get('/aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']);/*fungsi print*/
+    Route::delete('/pengembalian_unegistrasi/{id}', [PengembalianUnregistrasiController::class, 'destroy']);
 
     // penghapusan unregistrasi
     Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);

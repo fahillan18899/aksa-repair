@@ -39,7 +39,7 @@ class PengembalianUnregistrasiController extends Controller
             'nama_alat_un' => '',
             'peneriama_alat_un' => '',
             'merek_alat_un' => '',
-            'ka_instalasi_un' => '',
+            'ka_instalasi_un' => 'required',
             'type_alat_un' => '',
             'teknisi_1_un' => '',
             'serial_number_un' => '',
@@ -57,6 +57,8 @@ class PengembalianUnregistrasiController extends Controller
             'hasil_verifikasi_un' => '',
             'kode_rs' => '',
             'active' => '',
+        ], [
+            'ka_instalasi_un.required' => 'KA Instalasi Harus Diisi',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         PengembalianUnregistrasi::create($request->post());
@@ -120,6 +122,14 @@ class PengembalianUnregistrasiController extends Controller
     {
         $item = PengembalianUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_unregistrasi.cetak_pengembalian', compact('item'));
+    }
+
+    public function destroy($id)
+    {
+        $item = PengembalianUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
 
 }

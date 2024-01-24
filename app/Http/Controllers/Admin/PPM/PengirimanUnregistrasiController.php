@@ -42,7 +42,7 @@ class PengirimanUnregistrasiController extends Controller
             'merek_alat_un' => '',
             'type_alat_un' => '',
             'serial_number_un' => '',
-            'lokasi_alat_un' => '',
+            'lokasi_alat_un' => 'required',
             'pelapor_un' => 'required',
             'keterangan_un' => 'required',
             'teknisi_1_un' => '',
@@ -57,7 +57,8 @@ class PengirimanUnregistrasiController extends Controller
             'active' => '',
         ], [
             'pelapor_un.required' => 'Pelapor Tidak Boleh Kosong',
-            'keterangan_un.required' => 'Keterangan Tidak Boleh Kosong'
+            'keterangan_un.required' => 'Keterangan Tidak Boleh Kosong',
+            'lokasi_alat_un.required' => 'Lokasi Alat Tidak Boleh Kosong',
             ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         PengirimanUnregistrasi::create($request->post());
@@ -96,9 +97,9 @@ class PengirimanUnregistrasiController extends Controller
             'lokasi_alat_un' => '',
             'pelapor_un' => '',
             'keterangan_un' => '',
-            'teknisi_1_un' => '',
-            'teknisi_2_un' => '',
-            'teknisi_3_un' => '',
+            'teknisi_1_un' => 'required',
+            'teknisi_2_un' => 'required',
+            'teknisi_3_un' => 'required',
             'nama_rekanan_un' => '',
             'alamat_rekanan_un' => '',
             'teknisi_rekanan_un' => '',
@@ -119,5 +120,13 @@ class PengirimanUnregistrasiController extends Controller
     {
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.admin.PPM.aset_unregistrasi.cetak_pengiriman', compact('item'));
+    }
+
+    public function destroy($id)
+    {
+        $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
 }

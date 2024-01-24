@@ -304,7 +304,7 @@
 
             <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"></i></a>
 
-            <form action="{{ route('perbaikan_teregistrasi.destroy',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+            <form action="{{ url('/dashboard/ppm/perbaikan_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -579,8 +579,8 @@
           <td>
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-            
-            <form action="" method="POST" class="d-inline">
+
+            <form action="{{ url('/dashboard/ppm/pengiriman_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
               @csrf
               @method('DELETE')
               <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -692,7 +692,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="penerima_reg" class="col-xs-3 col-form-label">peneriman</label>
+                    <label for="penerima_reg" class="col-xs-3 col-form-label">Penerima</label>
                     <div class="col-xs-9">
                       <input name="penerima_reg" type="text" class="form-control" id="penerima_reg2" placeholder="penerima" value="">
                     </div>
@@ -887,6 +887,13 @@
           <td>
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <form action="{{ url('/dashboard/ppm/pengembalian_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
 

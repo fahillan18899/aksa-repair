@@ -100,7 +100,6 @@ class PengirimanRegistrasiController extends Controller
 
     public function destroy($id)
     {
-
         $item = PengirimanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();

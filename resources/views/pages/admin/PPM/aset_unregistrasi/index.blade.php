@@ -246,6 +246,14 @@
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+
+            <form action="{{ url('/dashboard/ppm/perbaikan_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
         @empty
@@ -465,6 +473,13 @@
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengiriman/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <form action="{{ url('/dashboard/ppm/pengiriman_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
         @empty
@@ -578,7 +593,7 @@
                   <div class="form-group row">
                     <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un2" placeholder="Lokasi Alat" value="" readonly>
+                      <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un2" placeholder="Lokasi Alat" value="">
                     </div>
                   </div>
 
@@ -718,8 +733,14 @@
           <td><?php echo $item['hasil_verifikasi_un']  ?></td>
           <td>
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengembalian/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-
             <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <form action="{{ url('/dashboard/ppm/pengembalian_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                <i class="fa fa-trash "></i>
+              </button>
+            </form>
           </td>
         </tr>
         @empty
