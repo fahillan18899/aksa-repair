@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nama_alat');
             $table->date('jadwal');
             $table->string('status', 4)->default('1');
+            $table->string('kode_rs', 8)->nullable();
             $table->timestamps();
         });
     }

@@ -21,8 +21,9 @@ class OperatorController extends Controller
         $request->validate([
             'username' => 'required|unique:users|max:255',
             'password' => 'required|min:5',
-            'user_role' => 'numeric',
+            'user_role' => '',
         ]);
+        $request['password'] = bcrypt($request->input('password'));
         $request['kode_rs'] = Auth::user()->kode_rs;
         User::create($request->post());
 
@@ -43,8 +44,9 @@ class OperatorController extends Controller
     {
         $request->validate(['username' => 'max:255',
             'password' => 'min:5',
-            'user_role' => 'numeric',
+            'user_role' => '',
         ]);
+        $request['password'] = bcrypt($request->input('password'));
         $operator = User::findOrFail($id);
         $operator->update($request->all());
         return redirect()->route('operator.index')

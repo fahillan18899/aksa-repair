@@ -5,21 +5,22 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\JadwalPemeliharaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class JadwalPemeliharaanController extends Controller
 {
     public function index()
     {
-        $items = JadwalPemeliharaan::all();
+        $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', ['items' => $items]);
     }
 
     public function state()
     {
-        $items = JadwalPemeliharaan::all();
-        $states = DB::table("registrasis")->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
+        $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $states = DB::table("registrasis")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', [
 
@@ -31,14 +32,14 @@ class JadwalPemeliharaanController extends Controller
     public function city($id)
     {
         $cities = DB::table("registrasis")
-        ->where("lokasi_alat", $id)
+        ->where("lokasi_alat", $id)->where('kode_rs', Auth::user()->kode_rs)
             ->pluck('nama_alat', 'id_aset');
         return json_encode($cities);
     }
 
     public function updateStatus($id)
     {
-        $item = JadwalPemeliharaan::where('id', $id)->first();
+        $item = JadwalPemeliharaan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         if ($item) {
             if ($item->status == '0') {
                 $item->status = '1';

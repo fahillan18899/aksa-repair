@@ -48,7 +48,7 @@
                    <div class="form-group row">
                      <label for="password" class="col-xs-3 col-form-label">Password <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="password" type="text" class="form-control" id="password" placeholder="Password" value="">
+                       <input name="password" type="password" class="form-control" id="password" placeholder="Password" value="">
                      </div>
                    </div>
 

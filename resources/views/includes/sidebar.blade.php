@@ -354,7 +354,7 @@
           <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}"><a href="/dashboard/ppm/operator">Operator</a></li>
           <li class="{{ request()->is('dashboard/ppm/stock_opname') ? 'active' : '' }}"><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
           <li class="{{ request()->is('dashboard/ppm/analisis_data') ? 'active' : '' }}"><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
-
+          @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0006" )
           <li class="treeview ">
             <a href="#">
               <i class=""></i> <span>SOP</span>
@@ -372,7 +372,7 @@
           </li>
         </ul>
       </li>
-
+      @endif
 
 
     </ul>

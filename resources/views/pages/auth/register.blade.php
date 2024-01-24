@@ -21,8 +21,9 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa SIMRS</h3>
-              <small><strong>Please Log In</strong></small>
+              <h3>Wyasa Sim RS</h3>
+              <small>Silahkan Datang di <strong>Wyasa Sim RS</strong></small>
+              <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
           <div class="">
@@ -37,8 +38,6 @@
               </ul>
             </div>
             @endif
-
-
           </div>
         </div>
 
@@ -66,13 +65,13 @@
                 <option value="RS0003">RS Panti Wilasa</option>
                 <option value="RS0001">RS Badarudin Kasim Tabalong</option>
                 <option value="RS0005">RSI Pondok Kopi</option>
+                <option value="RS0006">RSUD Temanggung</option>
               </select>
             </div>
             <div class="form-group">
               <label class="control-label" for="user_role">Peran Pengguna</label>
               <select name="user_role" class="form-control" id="user_role">
                 <option value="">Select Peran Pengguna</option>
-                <option value="admin">Admin</option>
                 <option value="teknisi">Teknisi</option>
                 <option value="user">User</option>
               </select>
