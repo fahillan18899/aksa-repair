@@ -59,7 +59,7 @@
                 <th class="none">Ruangan</th>
                 <th class="none">Tanggal_Kalibrasi</th>
                 <th class="none">Distributor</th>
-                <th class="none" >Alamat_Distributor</th>
+                <th class="none">Alamat_Distributor</th>
                 <th class="none">TLP_Distributor</th>
                 <th class="none">Email_Distributor</th>
                 <th class="none">Teknisi_Distributor</th>
@@ -73,7 +73,7 @@
                 <th class="none">AKD</th>
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
-                <th  class="none">Jadwal</th>
+                <th class="none">Jadwal</th>
                 <th>QR</th>
                 <th>Tombol_Aksi_Tabel</th>
               </thead>
@@ -92,114 +92,115 @@
           serverSide: true,
           ajax: '{{ url('/dashboard/ppm/aset') }}',
           columns: [{
-              data: 'id_aset',
-              name: 'Id_Aset'
+              data: 0,
+              name: 'Id_Aset',
+              orderable: true,
+              searchable: true
             },
             {
-              data: 'jenis_alat',
+              data: 1,
               name: 'Jenis_Alat'
             },
-           {
-              data: 'nama_alat',
+            {
+              data: 2,
               name: 'Nama_Alat'
             },
-             {
-              data: 'merek',
+            {
+              data: 3,
               name: 'Merek'
             },
             {
-              data: 'type',
+              data: 4,
               name: 'Type'
             },
             {
-              data: 'gambar',
+              data: 5,
               name: 'Gambar',
               render: function(data, type, full, meta) {
                 return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
               }
             },
             {
-              data: 'serial_number',
+              data: 6,
               name: 'Serial_Number'
             },
             {
-              data: 'lokasi_alat',
-              name: 'Ruangan'
+              data: 7,
+              name: 'lokasi_alat'
             },
-             {
-              data: 'tanggal_kalibrasi',
+            {
+              data: 8,
               name: 'Tanggal_Kalibrasi'
             },
             {
-              data: 'distributor',
+              data: 9,
               name: 'Distributor'
             },
             {
-              data: 'alamat_distributor',
+              data: 10,
               name: 'Alamat_Distributor'
             },
             {
-              data: 'tlp_distributor',
+              data: 11,
               name: 'TLP_Distributor'
             },
             {
-              data: 'email_distributor',
+              data: 12,
               name: 'Email_Distributor'
             },
             {
-              data: 'teknisi_distributor',
+              data: 13,
               name: 'Teknisi_Distributor'
             },
             {
-              data: 'tlp_t_distributor',
+              data: 14,
               name: 'TLP_T_Distributor'
             },
             {
-              data: 'no_sertifikat_kalibrasi',
+              data: 15,
               name: 'No_Sertifikat_Kalibrasi'
             },
             {
-              data: 'teknisi_ppm',
-              name: 'Teknisi PPM'
+              data: 16,
+              name: 'teknisi_ppm'
             },
             {
-              data: 'harga_perolehan',
-              name: 'Harga Perolehan'
+              data: 17,
+              name: 'harga_perolehan'
             },
             {
-              data: 'sumber_dana',
+              data: 18,
               name: 'Sumber_Dana'
             },
             {
-              data: 'tahun_perolehan',
+              data: 19,
               name: 'Tahun_Perolehan'
             },
             {
-              data: 'akl',
+              data: 20,
               name: 'AKL'
             },
             {
-              data: 'akd',
+              data: 21,
               name: 'AKD'
             },
             {
-              data: 'no_inventaris_1',
-              name: 'No_Inventaris'
+              data: 22,
+              name: 'no_inventaris_1'
             },
             {
-              data: 'umur_alat',
+              data: 23,
               name: 'umur_alat'
             },
             {
-              data: 'jadwal_pemeliharaan',
-              name: 'Jadwal'
+              data: 24,
+              name: 'jadwal_pemeliharaan'
             },
             {
-              data: 'id_aset',
-              name: 'QR',
+              data: 0,
               render: function(data, type, full, meta) {
                 return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-xs\"> <i class=\"fa fa-edit\"></i> </a>
+                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
                 <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
                             @csrf
                             @method('delete')
@@ -210,19 +211,18 @@
               }
             },
             {
-              data: 'id_aset',
+              data: 0,
               name: 'QR',
               render: function(data, type, full, meta) {
-                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" +data +"\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
+                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
               }
             },
 
-          ]
-        }).fnDestroy();;
+          ],
+        }).fnDestroy();
       })
     </script>
 
-    </div> <!-- /.content -->
-  </div> <!-- /.content-wrapper -->
-</div>
-  @endsection
+  </div> <!-- /.content -->
+</div> <!-- /.content-wrapper -->
+@endsection
