@@ -31,6 +31,9 @@
                 <div class="btn-group">
                   <a class="btn btn-success" href="/dashboard/ppm/registrasi"> <i class="fa fa-plus"></i> Add Alat </a>
                 </div>
+                <div class="btn-group">
+                  <a class="btn btn-primary" href="/dashboard/ppm/data_inventaris/qr_qode/1"> <i class="fa fa-qrcode"></i> Buat QR </a>
+                </div>
               </div>
               <div class="col-md-2">
                 <a href="{{ url('/dashboard/export') }}" class="btn btn-info"> Template Import</a>
@@ -74,8 +77,8 @@
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
                 <th  class="none">Jadwal</th>
-                <th>QR</th>
                 <th>Tombol_Aksi_Tabel</th>
+                <!-- <th>QR</th> -->
               </thead>
             </table>
           </div>
@@ -209,13 +212,13 @@
                           </form>`
               }
             },
-            {
+            /*{
               data: 'id_aset',
               name: 'QR',
               render: function(data, type, full, meta) {
                 return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" +data +"\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
               }
-            },
+            },*/
 
           ]
         }).fnDestroy();;

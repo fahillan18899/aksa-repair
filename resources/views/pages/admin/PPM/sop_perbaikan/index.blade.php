@@ -45,7 +45,7 @@
                 <h1>SOP Perbaikan</h1>
               </div>
               <div class="col-md-3">
-                <form action="{{ url('/dashboard/ppm/sop_perbaikan', 1) }}" method="post" enctype="multipart/form-data" style="display: flex;">
+                <form action="{{ route('sop_perbaikan.update', 1) }}" method="post" enctype="multipart/form-data" style="display: flex;">
                   @csrf
                   @method('PUT')
                   <input class="form-control" type="file" name="sop_perbaikan">
@@ -62,7 +62,7 @@
                   <!--  form area -->
                   <div class="col-sm-12">
                     @if($sopPerbaikan)
-                    <embed type="application/pdf" src="{{ url('storage/' . $sopPerbaikan) }}" width="100%" height="1000"></embed>
+                    <embed type="application/pdf" src="{{ url('storage/' . $sopPerbaikan['sop_perbaikan']) }}" width="100%" height="1000"></embed>
                     @endif
                   </div>
                 </div>

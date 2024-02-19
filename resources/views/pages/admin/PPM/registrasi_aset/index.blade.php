@@ -68,12 +68,19 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="{{ $kodeAset }}" readonly>
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
                     </div>
                   </div>
+                <div class="form-group row">
+                    <label for="qr_code" class="col-xs-3 col-form-label"> QR Code</label>
+                  <div class="col-xs-9">
+                    <input name="qr_code" type="text" class="form-control" id="firstname" placeholder="Qr Code" value="">
+                  </div>
+                </div>
+                  
 
                   <div class="form-group row">
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i></label>
@@ -311,8 +318,8 @@
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
                 <th  class="none">Jadwal</th>
-                <th>QR</th>
                 <th>Tombol_Aksi_Tabel</th>
+                <th>QR</th>
               </thead>
             </table>
           </div>
@@ -435,12 +442,12 @@
               data: 'id_aset',
               name: 'QR',
               render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
+                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i></button></a>
                 <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
                 <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
                             @csrf
                             @method('delete')
-                            <button class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
+                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
                               <i class=\"fa fa-trash\"></i>
                             </button>
                           </form>`

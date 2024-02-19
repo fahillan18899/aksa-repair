@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use League\CommonMark\Extension\Table\TableExtension;
 
 return new class extends Migration
 {
@@ -14,7 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('registrasis', function (Blueprint $table) {
-            $table->string('id_aset')->primary();;
+            $table->string('id_aset')->primary();
+            $table->string('qr_code');
             $table->string('jenis_alat');
             $table->string('nama_alat');
             $table->string('merek');

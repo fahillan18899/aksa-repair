@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('kegiatan',20)->nullable();
             $table->string('engineer',20)->nullable();
             $table->string('id_aset',40)->nullable();
+            $table->string('qr_code',100)->nullable();
             $table->string('nama_alat',20)->nullable();
             $table->string('serial_number',10)->nullable();
             $table->string('merek',20)->nullable();
