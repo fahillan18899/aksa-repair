@@ -12,7 +12,6 @@ use App\Models\Registrasi;
 use App\Models\Ruangan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
  use DataTables;
 
@@ -20,7 +19,9 @@ class RegistrasiAsetController extends Controller
 {
 
     public function json (){
-        return  Datatables::of(Registrasi::where('kode_rs', Auth::user()->kode_rs)->get())->make(true);
+         $b = Registrasi::query()->select(['id_aset', 'jenis_alat','nama_alat','merek','type','gambar','serial_number','lokasi_alat','tanggal_kalibrasi','distributor', 'distributor','alamat_distributor','tlp_distributor','email_distributor','teknisi_distributor','tlp_t_distributor','no_sertifikat_kalibrasi','teknisi_ppm','harga_perolehan','sumber_dana','tahun_perolehan','akl','akd','no_inventaris_1','umur_alat','jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
+         $c = Datatables::eloquent($b)->make(false);
+        return $c;
         
     }
     
