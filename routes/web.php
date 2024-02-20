@@ -195,6 +195,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/aset', [RegistrasiAsetController::class, 'json'])->name('aa');
 
   });
+
+  // menu generate QR
+  Route::get('genarete_qr', [DashboardController::class, "qrGen"]);
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {

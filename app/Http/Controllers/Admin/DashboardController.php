@@ -11,4 +11,9 @@ class DashboardController extends Controller
     {
         return view('pages.admin.home');
     }
+
+    function qrGen()
+    {
+        return view('pages.admin.qr_code');
+    }
 }
