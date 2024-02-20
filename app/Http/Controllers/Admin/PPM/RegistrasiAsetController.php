@@ -30,16 +30,17 @@ class RegistrasiAsetController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('registrasis')
-        ->select(DB::raw('max(id_aset) as maxIDASET'))
+        ->select(DB::raw('max(qr_code) as maxIDASET'))
         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->maxIDASET;
 
-        $urutan = (int)substr($kodeAset, 12, 13);
+        $urutan = (int)substr($kodeAset, 3, 4);
         $urutan++;
 
-        $date  = date('ymd');
-        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
+        $string = "QR";
+
+        $kodeAset  = $string  . sprintf("%04s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -55,7 +56,8 @@ class RegistrasiAsetController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_aset' => 'required',
+            'id_aset' => 'required|unique:registrasis',
+            'qr_code' => '',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
             'merek' => 'required',
@@ -86,7 +88,8 @@ class RegistrasiAsetController extends Controller
         ], [
             'gambar.image' => 'Yang diupload bukan gambar',
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
-            'gambar.max' => 'Ukuran Gambar Maksimal 4MB'
+            'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
+            'id_aset.unique' => 'Id Sudah Digunakan'
         ]);
 
         if (isset($data['gambar'])) {
@@ -117,6 +120,7 @@ class RegistrasiAsetController extends Controller
             'kegiatan' => 'Pemelihraan',
             'engineer' => '',
             'id_aset' => $data['id_aset'],
+            'qr_code' => '',
             'nama_alat' => $data['nama_alat'],
             'serial_number' => $data['serial_number'],
             'merek' => $data['merek'],

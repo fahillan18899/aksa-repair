@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\PPM\SOPPemakaianController;
 use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\SOPPerbaikanController;
 use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
+use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
@@ -62,6 +63,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/aset_unregistrasi', AsetUnregistrasiController::class);
     Route::resource('/aset_non_alkes', DashboardController::class);
     Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
+    Route::resource('/scanner_qr', ScannerQrController::class);
     Route::resource('/analisis_data', AnalisisDataController::class);
 
     // menu SOP
