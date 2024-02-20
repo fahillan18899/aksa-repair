@@ -54,19 +54,20 @@
  <div class="d-flex flex-row bd-highlight">
   <?php
 
-  function generateQRCode($i)
+  function generateQRCode($i, $item)
   {
    return '<div class="bd-highlight" >
           <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate(base_convert('W24' . $i, 10, 36))) . '">
-          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b>W24' . $i . '</b></p>
+          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b>W24' . $item .  $i . '</b></p>
          </div>';
   }
+  
 
   $row_counter = 1;
 
-  for ($i = 1; $i <= 2; $i++) : ?>
+  for ($i = $item['angka_awal']; $i <= $item['angka_akhir']; $i++) : ?>
 
-   <?php echo generateQRCode($i); ?>
+   <?php echo generateQRCode($i, $item['kode']); ?>
 
    <?php
    if ($row_counter % 4 == 0) {

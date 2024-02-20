@@ -200,6 +200,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
   // menu generate QR
   Route::get('genarete_qr', [DashboardController::class, "qrGen"]);
+  Route::get('create-generete-qr', [DashboardController::class, "createQrGen"]);
+  Route::post('create-generete-qr', [DashboardController::class, "storeQrGen"]);
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
