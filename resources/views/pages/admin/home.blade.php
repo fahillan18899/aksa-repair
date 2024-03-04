@@ -1,21 +1,23 @@
 @extends('layouts.admin')
+@if (Auth::user()->kode_rs == "RS0004")
 @push('prepend-style')
 <!-- xzoom -->
-  <!--Boostrap5-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<!--Boostrap5-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
+@endif
 @section('content')
 <style>
-        .c-item {
-        height: 480px;
-      }
-    
-      .c-img {
-        height: 100%;
-        object-fit: cover;
-        filter: brightness(0.6);
-      }
+  .c-item {
+    height: 480px;
+  }
+
+  .c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
 </style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -30,13 +32,13 @@
     </div>
   </section>
   <!-- /.content-header -->
-    @if( Auth::user()->kode_rs == "RS0004") 
-<!--Slide-->
-<div class="mb-5">
+  @if( Auth::user()->kode_rs == "RS0004")
+  <!--Slide-->
+  <div class="mb-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active c-item">
-          <img src="{{asset('/assets/images/rsc/cilegon7.png') }}"  class="d-block w-100 c-img" alt="...">
+          <img src="{{asset('/assets/images/rsc/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
           <img src="{{ asset('/assets/images/rsc/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
@@ -61,8 +63,8 @@
       </button>
     </div>
   </div>
-<!--Slide-->
-@endif
+  <!--Slide-->
+  @endif
   <!-- Main content -->
   <div class="content">
     <div class="row">
@@ -221,108 +223,71 @@
       </div>
       <?php // } 
       ?>
-    </div>
-
-    <div class="row">
-      <!-- Total Product Sales area -->
-      <?php
-      //if ($this->permission->method('graph', 'read')->access()) {
-      ?>
-      <div class="col-lg-8">
-        <div class="panel panel-default" id="js-timer">
-          <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Total Progress"
-                  ?></h3>
-              <span><?= "Menampilkan status dari tahun lalu" // display('last_year_status') 
-                    ?></span>
-
-            </div>
-            <canvas id="lineChart" height="170"></canvas>
-
-          </div> <!-- /.panel-body -->
-        </div>
-      </div>
-      <?php //} 
-      ?>
-
-      <!-- Message area -->
-      <?php
-      //if ($this->permission->method('enquiry', 'read')->access()) {
-      ?>
-      <div class="col-lg-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3><?= "Pertanyaan" // display('enquiry') 
-                ?></h3>
-            <span><?= "Permintaan Terbaru" // display('latest_enquiry') 
-                  ?></span>
-          </div>
-          <div class="panel-body">
-            <div class="message_inner">
-              <?php if (!empty($enquires)) {  ?>
-                <?php foreach ($enquires as $enquiry) {  ?>
-                  <a href="<?php // echo base_url("enquiry/view/$enquiry->enquiry_id") 
-                            ?>">
-                    <div class="inbox-item">
-                      <strong class="inbox-item-author"><?php // echo $enquiry->name; 
-                                                        ?></strong>
-                      <span class="inbox-item-date"></span>
-                      <p class="inbox-item-text"><?php // echo character_limiter(strip_tags($enquiry->enquiry), 70); 
-                                                  ?></p>
-                    </div>
-                  </a>
-                <?php } ?>
-              <?php } ?>
-            </div>
-          </div>
-        </div>
-      </div>
-      <?php //} 
-      ?>
-      <!-- /.row -->
     </div> <!-- /.row -->
 
     <div class="row">
-      <!-- Total Product Sales area -->
-      <?php
-      // if ($this->permission->method('patient_list', 'read')->access() && $this->permission->method('appointment_list', 'read')->access()) {
-      ?>
+
       <div class="col-lg-8">
         <div class="panel panel-default" style="height: 505px !important;">
+          <div class="panel-heading">
+            <h3>Daftar pasien hari ini</h3>
+          </div>
           <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Daftar pasien hari ini"  // display('today_patient_list') 
-                  ?></h3>
-            </div>
             <div class="table-wrapper-scroll-y">
               <!-- today patient list -->
               <table width="100%" class="table table-striped table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th><?php echo 'id_no' ?></th>
-                    <th><?php echo 'Nama Depan' ?></th>
-                    <th><?php echo 'Nama Belkang' ?></th>
-                    <th><?php echo 'Nomor Ponsel' ?></th>
-                    <th><?php echo 'Jenis Kelamin' ?></th>
-                    <th><?php echo 'Golongan Darah' ?></th>
-                    <th><?php echo 'Tindakan' ?></th>
+                    <th>idno</th>
+                    <th>Nama Depan</th>
+                    <th>Nama Belkang</th>
+                    <th>Nomor Ponsel</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Golongan Darah</th>
+                    <th>Tindakan</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                  $lastPatient = [
+                    [
+                      "patient_id" => "1",
+                      "firstname" => "John",
+                      "lastname" => "Doe",
+                      "mobile" => "1234567890",
+                      "sex" => "L",
+                      "blood_group" => "A+"
+                    ],
+                    [
+                      "patient_id" => "2",
+                      "firstname" => "John",
+                      "lastname" => "Doe",
+                      "mobile" => "1234567890",
+                      "sex" => "L",
+                      "blood_group" => "A+"
+                    ],
+                    [
+                      "patient_id" => "3",
+                      "firstname" => "John",
+                      "lastname" => "Doe",
+                      "mobile" => "1234567890",
+                      "sex" => "L",
+                      "blood_group" => "O"
+                    ],
+                  ]
+                  ?>
                   <?php if (!empty($lastPatient)) { ?>
                     <?php $sl = 1; ?>
                     <?php foreach ($lastPatient as $patient) { ?>
                       <tr class="<?php echo ($sl & 1) ? "odd gradeX" : "even gradeC" ?>">
-                        <td><?php echo $patient->patient_id; ?></td>
-                        <td><?php echo $patient->firstname; ?></td>
-                        <td><?php echo $patient->lastname; ?></td>
-                        <td><?php echo $patient->mobile; ?></td>
-                        <td><?php echo $patient->sex; ?></td>
-                        <td><?php echo $patient->blood_group; ?></td>
+                        <td><?php echo $patient['patient_id']; ?></td>
+                        <td><?php echo $patient['firstname']; ?></td>
+                        <td><?php echo $patient['lastname']; ?></td>
+                        <td><?php echo $patient['mobile']; ?></td>
+                        <td><?php echo $patient['sex']; ?></td>
+                        <td><?php echo $patient['blood_group']; ?></td>
                         <td class="center">
-                          <a href="<?php // echo base_url("patient/profile/$patient->id") 
-                                    ?>" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a>
+                          <a href="" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a>
                         </td>
 
                       </tr>
@@ -330,8 +295,7 @@
                     <?php } ?>
                   <?php } else { ?>
                     <tr>
-                      <td colspan="7"><?= "data_not_available" // display('data_not_available') 
-                                      ?></td>
+                      <td colspan="7">data not available</td>
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -343,16 +307,11 @@
       <?php // } 
       ?>
 
-      <!-- Message area -->
-      <?php
-      //if ($this->permission->method('quick_menu', 'read')->access()) {
-      ?>
       <div class="col-lg-4">
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="widget-title">
-              <h3><?= "Tautan Langsung" // display('quick_links') 
-                  ?></h3>
+              <h3>Tautan Langsung</h3>
             </div>
             <div class="fancy-collapse-panel">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -367,36 +326,10 @@
                   <div id="billing" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
                       <ul class="quick-menu">
-                        <?php
-                        //if ($this->permission->method('service_list', 'read')->access() || $this->permission->method('service_list', 'update')->access() || $this->permission->method('service_list', 'delete')->access()) {
-                        ?>
                         <li><a class="btn bg-green btn-block" href="?hal=billing&fun=service"><?php echo "Daftar Layanan" ?>
-
-                            <?php
-                            // if ($this->permission->method('package_list', 'read')->access() || $this->permission->method('package_list', 'update')->access() || $this->permission->method('package_list', 'delete')->access()) {
-                            ?>
-                        <li><a class="btn bg-olive btn-block" href="?hal=billing&fun=package"><?php echo "Daftar Paket" // display('package_list') 
-                                                                                              ?></a></li>
-                        <?php // } 
-                        ?>
-
-
-                        <?php
-                        // if ($this->permission->method('admission_list', 'read')->access() || $this->permission->method('admission_list', 'update')->access() || $this->permission->method('admission_list', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-blue btn-block" href="?hal=billing&fun=admission"><?php echo "Daftar Penerimaan Pasien" // display('admission_list') 
-                                                                                                ?></a></li>
-                        <?php // } 
-                        ?>
-
-                        <?php
-                        // if ($this->permission->method('bill_list', 'read')->access() || $this->permission->method('bill_list', 'update')->access() || $this->permission->method('bill_list', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-primary btn-block" href="?hal=billing&fun=bill"><?php echo "Daftar Tagihan" // display('bill_list') 
-                                                                                              ?></a></li>
-                        <?php // } 
-                        ?>
-
+                        <li><a class="btn bg-olive btn-block" href="?hal=billing&fun=package"><?php echo "Daftar Paket" ?></a></li>
+                        <li><a class="btn bg-blue btn-block" href="?hal=billing&fun=admission"><?php echo "Daftar Penerimaan Pasien" ?></a></li>
+                        <li><a class="btn bg-primary btn-block" href="?hal=billing&fun=bill"><?php echo "Daftar Tagihan" ?></a></li>
                       </ul>
                     </div>
                   </div>
@@ -404,48 +337,16 @@
                 <div class="panel panel-info">
                   <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#hactivity" aria-expanded="false" aria-controls="hactivity"><?php echo  "Aktifitas Rumah Sakit" // echo "" // display('hospital_activities') 
-                                                                                                                                                              ?>
-                      </a>
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#hactivity" aria-expanded="false" aria-controls="hactivity">Aktifitas Rumah Sakit ?></a>
                     </h4>
                   </div>
                   <div id="hactivity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
                       <ul class="quick-menu">
-                        <?php
-                        // if ($this->permission->method('birth_report', 'read')->access() || $this->permission->method('birth_report', 'update')->access() || $this->permission->method('birth_report', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-green btn-block" href="<?php // echo base_url('hospital_activities/birth/index') 
-                                                                    ?>"><?php echo "Laporan Kelahiran" // display('birth_report') 
-                                                                        ?></a></li>
-                        <?php // } 
-                        ?>
-                        <?php
-                        // if ($this->permission->method('death_report', 'read')->access() || $this->permission->method('death_report', 'update')->access() || $this->permission->method('death_report', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-red btn-block" href="<?php // echo base_url('hospital_activities/death/index') 
-                                                                  ?>"><?php echo "Laporan Kematian" // display('death_report') 
-                                                                      ?></a></li>
-                        <?php // } 
-                        ?>
-
-                        <?php
-                        // if ($this->permission->method('operation_report', 'read')->access() || $this->permission->method('operation_report', 'update')->access() || $this->permission->method('operation_report', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-yellow btn-block" href="<?php // echo base_url('hospital_activities/operation/index') 
-                                                                      ?>"><?php echo "Laporan Operasi" // display('operation_report') 
-                                                                          ?></a></li>
-                        <?php //} 
-                        ?>
-
-                        <?php
-                        //if ($this->permission->method('investigation_report', 'read')->access() || $this->permission->method('investigation_report', 'update')->access() || $this->permission->method('investigation_report', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-primary btn-block" href="<?php // echo base_url('hospital_activities/investigation/index') 
-                                                                      ?>"><?php echo "Laporan Investigasi" // display('investigation_report') 
-                                                                          ?></a></li>
-                        <?php //} 
-                        ?>
+                        <li><a class="btn bg-green btn-block" href="">Laporan Kelahiran</a></li>
+                        <li><a class="btn bg-red btn-block" href="">Laporan Kematian</a></li>
+                        <li><a class="btn bg-yellow btn-block" href="">Laporan Operasi</a></li>
+                        <li><a class="btn bg-primary btn-block" href="">Laporan Investigasi</a></li>
                       </ul>
                     </div>
                   </div>
@@ -453,46 +354,16 @@
                 <div class="panel panel-success">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#account" aria-expanded="false" aria-controls="account"><?php echo "Menajer Akuntansi" // display('account_manager') 
-                                                                                                                                                          ?>
-                      </a>
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#account" aria-expanded="false" aria-controls="account">Menajer Akuntansi</a>
                     </h4>
                   </div>
                   <div id="account" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
                       <ul class="quick-menu">
-                        <?php
-                        //if ($this->permission->method('account_list', 'read')->access()) {
-                        ?>
-                        <li><a class="btn bg-primary btn-block" href="?hal=billing&fun=bill"><?php echo "Bagan Akun" // display('chart_of_account') 
-                                                                                              ?></a></li>
-                        <?php //} 
-                        ?>
-
-                        <?php
-                        //if ($this->permission->method('general_ledger', 'create')->access()) {
-                        ?>
-                        <li><a class="btn bg-olive btn-block" href="?hal=billing&fun=general_ledger"><?php echo "Jurnal Umum" // display('general_ledger') 
-                                                                                                      ?></a></li>
-                        <?php //} 
-                        ?>
-
-                        <?php
-                        //if ($this->permission->method('account_list', 'read')->access()) {
-                        ?>
-                        <li><a class="btn bg-blue btn-block" href="?hal=billing&fun=trial_balance"><?php echo "Trial Saldo" // display('trial_balance') 
-                                                                                                    ?></a></li>
-                        <?php //} 
-                        ?>
-
-                        <?php
-                        //if ($this->permission->method('profit_loss', 'read')->access()) {
-                        ?>
-                        <li><a class="btn bg-green btn-block" href="?hal=billing&fun=profit_loss_report"><?php echo "Rugi Laba" // display('profit_loss') 
-                                                                                                          ?></a></li>
-                        <?php //} 
-                        ?>
-
+                        <li><a class="btn bg-primary btn-block" href="?hal=billing&fun=bill">Bagan Akun</a></li>
+                        <li><a class="btn bg-olive btn-block" href="?hal=billing&fun=general_ledger">Jurnal Umum</a></li>
+                        <li><a class="btn bg-blue btn-block" href="?hal=billing&fun=trial_balance">Trial Saldo</a></li>
+                        <li><a class="btn bg-green btn-block" href="?hal=billing&fun=profit_loss_report">Rugi Laba</a></li>
                       </ul>
                     </div>
                   </div>
@@ -511,37 +382,10 @@
                         <?php
                         // if ($this->permission->method('add_insurance', 'create')->access()) {
                         ?>
-                        <li><a class="btn bg-green btn-block" href="?hal=insurance&fun=form"><?php echo "Tambahkan Asuransi" // display('add_insurance') 
-                                                                                              ?></a></li>
-                        <?php //} 
-                        ?>
-
-
-                        <?php
-                        //if ($this->permission->method('insurance_list', 'read')->access() || $this->permission->method('insurance_list', 'update')->access() || $this->permission->method('insurance_list', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-blue btn-block" href="?hal=insurance&fun=index"><?php echo "Daftar Asuransi" // display('insurance_list') 
-                                                                                              ?></a></li>
-                        <?php //} 
-                        ?>
-
-
-
-                        <?php
-                        //if ($this->permission->method('add_limit_approval', 'create')->access()) {
-                        ?>
-                        <li><a class="btn bg-olive btn-block" href="?hal=insurance&fun=limit_approval_form"><?php echo "Tambahkan Batas Persetujuan" // display('add_limit_approval') 
-                                                                                                            ?></a></li>
-                        <?php //} 
-                        ?>
-                        <?php
-                        //if ($this->permission->method('limit_approval_list', 'read')->access() || $this->permission->method('limit_approval_list', 'update')->access() || $this->permission->method('limit_approval_list', 'delete')->access()) {
-                        ?>
-                        <li><a class="btn bg-yellow btn-block" href="?hal=insurance&fun=limit_approval"><?php echo "Daftar Batas Persetujuan" // display('limit_approval_list') 
-                                                                                                        ?></a></li>
-                        <?php //} 
-                        ?>
-
+                        <li><a class="btn bg-green btn-block" href="?hal=insurance&fun=form"><?php echo "Tambahkan Asuransi" // display('add_insurance') ?></a></li>
+                        <li><a class="btn bg-blue btn-block" href="?hal=insurance&fun=index"><?php echo "Daftar Asuransi" // display('insurance_list')  ?></a></li>
+                        <li><a class="btn bg-olive btn-block" href="?hal=insurance&fun=limit_approval_form"><?php echo "Tambahkan Batas Persetujuan" // display('add_limit_approval') ?></a></li>
+                        <li><a class="btn bg-yellow btn-block" href="?hal=insurance&fun=limit_approval"><?php echo "Daftar Batas Persetujuan" // display('limit_approval_list') ?></a></li>
                       </ul>
                     </div>
                   </div>
