@@ -121,14 +121,9 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
-      ?>
     </div>
   </div>
 
-  <?php
-  // if ($this->permission->method('graph', 'read')->access()) {
-  ?>
   <script type="text/javascript">
     $(window).on('load', function() {
       //line chart
@@ -182,10 +177,5 @@
 
     });
   </script>
-  <?php // } 
-  ?>
-
-
-  <!-- /.content -->
 </div>
 @endsection
