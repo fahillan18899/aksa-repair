@@ -57,8 +57,8 @@
   function generateQRCode($i, $item)
   {
    return '<div class="bd-highlight" >
-          <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate(base_convert('W24' . $i, 10, 36))) . '">
-          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b>W24' . $item .  $i . '</b></p>
+          <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate( $item . $i)) . '">
+          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b>' . $item .  $i . '</b></p>
          </div>';
   }
   

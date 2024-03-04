@@ -65,8 +65,8 @@
     }
 
     const convertBaseReturn = convertBase(content, 36, 10);
+    window.location.href = "{{ url('dashboard/ppm/data_alat') }}/" + content;
     if (String(convertBaseReturn).substring(0, 2) == "24") {
-      window.location.href = "{{ url('kalibrasi/lembar') }}/" + content;
     }
   });
 

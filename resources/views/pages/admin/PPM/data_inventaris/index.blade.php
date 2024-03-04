@@ -88,7 +88,7 @@
     <!--TABEL-->
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#table-register').DataTable({
+        $('#table-register').dataTable({
           processing: true,
           responsive: true,
           serverSide: true,
@@ -211,7 +211,9 @@
                             </button>
                           </form>`
               }
+              
             },
+            
             /*{
               data: 'id_aset',
               name: 'QR',
@@ -224,7 +226,6 @@
         }).fnDestroy();
       })
     </script>
-
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection
