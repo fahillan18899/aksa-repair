@@ -456,7 +456,6 @@
             },
             {
               data: 0,
-              name: 'QR',
               render: function(data, type, full, meta) {
                 return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
               }

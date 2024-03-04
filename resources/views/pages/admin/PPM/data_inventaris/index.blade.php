@@ -87,7 +87,6 @@
     </div>
     <!--TABEL-->
     <script type="text/javascript">
-      // create function with jquery to get api form dashboard/ppm/registrasi yajra laravel?
       $(document).ready(function() {
         $('#table-register').dataTable({
           processing: true,
