@@ -89,7 +89,7 @@
     <script type="text/javascript">
       // create function with jquery to get api form dashboard/ppm/registrasi yajra laravel?
       $(document).ready(function() {
-        $('#table-register').DataTable({
+        $('#table-register').dataTable({
           processing: true,
           responsive: true,
           serverSide: true,
@@ -212,7 +212,9 @@
                             </button>
                           </form>`
               }
+              
             },
+            
             /*{
               data: 'id_aset',
               name: 'QR',
@@ -225,7 +227,6 @@
         }).fnDestroy();
       })
     </script>
-
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection

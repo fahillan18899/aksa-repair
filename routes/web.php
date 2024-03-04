@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\SOPPerbaikanController;
 use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
+use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
@@ -65,6 +66,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('/laporan_kegiatan', LaporanKegiatanController::class);
     Route::resource('/scanner_qr', ScannerQrController::class);
     Route::resource('/analisis_data', AnalisisDataController::class);
+    Route::get('/data_alat/{id}', [DataAlatController::class, 'index']);
 
     // menu SOP
     Route::resource('/sop_pemakaian', SOPPemakaianController::class);

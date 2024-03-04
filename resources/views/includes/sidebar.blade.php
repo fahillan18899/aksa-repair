@@ -313,7 +313,7 @@
           <li class="{{ request()->is('dashboard/ppm/data_inventaris') ? 'active' : '' }}"><a href="/dashboard/ppm/data_inventaris">Data Inventaris</a></li>
           <!---->
           <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}
-{{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
+                      {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
             <a href="#">
               <span>Kegiatan</span>
               <span class="pull-right-container">
@@ -354,8 +354,10 @@
           <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}"><a href="/dashboard/ppm/operator">Operator</a></li>
           <li class="{{ request()->is('dashboard/ppm/stock_opname') ? 'active' : '' }}"><a href="/dashboard/ppm/stock_opname">Stock Opname</a></li>
           <li class="{{ request()->is('dashboard/ppm/analisis_data') ? 'active' : '' }}"><a href="/dashboard/ppm/analisis_data">Analisis Data</a></li>
+          @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0006" )
           <li class="{{ request()->is('dashboard/create-generete-qr') ? 'active' : '' }}"><a href="/dashboard/create-generete-qr">Generate QR</a></li>
           <li class="{{ request()->is('dashboard/ppm/scanner_qr') ? 'active' : '' }}"><a href="/dashboard/ppm/scanner_qr">Scanner QR</a></li>
+          @endif
           @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0006" )
           <li class="treeview ">
             <a href="#">
