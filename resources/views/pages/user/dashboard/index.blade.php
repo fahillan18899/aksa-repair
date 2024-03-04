@@ -33,6 +33,7 @@
   </section>
 
   <!--Slide-->
+  @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0004" )
   <div class="mb-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -62,6 +63,7 @@
       </button>
     </div>
   </div>
+  @endif
   <!--Slide-->
   <!-- /.content-header -->
 
