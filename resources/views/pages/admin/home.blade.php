@@ -552,71 +552,8 @@
         </div>
       </div>
     </div>
-    <?php //} 
-    ?>
     <!-- /.row -->
   </div>
-
-
-
-  <?php
-  // if ($this->permission->method('graph', 'read')->access()) {
-  ?>
-  <script type="text/javascript">
-    $(window).on('load', function() {
-      //line chart
-      var ctx = document.getElementById("lineChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: [<?php echo "allmonth"; ?>],
-          datasets: [{
-              label: "<?= 'patient' ?>",
-              borderColor: "#3498DB",
-              borderWidth: "1",
-              //backgroundColor: "rgba(0,0,0,.07)",
-              pointHighlightStroke: "rgba(52,152,219)",
-              data: [<?php //echo $allPatient; 
-                      ?>]
-            },
-            {
-              label: "<?= 'appointment' ?>",
-              borderColor: "#37a000",
-              borderWidth: "1",
-              //backgroundColor: "#73BC4D",
-              pointHighlightStroke: "rgba(55,160,0)",
-              data: [<?php [1, 2] // echo $allAppoint; 
-                      ?>]
-            },
-            {
-              label: "<?= 'prescription' ?>",
-              borderColor: "#FFB61E",
-              borderWidth: "1",
-              //backgroundColor: "#1ABC9C",
-              pointHighlightStroke: "rgba(130, 224, 170,1)",
-              data: [<?php // echo $allPrescrip; 
-                      ?>]
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            intersect: false
-          },
-          hover: {
-            mode: 'nearest',
-            intersect: true
-          }
-
-        }
-      });
-
-    });
-  </script>
-  <?php // } 
-  ?>
 
 
   <!-- /.content -->
@@ -649,12 +586,7 @@
   messaging.requestPermission()
     .then(function() {
       console.log('Izin notifikasi diberikan.');
-      //   if (isTokenSentToServer()) {
-      //     console.log('Token telah disimpan.');
-      //   subscribeTokenToTopic("cTyR5spvB78nwUrQ_L5t-5:APA91bEuWPNZW99bB_gUOVVxnVlDt8OytcQdmaDZIVd06VskdDaf1jTTCeSD1mX3Xdwuyq-4TYV9snMeXvSkh5bDt9lHHO3bbcEqV__Oy6nihbxYkz091lPPdvi918o6XRNUu7w3HUpP", "userRS0001");
-      //   } else {
       getRegToken();
-      //   }
     })
     .catch(function(err) {
       console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.', err);
@@ -663,7 +595,7 @@
   function getRegToken() {
     messaging.getToken()
       .then(function(currentToken) {
-        console.log(currentToken)
+        console.log(currentToken) 
         if (currentToken) {
           saveToken(currentToken);
           setTokenSentToServer(true);
