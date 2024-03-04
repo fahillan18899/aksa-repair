@@ -589,18 +589,15 @@
       getRegToken();
     })
     .catch(function(err) {
-      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.', err);
+      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.');
     });
 
   function getRegToken() {
     messaging.getToken()
       .then(function(currentToken) {
-        console.log(currentToken) 
         if (currentToken) {
-          saveToken(currentToken);
           setTokenSentToServer(true);
           const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
-          console.log(userCode);
           subscribeTokenToTopic(currentToken, userCode)
         } else {
           console.log('Tidak ada token Instance ID yang tersedia. Meminta izin untuk menghasilkan satu.');
@@ -608,7 +605,7 @@
         }
       })
       .catch(function(err) {
-        console.log('Terjadi kesalahan saat mengambil token. ', err);
+        console.log('Terjadi kesalahan saat mengambil token. ');
         setTokenSentToServer(false);
       });
   }
@@ -624,9 +621,9 @@
       if (response.status < 200 || response.status >= 400) {
         throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
       }
-      console.log('Subscribed to "' + topic + '"');
+      console.log('Subscribed to Berhasil');
     }).catch(error => {
-      console.error(error);
+      console.error("error");
     })
   }
 
@@ -636,16 +633,6 @@
 
   function isTokenSentToServer() {
     return window.localStorage.getItem('sentToServer') == 1;
-  }
-
-  function saveToken(currentToken) {
-    $.ajax({
-      url: 'action.php',
-      method: 'post',
-      data: 'token=' + currentToken
-    }).done(function(result) {
-      console.log(result);
-    })
   }
 </script>
 
