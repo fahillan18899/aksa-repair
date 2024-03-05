@@ -20,56 +20,44 @@
         <a href="/dashboard_teknisi"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
-      
-      
-
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-wrench" aria-hidden="true"></i><span>PPM</span>
+          <i class="fa fa-wrench" aria-hidden="true"></i><span>Pemeliharaan Aset </span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          
-          <!---->
           <li class="treeview">
             <a href="#">
-              <span>Kegiatan</span>
+              <span>Pemeliharaan Korektif</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview">
-                <a href="#">
-                  <span>Pemeliharaan Korektif</span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li class=""><a href="/dashboard_teknisi/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
-                  <li class=""><a href="/dashboard_teknisi/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
-                </ul>
-              </li>
-              <li class="treeview">
-                <a href="#">
-                  <span>Pemeliharaan Preverentive</span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li class=""><a href="/dashboard_teknisi/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
-                  <li class=""><a href="/dashboard_teknisi/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
-                </ul>
-              </li>
+              <li class=""><a href="/dashboard_teknisi/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
+              <li class=""><a href="/dashboard_teknisi/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
             </ul>
           </li>
-          <!---->
-          <li class=""><a href="/dashboard_teknisi/stock_opname_teknisi">Stock Opname</a></li>
+          <li class="treeview">
+            <a href="#">
+              <span>Pemeliharaan Preverentive</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class=""><a href="/dashboard_teknisi/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
+              <li class=""><a href="/dashboard_teknisi/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
+            </ul>
+          </li>
         </ul>
+      </li>
+      <li class="">
+        <a href="/dashboard_user/stock_opname_user">
+          <i class="fa fa-archive"></i> <span>Stock Opname</span>
+        </a>
       </li>
 
 

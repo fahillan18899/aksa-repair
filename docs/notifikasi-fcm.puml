@@ -1,0 +1,24 @@
+@startuml Alur Aplikasi Wyasa Kalibrasi
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam ArrowFontStyle normal
+skinparam ArrowFontName Courier
+skinparam ArrowFontSize 10
+"Teknisi" as User #DarkBlue
+"Admin" as Admin #red
+
+rectangle 1 {
+User --> [Perubahan Data] #DarkBlue
+ [Perubahan Data] --> Admin
+}
+
+rectangle AdminKotak2 {
+ Admin --> [Daftar Dashboard] #DarkRed
+ [Daftar Dashboard] --> [Dapet Token] #DarkRed
+ [Dapet Token] --> [Menerima Notifikasi] #DarkRed
+}
+
+@enduml
+
+

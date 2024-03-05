@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
@@ -65,7 +63,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        return redirect()->route('login');
+        return redirect()->route('login'); 
     }
 }

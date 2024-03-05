@@ -28,6 +28,12 @@ wyasa SIMRS adalah software ...
 - extract `php_imagick.dll` copy ke `htdocs/php/ext`
 - tambahkan `extension=php_imagick` di php.ini
 - tambahkan file file bin dengan extension `extension aplication`
+
+### Alur Aplikasi
+### Alur Notifikasi Aplikasi
+![Alur Notifikasi](/docs/notifikasi-fcm.png "MarineGEO logo")
+
+- [Link Product](https://e-katalog.lkpp.go.id/katalog/produk/detail/77606157?lang=id&type=general).
 ## License
 
 The software licensed under the [MIT license](https://opensource.org/licenses/MIT).

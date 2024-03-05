@@ -1,46 +1,36 @@
-importScripts('https://www.gstatic.com/firebasejs/4.9.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/4.9.1/firebase-messaging.js');
-/*Update this config*/
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY",
-    authDomain: "wyasa-simrs-notification.firebaseapp.com",
-    projectId: "wyasa-simrs-notification",
-    storageBucket: "wyasa-simrs-notification.appspot.com",
-    messagingSenderId: "1011976405810",
-    appId: "1:1011976405810:web:25247a63f17c7dac88cd2b",
-    measurementId: "G-HL1GLJM4SW"
-  };
-  firebase.initializeApp(firebaseConfig);
+importScripts('https://www.gstatic.com/firebasejs/9.14.0/firebase-app-compat.js')
+importScripts('https://www.gstatic.com/firebasejs/9.14.0/firebase-messaging-compat.js')
 
-  
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA0md7L4kCUzhja7dnAxpiYN_KzVfZl0o8",
+  authDomain: "wyasa-notif.firebaseapp.com",
+  projectId: "wyasa-notif",
+  storageBucket: "wyasa-notif.appspot.com",
+  messagingSenderId: "458907715979",
+  appId: "1:458907715979:web:f718256ae1736fddaa078e",
+  measurementId: "G-3S820797YB"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
-messaging.setBackgroundMessageHandler(function(payload) {
+
+messaging.onBackgroundMessage(function (payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
+  // Customize notification here        
   const notificationTitle = payload.data.title;
   const notificationOptions = {
     body: payload.data.body,
-	icon: 'http://localhost/gcm-push/img/icon.png',
-	image: 'http://localhost/gcm-push/img/d.png',
-	data: {
-		    click_action: 'http://localhost/gcm-push/img/d.png'
-		    }
+    icon: payload.data.icon,
   };
 
-  return self.registration.showNotification(notificationTitle,
-      notificationOptions);
-});
-// [END background_handler]
-
-self.addEventListener('notificationclick', function(event){
-    let action_click = event.notification.data.click_action;
-    event.notification.close();
-    
-    event.waitUntil()(
-        clients.openWindow(action_click)
+  self.registration.showNotification(notificationTitle, notificationOptions);
+  self.addEventListener('notificationclick', function (event) {
+    const clickedNotification = event.notification
+    clickedNotification.close();
+    event.waitUntil(
+      clients.openWindow(payload.data.click_action)
     )
-})
-
+  })
+}); 

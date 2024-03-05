@@ -1,12 +1,14 @@
 @extends('layouts.teknisi')
 
 @section('content')
+@if (Auth::user()->kode_rs == "RS0004")
 @push('prepend-style')
 <!-- xzoom -->
   <!--Boostrap5-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 @endpush
+@endif
 @section('title', 'Dashboard')
 <style>
         .c-item {
@@ -27,7 +29,7 @@
       <div class="header-icon"><i class="pe-7s-world"></i></div>
       <div class="header-title">
         <h1>Dashboard</h1>
-        <small>Dashboard PPM USER</small>
+        <small>Dashboard PPM Teknisi</small>
       </div>
     </div>
   </section>

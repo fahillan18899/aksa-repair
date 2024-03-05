@@ -16,7 +16,7 @@
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
 
-      <li class="active">
+      <li class="{{ request()->is('dashboard_user') ? 'active' : '' }} ">
         <a href="/dashboard_user"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
 
@@ -27,41 +27,34 @@
 
 
 
-      <li class="treeview">
+      <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
         <a href="#">
-          <i class="fa fa-wrench" aria-hidden="true"></i><span>PPM</span>
+          <i class="fa fa-wrench" aria-hidden="true"></i>
+          <span>Pemeliharaan Aset</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-
-          <!---->
           <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
             <a href="#">
-              <span>Kegiatan</span>
+              <span>Pemeliharaan Korektif</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
-                <a href="#">
-                  <span>Pemeliharaan Korektif</span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li class="{{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
-                  <li class="{{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
-                </ul>
-              </li>
+              <li class="{{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
+              <li class="{{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}"><a href="/dashboard_user/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
             </ul>
           </li>
-          <!---->
-          <li class="{{ request()->is('dashboard_user/stock_opname_user*') ? 'active' : '' }}"><a href="/dashboard_user/stock_opname_user">Stock Opname</a></li>
         </ul>
+      </li>
+      <!---->
+      <li class="{{ request()->is('dashboard_user/stock_opname_user*') ? 'active' : '' }}">
+        <a href="/dashboard_user/stock_opname_user">
+          <i class="fa fa-archive"></i> <span>Stock Opname</span>
+        </a>
       </li>
 
 

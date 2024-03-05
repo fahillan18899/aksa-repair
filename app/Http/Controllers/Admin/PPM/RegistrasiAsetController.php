@@ -57,7 +57,7 @@ class RegistrasiAsetController extends Controller
     {
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
-            'qr_code' => '',
+            'qr_code' => 'required|unique:registrasis',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
             'merek' => 'required',
@@ -89,7 +89,8 @@ class RegistrasiAsetController extends Controller
             'gambar.image' => 'Yang diupload bukan gambar',
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
             'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
-            'id_aset.unique' => 'Id Sudah Digunakan'
+            'id_aset.unique' => 'Id Sudah Digunakan',
+            'qr_code.unique' => 'Code Sudah Digunakan'
         ]);
 
         if (isset($data['gambar'])) {

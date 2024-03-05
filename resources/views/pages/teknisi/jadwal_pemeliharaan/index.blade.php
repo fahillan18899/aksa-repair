@@ -46,6 +46,7 @@
                     <label for="lokasi_alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="lokasi_alat">
+                        <option value="">Pilih Lokasi Alat</option>
                         @foreach ($states as $key => $value)
                         <option value="{{ $value }}">{{ $value }}</option>
                         @endforeach

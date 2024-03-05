@@ -205,6 +205,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
   Route::get('genarete_qr', [DashboardController::class, "qrGen"]);
   Route::get('create-generete-qr', [DashboardController::class, "createQrGen"]);
   Route::post('create-generete-qr', [DashboardController::class, "storeQrGen"]);
+  Route::get('logout_n', [DashboardController::class, 'unsubscribeFCMTopic']);
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
