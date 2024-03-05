@@ -158,17 +158,15 @@
 <link rel="manifest" href="manifest.json">
 
 <script>
-  // Initialize Firebase
-  /*Update this config*/
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY",
-    authDomain: "wyasa-simrs-notification.firebaseapp.com",
-    projectId: "wyasa-simrs-notification",
-    storageBucket: "wyasa-simrs-notification.appspot.com",
-    messagingSenderId: "1011976405810",
-    appId: "1:1011976405810:web:25247a63f17c7dac88cd2b",
-    measurementId: "G-HL1GLJM4SW"
+    apiKey: 'AIzaSyA0md7L4kCUzhja7dnAxpiYN_KzVfZl0o8',
+    authDomain: 'wyasa-notif.firebaseapp.com',
+    projectId: 'wyasa-notif',
+    storageBucket: 'wyasa-notif.appspot.com',
+    messagingSenderId: '458907715979',
+    appId: '1:458907715979:web:f718256ae1736fddaa078e',
+    measurementId: 'G-3S820797YB'
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -205,11 +203,11 @@
       method: 'POST',
       headers: new Headers({
         'Authorization': 'key=' +
-          'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl',
+          'AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
       })
     }).then(response => {
       if (response.status < 200 || response.status >= 400) {
-        throw 'Error subscribing to topic: ' + response.status + ' - ' ;
+        throw 'Error subscribing to topic: ' + response.status + ' - ';
       }
       console.log('Subscribed to OK');
     }).catch(error => {
