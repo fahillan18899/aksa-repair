@@ -29,7 +29,8 @@
 
       <li class="treeview {{ request()->is('dashboard_user/perbaikan_teregistrasi*') ? 'active' : '' }} {{ request()->is('dashboard_user/perbaikan_unregistrasi*') ? 'active' : '' }}">
         <a href="#">
-          <span>Kegiatan</span>
+          <i class="fa fa-wrench" aria-hidden="true"></i>
+          <span>Pemeliharaan Aset</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -50,7 +51,11 @@
         </ul>
       </li>
       <!---->
-      <li class="{{ request()->is('dashboard_user/stock_opname_user*') ? 'active' : '' }}"><a href="/dashboard_user/stock_opname_user">Stock Opname</a></li>
+      <li class="{{ request()->is('dashboard_user/stock_opname_user*') ? 'active' : '' }}">
+        <a href="/dashboard_user/stock_opname_user">
+          <i class="fa fa-archive"></i> <span>Stock Opname</span>
+        </a>
+      </li>
 
 
 

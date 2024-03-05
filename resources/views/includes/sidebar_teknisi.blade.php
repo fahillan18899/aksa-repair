@@ -22,7 +22,7 @@
 
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-wrench" aria-hidden="true"></i><span>Kegiatan </span>
+          <i class="fa fa-wrench" aria-hidden="true"></i><span>Pemeliharaan Aset </span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -55,7 +55,9 @@
         </ul>
       </li>
       <li class="">
-        <a href="/dashboard_teknisi/stock_opname_teknisi"><i class="fa fa ti-home"></i> Stock Opname</a>
+        <a href="/dashboard_user/stock_opname_user">
+          <i class="fa fa-archive"></i> <span>Stock Opname</span>
+        </a>
       </li>
 
 
