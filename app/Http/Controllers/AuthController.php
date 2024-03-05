@@ -62,10 +62,52 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        $topic = Auth::user()->kode_rs . Auth::user()->user_role;
+        $this->unsubscribeFCMTopic($topic);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+
         return redirect()->route('login');
     }
+
+    function unsubscribeFCMTopic($topic)
+    {
+        $serverKey = 'AAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl';
+
+        $headers = [
+            'Authorization: Key=' . $serverKey,
+            'Content-Type: Application/json'
+        ];
+
+        $data = [
+            'to' => '/topics/' . $topic,
+            'registration_tokens' => [],
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://iid.googleapis.com/iid/v1:batchRemove",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => $headers
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+            "cURL Error #:" . $err;
+        } else {
+            $response;
+        }
+
+        // Handle respons atau log jika diperlukan
+    }
+
 }

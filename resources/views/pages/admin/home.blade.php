@@ -440,6 +440,7 @@
     messaging.getToken()
       .then(function(currentToken) {
         if (currentToken) {
+          console.log(currentToken)
           setTokenSentToServer(true);
           const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
           subscribeTokenToTopic(currentToken, userCode)
@@ -465,7 +466,7 @@
       if (response.status < 200 || response.status >= 400) {
         throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
       }
-      console.log('Subscribed to Berhasil');
+      console.log('Subscribed to ' + topic);
     }).catch(error => {
       console.error("error");
     })
