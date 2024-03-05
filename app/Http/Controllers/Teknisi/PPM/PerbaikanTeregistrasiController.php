@@ -20,7 +20,7 @@ class PerbaikanTeregistrasiController extends Controller
 {
     public function index()
     {
-        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
         $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -82,6 +82,52 @@ class PerbaikanTeregistrasiController extends Controller
 
         return redirect('/dashboard_teknisi/perbaikan_teregistrasi')
         ->with('success', 'Data Berhasil Tambahkan.');
+    }
+
+    public function edit($id)
+    {
+
+        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return view('pages.teknisi.aset_teregistrasi.update_perbaikan', [
+            
+            'alats'        => $alats,
+            'item' => $item,
+            'teknisis'      => $teknisis,
+            'ruangans'     => $ruangans,
+        ]);
+           
+    }
+
+    public function update(Request $request, $perbaikanRegistrasi)
+    {
+        $request->validate([
+            'id_perbaikan_reg' => 'unique:perbaikan_registrasis',
+            'id_aset_reg' => '',
+            'tanggal_perbaikan_reg' => '',
+            'nama_alat_reg' => '',
+            'merek_alat_reg' => '',
+            'type_alat_reg' => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg' => '',
+            'pelapor_reg' => '',
+            'keterangan_kondisi_alat_reg' => '',
+            'ka_instalasi_reg' => '',
+            'teknisi_1_reg' => '',
+            'teknisi_2_reg' => '',
+            'teknisi_3_reg' => '',
+            'keluhan_dari_alat_reg' => '',
+            'korektif_reg' => '',
+            'active' => ''
+        ]);
+
+        $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
+        $perbaikanRegistrasi->update($request->post());
+
+        return redirect('/dashboard_teknisi/perbaikan_teregistrasi')
+        ->with('success', 'Data Berhasil Ubah.');
     }
 
     public function cetak_teknisi($id)

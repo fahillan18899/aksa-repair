@@ -83,8 +83,8 @@
                     <label for="engineer" class="col-xs-3 col-form-label">Nama Teknisi </label>
                     <div class="col-xs-9">
                       <select name="engineer" class="form-control" id="engineer">
+                      <option>-- Pilih Teknisi --</option>
                         @foreach($teknisis as $teknisi)
-                        <option>-- Pilih Teknisi --</option>
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>

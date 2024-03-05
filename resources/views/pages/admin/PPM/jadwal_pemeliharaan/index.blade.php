@@ -101,17 +101,17 @@
         <th scope="col">Keterangan</th>
       </thead>
       <tbody>
-        @forelse ($items as $item)
+        @forelse ($items as $items)
         <tr>
-          <td>{{ $item->id }}</td>
-          <td>{{ $item->lokasi_alat }}</td>
-          <td>{{ $item->nama_alat }}</td>
-          <td>{{ $item->jadwal }}</td>
+          <td>{{ $items->id }}</td>
+          <td>{{ $items->lokasi_alat }}</td>
+          <td>{{ $items->nama_alat }}</td>
+          <td>{{ $items->jadwal }}</td>
           <td>
-            <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $item->id) }}" class="form-inner" method="post">
+            <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
               @csrf
               @method('PUT')
-              <button class="btn btn-{{ $item->status == 1 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 1 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
+              <button class="btn btn-{{ $items->status == 1 ? 'warning' : 'danger'}}" type="submit">{{ $items->status == 1 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
             </form>
           </td>
         </tr>

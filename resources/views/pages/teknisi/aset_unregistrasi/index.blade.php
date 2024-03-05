@@ -234,9 +234,10 @@
          <td><?php echo $item ['teknisi_3_un'] ?></td>
          <td><?php echo $item ['keluhan_dari_alat_un'] ?></td>
          <td>
-            <a href="/dashboard_teknisi/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="{{ url('dashboard_teknisi/edit_perbaikan', $item->id_perbaikan_un) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            
 
-            <a href="/dashboard_teknisi/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a href="/dashboard_teknisi/perbaikan_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
          </td>
        </tr>
        @empty

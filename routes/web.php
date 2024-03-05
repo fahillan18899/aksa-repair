@@ -168,6 +168,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 
     // menu pemeliharaan preventive
+    Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index']);
     Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'state']);
     Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'store'])->name('jadwal_pemeliharaan.store');
     Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'city']);
@@ -219,9 +220,15 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
 
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
+  Route::get('update_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'edit']);
+  Route::put('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update']);
+  Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
 
   Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
+  Route::get('edit_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'edit']);
+  Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
+  Route::get('perbaikan_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'cetak_teknisi']);
   Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
   Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);

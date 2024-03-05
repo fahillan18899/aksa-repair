@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teknisi')
 @section('title', 'Edit Perbaikan Un')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -36,7 +36,7 @@
 
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('update_perbaikan_un.update', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url ('/dashboard_teknisi/perbaikan_unregistrasi', $item->id_perbaikan_un) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
 

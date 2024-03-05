@@ -88,7 +88,7 @@
     <!--TABEL-->
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#table-register').dataTable({
+        $('#table-register').DataTable({
           processing: true,
           responsive: true,
           serverSide: true,

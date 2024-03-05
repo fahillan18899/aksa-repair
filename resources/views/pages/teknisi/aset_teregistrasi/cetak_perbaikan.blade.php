@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teknisi')
 @section('title', 'Cetak Perbaikan Reg')
 @section('content')
 <!-- Content Wrapper. Contains page content -->

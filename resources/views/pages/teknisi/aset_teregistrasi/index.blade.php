@@ -312,7 +312,7 @@
         <th scope="col">Teknisi_3</th>
         <th scope="col">Keluhan_Dari_alat</th>
         <th scope="col">Korektif</th>
-        <th scope="col">Tombol_Eksekusi</th>
+        <!--<th scope="col">Tombol_Eksekusi</th>-->
         <th scope="col">Tombol_Eksekusi</th>
       </thead>
       <tbody>
@@ -335,11 +335,11 @@
           <td><?php echo $item['teknisi_3_reg'] ?></td>
           <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
           <td><?php echo $item['korektif_reg'] ?></td>
-          <td><?php echo $item['kode_rs'] ?></td>
+          <!--<td><?php echo $item['kode_rs'] ?></td>-->
           <td>
-            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            <a href="{{ url('dashboard_teknisi/update_perbaikan', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
-            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+            <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
           </td>
         </tr>
 

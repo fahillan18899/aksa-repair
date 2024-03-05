@@ -140,7 +140,7 @@
               ?>,
             ],
             borderWidth: 1,
-            backgroundColor: '#3FD01C',
+            backgroundColor: ['#3FD01C', '#FF4F78']
 
           }]
         },
@@ -168,7 +168,7 @@
               <?= $unTerpelihara ?>
             ],
             borderWidth: 1,
-            backgroundColor: '#3FD01C',
+            backgroundColor: ['#3FD01C', '#3FEBC5', '#EB553F']
 
           }]
         },
@@ -196,7 +196,7 @@
               <?= $unTerpelihara ?>
             ],
             borderWidth: 1,
-            backgroundColor: '#7a7a7a',
+            backgroundColor: ['#7a7a7a', '#000'],
           }]
         },
         options: {

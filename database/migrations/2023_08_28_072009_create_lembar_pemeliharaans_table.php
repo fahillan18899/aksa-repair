@@ -74,20 +74,20 @@ return new class extends Migration
             $table->string('pelumasan',5)->nullable();
             $table->string('kalibrasi_berkala',5)->nullable();
             $table->string('penggantian_bahan_habis_pakai',5)->nullable();
-            $table->string('cek_alat',5)->nullable();
+            $table->string('cek_alat',20)->nullable();
             $table->string('nama_sukucadang',20)->nullable();
-            $table->string('volume',20)->nullable();
-            $table->string('harga_satuan',20)->nullable();
-            $table->string('jumlah_harga',20)->nullable();
+            $table->string('volume',8)->nullable();
+            $table->string('harga_satuan',8)->nullable();
+            $table->string('jumlah_harga',8)->nullable();
             $table->string('evaluasi',20)->nullable();
             $table->string('status',30)->nullable();
             $table->string('status1',20)->nullable();
             $table->string('mulai_bekerja',20)->nullable();
             $table->string('selesai_kerja',20)->nullable();
-            $table->string('durasi',20)->nullable();
-            $table->string('user',20)->nullable();
-            $table->string('engginer',20)->nullable();
-            $table->string('kode_rs',20)->nullable();  
+            $table->string('durasi',10)->nullable();
+            $table->string('user',10)->nullable();
+            $table->string('engginer',10)->nullable();
+            $table->string('kode_rs',10)->nullable();  
             $table->timestamps();        
         });
     }

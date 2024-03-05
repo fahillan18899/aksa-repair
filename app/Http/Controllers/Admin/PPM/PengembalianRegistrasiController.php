@@ -79,7 +79,7 @@ class PengembalianRegistrasiController extends Controller
             'nama_alat_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'merek_reg' => '',
-            'id_perbaikan_reg' => 'unique:pengembalian_registrasis',
+            'id_perbaikan_reg' => '',
             'tipe_reg' => '',
             'tanggal_pengembalian_reg' => '',
             'serial_number_reg' => '',
@@ -102,13 +102,13 @@ class PengembalianRegistrasiController extends Controller
             'active' => '',
         ]);
 
-        $perbaikanRegistrasi = PengembalianRegistrasi::findOrFail($id);
-        $perbaikanRegistrasi->update($request->all());
+        $pengembalianRegistrasi = PengembalianRegistrasi::findOrFail($id);
+        $pengembalianRegistrasi->update($request->all());
 
 
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil di ubah');
+        ->with('success', 'Data Berhasil di Ubah');
     }
 
     public function cetak($id)

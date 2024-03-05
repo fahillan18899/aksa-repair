@@ -58,8 +58,9 @@ class JadwalPemeliharaanController extends Controller
             'lokasi_alat' => '',
             'nama_alat' => '',
             'jadwal' => '',
+            'kode_rs' => '',
         ]);
-        
+        $data['kode_rs'] = Auth::user()->kode_rs;
         JadwalPemeliharaan::create($data);
 
         return redirect('/dashboard/ppm/jadwal_pemeliharaan')

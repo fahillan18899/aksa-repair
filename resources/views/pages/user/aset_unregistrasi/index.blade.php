@@ -181,7 +181,7 @@
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
         <th scope="col">Keluhan_Dari_Alat</th>
-        <th scope="col">Tombol_Aksi</th>
+        <!--<th scope="col">Tombol_Aksi</th>-->
       </thead>
       <tbody>
         @forelse ($perbaikan as $index => $item)
@@ -201,11 +201,11 @@
           <td><?php echo $item['teknisi_2_un'] ?></td>
           <td><?php echo $item['teknisi_3_un'] ?></td>
           <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
-          <td>
+          <!--<td>
             <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
 
             <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-          </td>
+          </td>-->
         </tr>
         @empty
         <tr>

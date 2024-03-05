@@ -14,24 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::table('lembar_pemeliharaans', function (Blueprint $table) {
-            $table->text('catatan1', 250)->nullable();
-            $table->text('catatan2', 250)->nullable();
-            $table->text('catatan3', 250)->nullable();
-            $table->text('catatan4', 250)->nullable();
-            $table->text('catatan5', 250)->nullable();
-            $table->text('catatan6', 250)->nullable();
-            $table->text('catatan7', 250)->nullable();
-            $table->text('catatan8', 250)->nullable();
-            $table->text('catatan9', 250)->nullable();
-            $table->text('catatan10', 250)->nullable();
-            $table->text('catatan11', 250)->nullable();
-            $table->text('catatan12', 250)->nullable();
-            $table->text('catatan13', 250)->nullable();
-            $table->text('catatan14', 250)->nullable();
-            $table->text('catatan15', 250)->nullable();
-            $table->text('catatan16', 250)->nullable();
-            $table->text('catatan17', 250)->nullable();
-            $table->text('catatan18', 250)->nullable();
+            $table->text('catatan1_1', 250)->nullable();
+            $table->text('catatan2_1', 250)->nullable();
+            $table->text('catatan3_1', 250)->nullable();
+            $table->text('catatan4_1', 250)->nullable();
+            $table->text('catatan5_1', 250)->nullable();
+            $table->text('catatan6_1', 250)->nullable();
+            $table->text('catatan7_1', 250)->nullable();
+            $table->text('catatan8_1', 250)->nullable();
+            $table->text('catatan9_1', 250)->nullable();
+            $table->text('catatan10_1', 250)->nullable();
+            $table->text('catatan11_1', 250)->nullable();
+            $table->text('catatan12_1', 250)->nullable();
+            $table->text('catatan13_1', 250)->nullable();
+            $table->text('catatan14_1', 250)->nullable();
+            $table->text('catatan15_1', 250)->nullable();
+            $table->text('catatan16_1', 250)->nullable();
+            $table->text('catatan17_1', 250)->nullable();
+            $table->text('catatan18_1', 250)->nullable();
 
         });
     }
