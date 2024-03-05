@@ -29,7 +29,7 @@
       <div class="header-icon"><i class="pe-7s-world"></i></div>
       <div class="header-title">
         <h1>Dashboard</h1>
-        <small>Dashboard PPM USER</small>
+        <small>Dashboard PPM Teknisi</small>
       </div>
     </div>
   </section>
