@@ -238,6 +238,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::resource('lembar_pemeliharaan', LembarPemeliharaanTeknisiController::class);
   Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+  Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'lembarPemeliharaan']);
 });
 
 

@@ -97,7 +97,7 @@
   function autofillPemeliharaTeknisi() {
     let idars = $("#id_ase1t").val();
     $.ajax({
-      url: '{{ url("/dashboard_teknisi/autofill_teknisi/") }}/' + idars,
+      url: '{{ url("/dashboard_teknisi/autofill/") }}/' + idars,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         idars: idars

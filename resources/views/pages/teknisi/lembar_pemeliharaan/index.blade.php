@@ -62,7 +62,7 @@ $alert = "";
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('lembar_pemeliharaan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url('dashboard_teknisi/lembar_pemeliharaan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('POST')
 
@@ -104,7 +104,7 @@ $alert = "";
                   <div class="form-group row">
                     <label for="id_aset" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="id_ase1t" placeholder="ID Aset" onkeyup="autofillPemelihara()">
+                      <input name="id_aset" type="text" class="form-control" id="id_ase1t" placeholder="ID Aset" onkeyup="autofillPemeliharaTeknisi()">
                     </div>
                   </div>
 

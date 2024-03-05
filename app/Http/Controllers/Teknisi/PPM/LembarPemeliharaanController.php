@@ -88,8 +88,7 @@ class LembarPemeliharaanController extends Controller
         LembarPemeliharaan::create($request->post());
 
 
-        return redirect()->route('lembar_pemeliharaan.index')
-        ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
+        return redirect('dashboard_teknisi/lembar_pemeliharaan')->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
 
     public function edit($id_ppm)
