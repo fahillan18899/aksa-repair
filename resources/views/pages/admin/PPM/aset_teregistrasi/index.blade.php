@@ -148,9 +148,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Ka Instalasi</label>
+                    <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Ka Instalasi">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Kepala Ruangan">
                     </div>
                   </div>
 
@@ -263,7 +263,7 @@
         <th scope="col">Lokasi_Alat</th>
         <th scope="col">Pelapor</th>
         <th scope="col">Keterangan_Kondisi_Alat</th>
-        <th scope="col">Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
@@ -466,9 +466,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi</label>
+                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg1" placeholder="KA Instalasi" readonly>
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg1" placeholder="Kepala Ruangan" readonly>
                     </div>
                   </div>
 
@@ -541,7 +541,7 @@
         <th scope="col">Jumlah Harga</th>
         <th scope="col">Pelapor</th>
         <th scope="col">Keterangan_Kondisi_Alat</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Nama_Rekan</th>
         <th scope="col">Alamat_Rekan</th>
         <th scope="col">Teknisi_Rekanan</th>
@@ -727,9 +727,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi <i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="ka_instalasi_reg2" placeholder="KA Instalasi" value="" readonly>
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="ka_instalasi_reg2" placeholder="Kepala Ruangan" value="" readonly>
                     </div>
                   </div>
 
@@ -844,7 +844,7 @@
         <th scope="col">volume</th>
         <th scope="col">Harga Satuan</th>
         <th scope="col">Jumlah Harga</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Penyebab_Kerusakan</th>
         <th scope="col">Solusi_Perbaikan</th>
         <th scope="col">Penguji_Suku_Cadang</th>
@@ -1034,9 +1034,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">KA Instalasi</label>
+                    <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg3" placeholder="KA Instalasi" value="" readonly>
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="KA_Instalasi_reg3" placeholder="Kepala Ruangan" value="" readonly>
                     </div>
                   </div>
 
@@ -1084,7 +1084,7 @@
         <th scope="col">volume</th>
         <th scope="col">Harga Satuan</th>
         <th scope="col">Jumlah Harga</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Keterangan_Pengguna</th>
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>

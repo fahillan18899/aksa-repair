@@ -138,9 +138,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="">
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Kepala Ruangan" value="">
                     </div>
                   </div>
 
@@ -217,7 +217,7 @@
         <th scope="col">Lokasi_Alat</th>
         <th scope="col">Pelapor</th>
         <th scope="col">Keterangan</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
@@ -400,9 +400,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi</label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un1" placeholder="KA Instalasi" value="" readonly>
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un1" placeholder="Kepala Ruangan" value="" readonly>
                     </div>
                   </div>
 
@@ -444,7 +444,7 @@
         <th scope="col">Alamat_Rekanan</th>
         <th scope="col">Teknisi_Rekanan</th>
         <th scope="col">Telphone_Teknisi_REK</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>
       <tbody>
@@ -549,9 +549,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un2" placeholder="Ka Instalasi" value="" readonly>
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un2" placeholder="Kepala ruangan" value="" readonly>
                     </div>
                   </div>
 
@@ -687,7 +687,7 @@
         <th scope="col">Nama_Alat</th>
         <th scope="col">Peneriama_Alat</th>
         <th scope="col">Merek_Alat</th>
-        <th scope="col">Ka_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Type_Alat</th>
         <th scope="col">Teknisi_1</th>
         <th scope="col">Serial_Number</th>
@@ -852,9 +852,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">KA Instalasi<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un3" placeholder="KA Instalasi" value="" readonly>
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un3" placeholder="Kepala Ruangan" value="" readonly>
                     </div>
                   </div>
 
@@ -898,7 +898,7 @@
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>
         <th scope="col">Tanggal_Penggudangan</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Keterangan</th>
         <th scope="col">Tombol_Aksi_Tabel</th>
       </thead>
