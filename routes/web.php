@@ -222,7 +222,6 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
   Route::get('update_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'edit']);
-  Route::put('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update']);
   Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
 

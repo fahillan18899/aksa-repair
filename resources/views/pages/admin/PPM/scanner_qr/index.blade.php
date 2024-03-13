@@ -77,5 +77,7 @@
       console.error("Please enable Camera!");
     }
   });
+  
+  
 </script>
 @endsection

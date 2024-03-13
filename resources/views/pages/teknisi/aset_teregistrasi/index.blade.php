@@ -337,8 +337,6 @@
           <td><?php echo $item['korektif_reg'] ?></td>
           <!--<td><?php echo $item['kode_rs'] ?></td>-->
           <td>
-            <a href="{{ url('dashboard_teknisi/update_perbaikan', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-
             <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
           </td>
         </tr>

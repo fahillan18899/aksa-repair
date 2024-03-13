@@ -334,24 +334,25 @@
 <!--Camera-->
 <script>
   let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview')
+    video: document.getElementById('preview'),
+    mirror: false
   });
   scanner.addListener('scan', function(content) {
     const fruits = content.split(',');
     $("#id_aset_reg").val(fruits[0]);
-    $("#Merek_Alat_reg").val(fruits[1]);
+    $("#Merek_Alat_reg").val(fruits[3]);
     $("#Nama_Alat_reg").val(fruits[2]);
-    $("#Tanggal_Perbaikan_reg").val(fruits[3]);
-    $("#Serial_Number_reg").val(fruits[4]);
-    $("#Lokasi_Alat_reg").val(fruits[5]);
+    $("#Serial_Number_reg").val(fruits[5]);
+    $("#Lokasi_Alat_reg").val(fruits[6]);
+    $("#Type_Alat_reg").val(fruits[4]);
 
-    $("#id_ase1t").val(fruits[0]);
-    $("#merek1").val(fruits[1]);
-    $("#nama_alat").val(fruits[2]);
-    $("#Tanggal_Perbaikan_reg").val(fruits[3]);
-    $("#serial_number1").val(fruits[4]);
-    $("#ruangan1").val(fruits[5]);
-    $("#tipe1").val(fruits[5]);
+    // $("#id_ase1t").val(fruits[0]);
+    // $("#merek1").val(fruits[1]);
+    // $("#nama_alat").val(fruits[2]);
+    // $("#Tanggal_Perbaikan_reg").val(fruits[3]);
+    // $("#serial_number1").val(fruits[4]);
+    // $("#ruangan1").val(fruits[5]);
+    // $("#tipe1").val(fruits[5]);
   });
 
   Instascan.Camera.getCameras().then(cameras => {

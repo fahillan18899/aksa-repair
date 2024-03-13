@@ -176,6 +176,5 @@ class HomeController extends Controller
             'teknisi_3_un'                => $data->teknisi_3_un,
             'keluhan_dari_alat_un'        => $data->keluhan_dari_alat_un
         ]);
-        var_dump($data);
     }
 }

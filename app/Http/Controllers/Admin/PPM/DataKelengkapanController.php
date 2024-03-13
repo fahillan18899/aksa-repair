@@ -30,10 +30,10 @@ class DataKelengkapanController extends Controller
         ->first();
         $kodeGedung = $dataGedung->maxIDGEDUNG;
 
-        $urutanGedung = (int)substr($kodeGedung, 5, 6);
+        $urutanGedung = (int)substr($kodeGedung, 6, 7);
         $urutanGedung++;
 
-        $kodeGedung = $kodeRs_ . sprintf("%0s", $urutanGedung);
+        $kodeGedung = $kodeRs_ . sprintf("%03s", $urutanGedung);
 
         // KODE TEKNISI
         $dataTeknisi = DB::table('teknisis')
@@ -42,10 +42,10 @@ class DataKelengkapanController extends Controller
         ->first();
         $kodeTeknisi = $dataTeknisi->maxIDTEKNISI;
 
-        $urutanTeknisi = (int)substr($kodeTeknisi, 5, 6);
+        $urutanTeknisi = (int)substr($kodeTeknisi, 6, 7);
         $urutanTeknisi++;
 
-        $kodeTeknisi = $kodeRs_ . sprintf("%0s", $urutanTeknisi);
+        $kodeTeknisi = $kodeRs_ . sprintf("%03s", $urutanTeknisi);
 
         // Kode Alat
         $dataAlat = DB::table('alats')
@@ -54,10 +54,10 @@ class DataKelengkapanController extends Controller
             ->first();
         $kodeAlat = $dataAlat->maxIDALAT;
 
-        $urutanAlat = (int)substr($kodeAlat, 5, 6);
+        $urutanAlat = (int)substr($kodeAlat, 6, 7);
         $urutanAlat++;
 
-        $kodeAlat = $kodeRs_ . sprintf("%0s", $urutanAlat);
+        $kodeAlat = $kodeRs_ . sprintf("%03s", $urutanAlat);
 
         // Kode Lokasi
         $dataLokasi = DB::table('ruangans')
@@ -66,10 +66,10 @@ class DataKelengkapanController extends Controller
         ->first();
         $kodeLokasi = $dataLokasi->maxIDLOKASI;
 
-        $urutanLokasi = (int)substr($kodeLokasi, 5, 6);
+        $urutanLokasi = (int)substr($kodeLokasi, 6, 7);
         $urutanLokasi++;
 
-        $kodeLokasi = $kodeRs_ . sprintf("%0s", $urutanLokasi);
+        $kodeLokasi = $kodeRs_ . sprintf("%03s", $urutanLokasi);
 
 
         return view('pages.admin.PPM.data_kelengkapan.index',  [
