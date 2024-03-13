@@ -83,9 +83,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi</label>
+                    <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="<?= $item['ka_instalasi_un'] ?>">
+                      <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Kepala Ruangan" value="<?= $item['ka_instalasi_un'] ?>">
                     </div>
                   </div>
 

@@ -129,9 +129,9 @@
                    </div>
 
                    <div class="form-group row">
-                     <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Ka Instalasi</label>
+                     <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                      <div class="col-xs-9">
-                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Ka Instalasi" value="">
+                       <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" placeholder="Kepala Ruangan" value="">
                      </div>
                    </div>
 
@@ -208,7 +208,7 @@
          <th scope="col">Lokasi_Alat</th>
          <th scope="col">Pelapor</th>
          <th scope="col">Keterangan</th>
-         <th scope="col">KA_Instalasi</th>
+         <th scope="col">Kepala Ruangan</th>
          <th scope="col">Teknisi_1</th>
          <th scope="col">Teknisi_2</th>
          <th scope="col">Teknisi_3</th>

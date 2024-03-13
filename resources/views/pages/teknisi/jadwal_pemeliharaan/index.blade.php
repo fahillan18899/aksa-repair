@@ -34,7 +34,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('jadwal_pemeliharaan.store') }}" class="form-inner" method="post" accept-charset="utf-8">
+              <form action="{{ route('jadwal_pemeliharaan.store') }}" class="form-inner" method="post" accept-charset="utf-8">
                   @csrf
 
                   <input type="hidden" name="id" value="" />
@@ -85,30 +85,48 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Lokasi Alat</th>
-        <th scope="col">Nama Alat</th>
-        <th scope="col">Jadwal</th>>
-      </thead>
-      <tbody>
-        @forelse ($items as $item)
-        <tr>
-          <td>{{ $item->id }}</td>
-          <td>{{ $item->lokasi_alat }}</td>
-          <td>{{ $item->nama_alat }}</td>
-          <td>{{ $item->jadwal }}</td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+    <div class="row">
+      <!--  form area -->
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+          <div class="panel-heading no-print">
+            <h1>Tabel Jadwal</h1>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-9 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Lokasi Alat</th>
+                      <th scope="col">Nama Alat</th>
+                      <th scope="col">Jadwal</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($items as $item)
+                      <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->lokasi_alat }}</td>
+                        <td>{{ $item->nama_alat }}</td>
+                        <td>{{ $item->jadwal }}</td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->

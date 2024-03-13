@@ -113,9 +113,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Ka Instalasi<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Ka Instalasi" value="<?php echo $item['ka_instalasi_reg'] ?>">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Kepala Ruangan" value="<?php echo $item['ka_instalasi_reg'] ?>">
                     </div>
                   </div>
 

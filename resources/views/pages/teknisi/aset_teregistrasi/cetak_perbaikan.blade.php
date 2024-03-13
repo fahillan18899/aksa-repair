@@ -99,7 +99,7 @@
                     </tr>
                     <tr>
                       <th width="7%" colspan="2">
-                        Ketua Instalasi
+                      Kepala Ruangan
                       </th>
                       <th width="7%" colspan="2">
                       </th>
@@ -114,7 +114,7 @@
                     </tr>
                     <tr>
                       <td width="7%" colspan="2">
-                        Ketua Instalasi
+                      Kepala Ruangan
                       </td>
                       <td width="7%" colspan="2">
                       </td>

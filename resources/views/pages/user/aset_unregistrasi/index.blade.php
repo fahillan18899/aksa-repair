@@ -176,7 +176,7 @@
         <th scope="col">Lokasi_Alat</th>
         <th scope="col">Pelapor</th>
         <th scope="col">Keterangan</th>
-        <th scope="col">KA_Instalasi</th>
+        <th scope="col">Kepala Ruangan</th>
         <th scope="col">Teknisi_1</th>
         <th scope="col">Teknisi_2</th>
         <th scope="col">Teknisi_3</th>

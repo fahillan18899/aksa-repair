@@ -101,7 +101,7 @@ $row = mysqli_fetch_array($result);
                     </tr>
                     <tr>
                       <th width="7%" colspan="2">
-                        Ketua Instalasi
+                      Kepala Ruangan
                       </th>
                       <th width="7%" colspan="2">
                       </th>
