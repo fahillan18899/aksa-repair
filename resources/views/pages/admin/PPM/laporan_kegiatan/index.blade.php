@@ -31,12 +31,12 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-body">
-            <ul class="col-xs-12 nav nav-tabs" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Tabel Perbaikan Peralatan Alat Teregistrasi
-                </a>
-              </li>
-            </ul>
+
+            <div class="panel-heading no-print">
+              <div class="">
+                <h1>History Tabel Perbaikan Aset Teregistrasi</h1>
+              </div>
+            </div>
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>
@@ -109,11 +109,11 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-body">
-            <ul class="col-xs-12 nav nav-tabs" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab"> Laporan Kegiatan Perbaikan Alat Unregistrasi</a>
-              </li>
-            </ul>
+            <div class="panel-heading no-print">
+              <div class="">
+                <h1>History Tabel Perbaikan Aset Unregistrasi</h1>
+              </div>
+            </div>
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>
@@ -182,11 +182,11 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-body">
-            <ul class="col-xs-12 nav nav-tabs" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab"> Pencarian dan Pelaporan Pemeliharaan Peralatan Teregistrasi</a>
-              </li>
-            </ul>
+            <div class="panel-heading no-print">
+              <div class="">
+                <h1>History Tabel Pemeliharaan Aset Teregistrasi</h1>
+              </div>
+            </div>
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>

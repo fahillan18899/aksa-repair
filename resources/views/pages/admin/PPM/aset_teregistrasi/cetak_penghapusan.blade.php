@@ -26,7 +26,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="align-center mt-5">
-                <img src="https://wyasaaplikasi.com/super_admin/img/64a6676d605dc.jpg" alt="Kop Surat" width="100%">
+                <img src="http://127.0.0.1:8000/assets/images/kop.png" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">
 

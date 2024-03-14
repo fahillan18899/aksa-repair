@@ -204,66 +204,88 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_Perbaikan</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Lokasi_Alat</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Keluhan_Dari_Alat</th>
-        <th scope="col">Tombol_Aksi</th>
-      </thead>
-      <tbody>
-        @forelse ($perbaikan as $index => $item)
-        <tr>
-          <td>{{ $index + 1 }}</td>
-          <td><?php echo $item['id_perbaikan_un'] ?></td>
-          <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-          <td><?php echo $item['nama_alat_un'] ?></td>
-          <td><?php echo $item['merek_alat_un'] ?></td>
-          <td><?php echo $item['type_alat_un'] ?></td>
-          <td><?php echo $item['serial_number_un'] ?></td>
-          <td><?php echo $item['lokasi_alat_un'] ?></td>
-          <td><?php echo $item['pelapor_un'] ?></td>
-          <td><?php echo $item['keterangan_un'] ?></td>
-          <td><?php echo $item['ka_instalasi_un'] ?></td>
-          <td><?php echo $item['teknisi_1_un'] ?></td>
-          <td><?php echo $item['teknisi_2_un'] ?></td>
-          <td><?php echo $item['teknisi_3_un'] ?></td>
-          <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
-          <td>
-            <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Perbaikan</h1>
+            </div>
+          </div>
 
-            <form action="{{ url('/dashboard/ppm/perbaikan_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                <i class="fa fa-trash "></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Keluhan_Dari_Alat</th>
+                      <th scope="col">Tombol_Aksi</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($perbaikan as $index => $item)
+                      <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td><?php echo $item['id_perbaikan_un'] ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
+                        <td><?php echo $item['nama_alat_un'] ?></td>
+                        <td><?php echo $item['merek_alat_un'] ?></td>
+                        <td><?php echo $item['type_alat_un'] ?></td>
+                        <td><?php echo $item['serial_number_un'] ?></td>
+                        <td><?php echo $item['lokasi_alat_un'] ?></td>
+                        <td><?php echo $item['pelapor_un'] ?></td>
+                        <td><?php echo $item['keterangan_un'] ?></td>
+                        <td><?php echo $item['ka_instalasi_un'] ?></td>
+                        <td><?php echo $item['teknisi_1_un'] ?></td>
+                        <td><?php echo $item['teknisi_2_un'] ?></td>
+                        <td><?php echo $item['teknisi_3_un'] ?></td>
+                        <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+
+                          <form action="{{ url('/dashboard/ppm/perbaikan_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <!-- content -->
     <div class="row">
@@ -423,73 +445,95 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_perbaikan</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Tanggal_Pengiriman</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Lokasi_Alat</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Nama_Rekanan</th>
-        <th scope="col">Alamat_Rekanan</th>
-        <th scope="col">Teknisi_Rekanan</th>
-        <th scope="col">Telphone_Teknisi_REK</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Tombol_Aksi_Tabel</th>
-      </thead>
-      <tbody>
-        @forelse ($pengiriman as $index => $item)
-        <tr>
-          <td>{{ $index + 1 }}</td>
-          <td><?php echo $item['id_perbaikan_un'] ?></td>
-          <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-          <td><?php echo $item['tanggal_pengiriman_un'] ?></td>
-          <td><?php echo $item['nama_alat_un'] ?></td>
-          <td><?php echo $item['merek_alat_un'] ?></td>
-          <td><?php echo $item['type_alat_un'] ?></td>
-          <td><?php echo $item['serial_number_un'] ?></td>
-          <td><?php echo $item['lokasi_alat_un'] ?></td>
-          <td><?php echo $item['pelapor_un'] ?></td>
-          <td><?php echo $item['keterangan_un'] ?></td>
-          <td><?php echo $item['teknisi_1_un'] ?></td>
-          <td><?php echo $item['teknisi_2_un'] ?></td>
-          <td><?php echo $item['teknisi_3_un'] ?></td>
-          <td><?php echo $item['nama_rekanan_un'] ?></td>
-          <td><?php echo $item['alamat_rekanan_un'] ?></td>
-          <td><?php echo $item['teknisi_rekanan_un'] ?></td>
-          <td><?php echo $item['telphone_teknisi_rek_un'] ?></td>
-          <td><?php echo $item['ka_instalasi_un'] ?></td>
-          <td>
-            <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengiriman/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-            <form action="{{ url('/dashboard/ppm/pengiriman_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                <i class="fa fa-trash "></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Pengiriman</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Tanggal_Pengiriman</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Nama_Rekanan</th>
+                      <th scope="col">Alamat_Rekanan</th>
+                      <th scope="col">Teknisi_Rekanan</th>
+                      <th scope="col">Telphone_Teknisi_REK</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($pengiriman as $index => $item)
+                      <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td><?php echo $item['id_perbaikan_un'] ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
+                        <td><?php echo $item['tanggal_pengiriman_un'] ?></td>
+                        <td><?php echo $item['nama_alat_un'] ?></td>
+                        <td><?php echo $item['merek_alat_un'] ?></td>
+                        <td><?php echo $item['type_alat_un'] ?></td>
+                        <td><?php echo $item['serial_number_un'] ?></td>
+                        <td><?php echo $item['lokasi_alat_un'] ?></td>
+                        <td><?php echo $item['pelapor_un'] ?></td>
+                        <td><?php echo $item['keterangan_un'] ?></td>
+                        <td><?php echo $item['teknisi_1_un'] ?></td>
+                        <td><?php echo $item['teknisi_2_un'] ?></td>
+                        <td><?php echo $item['teknisi_3_un'] ?></td>
+                        <td><?php echo $item['nama_rekanan_un'] ?></td>
+                        <td><?php echo $item['alamat_rekanan_un'] ?></td>
+                        <td><?php echo $item['teknisi_rekanan_un'] ?></td>
+                        <td><?php echo $item['telphone_teknisi_rek_un'] ?></td>
+                        <td><?php echo $item['ka_instalasi_un'] ?></td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengiriman/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                          <form action="{{ url('/dashboard/ppm/pengiriman_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <!-- content -->
     <div class="row">
@@ -677,80 +721,102 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_Perbaikan</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Tanggal_Pengembalian</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Peneriama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Lokasi_Alat</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Harga_Perbaikan</th>
-        <th scope="col">Penyebab_Kerusakan</th>
-        <th scope="col">Pengujian_Suku_cadang</th>
-        <th scope="col">Uji_Fungsi_Setelah_Perbaikan</th>
-        <th scope="col">Solusi_Perbaikan</th>
-        <th scope="col">Penggantian_Suku_cadang</th>
-        <th scope="col">Hasil_Verifikasi</th>
-        <th scope="col">Tombol_Aksi_Tabel</th>
-      </thead>
-      <tbody>
-        @forelse ($pengembalian as $index => $item)
-        <tr>
-          <td>{{ $index + 1 }}</td>
-          <td><?php echo $item['id_perbaikan_un']  ?></td>
-          <td><?php echo $item['tanggal_perbaikan_un']  ?></td>
-          <td><?php echo $item['tanggal_pengembalian_un']  ?></td>
-          <td><?php echo $item['nama_alat_un']  ?></td>
-          <td><?php echo $item['peneriama_alat_un']  ?></td>
-          <td><?php echo $item['merek_alat_un']  ?></td>
-          <td><?php echo $item['ka_instalasi_un']  ?></td>
-          <td><?php echo $item['type_alat_un']  ?></td>
-          <td><?php echo $item['teknisi_1_un']  ?></td>
-          <td><?php echo $item['serial_number_un']  ?></td>
-          <td><?php echo $item['teknisi_2_un']  ?></td>
-          <td><?php echo $item['teknisi_3_un']  ?></td>
-          <td><?php echo $item['lokasi_alat_un']  ?></td>
-          <td><?php echo $item['keterangan_un']  ?></td>
-          <td><?php echo $item['pelapor_un']  ?></td>
-          <td><?php echo $item['harga_perbaikan_un']  ?></td>
-          <td><?php echo $item['penyebab_kerusakan_un']  ?></td>
-          <td><?php echo $item['pengujian_suku_cadang_un']  ?></td>
-          <td><?php echo $item['uji_fungsi_setelah_perbaikan_un']  ?></td>
-          <td><?php echo $item['solusi_perbaikan_un']  ?></td>
-          <td><?php echo $item['penggantian_suku_cadang_un']  ?></td>
-          <td><?php echo $item['hasil_verifikasi_un']  ?></td>
-          <td>
-            <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengembalian/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-            <form action="{{ url('/dashboard/ppm/pengembalian_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
-              @csrf
-              @method('DELETE')
-              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                <i class="fa fa-trash "></i>
-              </button>
-            </form>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Pengembalian</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Tanggal_Pengembalian</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Peneriama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Harga_Perbaikan</th>
+                      <th scope="col">Penyebab_Kerusakan</th>
+                      <th scope="col">Pengujian_Suku_cadang</th>
+                      <th scope="col">Uji_Fungsi_Setelah_Perbaikan</th>
+                      <th scope="col">Solusi_Perbaikan</th>
+                      <th scope="col">Penggantian_Suku_cadang</th>
+                      <th scope="col">Hasil_Verifikasi</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($pengembalian as $index => $item)
+                      <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td><?php echo $item['id_perbaikan_un']  ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_un']  ?></td>
+                        <td><?php echo $item['tanggal_pengembalian_un']  ?></td>
+                        <td><?php echo $item['nama_alat_un']  ?></td>
+                        <td><?php echo $item['peneriama_alat_un']  ?></td>
+                        <td><?php echo $item['merek_alat_un']  ?></td>
+                        <td><?php echo $item['ka_instalasi_un']  ?></td>
+                        <td><?php echo $item['type_alat_un']  ?></td>
+                        <td><?php echo $item['teknisi_1_un']  ?></td>
+                        <td><?php echo $item['serial_number_un']  ?></td>
+                        <td><?php echo $item['teknisi_2_un']  ?></td>
+                        <td><?php echo $item['teknisi_3_un']  ?></td>
+                        <td><?php echo $item['lokasi_alat_un']  ?></td>
+                        <td><?php echo $item['keterangan_un']  ?></td>
+                        <td><?php echo $item['pelapor_un']  ?></td>
+                        <td><?php echo $item['harga_perbaikan_un']  ?></td>
+                        <td><?php echo $item['penyebab_kerusakan_un']  ?></td>
+                        <td><?php echo $item['pengujian_suku_cadang_un']  ?></td>
+                        <td><?php echo $item['uji_fungsi_setelah_perbaikan_un']  ?></td>
+                        <td><?php echo $item['solusi_perbaikan_un']  ?></td>
+                        <td><?php echo $item['penggantian_suku_cadang_un']  ?></td>
+                        <td><?php echo $item['hasil_verifikasi_un']  ?></td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_pengembalian/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                          <form action="{{ url('/dashboard/ppm/pengembalian_unegistrasi',$item->id_perbaikan_un) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
     <!-- content -->
     <div class="row">
@@ -882,58 +948,80 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_Perbaikan</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Lokasi_Alat</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Tanggal_Penggudangan</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Tombol_Aksi_Tabel</th>
-      </thead>
-      <tbody>
-        @forelse ($penghapusan as $index => $item)
-        <tr>
-          <td>{{ $index + 1 }}</td>
-          <td><?php echo $item['id_perbaikan_un'] ?></td>
-          <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-          <td><?php echo $item['nama_alat_un'] ?></td>
-          <td><?php echo $item['merek_alat_un'] ?></td>
-          <td><?php echo $item['type_alat_un'] ?></td>
-          <td><?php echo $item['serial_number_un'] ?></td>
-          <td><?php echo $item['lokasi_alat_un'] ?></td>
-          <td><?php echo $item['pelapor_un'] ?></td>
-          <td><?php echo $item['teknisi_1_un'] ?></td>
-          <td><?php echo $item['teknisi_2_un'] ?></td>
-          <td><?php echo $item['teknisi_3_un'] ?></td>
-          <td><?php echo $item['tanggal_penggudangan_un'] ?></td>
-          <td><?php echo $item['ka_instalasi_un'] ?></td>
-          <td><?php echo $item['keterangan_penggudangan_un'] ?></td>
-          <td>
-            <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_penghapusan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-            <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_penggudangan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-          </td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Penghapusan</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Tanggal_Penggudangan</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($penghapusan as $index => $item)
+                      <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td><?php echo $item['id_perbaikan_un'] ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
+                        <td><?php echo $item['nama_alat_un'] ?></td>
+                        <td><?php echo $item['merek_alat_un'] ?></td>
+                        <td><?php echo $item['type_alat_un'] ?></td>
+                        <td><?php echo $item['serial_number_un'] ?></td>
+                        <td><?php echo $item['lokasi_alat_un'] ?></td>
+                        <td><?php echo $item['pelapor_un'] ?></td>
+                        <td><?php echo $item['teknisi_1_un'] ?></td>
+                        <td><?php echo $item['teknisi_2_un'] ?></td>
+                        <td><?php echo $item['teknisi_3_un'] ?></td>
+                        <td><?php echo $item['tanggal_penggudangan_un'] ?></td>
+                        <td><?php echo $item['ka_instalasi_un'] ?></td>
+                        <td><?php echo $item['keterangan_penggudangan_un'] ?></td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_penghapusan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_unregistrasi/cetak_penggudangan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->

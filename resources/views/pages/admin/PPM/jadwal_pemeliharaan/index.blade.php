@@ -34,7 +34,7 @@
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
           <div class="panel-heading no-print">
-            <h4>Jadwal Pemeliharaan</h4>
+            <h1>Jadwal Pemeliharaan</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -92,48 +92,59 @@
       </div>
     </div>
     <div class="row">
-      <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
+
           <div class="panel-heading no-print">
-            <h1>Tabel Jadwal</h1>
+            <div class="">
+              <h1>Tabel Jadwal</h1>
+            </div>
           </div>
-          
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Lokasi Alat</th>
+                      <th scope="col">Nama Alat</th>
+                      <th scope="col">Jadwal</th>
+                      <th scope="col">Keterangan</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($items as $items)
+                      <tr>
+                        <td>{{ $items->id }}</td>
+                        <td>{{ $items->lokasi_alat }}</td>
+                        <td>{{ $items->nama_alat }}</td>
+                        <td>{{ $items->jadwal }}</td>
+                        <td>
+                          <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $items->status == 1 ? 'warning' : 'danger'}}" type="submit">{{ $items->status == 1 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-              <thead class="table-light">
-                <th scope="col">No</th>
-                <th scope="col">Lokasi Alat</th>
-                <th scope="col">Nama Alat</th>
-                <th scope="col">Jadwal</th>
-                <th scope="col">Keterangan</th>
-              </thead>
-              <tbody>
-                @forelse ($items as $items)
-                <tr>
-                  <td>{{ $items->id }}</td>
-                  <td>{{ $items->lokasi_alat }}</td>
-                  <td>{{ $items->nama_alat }}</td>
-                  <td>{{ $items->jadwal }}</td>
-                  <td>
-                    <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
-                      @csrf
-                      @method('PUT')
-                      <button class="btn btn-{{ $items->status == 1 ? 'warning' : 'danger'}}" type="submit">{{ $items->status == 1 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
-                    </form>
-                  </td>
-                </tr>
-                @empty
-                <tr>
-                  <td class="text-center" colspan="7">Data Kosong</td>
-                </tr>
-                @endforelse
-              </tbody>
-            </table>
-          <!--TABEL-->
+    
+    
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->

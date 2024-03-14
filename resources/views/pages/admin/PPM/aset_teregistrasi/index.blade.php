@@ -250,88 +250,99 @@
       </div>
     </div>
     <div class="row">
-      <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
+
           <div class="panel-heading no-print">
-            <h1>Tabel Perbaikan</h1>
+            <div class="">
+              <h1>Tabel Perbaikan</h1>
+            </div>
           </div>
-          <!--TABEL-->
-            <table class="datatable table table-striped table-bordered" style="width:100%">
-              <thead class="table-light">
-                <th scope="col">No</th>
-                <th scope="col">Id_Perbaikan</th>
-                <th scope="col">ID_Aset</th>
-                <th scope="col">Tanggal_Perbaikan</th>
-                <th scope="col">Nama_Alat</th>
-                <th scope="col">Merek_Alat</th>
-                <th scope="col">Type_Alat</th>
-                <th scope="col">Serial_Number</th>
-                <th scope="col">Lokasi_Alat</th>
-                <th scope="col">Pelapor</th>
-                <th scope="col">Keterangan_Kondisi_Alat</th>
-                <th scope="col">Kepala Ruangan</th>
-                <th scope="col">Teknisi_1</th>
-                <th scope="col">Teknisi_2</th>
-                <th scope="col">Teknisi_3</th>
-                <th scope="col">suku Cadang</th>
-                <th scope="col">volume</th>
-                <th scope="col">Harga Satuan</th>
-                <th scope="col">Jumlah Harga</th>
-                <th scope="col">Keluhan_Dari_alat</th>
-                <th scope="col">Korektif</th>
-                <th scope="col">Tombol_Eksekusi</th>
-              </thead>
-              <tbody>
-                @forelse ($items as $index => $item)
-                <tr class="odd gradeX">
-                  <td><?php echo $index  + 1 ?></td>
-                  <td><?php echo $item['id_perbaikan_reg'] ?></td>
-                  <td><?php echo $item['id_aset_reg'] ?></td>
-                  <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-                  <td><?php echo $item['nama_alat_reg'] ?></td>
-                  <td><?php echo $item['merek_alat_reg'] ?></td>
-                  <td><?php echo $item['type_alat_reg'] ?></td>
-                  <td><?php echo $item['serial_number_reg'] ?></td>
-                  <td><?php echo $item['lokasi_alat_reg'] ?></td>
-                  <td><?php echo $item['pelapor_reg'] ?></td>
-                  <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-                  <td><?php echo $item['ka_instalasi_reg'] ?></td>
-                  <td><?php echo $item['teknisi_1_reg'] ?></td>
-                  <td><?php echo $item['teknisi_2_reg'] ?></td>
-                  <td><?php echo $item['teknisi_3_reg'] ?></td>
-                  <td><?php echo $item['suku_cadang'] ?></td>
-                  <td><?php echo $item['volume'] ?></td>
-                  <td><?php echo $item['harga_satuan'] ?></td>
-                  <td><?php echo $item['jumlah_harga'] ?></td>
-                  <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-                  <td><?php echo $item['korektif_reg'] ?></td>
-                  <td>
-                    <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                    <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"></i></a>
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">ID_Aset</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan_Kondisi_Alat</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">suku Cadang</th>
+                      <th scope="col">volume</th>
+                      <th scope="col">Harga Satuan</th>
+                      <th scope="col">Jumlah Harga</th>
+                      <th scope="col">Keluhan_Dari_alat</th>
+                      <th scope="col">Korektif</th>
+                      <th scope="col">Tombol_Eksekusi</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($items as $index => $item)
+                      <tr class="odd gradeX">
+                        <td><?php echo $index  + 1 ?></td>
+                        <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                        <td><?php echo $item['id_aset_reg'] ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                        <td><?php echo $item['nama_alat_reg'] ?></td>
+                        <td><?php echo $item['merek_alat_reg'] ?></td>
+                        <td><?php echo $item['type_alat_reg'] ?></td>
+                        <td><?php echo $item['serial_number_reg'] ?></td>
+                        <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                        <td><?php echo $item['pelapor_reg'] ?></td>
+                        <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                        <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                        <td><?php echo $item['teknisi_1_reg'] ?></td>
+                        <td><?php echo $item['teknisi_2_reg'] ?></td>
+                        <td><?php echo $item['teknisi_3_reg'] ?></td>
+                        <td><?php echo $item['suku_cadang'] ?></td>
+                        <td><?php echo $item['volume'] ?></td>
+                        <td><?php echo $item['harga_satuan'] ?></td>
+                        <td><?php echo $item['jumlah_harga'] ?></td>
+                        <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                        <td><?php echo $item['korektif_reg'] ?></td>
+                        <td>
+                          <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                    <form action="{{ url('/dashboard/ppm/perbaikan_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
-                      @csrf
-                      @method('DELETE')
-                      <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                        <i class="fa fa-trash "></i>
-                      </button>
-                    </form>
-                  </td>
-                </tr>
+                          <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"></i></a>
 
-                @empty
-                <tr>
-                  <td class="text-center" colspan="7">Data Kosong</td>
-                </tr>
-                @endforelse
-              </tbody>
-            </table>
-          <!--TABEL-->
+                          <form action="{{ url('/dashboard/ppm/perbaikan_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     
 
     <!-- content -->
@@ -530,94 +541,105 @@
       </div>
     </div>
     <div class="row">
-      <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
+
           <div class="panel-heading no-print">
-            <h1>Tabel Pengiriman</h1>
+            <div class="">
+              <h1>Tabel Pengiriman</h1>
+            </div>
           </div>
-        <!--TABEL-->
-          <table class="datatable table table-striped table-bordered" style="width:100%">
-            <thead class="table-light">
-              <th scope="col">No</th>
-              <th scope="col">Id_Perbaikan</th>
-              <th scope="col">Tanggal_Perbaikan</th>
-              <th scope="col">Tanggal_Pengiriman</th>
-              <th scope="col">ID Aset</th>
-              <th scope="col">Nama_Alat</th>
-              <th scope="col">Merek_Alat</th>
-              <th scope="col">Type_Alat</th>
-              <th scope="col">Seri_Number</th>
-              <th scope="col">Lokasi_Alat</th>
-              <th scope="col">Teknisi_1</th>
-              <th scope="col">Teknisi_2</th>
-              <th scope="col">Teknisi_3</th>
-              <th scope="col">suku Cadang</th>
-              <th scope="col">volume</th>
-              <th scope="col">Harga Satuan</th>
-              <th scope="col">Jumlah Harga</th>
-              <th scope="col">Pelapor</th>
-              <th scope="col">Keterangan_Kondisi_Alat</th>
-              <th scope="col">Kepala Ruangan</th>
-              <th scope="col">Nama_Rekan</th>
-              <th scope="col">Alamat_Rekan</th>
-              <th scope="col">Teknisi_Rekanan</th>
-              <th scope="col">Telp_Teknisi_Rekanan</th>
-              <th scope="col">Tombol_Aksi_Tabel</th>
-            </thead>
-            <tbody>
-              @forelse ($result_pengiriman as $index => $item)
 
-              <tr class="odd gradeX">
-                <td><?php echo $index  + 1 ?></td>
-                <td><?php echo $item->id_perbaikan_reg ?></td>
-                <td><?php echo $item->tanggal_perbaikan_reg ?></td>
-                <td><?php echo $item->tanggal_pengiriman_reg ?></td>
-                <td><?php echo $item->id_aset_reg ?></td>
-                <td><?php echo $item->nama_alat_reg ?></td>
-                <td><?php echo $item->merek_alat_reg ?></td>
-                <td><?php echo $item->type_alat_reg ?></td>
-                <td><?php echo $item->seri_number_reg ?></td>
-                <td><?php echo $item->lokasi_alat_reg ?></td>
-                <td><?php echo $item->teknisi_1_reg ?></td>
-                <td><?php echo $item->teknisi_2_reg ?></td>
-                <td><?php echo $item->teknisi_3_reg ?></td>
-                <td><?php echo $item['suku_cadang'] ?></td>
-                <td><?php echo $item['volume'] ?></td>
-                <td><?php echo $item['harga_satuan'] ?></td>
-                <td><?php echo $item['jumlah_harga'] ?></td>
-                <td><?php echo $item->pelapor_reg ?></td>
-                <td><?php echo $item->keterangan_kondisi_alat_reg ?></td>
-                <td><?php echo $item->ka_instalasi_reg ?></td>
-                <td><?php echo $item->nama_rekan_reg ?></td>
-                <td><?php echo $item->alamat_rekan_reg ?></td>
-                <td><?php echo $item->teknisi_rekanan_reg ?></td>
-                <td><?php echo $item->telp_teknisi_rekanan_reg ?></td>
-                <td>
-                  <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-                  <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Tanggal_Pengiriman</th>
+                      <th scope="col">ID Aset</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Seri_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">suku Cadang</th>
+                      <th scope="col">volume</th>
+                      <th scope="col">Harga Satuan</th>
+                      <th scope="col">Jumlah Harga</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan_Kondisi_Alat</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Nama_Rekan</th>
+                      <th scope="col">Alamat_Rekan</th>
+                      <th scope="col">Teknisi_Rekanan</th>
+                      <th scope="col">Telp_Teknisi_Rekanan</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($result_pengiriman as $index => $item)
 
-                  <form action="{{ url('/dashboard/ppm/pengiriman_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                      <i class="fa fa-trash "></i>
-                    </button>
-                  </form>
-                </td>
-              </tr>
+                      <tr class="odd gradeX">
+                        <td><?php echo $index  + 1 ?></td>
+                        <td><?php echo $item->id_perbaikan_reg ?></td>
+                        <td><?php echo $item->tanggal_perbaikan_reg ?></td>
+                        <td><?php echo $item->tanggal_pengiriman_reg ?></td>
+                        <td><?php echo $item->id_aset_reg ?></td>
+                        <td><?php echo $item->nama_alat_reg ?></td>
+                        <td><?php echo $item->merek_alat_reg ?></td>
+                        <td><?php echo $item->type_alat_reg ?></td>
+                        <td><?php echo $item->seri_number_reg ?></td>
+                        <td><?php echo $item->lokasi_alat_reg ?></td>
+                        <td><?php echo $item->teknisi_1_reg ?></td>
+                        <td><?php echo $item->teknisi_2_reg ?></td>
+                        <td><?php echo $item->teknisi_3_reg ?></td>
+                        <td><?php echo $item['suku_cadang'] ?></td>
+                        <td><?php echo $item['volume'] ?></td>
+                        <td><?php echo $item['harga_satuan'] ?></td>
+                        <td><?php echo $item['jumlah_harga'] ?></td>
+                        <td><?php echo $item->pelapor_reg ?></td>
+                        <td><?php echo $item->keterangan_kondisi_alat_reg ?></td>
+                        <td><?php echo $item->ka_instalasi_reg ?></td>
+                        <td><?php echo $item->nama_rekan_reg ?></td>
+                        <td><?php echo $item->alamat_rekan_reg ?></td>
+                        <td><?php echo $item->teknisi_rekanan_reg ?></td>
+                        <td><?php echo $item->telp_teknisi_rekanan_reg ?></td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
-              @empty
-              <tr>
-                <td class="text-center" colspan="7">Data Kosong</td>
-              </tr>
-              @endforelse
-            </tbody>
-          </table>
-        <!--TABEL-->
+                          <form action="{{ url('/dashboard/ppm/pengiriman_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     
 
     <!-- content -->
@@ -842,100 +864,111 @@
       </div>
     </div>
     <div class="row">
-      <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
-          <div class="panel-heading no-print">
-            <h1>Tabel Pengembalian</h1>
-          </div>
-          <!--TABEL-->
-          <table class="datatable table table-striped table-bordered" style="width:100%">
-            <thead class="table-light">
-              <th scope="col">No</th>
-              <th scope="col">Id_Perbaikan</th>
-              <th scope="col">Nama_Alat</th>
-              <th scope="col">Tanggal_Perbaikan</th>
-              <th scope="col">Merek</th>
-              <th scope="col">Id_Aset</th>
-              <th scope="col">Type_Alat</th>
-              <th scope="col">Tanggal_Pengembalian</th>
-              <th scope="col">Serial_Number</th>
-              <th scope="col">Pelapor</th>
-              <th scope="col">Lokasi_Alat</th>
-              <th scope="col">Keterangan_Kondisi_Alat</th>
-              <th scope="col">Penerima</th>
-              <th scope="col">Harga_Perbaikan</th>
-              <th scope="col">Teknisi_1</th>
-              <th scope="col">Teknisi_2</th>
-              <th scope="col">Teknisi_3</th>
-              <th scope="col">suku Cadang</th>
-              <th scope="col">volume</th>
-              <th scope="col">Harga Satuan</th>
-              <th scope="col">Jumlah Harga</th>
-              <th scope="col">Kepala Ruangan</th>
-              <th scope="col">Penyebab_Kerusakan</th>
-              <th scope="col">Solusi_Perbaikan</th>
-              <th scope="col">Penguji_Suku_Cadang</th>
-              <th scope="col">Hasil_Verifikasi</th>
-              <th scope="col">Hasil_Fungsi</th>
-              <th scope="col">Pengganti_Suku_Cadang</th>
-              <th scope="col">Tombol_Aksi_Tabel</th>
-            </thead>
-            <tbody>
-              @forelse ($result_pengembalian as $index => $item)
-              <tr class="odd gradeX">
-                <td><?php echo $index  + 1 ?></td>
-                <td>{{ $item->id_perbaikan_reg }}</td>
-                <td>{{ $item->nama_alat_reg }}</td>
-                <td>{{ $item->tanggal_perbaikan_reg }}</td>
-                <td>{{ $item->merek_reg }}</td>
-                <td>{{ $item->id_perbaikan_reg }}</td>
-                <td>{{ $item->tipe_reg }}</td>
-                <td>{{ $item->tanggal_pengembalian_reg }}</td>
-                <td>{{ $item->serial_number_reg }}</td>
-                <td>{{ $item->pelapor_reg }}</td>
-                <td>{{ $item->lokasi_alat_reg }}</td>
-                <td>{{ $item->keterangan_reg }}</td>
-                <td>{{ $item->penerima_reg }}</td>
-                <td>{{ $item->harga_perbaikan_reg }}</td>
-                <td>{{ $item->teknisi1_reg }}</td>
-                <td>{{ $item->teknisi2_reg }}</td>
-                <td>{{ $item->teknisi3_reg }}</td>
-                <td><?php echo $item['suku_cadang'] ?></td>
-                <td><?php echo $item['volume'] ?></td>
-                <td><?php echo $item['harga_satuan'] ?></td>
-                <td><?php echo $item['jumlah_harga'] ?></td>
-                <td>{{ $item->ka_instalasi_reg }}</td>
-                <td>{{ $item->penyebab_kerusakan_reg }}</td>
-                <td>{{ $item->solusi_perbaikan_reg }}</td>
-                <td>{{ $item->penguji_suku_cadang_reg }}</td>
-                <td>{{ $item->hasil_verifikasi_reg }}</td>
-                <td>{{ $item->hasil_fungsi_reg }}</td>
-                <td>{{ $item->pengganti_suku_cadang_reg }}</td>
-                <td>
-                  <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-                  <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-                  <form action="{{ url('/dashboard/ppm/pengembalian_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                      <i class="fa fa-trash "></i>
-                    </button>
-                  </form>
-                </td>
-              </tr>
 
-              @empty
-              <tr>
-                <td class="text-center" colspan="7">Data Kosong</td>
-              </tr>
-              @endforelse
-            </tbody>
-          </table>
-          <!--TABEL-->
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Pengembalian</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Merek</th>
+                      <th scope="col">Id_Aset</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Tanggal_Pengembalian</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Keterangan_Kondisi_Alat</th>
+                      <th scope="col">Penerima</th>
+                      <th scope="col">Harga_Perbaikan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">suku Cadang</th>
+                      <th scope="col">volume</th>
+                      <th scope="col">Harga Satuan</th>
+                      <th scope="col">Jumlah Harga</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Penyebab_Kerusakan</th>
+                      <th scope="col">Solusi_Perbaikan</th>
+                      <th scope="col">Penguji_Suku_Cadang</th>
+                      <th scope="col">Hasil_Verifikasi</th>
+                      <th scope="col">Hasil_Fungsi</th>
+                      <th scope="col">Pengganti_Suku_Cadang</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($result_pengembalian as $index => $item)
+                      <tr class="odd gradeX">
+                        <td><?php echo $index  + 1 ?></td>
+                        <td>{{ $item->id_perbaikan_reg }}</td>
+                        <td>{{ $item->nama_alat_reg }}</td>
+                        <td>{{ $item->tanggal_perbaikan_reg }}</td>
+                        <td>{{ $item->merek_reg }}</td>
+                        <td>{{ $item->id_perbaikan_reg }}</td>
+                        <td>{{ $item->tipe_reg }}</td>
+                        <td>{{ $item->tanggal_pengembalian_reg }}</td>
+                        <td>{{ $item->serial_number_reg }}</td>
+                        <td>{{ $item->pelapor_reg }}</td>
+                        <td>{{ $item->lokasi_alat_reg }}</td>
+                        <td>{{ $item->keterangan_reg }}</td>
+                        <td>{{ $item->penerima_reg }}</td>
+                        <td>{{ $item->harga_perbaikan_reg }}</td>
+                        <td>{{ $item->teknisi1_reg }}</td>
+                        <td>{{ $item->teknisi2_reg }}</td>
+                        <td>{{ $item->teknisi3_reg }}</td>
+                        <td><?php echo $item['suku_cadang'] ?></td>
+                        <td><?php echo $item['volume'] ?></td>
+                        <td><?php echo $item['harga_satuan'] ?></td>
+                        <td><?php echo $item['jumlah_harga'] ?></td>
+                        <td>{{ $item->ka_instalasi_reg }}</td>
+                        <td>{{ $item->penyebab_kerusakan_reg }}</td>
+                        <td>{{ $item->solusi_perbaikan_reg }}</td>
+                        <td>{{ $item->penguji_suku_cadang_reg }}</td>
+                        <td>{{ $item->hasil_verifikasi_reg }}</td>
+                        <td>{{ $item->hasil_fungsi_reg }}</td>
+                        <td>{{ $item->pengganti_suku_cadang_reg }}</td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_pengembalian/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                          <form action="{{ url('/dashboard/ppm/pengembalian_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash "></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     
 
     <!-- content -->
@@ -1097,75 +1130,86 @@
       </div>
     </div>
     <div class="row">
-      <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
+
           <div class="panel-heading no-print">
-            <h1>Tabel Jadwal</h1>
+            <div class="">
+              <h1>Tabel Penghapusan</h1>
+            </div>
           </div>
-          <!--TABEL-->
-          <table class="datatable table table-striped table-bordered" style="width:100%">
-            <thead class="table-light">
-              <th scope="col">No</th>
-              <th scope="col">Id_Perbaikan</th>
-              <th scope="col">Tanggal_Perbaikan</th>
-              <th scope="col">Tanggal_Penggudangan</th>
-              <th scope="col">Nama_Alat</th>
-              <th scope="col">Merek_Alat</th>
-              <th scope="col">Type_Alat</th>
-              <th scope="col">Serial_Number</th>
-              <th scope="col">Lokasi_Alat</th>
-              <th scope="col">Pelapor</th>
-              <th scope="col">Teknisi_1</th>
-              <th scope="col">Teknisi_2</th>
-              <th scope="col">Teknisi_3</th>
-              <th scope="col">suku Cadang</th>
-              <th scope="col">volume</th>
-              <th scope="col">Harga Satuan</th>
-              <th scope="col">Jumlah Harga</th>
-              <th scope="col">Kepala Ruangan</th>
-              <th scope="col">Keterangan_Pengguna</th>
-              <th scope="col">Tombol_Aksi_Tabel</th>
-            </thead>
-            <tbody>
-              @forelse ($result_penghapusan as $index => $item)
-              <tr class="odd gradeX">
-                <td><?php echo $index  + 1 ?></td>
-                <td>{{ $item->id_perbaikan_reg }}</td>
-                <td>{{ $item->tanggal_perbaikan_reg }}</td>
-                <td>{{ $item->tanggal_penggudangan_reg }}</td>
-                <td>{{ $item->nama_alat_reg }}</td>
-                <td>{{ $item->merek_alat_reg }}</td>
-                <td>{{ $item->type_alat_reg }}</td>
-                <td>{{ $item->serial_number_reg }}</td>
-                <td>{{ $item->lokasi_alat_reg }}</td>
-                <td>{{ $item->pelapor_reg }}</td>
-                <td>{{ $item->teknisi_1_reg }}</td>
-                <td>{{ $item->teknisi_2_reg }}</td>
-                <td>{{ $item->teknisi_3_reg }}</td>
-                <td>{{ $item['suku_cadang'] }}</td>
-                <td>{{ $item['volume'] }}</td>
-                <td>{{ $item['harga_satuan'] }}</td>
-                <td>{{ $item['jumlah_harga'] }}</td>
-                <td>{{ $item->ka_instalasi_reg }}</td>
-                <td>{{ $item->keterangan_pengguna_reg }}</td>
-                <td>
-                  <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-                  <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-      
-                </td>
-              </tr>
-              @empty
-              <tr>
-                <td class="text-center" colspan="7">Data Kosong</td>
-              </tr>
-              @endforelse
-            </tbody>
-          </table>
-          <!--TABEL-->
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Tanggal_Penggudangan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">suku Cadang</th>
+                      <th scope="col">volume</th>
+                      <th scope="col">Harga Satuan</th>
+                      <th scope="col">Jumlah Harga</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Keterangan_Pengguna</th>
+                      <th scope="col">Tombol_Aksi_Tabel</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($result_penghapusan as $index => $item)
+                      <tr class="odd gradeX">
+                        <td><?php echo $index  + 1 ?></td>
+                        <td>{{ $item->id_perbaikan_reg }}</td>
+                        <td>{{ $item->tanggal_perbaikan_reg }}</td>
+                        <td>{{ $item->tanggal_penggudangan_reg }}</td>
+                        <td>{{ $item->nama_alat_reg }}</td>
+                        <td>{{ $item->merek_alat_reg }}</td>
+                        <td>{{ $item->type_alat_reg }}</td>
+                        <td>{{ $item->serial_number_reg }}</td>
+                        <td>{{ $item->lokasi_alat_reg }}</td>
+                        <td>{{ $item->pelapor_reg }}</td>
+                        <td>{{ $item->teknisi_1_reg }}</td>
+                        <td>{{ $item->teknisi_2_reg }}</td>
+                        <td>{{ $item->teknisi_3_reg }}</td>
+                        <td>{{ $item['suku_cadang'] }}</td>
+                        <td>{{ $item['volume'] }}</td>
+                        <td>{{ $item['harga_satuan'] }}</td>
+                        <td>{{ $item['jumlah_harga'] }}</td>
+                        <td>{{ $item->ka_instalasi_reg }}</td>
+                        <td>{{ $item->keterangan_pengguna_reg }}</td>
+                        <td>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+
+                        </td>
+                      </tr>
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
     
   </div> <!-- /.content -->
 

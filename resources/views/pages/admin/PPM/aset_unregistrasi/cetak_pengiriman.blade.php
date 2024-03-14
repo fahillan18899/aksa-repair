@@ -28,7 +28,7 @@
             <div class="card">
               <div class="align-center mt-5">
                 
-                <img src="https://wyasaaplikasi.com/super_admin/img/64a6676d605dc.jpg" alt="Kop Surat" width="100%">
+                <img src="http://127.0.0.1:8000/assets/images/kop.png" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">
 
@@ -116,8 +116,8 @@
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td></td>
-                      <td></td>
+                      <td><?php echo $item ['teknisi_rekanan_un']; ?></td>
+                      <td><?php echo $item ['ka_instalasi_un']; ?></td>
                     </tr>
                   </tbody>
                 </table>
