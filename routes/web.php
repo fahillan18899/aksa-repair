@@ -215,6 +215,9 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
   Route::resource('stock_opname_user', StockOpnameUserController::class);
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+
+  // API internal datatable
+  Route::get('/aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {

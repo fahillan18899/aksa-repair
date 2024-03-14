@@ -83,9 +83,9 @@
                 <tr>
                   <td scope="row">{{ $item->id_gedung }}</td>
                   <td scope="row">{{ $item->nama_gedung }}</td>
-                  <td scope="row d-inline">
+                  <td scope="row" style="display: flex; flex-direction: row; ">
                     <a href="{{ route('gedung.edit',$item->id_gedung) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
-                    <form action="{{ route('gedung.destroy',$item->id_gedung) }}" method="POST" class="d-inline">
+                    <form action="{{ route('gedung.destroy',$item->id_gedung) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('DELETE')
                       <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -172,7 +172,7 @@
                     <a href="{{ route('alat.edit',$item->id_alat) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
 
-                    <form action="{{ route('alat.destroy',$item->id_alat) }}" method="POST" class="">
+                    <form action="{{ route('alat.destroy',$item->id_alat) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('delete')
                       <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -258,7 +258,7 @@
                   <td scope="row">
                     <a href="{{ route('teknisi.edit',$item->id_teknisi) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                    <form action="{{ route('teknisi.destroy',$item->id_teknisi) }}" method="POST" class="d-inline">
+                    <form action="{{ route('teknisi.destroy',$item->id_teknisi) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('delete')
                       <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -373,7 +373,7 @@
                   <td scope="row">
                     <a href="{{ route('ruangan.edit',$item->id_ruangan) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                    <form action="{{ route('ruangan.destroy',$item->id_ruangan) }}" method="POST" class="d-inline">
+                    <form action="{{ route('ruangan.destroy',$item->id_ruangan) }}" method="POST" style="display: inline;">
                       @csrf
                       @method('delete')
                       <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
