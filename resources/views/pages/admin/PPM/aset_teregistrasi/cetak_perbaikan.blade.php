@@ -110,11 +110,11 @@
                     </tr>
                     <tr>
                       <td><?php echo $item['teknisi_1_reg'] ?></td>
-                      <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                      <td><?php echo $item['pelapor_reg'] ?></td>
                     </tr>
                     <tr>
                       <td width="7%" colspan="2">
-                      Kepala Ruangan
+                      <?php echo $item['ka_instalasi_reg'] ?>
                       </td>
                       <td width="7%" colspan="2">
                       </td>

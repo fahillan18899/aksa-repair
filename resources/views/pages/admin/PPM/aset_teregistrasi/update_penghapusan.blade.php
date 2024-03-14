@@ -91,7 +91,7 @@
                     <label for="lokasi_alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat_reg" class="form-control" id="lokasi_alat_reg">
-                        @foreach($ruangans as $ruangan)
+                      @foreach($ruangans as $ruangan)
                         <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : ''}}>{{ $ruangan->lokasi_alat }}</option>
                         @endforeach
                       </select>

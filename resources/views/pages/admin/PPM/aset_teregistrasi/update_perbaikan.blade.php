@@ -171,7 +171,7 @@
                       <div class="ui buttons">
                         <button class="ui positive button">Edit</button>
                         <div class="or"></div>
-                        <a href=""><button type="button" class="ui button">Kembali</button></a>
+                        <a href="/dashboard/ppm/aset_teregistrasi"><button type="button" class="ui button">Kembali</button></a>
                       </div>
                     </div>
                   </div>

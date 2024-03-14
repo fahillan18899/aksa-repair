@@ -91,7 +91,7 @@
                     </tr>
                     <tr>
                       <th width="50%">Teknisi</th>
-                      <th width="50%">KA Instalasi</th>
+                      <th width="50%">Kepala Ruangan</th>
                     </tr>
                     <tr>
                       <th width="50%"><br><br><br><br></th>

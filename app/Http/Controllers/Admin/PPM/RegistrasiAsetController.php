@@ -30,21 +30,20 @@ class RegistrasiAsetController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('registrasis')
-        ->select(DB::raw('max(qr_code) as maxIDASET'))
-        ->where('kode_rs', $kodeRs_)
+        ->select(DB::raw('max(id_aset) as maxIDASET'))
+         ->where('kode_rs', $kodeRs_)
         ->first();
         $kodeAset = $data->maxIDASET;
 
-        $urutan = (int)substr($kodeAset, 3, 4);
+        $urutan = (int)substr($kodeAset, 12, 13);
         $urutan++;
 
-        $string = "QR";
-
-        $kodeAset  = $string  . sprintf("%04s", $urutan);
+        $date  = date('ymd');
+        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
@@ -57,7 +56,6 @@ class RegistrasiAsetController extends Controller
     {
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
-            'qr_code' => 'required|unique:registrasis',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
             'merek' => 'required',
@@ -90,7 +88,6 @@ class RegistrasiAsetController extends Controller
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
             'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
             'id_aset.unique' => 'Id Sudah Digunakan',
-            'qr_code.unique' => 'Code Sudah Digunakan'
         ]);
 
         if (isset($data['gambar'])) {
@@ -121,7 +118,6 @@ class RegistrasiAsetController extends Controller
             'kegiatan' => 'Pemelihraan',
             'engineer' => '',
             'id_aset' => $data['id_aset'],
-            'qr_code' => '',
             'nama_alat' => $data['nama_alat'],
             'serial_number' => $data['serial_number'],
             'merek' => $data['merek'],

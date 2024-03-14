@@ -64,7 +64,7 @@ class PenghapusanRegistrasiController extends Controller
             'alats'        => $alats,
             'item' => $item,
             'teknisis'      => $teknisis,
-            'ruangans '     => $ruangans,
+            'ruangans'     => $ruangans,
         ]);
     }
 

@@ -98,8 +98,12 @@
           <div class="panel-heading no-print">
             <h1>Tabel Jadwal</h1>
           </div>
-          <!--TABEL-->
-            <table class="datatable table table-striped table-bordered" style="width:100%">
+          
+        </div>
+      </div>
+    </div>
+    <!--TABEL-->
+    <table class="datatable table table-striped table-bordered" style="width:100%">
               <thead class="table-light">
                 <th scope="col">No</th>
                 <th scope="col">Lokasi Alat</th>
@@ -130,17 +134,6 @@
               </tbody>
             </table>
           <!--TABEL-->
-          <div class="panel-body panel-form">
-            <div class="row">
-              <div class="col-md-9 col-sm-12">
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->

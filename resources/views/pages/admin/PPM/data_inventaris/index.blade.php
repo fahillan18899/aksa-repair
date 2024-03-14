@@ -31,9 +31,6 @@
                 <div class="btn-group">
                   <a class="btn btn-success" href="/dashboard/ppm/registrasi"> <i class="fa fa-plus"></i> Add Alat </a>
                 </div>
-                <div class="btn-group">
-                  <a class="btn btn-primary" href="/dashboard/ppm/data_inventaris/qr_qode/1"> <i class="fa fa-qrcode"></i> Buat QR </a>
-                </div>
               </div>
               <div class="col-md-2">
                 <a href="{{ url('/dashboard/export') }}" class="btn btn-info"> Template Import</a>

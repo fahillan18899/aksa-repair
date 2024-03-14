@@ -68,20 +68,12 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset">
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="{{ $kodeAset }}" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
                     </div>
                   </div>
-                <div class="form-group row">
-                    <label for="qr_code" class="col-xs-3 col-form-label"> QR Code</label>
-                  <div class="col-xs-9">
-                    <input name="qr_code" type="text" class="form-control" id="firstname" placeholder="Qr Code" value="">
-                  </div>
-                </div>
-                  
-
                   <div class="form-group row">
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
