@@ -75,7 +75,7 @@
                 <th class="none">umur_alat</th>
                 <th  class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
-                <!-- <th>QR</th> -->
+                <th>QR</th>
               </thead>
             </table>
           </div>
@@ -203,7 +203,7 @@
                 <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
                             @csrf
                             @method('delete')
-                            <button class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
+                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
                               <i class=\"fa fa-trash\"></i>
                             </button>
                           </form>`
@@ -211,13 +211,12 @@
               
             },
             
-            /*{
-              data: 'id_aset',
-              name: 'QR',
+           {
+              data: 0,
               render: function(data, type, full, meta) {
                 return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
               }
-            },*/
+            },
 
           ],
         }).fnDestroy();
