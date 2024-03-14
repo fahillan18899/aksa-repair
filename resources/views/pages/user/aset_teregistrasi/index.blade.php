@@ -261,23 +261,23 @@
       <thead class="table-light">
         <th scope="col">No</th>
         <th scope="col">Id_Perbaikan</th>
-        <th scope="col">ID_Aset</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Lokasi_Alat</th>
+        <th scope="col">ID Aset</th>
+        <th scope="col">Tanggal Perbaikan</th>
+        <th scope="col">Nama Alat</th>
+        <th scope="col">Merek Alat</th>
+        <th scope="col">Type Alat</th>
+        <th scope="col">Serial Number</th>
+        <th scope="col">Lokasi Alat</th>
         <th scope="col">Pelapor</th>
-        <th scope="col">Keterangan_Kondisi_Alat</th>
+        <th scope="col">Keterangan Kondisi Alat</th>
         <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Keluhan_Dari_alat</th>
+        <th scope="col">Teknisi 1</th>
+        <th scope="col">Teknisi 2</th>
+        <th scope="col">Teknisi 3</th>
+        <th scope="col">Keluhan Dari alat</th>
         <th scope="col">Korektif</th>
-        <!--<th scope="col">Tombol_Eksekusi</th>
-        <th scope="col">Tombol_Eksekusi</th>-->
+        <!--<th scope="col">Tombol Eksekusi</th>
+        <th scope="col">Tombol Eksekusi</th>-->
       </thead>
       <tbody>
         @forelse ($items as $index => $item)
@@ -431,15 +431,7 @@
             {
               data: 0,
               render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
+                return `<a href=\"/dashboard_user/qr_qode/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> Cetak QR</button></a>`
               }
               
             },
