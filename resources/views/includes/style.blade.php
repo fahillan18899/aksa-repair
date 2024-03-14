@@ -58,6 +58,10 @@
        overflow: hidden;
      }
    }
+
+   .d-inline {
+    display: inline-block;
+   }
  </style>
  <!-- jQuery  -->
  <script src="{{  url('assets/js/jquery.min.js') }}" type="text/javascript"></script>
