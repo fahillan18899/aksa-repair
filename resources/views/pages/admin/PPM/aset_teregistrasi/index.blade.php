@@ -455,28 +455,28 @@
                   <div class="form-group row">
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
-                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
-                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
-                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga" readonly>
                     </div>
                   </div>
 
@@ -526,9 +526,9 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button type="reset" class="ui button">Reset</button>
+                        <button class="ui positive button">Tambah</button>
                         <div class="or"></div>
-                        <button class="ui positive button">Save</button>
+                        <button type="reset" class="ui button" type="submit">Reset</button>
                       </div>
                     </div>
                   </div>
@@ -779,28 +779,28 @@
                   <div class="form-group row">
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
-                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang2" placeholder="Nama Sukucadang" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
-                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                      <input name="volume" type="text" class="form-control" id="volume2" placeholder="Volume" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
-                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan2" placeholder="Harga Satuan" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga2" placeholder="Jumlah Harga" readonly>
                     </div>
                   </div>
 
@@ -849,9 +849,9 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button type="reset" class="ui button">Reset</button>
+                        <button class="ui positive button">Tambah</button>
                         <div class="or"></div>
-                        <button class="ui positive button">Save</button>
+                        <button type="reset" class="ui button" type="submit">Reset</button>
                       </div>
                     </div>
                   </div>
@@ -1073,28 +1073,28 @@
                   <div class="form-group row">
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
-                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                      <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang3" placeholder="Nama Sukucadang" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
-                      <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
+                      <input name="volume" type="text" class="form-control" id="volume3" placeholder="Volume" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan</label>
                     <div class="col-xs-9">
-                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan3" placeholder="Harga Satuan" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga3" placeholder="Jumlah Harga" readonly>
                     </div>
                   </div>
 
@@ -1115,9 +1115,9 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button type="reset" class="ui button">Reset</button>
+                        <button class="ui positive button">Tambah</button>
                         <div class="or"></div>
-                        <button class="ui positive button">Save</button>
+                        <button type="reset" class="ui button" type="submit">Reset</button>
                       </div>
                     </div>
                   </div>

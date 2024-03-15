@@ -145,6 +145,10 @@
         $("#Teknisi_3_reg1").val(data.Teknisi_3_reg);
         $("#Keterangan_Kondisi_Alat_reg1").val(data.Keterangan_Kondisi_Alat_reg);
         $("#KA_Instalasi_reg1").val(data.Ka_Instalasi_reg);
+        $("#nama_sukucadang").val(data.suku_cadang);
+        $("#volume").val(data.volume);
+        $("#harga_satuan").val(data.harga_satuan);
+        $("#jumlah_harga").val(data.jumlah_harga);
 
       },
       error: function(xhr, status, error) {
@@ -181,6 +185,10 @@
         $("#teknisi3_reg2").val(data.Teknisi_3_reg);
         $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
         $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
+        $("#nama_sukucadang2").val(data.suku_cadang);
+        $("#volume2").val(data.volume);
+        $("#harga_satuan2").val(data.harga_satuan);
+        $("#jumlah_harga2").val(data.jumlah_harga);
 
       },
       error: function(xhr, status, error) {
@@ -215,6 +223,10 @@
         $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
         $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
         $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
+        $("#nama_sukucadang3").val(data.suku_cadang);
+        $("#volume3").val(data.volume);
+        $("#harga_satuan3").val(data.harga_satuan);
+        $("#jumlah_harga3").val(data.jumlah_harga);
 
       },
       error: function(xhr, status, error) {
