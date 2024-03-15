@@ -26,12 +26,21 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+    
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
+
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Inventaris</h1>
+            </div>
+          </div>
+
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <th>No</th>
@@ -58,7 +67,6 @@
                     <th>umur_alat</th>
                     <th>Jadwal</th>
                     <th>QR</th>
-                    <th>Tombol_Aksi_Tabel</th>
                   </thead>
                   <tbody>
                     @forelse ($registrasis as $index => $item)
@@ -89,9 +97,6 @@
                       <td>
                         <a href="/dashboard_teknisi/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
                       </td>
-                      <td scope="row">
-                        <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Buat QR"><i class="fa fa-print"></i> print</button></a>
-                      </td>
                     </tr>
                     @empty
                     <tr>
@@ -100,7 +105,9 @@
                     @endforelse
                   </tbody>
                 </table>
+                <!--TABEL-->
               </div>
+              <div class="col-md-3"></div>
             </div>
           </div>
         </div>
@@ -292,63 +299,84 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_Perbaikan</th>
-        <th scope="col">ID_Aset</th>
-        <th scope="col">Tanggal_Perbaikan</th>
-        <th scope="col">Nama_Alat</th>
-        <th scope="col">Merek_Alat</th>
-        <th scope="col">Type_Alat</th>
-        <th scope="col">Serial_Number</th>
-        <th scope="col">Lokasi_Alat</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Keterangan_Kondisi_Alat</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Teknisi_1</th>
-        <th scope="col">Teknisi_2</th>
-        <th scope="col">Teknisi_3</th>
-        <th scope="col">Keluhan_Dari_alat</th>
-        <th scope="col">Korektif</th>
-        <!--<th scope="col">Tombol_Eksekusi</th>-->
-        <th scope="col">Tombol_Eksekusi</th>
-      </thead>
-      <tbody>
-        @forelse ($items as $index => $item)
-        <tr class="odd gradeX">
-          <td><?php echo $index  + 1 ?></td>
-          <td><?php echo $item['id_perbaikan_reg'] ?></td>
-          <td><?php echo $item['id_aset_reg'] ?></td>
-          <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-          <td><?php echo $item['nama_alat_reg'] ?></td>
-          <td><?php echo $item['merek_alat_reg'] ?></td>
-          <td><?php echo $item['type_alat_reg'] ?></td>
-          <td><?php echo $item['serial_number_reg'] ?></td>
-          <td><?php echo $item['lokasi_alat_reg'] ?></td>
-          <td><?php echo $item['pelapor_reg'] ?></td>
-          <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-          <td><?php echo $item['ka_instalasi_reg'] ?></td>
-          <td><?php echo $item['teknisi_1_reg'] ?></td>
-          <td><?php echo $item['teknisi_2_reg'] ?></td>
-          <td><?php echo $item['teknisi_3_reg'] ?></td>
-          <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-          <td><?php echo $item['korektif_reg'] ?></td>
-          <!--<td><?php echo $item['kode_rs'] ?></td>-->
-          <td>
-            <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-          </td>
-        </tr>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Perbaikan</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">ID_Aset</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan_Kondisi_Alat</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Keluhan_Dari_alat</th>
+                      <th scope="col">Korektif</th>
+                      <!--<th scope="col">Tombol_Eksekusi</th>-->
+                      <th scope="col">Tombol_Eksekusi</th>
+                    </thead>
+                    <tbody>
+                      @forelse ($items as $index => $item)
+                      <tr class="odd gradeX">
+                        <td><?php echo $index  + 1 ?></td>
+                        <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                        <td><?php echo $item['id_aset_reg'] ?></td>
+                        <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                        <td><?php echo $item['nama_alat_reg'] ?></td>
+                        <td><?php echo $item['merek_alat_reg'] ?></td>
+                        <td><?php echo $item['type_alat_reg'] ?></td>
+                        <td><?php echo $item['serial_number_reg'] ?></td>
+                        <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                        <td><?php echo $item['pelapor_reg'] ?></td>
+                        <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                        <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                        <td><?php echo $item['teknisi_1_reg'] ?></td>
+                        <td><?php echo $item['teknisi_2_reg'] ?></td>
+                        <td><?php echo $item['teknisi_3_reg'] ?></td>
+                        <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                        <td><?php echo $item['korektif_reg'] ?></td>
+                        <!--<td><?php echo $item['kode_rs'] ?></td>-->
+                        <td>
+                          <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                        </td>
+                      </tr>
+
+                      @empty
+                      <tr>
+                        <td class="text-center" colspan="7">Data Kosong</td>
+                      </tr>
+                      @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div> <!-- /.content -->
 
 
