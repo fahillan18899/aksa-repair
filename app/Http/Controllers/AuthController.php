@@ -28,11 +28,10 @@ class AuthController extends Controller
 
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard/home')
-            ->withSuccess('Signed in');
+            return redirect()->intended('/dashboard/ppm/home');
         }
 
-        return redirect("/")->withSuccess('Login details are not valid');
+        return redirect("/")->withSuccess('Detail Login Tidak Valid');
     }
 
     public function registration()

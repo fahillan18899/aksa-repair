@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Wyasa SIMRS</title>
+  <title>Login - Wyasa PPM</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -21,7 +21,7 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa Sim RS</h3>
+              <h3>Wyasa PPM</h3>
               <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
