@@ -230,9 +230,9 @@
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button" type="submit">Edit</button>
+                        <button class="ui positive button">Edit</button>
                         <div class="or"></div>
-                        <a href=""><button type="button" class="ui button">Kembali</button></a>
+                        <a href="/dashboard/ppm/aset_teregistrasi"><button type="button" class="ui button">Kembali</button></a>
                       </div>
                     </div>
                   </div>

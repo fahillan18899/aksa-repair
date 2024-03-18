@@ -25,7 +25,7 @@ class RegistrasiAsetController extends Controller
         
     }
     
-    public function index()
+    public function oldIndex()
     {
         $kodeRs_ = Auth::user()->kode_rs;
 
@@ -44,9 +44,21 @@ class RegistrasiAsetController extends Controller
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
-        return view('pages.admin.PPM.registrasi_aset.index', [
+        return view('pages.admin.PPM.registrasi_aset.old-index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
+            'ruangans' => $ruangans,
+            'alats' => $alats,
+        ]);
+    }
+    
+    public function index()
+    {
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
+        return view('pages.admin.PPM.registrasi_aset.index', [
+            'items' => $items,
             'ruangans' => $ruangans,
             'alats' => $alats,
         ]);
