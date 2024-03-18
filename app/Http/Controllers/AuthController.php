@@ -32,7 +32,7 @@ class AuthController extends Controller
             ->withSuccess('Signed in');
         }
 
-        return redirect("/")->withSuccess('Login details are not valid');
+        return redirect("/")->withError('Login details are not valid');
     }
 
     public function registration()
@@ -49,6 +49,7 @@ class AuthController extends Controller
             'kode_rs' => 'required',
         ], [
             'username.unique' => 'Username Sudah Di Gunakan',
+            'password.required' => 'Password Wajib Diisi',
             'user_role.required' => 'Peran Pengguna Wajib Di Pilih',
             'kode_rs.required' => 'Fasilitas Kesehatan Wajib Di Pilih',
         ]);

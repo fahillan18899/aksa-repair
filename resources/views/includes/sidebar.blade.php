@@ -13,7 +13,6 @@
       </div>
     </div>
 
-    <!-- sidebar menu -->
     <ul class="sidebar-menu">
 
       <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -28,7 +27,6 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <!-- <li class=""><a href="?hal=department&fun=main_department">Depeartemen Utama</a></li> -->
           <li class=""><a href="#?hal=department&fun=create">Tambahkan Depeartemen</a></li>
           <li class=""><a href="#?hal=department&fun=index">Daftar Depeartemen</a></li>
         </ul>
@@ -82,7 +80,7 @@
         </ul>
       </li>
 
-      <!-- <li class="treeview ">
+      <li class="treeview ">
         <a href="#">
           <i class="fa fa ti-pencil-alt"></i> <span>Jadwal</span>
           <span class="pull-right-container">
@@ -99,7 +97,7 @@
           <li class=""><a href="#?hal=report&fun=assign_to_all_doctor"> Ditugaskan Kepada Dokter</a></li>
           <li class=""><a href="#?hal=report&fun=assign_by_all_representative"> Ditugaskan Oleh Perwakilan </a></li>
         </ul>
-      </li> -->
+      </li>
 
       <li class="treeview ">
         <a href="#">
@@ -133,7 +131,7 @@
         </ul>
       </li>
 
-      <!-- <li class="treeview ">
+      <li class="treeview ">
         <a href="#">
           <i class="fa ti-bag"></i> <span>Manajer Akuntansi</span>
           <span class="pull-right-container">
@@ -203,7 +201,7 @@
           <li class=""><a href="?hal=billing&fun=bill_form">Tambahkan Tagihan</a></li>
           <li class=""><a href="?hal=billing&fun=bill">Daftar Tagihan</a></li>
         </ul>
-      </li> -->
+      </li>
 
 
       <li class="treeview {{ request()->routeIs('human_resource.*') ? 'active' : '' }}">
@@ -258,7 +256,7 @@
         </ul>
       </li>
 
-      <!--<li class="treeview ">
+      <li class="treeview ">
         <a href="#">
           <i class="fa fa-bell"></i> <span>Papan Peringatan </span>
           <span class="pull-right-container">
@@ -269,9 +267,9 @@
           <li class=""><a href="?hal=noticeboard/noticeboard_form">Tambahkan Pemberitahuan</a></li>
           <li class=""><a href="?hal=noticeboard/noticeboard">Daftar Pemberitahuan</a></li>
         </ul>
-      </li>-->
+      </li>
 
-      <!--<li class="treeview ">
+      <li class="treeview ">
         <a href="#">
           <i class="fa fa ti-settings"></i> <span>Pengaturan</span>
           <span class="pull-right-container">
@@ -282,10 +280,10 @@
           <li class=""><a href="?hal=setting&fun=index">Pengaturan Aplikasi</a></li>
           <li class=""><a href="?hal=setting&fun=language"> Pengaturan Bahasa</a></li>
         </ul>
-      </li>-->
+      </li>
 
 
-      <!--<li class="treeview ">
+      <li class="treeview ">
         <a href="#">
           <i class="fa fa-comments-o"></i> <span>Pesan</span>
           <span class="pull-right-container">
@@ -297,7 +295,7 @@
           <li class=""><a href="?hal=message&fun=message"> Kotak Masuk </a></li>
           <li class=""><a href="?hal=message&fun=sent">Terkirim </a></li>
         </ul>
-      </li>-->
+      </li>
 
       <li class="treeview {{ request()->is('dashboard/ppm*') ? 'active' : '' }}">
         <a href="#">
@@ -331,7 +329,6 @@
                 <ul class="treeview-menu">
                   <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Aset Teregistrasi</a></li>
                   <li class="{{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_unregistrasi">Aset Unregistrasi</a></li>
-                  <!-- <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li> -->
                 </ul>
               </li>
 
