@@ -86,7 +86,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 
     // menu registrasi
-    Route::get('/registrasi', [RegistrasiAsetController::class, 'index'])->name('registrasi.index');
+    Route::get('/registrasi', [RegistrasiAsetController::class, 'oldIndex'])->name('registrasi.index');
+    Route::get('/registrasi-aset', [RegistrasiAsetController::class, 'index']);
     Route::post('/registrasi', [RegistrasiAsetController::class, 'store']);
     Route::get('/registrasi/{registrasi}/edit', [RegistrasiAsetController::class, 'edit'])->name('registrasi');
     Route::put('/registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
