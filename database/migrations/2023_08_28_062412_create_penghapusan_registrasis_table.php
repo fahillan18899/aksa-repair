@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('jumlah_harga')->nullable();
             $table->string('ka_instalasi_reg')->nullable();
             $table->string('keterangan_pengguna_reg')->nullable();
-            $table->string('kode_rs', 10);
+            $table->string('kode_rs', 10)->index();
             $table->integer('active')->default(1);
 
 

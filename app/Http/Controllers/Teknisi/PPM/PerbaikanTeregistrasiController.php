@@ -20,6 +20,7 @@ class PerbaikanTeregistrasiController extends Controller
 {
     public function index()
     {
+        //TODO Adding index key for kode_rs column for each table
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
         $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();

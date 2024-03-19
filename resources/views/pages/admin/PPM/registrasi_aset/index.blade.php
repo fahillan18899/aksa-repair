@@ -75,11 +75,11 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
+                    <label for="qr_code" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="QR Qode" value="" >
-                      @if ($errors->has('firstname'))
-                      <span class="text-danger">{{ $errors->first('firstname') }}</span>
+                      <input name="qr_code" type="text" class="form-control" id="qr_code" placeholder="QR Qode" value="" >
+                      @if ($errors->has('qr_code'))
+                      <span class="text-danger">{{ $errors->first('qr_code') }}</span>
                       @endif
                     </div>
                   </div>
