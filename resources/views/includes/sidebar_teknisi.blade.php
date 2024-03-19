@@ -40,6 +40,19 @@
               <li class=""><a href="/dashboard_teknisi/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
             </ul>
           </li>
+
+          <li class="treeview {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
+            <a href="#">
+              <span>Pemeliharaan Preverentive</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ request()->is('dashboard_teknisi/lembar_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard_teknisi/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
+              <li class="{{ request()->is('dashboard_teknisi/jadwal_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard_teknisi/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="">

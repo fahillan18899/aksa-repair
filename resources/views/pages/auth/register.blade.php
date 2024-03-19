@@ -66,6 +66,7 @@
                 <option value="RS0001">RS Badarudin Kasim Tabalong</option>
                 <option value="RS0005">RSI Pondok Kopi</option>
                 <option value="RS0006">RSUD Temanggung</option>
+                <option value="RS0007">RSU Ja'far Medika</option>
               </select>
             </div>
             <div class="form-group">
