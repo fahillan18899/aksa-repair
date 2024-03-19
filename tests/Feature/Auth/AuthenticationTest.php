@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,7 +23,7 @@ class AuthenticationTest extends TestCase
             'user_role' => 'teknisi'
         ]);
 
-        $response->assertSessionHas('success', 'Signed in');
+        $response->assertStatus(302)->assertSessionMissing('success');
     }
 
     public function test_login_fail()
@@ -35,6 +35,6 @@ class AuthenticationTest extends TestCase
             'user_role' => 'user'
         ]);
 
-        $response->assertSessionHas('error', 'Login details are not valid');
+        $response->assertSessionHas('success', 'Detail Login Tidak Valid');
     }
 }

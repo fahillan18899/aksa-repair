@@ -42,8 +42,8 @@ class RegistrasiAsetController extends Controller
         $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = DB::table('alats')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = DB::table('ruangans')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
         return view('pages.admin.PPM.registrasi_aset.old-index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
@@ -55,8 +55,8 @@ class RegistrasiAsetController extends Controller
     public function index()
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = DB::table("alats")->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_alat')->pluck('nama_alat');
-        $ruangans = DB::table("ruangans")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat');
+        $alats = Alat::all();
+        $ruangans = Ruangan::all();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
@@ -64,10 +64,19 @@ class RegistrasiAsetController extends Controller
         ]);
     }
 
+    function hitung($tahunPenyusutan, $harga_perolehan)
+    {
+        $b = 100 / $tahunPenyusutan;
+        $c = $b / 12;
+        $nilai =  $c / 100 * $harga_perolehan;
+        return $nilai;
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
+            'qr_code' => 'required',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
             'merek' => 'required',
@@ -109,17 +118,10 @@ class RegistrasiAsetController extends Controller
             );
         }
 
-
         $data['umur_alat'] = date("Y") - $data['tahun_perolehan'];
-        function hitung($tahunPenyusutan, $harga_perolehan)
-        {
-            $b = 100 / $tahunPenyusutan;
-            $c = $b / 12;
-            $nilai =  $c / 100 * $harga_perolehan;
-            return $nilai;
-        }
+        
         if($data['umur_alat'] > 0 ){ 
-            $data['penyusutan_aset'] = hitung($data['umur_alat'], $data['tahun_perolehan']);
+            $data['penyusutan_aset'] = $this->hitung($data['umur_alat'], $data['tahun_perolehan']);
         } else {
             $data['penyusutan_aset'] = 0;
         }
@@ -130,6 +132,7 @@ class RegistrasiAsetController extends Controller
             'kegiatan' => 'Pemelihraan',
             'engineer' => '',
             'id_aset' => $data['id_aset'],
+            'qr_code' => $data['qr_code'],
             'nama_alat' => $data['nama_alat'],
             'serial_number' => $data['serial_number'],
             'merek' => $data['merek'],

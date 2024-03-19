@@ -38,181 +38,78 @@
           </div>
 
           <div class="panel-body panel-form">
-            <table id="table-register" class="datatable table table-striped table-bordered" style="width:100%">
-              <thead class="table-light">
-                <th>Id Aset</th>
-                <th>Jenis</th>
-                <th>Nama</th>
-                <th>Merek</th>
-                <th class="none">Type</th>
-                <th class="none">Gambar</th>
-                <th class="none">Serial Number</th>
-                <th class="none">Ruangan</th>
-                <th class="none">Tanggal_Kalibrasi</th>
-                <th class="none">Distributor</th>
-                <th class="none">Alamat_Distributor</th>
-                <th class="none">TLP_Distributor</th>
-                <th class="none">Email_Distributor</th>
-                <th class="none">Teknisi_Distributor</th>
-                <th class="none">TLP_T_Distributor</th>
-                <th class="none">No_Sertifikat_Kalibrasi</th>
-                <th class="none">Teknisi PPM</th>
-                <th class="none">Harga Perolehan</th>
-                <th class="none">Sumber_Dana</th>
-                <th class="none">Tahun_Perolehan</th>
-                <th class="none">AKL</th>
-                <th class="none">AKD</th>
-                <th class="none">No_Inventaris </th>
-                <th class="none">umur_alat</th>
-                <th  class="none">Jadwal</th>
-                <th>Tombol_Aksi_Tabel</th>
-                <th>QR</th>
-              </thead>
-            </table>
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                <table class="datatable table table-striped table-bordered" style="width:100%">
+                  <thead class="table-light">
+                    <th>No</th>
+                    <th>Id_Aset</th>
+                    <th>Jenis_Alat</th>
+                    <th>Nama_Alat</th>
+                    <th>Merek</th>
+                    <th>Type</th>
+                    <th>Serial_Number</th>
+                    <th>Ruangan</th>
+                    <th>Tanggal_Kalibrasi</th>
+                    <th>Distributor</th>
+                    <th>Alamat_Distributor</th>
+                    <th>TLP_Distributor</th>
+                    <th>Email_Distributor</th>
+                    <th>Teknisi_Distributor</th>
+                    <th>TLP_T_Distributor</th>
+                    <th>No_Sertifikat_Kalibrasi</th>
+                    <th>Teknisi PPM</th>
+                    <th>Harga Perolehan</th>
+                    <th>Sumber_Dana</th>
+                    <th>Tahun_Perolehan</th>
+                    <th>No._Inventaris </th>
+                    <th>umur_alat</th>
+                    <th>Jadwal</th>
+                    <th>QR</th>
+                  </thead>
+                  <tbody>
+                    @forelse ($registrasis as $index => $item)
+                    <tr>
+                      <td>{{ $index + 1 }}</td>
+                      <td>{{ $item->id_aset }}</td>
+                      <td>{{ $item->jenis_alat }}</td>
+                      <td>{{ $item->nama_alat }}</td>
+                      <td>{{ $item->merek }}</td>
+                      <td>{{ $item->type }}</td>
+                      <td>{{ $item->serial_number }}</td>
+                      <td>{{ $item->lokasi_alat }}</td>
+                      <td>{{ $item->tanggal_kalibrasi }}</td>
+                      <td>{{ $item->distributor }}</td>
+                      <td>{{ $item->alamat_distributor }}</td>
+                      <td>{{ $item->tlp_distributor }}</td>
+                      <td>{{ $item->email_distributor }}</td>
+                      <td>{{ $item->teknisi_distributor }}</td>
+                      <td>{{ $item->tlp_t_distributor }}</td>
+                      <td>{{ $item->no_sertifikat_kalibrasi }}</td>
+                      <td>{{ $item->teknisi_ppm }}</td>
+                      <td>{{ $item->harga_perolehan }}</td>
+                      <td>{{ $item->sumber_dana }}</td>
+                      <td>{{ $item->tahun_perolehan }}</td>
+                      <td>{{ $item->no_inventaris_1 }}, {{ $item->no_inventaris_2 }}</td>
+                      <td>{{ $item->umur_alat }}</td>
+                      <td>{{ $item->jadwal_pemeliharaan }}</td>
+                      <td>
+                        <a href="/dashboard_teknisi/qr_qode/{{ $item->id_aset }}" target="_blank"><button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="tooltip" title="Buat QR">Buat</button></a>
+                      </td>
+                    </tr>
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
+                  </tbody>
+                </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!--TABEL-->
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#table-register').DataTable({
-          processing: true,
-          responsive: true,
-          serverSide: true,
-          ajax: '{{ url('/dashboard_teknisi/aset') }}',
-          columns: [{
-              data: 0,
-              name: 'Id_Aset',
-              orderable: true,
-              searchable: true
-            },
-            {
-              data: 1,
-              name: 'Jenis_Alat'
-            },
-            {
-              data: 2,
-              name: 'Nama_Alat'
-            },
-            {
-              data: 3,
-              name: 'Merek'
-            },
-            {
-              data: 4,
-              name: 'Type'
-            },
-            {
-              data: 5,
-              name: 'Gambar',
-              render: function(data, type, full, meta) {
-                return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
-              }
-            },
-            {
-              data: 6,
-              name: 'Serial_Number'
-            },
-            {
-              data: 7,
-              name: 'lokasi_alat'
-            },
-            {
-              data: 8,
-              name: 'Tanggal_Kalibrasi'
-            },
-            {
-              data: 9,
-              name: 'Distributor'
-            },
-            {
-              data: 10,
-              name: 'Alamat_Distributor'
-            },
-            {
-              data: 11,
-              name: 'TLP_Distributor'
-            },
-            {
-              data: 12,
-              name: 'Email_Distributor'
-            },
-            {
-              data: 13,
-              name: 'Teknisi_Distributor'
-            },
-            {
-              data: 14,
-              name: 'TLP_T_Distributor'
-            },
-            {
-              data: 15,
-              name: 'No_Sertifikat_Kalibrasi'
-            },
-            {
-              data: 16,
-              name: 'teknisi_ppm'
-            },
-            {
-              data: 17,
-              name: 'harga_perolehan'
-            },
-            {
-              data: 18,
-              name: 'Sumber_Dana'
-            },
-            {
-              data: 19,
-              name: 'Tahun_Perolehan'
-            },
-            {
-              data: 20,
-              name: 'AKL'
-            },
-            {
-              data: 21,
-              name: 'AKD'
-            },
-            {
-              data: 22,
-              name: 'no_inventaris_1'
-            },
-            {
-              data: 23,
-              name: 'umur_alat'
-            },
-            {
-              data: 24,
-              name: 'jadwal_pemeliharaan'
-            },
-            {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
-              }
-              
-            },
-            
-           {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
-              }
-            },
-
-          ],
-        }).fnDestroy();
-      })
-    </script>
         </div>
       </div>
     </div>

@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('registrasis', function (Blueprint $table) {
             $table->string('id_aset')->primary();
+            $table->string('qr_code')->nullable();
             $table->string('jenis_alat');
             $table->string('nama_alat');
             $table->string('merek');
@@ -35,7 +36,7 @@ return new class extends Migration
             $table->string('harga_perolehan')->nullable();
             $table->string('sumber_dana')->nullable();
             $table->integer('tahun_perolehan')->nullable();
-            $table->string('kode_rs')->nullable();
+            $table->string('kode_rs')->index()->nullable();
             $table->date('jadwal_pemeliharaan')->nullable();
             $table->integer('umur_alat')->nullable();
             $table->string('akl')->nullable();
