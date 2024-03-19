@@ -115,6 +115,13 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="Serial_Number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="serial_number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
