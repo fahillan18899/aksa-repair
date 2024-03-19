@@ -339,8 +339,6 @@
           columns: [{
               data: 0,
               name: 'Id_Aset',
-              orderable: true,
-              searchable: true
             },
             {
               data: 1,
@@ -463,7 +461,7 @@
             },
 
           ],
-        }).fnDestroy();
+        });
       })
     </script>
 
