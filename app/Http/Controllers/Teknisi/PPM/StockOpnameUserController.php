@@ -13,7 +13,7 @@ class StockOpnameUserController extends Controller
     {
         $items = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.teknisi.stock_opname_user.index', ['items' => $items]);
+        return view('pages.teknisi.stock_opname_teknisi.index', ['items' => $items]);
     }
 
 }

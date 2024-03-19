@@ -158,7 +158,7 @@
                       <div class="ui buttons">
                         <button class="ui positive button">Edit</button>
                         <div class="or"></div>
-                        <button type="button" class="ui button" type="reset">Kembali</button>
+                        <a href="/dashboard/ppm/aset_teregistrasi"><button type="button" class="ui button">Kembali</button></a>
                       </div>
                     </div>
                   </div>

@@ -195,59 +195,77 @@
          </div>
        </div>
      </div>
-     <!--TABEL-->
-     <table class="datatable table table-striped table-bordered" style="width:100%">
-       <thead class="table-light">
-         <th scope="col">No</th>
-         <th scope="col">Id_Perbaikan</th>
-         <th scope="col">Tanggal_Perbaikan</th>
-         <th scope="col">Nama_Alat</th>
-         <th scope="col">Merek_Alat</th>
-         <th scope="col">Type_Alat</th>
-         <th scope="col">Serial_Number</th>
-         <th scope="col">Lokasi_Alat</th>
-         <th scope="col">Pelapor</th>
-         <th scope="col">Keterangan</th>
-         <th scope="col">Kepala Ruangan</th>
-         <th scope="col">Teknisi_1</th>
-         <th scope="col">Teknisi_2</th>
-         <th scope="col">Teknisi_3</th>
-         <th scope="col">Keluhan_Dari_Alat</th>
-         <th scope="col">Tombol_Aksi</th>
-       </thead>
-       <tbody>
-       @forelse ($perbaikan as $index => $item)
-       <tr>
-        <td>{{ $index + 1 }}</td>
-         <td><?php echo $item ['id_perbaikan_un'] ?></td>
-         <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
-         <td><?php echo $item ['nama_alat_un'] ?></td>
-         <td><?php echo $item ['merek_alat_un'] ?></td>
-         <td><?php echo $item ['type_alat_un'] ?></td>
-         <td><?php echo $item ['serial_number_un'] ?></td>
-         <td><?php echo $item ['lokasi_alat_un'] ?></td>
-         <td><?php echo $item ['pelapor_un'] ?></td>
-         <td><?php echo $item ['keterangan_un'] ?></td>
-         <td><?php echo $item ['ka_instalasi_un'] ?></td>
-         <td><?php echo $item ['teknisi_1_un'] ?></td>
-         <td><?php echo $item ['teknisi_2_un'] ?></td>
-         <td><?php echo $item ['teknisi_3_un'] ?></td>
-         <td><?php echo $item ['keluhan_dari_alat_un'] ?></td>
-         <td>
-            <a href="{{ url('dashboard_teknisi/edit_perbaikan', $item->id_perbaikan_un) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            
+     <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-            <a href="/dashboard_teknisi/perbaikan_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-         </td>
-       </tr>
-       @empty
-       <tr>
-         <td class="text-center" colspan="7">Data Kosong</td>
-       </tr>
-       @endforelse
-       </tbody>
-     </table>
-     <!--TABEL-->
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Jadwal</h1>
+            </div>
+          </div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th scope="col">No</th>
+                      <th scope="col">Id_Perbaikan</th>
+                      <th scope="col">Tanggal_Perbaikan</th>
+                      <th scope="col">Nama_Alat</th>
+                      <th scope="col">Merek_Alat</th>
+                      <th scope="col">Type_Alat</th>
+                      <th scope="col">Serial_Number</th>
+                      <th scope="col">Lokasi_Alat</th>
+                      <th scope="col">Pelapor</th>
+                      <th scope="col">Keterangan</th>
+                      <th scope="col">Kepala Ruangan</th>
+                      <th scope="col">Teknisi_1</th>
+                      <th scope="col">Teknisi_2</th>
+                      <th scope="col">Teknisi_3</th>
+                      <th scope="col">Keluhan_Dari_Alat</th>
+                      <th scope="col">Tombol_Aksi</th>
+                    </thead>
+                    <tbody>
+                    @forelse ($perbaikan as $index => $item)
+                    <tr>
+                     <td>{{ $index + 1 }}</td>
+                      <td><?php echo $item ['id_perbaikan_un'] ?></td>
+                      <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
+                      <td><?php echo $item ['nama_alat_un'] ?></td>
+                      <td><?php echo $item ['merek_alat_un'] ?></td>
+                      <td><?php echo $item ['type_alat_un'] ?></td>
+                      <td><?php echo $item ['serial_number_un'] ?></td>
+                      <td><?php echo $item ['lokasi_alat_un'] ?></td>
+                      <td><?php echo $item ['pelapor_un'] ?></td>
+                      <td><?php echo $item ['keterangan_un'] ?></td>
+                      <td><?php echo $item ['ka_instalasi_un'] ?></td>
+                      <td><?php echo $item ['teknisi_1_un'] ?></td>
+                      <td><?php echo $item ['teknisi_2_un'] ?></td>
+                      <td><?php echo $item ['teknisi_3_un'] ?></td>
+                      <td><?php echo $item ['keluhan_dari_alat_un'] ?></td>
+                      <td>
+                         <a href="/dashboard_teknisi/perbaikan_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                      </td>
+                    </tr>
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
+                    </tbody>
+                  </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
 
    </div> <!-- /.content -->
  </div> <!-- /.content-wrapper -->

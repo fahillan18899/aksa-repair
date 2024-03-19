@@ -152,7 +152,11 @@ class HomeController extends Controller
             'Teknisi_2_reg'               => $data->teknisi_2_reg,
             'Teknisi_3_reg'               => $data->teknisi_3_reg,
             'Keterangan_Kondisi_Alat_reg' => $data->keterangan_kondisi_alat_reg,
-            'Ka_Instalasi_reg'            => $data->ka_instalasi_reg
+            'Ka_Instalasi_reg'            => $data->ka_instalasi_reg,
+            'suku_cadang'                 => $data->suku_cadang,
+            'volume'                      => $data->volume,
+            'harga_satuan'                => $data->harga_satuan,
+            'jumlah_harga'                => $data->jumlah_harga
         ]);
     }
 

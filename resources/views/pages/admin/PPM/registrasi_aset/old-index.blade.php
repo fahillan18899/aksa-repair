@@ -68,16 +68,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="" >
-                      @if ($errors->has('firstname'))
-                      <span class="text-danger">{{ $errors->first('firstname') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="QR Qode" value="" >
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="{{ $kodeAset }}" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -100,7 +91,7 @@
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         <option>Pilih Alat</option>
                         @foreach($alats as $alat)
-                        <option value="<?= $alat ?>"><?= $alat; ?></option>
+                        <option value="<?= $alat->nama_alat ?>"><?= $alat->nama_alat; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -136,7 +127,7 @@
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
                         @foreach($ruangans as $ruangan)
-                        <option value="<?= $ruangan ?>"><?= $ruangan ?></option>
+                        <option value="<?= $ruangan->lokasi_alat ?>"><?= $ruangan->lokasi_alat ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -339,6 +330,8 @@
           columns: [{
               data: 0,
               name: 'Id_Aset',
+              orderable: true,
+              searchable: true
             },
             {
               data: 1,

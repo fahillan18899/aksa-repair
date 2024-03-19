@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register - Wyasa SIMRS</title>
+  <title>Register - Wyasa PPM</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -21,8 +21,8 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa Sim RS</h3>
-              <small>Silahkan Datang di <strong>Wyasa Sim RS</strong></small>
+              <h3>Wyasa PPM</h3>
+              <small>Silahkan Datang di <strong>Wyasa PPM</strong></small>
               <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
@@ -66,6 +66,7 @@
                 <option value="RS0001">RS Badarudin Kasim Tabalong</option>
                 <option value="RS0005">RSI Pondok Kopi</option>
                 <option value="RS0006">RSUD Temanggung</option>
+                <option value="RS0007">RSU Ja'far Medika</option>
               </select>
             </div>
             <div class="form-group">

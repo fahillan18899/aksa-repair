@@ -25,7 +25,7 @@ class RegistrasiAsetController extends Controller
         
     }
     
-    public function index()
+    public function oldIndex()
     {
         $kodeRs_ = Auth::user()->kode_rs;
 
@@ -42,11 +42,23 @@ class RegistrasiAsetController extends Controller
         $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = Alat::all();
-        $ruangans = Ruangan::all();
-        return view('pages.admin.PPM.registrasi_aset.index', [
+        $alats = DB::table('alats')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = DB::table('ruangans')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get();
+        return view('pages.admin.PPM.registrasi_aset.old-index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
+            'ruangans' => $ruangans,
+            'alats' => $alats,
+        ]);
+    }
+    
+    public function index()
+    {
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = DB::table("alats")->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_alat')->pluck('nama_alat');
+        $ruangans = DB::table("ruangans")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat');
+        return view('pages.admin.PPM.registrasi_aset.index', [
+            'items' => $items,
             'ruangans' => $ruangans,
             'alats' => $alats,
         ]);

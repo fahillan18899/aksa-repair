@@ -86,7 +86,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 
     // menu registrasi
-    Route::get('/registrasi', [RegistrasiAsetController::class, 'index'])->name('registrasi.index');
+    Route::get('/registrasi', [RegistrasiAsetController::class, 'oldIndex'])->name('registrasi.index');
+    Route::get('/registrasi-aset', [RegistrasiAsetController::class, 'index']);
     Route::post('/registrasi', [RegistrasiAsetController::class, 'store']);
     Route::get('/registrasi/{registrasi}/edit', [RegistrasiAsetController::class, 'edit'])->name('registrasi');
     Route::put('/registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
@@ -218,6 +219,7 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
 
   // API internal datatable
   Route::get('/aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
+  
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
@@ -237,10 +239,13 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);
   Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'store'])->name('jadwal_pemeliharaan.store');
   Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanTeknisiController::class, 'city']);
-  Route::resource('lembar_pemeliharaan', LembarPemeliharaanTeknisiController::class);
+  Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
   Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
-  Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'lembarPemeliharaan']);
+
+  // API internal datatable
+  Route::get('/aset', [DashboardTeknisiController::class, 'json'])->name('api-aset-teknisi');
+
 });
 
 
