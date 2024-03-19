@@ -100,7 +100,7 @@
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         <option>Pilih Alat</option>
                         @foreach($alats as $alat)
-                        <option value="<?= $alat->nama_alat ?>"><?= $alat->nama_alat; ?></option>
+                        <option value="<?= $alat ?>"><?= $alat; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -136,7 +136,7 @@
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
                         @foreach($ruangans as $ruangan)
-                        <option value="<?= $ruangan->lokasi_alat ?>"><?= $ruangan->lokasi_alat ?></option>
+                        <option value="<?= $ruangan ?>"><?= $ruangan ?></option>
                         @endforeach
                       </select>
                     </div>

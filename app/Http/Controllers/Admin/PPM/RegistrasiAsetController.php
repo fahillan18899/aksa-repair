@@ -55,8 +55,8 @@ class RegistrasiAsetController extends Controller
     public function index()
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = DB::table('alats')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get(['nama_alat']);
-        $ruangans = DB::table('ruangans')->distinct()->where('kode_rs', Auth::user()->kode_rs)->get(['lokasi_alat']);
+        $alats = DB::table("alats")->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_alat')->pluck('nama_alat');
+        $ruangans = DB::table("ruangans")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat');
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
