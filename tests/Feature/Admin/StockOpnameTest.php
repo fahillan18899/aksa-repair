@@ -3,29 +3,21 @@
 namespace Tests\Feature\Admin;
 
 use App\Models\StockOpname;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
-use Tests\TestCase;
+use Tests\MustAuthTestCase;
 
-class StockOpnameTest extends TestCase
+class StockOpnameTest extends MustAuthTestCase
 {
     protected function tearDown(): void
     {
-        StockOpname::query()->where('nama', '=', 'Sparepart 1')->orWhere('nama', '=', 'Sparepart 2')->delete();
+        $this->post('/logout');
     }
 
     public function test_add_sparepart_success(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/stock_opname', [
+        $this->post('/dashboard/ppm/stock_opname', [
             'nama' => 'Sparepart 1',
             'type' => 'Type Sparepart 1',
             'lokasi_pemakaian' => 'Salatiga',
@@ -35,21 +27,12 @@ class StockOpnameTest extends TestCase
             'tanggal_keluar' => date('2025-02-12'),
             'stock' => 100,
             'kode_rs' => Auth::user()->kode_rs
-        ]);
-
-        $response->assertStatus(302)->assertSessionHas('success', 'Data Berhasil Di Tambahkan.');
+        ])->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_add_sparepart_fail(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/stock_opname', [
+        $this->post('/dashboard/ppm/stock_opname', [
             // 'nama' => 'Sparepart 1',
             'type' => 'Type Sparepart 1',
             'lokasi_pemakaian' => 'Salatiga',
@@ -59,47 +42,27 @@ class StockOpnameTest extends TestCase
             'tanggal_keluar' => date('2025-02-12'),
             'stock' => 100,
             // 'kode_rs' => Auth::user()->kode_rs
-        ]);
-
-        $response->assertSessionMissing('success');
+        ])->assertSessionMissing('success');
     }
 
     public function test_update_sparepart_success(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
+        $id = StockOpname::where('nama', '=', 'Sparepart 1')->firstOrFail();
 
-        $user_id = User::where('nama', '=', 'Sparepart 1')->first('id');
-
-        $response = $this->post('/dashboard/ppm/stock_opname/'. $user_id . '/edit', [
+        $this->put('/dashboard/ppm/stock_opname/'.$id->id, [
             'nama' => 'Sparepart 2',
             'type' => 'Type Sparepart 2',
-            'lokasi_pemakaian' => 'Salatiga',
             'jumlah_masuk' => 10,
+            'lokasi_pemakaian' => 'Salatiga',
             'jumlah_keluar' => 5,
             'tanggal_masuk' => date('Y-m-d'),
-            'tanggal_keluar' => date('2025-02-12'),
-            'stock' => 100,
-            'kode_rs' => Auth::user()->kode_rs
-        ]);
-
-        $response->assertStatus(302)->assertSessionHas('success', 'Data Berhasil Di Ubah');
+            'tanggal_keluar' => date('2025-02-12')
+        ])->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_update_sparepart_fail(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/stock_opname/10/edit', [
+        $this->put('/dashboard/ppm/stock_opname/100', [
             'nama' => 'Sparepart 1',
             'type' => 'Type Sparepart 2',
             'lokasi_pemakaian' => 'Salatiga',
@@ -109,38 +72,18 @@ class StockOpnameTest extends TestCase
             'tanggal_keluar' => date('2025-02-12'),
             'stock' => 100,
             'kode_rs' => Auth::user()->kode_rs
-        ]);
-
-        $response->assertStatus(405)->assertSessionMissing('success');
+        ])->assertSessionMissing('success');
     }
 
     public function test_delete_sparepart_success(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-        $user_id = User::where('nama', '=', 'Sparepart 1')->first('id');
+        $id = StockOpname::where('nama', '=', 'Sparepart 2')->firstOrFail();
 
-
-        $response = $this->post('/dashboard/ppm/stock_opname/'. $user_id);
-
-        $response->assertStatus(302);
+        $this->delete('/dashboard/ppm/stock_opname/'. $id->id)->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_delete_sparepart_fail(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/stock_opname/20');
-
-        $response->assertStatus(405);
+        $this->delete('/dashboard/ppm/stock_opname/2a0')->assertSessionMissing('success');
     }
 }
