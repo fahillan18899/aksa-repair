@@ -129,7 +129,7 @@ class PerbaikanUnregistrasiController extends Controller
         $level = "admin";
         $topik = $token . $level;
         $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
-        $title = $request['nama_alat_reg'];
+        $title = $request['nama_alat_un'];
         $message = "Alat " . $title;
         $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
 
