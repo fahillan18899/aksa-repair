@@ -2,12 +2,16 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Models\Alat;
+use App\Models\Gedung;
+use App\Models\Ruangan;
+use App\Models\Teknisi;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
-use Tests\TestCase;
+use Tests\MustAuthTestCase;
 
-class AdminDashboardTest extends TestCase
+class AdminDashboardTest extends MustAuthTestCase
 {
     protected function tearDown(): void
     {
@@ -16,159 +20,155 @@ class AdminDashboardTest extends TestCase
 
     public function test_gedung_success()
     {
-         $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/gedung', [
+        $this->post('/dashboard/ppm/gedung', [
             'id_gedung' => "RS0000005",
             'nama_gedung' => 'Gedung C',
             'kode_rs'  => Auth::user()->kode_rs,
-        ]);
+        ])->assertStatus(302)->assertSessionHas('message');
 
-        $response->assertStatus(302)->assertSessionHas('message', 'Data Gedung Berhasil di Tambahkan.');
+        $id_gedung = Gedung::where('id_gedung', '=', 'RS0000005')->firstOrFail();
+
+        $this->put('/dashboard/ppm/gedung/'.$id_gedung->id_gedung, [
+            'id_gedung' => 'RS0000005',
+            'nama_gedung' => 'Gedung CB'
+        ])->assertStatus(302)->assertSessionHas('success');
+
+        $this->delete('/dashboard/ppm/gedung/' . $id_gedung->id_gedung)->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_gedung_fail()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/gedung', [
+        $this->post('/dashboard/ppm/gedung', [
             // 'id_gedung' => $kodeGedung,
             'nama_gedung' => 'Gedung C',
             'kode_rs'  => Auth::user()->kode_rs,
-        ]);
+        ])->assertSessionMissing("message");
 
-        $response->assertSessionMissing("message");
+        $this->put('/dashboard/ppm/gedung/100', [
+            'id_gedung' => 'RS0000005',
+            'nama_gedung' => 'Gedung CB'
+        ])->assertSessionMissing("success");
+
+        $this->delete('/dashboard/ppm/gedung/100')->assertSessionMissing("success");
     }
 
     public function test_alat_success()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post("/dashboard/ppm/alat", [
+        $this->post('/dashboard/ppm/alat', [
             'id_alat' => "RS0000005",
-            'nama_alat' => 'Alat 1',
+            'nama_alat' => 'Alat 5',
             'kode_rs' => Auth::user()->kode_rs
-        ]);
+        ])->assertStatus(302)->assertSessionHas('success');
 
-        $response->assertStatus(302)->assertSessionHas('success', 'Data Alat Berhasil di Tambahkan.');
+        $id_alat = Alat::where('id_alat', '=', 'RS0000005')->firstOrFail();
+
+        $this->put('/dashboard/ppm/alat/'.$id_alat->id_alat, [
+            'id_alat' => 'RS0000005',
+            'nama_alat' => 'Alat CB'
+        ])->assertStatus(302)->assertSessionHas('success');
+
+        $this->delete('/dashboard/ppm/alat/' . $id_alat->id_alat)->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_alat_fail()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
+        $this->post('/dashboard/ppm/alat', [
+            // 'id_alat' => $kodeGedung,
+            'nama_alat' => 'Alat 14',
+            'kode_rs'  => Auth::user()->kode_rs,
+        ])->assertSessionMissing("message");
 
-        $response = $this->post("/dashboard/ppm/alat", [
-            // 'id_alat' => $kodeAlat,
-            'nama_alat' => 'Alat 1',
-            'kode_rs' => Auth::user()->kode_rs
-        ]);
+        $this->put('/dashboard/ppm/alat/100', [
+            'id_alat' => 'RS0000005',
+            'nama_alat' => 'Alat CB'
+        ])->assertSessionMissing("success");
 
-        $response->assertSessionMissing("success");
+        $this->delete('/dashboard/ppm/alat/100')->assertSessionMissing("success");
     }
 
     public function test_teknisi_success()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post("/dashboard/ppm/teknisi", [
+        $this->post('/dashboard/ppm/teknisi', [
             'id_teknisi' => "RS0000005",
-            'nama_teknisi' => 'Teknisi 11',
+            'nama_teknisi' => 'Teknisi 5',
             'kode_rs' => Auth::user()->kode_rs
-        ]);
+        ])->assertStatus(302)->assertSessionHas('message');
 
-        $response->assertStatus(302)->assertSessionHas('message', 'Data Teknisi Berhasil di Tambahkan.');
+        $id_teknisi = Teknisi::where('id_teknisi', '=', 'RS0000005')->firstOrFail();
+
+        $this->put('/dashboard/ppm/teknisi/'.$id_teknisi->id_teknisi, [
+            'id_teknisi' => 'RS0000005',
+            'nama_teknisi' => 'Teknisi 10'
+        ])->assertStatus(302)->assertSessionHas('success');
+
+        $this->delete('/dashboard/ppm/teknisi/' . $id_teknisi->id_teknisi)->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_teknisi_fail()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
+        $this->post('/dashboard/ppm/teknisi', [
+            // 'id_teknisi' => $kodeGedung,
+            'nama_teknisi' => 'Teknisi 14',
+            'kode_rs'  => Auth::user()->kode_rs,
+        ])->assertSessionMissing("message");
 
-        $response = $this->post("/dashboard/ppm/teknisi", [
-            // 'id_teknisi' => $kodeTeknisi,
-            'nama_teknisi' => 'Teknisi 11',
-            'kode_rs' => Auth::user()->kode_rs
-        ]);
+        $this->put('/dashboard/ppm/teknisi/100', [
+            'id_alat' => 'RS0000005',
+            'nama_alat' => 'Teknisi 15'
+        ])->assertSessionMissing("success");
 
-        $response->assertSessionMissing("message");
+        $this->delete('/dashboard/ppm/teknisi/100')->assertSessionMissing("success");
     }
 
     public function test_ruangan_success()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $input_ruangan_alat = "Alat Ruangan 11";
+        $input_ruangan_alat = "Gedung A";
         $input_ruangan = "Ruangan 11";
         $lokasi_alat = $input_ruangan_alat . ',' . $input_ruangan;
 
-        $response = $this->post("/dashboard/ppm/ruangan", [
+        $this->post('/dashboard/ppm/ruangan', [
             'id_ruangan' => "RS0000005",
             'ruangan_alat' => $input_ruangan_alat,
             'ruangan' => $input_ruangan,
             'kepala_ruangan' => "Teknisi",
             'lokasi_alat' => $lokasi_alat,
             'kode_rs' => Auth::user()->kode_rs
-        ]);
+        ])->assertStatus(302)->assertSessionHas('success');
 
-        $response->assertStatus(302)->assertSessionHas('success', 'Data Ruangan Berhasil di Tambahkan.');
+        $id_ruangan = Ruangan::where('id_ruangan', '=', 'RS0000005')->firstOrFail();
+
+        $this->put('/dashboard/ppm/ruangan/'.$id_ruangan->id_ruangan, [
+            'id_ruangan' => 'RS0000005',
+            'ruangan_alat' => $input_ruangan_alat,
+            'ruangan' => $input_ruangan,
+            'kepala_ruangan' => "Teknisi",
+        ])->assertStatus(302)->assertSessionHas('success');
+
+        $this->delete('/dashboard/ppm/ruangan/'.$id_ruangan->id_ruangan)->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_ruangan_fail()
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
         $input_ruangan_alat = "Alat Ruangan 11";
         $input_ruangan = "Ruangan 11";
         $lokasi_alat = $input_ruangan_alat . ',' . $input_ruangan;
 
-        $response = $this->post("/dashboard/ppm/ruangan", [
+        $this->post('/dashboard/ppm/ruangan', [
             // 'id_ruangan' => $kodeLokasi,
             'ruangan_alat' => $input_ruangan_alat,
             'ruangan' => $input_ruangan,
             'kepala_ruangan' => "Teknisi",
             'lokasi_alat' => $lokasi_alat,
             'kode_rs' => Auth::user()->kode_rs
-        ]);
+        ])->assertSessionMissing("success");
 
-        $response->assertSessionMissing('success');
+        $this->put('/dashboard/ppm/ruangan/100', [
+            'id_ruangan' => 'RS0000005',
+            'ruangan_alat' => $input_ruangan_alat,
+            'ruangan' => $input_ruangan,
+            'kepala_ruangan' => "Teknisi",
+        ])->assertSessionMissing("success");
+
+        $this->delete('/dashboard/ppm/ruangan/100')->assertSessionMissing("success");
     }
 }

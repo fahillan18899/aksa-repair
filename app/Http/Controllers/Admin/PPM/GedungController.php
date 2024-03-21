@@ -34,8 +34,8 @@ class GedungController extends Controller
     public function update(Request $request, Gedung $gedung)
     {
         $request->validate([
-            'id_alat' => '',
-            'nama_alat' => '',
+            'id_gedung' => '',
+            'nama_gedung' => '',
         ]);
 
         $gedung->fill($request->post())->save();

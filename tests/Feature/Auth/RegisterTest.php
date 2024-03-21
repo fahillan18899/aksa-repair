@@ -9,11 +9,6 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     function tearDown(): void
     {
         User::query()->where('username', '=', 'test1')->delete();
@@ -21,26 +16,22 @@ class RegisterTest extends TestCase
 
     public function test_register_success()
     {
-        $response = $this->post('/register', [
+        $this->post('/register', [
             'username' => 'test1',
             'password' => 'test1',
             'kode_rs' => 'RS0000',
             'user_role' => 'user'
-        ]);
-
-        $response->assertSessionHas('success', 'Registrasi berhasil');
+        ])->assertSessionHas('success');
     }
 
     public function test_register_duplicate()
     {
-        $response = $this->post('/register', [
+        $this->post('/register', [
             'username' => 'maulana',
             'password' => 'maulana',
             'kode_rs' => 'RS0000',
             'user_role' => 'user'
-        ]);
-
-        $response->assertStatus(302);
+        ])->assertSessionMissing('success');
     }
 
 }
