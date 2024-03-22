@@ -1,18 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Stock Opname')
+@section('title', 'Permintaan Barang User')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="pe-7s-drawer"></i></div>
       <div class="header-title">
-        <h1>Stock Opname</h1>
-        <small>Tabel Stock Opname</small>
+        <h1>Tabel</h1>
+        <small> Tabel Permintaan Barang User</small>
       </div>
     </div>
   </section>
@@ -22,24 +21,16 @@
     <div id="demoModeEnable"></div>
     <!-- alert message -->
 
-    <!-- content -->
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
 
+
+
+    <!-- content -->
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <div class="btn-group">
-              <a class="btn btn-success" href="{{ route('stock_opname.create') }}"><i class="fa fa-plus"></i> Tambah Stock Opname </a>
-            </div>
-            <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/permintaan_barang_admin') }}"><i class="fa-solid fa-eye"></i> Lihat Tabel Permintaan Barang User </a>
-            </div>
+            <h1>Tabel Permintaan Barang </h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -50,15 +41,11 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama SparePart</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Lokasi Pemakaian</th>
-                      <th scope="col">Jumlah Masuk</th>
-                      <th scope="col">Jumlah Keluar</th>
-                      <th scope="col">Tanggal Masuk</th>
-                      <th scope="col">Tanggal Keluar</th>
-                      <th scope="col">Total</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Merek</th>
+                      <th scope="col">Type Pemakaian</th>
+                      <th scope="col">Jumlah</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
                   </thead>
@@ -67,16 +54,12 @@
                     <tr>
                       <td>{{ $item->id }}</td>
                       <td>{{ $item->nama }}</td>
+                      <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
-                      <td>{{ $item->lokasi_pemakaian }}</td>
-                      <td>{{ $item->jumlah_masuk}}</td>
-                      <td>{{ $item->jumlah_keluar}}</td>
-                      <td>{{ $item->tanggal_masuk}}</td>
-                      <td>{{ $item->tanggal_keluar}}</td>
-                      <td>{{ $item->stock}}</td>
+                      <td>{{ $item->jumlah}}</td>
                       <td>
-                        <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
-                        <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">
+                        <a href="{{ route('permintaan_barang_admin.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
+                        <form action="{{ route('permintaan_barang_admin.destroy', $item->id) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -100,8 +83,7 @@
         </div>
       </div>
     </div>
-  </div>
 
-
-</div> <!-- /.content -->
+  </div> <!-- /.content -->
+</div> <!-- /.content-wrapper -->
 @endsection

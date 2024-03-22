@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
+use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\SOPPemakaianController;
 use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
@@ -188,6 +189,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
     //  stock opname
     Route::resource('/stock_opname', StockOpnameController::class);
+    Route::resource('/permintaan_barang_admin', PermintaanBarangAdmin::class);
 
 
     // operator

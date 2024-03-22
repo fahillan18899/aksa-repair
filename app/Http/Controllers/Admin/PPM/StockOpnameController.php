@@ -13,7 +13,10 @@ class StockOpnameController extends Controller
     {
         $items = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.PPM.stock_opname.index', ['items' => $items]);
+        return view('pages.admin.PPM.stock_opname.index', 
+        [
+            'items' => $items
+        ]);
     }
 
     public function create()
@@ -40,7 +43,6 @@ class StockOpnameController extends Controller
         return redirect()->route('stock_opname.index')
         ->with('success', 'Data Berhasil Di Tambahkan.');
     }
-
 
     public function edit($id)
     {
