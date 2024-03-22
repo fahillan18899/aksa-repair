@@ -58,9 +58,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian </label>
+                    <label for="jumlah_sekarang" class="col-xs-3 col-form-label">jumlah sekarang </label>
                     <div class="col-xs-9">
-                      <input name="lokasi_pemakaian" class="form-control" type="text" placeholder="Lokasi Pemakaian" id="lokasi_pemakaian" value="<?= $item['lokasi_pemakaian'] ?>">
+                      <input name="jumlah_sekarang" class="form-control" type="number" placeholder="jumlah sekarang" id="jumlah_sekarang" value="<?= $item['jumlah_sekarang'] ?>">
                     </div>
                   </div>
 
@@ -71,6 +71,13 @@
                     </div>
                   </div>
 
+                  <div class="form-group row">
+                    <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian </label>
+                    <div class="col-xs-9">
+                      <input name="lokasi_pemakaian" class="form-control" type="text" placeholder="Lokasi Pemakaian" id="lokasi_pemakaian" value="<?= $item['lokasi_pemakaian'] ?>">
+                    </div>
+                  </div>
+                  
                   <div class="form-group row">
                     <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk </label>
                     <div class="col-xs-9">

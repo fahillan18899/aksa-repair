@@ -29,18 +29,20 @@ class StockOpnameController extends Controller
             'nama' => 'required',
             'type' => 'required',
             'jumlah_masuk' => 'required|numeric',
-            'lokasi_pemakaian' => '',
+            'jumlah_sekarang' => 'numeric',
             'jumlah_keluar' => 'numeric',
+            'lokasi_pemakaian' => '',
             'tanggal_masuk' => 'required',
             'tanggal_keluar' => '',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
-        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        $request['jumlah_sekarang'] = $request['jumlah_masuk'];
+        $request['stock'] = $request->jumlah_sekarang - $request->jumlah_keluar;
         StockOpname::create($request->post());
 
         $stock_opnames = StockOpname::latest()->first();
         
-        $hasil = $stock_opnames->jumlah_masuk - $stock_opnames->jumlah_keluar;
+        $hasil = $stock_opnames->jumlah_sekarang - $stock_opnames->jumlah_keluar;
         HistoryStockOpname::create([
             'sparepart_id' => $stock_opnames->id,
             'total_sparepart' => $hasil
@@ -68,16 +70,18 @@ class StockOpnameController extends Controller
             'nama' => '',
             'type' => '',
             'jumlah_masuk' => '',
+            'jumlah_sekarang' => '',
             'lokasi_pemakaian' => '',
             'jumlah_keluar' => '',
             'tanggal_masuk' => '',
             'tanggal_keluar' => '',
         ]);
-        $request['stock'] = $request->jumlah_masuk - $request->jumlah_keluar;
+        
+        $request['stock'] = $request->jumlah_sekarang - $request->jumlah_keluar;
         $stock_opname->fill($request->post())->save();
 
         $stock_opnames = StockOpname::find($stock_opname->id);
-        $hasil = $stock_opnames->jumlah_masuk - $stock_opnames->jumlah_keluar;
+        $hasil = $stock_opnames->jumlah_sekarang - $stock_opnames->jumlah_keluar;
         
         HistoryStockOpname::create([
             'sparepart_id' => $stock_opnames->id,
