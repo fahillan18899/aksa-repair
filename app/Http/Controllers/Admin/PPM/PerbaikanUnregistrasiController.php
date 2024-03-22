@@ -103,7 +103,6 @@ class PerbaikanUnregistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'nama_alat_un' => '',

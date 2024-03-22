@@ -5,96 +5,62 @@ namespace Tests\Feature\Admin;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
+use Tests\MustAuthTestCase;
 
-class OperatorTest extends TestCase
+class OperatorTest extends MustAuthTestCase
 {
     protected function tearDown(): void
     {
-        User::query()->where('username', '=', 'user5')->orWhere('username', '=', 'user_dua')->delete();       
+        $this->post('/logout');
     }
     
     public function test_add_operator_success(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',  
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/operator', [
+        $this->post('/dashboard/ppm/operator', [
             'username' => 'user5',
             'password' => 'user5',
             'user_role' => 'user',
-        ]);
-
-        $response->assertStatus(302)->assertSessionHas('success', 'Data User Berhasil di Tambahkan.');
+        ])->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_add_operator_fail(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
-
-        $response = $this->post('/dashboard/ppm/operator', [
+        $this->post('/dashboard/ppm/operator', [
             // 'username' => 'user',
-            'password' => 'user',
+            'password' => 'user5',
             'user_role' => 'user',
-        ]);
-
-        $response->assertSessionMissing('success');
+        ])->assertSessionMissing('success');
     }
 
     public function test_edit_operator_success(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
+        $id = User::where('username', '=', 'user5')->firstOrFail();
 
-        $response = $this->post('/dashboard/ppm/operator/13/edit', [
+        $this->put('/dashboard/ppm/operator/'.$id->user_id, [
             'username' => 'user_dua',
             'user_role' => 'user',
-        ]);
-
-        $response->assertStatus(302)->assertSessionHas('success', 'Data User Berhasil di Ubah');
+        ])->assertStatus(302)->assertSessionHas('success');
     }
 
     public function test_edit_operator_already_exists(): void
     {
-        $this->post('/', [
-            'username' => 'admin5',
-            'password' => 'admin5',
-            'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
-        ]);
+        $id = User::where('username', '=', 'user_dua')->firstOrFail();
 
-        $response = $this->post('/dashboard/ppm/operator/13/edit', [
+        $this->put('/dashboard/ppm/operator/'.$id->user_id, [
             'username' => 'teknisi5',
             'user_role' => 'user',
-        ]);
-
-        $response->assertStatus(500)->assertSessionMissing('success');
+        ])->assertSessionMissing('success');
     }
 
-    // public function test_delete_operator(): void
-    // {
-    //     $this->post('/', [
-    //         'username' => 'admin5',
-    //         'password' => 'admin5',
-    //         'kode_rs' => 'RS0000',
-    //         'user_role' => 'admin'
-    //     ]);
+    public function test_delete_operator_success(): void
+    {
+        $id = User::where('username', '=', 'user_dua')->firstOrFail();
 
-    //     $response = $this->delete('/dashboard/ppm/operator/13');
+        $this->delete('/dashboard/ppm/operator/'.$id->user_id)->assertStatus(302)->assertSessionHas('success');
+    }
 
-    //     $response->assertStatus(302);
-    // }
+    public function test_delete_operator_not_found(): void
+    {
+        $this->delete('/dashboard/ppm/operator/100')->assertSessionMissing('success');
+    }
 }

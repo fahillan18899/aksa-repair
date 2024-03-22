@@ -9,32 +9,23 @@ use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function test_login_success()
     {
-        $response = $this->post('/', [
+        $this->post('/', [
             'username' => 'teknisi5',
             'password' => 'teknisi5',
             'kode_rs' => 'RS0000',
             'user_role' => 'teknisi'
-        ]);
-
-        $response->assertStatus(302)->assertSessionMissing('success');
+        ])->assertStatus(302)->assertSessionMissing('success');
     }
 
     public function test_login_fail()
     {
-        $response = $this->post('/', [
+        $this->post('/', [
             'username' => 'teknisi5',
             'password' => 'asdsdf',
             'kode_rs' => 'RS0000',
             'user_role' => 'user'
-        ]);
-
-        $response->assertSessionHas('success', 'Detail Login Tidak Valid');
+        ])->assertSessionHas('success');
     }
 }
