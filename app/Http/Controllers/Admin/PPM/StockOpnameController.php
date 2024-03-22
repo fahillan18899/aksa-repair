@@ -57,10 +57,12 @@ class StockOpnameController extends Controller
     {
         $item = StockOpname::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         $selisih_jumlah_terakhir  = DB::table('history_stock_opnames')->select('history_stock_opnames.total_sparepart AS selisih_jumlah_masuk_keluar_terakhir')->join('stock_opnames', 'history_stock_opnames.sparepart_id', '=', 'stock_opnames.id')->where('stock_opnames.id', '=', $id)->orderByDesc('history_stock_opnames.created_at')->limit(1)->first();
-        
+        $sparepart_belum_terpakai = StockOpname::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $hasil_sparepart_belum_terpakai = $sparepart_belum_terpakai->jumlah_masuk - $sparepart_belum_terpakai->jumlah_sekarang;
         return view('pages.admin.PPM.stock_opname.update', [
             'item' => $item,
-            'selisih_jumlah_terakhir' => $selisih_jumlah_terakhir
+            'selisih_jumlah_terakhir' => $selisih_jumlah_terakhir,
+            'sparepart_belum_terpakai' => $hasil_sparepart_belum_terpakai
         ]);
     }
 
