@@ -1,0 +1,8 @@
+@startuml WhiteSmoke
+entity stock_opname_history{
+ id <<PK>>
+ --
+ sparepart_id INT
+ total_sparepart INT
+}
+@enduml
