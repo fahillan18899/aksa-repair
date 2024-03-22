@@ -96,7 +96,14 @@
                   </div>
                 </form>
               </div>
-              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                @if($selisih_jumlah_terakhir === null)
+                  <h3>tidak ada data selisih terakhir, edit data anda</h3>
+                @else
+                  <h3>Selisih Jumlah Masuk/Keluar Terakhir</h3>
+                  <h1 class="text-center">{{ $selisih_jumlah_terakhir->selisih_jumlah_masuk_keluar_terakhir}}</h1>
+                @endif
+              </div>
             </div>
           </div>
         </div>
