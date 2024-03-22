@@ -82,7 +82,7 @@ class StockOpnameController extends Controller
 
         $stock_opnames = StockOpname::find($stock_opname->id);
         $hasil = $stock_opnames->jumlah_sekarang - $stock_opnames->jumlah_keluar;
-        
+     
         HistoryStockOpname::create([
             'sparepart_id' => $stock_opnames->id,
             'total_sparepart' => $hasil
