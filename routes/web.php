@@ -37,6 +37,7 @@ use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
+use App\Http\Controllers\User\PPM\PermintaanBarangController;
 
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
@@ -213,6 +214,7 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
   Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+  Route::resource('/permintaan_barang', PermintaanBarangController::class);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
   Route::resource('stock_opname_user', StockOpnameUserController::class);
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);

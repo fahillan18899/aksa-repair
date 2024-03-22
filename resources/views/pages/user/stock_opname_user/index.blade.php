@@ -35,6 +35,9 @@
 
           <div class="panel-heading no-print">
             <h3>Tabel Stock Opname</h3>
+            <div class="btn-group">
+                  <a class="btn btn-success" href="/dashboard_user/permintaan_barang"> <i class="fa fa-plus"></i> Tambah Permintaan Barang </a>
+                </div>
           </div>
 
           <div class="panel-body panel-form">
