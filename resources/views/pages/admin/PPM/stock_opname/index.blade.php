@@ -73,7 +73,11 @@
                       <td>{{ $item->jumlah_keluar}}</td>
                       <td>{{ $item->tanggal_masuk}}</td>
                       <td>{{ $item->tanggal_keluar}}</td>
-                      <td>{{ $item->stock}}</td>
+                      @if($item->stock !== 0)
+                        <td>{{ $item->stock}}</td>
+                      @else
+                        <td>Tidak Tersedia</td>
+                      @endif
                       <td>
                         <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">

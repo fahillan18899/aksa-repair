@@ -1,0 +1,15 @@
+.line-vertical-right {
+ width: 1px;
+ height: 34px;
+ float: right;
+ background-color: gray;
+ margin: 10px;
+}
+
+.line-vertical-left {
+ width: 1px;
+ height: 34px;
+ float: left;
+ background-color: gray;
+ margin: 10px;
+}
