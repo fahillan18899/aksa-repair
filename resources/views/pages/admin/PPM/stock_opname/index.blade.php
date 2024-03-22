@@ -9,7 +9,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-drawer"></i></div>
+      <div class="header-icon"><i class="pe-7s-gift"></i></div>
       <div class="header-title">
         <h1>Stock Opname</h1>
         <small>Tabel Stock Opname</small>
@@ -38,7 +38,7 @@
               <a class="btn btn-success" href="{{ route('stock_opname.create') }}"><i class="fa fa-plus"></i> Tambah Stock Opname </a>
             </div>
             <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/permintaan_barang_admin') }}"><i class="fa-solid fa-eye"></i> Lihat Tabel Permintaan Barang User </a>
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/permintaan_barang_admin') }}"><i class="fa fa-eye"></i> Lihat Tabel Permintaan Barang User </a>
             </div>
           </div>
 
