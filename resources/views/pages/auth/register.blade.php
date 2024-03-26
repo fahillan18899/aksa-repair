@@ -74,7 +74,6 @@
               <select name="user_role" class="form-control" id="user_role">
                 <option value="">Select Peran Pengguna</option>
                 <option value="teknisi">Teknisi</option>
-                <option value="admin">Admin</option>
                 <option value="user">User</option>
               </select>
             </div>
