@@ -76,7 +76,7 @@ class RegistrasiAsetController extends Controller
     {
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
-            'qr_code' => 'required',
+            'qr_code' => '',
             'jenis_alat' => 'required',
             'nama_alat' => 'required',
             'merek' => 'required',
@@ -132,7 +132,7 @@ class RegistrasiAsetController extends Controller
             'kegiatan' => 'Pemelihraan',
             'engineer' => '',
             'id_aset' => $data['id_aset'],
-            'qr_code' => $data['qr_code'],
+            'qr_code' => '',
             'nama_alat' => $data['nama_alat'],
             'serial_number' => $data['serial_number'],
             'merek' => $data['merek'],

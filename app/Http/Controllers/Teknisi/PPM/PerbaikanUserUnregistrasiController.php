@@ -132,4 +132,19 @@ class PerbaikanUserUnregistrasiController extends Controller
         $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         return view('pages.teknisi.aset_unregistrasi.cetak_perbaikan', compact('item'));
     }
+
+    public function updateStatusPerbaikanUnTeknisi($id)
+    {
+        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        if ($item) {
+            if ($item->status == '0') {
+                $item->status = '1';
+            } else {
+                $item->status = '0';
+            }
+
+            $item->save();
+        }
+        return back();
+    }
 }

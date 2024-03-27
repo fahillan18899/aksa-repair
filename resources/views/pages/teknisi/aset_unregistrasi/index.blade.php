@@ -211,22 +211,23 @@
                 <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th scope="col">No</th>
-                      <th scope="col">Id_Perbaikan</th>
-                      <th scope="col">Tanggal_Perbaikan</th>
-                      <th scope="col">Nama_Alat</th>
-                      <th scope="col">Merek_Alat</th>
-                      <th scope="col">Type_Alat</th>
-                      <th scope="col">Serial_Number</th>
-                      <th scope="col">Lokasi_Alat</th>
-                      <th scope="col">Pelapor</th>
-                      <th scope="col">Keterangan</th>
-                      <th scope="col">Kepala Ruangan</th>
-                      <th scope="col">Teknisi_1</th>
-                      <th scope="col">Teknisi_2</th>
-                      <th scope="col">Teknisi_3</th>
-                      <th scope="col">Keluhan_Dari_Alat</th>
-                      <th scope="col">Tombol_Aksi</th>
+                      <th class="">No</th>
+                      <th class="">Id_Perbaikan</th>
+                      <th class="">Tanggal_Perbaikan</th>
+                      <th class="">Nama_Alat</th>
+                      <th class="">Status</th>
+                      <th class="none">Merek_Alat</th>
+                      <th class="none">Type_Alat</th>
+                      <th class="none">Serial_Number</th>
+                      <th class="none">Lokasi_Alat</th>
+                      <th class="none">Pelapor</th>
+                      <th class="none">Keterangan</th>
+                      <th class="none">Kepala Ruangan</th>
+                      <th class="none">Teknisi_1</th>
+                      <th class="none">Teknisi_2</th>
+                      <th class="none">Teknisi_3</th>
+                      <th class="none">Keluhan_Dari_Alat</th>
+                      <th class="">Tombol_Aksi</th>
                     </thead>
                     <tbody>
                     @forelse ($perbaikan as $index => $item)
@@ -235,6 +236,13 @@
                       <td><?php echo $item ['id_perbaikan_un'] ?></td>
                       <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
                       <td><?php echo $item ['nama_alat_un'] ?></td>
+                      <td>
+                          <form action="{{ url('/dashboard_teknisi/perbaikan_unregistrasi/update', $item->id_perbaikan_un) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                          </form>
+                        </td>
                       <td><?php echo $item ['merek_alat_un'] ?></td>
                       <td><?php echo $item ['type_alat_un'] ?></td>
                       <td><?php echo $item ['serial_number_un'] ?></td>

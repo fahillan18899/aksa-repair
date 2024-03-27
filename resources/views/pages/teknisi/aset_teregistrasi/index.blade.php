@@ -279,18 +279,19 @@
                     <th scope="col">ID_Aset</th>
                     <th scope="col">Tanggal_Perbaikan</th>
                     <th scope="col">Nama_Alat</th>
-                    <th scope="col">Merek_Alat</th>
-                    <th scope="col">Type_Alat</th>
-                    <th scope="col">Serial_Number</th>
-                    <th scope="col">Lokasi_Alat</th>
-                    <th scope="col">Pelapor</th>
-                    <th scope="col">Keterangan_Kondisi_Alat</th>
-                    <th scope="col">Kepala Ruangan</th>
-                    <th scope="col">Teknisi_1</th>
-                    <th scope="col">Teknisi_2</th>
-                    <th scope="col">Teknisi_3</th>
-                    <th scope="col">Keluhan_Dari_alat</th>
-                    <th scope="col">Korektif</th>
+                    <th scope="col">Status</th>
+                    <th class="none">Merek_Alat</th>
+                    <th class="none">Type_Alat</th>
+                    <th class="none">Serial_Number</th>
+                    <th class="none">Lokasi_Alat</th>
+                    <th class="none">Pelapor</th>
+                    <th class="none">Keterangan_Kondisi_Alat</th>
+                    <th class="none">Kepala Ruangan</th>
+                    <th class="none">Teknisi_1</th>
+                    <th class="none">Teknisi_2</th>
+                    <th class="none">Teknisi_3</th>
+                    <th class="none">Keluhan_Dari_alat</th>
+                    <th class="none">Korektif</th>
                     <!--<th scope="col">Tombol_Eksekusi</th>-->
                     <th scope="col">Tombol_Eksekusi</th>
                   </thead>
@@ -302,6 +303,13 @@
                       <td><?php echo $item['id_aset_reg'] ?></td>
                       <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
                       <td><?php echo $item['nama_alat_reg'] ?></td>
+                      <td>
+                          <form action="{{ url('/dashboard_teknisi/perbaikan_teregistrasi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                          </form>
+                        </td>
                       <td><?php echo $item['merek_alat_reg'] ?></td>
                       <td><?php echo $item['type_alat_reg'] ?></td>
                       <td><?php echo $item['serial_number_reg'] ?></td>
@@ -316,7 +324,7 @@
                       <td><?php echo $item['korektif_reg'] ?></td>
                       <!--<td><?php echo $item['kode_rs'] ?></td>-->
                       <td>
-                        <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                        <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-print"></i></a>
                       </td>
                     </tr>
 
@@ -337,16 +345,6 @@
     </div>
   </div>
 </div>
-
-
-
-</div> <!-- /.content -->
-
-
-
-
-</div> <!-- /.content-wrapper -->
-
 <!--TABEL-->
 <script type="text/javascript">
   $(document).ready(function() {
@@ -354,7 +352,7 @@
       processing: true,
       responsive: true,
       serverSide: true,
-      ajax: '{{ url(' / dashboard_teknisi / aset ') }}',
+      ajax: '{{ url('/dashboard_teknisi/aset') }}',
       columns: [{
           data: 0,
           name: 'Id_Aset',
@@ -484,10 +482,9 @@
         },
 
       ],
-    }).fnDestroy();
+    });
   })
 </script>
-
 <!-- <script src="./assets/js/bs-5.js"></script>
 <script src="../js/scripts.js"></script>
 <script src="./assets/libraries/jquery.min.js"></script> -->

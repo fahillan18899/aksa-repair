@@ -235,14 +235,16 @@
                   <div class="form-group row">
                     <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
-                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
+                      <input type="radio" onclick="clickAKL()">
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL" disabled>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
-                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
+                      <input type="radio" onclick="clickAKD()">
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD" disabled>
                     </div>
                   </div>
 
@@ -454,11 +456,24 @@
             },
 
           ],
-        }).fnDestroy();
+        });
       })
     </script>
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+@push('addon-script')
+<script>
+  let inputAKL = document.querySelector('#AKL');
+  let inputAKD = document.querySelector('#AKD');
 
+  function clickAKL() {
+    inputAKL.disabled = false;
+  }
+
+  function clickAKD() {
+    inputAKD.disabled = false;
+  }
+</script>
+@endpush
 @endsection

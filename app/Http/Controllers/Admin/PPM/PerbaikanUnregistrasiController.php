@@ -193,5 +193,20 @@ class PerbaikanUnregistrasiController extends Controller
         $item->delete();
         return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
+
+    public function updateStatusPerbaikanUn($id)
+    {
+        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        if ($item) {
+            if ($item->status == '0') {
+                $item->status = '1';
+            } else {
+                $item->status = '0';
+            }
+
+            $item->save();
+        }
+        return back();
+    }
 }
 
