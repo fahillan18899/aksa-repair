@@ -44,17 +44,24 @@ class AnalisisDataController extends Controller
             ->count();
 
         $unRegistered = DB::table('registrasis')
-        ->where('tanggal_kalibrasi', '-')
+        ->where('tanggal_kalibrasi', NULL)
             ->whereRaw("kode_rs = '$kode_rs'")
             ->count();
 
-        $terpelihara = DB::table('registrasis')
-            ->join('lembar_pemeliharaans', 'registrasis.id_aset', '=', 'lembar_pemeliharaans.id_aset')
-            ->select('registrasis.id_aset')
-            ->whereRaw("registrasis.kode_rs = '$kode_rs'")
-        ->get();
+        $perbaikan = DB::table('perbaikan_registrasis')
+            ->whereNotNull('id_perbaikan_reg')
+            ->whereRaw("perbaikan_registrasis.kode_rs = '$kode_rs'")
+        ->count();
 
-        $unTerpelihara = DB::table('registrasis')->whereRaw("registrasis.kode_rs = '$kode_rs'")->count() - count($terpelihara);
+        $perbaikanUn = DB::table('perbaikan_unregistrasis')
+        ->whereNotNull('id_perbaikan_un')
+        ->whereRaw("perbaikan_unregistrasis.kode_rs = '$kode_rs'")
+        ->count();
+
+        $totalAlat = DB::table('registrasis')
+        ->whereNotNull('id_aset')
+        ->whereRaw("registrasis.kode_rs = '$kode_rs'")
+        ->count();
 
         return view(
             'pages.admin.PPM.analisis_data.index',
@@ -65,8 +72,9 @@ class AnalisisDataController extends Controller
                 'semuaAlat' => $semuaAlat,
                 'registered' => $registered,
                 'unRegistered' => $unRegistered,
-                'terpelihara' => $terpelihara,
-                'unTerpelihara' => $unTerpelihara,
+                'perbaikan' => $perbaikan,
+                'perbaikanUn' => $perbaikanUn,
+                'totalAlat' => $totalAlat,
             ]
         );
     }

@@ -34,6 +34,9 @@ use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
+use App\Http\Controllers\Admin\PPM\UmurAlatController;
+use App\Http\Controllers\Admin\PPM\AlatTerkalibrasiController;
+use App\Http\Controllers\Admin\PPM\AlatKorektifController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
@@ -201,6 +204,14 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // Analis Data
     Route::get('/analisis_data', [AnalisisDataController::class, 'index']);
 
+    //Data Umur Alat
+    Route::resource('data_umur_alat', UmurAlatController::class);
+
+    //Data Alat Terkalibrasi
+    Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
+
+    //Data Alat Korektif
+    Route::resource('data_alat_korektif', AlatKorektifController::class);
 
     // API internal datatable
     Route::get('/aset', [RegistrasiAsetController::class, 'json'])->name('aa');
