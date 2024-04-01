@@ -69,7 +69,7 @@
               <span></span>
             </div>
             <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_umur_alat') }}"><i class="fa fa-eye"></i> Lihat Data </a>
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_korektif') }}"><i class="fa fa-eye"></i> Lihat Data </a>
             </div>
             <canvas id="pieChart3" height="170"></canvas>
 
