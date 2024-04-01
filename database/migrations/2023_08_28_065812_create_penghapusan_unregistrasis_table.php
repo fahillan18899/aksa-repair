@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('lokasi_alat_un');
             $table->string('pelapor_un');
             $table->string('teknisi_1_un');
-            $table->string('teknisi_2_un');
-            $table->string('teknisi_3_un');
+            $table->string('teknisi_2_un')->nullable();
+            $table->string('teknisi_3_un')->nullable();
             $table->string('tanggal_penggudangan_un');
             $table->string('ka_instalasi_un');
             $table->string('keterangan_penggudangan_un');

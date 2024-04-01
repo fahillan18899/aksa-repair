@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
+use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\SOPPemakaianController;
 use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
@@ -33,10 +34,14 @@ use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
+use App\Http\Controllers\Admin\PPM\UmurAlatController;
+use App\Http\Controllers\Admin\PPM\AlatTerkalibrasiController;
+use App\Http\Controllers\Admin\PPM\AlatKorektifController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
+use App\Http\Controllers\User\PPM\PermintaanBarangController;
 
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
@@ -113,6 +118,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
     Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
     Route::delete('/perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
+    Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan']);
 
     // Pengiriman Aset Teregistrasi
     Route::post('/tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
@@ -146,6 +152,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/tambah_unregistrasi', [PerbaikanUnregistrasiController::class, 'store']);/*fungsi tambah*/
     Route::get('/aset_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'cetak']);/*fungsi print*/
     Route::delete('/perbaikan_unegistrasi/{id}', [PerbaikanUnregistrasiController::class, 'destroy']);
+    Route::put('aset_unregistrasi/update/{id}', [PerbaikanUnregistrasiController::class, 'updateStatusPerbaikanUn']);
 
     //  pengiriman unregistrasi
     Route::post('/tambah_pengiriman_un', [PengirimanUnregistrasiController::class, 'store']);/*fungsi tambah*/
@@ -187,6 +194,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
     //  stock opname
     Route::resource('/stock_opname', StockOpnameController::class);
+    Route::resource('/permintaan_barang_admin', PermintaanBarangAdmin::class);
 
 
     // operator
@@ -196,6 +204,14 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // Analis Data
     Route::get('/analisis_data', [AnalisisDataController::class, 'index']);
 
+    //Data Umur Alat
+    Route::resource('data_umur_alat', UmurAlatController::class);
+
+    //Data Alat Terkalibrasi
+    Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
+
+    //Data Alat Korektif
+    Route::resource('data_alat_korektif', AlatKorektifController::class);
 
     // API internal datatable
     Route::get('/aset', [RegistrasiAsetController::class, 'json'])->name('aa');
@@ -213,6 +229,7 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
   Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
   Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
+  Route::resource('/permintaan_barang', PermintaanBarangController::class);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
   Route::resource('stock_opname_user', StockOpnameUserController::class);
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
@@ -229,12 +246,14 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::get('update_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'edit']);
   Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
   Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
+  Route::put('perbaikan_teregistrasi/update/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateStatusPerbaikanTeknisi']);
 
   Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
   Route::get('edit_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'edit']);
   Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
   Route::get('perbaikan_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'cetak_teknisi']);
-  Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
+  Route::put('perbaikan_unregistrasi/update/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'updateStatusPerbaikanUnTeknisi']);
+  
 
   Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);
   Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'store'])->name('jadwal_pemeliharaan.store');
@@ -242,6 +261,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
   Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+
+  Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
   // API internal datatable
   Route::get('/aset', [DashboardTeknisiController::class, 'json'])->name('api-aset-teknisi');

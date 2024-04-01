@@ -91,7 +91,7 @@
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         <option>Pilih Alat</option>
                         @foreach($alats as $alat)
-                        <option value="<?= $alat->nama_alat ?>"><?= $alat->nama_alat; ?></option>
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -122,21 +122,21 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
+                    <div class="col-xs-9">
+                      <input name="gambar" class="form-control" type="file" id="gambar">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
                         @foreach($ruangans as $ruangan)
-                        <option value="<?= $ruangan->lokasi_alat ?>"><?= $ruangan->lokasi_alat ?></option>
+                        <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
                         @endforeach
                       </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
-                    <div class="col-xs-9">
-                      <input name="gambar" class="form-control" type="file" id="gambar">
                     </div>
                   </div>
 
@@ -235,14 +235,16 @@
                   <div class="form-group row">
                     <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
-                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
+                      <input type="radio" onclick="clickAKL()">
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL" disabled>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
-                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
+                      <input type="radio" onclick="clickAKD()">
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD" disabled>
                     </div>
                   </div>
 
@@ -460,5 +462,18 @@
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+@push('addon-script')
+<script>
+  let inputAKL = document.querySelector('#AKL');
+  let inputAKD = document.querySelector('#AKD');
 
+  function clickAKL() {
+    inputAKL.disabled = false;
+  }
+
+  function clickAKD() {
+    inputAKD.disabled = false;
+  }
+</script>
+@endpush
 @endsection

@@ -36,9 +36,9 @@
                   @method('PUT')
 
                   <div class="form-group row">
-                    <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
+                    <label for="ID_Perbaikan_reg" class="col-xs-3 col-form-label">ID Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset_reg" type="text" class="form-control" id="id_aset_reg" placeholder="ID Aset" value="<?php echo $item['id_aset_reg'] ?>" readonly>
+                      <input name="id_perbaikan_reg" type="text" class="form-control" id="id_perbaikan_reg" placeholder="ID Perbaikan" value="<?php echo $item['id_perbaikan_reg'] ?>" readonly>
                     </div>
                   </div>
 

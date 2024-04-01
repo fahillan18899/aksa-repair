@@ -1,0 +1,8 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/localhost:8000\/assets\/js\/instascan.min.js 8:8740 Uncaught Error: Cannot access video stream (NotAllowedError).",
+        "source": "javascript",
+        "timestamp": 1710823090184
+    }
+]

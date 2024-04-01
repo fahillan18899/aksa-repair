@@ -661,7 +661,7 @@
       <div class="col">
         <div class="panel panel-default thumbnail">
           <div class="panel-body panel-form">
-            <table class="table table-hover table-bordered " id="scollDatatable" style="width:100%">
+            <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
               <thead class="table-light">
                 <tr>
                   <td class="table-primary" rowspan="3"><b>No</b></td>

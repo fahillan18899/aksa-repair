@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('hasil_verifikasi_reg')->nullable();
             $table->string('hasil_fungsi_reg')->nullable();
             $table->string('pengganti_suku_cadang_reg')->nullable();
-            $table->string('kode_rs', 10)->nullable();
+            $table->string('kode_rs', 10)->index()->nullable();
             $table->integer('active')->default(1);
 
 

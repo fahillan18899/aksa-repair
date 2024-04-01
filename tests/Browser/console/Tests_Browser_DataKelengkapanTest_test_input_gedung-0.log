@@ -1,0 +1,14 @@
+[
+    {
+        "level": "WARNING",
+        "message": "http:\/\/localhost:8000\/assets\/js\/instascan.min.js 17 Invalid asm.js: Type mismatch in assignment",
+        "source": "javascript",
+        "timestamp": 1710823076937
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/localhost:8000\/assets\/js\/Chart.min.js 10:26528 Uncaught TypeError: Cannot read properties of null (reading 'length')",
+        "source": "javascript",
+        "timestamp": 1710823076989
+    }
+]

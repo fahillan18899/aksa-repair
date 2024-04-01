@@ -103,7 +103,6 @@ class PerbaikanUnregistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'id_perbaikan_un' => '',
             'tanggal_perbaikan_un' => '',
             'nama_alat_un' => '',
@@ -130,7 +129,7 @@ class PerbaikanUnregistrasiController extends Controller
         $level = "admin";
         $topik = $token . $level;
         $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
-        $title = $request['nama_alat_reg'];
+        $title = $request['nama_alat_un'];
         $message = "Alat " . $title;
         $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
 
@@ -193,6 +192,21 @@ class PerbaikanUnregistrasiController extends Controller
 
         $item->delete();
         return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
+    }
+
+    public function updateStatusPerbaikanUn($id)
+    {
+        $item = PerbaikanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        if ($item) {
+            if ($item->status == '0') {
+                $item->status = '1';
+            } else {
+                $item->status = '0';
+            }
+
+            $item->save();
+        }
+        return back();
     }
 }
 

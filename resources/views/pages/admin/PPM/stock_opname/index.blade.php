@@ -9,7 +9,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-drawer"></i></div>
+      <div class="header-icon"><i class="pe-7s-gift"></i></div>
       <div class="header-title">
         <h1>Stock Opname</h1>
         <small>Tabel Stock Opname</small>
@@ -36,6 +36,9 @@
           <div class="panel-heading no-print">
             <div class="btn-group">
               <a class="btn btn-success" href="{{ route('stock_opname.create') }}"><i class="fa fa-plus"></i> Tambah Stock Opname </a>
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/permintaan_barang_admin') }}"><i class="fa fa-eye"></i> Lihat Tabel Permintaan Barang User </a>
             </div>
           </div>
 
@@ -70,7 +73,11 @@
                       <td>{{ $item->jumlah_keluar}}</td>
                       <td>{{ $item->tanggal_masuk}}</td>
                       <td>{{ $item->tanggal_keluar}}</td>
-                      <td>{{ $item->stock}}</td>
+                      @if($item->stock !== 0)
+                        <td>{{ $item->stock}}</td>
+                      @else
+                        <td>Tidak Tersedia</td>
+                      @endif
                       <td>
                         <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">

@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('berita_acaras', function (Blueprint $table) {
+        Schema::create('history_stock_opnames', function (Blueprint $table) {
             $table->id();
-            $table->string('kepada');
-            $table->string('nama');
-            $table->integer('qyt');
-            $table->integer('harga');
+            $table->integer('sparepart_id');
+            $table->integer('total_sparepart');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('berita_acaras');
+        Schema::dropIfExists('history_stock_opnames');
     }
 };

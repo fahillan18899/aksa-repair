@@ -29,7 +29,9 @@
               <h3><?= "Data Statistik Umur Alat"
                   ?></h3>
               <span><?= "Data Statistik Umur Alat" ?></span>
-
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_umur_alat') }}"><i class="fa fa-eye"></i> Lihat Data </a>
             </div>
             <canvas id="pieChart" height="170"></canvas>
 
@@ -44,7 +46,9 @@
               <h3><?= "Data Statistik Terkalibrasi"
                   ?></h3>
               <span><?= "Data Statistik Terkalibrasi" ?></span>
-
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_terkalibrasi') }}"><i class="fa fa-eye"></i> Lihat Data </a>
             </div>
             <canvas id="pieChart2" height="170"></canvas>
 
@@ -60,10 +64,12 @@
         <div class="panel panel-default" id="js-timer">
           <div class="panel-body">
             <div class="widget-title">
-              <h3><?= "Data Statistik Pemeliharaan"
+              <h3><?= "Data Statistik Pemeliharaan Korektif"
                   ?></h3>
               <span></span>
-
+            </div>
+            <div class="btn-group">
+              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_umur_alat') }}"><i class="fa fa-eye"></i> Lihat Data </a>
             </div>
             <canvas id="pieChart3" height="170"></canvas>
 
@@ -103,7 +109,7 @@
               echo $t5;
               ?>,
               <?php
-              echo $t5;
+              echo $t5_;
               ?>,
               <?php
               echo $t10;
@@ -159,13 +165,13 @@
       new Chart(ctx3, {
         type: 'pie',
         data: {
-          labels: ["Alat Perbaikan", "Alat Terpelihara", "Alat Belum Terpelihara"],
+          labels: ["Alat Perbaikan Teregistrasi", "Total Alat", "Alat Perbaikan Unregistrasi"],
           datasets: [{
             label: '# of Votes',
             data: [
-              <?= 6 ?>,
-              <?= $t5_ ?>,
-              <?= $unTerpelihara ?>
+              <?= $perbaikan ?>,
+              <?= $totalAlat ?>,
+              <?= $perbaikanUn ?>
             ],
             borderWidth: 1,
             backgroundColor: ['#3FD01C', '#3FEBC5', '#EB553F']
@@ -191,9 +197,9 @@
           datasets: [{
             label: '# of Votes',
             data: [
-              <?= $terpelihara ?>,
+              <?= $perbaikan ?>,
               <?= $t5_ ?>,
-              <?= $unTerpelihara ?>
+              <?= $perbaikanUn ?>
             ],
             borderWidth: 1,
             backgroundColor: ['#7a7a7a', '#000'],

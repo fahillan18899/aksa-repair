@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('lokasi_pemakaian')->nullable();
             $table->integer('jumlah_masuk')->nullable();
+            $table->integer('jumlah_sekarang')->nullable();
             $table->integer('jumlah_keluar')->nullable();
             $table->date('tanggal_masuk')->nullable();
             $table->date('tanggal_keluar')->nullable();

@@ -270,23 +270,24 @@
                       <th scope="col">ID_Aset</th>
                       <th scope="col">Tanggal_Perbaikan</th>
                       <th scope="col">Nama_Alat</th>
-                      <th scope="col">Merek_Alat</th>
-                      <th scope="col">Type_Alat</th>
-                      <th scope="col">Serial_Number</th>
-                      <th scope="col">Lokasi_Alat</th>
-                      <th scope="col">Pelapor</th>
-                      <th scope="col">Keterangan_Kondisi_Alat</th>
-                      <th scope="col">Kepala Ruangan</th>
-                      <th scope="col">Teknisi_1</th>
-                      <th scope="col">Teknisi_2</th>
-                      <th scope="col">Teknisi_3</th>
-                      <th scope="col">suku Cadang</th>
-                      <th scope="col">volume</th>
-                      <th scope="col">Harga Satuan</th>
-                      <th scope="col">Jumlah Harga</th>
-                      <th scope="col">Keluhan_Dari_alat</th>
-                      <th scope="col">Korektif</th>
-                      <th scope="col">Tombol_Eksekusi</th>
+                      <th scope="col">Status</th>
+                      <th scope="col" class="none">Merek_Alat</th>
+                      <th scope="col" class="none">Type_Alat</th>
+                      <th scope="col" class="none">Serial_Number</th>
+                      <th scope="col" class="none">Lokasi_Alat</th>
+                      <th scope="col" class="none">Pelapor</th>
+                      <th scope="col" class="none">Keterangan_Kondisi_Alat</th>
+                      <th scope="col" class="none">Kepala Ruangan</th>
+                      <th scope="col" class="none">Teknisi_1</th>
+                      <th scope="col" class="none">Teknisi_2</th>
+                      <th scope="col" class="none">Teknisi_3</th>
+                      <th scope="col" class="none">suku Cadang</th>
+                      <th scope="col" class="none">volume</th>
+                      <th scope="col" class="none">Harga Satuan</th>
+                      <th scope="col" class="none">Jumlah Harga</th>
+                      <th scope="col" class="none">Keluhan_Dari_alat</th>
+                      <th scope="col" class="none">Korektif</th>
+                      <th scope="col" class="none">Tombol_Eksekusi</th>
                     </thead>
                     <tbody>
                       @forelse ($items as $index => $item)
@@ -296,6 +297,13 @@
                         <td><?php echo $item['id_aset_reg'] ?></td>
                         <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
                         <td><?php echo $item['nama_alat_reg'] ?></td>
+                        <td>
+                          <form action="{{ url('/dashboard/ppm/aset_teregistrasi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                          </form>
+                        </td>
                         <td><?php echo $item['merek_alat_reg'] ?></td>
                         <td><?php echo $item['type_alat_reg'] ?></td>
                         <td><?php echo $item['serial_number_reg'] ?></td>

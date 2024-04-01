@@ -48,6 +48,7 @@ class AuthController extends Controller
             'kode_rs' => 'required',
         ], [
             'username.unique' => 'Username Sudah Di Gunakan',
+            'password.required' => 'Password Wajib Diisi',
             'user_role.required' => 'Peran Pengguna Wajib Di Pilih',
             'kode_rs.required' => 'Fasilitas Kesehatan Wajib Di Pilih',
         ]);

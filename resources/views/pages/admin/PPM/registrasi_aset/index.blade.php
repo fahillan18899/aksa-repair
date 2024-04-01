@@ -83,6 +83,7 @@
                       @endif
                     </div>
                   </div>
+                  
                   <div class="form-group row">
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -100,7 +101,7 @@
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         <option>Pilih Alat</option>
                         @foreach($alats as $alat)
-                        <option value="<?= $alat ?>"><?= $alat; ?></option>
+                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -136,7 +137,7 @@
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
                         @foreach($ruangans as $ruangan)
-                        <option value="<?= $ruangan ?>"><?= $ruangan ?></option>
+                        <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
                         @endforeach
                       </select>
                     </div>
@@ -244,14 +245,16 @@
                   <div class="form-group row">
                     <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
-                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL">
+                      <input type="radio" onclick="clickAKL()">
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL" disabled>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
-                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD">
+                      <input type="radio" onclick="clickAKD()">
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD" disabled>
                     </div>
                   </div>
 
@@ -320,7 +323,6 @@
                 <th class="none">umur_alat</th>
                 <th  class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
-                <th>QR</th>
               </thead>
             </table>
           </div>
@@ -453,12 +455,7 @@
                           </form>`
               }
             },
-            {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
-              }
-            },
+            
 
           ],
         });
@@ -467,5 +464,18 @@
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+@push('addon-script')
+<script>
+  let inputAKL = document.querySelector('#AKL');
+  let inputAKD = document.querySelector('#AKD');
 
+  function clickAKL() {
+    inputAKL.disabled = false;
+  }
+
+  function clickAKD() {
+    inputAKD.disabled = false;
+  }
+</script>
+@endpush
 @endsection

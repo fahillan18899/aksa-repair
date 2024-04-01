@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('alamat_rekan_reg')->nullable();
             $table->string('teknisi_rekanan_reg')->nullable();
             $table->string('telp_teknisi_rekanan_reg')->nullable();
-            $table->string('kode_rs', 10);
+            $table->string('kode_rs', 10)->index();
             $table->integer('active')->default(1);
 
 

@@ -384,7 +384,8 @@ class RegistrasiTableSeeder extends Seeder
             DB::table('registrasis')->insert([
                 // create id_aset with increment
                 
-                'id_aset' => $faker->numerify('RS000240314' . $i ),
+                'id_aset' => $faker->numerify('RS0002403140' . $i ),
+                'qr_code' => $faker->numerify('q10-ksjdff' . $i),
                 'jenis_alat' => $faker->randomElement(['Medis', 'Non Medis', 'KSO']),
                 'nama_alat' => $faker->randomElement([
                     'AED',

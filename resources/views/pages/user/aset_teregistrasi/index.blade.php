@@ -123,8 +123,7 @@
                   <div class="form-group row">
                     <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg" value="<?php date_default_timezone_set('Asia/Jakarta');
-                                                                                                                              echo date(now()) ?>">
+                      <input name="tanggal_perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
                     </div>
                   </div>
 
@@ -256,65 +255,94 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <table class="datatable table table-striped table-bordered" style="width:100%">
-      <thead class="table-light">
-        <th scope="col">No</th>
-        <th scope="col">Id_Perbaikan</th>
-        <th scope="col">ID Aset</th>
-        <th scope="col">Tanggal Perbaikan</th>
-        <th scope="col">Nama Alat</th>
-        <th scope="col">Merek Alat</th>
-        <th scope="col">Type Alat</th>
-        <th scope="col">Serial Number</th>
-        <th scope="col">Lokasi Alat</th>
-        <th scope="col">Pelapor</th>
-        <th scope="col">Keterangan Kondisi Alat</th>
-        <th scope="col">Kepala Ruangan</th>
-        <th scope="col">Teknisi 1</th>
-        <th scope="col">Teknisi 2</th>
-        <th scope="col">Teknisi 3</th>
-        <th scope="col">Keluhan Dari alat</th>
-        <th scope="col">Korektif</th>
-        <!--<th scope="col">Tombol Eksekusi</th>
-        <th scope="col">Tombol Eksekusi</th>-->
-      </thead>
-      <tbody>
-        @forelse ($items as $index => $item)
-        <tr class="odd gradeX">
-          <td><?php echo $index  + 1 ?></td>
-          <td><?php echo $item['id_perbaikan_reg'] ?></td>
-          <td><?php echo $item['id_aset_reg'] ?></td>
-          <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-          <td><?php echo $item['nama_alat_reg'] ?></td>
-          <td><?php echo $item['merek_alat_reg'] ?></td>
-          <td><?php echo $item['type_alat_reg'] ?></td>
-          <td><?php echo $item['serial_number_reg'] ?></td>
-          <td><?php echo $item['lokasi_alat_reg'] ?></td>
-          <td><?php echo $item['pelapor_reg'] ?></td>
-          <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-          <td><?php echo $item['ka_instalasi_reg'] ?></td>
-          <td><?php echo $item['teknisi_1_reg'] ?></td>
-          <td><?php echo $item['teknisi_2_reg'] ?></td>
-          <td><?php echo $item['teknisi_3_reg'] ?></td>
-          <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-          <td><?php echo $item['korektif_reg'] ?></td>
-          <!--<td><?php echo $item['kode_rs'] ?></td>
-          <td>
-            <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
 
-            <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-          </td>-->
-        </tr>
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Tabel Perbaikan</h1>
+            </div>
+          </div>
 
-        @empty
-        <tr>
-          <td class="text-center" colspan="7">Data Kosong</td>
-        </tr>
-        @endforelse
-      </tbody>
-    </table>
-    <!--TABEL-->
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <!--TABEL-->
+                <table class="datatable table table-striped table-bordered" style="width:100%">
+                  <thead class="table-light">
+                    <th class="">No</th>
+                    <th class="">Id_Perbaikan</th>
+                    <th class="">ID Aset</th>
+                    <th class="">Tanggal Perbaikan</th>
+                    <th class="">Nama Alat</th>
+                    <th class="">Status</th>
+                    <th class="none">Merek Alat</th>
+                    <th class="none">Type Alat</th>
+                    <th class="none">Serial Number</th>
+                    <th class="none">Lokasi Alat</th>
+                    <th class="none">Pelapor</th>
+                    <th class="none">Keterangan Kondisi Alat</th>
+                    <th class="none">Kepala Ruangan</th>
+                    <th class="none">Teknisi 1</th>
+                    <th class="none">Teknisi 2</th>
+                    <th class="none">Teknisi 3</th>
+                    <th class="none">Keluhan Dari alat</th>
+                    <th class="none">Korektif</th>
+                    <!--<th scope="col">Tombol Eksekusi</th>
+                    <th scope="col">Tombol Eksekusi</th>-->
+                  </thead>
+                  <tbody>
+                    @forelse ($items as $index => $item)
+                    <tr class="odd gradeX">
+                      <td><?php echo $index  + 1 ?></td>
+                      <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                      <td><?php echo $item['id_aset_reg'] ?></td>
+                      <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                      <td><?php echo $item['nama_alat_reg'] ?></td>
+                      <td>
+                        <form action="" class="form-inner" method="post">
+                          @csrf
+                          @method('PUT')
+                          <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                        </form>
+                      </td>
+                      <td><?php echo $item['merek_alat_reg'] ?></td>
+                      <td><?php echo $item['type_alat_reg'] ?></td>
+                      <td><?php echo $item['serial_number_reg'] ?></td>
+                      <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                      <td><?php echo $item['pelapor_reg'] ?></td>
+                      <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                      <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                      <td><?php echo $item['teknisi_1_reg'] ?></td>
+                      <td><?php echo $item['teknisi_2_reg'] ?></td>
+                      <td><?php echo $item['teknisi_3_reg'] ?></td>
+                      <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                      <td><?php echo $item['korektif_reg'] ?></td>
+                      <!--<td><?php echo $item['kode_rs'] ?></td>
+                      <td>
+                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+            
+                        <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                      </td>-->
+                    </tr>
+            
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
+                  </tbody>
+                </table>
+                <!--TABEL-->
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div> <!-- /.content -->
   <script type="text/javascript">
       $(document).ready(function() {
