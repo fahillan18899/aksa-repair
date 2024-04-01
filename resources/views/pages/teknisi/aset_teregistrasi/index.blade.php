@@ -26,7 +26,7 @@
       <p>{{ $message }}</p>
     </div>
     @endif
-    
+
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
@@ -64,7 +64,7 @@
                 <th class="none">AKD</th>
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
-                <th  class="none">Jadwal</th>
+                <th class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
                 <th>QR</th>
               </thead>
@@ -73,150 +73,6 @@
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#table-register').DataTable({
-          processing: true,
-          responsive: true,
-          serverSide: true,
-          ajax: '{{ url('/dashboard_teknisi/aset') }}',
-          columns: [{
-              data: 0,
-              name: 'Id_Aset',
-              orderable: true,
-              searchable: true
-            },
-            {
-              data: 1,
-              name: 'Jenis_Alat'
-            },
-            {
-              data: 2,
-              name: 'Nama_Alat'
-            },
-            {
-              data: 3,
-              name: 'Merek'
-            },
-            {
-              data: 4,
-              name: 'Type'
-            },
-            {
-              data: 5,
-              name: 'Gambar',
-              render: function(data, type, full, meta) {
-                return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
-              }
-            },
-            {
-              data: 6,
-              name: 'Serial_Number'
-            },
-            {
-              data: 7,
-              name: 'lokasi_alat'
-            },
-            {
-              data: 8,
-              name: 'Tanggal_Kalibrasi'
-            },
-            {
-              data: 9,
-              name: 'Distributor'
-            },
-            {
-              data: 10,
-              name: 'Alamat_Distributor'
-            },
-            {
-              data: 11,
-              name: 'TLP_Distributor'
-            },
-            {
-              data: 12,
-              name: 'Email_Distributor'
-            },
-            {
-              data: 13,
-              name: 'Teknisi_Distributor'
-            },
-            {
-              data: 14,
-              name: 'TLP_T_Distributor'
-            },
-            {
-              data: 15,
-              name: 'No_Sertifikat_Kalibrasi'
-            },
-            {
-              data: 16,
-              name: 'teknisi_ppm'
-            },
-            {
-              data: 17,
-              name: 'harga_perolehan'
-            },
-            {
-              data: 18,
-              name: 'Sumber_Dana'
-            },
-            {
-              data: 19,
-              name: 'Tahun_Perolehan'
-            },
-            {
-              data: 20,
-              name: 'AKL'
-            },
-            {
-              data: 21,
-              name: 'AKD'
-            },
-            {
-              data: 22,
-              name: 'no_inventaris_1'
-            },
-            {
-              data: 23,
-              name: 'umur_alat'
-            },
-            {
-              data: 24,
-              name: 'jadwal_pemeliharaan'
-            },
-            {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
-              }
-              
-            },
-            
-           {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
-              }
-            },
-
-          ],
-        }).fnDestroy();
-      })
-    </script>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col-sm-3">
         <div class="panel panel-default thumbnail">
@@ -416,61 +272,69 @@
             <div class="row">
               <div class="col-md-12 col-sm-12">
                 <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th scope="col">No</th>
-                      <th scope="col">Id_Perbaikan</th>
-                      <th scope="col">ID_Aset</th>
-                      <th scope="col">Tanggal_Perbaikan</th>
-                      <th scope="col">Nama_Alat</th>
-                      <th scope="col">Merek_Alat</th>
-                      <th scope="col">Type_Alat</th>
-                      <th scope="col">Serial_Number</th>
-                      <th scope="col">Lokasi_Alat</th>
-                      <th scope="col">Pelapor</th>
-                      <th scope="col">Keterangan_Kondisi_Alat</th>
-                      <th scope="col">Kepala Ruangan</th>
-                      <th scope="col">Teknisi_1</th>
-                      <th scope="col">Teknisi_2</th>
-                      <th scope="col">Teknisi_3</th>
-                      <th scope="col">Keluhan_Dari_alat</th>
-                      <th scope="col">Korektif</th>
-                      <!--<th scope="col">Tombol_Eksekusi</th>-->
-                      <th scope="col">Tombol_Eksekusi</th>
-                    </thead>
-                    <tbody>
-                      @forelse ($items as $index => $item)
-                      <tr class="odd gradeX">
-                        <td><?php echo $index  + 1 ?></td>
-                        <td><?php echo $item['id_perbaikan_reg'] ?></td>
-                        <td><?php echo $item['id_aset_reg'] ?></td>
-                        <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-                        <td><?php echo $item['nama_alat_reg'] ?></td>
-                        <td><?php echo $item['merek_alat_reg'] ?></td>
-                        <td><?php echo $item['type_alat_reg'] ?></td>
-                        <td><?php echo $item['serial_number_reg'] ?></td>
-                        <td><?php echo $item['lokasi_alat_reg'] ?></td>
-                        <td><?php echo $item['pelapor_reg'] ?></td>
-                        <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-                        <td><?php echo $item['ka_instalasi_reg'] ?></td>
-                        <td><?php echo $item['teknisi_1_reg'] ?></td>
-                        <td><?php echo $item['teknisi_2_reg'] ?></td>
-                        <td><?php echo $item['teknisi_3_reg'] ?></td>
-                        <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-                        <td><?php echo $item['korektif_reg'] ?></td>
-                        <!--<td><?php echo $item['kode_rs'] ?></td>-->
-                        <td>
-                          <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                <table class="datatable table table-striped table-bordered" style="width:100%">
+                  <thead class="table-light">
+                    <th scope="col">No</th>
+                    <th scope="col">Id_Perbaikan</th>
+                    <th scope="col">ID_Aset</th>
+                    <th scope="col">Tanggal_Perbaikan</th>
+                    <th scope="col">Nama_Alat</th>
+                    <th scope="col">Status</th>
+                    <th class="none">Merek_Alat</th>
+                    <th class="none">Type_Alat</th>
+                    <th class="none">Serial_Number</th>
+                    <th class="none">Lokasi_Alat</th>
+                    <th class="none">Pelapor</th>
+                    <th class="none">Keterangan_Kondisi_Alat</th>
+                    <th class="none">Kepala Ruangan</th>
+                    <th class="none">Teknisi_1</th>
+                    <th class="none">Teknisi_2</th>
+                    <th class="none">Teknisi_3</th>
+                    <th class="none">Keluhan_Dari_alat</th>
+                    <th class="none">Korektif</th>
+                    <!--<th scope="col">Tombol_Eksekusi</th>-->
+                    <th scope="col">Tombol_Eksekusi</th>
+                  </thead>
+                  <tbody>
+                    @forelse ($items as $index => $item)
+                    <tr class="odd gradeX">
+                      <td><?php echo $index  + 1 ?></td>
+                      <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                      <td><?php echo $item['id_aset_reg'] ?></td>
+                      <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                      <td><?php echo $item['nama_alat_reg'] ?></td>
+                      <td>
+                          <form action="{{ url('/dashboard_teknisi/perbaikan_teregistrasi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                          </form>
                         </td>
-                      </tr>
+                      <td><?php echo $item['merek_alat_reg'] ?></td>
+                      <td><?php echo $item['type_alat_reg'] ?></td>
+                      <td><?php echo $item['serial_number_reg'] ?></td>
+                      <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                      <td><?php echo $item['pelapor_reg'] ?></td>
+                      <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                      <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                      <td><?php echo $item['teknisi_1_reg'] ?></td>
+                      <td><?php echo $item['teknisi_2_reg'] ?></td>
+                      <td><?php echo $item['teknisi_3_reg'] ?></td>
+                      <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                      <td><?php echo $item['korektif_reg'] ?></td>
+                      <!--<td><?php echo $item['kode_rs'] ?></td>-->
+                      <td>
+                        <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-print"></i></a>
+                      </td>
+                    </tr>
 
-                      @empty
-                      <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
-                      </tr>
-                      @endforelse
-                    </tbody>
-                  </table>
+                    @empty
+                    <tr>
+                      <td class="text-center" colspan="7">Data Kosong</td>
+                    </tr>
+                    @endforelse
+                  </tbody>
+                </table>
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>
@@ -479,14 +343,148 @@
         </div>
       </div>
     </div>
-    
-  </div> <!-- /.content -->
+  </div>
+</div>
+<!--TABEL-->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#table-register').DataTable({
+      processing: true,
+      responsive: true,
+      serverSide: true,
+      ajax: '{{ url('/dashboard_teknisi/aset') }}',
+      columns: [{
+          data: 0,
+          name: 'Id_Aset',
+          orderable: true,
+          searchable: true
+        },
+        {
+          data: 1,
+          name: 'Jenis_Alat'
+        },
+        {
+          data: 2,
+          name: 'Nama_Alat'
+        },
+        {
+          data: 3,
+          name: 'Merek'
+        },
+        {
+          data: 4,
+          name: 'Type'
+        },
+        {
+          data: 5,
+          name: 'Gambar',
+          render: function(data, type, full, meta) {
+            return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
+          }
+        },
+        {
+          data: 6,
+          name: 'Serial_Number'
+        },
+        {
+          data: 7,
+          name: 'lokasi_alat'
+        },
+        {
+          data: 8,
+          name: 'Tanggal_Kalibrasi'
+        },
+        {
+          data: 9,
+          name: 'Distributor'
+        },
+        {
+          data: 10,
+          name: 'Alamat_Distributor'
+        },
+        {
+          data: 11,
+          name: 'TLP_Distributor'
+        },
+        {
+          data: 12,
+          name: 'Email_Distributor'
+        },
+        {
+          data: 13,
+          name: 'Teknisi_Distributor'
+        },
+        {
+          data: 14,
+          name: 'TLP_T_Distributor'
+        },
+        {
+          data: 15,
+          name: 'No_Sertifikat_Kalibrasi'
+        },
+        {
+          data: 16,
+          name: 'teknisi_ppm'
+        },
+        {
+          data: 17,
+          name: 'harga_perolehan'
+        },
+        {
+          data: 18,
+          name: 'Sumber_Dana'
+        },
+        {
+          data: 19,
+          name: 'Tahun_Perolehan'
+        },
+        {
+          data: 20,
+          name: 'AKL'
+        },
+        {
+          data: 21,
+          name: 'AKD'
+        },
+        {
+          data: 22,
+          name: 'no_inventaris_1'
+        },
+        {
+          data: 23,
+          name: 'umur_alat'
+        },
+        {
+          data: 24,
+          name: 'jadwal_pemeliharaan'
+        },
+        {
+          data: 0,
+          render: function(data, type, full, meta) {
+            return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
+                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
+                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
+                            @csrf
+                            @method('delete')
+                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
+                              <i class=\"fa fa-trash\"></i>
+                            </button>
+                          </form>`
+          }
 
+        },
 
+        {
+          data: 0,
+          render: function(data, type, full, meta) {
+            return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
+          }
+        },
 
-
-</div> <!-- /.content-wrapper -->
-
+      ],
+    });
+  })
+</script>
 <!-- <script src="./assets/js/bs-5.js"></script>
 <script src="../js/scripts.js"></script>
 <script src="./assets/libraries/jquery.min.js"></script> -->

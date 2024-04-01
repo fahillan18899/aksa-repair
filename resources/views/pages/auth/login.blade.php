@@ -63,7 +63,7 @@
             <div class="form-group">
               <label class="control-label" for="kode_rs">Fasilitas Kesehatan</label>
               <select name="kode_rs" class="form-control" id="kode_rs">
-                <option value="">Select Peran Pengguna</option>
+                <option value="">Pilih Fasilitas Kesehatan</option>
                 <option value="RS0000">RS Demo</option>
                 <option value="RS0002">RSI Wonosobo</option>
                 <option value="RS0004">RS Cilegon</option>
@@ -77,7 +77,7 @@
             <div class="form-group">
               <label class="control-label" for="user_role">Peran Pengguna</label>
               <select name="user_role" class="form-control" id="user_role">
-                <option value="">Select Peran Pengguna</option>
+                <option value="">Pilih Peran Pengguna</option>
                 <option value="admin">Admin</option>
                 <option value="teknisi">Teknisi</option>
                 <option value="user">User </option>
