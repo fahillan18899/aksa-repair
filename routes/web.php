@@ -258,6 +258,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
   Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);
   Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'store'])->name('jadwal_pemeliharaan.store');
   Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanTeknisiController::class, 'city']);
+  Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanTeknisiController::class, 'updateStatusTeknisi']);
   Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
   Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
   Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
