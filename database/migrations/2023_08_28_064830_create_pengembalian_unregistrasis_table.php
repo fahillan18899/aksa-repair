@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pengembalian_unregistrasis', function (Blueprint $table) {
@@ -36,19 +31,13 @@ return new class extends Migration
             $table->string('solusi_perbaikan_un')->nullable();
             $table->string('penggantian_suku_cadang_un')->nullable();
             $table->string('hasil_verifikasi_un')->nullable();
-            $table->string('kode_rs', 10);
+            $table->string('kode_rs', 10)->index();
             $table->integer('active')->default(1);
 
-
-            $table->timestamps();            
+            $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('pengembalian_unregistrasis');

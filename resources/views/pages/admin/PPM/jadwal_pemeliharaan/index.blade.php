@@ -124,7 +124,7 @@
                           <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
                             @csrf
                             @method('PUT')
-                            <button class="btn btn-{{ $items->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $items->status == 0 ? 'Sudah di Pelihara' : 'Belum di Pelihara'}}</button>
+                            <button class="btn btn-{{ $items->status == 0 ? 'warning' : 'danger' }}" type="submit">{{ $items->status == 0 ? 'Sudah di Pelihara' : 'Belum di Pelihara' }}</button>
                           </form>
                         </td>
                       </tr>
@@ -143,8 +143,8 @@
         </div>
       </div>
     </div>
-    
-    
+
+
 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->

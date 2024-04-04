@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pengembalian_registrasis', function (Blueprint $table) {
@@ -44,17 +39,11 @@ return new class extends Migration
             $table->string('kode_rs', 10)->index()->nullable();
             $table->integer('active')->default(1);
 
-
             $table->timestamps();
-            
+
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('pengembalian_registrasis');

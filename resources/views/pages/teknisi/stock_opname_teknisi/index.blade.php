@@ -54,7 +54,7 @@
                       <th scope="col">Tanggal Masuk</th>
                       <th scope="col">Tanggal Keluar</th>
                       <th scope="col">Total</th>
-                      
+
                     </tr>
                   </thead>
                   <tbody>
@@ -64,12 +64,12 @@
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->lokasi_pemakaian }}</td>
-                      <td>{{ $item->jumlah_masuk}}</td>
-                      <td>{{ $item->jumlah_keluar}}</td>
-                      <td>{{ $item->tanggal_masuk}}</td>
-                      <td>{{ $item->tanggal_keluar}}</td>
-                      <td>{{ $item->stock}}</td>
-                      
+                      <td>{{ $item->jumlah_masuk }}</td>
+                      <td>{{ $item->jumlah_keluar }}</td>
+                      <td>{{ $item->tanggal_masuk }}</td>
+                      <td>{{ $item->tanggal_keluar }}</td>
+                      <td>{{ $item->stock }}</td>
+
                     </tr>
                     @empty
                     <tr>

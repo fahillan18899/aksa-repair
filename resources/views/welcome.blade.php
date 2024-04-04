@@ -18,7 +18,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
         .c-item {
         height: 480px;
       }
-    
+
       .c-img {
         height: 100%;
         object-fit: cover;
@@ -102,7 +102,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -126,7 +126,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -137,7 +137,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <span class="info-box-icon"><i class="ti-book"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Resep"  //display('prescription') 
+            <span class="info-box-text"><?= "Resep"  //display('prescription')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[3]->total_prescription) ? $notify[3]->total_prescription : null)) ?></span>
 
@@ -151,7 +151,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -162,7 +162,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <span class="info-box-icon"><i class="fa fa-user-md"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Dokter" // display('doctor') 
+            <span class="info-box-text"><?= "Dokter" // display('doctor')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[2]->total_doctor) ? $notify[2]->total_doctor : null)) ?></span>
 
@@ -176,7 +176,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -187,7 +187,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <span class="info-box-icon"><i class="fa fa-bed"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Daftar Tempat Tidur Kosong" // display('free_bed_list') 
+            <span class="info-box-text"><?= "Daftar Tempat Tidur Kosong" // display('free_bed_list')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[4]->total_freebed) ? $notify[4]->total_freebed : null)) ?></span>
 
@@ -201,7 +201,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -212,7 +212,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <span class="info-box-icon"><i class="fa fa-sign-out"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Boleh Pulang" // display('discharged') 
+            <span class="info-box-text"><?= "Boleh Pulang" // display('discharged')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[5]->total_discharged) ? $notify[5]->total_discharged : null)) ?></span>
 
@@ -226,7 +226,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
     </div>
 
@@ -241,7 +241,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
             <div class="widget-title">
               <h3><?= "Total Progress"
                   ?></h3>
-              <span><?= "Menampilkan status dari tahun lalu" // display('last_year_status') 
+              <span><?= "Menampilkan status dari tahun lalu" // display('last_year_status')
                     ?></span>
 
             </div>
@@ -250,7 +250,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           </div> <!-- /.panel-body -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <!-- Message area -->
@@ -260,22 +260,22 @@ define('BASE_URL', 'http://127.0.0.1:8000');
       <div class="col-lg-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3><?= "Pertanyaan" // display('enquiry') 
+            <h3><?= "Pertanyaan" // display('enquiry')
                 ?></h3>
-            <span><?= "Permintaan Terbaru" // display('latest_enquiry') 
+            <span><?= "Permintaan Terbaru" // display('latest_enquiry')
                   ?></span>
           </div>
           <div class="panel-body">
             <div class="message_inner">
               <?php if (!empty($enquires)) {  ?>
                 <?php foreach ($enquires as $enquiry) {  ?>
-                  <a href="<?php // echo base_url("enquiry/view/$enquiry->enquiry_id") 
+                  <a href="<?php // echo base_url("enquiry/view/$enquiry->enquiry_id")
                             ?>">
                     <div class="inbox-item">
-                      <strong class="inbox-item-author"><?php // echo $enquiry->name; 
+                      <strong class="inbox-item-author"><?php // echo $enquiry->name;
                                                         ?></strong>
                       <span class="inbox-item-date"></span>
-                      <p class="inbox-item-text"><?php // echo character_limiter(strip_tags($enquiry->enquiry), 70); 
+                      <p class="inbox-item-text"><?php // echo character_limiter(strip_tags($enquiry->enquiry), 70);
                                                   ?></p>
                     </div>
                   </a>
@@ -285,7 +285,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           </div>
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
       <!-- /.row -->
     </div> <!-- /.row -->
@@ -299,7 +299,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
         <div class="panel panel-default" style="height: 505px !important;">
           <div class="panel-body">
             <div class="widget-title">
-              <h3><?= "Daftar pasien hari ini"  // display('today_patient_list') 
+              <h3><?= "Daftar pasien hari ini"  // display('today_patient_list')
                   ?></h3>
             </div>
             <div class="table-wrapper-scroll-y">
@@ -328,7 +328,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                         <td><?php echo $patient->sex; ?></td>
                         <td><?php echo $patient->blood_group; ?></td>
                         <td class="center">
-                          <a href="<?php // echo base_url("patient/profile/$patient->id") 
+                          <a href="<?php // echo base_url("patient/profile/$patient->id")
                                     ?>" class="btn btn-xs btn-success"><i class="fa fa-eye"></i></a>
                         </td>
 
@@ -337,7 +337,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                     <?php } ?>
                   <?php } else { ?>
                     <tr>
-                      <td colspan="7"><?= "data_not_available" // display('data_not_available') 
+                      <td colspan="7"><?= "data_not_available" // display('data_not_available')
                                       ?></td>
                     </tr>
                   <?php } ?>
@@ -347,7 +347,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
           </div> <!-- /.panel-body -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <!-- Message area -->
@@ -358,7 +358,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="widget-title">
-              <h3><?= "Tautan Langsung" // display('quick_links') 
+              <h3><?= "Tautan Langsung" // display('quick_links')
                   ?></h3>
             </div>
             <div class="fancy-collapse-panel">
@@ -366,7 +366,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                 <div class="panel panel-primary">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#billing" aria-expanded="true" aria-controls="billing"><?php echo "Penagihan" // display('billing') 
+                      <a data-toggle="collapse" data-parent="#accordion" href="#billing" aria-expanded="true" aria-controls="billing"><?php echo "Penagihan" // display('billing')
                                                                                                                                       ?>
                       </a>
                     </h4>
@@ -382,26 +382,26 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                             <?php
                             // if ($this->permission->method('package_list', 'read')->access() || $this->permission->method('package_list', 'update')->access() || $this->permission->method('package_list', 'delete')->access()) {
                             ?>
-                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=package"><?php echo "Daftar Paket" // display('package_list') 
+                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=package"><?php echo "Daftar Paket" // display('package_list')
                                                                                                               ?></a></li>
-                        <?php // } 
+                        <?php // }
                         ?>
 
 
                         <?php
                         // if ($this->permission->method('admission_list', 'read')->access() || $this->permission->method('admission_list', 'update')->access() || $this->permission->method('admission_list', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=admission"><?php echo "Daftar Penerimaan Pasien" // display('admission_list') 
+                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=admission"><?php echo "Daftar Penerimaan Pasien" // display('admission_list')
                                                                                                                 ?></a></li>
-                        <?php // } 
+                        <?php // }
                         ?>
 
                         <?php
                         // if ($this->permission->method('bill_list', 'read')->access() || $this->permission->method('bill_list', 'update')->access() || $this->permission->method('bill_list', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-primary btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=bill"><?php echo "Daftar Tagihan" // display('bill_list') 
+                        <li><a class="btn bg-primary btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=bill"><?php echo "Daftar Tagihan" // display('bill_list')
                                                                                                               ?></a></li>
-                        <?php // } 
+                        <?php // }
                         ?>
 
                       </ul>
@@ -411,7 +411,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                 <div class="panel panel-info">
                   <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#hactivity" aria-expanded="false" aria-controls="hactivity"><?php echo  "Aktifitas Rumah Sakit" // echo "" // display('hospital_activities') 
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#hactivity" aria-expanded="false" aria-controls="hactivity"><?php echo  "Aktifitas Rumah Sakit" // echo "" // display('hospital_activities')
                                                                                                                                                               ?>
                       </a>
                     </h4>
@@ -422,36 +422,36 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                         <?php
                         // if ($this->permission->method('birth_report', 'read')->access() || $this->permission->method('birth_report', 'update')->access() || $this->permission->method('birth_report', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-green btn-block" href="<?php // echo base_url('hospital_activities/birth/index') 
-                                                                    ?>"><?php echo "Laporan Kelahiran" // display('birth_report') 
+                        <li><a class="btn bg-green btn-block" href="<?php // echo base_url('hospital_activities/birth/index')
+                                                                    ?>"><?php echo "Laporan Kelahiran" // display('birth_report')
                                                                         ?></a></li>
-                        <?php // } 
+                        <?php // }
                         ?>
                         <?php
                         // if ($this->permission->method('death_report', 'read')->access() || $this->permission->method('death_report', 'update')->access() || $this->permission->method('death_report', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-red btn-block" href="<?php // echo base_url('hospital_activities/death/index') 
-                                                                  ?>"><?php echo "Laporan Kematian" // display('death_report') 
+                        <li><a class="btn bg-red btn-block" href="<?php // echo base_url('hospital_activities/death/index')
+                                                                  ?>"><?php echo "Laporan Kematian" // display('death_report')
                                                                       ?></a></li>
-                        <?php // } 
+                        <?php // }
                         ?>
 
                         <?php
                         // if ($this->permission->method('operation_report', 'read')->access() || $this->permission->method('operation_report', 'update')->access() || $this->permission->method('operation_report', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-yellow btn-block" href="<?php // echo base_url('hospital_activities/operation/index') 
-                                                                      ?>"><?php echo "Laporan Operasi" // display('operation_report') 
+                        <li><a class="btn bg-yellow btn-block" href="<?php // echo base_url('hospital_activities/operation/index')
+                                                                      ?>"><?php echo "Laporan Operasi" // display('operation_report')
                                                                           ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                         <?php
                         //if ($this->permission->method('investigation_report', 'read')->access() || $this->permission->method('investigation_report', 'update')->access() || $this->permission->method('investigation_report', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-primary btn-block" href="<?php // echo base_url('hospital_activities/investigation/index') 
-                                                                      ?>"><?php echo "Laporan Investigasi" // display('investigation_report') 
+                        <li><a class="btn bg-primary btn-block" href="<?php // echo base_url('hospital_activities/investigation/index')
+                                                                      ?>"><?php echo "Laporan Investigasi" // display('investigation_report')
                                                                           ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
                       </ul>
                     </div>
@@ -460,7 +460,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                 <div class="panel panel-success">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#account" aria-expanded="false" aria-controls="account"><?php echo "Menajer Akuntansi" // display('account_manager') 
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#account" aria-expanded="false" aria-controls="account"><?php echo "Menajer Akuntansi" // display('account_manager')
                                                                                                                                                           ?>
                       </a>
                     </h4>
@@ -471,33 +471,33 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                         <?php
                         //if ($this->permission->method('account_list', 'read')->access()) {
                         ?>
-                        <li><a class="btn bg-primary btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=bill"><?php echo "Bagan Akun" // display('chart_of_account') 
+                        <li><a class="btn bg-primary btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=bill"><?php echo "Bagan Akun" // display('chart_of_account')
                                                                                                               ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                         <?php
                         //if ($this->permission->method('general_ledger', 'create')->access()) {
                         ?>
-                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=general_ledger"><?php echo "Jurnal Umum" // display('general_ledger') 
+                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=general_ledger"><?php echo "Jurnal Umum" // display('general_ledger')
                                                                                                                       ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                         <?php
                         //if ($this->permission->method('account_list', 'read')->access()) {
                         ?>
-                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=trial_balance"><?php echo "Trial Saldo" // display('trial_balance') 
+                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=trial_balance"><?php echo "Trial Saldo" // display('trial_balance')
                                                                                                                     ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                         <?php
                         //if ($this->permission->method('profit_loss', 'read')->access()) {
                         ?>
-                        <li><a class="btn bg-green btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=profit_loss_report"><?php echo "Rugi Laba" // display('profit_loss') 
+                        <li><a class="btn bg-green btn-block" href="<?= BASE_URL ?>/?hal=billing&fun=profit_loss_report"><?php echo "Rugi Laba" // display('profit_loss')
                                                                                                                           ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                       </ul>
@@ -507,7 +507,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                 <div class="panel panel-warning">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#insurance" aria-expanded="false" aria-controls="insurance"><?php echo "Asuransi" //display('insurance') 
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#insurance" aria-expanded="false" aria-controls="insurance"><?php echo "Asuransi" //display('insurance')
                                                                                                                                                               ?>
                       </a>
                     </h4>
@@ -518,18 +518,18 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                         <?php
                         // if ($this->permission->method('add_insurance', 'create')->access()) {
                         ?>
-                        <li><a class="btn bg-green btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=form"><?php echo "Tambahkan Asuransi" // display('add_insurance') 
+                        <li><a class="btn bg-green btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=form"><?php echo "Tambahkan Asuransi" // display('add_insurance')
                                                                                                               ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
 
                         <?php
                         //if ($this->permission->method('insurance_list', 'read')->access() || $this->permission->method('insurance_list', 'update')->access() || $this->permission->method('insurance_list', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=index"><?php echo "Daftar Asuransi" // display('insurance_list') 
+                        <li><a class="btn bg-blue btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=index"><?php echo "Daftar Asuransi" // display('insurance_list')
                                                                                                               ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
 
@@ -537,16 +537,16 @@ define('BASE_URL', 'http://127.0.0.1:8000');
                         <?php
                         //if ($this->permission->method('add_limit_approval', 'create')->access()) {
                         ?>
-                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=limit_approval_form"><?php echo "Tambahkan Batas Persetujuan" // display('add_limit_approval') 
+                        <li><a class="btn bg-olive btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=limit_approval_form"><?php echo "Tambahkan Batas Persetujuan" // display('add_limit_approval')
                                                                                                                             ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
                         <?php
                         //if ($this->permission->method('limit_approval_list', 'read')->access() || $this->permission->method('limit_approval_list', 'update')->access() || $this->permission->method('limit_approval_list', 'delete')->access()) {
                         ?>
-                        <li><a class="btn bg-yellow btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=limit_approval"><?php echo "Daftar Batas Persetujuan" // display('limit_approval_list') 
+                        <li><a class="btn bg-yellow btn-block" href="<?= BASE_URL ?>/?hal=insurance&fun=limit_approval"><?php echo "Daftar Batas Persetujuan" // display('limit_approval_list')
                                                                                                                         ?></a></li>
-                        <?php //} 
+                        <?php //}
                         ?>
 
                       </ul>
@@ -559,7 +559,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
         </div>
       </div>
     </div>
-    <?php //} 
+    <?php //}
     ?>
     <!-- /.row -->
   </div>
@@ -581,7 +581,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
               borderWidth: "1",
               //backgroundColor: "rgba(0,0,0,.07)",
               pointHighlightStroke: "rgba(52,152,219)",
-              data: [<?php //echo $allPatient; 
+              data: [<?php //echo $allPatient;
                       ?>]
             },
             {
@@ -590,7 +590,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
               borderWidth: "1",
               //backgroundColor: "#73BC4D",
               pointHighlightStroke: "rgba(55,160,0)",
-              data: [<?php [1, 2] // echo $allAppoint; 
+              data: [<?php [1, 2] // echo $allAppoint;
                       ?>]
             },
             {
@@ -599,7 +599,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
               borderWidth: "1",
               //backgroundColor: "#1ABC9C",
               pointHighlightStroke: "rgba(130, 224, 170,1)",
-              data: [<?php // echo $allPrescrip; 
+              data: [<?php // echo $allPrescrip;
                       ?>]
             }
           ]
@@ -620,7 +620,7 @@ define('BASE_URL', 'http://127.0.0.1:8000');
 
     });
   </script>
-  <?php // } 
+  <?php // }
   ?>
 
 

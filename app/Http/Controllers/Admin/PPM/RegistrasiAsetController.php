@@ -2,48 +2,56 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Exports\RegistrasiAssetsExport;
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Imports\RegistrasiAsetsImport;
 use App\Models\Alat;
 use App\Models\LembarPemeliharaan;
-use Illuminate\Http\Request;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
- use DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class RegistrasiAsetController extends Controller
 {
+    private Helper $helper;
 
-    public function json (){
-         $b = Registrasi::query()->select(['id_aset', 'jenis_alat','nama_alat','merek','type','gambar','serial_number','lokasi_alat','tanggal_kalibrasi','distributor', 'distributor','alamat_distributor','tlp_distributor','email_distributor','teknisi_distributor','tlp_t_distributor','no_sertifikat_kalibrasi','teknisi_ppm','harga_perolehan','sumber_dana','tahun_perolehan','akl','akd','no_inventaris_1','umur_alat','jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
-         $c = Datatables::eloquent($b)->make(false);
-        return $c;
-        
+    public function __construct() {
+        $this->helper = new Helper();
     }
-    
+
+    public function json()
+    {
+        $b = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nama_alat', 'merek', 'type', 'gambar', 'serial_number', 'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 'harga_perolehan', 'sumber_dana', 'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 'umur_alat', 'jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
+        $c = DataTables::eloquent($b)->make(false);
+
+        return $c;
+
+    }
+
     public function oldIndex()
     {
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('registrasis')
-        ->select(DB::raw('max(id_aset) as maxIDASET'))
-         ->where('kode_rs', $kodeRs_)
-        ->first();
+            ->select(DB::raw('max(id_aset) as maxIDASET'))
+            ->where('kode_rs', $kodeRs_)
+            ->first();
         $kodeAset = $data->maxIDASET;
 
-        $urutan = (int)substr($kodeAset, 12, 13);
+        $urutan = (int) substr($kodeAset, 12, 13);
         $urutan++;
 
-        $date  = date('ymd');
-        $kodeAset  = $kodeRs_ . $date . sprintf("%05s", $urutan);
+        $date = date('ymd');
+        $kodeAset = $kodeRs_ . $date . sprintf('%05s', $urutan);
 
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
+
         return view('pages.admin.PPM.registrasi_aset.old-index', [
             'items' => $items,
             'kodeAset' => $kodeAset,
@@ -51,25 +59,18 @@ class RegistrasiAsetController extends Controller
             'alats' => $alats,
         ]);
     }
-    
+
     public function index()
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::all();
         $ruangans = Ruangan::all();
+
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
             'alats' => $alats,
         ]);
-    }
-
-    function hitung($tahunPenyusutan, $harga_perolehan)
-    {
-        $b = 100 / $tahunPenyusutan;
-        $c = $b / 12;
-        $nilai =  $c / 100 * $harga_perolehan;
-        return $nilai;
     }
 
     public function store(Request $request)
@@ -103,7 +104,7 @@ class RegistrasiAsetController extends Controller
             'no_inventaris_2' => '',
             'akl' => '',
             'akd' => '',
-            'penyusutan_aset' => ''
+            'penyusutan_aset' => '',
         ], [
             'gambar.image' => 'Yang diupload bukan gambar',
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
@@ -118,14 +119,14 @@ class RegistrasiAsetController extends Controller
             );
         }
 
-        $data['umur_alat'] = date("Y") - $data['tahun_perolehan'];
-        
-        if($data['umur_alat'] > 0 ){ 
-            $data['penyusutan_aset'] = $this->hitung($data['umur_alat'], $data['tahun_perolehan']);
+        $data['umur_alat'] = date('Y') - $data['tahun_perolehan'];
+
+        if ($data['umur_alat'] > 0) {
+            $data['penyusutan_aset'] = $this->helper->hitung($data['umur_alat'], $data['tahun_perolehan']);
         } else {
             $data['penyusutan_aset'] = 0;
         }
-        $data['kode_rs'] =  Auth::user()->kode_rs;
+        $data['kode_rs'] = Auth::user()->kode_rs;
 
         $res = [
             'tanggal' => $data['tanggal_kalibrasi'],
@@ -182,7 +183,7 @@ class RegistrasiAsetController extends Controller
             'durasi' => '',
             'user' => '',
             'engginer' => '',
-            'kode_rs' => ''
+            'kode_rs' => '',
         ];
 
         $res['kode_rs'] = Auth::user()->kode_rs;
@@ -192,9 +193,8 @@ class RegistrasiAsetController extends Controller
 
         Registrasi::create($data);
 
-
         return redirect()->route('registrasi.index')
-        ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
+            ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
     }
 
     public function edit($id)
@@ -202,6 +202,7 @@ class RegistrasiAsetController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+
         return view('pages.admin.PPM.registrasi_aset.update', [
             'ruangans' => $ruangans,
             'alats' => $alats,
@@ -236,11 +237,11 @@ class RegistrasiAsetController extends Controller
             'umur_alat' => '',
             'no_inventaris_1' => '',
             'no_inventaris_2' => '',
-            'penyusutan_aset' => ''
+            'penyusutan_aset' => '',
         ], [
             'gambar.image' => 'Yang diupload bukan gambar',
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
-            'gambar.max' => 'Ukuran Gambar Maksimal 4MB'
+            'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
         ]);
         if (isset($data['gambar'])) {
             $data['gambar'] = $request->file('gambar')->store(
@@ -248,23 +249,16 @@ class RegistrasiAsetController extends Controller
                 'public'
             );
         }
-        $data['umur_alat'] = date("Y") - $request->tahun_perolehan;
-        function hitungPenyusutan($tahunPenyusutan, $harga_perolehan)
-        {
-            $b = 100 / $tahunPenyusutan;
-            $c = $b / 12;
-            $nilai =  $c / 100 * $harga_perolehan;
-            return $nilai;
-        }
-        $data['penyusutan_aset'] = hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
-        $data['kode_rs'] =  Auth::user()->kode_rs;
+        $data['umur_alat'] = date('Y') - $request->tahun_perolehan;
+       
+        $data['penyusutan_aset'] = $this->helper->hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
+        $data['kode_rs'] = Auth::user()->kode_rs;
 
         $registrasi = Registrasi::findOrFail($id);
         $registrasi->update($data);
 
-
         return redirect()->route('registrasi.index')
-        ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
+            ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
     }
 
     public function destroy($id)
@@ -273,6 +267,7 @@ class RegistrasiAsetController extends Controller
         $item = Registrasi::where('id_aset', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect()->route('registrasi.index')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
     }
 
@@ -280,6 +275,7 @@ class RegistrasiAsetController extends Controller
     {
         $file = $request->file('file');
         Excel::import(new RegistrasiAsetsImport, $file);
+
         return back()->with('success', 'Products imported successfully.');
     }
 
@@ -287,7 +283,7 @@ class RegistrasiAsetController extends Controller
     {
         $file = 'template_reg.xlsx';
         $path = storage_path('app/public/' . $file);
+
         return response()->download($path);
     }
-    
 }

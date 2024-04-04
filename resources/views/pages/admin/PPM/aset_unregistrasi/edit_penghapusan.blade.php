@@ -55,8 +55,8 @@
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
                       <select name="nama_alat_un" class="form-control" id="nama_alat_un">
-                       @foreach($alats as $alat)
-                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_un'] ? 'selected' : ''}}>{{ $alat->nama_alat }}</option>
+                       @foreach ($alats as $alat)
+                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_un'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -87,8 +87,8 @@
                     <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
-                        @foreach($ruangans as $ruangan)
-                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_un'] ? 'selected' : ''}}>{{ $ruangan->lokasi_alat }}</option>
+                        @foreach ($ruangans as $ruangan)
+                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_un'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -106,8 +106,8 @@
                     <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
                       <select name="teknisi_1_un" class="form-control" id="teknisi_1_un">
-                        @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_un'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -117,8 +117,8 @@
                     <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <select name="teknisi_2_un" class="form-control" id="teknisi_2_un">
-                        @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_un'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -128,8 +128,8 @@
                     <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_un" class="form-control" id="teknisi_3_un">
-                       @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_un'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                       @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>

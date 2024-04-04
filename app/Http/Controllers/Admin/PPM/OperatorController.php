@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OperatorController extends Controller
@@ -27,14 +27,14 @@ class OperatorController extends Controller
         $request['kode_rs'] = Auth::user()->kode_rs;
         User::create($request->post());
 
-
         return redirect()->route('operator.index')
-        ->with('success', 'Data User Berhasil di Tambahkan.');
+            ->with('success', 'Data User Berhasil di Tambahkan.');
     }
 
     public function edit($id)
     {
         $item = User::where('user_id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.operator.edit', [
             'item' => $item,
         ]);
@@ -49,16 +49,18 @@ class OperatorController extends Controller
         $request['password'] = bcrypt($request->input('password'));
         $operator = User::findOrFail($id);
         $operator->update($request->all());
+
         return redirect()->route('operator.index')
-        ->with('success', 'Data User Berhasil di Ubah');
+            ->with('success', 'Data User Berhasil di Ubah');
     }
 
     public function destroy($id)
     {
-        $item = User::where('user_id',  $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item = User::where('user_id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/operator')
-        ->with('success', 'Data User Berhasil di Hapus');
+            ->with('success', 'Data User Berhasil di Hapus');
     }
 }

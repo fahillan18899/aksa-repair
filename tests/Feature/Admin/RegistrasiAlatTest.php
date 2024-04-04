@@ -3,8 +3,6 @@
 namespace Tests\Feature\Admin;
 
 use App\Models\Registrasi;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +15,10 @@ class RegistrasiAlatTest extends MustAuthTestCase
         $this->post('/logout');
     }
 
-    public function test_alat_without_picture_success()
+    /**
+     * @test
+     */
+    public function alat_without_picture_success()
     {
         $this->post('/dashboard/ppm/registrasi', [
             'id_aset' => 'RS000024022704001',
@@ -29,14 +30,14 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'serial_number' => 'K10-2301',
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_aset = Registrasi::where('id_aset', '=', 'RS000024022704001')->firstOrFail();
 
-        $this->put('/dashboard/ppm/registrasi/'.$id_aset->id_aset, [
+        $this->put('/dashboard/ppm/registrasi/' . $id_aset->id_aset, [
             'id_aset' => 'RS000024022704001',
             'jenis_alat' => 'Milik KSO',
             'nama_alat' => 'Ventilator',
@@ -45,15 +46,18 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'serial_number' => 'K10-2301',
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertStatus(302)->assertSessionHas('success');
 
-        $this->delete('/dashboard/ppm/registrasi/'.$id_aset->id_aset)->assertSessionHas('success');
+        $this->delete('/dashboard/ppm/registrasi/' . $id_aset->id_aset)->assertSessionHas('success');
     }
 
-    public function test_alat_without_picture_fail()
+    /**
+     * @test
+     */
+    public function alat_without_picture_fail()
     {
         $this->post('/dashboard/ppm/registrasi', [
             // 'id_aset' => 'RS000024022704001',
@@ -64,9 +68,9 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'serial_number' => 'K10-2301',
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertSessionMissing('success');
 
         $this->put('/dashboard/ppm/registrasi/RS000024022705001', [
@@ -78,15 +82,18 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'serial_number' => 'K10-2301',
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertSessionMissing('success');
 
         $this->delete('/dashboard/ppm/registrasi/RS000024025001')->assertSessionMissing('success');
     }
 
-    public function test_alat_with_picture_success()
+    /**
+     * @test
+     */
+    public function alat_with_picture_success()
     {
         Storage::fake('gambar');
         $file = UploadedFile::fake()->image('ventilator12.jpg');
@@ -102,14 +109,14 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'gambar' => $file,
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_aset = Registrasi::where('id_aset', '=', 'RS000024022704001')->firstOrFail();
 
-        $this->put('/dashboard/ppm/registrasi/'.$id_aset->id_aset, [
+        $this->put('/dashboard/ppm/registrasi/' . $id_aset->id_aset, [
             'id_aset' => 'RS000024022704001',
             'jenis_alat' => 'Milik KSO',
             'nama_alat' => 'Ventilator',
@@ -119,17 +126,20 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'gambar' => $file,
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertStatus(302)->assertSessionHas('success');
 
-        $this->delete('/dashboard/ppm/registrasi/'.$id_aset->id_aset)->assertSessionHas('success');
+        $this->delete('/dashboard/ppm/registrasi/' . $id_aset->id_aset)->assertSessionHas('success');
 
         Storage::disk('gambar');
     }
 
-    public function test_alat_with_picture_fail()
+    /**
+     * @test
+     */
+    public function alat_with_picture_fail()
     {
         Storage::fake('gambar');
         $file = UploadedFile::fake()->image('ventilator.jpg');
@@ -144,9 +154,9 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'gambar' => $file,
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertSessionMissing('success');
 
         $this->put('/dashboard/ppm/registrasi/RS000024022705001', [
@@ -159,9 +169,9 @@ class RegistrasiAlatTest extends MustAuthTestCase
             'gambar' => $file,
             'lokasi_alat' => 'Ruangan Riset,Gedung A',
             'tanggal_kalibrasi' => null,
-            'kode_rs'=> Auth::user()->kode_rs,
+            'kode_rs' => Auth::user()->kode_rs,
             'teknisi_ppm' => 'Teknisi 11',
-            'tahun_perolehan' => 2022
+            'tahun_perolehan' => 2022,
         ])->assertSessionMissing('success');
 
         $this->delete('/dashboard/ppm/registrasi/RS000024022705001')->assertSessionMissing('success');

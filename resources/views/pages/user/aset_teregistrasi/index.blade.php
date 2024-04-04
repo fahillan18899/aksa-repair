@@ -61,7 +61,7 @@
                     <th class="none">Jadwal</th>
                     <th>Tombol_Aksi_Tabel</th>
                   </thead>
-                  
+
                 </table>
               </div>
             </div>
@@ -194,7 +194,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
                         <option>-- Pilih Teknisi --</option>
-                        @foreach($teknisis as $teknisi)
+                        @foreach ($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -206,7 +206,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
                         <option>-- Pilih Teknisi --</option>
-                        @foreach($teknisis as $teknisi)
+                        @foreach ($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -218,7 +218,7 @@
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
                         <option>-- Pilih Teknisi --</option>
-                        @foreach($teknisis as $teknisi)
+                        @foreach ($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -433,9 +433,9 @@
               render: function(data, type, full, meta) {
                 return `<a href=\"/dashboard_user/qr_qode/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> Cetak QR</button></a>`
               }
-              
+
             },
-            
+
           ],
         });
       })

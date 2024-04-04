@@ -9,10 +9,11 @@ class PengembalianRegistrasi extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
+
     protected $guarded = [];
 
-    protected $primaryKey = "id_perbaikan_reg";
+    protected $primaryKey = 'id_perbaikan_reg';
     protected $keyType = 'string';
-    public $incrementing = false;
 
 }

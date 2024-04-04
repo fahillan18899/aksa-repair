@@ -84,7 +84,7 @@
                     <div class="col-xs-9">
                       <select name="engineer" class="form-control" id="engineer">
                       <option>-- Pilih Teknisi --</option>
-                        @foreach($teknisis as $teknisi)
+                        @foreach ($teknisis as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -798,23 +798,23 @@
                   <td>{{ $item->tombol_saklar1 }}</td>
                   <td>{{ $item->catatan9 }}</td>
                   <td>{{ $item->tombol_saklar2 }}</td>
-                  <td>{{ $item->catatan10}}</td>
+                  <td>{{ $item->catatan10 }}</td>
                   <td>{{ $item->label_penandaan1 }}</td>
-                  <td>{{ $item->catatan11}}</td>
+                  <td>{{ $item->catatan11 }}</td>
                   <td>{{ $item->label_penandaan2 }}</td>
-                  <td>{{ $item->catatan12}}</td>
+                  <td>{{ $item->catatan12 }}</td>
                   <td>{{ $item->display_layar1 }}</td>
-                  <td>{{ $item->catatan13}}</td>
+                  <td>{{ $item->catatan13 }}</td>
                   <td>{{ $item->display_layar2 }}</td>
-                  <td>{{ $item->catatan14}}</td>
+                  <td>{{ $item->catatan14 }}</td>
                   <td>{{ $item->aksesoris1 }}</td>
-                  <td>{{ $item->catatan15}}</td>
+                  <td>{{ $item->catatan15 }}</td>
                   <td>{{ $item->aksesoris2 }}</td>
-                  <td>{{ $item->catatan16}}</td>
+                  <td>{{ $item->catatan16 }}</td>
                   <td>{{ $item->indikator_bunyi1 }}</td>
-                  <td>{{ $item->catatan17}}</td>
+                  <td>{{ $item->catatan17 }}</td>
                   <td>{{ $item->indikator_bunyi2 }}</td>
-                  <td>{{ $item->catatan18}}</td>
+                  <td>{{ $item->catatan18 }}</td>
                   <td>{{ $item->pembersihan }}</td>
                   <td>{{ $item->pengencangan_bagian_alat }}</td>
                   <td>{{ $item->pelumasan }}</td>
@@ -874,7 +874,7 @@ $('#badan_selungkup1').on('change', function () {
 // create script select wirh id badan_selungkup1?
 
 var getSelect = document.querySelectorAll('.form-control');
-  
+
   getSelect.forEach(function(option) {
   option.addEventListener('change', function(e) {
     var target = e.target.id;

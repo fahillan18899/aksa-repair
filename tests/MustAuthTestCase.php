@@ -16,7 +16,7 @@ class MustAuthTestCase extends BaseMustAuthTestCase
             'username' => 'admin5',
             'password' => 'admin5',
             'kode_rs' => 'RS0000',
-            'user_role' => 'admin'
+            'user_role' => 'admin',
         ]);
     }
 }

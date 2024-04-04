@@ -90,7 +90,7 @@
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         <option>Pilih Alat</option>
-                        @foreach($alats as $alat)
+                        @foreach ($alats as $alat)
                         <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                         @endforeach
                       </select>
@@ -133,7 +133,7 @@
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
-                        @foreach($ruangans as $ruangan)
+                        @foreach ($ruangans as $ruangan)
                         <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
                         @endforeach
                       </select>

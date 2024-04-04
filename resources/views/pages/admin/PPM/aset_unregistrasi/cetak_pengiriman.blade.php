@@ -27,7 +27,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="align-center mt-5">
-                
+
                 <img src="http://127.0.0.1:8000/assets/images/kop.png" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">

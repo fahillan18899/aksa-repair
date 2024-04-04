@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\PenghapusanRegistrasi;
-use Illuminate\Http\Request;
 use App\Models\Alat;
 use App\Models\PengembalianRegistrasi;
+use App\Models\PenghapusanRegistrasi;
 use App\Models\PengirimanRegistrasi;
 use App\Models\PerbaikanRegistrasi;
-use App\Models\Teknisi;
 use App\Models\Ruangan;
+use App\Models\Teknisi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PenghapusanRegistrasiController extends Controller
@@ -49,26 +48,26 @@ class PenghapusanRegistrasiController extends Controller
         PengembalianRegistrasi::where('id_perbaikan_reg', $request->id_perbaikan_reg)->update(['active' => 0]);
         PenghapusanRegistrasi::create($request->post());
 
-
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Tambahkan ');
+            ->with('success', 'Data Berhasil Tambahkan ');
     }
 
     public function edit($id)
     {
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.update_penghapusan', [
-            'alats'        => $alats,
+            'alats' => $alats,
             'item' => $item,
-            'teknisis'      => $teknisis,
-            'ruangans'     => $ruangans,
+            'teknisis' => $teknisis,
+            'ruangans' => $ruangans,
         ]);
     }
 
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
 
         $request->validate(['id_perbaikan_reg' => 'unique:penghapusan_registrasis',
@@ -89,13 +88,15 @@ class PenghapusanRegistrasiController extends Controller
         ]);
         $hapusRegistrasi = PenghapusanRegistrasi::findOrFail($id);
         $hapusRegistrasi->update($request->all());
+
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Ubah. ');
+            ->with('success', 'Data Berhasil Ubah. ');
     }
-    
+
     public function cetak($id)
     {
         $item = PenghapusanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.cetak_penghapusan', compact('item'));
     }
 }

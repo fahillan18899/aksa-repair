@@ -330,7 +330,7 @@
                     <div class="col-xs-9">
                       <select name="kepala_ruangan" class="form-control" id="kepala_ruangan">
                         <option>-- Pilih Teknisi --</option>
-                        @foreach($teknisi as $teknisi)
+                        @foreach ($teknisi as $teknisi)
                         <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                         @endforeach
                       </select>
@@ -369,7 +369,7 @@
                   <td scope="row">{{ $item->ruangan_alat }}</td>
                   <td scope="row">{{ $item->ruangan }}</td>
                   <td scope="row">{{ $item->kepala_ruangan }}</td>
-                  <td scope="row">{{ $item->ruangan_alat}}, {{ $item->ruangan }}</td>
+                  <td scope="row">{{ $item->ruangan_alat }}, {{ $item->ruangan }}</td>
                   <td scope="row">
                     <a href="{{ route('ruangan.edit',$item->id_ruangan) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 

@@ -9,9 +9,9 @@ class LembarKerja extends Model
 {
     use HasFactory;
 
+    public $incrementing = false;
 
     protected $guarded = [];
-    protected $primaryKey = "id";
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
-    public $incrementing = false;
 }

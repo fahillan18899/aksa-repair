@@ -20,7 +20,7 @@ class JadwalPemeliharaanController extends Controller
     public function state()
     {
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $states = DB::table("registrasis")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
+        $states = DB::table('registrasis')->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', [
 
@@ -31,9 +31,10 @@ class JadwalPemeliharaanController extends Controller
 
     public function city($id)
     {
-        $cities = DB::table("registrasis")
-        ->where("lokasi_alat", $id)->where('kode_rs', Auth::user()->kode_rs)
+        $cities = DB::table('registrasis')
+            ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)
             ->pluck('nama_alat', 'id_aset');
+
         return json_encode($cities);
     }
 
@@ -49,6 +50,7 @@ class JadwalPemeliharaanController extends Controller
 
             $item->save();
         }
+
         return back();
     }
 
@@ -64,6 +66,6 @@ class JadwalPemeliharaanController extends Controller
         JadwalPemeliharaan::create($data);
 
         return redirect('/dashboard/ppm/jadwal_pemeliharaan')
-        ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
+            ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 }

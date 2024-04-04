@@ -3,20 +3,20 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\LembarPemeliharaan;
 use App\Models\Alat;
+use App\Models\LembarPemeliharaan;
 use App\Models\Teknisi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LembarPemeliharaanController extends Controller
 {
-
     public function index()
     {
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $lembarPemeliharaans = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
+
         return view('pages.admin.PPM.lembar_pemeliharaan.index', [
             'lembarPemeliharaans' => $lembarPemeliharaans,
             'teknisis' => $teknisis,
@@ -26,7 +26,7 @@ class LembarPemeliharaanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([    
+        $request->validate([
             'id_ppm' => '',
             'tanggal' => 'required|date',
             'kegiatan' => '',
@@ -111,21 +111,20 @@ class LembarPemeliharaanController extends Controller
             'durasi' => '',
             'user' => '',
             'engginer' => '',
-            'kode_rs' => ''
+            'kode_rs' => '',
         ]);
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         LembarPemeliharaan::create($request->post());
 
-
         return redirect()->route('lembar_pemeliharaan.index')
-        ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
+            ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
-
 
     public function edit($id_ppm)
     {
         $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
+
         return view('pages.admin.PPM.lembar_pemeliharaan.index', compact('lembarPemeliharaan'));
     }
 
@@ -140,7 +139,7 @@ class LembarPemeliharaanController extends Controller
         $lembarPemeliharaan->update($request->all());
 
         return redirect()->route('lembar-pemeliharaan.index')
-        ->with('success', 'Lembar Pemeliharaan berhasil diperbarui.');
+            ->with('success', 'Lembar Pemeliharaan berhasil diperbarui.');
     }
 
     public function destroy($id_ppm)
@@ -149,12 +148,13 @@ class LembarPemeliharaanController extends Controller
         $lembarPemeliharaan->delete();
 
         return redirect()->route('lembar-pemeliharaan.index')
-        ->with('success', 'Lembar Pemeliharaan berhasil dihapus.');
+            ->with('success', 'Lembar Pemeliharaan berhasil dihapus.');
     }
 
     public function cetak($id)
     {
         $item = LembarPemeliharaan::where('id_ppm', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.lembar_pemeliharaan.cetak_pemeliharaan', compact('item'));
     }
 }

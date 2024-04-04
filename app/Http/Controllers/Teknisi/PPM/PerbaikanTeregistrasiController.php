@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers\Teknisi\PPM;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\PengirimanRegistrasi;
+use App\Models\Alat;
 use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
+use App\Models\PengirimanRegistrasi;
+use App\Models\PerbaikanRegistrasi;
 use App\Models\Registrasi;
-use App\Models\Alat;
-use App\Models\Teknisi;
 use App\Models\Ruangan;
+use App\Models\Teknisi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class PerbaikanTeregistrasiController extends Controller
 {
+    private Helper $helper;
+
+    public function __construct() {
+        $this->helper = new Helper();
+    }
+
     public function index()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
@@ -30,17 +36,11 @@ class PerbaikanTeregistrasiController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_registrasis')
-        ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
+            ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
             ->where('kode_rs', Auth::user()->kode_rs)
-        ->first();
-        $kodeAset = $data->idPerbaikan;
-
-        $urutan = (int)substr($kodeAset, 15, 16);
-        $urutan++;
-
-        $huruf3 = "B";
-        $date3  = date('ymd');
-        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
+            ->first();
+            
+        $kode_aset = $this->helper->formatKodeAset($data->idPerbaikan, $kodeRs_);
 
         return view('pages.teknisi.aset_teregistrasi.index', [
             'items' => $items,
@@ -73,32 +73,32 @@ class PerbaikanTeregistrasiController extends Controller
             'teknisi_3_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'active' => ''
+            'active' => '',
         ]);
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
 
-
         return redirect('/dashboard_teknisi/perbaikan_teregistrasi')
-        ->with('success', 'Data Berhasil Tambahkan.');
+            ->with('success', 'Data Berhasil Tambahkan.');
     }
 
     public function edit($id)
     {
 
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+
         return view('pages.teknisi.aset_teregistrasi.update_perbaikan', [
-            
-            'alats'        => $alats,
+
+            'alats' => $alats,
             'item' => $item,
-            'teknisis'      => $teknisis,
-            'ruangans'     => $ruangans,
+            'teknisis' => $teknisis,
+            'ruangans' => $ruangans,
         ]);
-           
+
     }
 
     public function update(Request $request, $perbaikanRegistrasi)
@@ -120,26 +120,27 @@ class PerbaikanTeregistrasiController extends Controller
             'teknisi_3_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'active' => ''
+            'active' => '',
         ]);
 
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
         $perbaikanRegistrasi->update($request->post());
 
         return redirect('/dashboard_teknisi/perbaikan_teregistrasi')
-        ->with('success', 'Data Berhasil Ubah.');
+            ->with('success', 'Data Berhasil Ubah.');
     }
 
     public function cetak_teknisi($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.teknisi.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 
-    function qrCodeGenerate($id)
+    public function qrCodeGenerate($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
+
         return view('pages.teknisi.aset_teregistrasi.qr_code', compact('item'));
     }
-
 }

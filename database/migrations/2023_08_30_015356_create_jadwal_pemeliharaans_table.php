@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('jadwal_pemeliharaans', function (Blueprint $table) {
@@ -19,16 +14,11 @@ return new class extends Migration
             $table->string('nama_alat');
             $table->date('jadwal');
             $table->string('status', 4)->default('1');
-            $table->string('kode_rs', 8);
+            $table->string('kode_rs', 8)->index();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('jadwal_pemeliharaans');

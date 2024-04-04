@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\User\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\StockOpname;
+use Illuminate\Support\Facades\Auth;
 
 class StockOpnameUserController extends Controller
 {
@@ -15,5 +14,4 @@ class StockOpnameUserController extends Controller
 
         return view('pages.user.stock_opname_user.index', ['items' => $items]);
     }
-
 }

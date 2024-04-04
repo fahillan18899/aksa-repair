@@ -181,8 +181,6 @@ return [
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
 
-
-
     ],
 
     /*

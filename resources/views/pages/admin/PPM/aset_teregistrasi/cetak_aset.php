@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM perbaikan_reg WHERE Id_Perbaikan_reg = '$_GET[id_aset]'";
+$sql = "SELECT * FROM perbaikan_reg WHERE Id_Perbaikan_reg = '{$_GET['id_aset']}'";
 $result = mysqli_query($db, $sql);
 $row = mysqli_fetch_array($result);
 ?>
@@ -85,7 +85,7 @@ $row = mysqli_fetch_array($result);
                     <tr>
                       <th width="50%">Waktu Pelaporan</th>
                       <td> <?php date_default_timezone_set('Asia/Jakarta');
-                            echo date('h:i:s a'); ?></td>
+echo date('h:i:s a'); ?></td>
                     </tr>
                     <tr>
                       <th width="50%">Waktu Teknisi Datang</th>

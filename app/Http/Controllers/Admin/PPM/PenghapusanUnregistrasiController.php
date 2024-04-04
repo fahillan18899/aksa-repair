@@ -3,32 +3,32 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use \App\Models\PerbaikanUnregistrasi;
-use \App\Models\PengirimanUnregistrasi;
-use \App\Models\PengembalianUnregistrasi;
-use \App\Models\PenghapusanUnregistrasi;
+use App\Models\Alat;
+use App\Models\PengembalianUnregistrasi;
+use App\Models\PenghapusanUnregistrasi;
+use App\Models\PengirimanUnregistrasi;
+use App\Models\PerbaikanUnregistrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
-use App\Models\Alat;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PenghapusanUnregistrasiController extends Controller
 {
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $perbaikan = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengiriman = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengembalian = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $penghapusan = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.aset_unregistrasi.index', [
-            
-            'perbaikan'    => $perbaikan,
-            'pengiriman'   => $pengiriman,
+
+            'perbaikan' => $perbaikan,
+            'pengiriman' => $pengiriman,
             'pengembalian' => $pengembalian,
-            'penghapusan'  => $penghapusan,
-        
+            'penghapusan' => $penghapusan,
+
         ]);
     }
 
@@ -59,23 +59,22 @@ class PenghapusanUnregistrasiController extends Controller
         PenghapusanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Tambahkan.');
+            ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Tambahkan.');
     }
 
     public function edit($id)
     {
 
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PenghapusanUnregistrasi::where('id_perbaikan_un', $id)->first();
-        return view('pages.admin.PPM.aset_unregistrasi.edit_penghapusan', [
-            
-            'alats'    => $alats,
-            'ruangans' => $ruangans,
-            'item'     => $item,
-            'teknisis' => $teknisis,
 
+        return view('pages.admin.PPM.aset_unregistrasi.edit_penghapusan', [
+            'alats' => $alats,
+            'ruangans' => $ruangans,
+            'item' => $item,
+            'teknisis' => $teknisis,
         ]);
     }
 
@@ -103,12 +102,13 @@ class PenghapusanUnregistrasiController extends Controller
         $PenghapusanUnRegistrasi->update($request->all());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Ubah.');
+            ->with('success', 'Data Penghapusan Unregistrasi Berhasil di Ubah.');
     }
 
     public function cetak($id)
     {
         $item = PenghapusanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_unregistrasi.cetak_penggudangan', compact('item'));
     }
 }
