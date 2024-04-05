@@ -42,7 +42,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -55,7 +55,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text"><a href="/dashboard/ppm/aset_teregistrasi/sperpart_perbaikan" style="color: white;"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a></span>
-            <span class="info-box-number">{{ $perbaikanRegistrasi  }}</span>
+            <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
 
             <div class="progress">
               <div class="progress-bar" style="width: <?= $perbaikanRegistrasi. '%' ?>"></div>
@@ -67,7 +67,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
 
@@ -81,7 +81,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI" // display('free_bed_list') 
+            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI" // display('free_bed_list')
                                         ?></span>
             <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
 
@@ -95,7 +95,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -107,7 +107,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged') 
+            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged')
                                         ?></span>
             <span class="info-box-number">{{ $registrasiKalBar }}</span>
 
@@ -138,7 +138,7 @@
               borderWidth: "1",
               //backgroundColor: "rgba(0,0,0,.07)",
               pointHighlightStroke: "rgba(52,152,219)",
-              data: [<?php //echo $allPatient; 
+              data: [<?php //echo $allPatient;
                       ?>]
             },
             {
@@ -147,7 +147,7 @@
               borderWidth: "1",
               //backgroundColor: "#73BC4D",
               pointHighlightStroke: "rgba(55,160,0)",
-              data: [<?php [1, 2] // echo $allAppoint; 
+              data: [<?php [1, 2] // echo $allAppoint;
                       ?>]
             },
             {
@@ -156,7 +156,7 @@
               borderWidth: "1",
               //backgroundColor: "#1ABC9C",
               pointHighlightStroke: "rgba(130, 224, 170,1)",
-              data: [<?php // echo $allPrescrip; 
+              data: [<?php // echo $allPrescrip;
                       ?>]
             }
           ]

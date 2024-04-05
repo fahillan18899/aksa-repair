@@ -2,77 +2,65 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use App\Models\Gedung;
-use App\Models\Teknisi;
 use App\Models\Ruangan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Teknisi;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DataKelengkapanController extends Controller
 {
+    private Helper $helper;
+
+    public function __construct() {
+        $this->helper = new Helper();
+    }
+
     public function index()
     {
-        $gedung  = Gedung::where('kode_rs',Auth::user()->kode_rs)->get();
-        $alat    = Alat::where('kode_rs',Auth::user()->kode_rs)->get();
-        $teknisi = Teknisi::where('kode_rs',Auth::user()->kode_rs)->get();
-        $items = Ruangan::where('kode_rs',Auth::user()->kode_rs)->get();
-
+        $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alat = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisi = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $items = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
 
         // KODE GEDUNG
         $dataGedung = DB::table('gedungs')
-        ->select(DB::raw('max(id_gedung) as maxIDGEDUNG'))
-         ->where('kode_rs', $kodeRs_)
-        ->first();
+            ->select(DB::raw('max(id_gedung) as maxIDGEDUNG'))
+            ->where('kode_rs', $kodeRs_)
+            ->first();
         $kodeGedung = $dataGedung->maxIDGEDUNG;
-
-        $urutanGedung = (int)substr($kodeGedung, 6, 7);
-        $urutanGedung++;
-
-        $kodeGedung = $kodeRs_ . sprintf("%03s", $urutanGedung);
+        $kodeGedung = $this->helper->formatKodeKelengkapan($kodeGedung, $kodeRs_);
 
         // KODE TEKNISI
         $dataTeknisi = DB::table('teknisis')
-        ->select(DB::raw('max(id_teknisi) as maxIDTEKNISI'))
-         ->where('kode_rs', $kodeRs_)
-        ->first();
+            ->select(DB::raw('max(id_teknisi) as maxIDTEKNISI'))
+            ->where('kode_rs', $kodeRs_)
+            ->first();
         $kodeTeknisi = $dataTeknisi->maxIDTEKNISI;
-
-        $urutanTeknisi = (int)substr($kodeTeknisi, 6, 7);
-        $urutanTeknisi++;
-
-        $kodeTeknisi = $kodeRs_ . sprintf("%03s", $urutanTeknisi);
+        $kodeTeknisi = $this->helper->formatKodeKelengkapan($kodeTeknisi, $kodeRs_);
 
         // Kode Alat
         $dataAlat = DB::table('alats')
             ->select(DB::raw('max(id_alat) as maxIDALAT'))
-             ->where('kode_rs', $kodeRs_)
+            ->where('kode_rs', $kodeRs_)
             ->first();
         $kodeAlat = $dataAlat->maxIDALAT;
-
-        $urutanAlat = (int)substr($kodeAlat, 6, 7);
-        $urutanAlat++;
-
-        $kodeAlat = $kodeRs_ . sprintf("%03s", $urutanAlat);
+        $kodeAlat = $this->helper->formatKodeKelengkapan($kodeAlat, $kodeRs_);
 
         // Kode Lokasi
         $dataLokasi = DB::table('ruangans')
-        ->select(DB::raw('max(id_ruangan) as maxIDLOKASI'))
-         ->where('kode_rs', $kodeRs_)
-        ->first();
+            ->select(DB::raw('max(id_ruangan) as maxIDLOKASI'))
+            ->where('kode_rs', $kodeRs_)
+            ->first();
         $kodeLokasi = $dataLokasi->maxIDLOKASI;
+        $kodeLokasi = $this->helper->formatKodeKelengkapan($kodeLokasi, $kodeRs_);
 
-        $urutanLokasi = (int)substr($kodeLokasi, 6, 7);
-        $urutanLokasi++;
-
-        $kodeLokasi = $kodeRs_ . sprintf("%03s", $urutanLokasi);
-
-
-        return view('pages.admin.PPM.data_kelengkapan.index',  [
+        return view('pages.admin.PPM.data_kelengkapan.index', [
             'gedung' => $gedung,
             'alats' => $alat,
             'teknisi' => $teknisi,
@@ -83,6 +71,4 @@ class DataKelengkapanController extends Controller
             'kodeLokasi' => $kodeLokasi,
         ]);
     }
-
-
 }

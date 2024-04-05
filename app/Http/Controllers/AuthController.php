@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -31,7 +31,7 @@ class AuthController extends Controller
             return redirect()->intended('/dashboard/ppm/home');
         }
 
-        return redirect("/")->withSuccess('Detail Login Tidak Valid');
+        return redirect('/')->withSuccess('Detail Login Tidak Valid');
     }
 
     public function registration()
@@ -55,6 +55,7 @@ class AuthController extends Controller
 
         $data['password'] = bcrypt($request->input('password'));
         User::create($data);
+
         return redirect()->route('login')->with('success', 'Registrasi berhasil');
     }
 
@@ -63,6 +64,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login'); 
+
+        return redirect()->route('login');
     }
 }

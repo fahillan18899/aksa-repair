@@ -132,7 +132,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged') 
+            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged')
                                         ?></span>
             <span class="info-box-number">{{ $lembarPemeliharaan }}</span>
 
@@ -162,13 +162,13 @@
 <script>
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: 'AIzaSyA0md7L4kCUzhja7dnAxpiYN_KzVfZl0o8',
-    authDomain: 'wyasa-notif.firebaseapp.com',
-    projectId: 'wyasa-notif',
-    storageBucket: 'wyasa-notif.appspot.com',
-    messagingSenderId: '458907715979',
-    appId: '1:458907715979:web:f718256ae1736fddaa078e',
-    measurementId: 'G-3S820797YB'
+    apiKey: env('API_KEY'),
+    authDomain: env('AUTH_DOMAIN'),
+    projectId: env('PROJECT_ID'),
+    storageBucket: env('STORAGE_BUCKET'),
+    messagingSenderId: env('MESSAGE_SENDER_ID'),
+    appId: env('APP_ID'),
+    measurementId: env('MEASUREMENT_ID')
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -188,7 +188,7 @@
         console.log("currentToken")
         if (currentToken) {
           setTokenSentToServer(true);
-          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
+          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
           subscribeTokenToTopic(currentToken, userCode)
         } else {
           setTokenSentToServer(false);
@@ -204,8 +204,7 @@
     fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
       method: 'POST',
       headers: new Headers({
-        'Authorization': 'key=' +
-          'AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
+        'Authorization': 'key=' + env('FCM_KEY_2'),
       })
     }).then(response => {
       if (response.status < 200 || response.status >= 400) {

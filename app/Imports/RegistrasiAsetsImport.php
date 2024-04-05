@@ -8,8 +8,6 @@ use Maatwebsite\Excel\Concerns\ToModel;
 class RegistrasiAsetsImport implements ToModel
 {
     /**
-     * @param array $row
-     *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
     public function model(array $row)
@@ -42,7 +40,7 @@ class RegistrasiAsetsImport implements ToModel
             'no_inventaris_2' => $row[24],
             'penyusutan_aset' => $row[25],
             'akl' => $row[26],
-            'akd' => $row[27]
+            'akd' => $row[27],
         ]);
     }
 }

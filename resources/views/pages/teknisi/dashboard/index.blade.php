@@ -14,7 +14,7 @@
         .c-item {
         height: 480px;
       }
-    
+
       .c-img {
         height: 100%;
         object-fit: cover;
@@ -35,7 +35,7 @@
   </section>
 
 <!--Slide-->
-@if( Auth::user()->kode_rs == "RS0004")
+@if ( Auth::user()->kode_rs == "RS0004")
 <div class="mb-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -95,7 +95,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -120,7 +120,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
 
@@ -134,7 +134,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" // display('free_bed_list') 
+            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" // display('free_bed_list')
                                         ?></span>
             <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
 
@@ -148,7 +148,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -160,7 +160,7 @@
           <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged') 
+            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged')
                                         ?></span>
             <span class="info-box-number">{{ $lembarPemeliharaan }}</span>
 
@@ -174,7 +174,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
     </div>
   </div>
@@ -196,7 +196,7 @@
               borderWidth: "1",
               //backgroundColor: "rgba(0,0,0,.07)",
               pointHighlightStroke: "rgba(52,152,219)",
-              data: [<?php //echo $allPatient; 
+              data: [<?php //echo $allPatient;
                       ?>]
             },
             {
@@ -205,7 +205,7 @@
               borderWidth: "1",
               //backgroundColor: "#73BC4D",
               pointHighlightStroke: "rgba(55,160,0)",
-              data: [<?php [1, 2] // echo $allAppoint; 
+              data: [<?php [1, 2] // echo $allAppoint;
                       ?>]
             },
             {
@@ -214,7 +214,7 @@
               borderWidth: "1",
               //backgroundColor: "#1ABC9C",
               pointHighlightStroke: "rgba(130, 224, 170,1)",
-              data: [<?php // echo $allPrescrip; 
+              data: [<?php // echo $allPrescrip;
                       ?>]
             }
           ]
@@ -235,7 +235,7 @@
 
     });
   </script>
-  <?php // } 
+  <?php // }
   ?>
 
 

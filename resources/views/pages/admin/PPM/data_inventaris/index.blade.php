@@ -206,9 +206,9 @@
                             </button>
                           </form>`
               }
-              
+
             },
-            
+
            {
               data: 0,
               render: function(data, type, full, meta) {

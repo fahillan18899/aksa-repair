@@ -6,8 +6,6 @@ use App\Models\PengembalianUnregistrasi;
 use App\Models\PenghapusanUnregistrasi;
 use App\Models\PengirimanUnregistrasi;
 use App\Models\PerbaikanUnregistrasi;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\MustAuthTestCase;
 
 class KegiatanUnregistrasiTest extends MustAuthTestCase
@@ -20,8 +18,11 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
         PenghapusanUnregistrasi::where('id_perbaikan_un', '=', 'RS0000B2403200002')->delete();
         $this->post('/logout');
     }
-    
-    public function test_perbaikan_alat_success()
+
+    /**
+     * @test
+     */
+    public function perbaikan_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_unregistrasi', [
             'id_perbaikan_un' => 'RS0000B2403200002',
@@ -35,12 +36,12 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
             'keterangan_un' => 'Alat Dalam Perbaikan',
             'ka_instalasi_un' => 'Pandu',
             'teknisi_1_un' => 'Teknisi',
-            'keluhan_dari_alat_un' => 'Tidak berfungsi semestinya'
+            'keluhan_dari_alat_un' => 'Tidak berfungsi semestinya',
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_perbaikan = PerbaikanUnregistrasi::where('id_perbaikan_un', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/aset_unregistrasi/edit_perbaikan/'.$id_perbaikan->id_perbaikan_un, [
+        $this->put('/dashboard/ppm/aset_unregistrasi/edit_perbaikan/' . $id_perbaikan->id_perbaikan_un, [
             'tanggal_perbaikan_un' => date('Y-m-d'),
             'nama_alat_un' => 'Ventilator',
             'merek_alat_un' => 'Polytron',
@@ -51,13 +52,16 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
             'keterangan_un' => 'Alat Dalam Perbaikan',
             'ka_instalasi_un' => 'Pandu',
             'teknisi_1_un' => 'Teknisi',
-            'keluhan_dari_alat_un' => 'Tidak berfungsi semestinya'
+            'keluhan_dari_alat_un' => 'Tidak berfungsi semestinya',
         ])->assertStatus(302)->assertSessionHas('success');
 
         $this->assertNotNull($id_perbaikan);
     }
 
-    public function test_pengiriman_alat_success()
+    /**
+     * @test
+     */
+    public function pengiriman_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_pengiriman_un', [
             'id_perbaikan_un' => 'RS0000B2403200002',
@@ -80,7 +84,7 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
 
         $id_pengiriman = PengirimanUnregistrasi::where('id_perbaikan_un', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/aset_unregistrasi/edit_pengiriman/'.$id_pengiriman->id_perbaikan_un, [
+        $this->put('/dashboard/ppm/aset_unregistrasi/edit_pengiriman/' . $id_pengiriman->id_perbaikan_un, [
             'tanggal_perbaikan_un' => '2024-03-21',
             'tanggal_pengiriman_un' => '2024-03-21',
             'nama_alat_un' => 'Ventilator',
@@ -101,7 +105,10 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
         $this->assertNotNull($id_pengiriman);
     }
 
-    public function test_pengembalian_alat_success()
+    /**
+     * @test
+     */
+    public function pengembalian_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_pengembalian_un', [
             'id_perbaikan_un' => 'RS0000B2403200002',
@@ -125,7 +132,7 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
 
         $id_pengiriman = PengembalianUnregistrasi::where('id_perbaikan_un', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/aset_unregistrasi/edit_pengembalian/'.$id_pengiriman->id_perbaikan_un, [
+        $this->put('/dashboard/ppm/aset_unregistrasi/edit_pengembalian/' . $id_pengiriman->id_perbaikan_un, [
             'tanggal_perbaikan_un' => '2024-03-21',
             'tanggal_pengembalian_un' => '2024-03-21',
             'nama_alat_un' => 'Ventilator',
@@ -147,10 +154,13 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
         $this->assertNotNull($id_pengiriman);
     }
 
-    public function test_penghapusan_alat_success()
+    /**
+     * @test
+     */
+    public function penghapusan_alat_success()
     {
         /**
-         * WARN: Should keep the consistention of 'required' rule, if database column is not null, the validation should be required 
+         * WARN: Should keep the consistention of 'required' rule, if database column is not null, the validation should be required
          */
         $this->post('/dashboard/ppm/tambah_penghapusan', [
             'id_perbaikan_un' => 'RS0000B2403200002',
@@ -167,7 +177,7 @@ class KegiatanUnregistrasiTest extends MustAuthTestCase
             'keterangan_penggudangan_un' => 'Alat Dalam Pengiriman',
             //FIXME: Cannot find 'success' value from session
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_laporan_penghapusan = PenghapusanUnregistrasi::where('id_perbaikan_un', '=', 'RS0000B2403200002')->first();
 
         $this->assertNotNull($id_laporan_penghapusan);

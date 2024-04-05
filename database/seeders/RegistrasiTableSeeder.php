@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Registrasi;
-use Illuminate\Database\Seeder;
-
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class RegistrasiTableSeeder extends Seeder
@@ -20,7 +18,7 @@ class RegistrasiTableSeeder extends Seeder
         $faker = Faker::create('id_ID');
         for ($i = 1; $i <= 30; $i++) {
             DB::table('alats')->insert([
-                'id_alat' => $faker->numerify('RS000' . $i ),
+                'id_alat' => $faker->numerify('RS000' . $i),
                 'nama_alat' => $faker->randomElement([
                     'AED',
                     'After Loading',
@@ -339,12 +337,11 @@ class RegistrasiTableSeeder extends Seeder
                     'X-ray QA test cassette',
                     'X-ray Simulator',
 
-
                 ]),
                 'kode_rs' => 'RS0000',
             ]);
             DB::table('gedungs')->insert([
-                'id_gedung' => $faker->numerify('RS000' . $i ),
+                'id_gedung' => $faker->numerify('RS000' . $i),
                 'nama_gedung' => $faker->randomElement([
                     'Lab',
                     'PICU',
@@ -353,7 +350,7 @@ class RegistrasiTableSeeder extends Seeder
                 'kode_rs' => 'RS0000',
             ]);
             DB::table('ruangans')->insert([
-                'id_ruangan' => $faker->numerify('RS000' . $i ),
+                'id_ruangan' => $faker->numerify('RS000' . $i),
                 'ruangan_alat' => $faker->randomElement([
                     'Lab',
                     'PICU',
@@ -371,7 +368,7 @@ class RegistrasiTableSeeder extends Seeder
                     'Hillan',
                 ]),
                 'lokasi_alat' => $faker->randomElement([
-                    'IPSRS ,Lab' ,
+                    'IPSRS ,Lab',
                     'Mawar ,PICU',
                     'Mawar, ICU',
                     'Dahlia, ICU',
@@ -383,8 +380,8 @@ class RegistrasiTableSeeder extends Seeder
             // insert data ke table pegawai menggunakan Faker
             DB::table('registrasis')->insert([
                 // create id_aset with increment
-                
-                'id_aset' => $faker->numerify('RS0002403140' . $i ),
+
+                'id_aset' => $faker->numerify('RS0002403140' . $i),
                 'qr_code' => $faker->numerify('q10-ksjdff' . $i),
                 'jenis_alat' => $faker->randomElement(['Medis', 'Non Medis', 'KSO']),
                 'nama_alat' => $faker->randomElement([
@@ -705,9 +702,8 @@ class RegistrasiTableSeeder extends Seeder
                     'X-ray QA test cassette',
                     'X-ray Simulator',
 
-
                 ]),
-                'lokasi_alat' =>  $faker->randomElement([
+                'lokasi_alat' => $faker->randomElement([
                     'Lab, Lab',
                     'Mawar, PICU',
                     'Mawar, ICU',

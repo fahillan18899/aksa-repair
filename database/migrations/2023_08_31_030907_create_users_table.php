@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -19,7 +14,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('user_role', 20)->default('user');
             $table->date('tanggal_lahir')->nullable()->change();
-            $table->string('kode_rs')->default('RS1');
+            $table->string('kode_rs')->index()->default('RS1');
             $table->string('firstname', 20)->nullable();
             $table->string('lastname', 20)->nullable();
             $table->string('sex', 20)->nullable();
@@ -37,11 +32,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('users');

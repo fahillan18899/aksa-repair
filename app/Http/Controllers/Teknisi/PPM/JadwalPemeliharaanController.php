@@ -31,9 +31,10 @@ class JadwalPemeliharaanController extends Controller
 
     public function city($id)
     {
-        $cities = DB::table("registrasis")
-        ->where("lokasi_alat", $id)
+        $cities = DB::table('registrasis')
+            ->where('lokasi_alat', $id)
             ->pluck('nama_alat', 'id_aset');
+
         return json_encode($cities);
     }
 
@@ -63,6 +64,6 @@ class JadwalPemeliharaanController extends Controller
         JadwalPemeliharaan::create($data);
 
         return redirect('/dashboard_teknisi/jadwal_pemeliharaan')
-        ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
+            ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 }

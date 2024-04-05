@@ -51,7 +51,7 @@
                     <label for="ruangan" class="col-xs-3 col-form-label">Gedung </label>
                     <div class="col-xs-9">
                       <select name="ruangan" class="form-control" id="ruangan">
-                        @foreach($gedungs as $gedung)
+                        @foreach ($gedungs as $gedung)
                         <option value="<?= $gedung['nama_gedung']; ?>"><?= $gedung['nama_gedung']; ?></option>
                         @endforeach
                       </select>
@@ -62,7 +62,7 @@
                     <label for="kepala_ruangan" class="col-xs-3 col-form-label">kepala ruangan </label>
                     <div class="col-xs-9">
                       <select name="kepala_ruangan" class="form-control" id="kepala_ruangan">
-                        @foreach($teknisis as $data)
+                        @foreach ($teknisis as $data)
                         <option value="<?= $data['nama_teknisi']; ?>"><?= $data['nama_teknisi']; ?></option>
                         @endforeach
                       </select>

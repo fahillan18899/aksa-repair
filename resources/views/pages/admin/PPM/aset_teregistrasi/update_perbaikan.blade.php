@@ -53,8 +53,8 @@
                     <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="nama_alat_reg" class="form-control" id="nama_alat_reg">
-                        @foreach($alats as $alat)
-                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_reg'] ? 'selected' : ''}}>{{ $alat->nama_alat }}</option>
+                        @foreach ($alats as $alat)
+                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_reg'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -86,8 +86,8 @@
                     <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat_reg" class="form-control" id="Lokasi_Alat_reg">
-                        @foreach($ruangans as $ruangan)
-                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : ''}}>{{ $ruangan->lokasi_alat }}</option>
+                        @foreach ($ruangans as $ruangan)
+                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -123,8 +123,8 @@
                     <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
-                        @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_reg'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -134,8 +134,8 @@
                     <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
-                        @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_reg'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -145,8 +145,8 @@
                     <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
-                        @foreach($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{$teknisi->nama_teknisi}} </option>
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
