@@ -192,38 +192,22 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Analis Data
         Route::get('analisis_data', [AnalisisDataController::class, 'index']);
 
+        //Data Umur Alat
+        Route::resource('data_umur_alat', UmurAlatController::class);
+
+        //Data Alat Terkalibrasi
+        Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
+
+        //Data Alat Korektif
+        Route::resource('data_alat_korektif', AlatKorektifController::class);
+
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');
 
+
     });
 
-    // menu laporan 
-    Route::get('/laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
 
-
-    //  stock opname
-    Route::resource('/stock_opname', StockOpnameController::class);
-    Route::resource('/permintaan_barang_admin', PermintaanBarangAdmin::class);
-
-
-    // operator
-    Route::resource('operator', OperatorController::class);
-
-
-    // Analis Data
-    Route::get('/analisis_data', [AnalisisDataController::class, 'index']);
-
-    //Data Umur Alat
-    Route::resource('data_umur_alat', UmurAlatController::class);
-
-    //Data Alat Terkalibrasi
-    Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
-
-    //Data Alat Korektif
-    Route::resource('data_alat_korektif', AlatKorektifController::class);
-
-    // API internal datatable
-    Route::get('/aset', [RegistrasiAsetController::class, 'json'])->name('aa');
 
 
     // menu generate QR
