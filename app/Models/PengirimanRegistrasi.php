@@ -9,9 +9,10 @@ class PengirimanRegistrasi extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    protected $primaryKey = "id_perbaikan_reg";
-    protected $keyType = 'string';
     public $incrementing = false;
+
+    protected $guarded = [];
+    protected $primaryKey = 'id_perbaikan_reg';
+    protected $keyType = 'string';
 
 }

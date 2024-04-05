@@ -11,9 +11,9 @@ class TeknisiController extends Controller
     public function index()
     {
         $items = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+
         return view('pages.kalibrasi.admin.teknisi.index', compact('items'));
     }
-
 
     public function store(Request $request)
     {
@@ -22,8 +22,7 @@ class TeknisiController extends Controller
             'kode_rs' => '',
         ]);
 
-        $data['kode_rs'] =  Auth::user()->kode_rs;
-
+        $data['kode_rs'] = Auth::user()->kode_rs;
 
         Teknisi::create($data);
 
@@ -31,14 +30,13 @@ class TeknisiController extends Controller
             ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
     }
 
-    
     public function edit($teknisi)
     {
         $item = Teknisi::where('id', $teknisi)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.kalibrasi.admin.teknisi.edit', compact('item'));
     }
 
-   
     public function update(Request $request, $teknisi)
     {
         $data = $request->validate([
@@ -47,7 +45,6 @@ class TeknisiController extends Controller
 
         $registrasi = Teknisi::findOrFail($teknisi);
         $registrasi->update($data);
-
 
         return redirect('/kalibrasi/teknisi_k')
             ->with('success', 'Data Teknisi Berhasil Tambahkan.');
@@ -59,6 +56,7 @@ class TeknisiController extends Controller
         $item = Teknisi::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/kalibrasi/teknisi_k')->with('success', 'Data Teknisi Berhasil Di Hapus.');
     }
 }

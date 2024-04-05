@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\User\PPM;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\PengirimanRegistrasi;
 use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
+use App\Models\PengirimanRegistrasi;
+use App\Models\PerbaikanRegistrasi;
 use App\Models\Registrasi;
-use App\Models\Alat;
 use App\Models\Teknisi;
-use App\Models\Ruangan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class PerbaikanTeregistrasiController extends Controller
 {
+    private Helper $helper;
+
+    public function __construct() {
+        $this->helper = new Helper();
+    }
+
     public function index()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
@@ -30,17 +34,17 @@ class PerbaikanTeregistrasiController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_registrasis')
-        ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
+            ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
             ->where('kode_rs', Auth::user()->kode_rs)
-        ->first();
+            ->first();
         $kodeAset = $data->idPerbaikan;
 
-        $urutan = (int)substr($kodeAset, 15, 16);
+        $urutan = (int) substr($kodeAset, 15, 16);
         $urutan++;
 
-        $huruf3 = "B";
-        $date3  = date('ymd');
-        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
+        $huruf3 = 'B';
+        $date3 = date('ymd');
+        $kode_aset = $kodeRs_ . $huruf3 . $date3 . sprintf('%04s', $urutan);
 
         return view('pages.user.aset_teregistrasi.index', [
             'items' => $items,
@@ -52,51 +56,6 @@ class PerbaikanTeregistrasiController extends Controller
             'registrasis' => $registrasis,
 
         ]);
-    }
-
-    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
-    {
-        define('SERVER_API_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl');
-
-        $header = [
-            'Authorization: Key=' . SERVER_API_KEY,
-            'Content-Type: Application/json'
-        ];
-
-
-        $msg = [
-            'title' => $title,
-            'body' => $message,
-            'sound' => 'default',
-            'icon' => '/999.png',
-            'click_action' => $clickActionUrl
-        ];
-
-        $payload = [
-            'condition' => "'$topic' in topics",
-            'data' => $msg
-        ];
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode($payload),
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            "cURL Error #:" . $err;
-        } else {
-            $response;
-        }
     }
 
     public function store(Request $request)
@@ -118,33 +77,30 @@ class PerbaikanTeregistrasiController extends Controller
             'teknisi_3_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'active' => ''
+            'active' => '',
         ]);
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
         $token = Auth::user()->kode_rs;
-        $level = "admin";
-        $topik = $token . $level;
-        $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
-        $title = $request['nama_alat_reg'];
-        $message = "Alat " . $title;
-        $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
 
+        $this->helper->sendPushNotification($request['nama_alat_reg'], 'Alat '.$request['nama_alat_reg'], $token.'admin', 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
 
         return redirect('/dashboard_user/perbaikan_teregistrasi')
-        ->with('success', 'Data Berhasil Tambahkan.');
+            ->with('success', 'Data Berhasil Tambahkan.');
     }
 
     public function cetak($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.ppm.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 
-    function qrCodeGenerate($id)
+    public function qrCodeGenerate($id)
     {
         $item = Registrasi::where('id_aset', $id)->first();
+
         return view('pages.user.aset_teregistrasi.qr_code', compact('item'));
     }
 }

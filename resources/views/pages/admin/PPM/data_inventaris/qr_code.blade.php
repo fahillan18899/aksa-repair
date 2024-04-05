@@ -75,12 +75,12 @@
       </div>
     </div>
   </div>
-  
+
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <script>
     function downloadQR() {
         var container = document.getElementById('qr');
-        
+
         html2canvas(container).then(function(canvas) {
             var link = document.createElement('a');
             link.href = canvas.toDataURL();

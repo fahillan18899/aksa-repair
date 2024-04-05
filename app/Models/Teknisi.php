@@ -9,11 +9,10 @@ class Teknisi extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    protected $primaryKey = "id_teknisi";
-    protected $keyType = 'string';
     public $incrementing = false;
 
-
+    protected $guarded = [];
+    protected $primaryKey = 'id_teknisi';
+    protected $keyType = 'string';
 
 }

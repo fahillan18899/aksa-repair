@@ -11,21 +11,20 @@ class IsAdmin
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @param  Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login')->with('error', 'Please login first');
         }
 
-        if (Auth::user()->user_role == "admin") {
+        if (Auth::user()->user_role == 'admin') {
             return $next($request);
-        } else if (Auth::user()->user_role == "user") {
+        } elseif (Auth::user()->user_role == 'user') {
             return redirect()->route('user.dashboard');
-        } else if (Auth::user()->user_role == "teknisi") {
+        } elseif (Auth::user()->user_role == 'teknisi') {
             return redirect()->route('teknisi.dashboard');
         }
 

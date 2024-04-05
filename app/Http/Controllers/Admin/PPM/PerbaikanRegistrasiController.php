@@ -2,66 +2,27 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\PengirimanRegistrasi;
+use App\Models\Alat;
 use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
-use App\Models\Registrasi;
-use App\Models\Alat;
-use App\Models\Teknisi;
+use App\Models\PengirimanRegistrasi;
+use App\Models\PerbaikanRegistrasi;
 use App\Models\Ruangan;
+use App\Models\Teknisi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class PerbaikanRegistrasiController extends Controller
 {
-    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
-    {
-        define('SERVER_API_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl');
+    private Helper $helper;
 
-        $header = [
-            'Authorization: Key=' . SERVER_API_KEY,
-            'Content-Type: Application/json'
-        ];
-
-
-        $msg = [
-            'title' => $title,
-            'body' => $message,
-            'sound' => 'default',
-            'icon' => '/999.png',
-            'click_action' => $clickActionUrl
-        ];
-
-        $payload = [
-            'condition' => "'$topic' in topics",
-            'data' => $msg
-        ];
-
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode($payload),
-            CURLOPT_HTTPHEADER => $header
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            "cURL Error #:" . $err;
-        } else {
-            $response;
-        }
+    public function __construct() {
+        $this->helper = new Helper();
     }
+
     public function index()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
@@ -73,17 +34,12 @@ class PerbaikanRegistrasiController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_registrasis')
-        ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
+            ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
             ->where('kode_rs', Auth::user()->kode_rs)
-        ->first();
+            ->first();
         $kodeAset = $data->idPerbaikan;
 
-        $urutan = (int)substr($kodeAset, 15, 16);
-        $urutan++;
-
-        $huruf3 = "B";
-        $date3  = date('ymd');
-        $kode_aset  = $kodeRs_ . $huruf3 . $date3 . sprintf("%04s", $urutan);
+        $kode_aset = $this->helper->formatKodeAset($kodeAset, $kodeRs_);
 
         return view('pages.admin.PPM.aset_teregistrasi.index', [
             'items' => $items,
@@ -95,6 +51,7 @@ class PerbaikanRegistrasiController extends Controller
 
         ]);
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -118,39 +75,38 @@ class PerbaikanRegistrasiController extends Controller
             'jumlah_harga' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'active' => ''
+            'active' => '',
         ]);
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
         $token = Auth::user()->kode_rs;
-        $level = "user";
+        $level = 'user';
         $topik = $token . $level;
-        $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
         $title = $request['nama_alat_reg'];
-        $message = "Alat " . $title;
-        $this->sendPushNotification($title, $message,  $topik, $clickActionUrl);
-
+        $message = 'Alat ' . $title;
+        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Tambahkan.');
+            ->with('success', 'Data Berhasil Tambahkan.');
     }
 
     public function edit($id)
     {
 
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.update_perbaikan', [
-            
-            'alats'        => $alats,
+
+            'alats' => $alats,
             'item' => $item,
-            'teknisis'      => $teknisis,
-            'ruangans'     => $ruangans,
+            'teknisis' => $teknisis,
+            'ruangans' => $ruangans,
         ]);
-           
+
     }
 
     public function update(Request $request, $perbaikanRegistrasi)
@@ -172,19 +128,20 @@ class PerbaikanRegistrasiController extends Controller
             'teknisi_3_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
-            'active' => ''
+            'active' => '',
         ]);
 
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
         $perbaikanRegistrasi->update($request->post());
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Ubah.');
+            ->with('success', 'Data Berhasil Ubah.');
     }
 
     public function cetak($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 
@@ -194,7 +151,6 @@ class PerbaikanRegistrasiController extends Controller
 
         return view('pages.admin.PPM.aset_teregistrasi.sperpart_perbaikan', [
             'items' => $items,
-
 
         ]);
     }
@@ -220,7 +176,7 @@ class PerbaikanRegistrasiController extends Controller
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/aset_teregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
-
 }

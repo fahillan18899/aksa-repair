@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthKalibrasiController extends Controller
 {
@@ -34,7 +32,7 @@ class AuthKalibrasiController extends Controller
                 ->withSuccess('Signed in');
         }
 
-        return redirect("/kalibrasi")->withSuccess('Login details are not valid');
+        return redirect('/kalibrasi')->withSuccess('Login details are not valid');
     }
 
     public function registration()
@@ -53,6 +51,7 @@ class AuthKalibrasiController extends Controller
 
         $data['password'] = bcrypt($request->input('password'));
         User::create($data);
+
         return redirect()->route('login')->with('success', 'Registrasi berhasil');
     }
 

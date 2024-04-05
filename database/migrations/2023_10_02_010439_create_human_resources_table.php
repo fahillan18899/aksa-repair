@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('human_resources', function (Blueprint $table) {
@@ -31,16 +26,11 @@ return new class extends Migration
             $table->string('degree', 20)->nullable();
             $table->string('picture', 20)->nullable();
             $table->string('tambah_employee', 20)->nullable();
-            $table->string('kode_rs', 20)->nullable();
+            $table->string('kode_rs', 20)->index()->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('human_resources');

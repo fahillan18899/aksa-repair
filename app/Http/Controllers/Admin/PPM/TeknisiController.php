@@ -24,12 +24,13 @@ class TeknisiController extends Controller
         ]);
 
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
+            ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
     }
 
     public function edit($teknisi)
     {
         $item = Teknisi::where('id_teknisi', $teknisi)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.data_kelengkapan.update_teknisi', compact('item'));
     }
 
@@ -42,9 +43,8 @@ class TeknisiController extends Controller
 
         $teknisi->fill($request->post())->save();
 
-
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Data Teknisi Berhasil Tambahkan.');
+            ->with('success', 'Data Teknisi Berhasil Tambahkan.');
     }
 
     public function destroy($id)
@@ -53,6 +53,7 @@ class TeknisiController extends Controller
         $item = Teknisi::where('id_teknisi', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Teknisi Berhasil Di Hapus.');
     }
 }

@@ -2,16 +2,16 @@
 
 namespace Tests\Browser;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
 class LaporanKegiatanTest extends DuskTestCase
-{   
-    public function test_see_laporan_kegiatan_table_title()
+{
+    /**
+     * @test
+     */
+    public function see_laporan_kegiatan_table_title()
     {
-        $this->browse(function($browser) {
+        $this->browse(function ($browser) {
             $browser->visit('/')
                 ->type('username', 'admin5')
                 ->type('password', 'admin5')

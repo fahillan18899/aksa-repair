@@ -4,15 +4,19 @@ namespace App\Helper;
 
 class Helper
 {
-  public function send_notification_FCM($notification_id, $title, $message, $id, $type)
-  {
+    public static function instance()
+    {
+        return new Helper;
+    }
 
-    $accesstoken = env('FCM_KEY');
+    public function send_notification_FCM($notification_id, $title, $message, $id, $type)
+    {
 
-    $URL = 'https://fcm.googleapis.com/fcm/send';
+        $accesstoken = env('SIMRS_FCM_KEY');
 
+        $URL = 'https://fcm.googleapis.com/fcm/send';
 
-    $post_data = '{
+        $post_data = '{
             "registration_ids" : ["d_wrPayK7qI:APA91bH3rtzqDf_vJ6GvpmwVZgRT6PTi9AFqd91v0Nm64bRXV_eoJge0_luBqAHjUJCj3GDkyIZerKgk53ppkS033b7j0eyXzY9fa27cTZK1zJ6iMvnqE4i4XUGhQY-6oolXcbCTkWn0"],
             "data" : {
               "body" : "",
@@ -30,108 +34,114 @@ class Helper
                 "icon" : "new",
                 "sound" : "default"
                 },
- 
+
           }';
-    // print_r($post_data);die;
 
-    $crl = curl_init();
+        $crl = curl_init();
 
-    $headr = array();
-    $headr[] = 'Content-type: application/json';
-    $headr[] = 'Authorization: ' . $accesstoken;
-    curl_setopt($crl, CURLOPT_SSL_VERIFYPEER, false);
+        $headr = [];
+        $headr[] = 'Content-type: application/json';
+        $headr[] = 'Authorization: ' . $accesstoken;
+        curl_setopt($crl, CURLOPT_SSL_VERIFYPEER, false);
 
-    curl_setopt($crl, CURLOPT_URL, $URL);
-    curl_setopt($crl, CURLOPT_HTTPHEADER, $headr);
+        curl_setopt($crl, CURLOPT_URL, $URL);
+        curl_setopt($crl, CURLOPT_HTTPHEADER, $headr);
 
-    curl_setopt($crl, CURLOPT_POST, true);
-    curl_setopt($crl, CURLOPT_POSTFIELDS, $post_data);
-    curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($crl, CURLOPT_POST, true);
+        curl_setopt($crl, CURLOPT_POSTFIELDS, $post_data);
+        curl_setopt($crl, CURLOPT_RETURNTRANSFER, true);
 
-    $rest = curl_exec($crl);
+        $rest = curl_exec($crl);
 
-    if ($rest === false) {
-      // throw new Exception('Curl error: ' . curl_error($crl));
-      //print_r('Curl error: ' . curl_error($crl));
-      $result_noti = 0;
-    } else {
+        if ($rest === false) {
+            $result_noti = 0;
+        } else {
 
-      $result_noti = 1;
+            $result_noti = 1;
+        }
+
+        return $result_noti;
     }
 
-    //curl_close($crl);
-    //print_r($result_noti);die;
-    return $result_noti;
-  }
+    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
+    {
+        $header = [
+            'Authorization: Key=' . env('SIMRS_FCM_KEY'),
+            'Content-Type: Application/json',
+        ];
 
-  public function sendPushNotification($title, $message, $topic, $clickActionUrl)
-  {
-    define('SERVER_API_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl');
+        $msg = [
+            'title' => $title,
+            'body' => $message,
+            'sound' => 'default',
+            'icon' => '/999.png',
+            'click_action' => $clickActionUrl,
+        ];
 
-    $header = [
-      'Authorization: Key=' . SERVER_API_KEY,
-      'Content-Type: Application/json'
-    ];
+        $payload = [
+            'condition' => "'{$topic}' in topics",
+            'data' => $msg,
+        ];
 
+        $curl = curl_init();
 
-    $msg = [
-      'title' => $title,
-      'body' => $message,
-      'sound' => 'default',
-      'icon' => '/999.png',
-      'click_action' => $clickActionUrl
-    ];
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => $header,
+        ]);
 
-    $payload = [
-      'condition' => "'$topic' in topics",
-      'data' => $msg
-    ];
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
 
-    $curl = curl_init();
+        curl_close($curl);
 
-    curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => json_encode($payload),
-      CURLOPT_HTTPHEADER => $header
-    ));
+        if ($err) {
+            'cURL Error #:' . $err;
+        } else {
 
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-
-    curl_close($curl);
-
-    if ($err) {
-      "cURL Error #:" . $err;
-    } else {
-      $response;
+        }
     }
-  }
 
-  // public function notifyUser(Request $request)
-  // {
+    public function formatKodeAset(string $kodeAset, string $kodeRs_): string
+    {
+        $urutan = (int) substr($kodeAset, 15, 16);
+        $urutan++;
 
-  //     $user = User::where('user_id', '1')->first();
+        $huruf3 = 'U';
+        $date3 = date('ymd');
+        $kode_aset = $kodeRs_ . $huruf3 . $date3 . sprintf('%04s', $urutan);
 
-  //     $notification_id =
-  //         'd_wrPayK7qI:APA91bH3rtzqDf_vJ6GvpmwVZgRT6PTi9AFqd91v0Nm64bRXV_eoJge0_luBqAHjUJCj3GDkyIZerKgk53ppkS033b7j0eyXzY9fa27cTZK1zJ6iMvnqE4i4XUGhQY-6oolXcbCTkWn0';
-  //     $title = "Greeting Notification";
-  //     $message = "Have good day!";
-  //     $id = $user->user_id;
-  //     $type = "basic";
+        return $kode_aset;
+    }
 
-  //     $res = $this->send_notification_FCM($notification_id, $title, $message, $id, $type);
+    function hitungPenyusutan($tahunPenyusutan, $harga_perolehan)
+    {
+        $b = 100 / $tahunPenyusutan;
+        $c = $b / 12;
+        $nilai = $c / 100 * $harga_perolehan;
 
-  //     if ($res == 1) {
-  //     } else {
+        return $nilai;
+    }
 
-  //         // fail code
-  //     }
-  // }
+    public function hitung($tahunPenyusutan, $harga_perolehan)
+    {
+        $b = 100 / $tahunPenyusutan;
+        $c = $b / 12;
+        $nilai = $c / 100 * $harga_perolehan;
 
-  public static function instance()
-  {
-    return new Helper();
-  }
+        return $nilai;
+    }
+
+    public function formatKodeKelengkapan($kodeKelengkapan, $kodeRs_)
+    {
+        $urutanAlat = (int) substr($kodeKelengkapan, 6, 7);
+        $urutanAlat++;
+
+        $kode = $kodeRs_ . sprintf('%03s', $urutanAlat);
+
+        return $kode;
+    }
 }

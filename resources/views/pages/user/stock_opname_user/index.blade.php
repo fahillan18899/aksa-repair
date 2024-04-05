@@ -67,11 +67,11 @@
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->lokasi_pemakaian }}</td>
-                      <td>{{ $item->jumlah_masuk}}</td>
-                      <td>{{ $item->jumlah_keluar}}</td>
-                      <td>{{ $item->tanggal_masuk}}</td>
-                      <td>{{ $item->tanggal_keluar}}</td>
-                      <td>{{ $item->stock}}</td>
+                      <td>{{ $item->jumlah_masuk }}</td>
+                      <td>{{ $item->jumlah_keluar }}</td>
+                      <td>{{ $item->tanggal_masuk }}</td>
+                      <td>{{ $item->tanggal_keluar }}</td>
+                      <td>{{ $item->stock }}</td>
                       <!--<td>
                         <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">

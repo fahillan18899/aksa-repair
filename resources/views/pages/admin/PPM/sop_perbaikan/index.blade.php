@@ -61,7 +61,7 @@
                 <div class="row">
                   <!--  form area -->
                   <div class="col-sm-12">
-                    @if($sopPerbaikan)
+                    @if ($sopPerbaikan)
                     <embed type="application/pdf" src="{{ url('storage/' . $sopPerbaikan['sop_perbaikan']) }}" width="100%" height="1000"></embed>
                     @endif
                   </div>

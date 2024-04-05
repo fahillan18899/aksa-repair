@@ -3,32 +3,32 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use \App\Models\PerbaikanUnregistrasi;
-use \App\Models\PengirimanUnregistrasi;
-use \App\Models\PengembalianUnregistrasi;
-use \App\Models\PenghapusanUnregistrasi;
+use App\Models\Alat;
+use App\Models\PengembalianUnregistrasi;
+use App\Models\PenghapusanUnregistrasi;
+use App\Models\PengirimanUnregistrasi;
+use App\Models\PerbaikanUnregistrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
-use App\Models\Alat;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PengirimanUnregistrasiController extends Controller
 {
     public function index()
     {
-        $perbaikan     = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengiriman    = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $pengembalian  = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $penghapusan   = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $perbaikan = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengiriman = PengirimanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $pengembalian = PengembalianUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $penghapusan = PenghapusanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.aset_unregistrasi.index', [
-            
-            'perbaikan'    => $perbaikan,
-            'pengiriman'   => $pengiriman,
+
+            'perbaikan' => $perbaikan,
+            'pengiriman' => $pengiriman,
             'pengembalian' => $pengembalian,
-            'penghapusan'  => $penghapusan,
-        
+            'penghapusan' => $penghapusan,
+
         ]);
     }
 
@@ -59,26 +59,27 @@ class PengirimanUnregistrasiController extends Controller
             'pelapor_un.required' => 'Pelapor Tidak Boleh Kosong',
             'keterangan_un.required' => 'Keterangan Tidak Boleh Kosong',
             'lokasi_alat_un.required' => 'Lokasi Alat Tidak Boleh Kosong',
-            ]);
+        ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         PengirimanUnregistrasi::create($request->post());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Data Pengiriman Berhasil Di Tambahkan.');
+            ->with('success', 'Data Pengiriman Berhasil Di Tambahkan.');
     }
 
     public function edit($id)
     {
 
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->first();
+
         return view('pages.admin.PPM.aset_unregistrasi.edit_pengiriman', [
-            
-            'alats'    => $alats,
+
+            'alats' => $alats,
             'ruangans' => $ruangans,
-            'item'     => $item,
+            'item' => $item,
             'teknisis' => $teknisis,
 
         ]);
@@ -113,12 +114,13 @@ class PengirimanUnregistrasiController extends Controller
         $pengirimanRegistrasi->update($request->all());
 
         return redirect()->route('aset_unregistrasi.index')
-        ->with('success', 'Data Pengiriman Unregistrasi Berhasil di Ubah.');
+            ->with('success', 'Data Pengiriman Unregistrasi Berhasil di Ubah.');
     }
 
     public function cetak($id)
     {
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_unregistrasi.cetak_pengiriman', compact('item'));
     }
 
@@ -127,6 +129,7 @@ class PengirimanUnregistrasiController extends Controller
         $item = PengirimanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
 }

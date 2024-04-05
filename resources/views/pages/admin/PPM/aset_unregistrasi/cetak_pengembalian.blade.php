@@ -26,8 +26,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="align-center mt-5">
-                
-                <img src="" alt="Kop Surat" width="100%">
+                <img src="{{ url('/assets/images/kop.png') }}" alt="Kop Surat" width="100%">
               </div>
               <div class="card-body">
 

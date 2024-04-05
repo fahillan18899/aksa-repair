@@ -56,7 +56,7 @@
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
-                      <td>{{ $item->jumlah}}</td>
+                      <td>{{ $item->jumlah }}</td>
                       <td>
                         <a href="{{ route('permintaan_barang_admin.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('permintaan_barang_admin.destroy', $item->id) }}" method="POST" class="d-inline">

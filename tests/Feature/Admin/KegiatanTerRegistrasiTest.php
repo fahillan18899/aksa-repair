@@ -6,9 +6,6 @@ use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
 use App\Models\PengirimanRegistrasi;
 use App\Models\PerbaikanRegistrasi;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\MustAuthTestCase;
 
 class KegiatanTerRegistrasiTest extends MustAuthTestCase
@@ -21,8 +18,11 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
         PenghapusanRegistrasi::where('id_perbaikan_reg', '=', 'RS0000B2403200002')->delete();
         $this->post('/logout');
     }
-    
-    public function test_perbaikan_alat_success()
+
+    /**
+     * @test
+     */
+    public function perbaikan_alat_success()
     {
         $this->post('/dashboard/ppm/aset_teregistrasi', [
             'id_perbaikan_reg' => 'RS0000B2403200002',
@@ -38,10 +38,10 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
             'ka_instalasi_reg' => 'Pandu',
             'teknisi_1_reg' => 'Teknisi',
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_perbaikan = PerbaikanRegistrasi::where('id_perbaikan_reg', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/aset_teregistrasi/'.$id_perbaikan->id_perbaikan_reg, [
+        $this->put('/dashboard/ppm/aset_teregistrasi/' . $id_perbaikan->id_perbaikan_reg, [
             'tanggal_perbaikan_reg' => date('Y-m-d'),
             'nama_alat_reg' => 'Ventilator',
             'merek_alat_reg' => 'Polytron',
@@ -57,7 +57,10 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
         $this->assertNotNull($id_perbaikan);
     }
 
-    public function test_pengiriman_alat_success()
+    /**
+     * @test
+     */
+    public function pengiriman_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_pengiriman', [
             'id_perbaikan_reg' => 'RS0000B2403200002',
@@ -77,7 +80,7 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
 
         $id_pengiriman = PengirimanRegistrasi::where('id_perbaikan_reg', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/update_pengiriman/'.$id_pengiriman->id_perbaikan_reg, [
+        $this->put('/dashboard/ppm/update_pengiriman/' . $id_pengiriman->id_perbaikan_reg, [
             'tanggal_perbaikan_reg' => '2024-03-20',
             'tanggal_pengiriman_reg' => '2024-03-20',
             'id_aset_reg' => 'RS000024022705728',
@@ -95,7 +98,10 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
         $this->assertNotNull($id_pengiriman);
     }
 
-    public function test_pengembalian_alat_success()
+    /**
+     * @test
+     */
+    public function pengembalian_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_pengembalian', [
             'id_perbaikan_reg' => 'RS0000B2403200002',
@@ -113,10 +119,10 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
             'teknisi1_reg' => 'Teknisi',
             'ka_instalasi_reg' => 'Pandu',
         ])->assertStatus(302)->assertSessionHas('success');
-        
+
         $id_pengembalian = PengembalianRegistrasi::where('id_perbaikan_reg', '=', 'RS0000B2403200002')->firstOrFail();
 
-        $this->put('/dashboard/ppm/update_pengembalian/'.$id_pengembalian->id_perbaikan_reg, [
+        $this->put('/dashboard/ppm/update_pengembalian/' . $id_pengembalian->id_perbaikan_reg, [
             'nama_alat_reg' => 'Ventilator',
             'tanggal_perbaikan_reg' => '2024-03-20',
             'merek_reg' => 'Polytron',
@@ -134,7 +140,10 @@ class KegiatanTerRegistrasiTest extends MustAuthTestCase
         $this->assertNotNull($id_pengembalian);
     }
 
-    public function test_penghapusan_alat_success()
+    /**
+     * @test
+     */
+    public function penghapusan_alat_success()
     {
         $this->post('/dashboard/ppm/tambah_penghapusan', [
             'id_perbaikan_reg' => 'RS0000B2403200002',

@@ -32,13 +32,13 @@
     </div>
   </section>
   <!-- /.content-header -->
-  @if( Auth::user()->kode_rs == "RS0004")
+  @if ( Auth::user()->kode_rs == "RS0004")
   <!--Slide-->
   <div class="mb-5">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active c-item">
-          <img src="{{asset('/assets/images/rsc/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
+          <img src="{{ asset('/assets/images/rsc/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
           <img src="{{ asset('/assets/images/rsc/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
@@ -47,7 +47,7 @@
           <img src="{{ asset('/assets/images/rsc/cilegon4.png') }}" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
-          <img src="{{asset('/assets/images/rsc/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
+          <img src="{{ asset('/assets/images/rsc/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
         </div>
         <div class="carousel-item c-item">
           <img src="{{ asset('/assets/images/rsc/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
@@ -97,7 +97,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -121,7 +121,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -132,7 +132,7 @@
           <span class="info-box-icon"><i class="ti-book"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Resep"  //display('prescription') 
+            <span class="info-box-text"><?= "Resep"  //display('prescription')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[3]->total_prescription) ? $notify[3]->total_prescription : null)) ?></span>
 
@@ -146,7 +146,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -157,7 +157,7 @@
           <span class="info-box-icon"><i class="fa fa-user-md"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Dokter" // display('doctor') 
+            <span class="info-box-text"><?= "Dokter" // display('doctor')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[2]->total_doctor) ? $notify[2]->total_doctor : null)) ?></span>
 
@@ -171,7 +171,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php //} 
+      <?php //}
       ?>
 
       <?php
@@ -182,7 +182,7 @@
           <span class="info-box-icon"><i class="fa fa-bed"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Daftar Tempat Tidur Kosong" // display('free_bed_list') 
+            <span class="info-box-text"><?= "Daftar Tempat Tidur Kosong" // display('free_bed_list')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[4]->total_freebed) ? $notify[4]->total_freebed : null)) ?></span>
 
@@ -196,7 +196,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <?php
@@ -207,7 +207,7 @@
           <span class="info-box-icon"><i class="fa fa-sign-out"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "Boleh Pulang" // display('discharged') 
+            <span class="info-box-text"><?= "Boleh Pulang" // display('discharged')
                                         ?></span>
             <span class="info-box-number"><?php echo number_format((!empty($notify[5]->total_discharged) ? $notify[5]->total_discharged : null)) ?></span>
 
@@ -221,7 +221,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
     </div> <!-- /.row -->
 
@@ -304,7 +304,7 @@
           </div> <!-- /.panel-body -->
         </div>
       </div>
-      <?php // } 
+      <?php // }
       ?>
 
       <div class="col-lg-4">
@@ -318,7 +318,7 @@
                 <div class="panel panel-primary">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#billing" aria-expanded="true" aria-controls="billing"><?php echo "Penagihan" // display('billing') 
+                      <a data-toggle="collapse" data-parent="#accordion" href="#billing" aria-expanded="true" aria-controls="billing"><?php echo "Penagihan" // display('billing')
                                                                                                                                       ?>
                       </a>
                     </h4>
@@ -371,7 +371,7 @@
                 <div class="panel panel-warning">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#insurance" aria-expanded="false" aria-controls="insurance"><?php echo "Asuransi" //display('insurance') 
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#insurance" aria-expanded="false" aria-controls="insurance"><?php echo "Asuransi" //display('insurance')
                                                                                                                                                               ?>
                       </a>
                     </h4>
@@ -415,13 +415,13 @@
   /*Update this config*/
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY",
-    authDomain: "wyasa-simrs-notification.firebaseapp.com",
-    projectId: "wyasa-simrs-notification",
-    storageBucket: "wyasa-simrs-notification.appspot.com",
-    messagingSenderId: "1011976405810",
-    appId: "1:1011976405810:web:25247a63f17c7dac88cd2b",
-    measurementId: "G-HL1GLJM4SW"
+    apiKey: env('SIMRS_API_KEY'),
+    authDomain: env('SIMRS_AUTH_DOMAIN'),
+    projectId: env('SIMRS_PROJECT_ID'),
+    storageBucket: env('SIMRS_STORAGE_BUCKET'),
+    messagingSenderId: env('SIMRS_MESSAGE_SENDER_ID'),
+    appId: env('SIMRS_APP_ID'),
+    measurementId: env('SIMRS_MEASUREMENT_ID')
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -442,7 +442,7 @@
         if (currentToken) {
           console.log(currentToken)
           setTokenSentToServer(true);
-          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role;}}";
+          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
           subscribeTokenToTopic(currentToken, userCode)
         } else {
           console.log('Tidak ada token Instance ID yang tersedia. Meminta izin untuk menghasilkan satu.');
@@ -459,8 +459,7 @@
     fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
       method: 'POST',
       headers: new Headers({
-        'Authorization': 'key=' +
-          'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl',
+        'Authorization': 'key=' + env('SIMRS_FCM_KEY'),
       })
     }).then(response => {
       if (response.status < 200 || response.status >= 400) {

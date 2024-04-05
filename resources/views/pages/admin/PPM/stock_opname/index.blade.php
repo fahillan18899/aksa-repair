@@ -69,12 +69,12 @@
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->lokasi_pemakaian }}</td>
-                      <td>{{ $item->jumlah_masuk}}</td>
-                      <td>{{ $item->jumlah_keluar}}</td>
-                      <td>{{ $item->tanggal_masuk}}</td>
-                      <td>{{ $item->tanggal_keluar}}</td>
-                      @if($item->stock !== 0)
-                        <td>{{ $item->stock}}</td>
+                      <td>{{ $item->jumlah_masuk }}</td>
+                      <td>{{ $item->jumlah_keluar }}</td>
+                      <td>{{ $item->tanggal_masuk }}</td>
+                      <td>{{ $item->tanggal_keluar }}</td>
+                      @if ($item->stock !== 0)
+                        <td>{{ $item->stock }}</td>
                       @else
                         <td>Tidak Tersedia</td>
                       @endif

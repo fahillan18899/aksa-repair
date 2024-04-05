@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\PengembalianRegistrasi;
-use Illuminate\Http\Request;
 use App\Models\Alat;
-use App\Models\Teknisi;
+use App\Models\PengembalianRegistrasi;
 use App\Models\Ruangan;
+use App\Models\Teknisi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PengembalianRegistrasiController extends Controller
@@ -50,29 +49,29 @@ class PengembalianRegistrasiController extends Controller
 
         PengembalianRegistrasi::create($request->post());
 
-
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil Tambahkan');
+            ->with('success', 'Data Berhasil Tambahkan');
     }
 
     public function edit($id)
     {
 
-        $alats         = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis      = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans      = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.update_pengembalian', [
-            
-            'alats'        => $alats,
+
+            'alats' => $alats,
             'item' => $item,
-            'teknisis'      => $teknisis,
-            'ruangans'     => $ruangans,
+            'teknisis' => $teknisis,
+            'ruangans' => $ruangans,
 
         ]);
     }
 
-    public function update(Request $request,  $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'id_aset_reg' => '',
@@ -103,17 +102,16 @@ class PengembalianRegistrasiController extends Controller
         ]);
 
         $pengembalianRegistrasi = PengembalianRegistrasi::findOrFail($id);
-        $pengembalianRegistrasi->update($request->all());
-
-
+        $pengembalianRegistrasi->update($request->post());
 
         return redirect()->route('aset_teregistrasi.index')
-        ->with('success', 'Data Berhasil di Ubah');
+            ->with('success', 'Data Berhasil di Ubah');
     }
 
     public function cetak($id)
     {
         $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         return view('pages.admin.PPM.aset_teregistrasi.cetak_pengembalian', compact('item'));
     }
 
@@ -123,6 +121,7 @@ class PengembalianRegistrasiController extends Controller
         $item = PengembalianRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/aset_teregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
 }

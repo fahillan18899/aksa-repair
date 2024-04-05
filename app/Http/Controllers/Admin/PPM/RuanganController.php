@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
 use App\Models\Gedung;
-use App\Models\Teknisi;
 use App\Models\Ruangan;
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RuanganController extends Controller
-{ 
+{
     public function store(Request $request)
     {
         $request->validate([
@@ -31,10 +31,8 @@ class RuanganController extends Controller
             'kode_rs' => Auth::user()->kode_rs,
         ]);
 
-
-
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Data Ruangan Berhasil di Tambahkan.');
+            ->with('success', 'Data Ruangan Berhasil di Tambahkan.');
     }
 
     public function edit($ruangan)
@@ -42,6 +40,7 @@ class RuanganController extends Controller
         $item = Ruangan::where('id_ruangan', $ruangan)->where('kode_rs', Auth::user()->kode_rs)->first();
         $gedungs = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+
         return view('pages.admin.PPM.data_kelengkapan.update_ruangan', [
             'item' => $item,
             'teknisis' => $teknisis,
@@ -61,9 +60,8 @@ class RuanganController extends Controller
 
         $ruangan->fill($request->post())->save();
 
-
         return redirect('/dashboard/ppm/data_kelengkapan')
-        ->with('success', 'Data Berhasil Ubah.');
+            ->with('success', 'Data Berhasil Ubah.');
     }
 
     public function destroy($id)
@@ -71,6 +69,7 @@ class RuanganController extends Controller
         $item = Ruangan::where('id_ruangan', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
         $item->delete();
+
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Ruangan Berhasil Di Hapus.');
     }
 }

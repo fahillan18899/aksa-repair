@@ -9,8 +9,9 @@ class Registrasi extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    protected $primaryKey = "id_aset";
-    protected $keyType = 'string';
     public $incrementing = false;
+
+    protected $guarded = [];
+    protected $primaryKey = 'id_aset';
+    protected $keyType = 'string';
 }
