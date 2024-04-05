@@ -196,7 +196,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Helper' => App\Helper\Helper::class,
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ])->toArray(),

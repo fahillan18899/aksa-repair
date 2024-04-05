@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Helper\Helper;
+use App\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use App\Models\Gedung;
