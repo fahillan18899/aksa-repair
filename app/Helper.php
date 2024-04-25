@@ -105,7 +105,7 @@ class Helper
         }
     }
 
-    public function formatKodeAset(string $kodeAset = "0", string $kodeRs_): string
+    public function formatKodeAset($kodeAset = "0", string $kodeRs_): string
     {
         $urutan = (int) substr($kodeAset, 15, 16);
         $urutan++;
