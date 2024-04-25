@@ -105,12 +105,24 @@ class Helper
         }
     }
 
-    public function formatKodeAset(string $kodeAset, string $kodeRs_): string
+    public function formatKodeAset(string $kodeAset = "0", string $kodeRs_): string
     {
         $urutan = (int) substr($kodeAset, 15, 16);
         $urutan++;
 
         $huruf3 = 'U';
+        $date3 = date('ymd');
+        $kode_aset = $kodeRs_ . $huruf3 . $date3 . sprintf('%04s', $urutan);
+
+        return $kode_aset;
+    }
+
+    public function formatKodeAsetB($kodeAset = "0", string $kodeRs_): string
+    {
+        $urutan = (int) substr($kodeAset, 15, 16);
+        $urutan++;
+
+        $huruf3 = 'B';
         $date3 = date('ymd');
         $kode_aset = $kodeRs_ . $huruf3 . $date3 . sprintf('%04s', $urutan);
 

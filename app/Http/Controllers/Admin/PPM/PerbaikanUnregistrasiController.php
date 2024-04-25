@@ -41,6 +41,7 @@ class PerbaikanUnregistrasiController extends Controller
             ->first();
         $kodeAset = $data->idPerbaikanUn;
 
+
         $kode_aset = $this->helper->formatKodeAset($kodeAset, $kodeRs_);
 
         return view('pages.admin.PPM.aset_unregistrasi.index', [

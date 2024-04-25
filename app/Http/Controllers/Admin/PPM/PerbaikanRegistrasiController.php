@@ -39,7 +39,7 @@ class PerbaikanRegistrasiController extends Controller
             ->first();
         $kodeAset = $data->idPerbaikan;
 
-        $kode_aset = $this->helper->formatKodeAset($kodeAset, $kodeRs_);
+        $kode_aset = $this->helper->formatKodeAsetB($kodeAset, $kodeRs_);
 
         return view('pages.admin.PPM.aset_teregistrasi.index', [
             'items' => $items,
