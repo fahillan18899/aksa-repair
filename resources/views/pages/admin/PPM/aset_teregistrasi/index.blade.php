@@ -1197,7 +1197,8 @@
                         <td>{{ $item->ka_instalasi_reg }}</td>
                         <td>{{ $item->keterangan_pengguna_reg }}</td>
                         <td>
-                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_penghapusan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_teregistrasi/update_penghapusan/{{ $item->id_perbaikan_reg }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                          
                           <a data-toggle="tooltip" data-placement="top" title="Cetak" href="/dashboard/ppm/aset_teregistrasi/cetak_penghapusan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
 
                         </td>

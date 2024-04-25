@@ -127,8 +127,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Penghapusan Aset Teregistrasi
         Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
-        Route::get('/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit'])->name('update_penghapusan.edit');
-        Route::put('/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
+        Route::get('/aset_teregistrasi/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit']);
+        Route::put('/aset_teregistrasi/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
         Route::get('/aset_teregistrasi/cetak_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'cetak']);
 
         // Autofill

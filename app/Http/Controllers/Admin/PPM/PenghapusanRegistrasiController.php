@@ -70,7 +70,7 @@ class PenghapusanRegistrasiController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate(['id_perbaikan_reg' => 'unique:penghapusan_registrasis',
+        $request->validate(['id_perbaikan_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'tanggal_penggudangan_reg' => '',
             'nama_alat_reg' => '',
