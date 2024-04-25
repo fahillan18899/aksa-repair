@@ -125,12 +125,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('aset_teregistrasi/cetak_pengembalian/{id}', [PengembalianRegistrasiController::class, 'cetak']);
         Route::delete('pengembalian_teregistrasi/{id}', [PengembalianRegistrasiController::class, 'destroy']);
 
-        // perbaikansan aset teregistrasi
-        Route::get('/update_perbaikan/{id}/edit', [PerbaikanRegistrasiController::class, 'edit'])->name('update_perbaikan.edit');
-        Route::put('/aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
-        Route::get('/aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
-        Route::delete('/perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
-        Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan']);
+        // Penghapusan Aset Teregistrasi
+        Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store']);
+        Route::get('/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit'])->name('update_penghapusan.edit');
+        Route::put('/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
+        Route::get('/aset_teregistrasi/cetak_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'cetak']);
 
         // Autofill
         Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
@@ -159,14 +158,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('aset_unregistrasi/cetak_pengembalian/{id}', [PengembalianUnregistrasiController::class, 'cetak']); /*fungsi print*/
         Route::delete('pengembalian_unegistrasi/{id}', [PengembalianUnregistrasiController::class, 'destroy']);
 
-        // perbaikan unregistrasi
-        Route::get('/aset_unregistrasi', [PerbaikanUnregistrasiController::class, 'index'])->name('aset_unregistrasi.index');/*Tampilan*/
-        Route::get('/aset_unregistrasi/edit_perbaikan/{id}/edit', [PerbaikanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
-        Route::put('/aset_unregistrasi/edit_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'update'])->name('update_perbaikan_un.update');
-        Route::post('/tambah_unregistrasi', [PerbaikanUnregistrasiController::class, 'store']);/*fungsi tambah*/
-        Route::get('/aset_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'cetak']);/*fungsi print*/
-        Route::delete('/perbaikan_unegistrasi/{id}', [PerbaikanUnregistrasiController::class, 'destroy']);
-        Route::put('aset_unregistrasi/update/{id}', [PerbaikanUnregistrasiController::class, 'updateStatusPerbaikanUn']);
+        // penghapusan unregistrasi
+        Route::post('/tambah_penghapusan_un', [PenghapusanUnregistrasiController::class, 'store']);
+        Route::get('/aset_unregistrasi/edit_penghapusan/{id}/edit', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
+        Route::put('/aset_unregistrasi/edit_penghapusan/{id}', [PenghapusanUnregistrasiController::class, 'update'])->name('update_penghapusan_un.update');
+        Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
 
         // menu pemeliharaan preventive
         Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index']);
