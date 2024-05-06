@@ -191,8 +191,8 @@ class RegistrasiAsetController extends Controller
 
         Registrasi::create($data);
 
-        return redirect()->route('registrasi.index')
-            ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
+        return redirect('/dashboard/ppm/registrasi-aset')
+        ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
     }
 
     public function edit($id)
@@ -255,8 +255,8 @@ class RegistrasiAsetController extends Controller
         $registrasi = Registrasi::findOrFail($id);
         $registrasi->update($data);
 
-        return redirect()->route('registrasi.index')
-            ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
+        return redirect('/dashboard/ppm/registrasi-aset')
+        ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
     }
 
     public function destroy($id)
@@ -266,7 +266,7 @@ class RegistrasiAsetController extends Controller
 
         $item->delete();
 
-        return redirect()->route('registrasi.index')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
+        return redirect('/dashboard/ppm/registrasi-aset')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
     }
 
     public function import(Request $request)

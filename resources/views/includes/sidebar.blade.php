@@ -167,7 +167,9 @@
     <ul class="sidebar-menu">
       <li class="{{ request()->is('dashboard/ppm/home') ? 'active' : '' }}"><a href="/dashboard/ppm/home"><i class="fa fa-home"></i>Dashboard</a></li>
       <li class="{{ request()->is('dashboard/ppm/data_kelengkapan') ? 'active' : '' }}"><a href="/dashboard/ppm/data_kelengkapan"><i class="fa fa-database"></i>Data Kelengkapan PPM</a></li>
+      @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0006" )
       <li class="{{ request()->is('dashboard/ppm/registrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi"><i class="fa fa-check-square-o"></i>Registrasi Alat Print QR</a></li>
+      @endif
       <li class="{{ request()->is('dashboard/ppm/registrasi-aset') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi-aset"><i class="fa fa-check-square"></i>Registrasi Alat Bawa QR<b style="color: red">(NEW)</b></a></li>
       <li class="{{ request()->is('dashboard/ppm/data_inventaris') ? 'active' : '' }}"><a href="/dashboard/ppm/data_inventaris"><i class="fa fa-archive" aria-hidden="true"></i>Data Inventaris</a></li>
       <!---->
