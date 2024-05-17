@@ -76,11 +76,11 @@ class RegistrasiAsetController extends Controller
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
             'qr_code' => '',
-            'jenis_alat' => 'required',
-            'nama_alat' => 'required',
-            'merek' => 'required',
-            'type' => 'required',
-            'serial_number' => 'required',
+            'jenis_alat' => 'required|max:50',
+            'nama_alat' => 'required|max:50',
+            'merek' => 'required|max:50',
+            'type' => 'required|max:50',
+            'serial_number' => 'required|max:50',
             'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
             'lokasi_alat' => 'required',
             'tanggal_kalibrasi' => '',
@@ -185,6 +185,7 @@ class RegistrasiAsetController extends Controller
         ];
 
         $res['kode_rs'] = Auth::user()->kode_rs;
+
         if (isset($data['tanggal_kalibrasi'])) {
             LembarPemeliharaan::create($res);
         }

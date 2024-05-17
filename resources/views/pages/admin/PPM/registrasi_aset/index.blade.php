@@ -68,7 +68,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="ID Aset" value="" >
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RS_DEMO_1" value="" >
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
