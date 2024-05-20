@@ -65,8 +65,6 @@
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
                 <th class="none">Jadwal</th>
-                <th>Tombol_Aksi_Tabel</th>
-
               </thead>
             </table>
           </div>
@@ -458,23 +456,6 @@
           data: 24,
           name: 'jadwal_pemeliharaan'
         },
-        {
-          data: 0,
-          render: function(data, type, full, meta) {
-            return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
-          }
-
-        },
-
-
       ],
     });
   })
