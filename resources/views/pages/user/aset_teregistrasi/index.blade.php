@@ -59,7 +59,6 @@
                     <th class="none">No_Inventaris </th>
                     <th class="none">umur_alat</th>
                     <th class="none">Jadwal</th>
-                    <th>Tombol_Aksi_Tabel</th>
                   </thead>
 
                 </table>
@@ -456,13 +455,7 @@
               data: 24,
               name: 'jadwal_pemeliharaan'
             },
-            {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard_user/qr_qode/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> Cetak QR</button></a>`
-              }
 
-            },
 
           ],
         });
