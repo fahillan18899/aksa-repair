@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('nama_alat');
             $table->string('merek');
             $table->string('type');
-            $table->string('serial_number');
+            $table->string('serial_number', 100);
             $table->string('gambar')->nullable();
             $table->string('lokasi_alat');
             $table->string('tanggal_kalibrasi')->nullable();
