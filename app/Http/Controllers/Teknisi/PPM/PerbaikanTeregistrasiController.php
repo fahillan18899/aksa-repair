@@ -143,4 +143,19 @@ class PerbaikanTeregistrasiController extends Controller
 
         return view('pages.teknisi.aset_teregistrasi.qr_code', compact('item'));
     }
+
+    public function updateStatusPerbaikanTeknisi($id)
+    {
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        if ($item) {
+            if ($item->status == '0') {
+                $item->status = '1';
+            } else {
+                $item->status = '0';
+            }
+
+            $item->save();
+        }
+        return back();
+    }
 }
