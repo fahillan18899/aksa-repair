@@ -75,7 +75,7 @@
                 <th class="none">umur_alat</th>
                 <th  class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
-                <th>QR</th>
+
               </thead>
             </table>
           </div>
@@ -209,12 +209,7 @@
 
             },
 
-           {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return "<a href=\"/dashboard/ppm/data_inventaris/qr_qode/" + data + "\" target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Buat QR\">Buat</button></a>"
-              }
-            },
+
 
           ],
         });
