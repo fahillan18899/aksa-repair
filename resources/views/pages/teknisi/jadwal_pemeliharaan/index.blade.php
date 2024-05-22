@@ -106,9 +106,9 @@
                       <th scope="col">Keterangan</th>
                     </thead>
                     <tbody>
-                      @forelse ($items as $item)
+                      @forelse ($items as $index => $item)
                       <tr>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ $index + 1 }}</td>
                         <td>{{ $item->lokasi_alat }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->jadwal }}</td>

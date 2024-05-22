@@ -760,9 +760,9 @@
                 </tr>
               </thead>
               <tbody>
-                @forelse ($lembarPemeliharaans as $item)
+                @forelse ($lembarPemeliharaans as $index => $item)
                 <tr>
-                  <td>{{ $item->id_ppm }}</td>
+                  <td>{{ $index + 1 }}</td>
                   <td>{{ $item->tanggal }}</td>
                   <td>{{ $item->kegiatan }}</td>
                   <td>{{ $item->engineer }}</td>
