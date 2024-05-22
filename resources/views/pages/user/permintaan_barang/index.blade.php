@@ -95,7 +95,7 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">Id</th>
+                      <th scope="col">No</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Merek</th>
                       <th scope="col">Type Pemakaian</th>
