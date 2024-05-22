@@ -104,9 +104,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse ($items as $item)
+                    @forelse ($items as $index => $item)
                     <tr>
-                      <td>{{ $item->id }}</td>
+                      <td>{{ $index + 1 }}</td>
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
