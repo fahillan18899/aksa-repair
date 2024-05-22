@@ -29,7 +29,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="btn-group">
-                  <a class="btn btn-success" href="/dashboard/ppm/registrasi"> <i class="fa fa-plus"></i> Add Alat </a>
+                  <a class="btn btn-success" href="/dashboard/ppm/registrasi-aset"> <i class="fa fa-plus"></i> Add Alat </a>
                 </div>
               </div>
               <div class="col-md-2">

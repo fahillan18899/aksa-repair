@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('sumber_dana')->nullable();
             $table->integer('tahun_perolehan')->nullable();
             $table->string('kode_rs')->index()->nullable();
-            $table->date('jadwal_pemeliharaan')->nullable();
+            $table->string ('jadwal_pemeliharaan')->nullable();
             $table->integer('umur_alat')->nullable();
             $table->string('akl')->nullable();
             $table->string('akd')->nullable();
