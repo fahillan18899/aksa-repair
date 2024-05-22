@@ -110,6 +110,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::put('aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
         Route::get('aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
         Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
+        Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan']);
 
         // Pengiriman Aset Teregistrasi
         Route::post('tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);
@@ -143,6 +144,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::post('tambah_unregistrasi', [PerbaikanUnregistrasiController::class, 'store']); /*fungsi tambah*/
         Route::get('aset_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUnregistrasiController::class, 'cetak']); /*fungsi print*/
         Route::delete('perbaikan_unegistrasi/{id}', [PerbaikanUnregistrasiController::class, 'destroy']);
+        Route::put('aset_unregistrasi/update/{id}', [PerbaikanUnregistrasiController::class, 'updateStatusPerbaikanUn']);
 
         //  pengiriman unregistrasi
         Route::post('tambah_pengiriman_un', [PengirimanUnregistrasiController::class, 'store']); /*fungsi tambah*/
