@@ -34,7 +34,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-              <form action="{{ route('jadwal_pemeliharaan.store') }}" class="form-inner" method="post" accept-charset="utf-8">
+              <form action="{{ url('dashboard_teknisi/jadwal_pemeliharaan') }}" class="form-inner" method="post" accept-charset="utf-8">
                   @csrf
 
                   <input type="hidden" name="id" value="" />

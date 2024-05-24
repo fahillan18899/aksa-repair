@@ -59,11 +59,12 @@ class JadwalPemeliharaanController extends Controller
             'lokasi_alat' => '',
             'nama_alat' => '',
             'jadwal' => '',
+            'kode_rs' => '',
         ]);
-
+        $data['kode_rs'] = Auth::user()->kode_rs;
         JadwalPemeliharaan::create($data);
 
-        return redirect('/dashboard_teknisi/jadwal_pemeliharaan')
+        return redirect('dashboard_teknisi/jadwal_pemeliharaan')
             ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 }
