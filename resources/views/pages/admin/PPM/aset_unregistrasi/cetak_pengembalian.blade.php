@@ -110,16 +110,16 @@
                       <th width="50%"><br></th>
                     </tr>
                     <tr>
-                      <th width="25%">Teknisi 1</th>
-                      <th width="25%">Kepala Ruangan</th>
+                      <th width="25%">Teknisi Rekanan</th>
+                      <th width="25%">Pelapor</th>
                     </tr>
                     <tr>
                       <th width="25%"><br><br><br><br></th>
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item ['teknisi_1_un'] ?></td>
-                      <td><?php echo $item ['ka_instalasi_un']; ?></td>
+                      <td><?php echo $item ['teknisi_rekanan_un'] ?></td>
+                      <td><?php echo $item ['pelapor_un']; ?></td>
                     </tr>
 
                   </tbody>

@@ -106,16 +106,16 @@
                       <th width="50%"><br></th>
                     </tr>
                     <tr>
-                      <th width="25%">Teknisi 1</th>
-                      <th width="25%">Teknisi 2</th>
+                      <th width="25%">Teknisi Rekanan</th>
+                      <th width="25%">Pelapor</th>
                     </tr>
                     <tr>
                       <th width="25%"><br><br><br><br></th>
                       <th width="25%"><br><br><br><br></th>
                     </tr>
                     <tr>
-                      <td><?php echo $item['teknisi1_reg'] ?></td>
-                      <td><?php echo $item['teknisi2_reg'] ?></td>
+                      <td><?php echo $item['teknisi_rekanan_reg'] ?></td>
+                      <td><?php echo $item['pelapor_reg'] ?></td>
                     </tr>
 
                   </tbody>

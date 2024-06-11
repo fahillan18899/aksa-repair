@@ -78,6 +78,10 @@
                       <td><?php echo $item['lokasi_alat'] ?></td>
                     </tr>
                     <tr>
+                      <th width="50%">Penyusutan Aset</th>
+                      <td><?php echo $item['penyusutan_aset'] ?></td>
+                    </tr>
+                    <tr>
                       <th width="50%">Tanggal Kalibrasi</th>
                       <td><?php echo $item['tanggal_kalibrasi'] ?></td>
                     </tr>
