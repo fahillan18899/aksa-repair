@@ -7,126 +7,109 @@ $row = mysqli_fetch_array($result);
 <div class="content-wrapper">
   <!-- Main content -->
   <div class="content">
-    <!-- demo mode enable alert -->
-    <div id="demoModeEnable"></div>
-    <!-- alert message -->
-
-
-
-
-    <!-- content -->
     <div class="row justify-content-center mt-5">
-      <div class="col-sm-12" id="PrintMe">
+      <div class="col-sm-12" >
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print">
-            <div class="btn-group">
+          <div class="card" id="PrintMe">
+            <div class="align-center mt-5">
+              <img src="" alt="Kop Surat" width="100%">
             </div>
-          </div>
+            <div class="card-body">
 
+              <table width="100%" class=" table text-center" border="0">
+                <tbody>
+                  <tr>
+                    <th width="50%"><br><br></th>
+                    <th width="50%"><br><br></th>
+                  </tr>
+                  <tr>
+                    <th width="7%" colspan="2">
+                      <h3 class="text-center ">Report Data Form Perbaikan User</h3>
+                    </th>
+                    <th width="7%" colspan="2">
+                    </th>
+                  </tr>
+                  <tr>
+                    <th width="50%"><br><br></th>
+                    <th width="50%"><br><br></th>
+                  </tr>
 
-          <div class="col-md-12">
-            <div class="card">
-              <div class="align-center mt-5">
-                <img src="" alt="Kop Surat" width="100%">
-              </div>
-              <div class="card-body">
-
-                <table width="100%" class=" table text-center" border="0">
-                  <tbody>
-                    <tr>
-                      <th width="50%"><br><br></th>
-                      <th width="50%"><br><br></th>
-                    </tr>
-                    <tr>
-                      <th width="7%" colspan="2">
-                        <h3 class="text-center ">Report Data Form Perbaikan User</h3>
-                      </th>
-                      <th width="7%" colspan="2">
-                      </th>
-                    </tr>
-                    <tr>
-                      <th width="50%"><br><br></th>
-                      <th width="50%"><br><br></th>
-                    </tr>
-
-                    <tr>
-                      <th width="50%">Id Aset</th>
-                      <td><?php echo $row['ID_Aset_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Tanggal Perbaikan</th>
-                      <td><?php echo $row['Tanggal_Perbaikan_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Nama Alat</th>
-                      <td><?php echo $row['Nama_Alat_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Merk Alat</th>
-                      <td><?php echo $row['Merek_Alat_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Type Alat</th>
-                      <td><?php echo $row['Type_Alat_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Serial Number</th>
-                      <td><?php echo $row['Serial_Number_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Lokasi Alat</th>
-                      <td><?php echo $row['Lokasi_Alat_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Pelapor</th>
-                      <td><?php echo $row['Pelapor_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Waktu Pelaporan</th>
-                      <td> <?php date_default_timezone_set('Asia/Jakarta');
+                  <tr>
+                    <th width="50%">Id Aset</th>
+                    <td><?php echo $row['ID_Aset_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Tanggal Perbaikan</th>
+                    <td><?php echo $row['Tanggal_Perbaikan_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Nama Alat</th>
+                    <td><?php echo $row['Nama_Alat_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Merk Alat</th>
+                    <td><?php echo $row['Merek_Alat_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Type Alat</th>
+                    <td><?php echo $row['Type_Alat_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Serial Number</th>
+                    <td><?php echo $row['Serial_Number_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Lokasi Alat</th>
+                    <td><?php echo $row['Lokasi_Alat_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Pelapor</th>
+                    <td><?php echo $row['Pelapor_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%">Waktu Pelaporan</th>
+                    <td> <?php date_default_timezone_set('Asia/Jakarta');
 echo date('h:i:s a'); ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Waktu Teknisi Datang</th>
-                      <td><?php echo $row[''] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%"><br></th>
-                      <th width="50%"><br></th>
-                    </tr>
-                    <tr>
-                      <th width="25%">Teknisi 1</th>
-                      <th width="25%">Pelapor</th>
-                    </tr>
-                    <tr>
-                      <th width="7%" colspan="2">
-                      Kepala Ruangan
-                      </th>
-                      <th width="7%" colspan="2">
-                      </th>
-                    </tr>
-                    <tr>
-                      <th width="25%"><br><br><br><br></th>
-                      <th width="25%"><br><br><br><br></th>
-                    </tr>
-                    <tr>
-                      <td><?php echo $row['Keterangan_Kondisi_Alat_reg'] ?></td>
-                      <td><?php echo $row['Ka_Instalasi_reg'] ?></td>
-                    </tr>
-                    <tr>
-                      <td width="7%" colspan="2">
-                        Ketua Instalasi
-                      </td>
-                      <td width="7%" colspan="2">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  </tr>
+                  <tr>
+                    <th width="50%">Waktu Teknisi Datang</th>
+                    <td><?php echo $row[''] ?></td>
+                  </tr>
+                  <tr>
+                    <th width="50%"><br></th>
+                    <th width="50%"><br></th>
+                  </tr>
+                  <tr>
+                    <th width="25%">Teknisi 1</th>
+                    <th width="25%">Pelapor</th>
+                  </tr>
+                  <tr>
+                    <th width="7%" colspan="2">
+                    Kepala Ruangan
+                    </th>
+                    <th width="7%" colspan="2">
+                    </th>
+                  </tr>
+                  <tr>
+                    <th width="25%"><br><br><br><br></th>
+                    <th width="25%"><br><br><br><br></th>
+                  </tr>
+                  <tr>
+                    <td><?php echo $row['Keterangan_Kondisi_Alat_reg'] ?></td>
+                    <td><?php echo $row['Ka_Instalasi_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <td width="7%" colspan="2">
+                      Ketua Instalasi
+                    </td>
+                    <td width="7%" colspan="2">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-
           <div class="panel-footer no-print text-center">
             <div class="btn-group">
               <button type="button" onclick="printContent('PrintMe')" class="btn btn-danger"><i class="fa fa-print"></i> Print</button>

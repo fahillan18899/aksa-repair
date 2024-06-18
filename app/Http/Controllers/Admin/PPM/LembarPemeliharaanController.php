@@ -26,11 +26,11 @@ class LembarPemeliharaanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'id_ppm' => '',
             'tanggal' => 'required|date',
             'kegiatan' => '',
-            'engineer' => '',
+            'engineer' => 'max:50',
             'id_aset' => '',
             'nama_alat' => '',
             'serial_number' => '',
@@ -113,9 +113,10 @@ class LembarPemeliharaanController extends Controller
             'engginer' => '',
             'kode_rs' => '',
         ]);
+    
 
-        $request['kode_rs'] = Auth::user()->kode_rs;
-        LembarPemeliharaan::create($request->post());
+        $data['kode_rs'] = Auth::user()->kode_rs;
+        LembarPemeliharaan::create($data);
 
         return redirect()->route('lembar_pemeliharaan.index')
             ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
