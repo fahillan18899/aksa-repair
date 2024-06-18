@@ -87,13 +87,6 @@
                     <td class="td-custom" width="25%">Pelapor</td>
                   </tr>
                   <tr>
-                    <td class="td-custom" width="7%" colspan="2">
-                    Kepala Ruangan
-                    </td>
-                    <td width="7%" colspan="2">
-                    </td>
-                  </tr>
-                  <tr>
                     <td width="25%"><br><br><br><br></td>
                     <td width="25%"><br><br><br><br></td>
                   </tr>
@@ -102,10 +95,16 @@
                     <td class="td-custom"><?php echo $item['pelapor_reg'] ?></td>
                   </tr>
                   <tr>
-                    <td width="7%" colspan="2">
-                    <?php echo $item['ka_instalasi_reg'] ?>
+                    <td style="text-align: center; padding: 5px 0 5px 0;" width="7%" colspan="2">
+                    Kepala Ruangan
                     </td>
-                    <td width="7%" colspan="2">
+                  </tr>
+                  <tr>
+                    <td width="25%" colspan="2"><br><br><br><br></td>
+                  </tr>
+                  <tr>
+                    <td width="7%" colspan="2" style="text-align: center; padding: 5px 0 5px 0;">
+                    <?php echo $item['ka_instalasi_reg'] ?>
                     </td>
                   </tr>
                 </tbody>

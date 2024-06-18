@@ -104,8 +104,8 @@
                     <td class="td-custom" width="25%">Pelapor</td>
                   </tr>
                   <tr>
-                    <td class="td-custom" width="25%"><br><br><br><br><br><br></td>
-                    <td class="td-custom" width="25%"><br><br><br><br><br><br></td>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
                   </tr>
                   <tr>
                     <td class="td-custom"><?php echo $item['teknisi_rekanan_reg'] ?></td>

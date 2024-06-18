@@ -86,8 +86,8 @@
                                         <td class="td-custom" width="50%">Kepala Ruangan</td>
                                     </tr>
                                     <tr>
-                                        <td width="50%"><br><br><br><br> <br><br><br><br></td>
-                                        <td width="50%"><br><br><br><br> <br><br><br><br></td>
+                                        <td width="50%"><br><br><br><br> <br><br></td>
+                                        <td width="50%"><br><br> <br><br><br><br></td>
                                     </tr>
                                     <tr>
                                         <td><?= $item['teknisi_ppm']; ?></td>

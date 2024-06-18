@@ -90,8 +90,8 @@
                     <td class="td-custom" width="25%">Kepala Ruangan</td>
                   </tr>
                   <tr>
-                    <td class="td-custom" width="25%"><br><br><br><br><br><br></td>
-                    <td class="td-custom" width="25%"><br><br><br><br><br><br></td>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
                   </tr>
                   <tr>
                     <td class="td-custom"><?php echo $item['teknisi_1_reg'] ?></td>
