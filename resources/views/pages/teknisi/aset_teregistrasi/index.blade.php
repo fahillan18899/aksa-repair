@@ -17,10 +17,6 @@
   </section>
   <!-- Main content -->
   <div class="content">
-    <!-- demo mode enable alert -->
-    <div id="demoModeEnable"></div>
-    <!-- alert message -->
-    <!-- content -->
     @if ($message = Session::get('success'))
     <div class="alert alert-success">
       <p>{{ $message }}</p>

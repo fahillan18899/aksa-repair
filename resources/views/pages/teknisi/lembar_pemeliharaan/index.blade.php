@@ -838,7 +838,7 @@ $alert = "";
                   <td>{{ $item->user }}</td>
                   <td>{{ $item->engginer }}</td>
                   <td>
-                    <a data-toggle="tooltip" data-placement="right" title="Cetak" href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                    <a data-toggle="tooltip" data-placement="right" title="Cetak" href="/dashboard_teknisi/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
                   </td>
 
                 </tr>
