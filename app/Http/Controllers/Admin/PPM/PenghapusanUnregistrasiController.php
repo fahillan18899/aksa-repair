@@ -48,8 +48,8 @@ class PenghapusanUnregistrasiController extends Controller
             'teknisi_2_un' => '',
             'teknisi_3_un' => '',
             'tanggal_penggudangan_un' => '',
-            'ka_instalasi_un' => '',
-            'keterangan_penggudangan_un' => '',
+            'ka_instalasi_un' => 'required',
+            'keterangan_penggudangan_un' => 'required',
             'kode_rs' => '',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
