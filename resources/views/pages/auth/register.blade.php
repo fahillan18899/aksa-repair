@@ -60,14 +60,7 @@
               <select name="kode_rs" class="form-control" id="kode_rs">
                 <option value="">Pilih Fasilitas Kesehatan</option>
                 <option value="RS0000">RS Demo</option>
-                <option value="RS0002">RSI Wonosobo</option>
-                <option value="RS0004">RS Cilegon</option>
-                <option value="RS0003">RS Panti Wilasa</option>
-                <option value="RS0001">RS Badarudin Kasim Tabalong</option>
-                <option value="RS0005">RSI Pondok Kopi</option>
-                <option value="RS0006">RSUD Temanggung</option>
-                <option value="RS0007">RSU Ja'far Medika</option>
-                <option value="RS0008">RS PKU Muhammadiyah Wonosobo</option>
+                <option value="RS0001">RS Ilzam Berbudi
               </select>
             </div>
             <div class="form-group">
