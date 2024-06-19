@@ -84,7 +84,7 @@ class PerbaikanTeregistrasiController extends Controller
         PerbaikanRegistrasi::create($request->post());
         $token = Auth::user()->kode_rs;
 
-        $this->helper->sendPushNotification($request['nama_alat_reg'], 'Alat '.$request['nama_alat_reg'], $token.'admin', 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
+        $this->sendPushNotification($request['nama_alat_reg'], 'Alat '.$request['nama_alat_reg'], $token.'admin', 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
 
         return redirect('/dashboard_user/perbaikan_teregistrasi')
             ->with('success', 'Data Berhasil Tambahkan.');
@@ -102,5 +102,47 @@ class PerbaikanTeregistrasiController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
 
         return view('pages.user.aset_teregistrasi.qr_code', compact('item'));
+    }
+
+    public function sendPushNotification($title, $message, $topic, $clickActionUrl)
+    {
+        $header = [
+            'Authorization: Key=' . env('SIMRS_FCM_KEY'),
+            'Content-Type: Application/json',
+        ];
+
+        $msg = [
+            'title' => $title,
+            'body' => $message,
+            'sound' => 'default',
+            'icon' => '/999.png',
+            'click_action' => $clickActionUrl,
+        ];
+
+        $payload = [
+            'condition' => "'{$topic}' in topics",
+            'data' => $msg,
+        ];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => json_encode($payload),
+            CURLOPT_HTTPHEADER => $header,
+        ]);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            'cURL Error #:' . $err;
+        } else {
+            return $response;
+        }
     }
 }

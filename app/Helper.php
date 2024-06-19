@@ -101,7 +101,7 @@ class Helper
         if ($err) {
             'cURL Error #:' . $err;
         } else {
-
+            return $response;
         }
     }
 
