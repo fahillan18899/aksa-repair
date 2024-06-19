@@ -48,7 +48,7 @@
               <div class="col-md-12 col-sm-12">
                 <div id="app">
                   <div class="preview-container">
-                    <video id="preview"></video>
+                    <video id="preview_admin"></video>
                   </div>
                 </div>
               </div>
@@ -1220,14 +1220,33 @@
     </div>
 
 
-  </div> <!-- /.content -->
-
-
-
-
+  </div> 
 </div> <!-- /.content-wrapper -->
 
-<!-- <script src="./assets/js/bs-5.js"></script>
-<script src="../js/scripts.js"></script>
-<script src="./assets/libraries/jquery.min.js"></script> -->
 @endsection
+
+@push('addon-script')
+  <script>
+    let scanner_teknisi = new Instascan.Scanner({
+        video: document.getElementById('preview_admin'),
+        mirror: false
+    });
+    scanner_teknisi.addListener('scan', function(content) {
+        const fruits = content.split(',');
+        $("#id_aset_reg").val(fruits[0]);
+        $("#Merek_Alat_reg").val(fruits[3]);
+        $("#Nama_Alat_reg").val(fruits[2]);
+        $("#Serial_Number_reg").val(fruits[5]);
+        $("#Lokasi_Alat_reg").val(fruits[6]);
+        $("#Type_Alat_reg").val(fruits[4]);
+    });
+
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner_teknisi.start(cameras[1]);
+        } else {
+            console.error("Please enable Camera!");
+        }
+    });
+  </script>
+@endpush
