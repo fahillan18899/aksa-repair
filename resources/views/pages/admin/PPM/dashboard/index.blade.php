@@ -521,6 +521,7 @@
                     setTokenSentToServer(true);
                     const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
                     subscribeTokenToTopic(currentToken, userCode)
+                    alert("Notifikasi Di Aktifkan")
                 } else {
                     setTokenSentToServer(false);
                 }
@@ -542,6 +543,7 @@
         throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
       }
       console.log('Subscribed to ' + topic);
+      alert("Notifikasi Di Aktifkan")
     }).catch(error => {
       console.error("error");
     })
