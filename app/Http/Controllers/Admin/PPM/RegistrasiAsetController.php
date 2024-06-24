@@ -9,6 +9,8 @@ use App\Models\Alat;
 use App\Models\LembarPemeliharaan;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
+use App\Models\TambahJenisAlat;
+use App\Models\TambahDistributor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -64,10 +66,14 @@ class RegistrasiAsetController extends Controller
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $jenis = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $distribut = TambahDistributor::all();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
             'alats' => $alats,
+            'jenis' => $jenis,
+            'distribut' => $distribut
         ]);
     }
 
@@ -284,5 +290,11 @@ class RegistrasiAsetController extends Controller
         $path = storage_path('app/public/' . $file);
 
         return response()->download($path);
+    }
+
+    public function getDistributor($id)
+    {
+      $distributor = TambahDistributor::where("nama_distributor_p", $id)->get();
+      return json_encode($distributor);
     }
 }

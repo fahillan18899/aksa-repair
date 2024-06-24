@@ -55,8 +55,8 @@
                 <th>Merek</th>
                 <th class="none">Type</th>
                 <th class="none">Gambar</th>
-                <th class="none">Serial Number</th>
-                <th class="none">Ruangan</th>
+                <th>Serial Number</th>
+                <th>Ruangan</th>
                 <th class="none">Tanggal_Kalibrasi</th>
                 <th class="none">Distributor</th>
                 <th class="none">Alamat_Distributor</th>
@@ -196,8 +196,9 @@
             {
               data: 0,
               render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-outline-primary\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i> print</button></a>
+                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i></button></a>
                 <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
+                <a href=\"/dashboard/ppm/data_inventaris/detail/${data}\""  target=\"_blank\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Detail\" class=\"btn btn-success btn-sm\"> <i class=\"fa fa-eye\"></i> </a>
                 <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
                             @csrf
                             @method('delete')

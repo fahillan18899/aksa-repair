@@ -61,7 +61,7 @@
           <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b><b>RS' . $item .  $i . '</b></b></p>
          </div>';
   }
-
+  
 
   $row_counter = 1;
 

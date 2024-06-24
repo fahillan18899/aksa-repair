@@ -35,6 +35,9 @@ use App\Http\Controllers\Admin\PPM\AlatTerkalibrasiController;
 use App\Http\Controllers\Admin\PPM\AlatKorektifController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
+use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
+use App\Http\Controllers\Admin\PPM\TambahDistributorController;
+use App\Http\Controllers\Admin\PPM\PesananController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -96,6 +99,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('data_inventaris', DashboardController::class);
         Route::get('data_inventaris', [PPMController::class, 'dataInventaris']);
         Route::get('data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
+        Route::get('data_inventaris/detail/{id}', [PPMController::class, 'detailData']);
         Route::get('data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
 
         // menu pemeliharaan korektif
@@ -131,6 +135,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/aset_teregistrasi/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit']);
         Route::put('/aset_teregistrasi/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
         Route::get('/aset_teregistrasi/cetak_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'cetak']);
+        Route::delete('penghapusan_teregistrasi/{id}', [PenghapusanRegistrasiController::class, 'destroy']);
 
         // Autofill
         Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
@@ -165,6 +170,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/aset_unregistrasi/edit_penghapusan/{id}/edit', [PenghapusanUnregistrasiController::class, 'edit']);/*Tampilan Edit*/
         Route::put('/aset_unregistrasi/edit_penghapusan/{id}', [PenghapusanUnregistrasiController::class, 'update'])->name('update_penghapusan_un.update');
         Route::get('/aset_unregistrasi/cetak_penggudangan/{id}', [PenghapusanUnregistrasiController::class, 'cetak']);/*fungsi print*/
+        Route::delete('penghapusan_unregistrasi/{id}', [PenghapusanUnregistrasiController::class, 'destroy']);
 
         // menu pemeliharaan preventive
         Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index']);
@@ -198,6 +204,17 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Data Alat Korektif
         Route::resource('data_alat_korektif', AlatKorektifController::class);
+
+        // Tambah Jenis Alat
+        Route::resource('/tambah_jenis_alat', TambahJenisAlatController::class);
+
+        // Tambah Distributor
+        Route::resource('/tambah_distributor', TambahDistributorController::class);
+        Route::get('/getDistributor/{id}', [RegistrasiAsetController::class, 'getDistributor']);
+
+        // Request Perbaikan
+         Route::resource('/pesanan', PesananController::class);
+         Route::get('/getPesanan/{id}', [PesananController::class, 'getPesanan']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');

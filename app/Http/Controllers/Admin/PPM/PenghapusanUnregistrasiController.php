@@ -111,4 +111,12 @@ class PenghapusanUnregistrasiController extends Controller
 
         return view('pages.admin.PPM.aset_unregistrasi.cetak_penggudangan', compact('item'));
     }
+
+    public function destroy($id)
+    {
+        $item = PenghapusanUnregistrasi::where('id_perbaikan_un', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+        return redirect('/dashboard/ppm/aset_unregistrasi')->with('success', 'Data Berhasil Di Hapus.');
+    }
 }
