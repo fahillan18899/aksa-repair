@@ -161,13 +161,13 @@
 
 <script>
     const firebaseConfig = {
-        apiKey: "{{ app.config('API_KEY') }}",
-        authDomain: "{{ app.config('AUTH_DOMAIN') }}",
-        projectId: "{{ app.config('PROJECT_ID') }}",
-        storageBucket: "{{ app.config('STORAGE_BUCKET') }}",
-        messagingSenderId: "{{ app.config('MESSAGE_SENDER_ID') }}",
-        appId: "{{ app.config('APP_ID') }}",
-        measurementId: "{{ app.config('MEASUREMENT_ID') }}"
+        apiKey: "{{ config('app.API_KEY') }}",
+        authDomain: "{{ config('app.AUTH_DOMAIN') }}",
+        projectId: "{{ config('app.PROJECT_ID') }}",
+        storageBucket: "{{ config('app.STORAGE_BUCKET') }}",
+        messagingSenderId: "{{ config('app.MESSAGE_SENDER_ID') }}",
+        appId: "{{ config('app.APP_ID') }}",
+        measurementId: "{{ config('app.MEASUREMENT_ID') }}"
     };
 
     firebase.initializeApp(firebaseConfig);
