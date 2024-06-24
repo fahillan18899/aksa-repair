@@ -1,117 +1,107 @@
 @extends('layouts.admin')
 @section('title', 'Cetak Penghapusan Un')
+@push('addon-style')
+    <style>
+        .td-custom {
+            padding: 5px 0 5px 80px;
+            text-align: left;
+            border-color: #b8b4b4;
+        }
+    </style>
+@endpush
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
   <div class="content">
-    <!-- demo mode enable alert -->
-    <div id="demoModeEnable"></div>
-    <!-- alert message -->
-
-
-
-
-    <!-- content -->
     <div class="row justify-content-center mt-5">
-      <div class="col-sm-12" id="PrintMe">
+      <div class="col-sm-12" >
         <div class="panel panel-default thumbnail">
+          <div class="card" id="PrintMe">
+            <div class="align-center mt-5">
+              <img src="{{ url('assets/kop-surat/kop_surat_demo.png') }}" alt="Kop Surat" width="100%">
+            </div>
+            <div class="card-body">
 
-          <div class="panel-heading no-print">
-            <div class="btn-group">
+              <table width="84%" border="1px dot yellow" cellspacing="10" style="margin: 5% 0 0 8%">
+                <tbody>
+                  <tr>
+                    <th width="50%"><br><br></th>
+                    <th width="50%"><br><br></th>
+                  </tr>
+                  <tr>
+                    <th width="7%" colspan="2">
+                      <h3 class="text-center ">REPORT FORM PENGGUDANGAN UNREGISTRASI</h3>
+                    </th>
+                    <th width="7%" colspan="2">
+                    </th>
+                  </tr>
+                  <tr>
+                    <th width="50%"><br><br></th>
+                    <th width="50%"><br><br></th>
+                  </tr>
+
+                  <tr>
+                    <td class="td-custom" width="50%">Id Perbaikan</td>
+                    <td class="td-custom"><?php echo $item ['id_perbaikan_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Tanggal Perbaikan</td>
+                    <td class="td-custom"><?php echo $item ['tanggal_perbaikan_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Tanggal Penggudangan</td>
+                    <td class="td-custom"><?php echo $item ['tanggal_penggudangan_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Nama Alat</td>
+                    <td class="td-custom"><?php echo $item ['nama_alat_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Merek Alat</td>
+                    <td class="td-custom"><?php echo $item ['merek_alat_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Type Alat</td>
+                    <td class="td-custom"><?php echo $item ['type_alat_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Serial Number t</td>
+                    <td class="td-custom"><?php echo $item ['serial_number_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Lokasi Alat </td>
+                    <td class="td-custom"><?php echo $item ['lokasi_alat_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Waktu Pelaporan</td>
+                    <td class="td-custom"> <?php date_default_timezone_set('Asia/Jakarta');
+                          echo date('h:i:s a'); ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%">Keterangan_Penggudangan</td>
+                    <td class="td-custom"><?php echo $item ['keterangan_penggudangan_un'] ?></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="50%"><br></td>
+                    <td class="td-custom" width="50%"><br></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="25%">Teknisi 1</td>
+                    <td class="td-custom" width="25%">Kepala Ruangan</td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
+                    <td class="td-custom" width="25%"><br><br><br><br></td>
+                  </tr>
+                  <tr>
+                    <td class="td-custom"><?php echo $item ['teknisi_1_un'] ?></td>
+                    <td class="td-custom"><?php echo $item ['ka_instalasi_un'] ?></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-
-
-          <div class="col-md-12">
-            <div class="card">
-              <div class="align-center mt-5">
-
-                <img src="http://127.0.0.1:8000/assets/images/kop.png" alt="Kop Surat" width="100%">
-              </div>
-              <div class="card-body">
-
-                <table width="100%" class=" table text-center" border="0">
-                  <tbody>
-                    <tr>
-                      <th width="50%"><br><br></th>
-                      <th width="50%"><br><br></th>
-                    </tr>
-                    <tr>
-                      <th width="7%" colspan="2">
-                        <h3 class="text-center ">REPORT FORM PENGGUDANGAN UNREGISTRASI</h3>
-                      </th>
-                      <th width="7%" colspan="2">
-                      </th>
-                    </tr>
-                    <tr>
-                      <th width="50%"><br><br></th>
-                      <th width="50%"><br><br></th>
-                    </tr>
-
-                    <tr>
-                      <th width="50%">Id Perbaikan</th>
-                      <td><?php echo $item ['id_perbaikan_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Tanggal Perbaikan</th>
-                      <td><?php echo $item ['tanggal_perbaikan_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Tanggal Penggudangan</th>
-                      <td><?php echo $item ['tanggal_penggudangan_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Nama Alat</th>
-                      <td><?php echo $item ['nama_alat_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Merek Alat</th>
-                      <td><?php echo $item ['merek_alat_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Type Alat</th>
-                      <td><?php echo $item ['type_alat_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Serial Number t</th>
-                      <td><?php echo $item ['serial_number_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Lokasi Alat </th>
-                      <td><?php echo $item ['lokasi_alat_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Waktu Pelaporan</th>
-                      <td> <?php date_default_timezone_set('Asia/Jakarta');
-                            echo date('h:i:s a'); ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%">Keterangan_Penggudangan</th>
-                      <td><?php echo $item ['keterangan_penggudangan_un'] ?></td>
-                    </tr>
-                    <tr>
-                      <th width="50%"><br></th>
-                      <th width="50%"><br></th>
-                    </tr>
-                    <tr>
-                      <th width="25%">Teknisi 1</th>
-                      <th width="25%">Kepala Ruangan</th>
-                    </tr>
-                    <tr>
-                      <th width="25%"><br><br><br><br></th>
-                      <th width="25%"><br><br><br><br></th>
-                    </tr>
-                    <tr>
-                      <td><?php echo $item ['teknisi_1_un'] ?></td>
-                      <td><?php echo $item ['ka_instalasi_un'] ?></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
           <div class="panel-footer no-print text-center">
             <div class="btn-group">
               <button type="button" onclick="printContent('PrintMe')" class="btn btn-danger"><i class="fa fa-print"></i> Print</button>

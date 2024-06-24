@@ -215,7 +215,48 @@
           ],
         });
       })
+      
     </script>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection
+
+@push('addon-script')
+<script>
+  document.addEventListener('click', function(event) {
+    const selectedText = window.getSelection().toString();
+    
+    if (selectedText.length === 0) {
+        const clickedText = event.target.innerText.trim();
+        
+        if (clickedText.length > 0) {
+            const tempInput = document.createElement('input');
+            tempInput.style = 'position: absolute; left: -1000px; top: -1000px';
+            tempInput.value = clickedText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Menampilkan tooltip
+            const tooltip = document.createElement('div');
+            tooltip.textContent = 'Teks berhasil disalin: ' + clickedText;
+            tooltip.style.position = 'absolute';
+            tooltip.style.top = event.clientY + 'px';
+            tooltip.style.left = event.clientX + 'px';
+            tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+            tooltip.style.color = '#fff';
+            tooltip.style.padding = '5px 10px';
+            tooltip.style.borderRadius = '5px';
+            tooltip.style.zIndex = '9999';
+            document.body.appendChild(tooltip);
+            
+            // Menghilangkan tooltip setelah beberapa detik
+            setTimeout(() => {
+                document.body.removeChild(tooltip);
+            }, 2000);
+        }
+      }
+  });
+</script>
+@endpush
