@@ -1305,7 +1305,6 @@
 @endsection
 
 @push('addon-script')
-<script src="{{ url('assets_web/js/autofill.js') }}"></script>
 <script>
   function autofill() {
   let idars = $("#id_aset_reg").val();

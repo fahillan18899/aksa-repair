@@ -38,7 +38,6 @@
 <!-- jstree view -->
 <script src="{{ url('assets/vakata-jstree/dist/jstree.min.js') }}"></script>
 <script src="{{ url('assets/js/instascan.min.js') }}"></script>
-<script src="{{ url('assets_web/js/autofill.js') }}"></script>
 <script>
 $('#scollDatatable').DataTable({
   scrollX: true
