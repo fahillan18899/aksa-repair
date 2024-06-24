@@ -85,12 +85,13 @@
                   </div>
                   
                   <div class="form-group row">
-                    <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i></label>
+                    <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i><a href="{{ url('/dashboard/ppm/tambah_jenis_alat') }}" class="btn btn-sm btn-outline btn-success" style="margin-left:10px;" data-toggle="tooltip" data-placement="top" title="Tambah Jenis Alat"><i class="fa fa-plus-square" aria-hidden="true"></i></a></label>
                     <div class="col-xs-9">
                       <select name="jenis_alat" class="form-control" id="Jenis_Alat">
-                        <option value="Medis">Medis</option>
-                        <option value="Non Medis">Non Medis</option>
-                        <option value="Milik KSO">Milik KSO</option>
+                        <option>Pilih Jenis Alat</option>
+                        @foreach($jenis as $jenis)
+                        <option value="<?= $jenis['nama_jenis_alat']; ?>"><?= $jenis['nama_jenis_alat']; ?></option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -165,44 +166,50 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Distributor" class="col-xs-3 col-form-label">Distributor </label>
+                    <label for="Distributor" class="col-xs-3 col-form-label">Distributor <a href="{{ url('/dashboard/ppm/tambah_distributor') }}" class="btn btn-sm btn-success btn-outline" style="margin-left:10px"><i class="fa fa-plus-square" aria-hidden="true"></i></a></label>
                     <div class="col-xs-9">
-                      <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor">
+                      <!-- <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor"> -->
+                      <select name="distributor" class="form-control" id="distributor">
+                        <option>Pilih Distributor</option>
+                        @foreach($distribut as $distribut)
+                        <option value="<?= $distribut['nama_distributor_p']; ?>"><?= $distribut['nama_distributor_p']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="alamat_distributor" class="col-xs-3 col-form-label">Alamat Distributor </label>
                     <div class="col-xs-9">
-                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor">
+                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_Distributor" class="col-xs-3 col-form-label">Telphone_Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor">
+                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Email_Distributor" class="col-xs-3 col-form-label">Email Distributor </label>
                     <div class="col-xs-9">
-                      <input name="email_distributor" type="email" class="form-control" id="Email_Distributor" placeholder="Email Distributor">
+                      <input name="email_distributor" type="email" class="form-control" id="Email_Distributor" placeholder="Email Distributor" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_Distributor" class="col-xs-3 col-form-label">Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor">
+                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_T_Distributor" class="col-xs-3 col-form-label">Telephone Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor">
+                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor" readonly>
                     </div>
                   </div>
 
@@ -465,7 +472,41 @@
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $('select[name="distributor"]').on('change', function(){
+    var stateID = $(this).val();
+    console.log(stateID);
+    if (stateID) {
+      $.ajax({
+        url: '/dashboard/ppm/getDistributor/' + stateID,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          console.log(data);
+          $.each(data, function(key, value){
+            $('input[id="Alamat_Distributor"]').val(value.alamat_distributor_p);
+            $('input[id="TLP_Distributor"]').val(value.telphone_distributor_p);
+            $('input[id="Email_Distributor"]').val(value.email_distributor_p);
+            $('input[id="Teknisi_Distributor"]').val(value.teknisi_distributor_p);
+            $('input[id="TLP_T_Distributor"]').val(value.telphone_teknisi_dis_p);
+          });
+              }
+            });
+    } else {
+            $('input[id="Alamat_Distributor"]').empty();
+            $('input[id="TLP_Distributor"]').empty();
+            $('input[id="Email_Distributor"]').empty();
+            $('input[id="Teknisi_Distributor"]').empty();
+            $('input[id="TLP_T_Distributor"]').empty();
+          }
+  })
+});
+</script>
+
+<script type="text/javascript">
   let inputAKL = document.querySelector('#AKL');
   let inputAKD = document.querySelector('#AKD');
 
