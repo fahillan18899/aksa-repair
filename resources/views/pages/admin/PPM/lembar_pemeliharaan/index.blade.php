@@ -770,9 +770,11 @@
                                     <td class="table-info" colspan="6" align="center"><b>Data_Alat</b></td>
                                     <td class="table-success" colspan="7" align="center"><b>Persiapan</b></td>
                                     <td class="table-active" colspan="36" align="center">
-                                        <b>pemantauan_fisik_&_fungsi</b></td>
+                                        <b>pemantauan_fisik_&_fungsi</b>
+                                    </td>
                                     <td class="table-danger" colspan="5" align="center">
-                                        <b>pemeliharaan_preventife</b></td>
+                                        <b>pemeliharaan_preventife</b>
+                                    </td>
                                     <td class="table-info" rowspan="3" align="center"><b>tindakan</b></td>
                                     <td class="table-warning" colspan="4" align="center"><b>Suku_Cadang</b></td>
                                     <td class="table-primary" rowspan="3"><b>Evaluasi_Dan_Rekomendasi</b></td>
@@ -803,7 +805,8 @@
                                     <td class="table-success" rowspan="2"><b>Idntifikasi_Bahaya</b></td>
                                     <td class="table-dark" colspan="4" align="center"><b>Badan/Selungkup</b></td>
                                     <td class="table-dark" colspan="4" align="center">
-                                        <b>Alarm_&_Sistem_Interlock</b></td>
+                                        <b>Alarm_&_Sistem_Interlock</b>
+                                    </td>
                                     <td class="table-dark" colspan="4" align="center"><b>Kabel_&_Kelenturannya</b>
                                     </td>
                                     <td class="table-dark" colspan="4" align="center"><b>Sistem_Pengunci</b></td>
@@ -963,6 +966,28 @@
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
     <script>
+        function autofillPemelihara() {
+            let idars = $("#id_ase1t").val();
+            $.ajax({
+                url: '{{ url('/dashboard/ppm/autofill/') }}/' + idars,
+                method: 'GET', // HTTP method (e.g., GET, POST)
+                data: {
+                    idars: idars
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $("#nama_alat1").val(data.nama_alat_reg);
+                    $("#merek1").val(data.merek_alat_reg);
+                    $("#serial_number1").val(data.serial_number_reg);
+                    $("#tipe1").val(data.type);
+                    $("#ruangan1").val(data.lokasi_alat_reg);
+
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
         let scanner_teknisi = new Instascan.Scanner({
             video: document.getElementById('preview_lembar_admin'),
             mirror: false
