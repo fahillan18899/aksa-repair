@@ -52,8 +52,8 @@
                      <label for="id" class="col-xs-3 col-form-label">Id Aset<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
                       <select name="id" class="form-control" id="id">
+                      <option>Pilih Id Aset</option>
                         @foreach($dataInv as $dataInv)
-                        <option>Pilih Distributor</option>
                         <option value="<?= $dataInv['id_aset']; ?>"><?= $dataInv['id_aset']; ?></option>
                         @endforeach
                       </select>
@@ -62,37 +62,37 @@
                    <div class="form-group row">
                      <label for="nama_req" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="nama_req" type="text" class="form-control" id="nama_req" placeholder="Nama Alat" value="">
+                       <input name="nama_req" type="text" class="form-control" id="nama_req" placeholder="Nama Alat" value="" readonly>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="merek_req" class="col-xs-3 col-form-label">Merek Alat <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="merek_req" type="text" class="form-control" id="merek_req" placeholder="Merek Alat" value="">
+                       <input name="merek_req" type="text" class="form-control" id="merek_req" placeholder="Merek Alat" value="" readonly>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="type_req" class="col-xs-3 col-form-label">Type Alat <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="type_req" type="text" class="form-control" id="type_req" placeholder="Type Alat" value="">
+                       <input name="type_req" type="text" class="form-control" id="type_req" placeholder="Type Alat" value="" readonly>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="sn_req" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="sn_req" type="text" class="form-control" id="sn_req" placeholder="Serial Number" value="">
+                       <input name="sn_req" type="text" class="form-control" id="sn_req" placeholder="Serial Number" value="" readonly>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="pelapor_req" class="col-xs-3 col-form-label">Pelapor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="pelapor_req" type="text" class="form-control" id="pelapor_req" placeholder="Pelapor" value="">
+                       <input name="pelapor_req" type="text" class="form-control" id="pelapor_req" placeholder="Pelapor" value="{{ Auth::user()->username }}" readonly>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="tanggal_req" class="col-xs-3 col-form-label">Tanggal <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php echo date(now()) ?>">
+                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php echo date(now()) ?>" readonly>
                      </div>
                    </div>
 
