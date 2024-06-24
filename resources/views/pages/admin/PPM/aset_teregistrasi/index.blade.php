@@ -1227,6 +1227,27 @@
 
 @push('addon-script')
   <script>
+    function autofill() {
+    let idars = $("#id_aset_reg").val();
+
+
+    $.ajax({
+      url: '{{ url("/dashboard/ppm/autofill/") }}/' + idars,
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        $("#Nama_Alat_reg").val(data.nama_alat_reg);
+        $("#Merek_Alat_reg").val(data.merek_alat_reg);
+        $("#Serial_Number_reg").val(data.serial_number_reg);
+        $("#Lokasi_Alat_reg").val(data.lokasi_alat_reg);
+        $("#Type_Alat_reg").val(data.type);
+      },
+      error: function(xhr, status, error) {
+        console.log(xhr.responseText);
+      }
+    });
+  }
+
     let scanner_teknisi = new Instascan.Scanner({
         video: document.getElementById('preview_admin'),
         mirror: false

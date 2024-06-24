@@ -189,6 +189,7 @@
                     setTokenSentToServer(true);
                     const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
                     subscribeTokenToTopic(currentToken, userCode)
+                    alert("Notifikasi Di Aktifkan")
                 } else {
                     setTokenSentToServer(false);
                 }
