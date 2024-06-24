@@ -55,6 +55,24 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    
+    'api_key'=> env('API_KEY', 'AIzaSyA0md7L4kCUzhja7dnAxpiYN_KzVfZl0o8'),
+    'auth_domain' => env('AUTH_DOMAIN', 'wyasa-notif.firebaseapp.com'),
+    'project_id' => env('PROJECT_ID', 'wyasa-notif'),
+    'storage_bucket' => env('STORAGE_BUCKET', 'wyasa-notif.appspot.com'),
+    'message_sender_id' => env('MESSAGE_SENDER_ID', '458907715979'),
+    'app_id' => env('APP_ID', '1:458907715979:web:f718256ae1736fddaa078e'),
+    'measurement_id' => env('MEASUREMENT_ID', 'G-3S820797YB'),
+
+    'simrs_api_key' => env('SIMRS_API_KEY', 'AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY'),
+    'simrs_auth_domain' => env('SIMRS_AUTH_DOMAIN', 'wyasa-simrs-notification.firebaseapp.com'),
+    'simrs_project_id' => env('SIMRS_PROJECT_ID', 'wyasa-simrs-notification'),
+    'simrs_storage_bucket' => env('SIMRS_STORAGE_BUCKET', 'wyasa-simrs-notification.appspot.com'),
+    'simrs_message_sender_id' => env('SIMRS_MESSAGE_SENDER_ID', '1011976405810'),
+    'simrs_app_id' => env('SIMRS_APP_ID', '1:1011976405810:web:25247a63f17c7dac88cd2b'),
+    'simrs_measurement_id' => env('SIMRS_MEASUREMENT_ID', 'G-HL1GLJM4SW'),
+    'simrs_fcm_key' => env('SIMRS_FCM_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl'),
+
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -199,23 +217,5 @@ return [
         'Clockwork' => Clockwork\Support\Laravel\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ])->toArray(),
-
-    
-'api_key'=> env('API_KEY', 'AIzaSyA0md7L4kCUzhja7dnAxpiYN_KzVfZl0o8'),
-'auth_domain' => env('AUTH_DOMAIN', 'wyasa-notif.firebaseapp.com'),
-'project_id' => env('PROJECT_ID', 'wyasa-notif'),
-'storage_bucket' => env('STORAGE_BUCKET', 'wyasa-notif.appspot.com'),
-'message_sender_id' => env('MESSAGE_SENDER_ID', '458907715979'),
-'app_id' => env('APP_ID', '1:458907715979:web:f718256ae1736fddaa078e'),
-'measurement_id' => env('MEASUREMENT_ID', 'G-3S820797YB'),
-
-'simrs_api_key' => env('SIMRS_API_KEY', 'AIzaSyBm2XN6ywRUb408SuoN960m-Or3-FzRAAY'),
-'simrs_auth_domain' => env('SIMRS_AUTH_DOMAIN', 'wyasa-simrs-notification.firebaseapp.com'),
-'simrs_project_id' => env('SIMRS_PROJECT_ID', 'wyasa-simrs-notification'),
-'simrs_storage_bucket' => env('SIMRS_STORAGE_BUCKET', 'wyasa-simrs-notification.appspot.com'),
-'simrs_message_sender_id' => env('SIMRS_MESSAGE_SENDER_ID', '1011976405810'),
-'simrs_app_id' => env('SIMRS_APP_ID', '1:1011976405810:web:25247a63f17c7dac88cd2b'),
-'simrs_measurement_id' => env('SIMRS_MEASUREMENT_ID', 'G-HL1GLJM4SW'),
-'simrs_fcm_key' => env('SIMRS_FCM_KEY', 'AAAA655-gzI:APA91bGRVjsxkopYiQp_v1nQjASeYsyjBEhXKRkRC766APSytX9Evc6d5Noz1seTF3irwqi5rzbIDE2utWgld_Yr3Or1IZI67WPurKfvU9epaoaZg8v0fDspsXu5HicWWdJjVvf-YPAl'),
 
 ];
