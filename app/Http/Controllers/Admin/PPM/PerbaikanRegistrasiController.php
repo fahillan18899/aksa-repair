@@ -30,7 +30,7 @@ class PerbaikanRegistrasiController extends Controller
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->get();
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_registrasis')
@@ -48,6 +48,7 @@ class PerbaikanRegistrasiController extends Controller
             'result_pengiriman' => $result_pengiriman,
             'kode_aset' => $kode_aset,
             'teknisis' => $teknisis,
+            'itemPesanan' => $itemPesanan,
 
         ]);
     }
@@ -112,7 +113,7 @@ class PerbaikanRegistrasiController extends Controller
     public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
-            'id_perbaikan_reg' => 'unique:perbaikan_registrasis',
+            'id_perbaikan_reg' => '',
             'id_aset_reg' => '',
             'tanggal_perbaikan_reg' => '',
             'nama_alat_reg' => '',
@@ -133,6 +134,7 @@ class PerbaikanRegistrasiController extends Controller
 
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
         $perbaikanRegistrasi->update($request->post());
+
 
         return redirect()->route('aset_teregistrasi.index')
             ->with('success', 'Data Berhasil Ubah.');

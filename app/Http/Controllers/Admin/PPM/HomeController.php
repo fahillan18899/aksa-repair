@@ -38,8 +38,10 @@ class HomeController extends Controller
         $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $registrasiKalBar = Registrasi::where('kode_rs', Auth::user()->kode_rs)->whereNotNull('tanggal_kalibrasi')->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
+        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
+        $dataKalibrasi = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view(
             'pages.admin.PPM.dashboard.index',
@@ -47,8 +49,10 @@ class HomeController extends Controller
                 'registrasi' => $registrasi,
                 'registrasiKalBar' => $registrasiKalBar,
                 'perbaikanRegistrasi' => $perbaikanRegistrasi,
+                'dataPerbaikan' => $dataPerbaikan,
                 'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
                 'lembarPemeliharaan' => $lembarPemeliharaan,
+                'dataKalibrasi' => $dataKalibrasi,
             ]
         );
     }
@@ -79,6 +83,19 @@ class HomeController extends Controller
         $item = Registrasi::all();
 
         return view('pages.admin.PPM.analisis_data.index', compact('item'));
+    }
+
+    public function detailData($id)
+    {
+
+        $itemData = Registrasi::where('id_aset', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $itemKerusakan = PerbaikanRegistrasi::where('id_aset_reg', $id)->count();
+
+        return view('pages.admin.PPM.data_inventaris.detail', [
+            
+            'itemData' => $itemData,
+            'itemKerusakan' => $itemKerusakan
+        ]);
     }
 
     public function autofill($idars)
@@ -140,4 +157,6 @@ class HomeController extends Controller
             'keluhan_dari_alat_un' => $data->keluhan_dari_alat_un,
         ]);
     }
+
+    
 }
