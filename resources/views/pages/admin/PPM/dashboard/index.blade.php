@@ -492,13 +492,13 @@
 
 <script>
   const firebaseConfig = {
-    apiKey: "{{ env('API_KEY') }}",
-    authDomain: "{{ env('AUTH_DOMAIN') }}",
-    projectId: "{{ env('PROJECT_ID') }}",
-    storageBucket: "{{ env('STORAGE_BUCKET') }}",
-    messagingSenderId: "{{ env('MESSAGE_SENDER_ID') }}",
-    appId: "{{ env('APP_ID') }}",
-    measurementId: "{{ env('MEASUREMENT_ID') }}"
+    apiKey: "{{ app.config('API_KEY') }}",
+    authDomain: "{{ app.config('AUTH_DOMAIN') }}",
+    projectId: "{{ app.config('PROJECT_ID') }}",
+    storageBucket: "{{ app.config('STORAGE_BUCKET') }}",
+    messagingSenderId: "{{ app.config('MESSAGE_SENDER_ID') }}",
+    appId: "{{ app.config('APP_ID') }}",
+    measurementId: "{{ app.config('MEASUREMENT_ID') }}"
   };
 
   firebase.initializeApp(firebaseConfig);

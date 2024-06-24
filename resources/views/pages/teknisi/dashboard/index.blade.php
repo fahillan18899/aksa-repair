@@ -242,3 +242,74 @@
   <!-- /.content -->
 </div>
 @endsection
+
+@push('addon-script')
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "{{ app.config('API_KEY') }}",
+        authDomain: "{{ app.config('AUTH_DOMAIN') }}",
+        projectId: "{{ app.config('PROJECT_ID') }}",
+        storageBucket: "{{ app.config('STORAGE_BUCKET') }}",
+        messagingSenderId: "{{ app.config('MESSAGE_SENDER_ID') }}",
+        appId: "{{ app.config('APP_ID') }}",
+        measurementId: "{{ app.config('MEASUREMENT_ID') }}"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+        .then(function() {
+            getRegToken();
+        })
+        .catch(function(err) {
+            console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.');
+        });
+
+    function getRegToken() {
+        messaging.getToken()
+            .then(function(currentToken) {
+                console.log(currentToken)
+                if (currentToken) {
+                    setTokenSentToServer(true);
+                    const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
+                    subscribeTokenToTopic(currentToken, userCode)
+                    alert("Notifikasi Di Aktifkan")
+                } else {
+                    setTokenSentToServer(false);
+                }
+            })
+            .catch(function(err) {
+                console.log('Terjadi kesalahan saat mengambil token.');
+                setTokenSentToServer(false);
+            });
+    }
+
+    function subscribeTokenToTopic(token, topic) {
+        fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
+            method: 'POST',
+            headers: new Headers({
+                'Authorization': 'key=AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
+            })
+        }).then(response => {
+            if (response.status < 200 || response.status >= 400) {
+                throw 'Error subscribing to topic: ' + response.status + ' - ';
+            }
+            console.log('Subscribed to ' + topic);
+        }).catch(error => {
+            console.error("error");
+        })
+    }
+
+    function setTokenSentToServer(sent) {
+        window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+    }
+
+    function isTokenSentToServer() {
+        return window.localStorage.getItem('sentToServer') == 1;
+    }
+</script>
+@endpush
