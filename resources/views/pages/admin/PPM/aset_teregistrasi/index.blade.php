@@ -1562,6 +1562,8 @@
 
 @push('addon-script')
 <script>
+    let idars = $("#id_aset_reg").val();
+
     function autofill() {
         let idars = $("#id_aset_reg").val();
 

@@ -22,52 +22,7 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default thumbnail">
-
-                    <div class="panel-heading no-print">
-                        <div class="">
-                            <h1>Tabel Inventaris</h1>
-                        </div>
-                    </div>
-
-                    <div class="panel-body panel-form">
-                        <table id="table-register" class="datatable table table-striped table-bordered"
-                            style="width:100%">
-                            <thead class="table-light">
-                                <th>Id Aset</th>
-                                <th>Jenis</th>
-                                <th>Nama</th>
-                                <th>Merek</th>
-                                <th class="none">Type</th>
-                                <th class="none">Gambar</th>
-                                <th class="none">Serial Number</th>
-                                <th class="none">Ruangan</th>
-                                <th class="none">Tanggal_Kalibrasi</th>
-                                <th class="none">Distributor</th>
-                                <th class="none">Alamat_Distributor</th>
-                                <th class="none">TLP_Distributor</th>
-                                <th class="none">Email_Distributor</th>
-                                <th class="none">Teknisi_Distributor</th>
-                                <th class="none">TLP_T_Distributor</th>
-                                <th class="none">No_Sertifikat_Kalibrasi</th>
-                                <th class="none">Teknisi PPM</th>
-                                <th class="none">Harga Perolehan</th>
-                                <th class="none">Sumber_Dana</th>
-                                <th class="none">Tahun_Perolehan</th>
-                                <th class="none">AKL</th>
-                                <th class="none">AKD</th>
-                                <th class="none">No_Inventaris </th>
-                                <th class="none">umur_alat</th>
-                                <th class="none">Jadwal</th>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="col-sm-3">
                 <div class="panel panel-default thumbnail">
@@ -88,7 +43,77 @@
                 </div>
             </div>
         </div>
+        <!---->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default thumbnail">
 
+                    <div class="panel-heading no-print">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h2>Tabel Permintaan Perbaikan</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body panel-form">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <!--TABEL-->
+                                <table class="datatable table table-striped table-bordered" style="width:100%">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Id Aset</th>
+                                            <th scope="col">Nama Alat</th>
+                                            <th scope="col">Merek Alat</th>
+                                            <th scope="col">Type Alat</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Pelapor</th>
+                                            <th scope="col">Tanggal</th>
+                                            <th scope="col">Tombol_Aksi_Table</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($itemPesanan as $index => $item)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $item->id }}</td>
+                                                <td>{{ $item->nama_req }}</td>
+                                                <td>{{ $item->merek_req }}</td>
+                                                <td>{{ $item->type_req }}</td>
+                                                <td>{{ $item->sn_req }}</td>
+                                                <td>{{ $item->pelapor_req }}</td>
+                                                <td>{{ $item->tanggal_req }}</td>
+                                                <td>
+                                                    <form action="{{ route('pesanan.destroy', $item->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-danger btn-xs" data-toggle="tooltip"
+                                                            data-placement="top" title="Validasi">
+                                                            Validasi Perbaikan
+                                                        </button>
+                                                </td>
+                                                </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="7">Data Kosong</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <!--TABEL-->
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default thumbnail">
@@ -384,124 +409,6 @@
         </div>
     </div>
 </div>
-<!--TABEL-->
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#table-register').DataTable({
-            processing: true,
-            responsive: true,
-            serverSide: true,
-            ajax: '{{ url('/dashboard_teknisi/aset') }}',
-            columns: [{
-                    data: 0,
-                    name: 'Id_Aset',
-                    orderable: true,
-                    searchable: true
-                },
-                {
-                    data: 1,
-                    name: 'Jenis_Alat'
-                },
-                {
-                    data: 2,
-                    name: 'Nama_Alat'
-                },
-                {
-                    data: 3,
-                    name: 'Merek'
-                },
-                {
-                    data: 4,
-                    name: 'Type'
-                },
-                {
-                    data: 5,
-                    name: 'Gambar',
-                    render: function(data, type, full, meta) {
-                        return "<img src=\"/storage/" + data +
-                            "\" width=\"100\"  alt='No Image'>"
-                    }
-                },
-                {
-                    data: 6,
-                    name: 'Serial_Number'
-                },
-                {
-                    data: 7,
-                    name: 'lokasi_alat'
-                },
-                {
-                    data: 8,
-                    name: 'Tanggal_Kalibrasi'
-                },
-                {
-                    data: 9,
-                    name: 'Distributor'
-                },
-                {
-                    data: 10,
-                    name: 'Alamat_Distributor'
-                },
-                {
-                    data: 11,
-                    name: 'TLP_Distributor'
-                },
-                {
-                    data: 12,
-                    name: 'Email_Distributor'
-                },
-                {
-                    data: 13,
-                    name: 'Teknisi_Distributor'
-                },
-                {
-                    data: 14,
-                    name: 'TLP_T_Distributor'
-                },
-                {
-                    data: 15,
-                    name: 'No_Sertifikat_Kalibrasi'
-                },
-                {
-                    data: 16,
-                    name: 'teknisi_ppm'
-                },
-                {
-                    data: 17,
-                    name: 'harga_perolehan'
-                },
-                {
-                    data: 18,
-                    name: 'Sumber_Dana'
-                },
-                {
-                    data: 19,
-                    name: 'Tahun_Perolehan'
-                },
-                {
-                    data: 20,
-                    name: 'AKL'
-                },
-                {
-                    data: 21,
-                    name: 'AKD'
-                },
-                {
-                    data: 22,
-                    name: 'no_inventaris_1'
-                },
-                {
-                    data: 23,
-                    name: 'umur_alat'
-                },
-                {
-                    data: 24,
-                    name: 'jadwal_pemeliharaan'
-                },
-            ],
-        });
-    })
-</script>
 @endsection
 
 @push('addon-script')
