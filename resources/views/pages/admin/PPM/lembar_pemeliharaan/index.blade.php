@@ -942,7 +942,7 @@
                                         <td>
                                             <a data-toggle="tooltip" data-placement="right" title="Cetak"
                                                 href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}"
-                                                class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                                                class="btn btn-xs btn-primary" target="_blank"><i class="fa fa-print"></i></a>
                                         </td>
 
                                     </tr>

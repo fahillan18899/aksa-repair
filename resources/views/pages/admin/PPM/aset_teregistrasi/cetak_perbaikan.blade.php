@@ -19,7 +19,33 @@
         <div class="panel panel-default thumbnail">
           <div class="card" id="PrintMe">
             <div class="align-center mt-5">
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0000")
               <img src="{{ url('assets/kop-surat/kop_surat_demo.png') }}" alt="Kop Surat" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0001")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Badarudin Kasim" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0002")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Rsi Wonosobo" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0003")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Pantiwilasa" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0004")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Cilegon" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0005")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Pondok kopi" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0006")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Temangung" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0007")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Ja'far" width="100%">
+              @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0008")
+              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop PKU Muhammadiyah Wonosobo" width="100%">
+              @endif
             </div>
             <div class="card-body">
 

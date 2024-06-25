@@ -16,7 +16,7 @@ class TambahJenisAlatController extends Controller
      */
     public function index()
     {
-        $items = TambahJenisAlat::all();
+        $items = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM..tambah_jenis_alat.index', [
             'items' => $items
         ]);
