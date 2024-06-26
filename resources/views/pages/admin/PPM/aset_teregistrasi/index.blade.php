@@ -108,8 +108,7 @@
                                                             data-placement="top" title="Validasi">
                                                             Validasi Perbaikan
                                                         </button>
-                                                </td>
-                                                </form>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @empty

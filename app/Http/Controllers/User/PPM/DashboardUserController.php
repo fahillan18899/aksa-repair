@@ -25,6 +25,7 @@ class DashboardUserController extends Controller
     {
         $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
+        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
 
@@ -34,6 +35,7 @@ class DashboardUserController extends Controller
                 'perbaikanRegistrasi' => $perbaikanRegistrasi,
                 'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
                 'lembarPemeliharaan' => $lembarPemeliharaan,
+                'dataPerbaikan' => $dataPerbaikan,
             ]);
     }
 

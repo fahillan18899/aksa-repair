@@ -10,6 +10,7 @@ use App\Models\PengirimanRegistrasi;
 use App\Models\PerbaikanRegistrasi;
 use App\Models\Registrasi;
 use App\Models\Teknisi;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class PerbaikanTeregistrasiController extends Controller
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $registrasis = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
 
@@ -53,7 +54,7 @@ class PerbaikanTeregistrasiController extends Controller
             'result_pengiriman' => $result_pengiriman,
             'kode_aset' => $kode_aset,
             'teknisis' => $teknisis,
-            'registrasis' => $registrasis,
+            'itemPesanan' => $itemPesanan
 
         ]);
     }
@@ -102,6 +103,13 @@ class PerbaikanTeregistrasiController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
 
         return view('pages.user.aset_teregistrasi.qr_code', compact('item'));
+    }
+
+    public function destroy($id)
+    {
+        $item = Pesanan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item->delete();
+        return redirect('dashboard_user/perbaikan_teregistrasi')->with('success', 'Aset Telah Selesai Diperbaiki.');
     }
 
     public function sendPushNotification($title, $message, $topic, $clickActionUrl)

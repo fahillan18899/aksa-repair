@@ -27,50 +27,6 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-sm-12">
-                <div class="panel panel-default thumbnail">
-                    <div class="panel-body panel-form">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <table id="table-inventaris-user" class="datatable table table-striped table-bordered"
-                                    style="width:100%">
-                                    <thead class="table-light">
-                                        <th>Id Aset</th>
-                                        <th>Jenis</th>
-                                        <th>Nama</th>
-                                        <th>Merek</th>
-                                        <th class="none">Type</th>
-                                        <th class="none">Gambar</th>
-                                        <th class="none">Serial Number</th>
-                                        <th class="none">Ruangan</th>
-                                        <th class="none">Tanggal_Kalibrasi</th>
-                                        <th class="none">Distributor</th>
-                                        <th class="none">Alamat_Distributor</th>
-                                        <th class="none">TLP_Distributor</th>
-                                        <th class="none">Email_Distributor</th>
-                                        <th class="none">Teknisi_Distributor</th>
-                                        <th class="none">TLP_T_Distributor</th>
-                                        <th class="none">No_Sertifikat_Kalibrasi</th>
-                                        <th class="none">Teknisi PPM</th>
-                                        <th class="none">Harga Perolehan</th>
-                                        <th class="none">Sumber_Dana</th>
-                                        <th class="none">Tahun_Perolehan</th>
-                                        <th class="none">AKL</th>
-                                        <th class="none">AKD</th>
-                                        <th class="none">No_Inventaris </th>
-                                        <th class="none">umur_alat</th>
-                                        <th class="none">Jadwal</th>
-                                    </thead>
-
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-sm-3">
                 <div class="panel panel-default thumbnail">
                     <div class="panel-heading no-print">
@@ -90,7 +46,78 @@
                 </div>
             </div>
         </div>
+        <!---->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default thumbnail">
 
+                    <div class="panel-heading no-print">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h2>Tabel Permintaan Perbaikan</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body panel-form">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <!--TABEL-->
+                                <table class="datatable table table-striped table-bordered" style="width:100%">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Id Aset</th>
+                                            <th scope="col">Nama Alat</th>
+                                            <th scope="col">Merek Alat</th>
+                                            <th scope="col">Type Alat</th>
+                                            <th scope="col">Serial Number</th>
+                                            <th scope="col">Pelapor</th>
+                                            <th scope="col">Tanggal</th>
+                                            <th scope="col">Tombol_Aksi_Table</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($itemPesanan as $index => $item)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td onclick="copy(this)"><span>{{ $item->id }}<span></td>
+                                                <td>{{ $item->nama_req }}</td>
+                                                <td>{{ $item->merek_req }}</td>
+                                                <td>{{ $item->type_req }}</td>
+                                                <td>{{ $item->sn_req }}</td>
+                                                <td>{{ $item->pelapor_req }}</td>
+                                                <td>{{ $item->tanggal_req }}</td>
+                                                <td>
+                                                    <form
+                                                        action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id) }}"
+                                                        method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-xs"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="validasi">
+                                                            Validasi perbaikan
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="7">Data Kosong</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <!--TABEL-->
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default thumbnail">
@@ -187,7 +214,7 @@
                                         <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
                                         <div class="col-xs-9">
                                             <input name="pelapor_reg" type="text" class="form-control"
-                                                id="Pelapor_reg" placeholder="Pelapor">
+                                                id="Pelapor_reg" placeholder="Pelapor" value="{{ Auth::user()->username }}" readonly>
                                         </div>
                                     </div>
 
@@ -301,7 +328,7 @@
                             <h1>Tabel Perbaikan</h1>
                         </div>
                     </div>
-
+                    <div style="overflow-x:auto;">
                     <div class="panel-body panel-form">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
@@ -327,7 +354,7 @@
                                         <th class="none">Keluhan Dari alat</th>
                                         <th class="none">Korektif</th>
                                         <!--<th scope="col">Tombol Eksekusi</th>
-                    <th scope="col">Tombol Eksekusi</th>-->
+                                        <th scope="col">Tombol Eksekusi</th>-->
                                     </thead>
                                     <tbody>
                                         @forelse ($items as $index => $item)
@@ -360,11 +387,10 @@
                                                 <td><?php echo $item['keluhan_dari_alat_reg']; ?></td>
                                                 <td><?php echo $item['korektif_reg']; ?></td>
                                                 <!--<td><?php echo $item['kode_rs']; ?></td>
-                      <td>
-                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-            
-                        <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-                      </td>-->
+                                                <td>
+                                                  <a data-toggle="tooltip" data-placement="top" title="Edit" href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
+                                                  <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
+                                                </td>-->
                                             </tr>
 
                                         @empty
@@ -379,133 +405,12 @@
                             <div class="col-md-3"></div>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div> <!-- /.content -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#table-inventaris-user').DataTable({
-                processing: true,
-                responsive: true,
-                serverSide: true,
-                ajax: '{{ url('/dashboard_user/aset') }}',
-                columns: [{
-                        data: 0,
-                        name: 'Id_Aset',
-                        orderable: true,
-                        searchable: true
-                    },
-                    {
-                        data: 1,
-                        name: 'Jenis_Alat'
-                    },
-                    {
-                        data: 2,
-                        name: 'Nama_Alat'
-                    },
-                    {
-                        data: 3,
-                        name: 'Merek'
-                    },
-                    {
-                        data: 4,
-                        name: 'Type'
-                    },
-                    {
-                        data: 5,
-                        name: 'Gambar',
-                        render: function(data, type, full, meta) {
-                            return "<img src=\"/storage/" + data +
-                                "\" width=\"100\"  alt='No Image'>"
-                        }
-                    },
-                    {
-                        data: 6,
-                        name: 'Serial_Number'
-                    },
-                    {
-                        data: 7,
-                        name: 'lokasi_alat'
-                    },
-                    {
-                        data: 8,
-                        name: 'Tanggal_Kalibrasi'
-                    },
-                    {
-                        data: 9,
-                        name: 'Distributor'
-                    },
-                    {
-                        data: 10,
-                        name: 'Alamat_Distributor'
-                    },
-                    {
-                        data: 11,
-                        name: 'TLP_Distributor'
-                    },
-                    {
-                        data: 12,
-                        name: 'Email_Distributor'
-                    },
-                    {
-                        data: 13,
-                        name: 'Teknisi_Distributor'
-                    },
-                    {
-                        data: 14,
-                        name: 'TLP_T_Distributor'
-                    },
-                    {
-                        data: 15,
-                        name: 'No_Sertifikat_Kalibrasi'
-                    },
-                    {
-                        data: 16,
-                        name: 'teknisi_ppm'
-                    },
-                    {
-                        data: 17,
-                        name: 'harga_perolehan'
-                    },
-                    {
-                        data: 18,
-                        name: 'Sumber_Dana'
-                    },
-                    {
-                        data: 19,
-                        name: 'Tahun_Perolehan'
-                    },
-                    {
-                        data: 20,
-                        name: 'AKL'
-                    },
-                    {
-                        data: 21,
-                        name: 'AKD'
-                    },
-                    {
-                        data: 22,
-                        name: 'no_inventaris_1'
-                    },
-                    {
-                        data: 23,
-                        name: 'umur_alat'
-                    },
-                    {
-                        data: 24,
-                        name: 'jadwal_pemeliharaan'
-                    },
-
-
-                ],
-            });
-        })
-    </script>
-
-
-
 </div>
 @endsection
 
@@ -553,40 +458,67 @@
             }
         });
     }
-    document.addEventListener('click', function(event) {
-        const selectedText = window.getSelection().toString();
+    // document.addEventListener('click', function(event) {
+    //     const selectedText = window.getSelection().toString();
 
-        if (selectedText.length === 0) {
-            const clickedText = event.target.innerText.trim();
+    //     if (selectedText.length === 0) {
+    //         const clickedText = event.target.innerText.trim();
 
-            if (clickedText.length > 0) {
-                const tempInput = document.createElement('input');
-                tempInput.style = 'position: absolute; left: -1000px; top: -1000px';
-                tempInput.value = clickedText;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
+    //         if (clickedText.length > 0) {
+    //             const tempInput = document.createElement('input');
+    //             tempInput.style = 'position: absolute; left: -1000px; top: -1000px';
+    //             tempInput.value = clickedText;
+    //             document.body.appendChild(tempInput);
+    //             tempInput.select();
+    //             document.execCommand('copy');
+    //             document.body.removeChild(tempInput);
 
-                // Menampilkan tooltip
-                const tooltip = document.createElement('div');
-                tooltip.textContent = 'Teks berhasil disalin: ' + clickedText;
-                tooltip.style.position = 'absolute';
-                tooltip.style.top = event.clientY + 'px';
-                tooltip.style.left = event.clientX + 'px';
-                tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-                tooltip.style.color = '#fff';
-                tooltip.style.padding = '5px 10px';
-                tooltip.style.borderRadius = '5px';
-                tooltip.style.zIndex = '9999';
-                document.body.appendChild(tooltip);
+    //             // Menampilkan tooltip
+    //             const tooltip = document.createElement('div');
+    //             tooltip.textContent = 'Teks berhasil disalin: ' + clickedText;
+    //             tooltip.style.position = 'absolute';
+    //             tooltip.style.top = event.clientY + 'px';
+    //             tooltip.style.left = event.clientX + 'px';
+    //             tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+    //             tooltip.style.color = '#fff';
+    //             tooltip.style.padding = '5px 10px';
+    //             tooltip.style.borderRadius = '5px';
+    //             tooltip.style.zIndex = '9999';
+    //             document.body.appendChild(tooltip);
 
-                // Menghilangkan tooltip setelah beberapa detik
-                setTimeout(() => {
-                    document.body.removeChild(tooltip);
-                }, 2000);
-            }
-        }
-    });
+    //             // Menghilangkan tooltip setelah beberapa detik
+    //             setTimeout(() => {
+    //                 document.body.removeChild(tooltip);
+    //             }, 2000);
+    //         }
+    //     }
+    // });
+</script>
+<script>
+function copy(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false);
+    inp.remove();
+
+    const tooltip = document.createElement('p');
+    tooltip.textContent = 'Teks berhasil disalin';
+    tooltip.style.position = 'absolute';
+    tooltip.style.top = event.clientY + 'px';
+    tooltip.style.left = event.clientX + 'px';
+    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '5px 10px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.zIndex = '9999';
+    document.body.appendChild(tooltip);
+
+    // Menghilangkan tooltip setelah beberapa detik
+    setTimeout(() => {
+        document.body.removeChild(tooltip);
+    }, 2000);
+}
 </script>
 @endpush

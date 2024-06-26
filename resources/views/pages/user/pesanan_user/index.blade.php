@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.user')
 
  @section('content')
  @section('title', 'Request Perbaikan')
@@ -45,7 +45,7 @@
            <div class="panel-body panel-form">
              <div class="row">
                <div class="col-md-9 col-sm-12">
-                 <form action="{{ route('pesanan.store')}}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                 <form action="{{ route('pesanan_user.store')}}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                    @csrf
 
                    <div class="form-group row">
@@ -149,7 +149,7 @@
                        <td>{{ $item->pelapor_req }}</td>
                        <td>{{ $item->tanggal_req }}</td>
                        <td>
-                         <form action="{{ route('pesanan.destroy' ,$item->id) }}" method="POST" class="d-inline">
+                         <form action="{{ route('pesanan_user.destroy' ,$item->id) }}" method="POST" class="d-inline">
                            @csrf
                            @method('delete')
                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
@@ -183,7 +183,7 @@
     console.log(stateIDInv);
     if (stateIDInv) {
       $.ajax({
-        url: '/dashboard/ppm/getPesanan/' + stateIDInv,
+        url: '/dashboard_user/getPesanan_user/' + stateIDInv,
         type: "GET",
         dataType: "json",
         success: function(data) {
