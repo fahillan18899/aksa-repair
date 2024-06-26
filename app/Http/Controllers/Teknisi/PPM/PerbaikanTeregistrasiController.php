@@ -12,6 +12,7 @@ use App\Models\PerbaikanRegistrasi;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -83,7 +84,7 @@ class PerbaikanTeregistrasiController extends Controller
             ->with('success', 'Data Berhasil Tambahkan.');
     }
 
-    public function edit($id)
+    public function edit_teknisi($id)
     {
 
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -157,5 +158,12 @@ class PerbaikanTeregistrasiController extends Controller
             $item->save();
         }
         return back();
+    }
+
+    public function destroy($id)
+    {
+        $item = Pesanan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item->delete();
+        return redirect('dashboard_teknisi/perbaikan_teregistrasi')->with('success', 'Aset Telah Selesai Diperbaiki.');
     }
 }

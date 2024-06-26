@@ -78,7 +78,7 @@
                                         @forelse ($itemPesanan as $index => $item)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
-                                                <td>{{ $item->id }}</td>
+                                                <td onclick="copy(this)"><span>{{ $item->id }}<span></td>
                                                 <td>{{ $item->nama_req }}</td>
                                                 <td>{{ $item->merek_req }}</td>
                                                 <td>{{ $item->type_req }}</td>
@@ -86,16 +86,17 @@
                                                 <td>{{ $item->pelapor_req }}</td>
                                                 <td>{{ $item->tanggal_req }}</td>
                                                 <td>
-                                                    <form action="{{ route('pesanan.destroy', $item->id) }}"
+                                                    <form
+                                                        action="{{ url('/dashboard_teknisi/perbaikan_teregistrasi', $item->id) }}"
                                                         method="POST" class="d-inline">
                                                         @csrf
-                                                        @method('delete')
-                                                        <button class="btn btn-danger btn-xs" data-toggle="tooltip"
-                                                            data-placement="top" title="Validasi">
-                                                            Validasi Perbaikan
+                                                        @method('DELETE')
+                                                        <button class="btn btn-danger btn-xs"
+                                                            data-toggle="tooltip" data-placement="top"
+                                                            title="validasi">
+                                                            Validasi perbaikan
                                                         </button>
-                                                </td>
-                                                </form>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @empty
@@ -324,23 +325,23 @@
                             <h1>Tabel Perbaikan</h1>
                         </div>
                     </div>
-
+                    <div style="overflow-x:auto;">
                     <div class="panel-body panel-form">
                         <div class="row">
                             <div class="col-md-12 col-sm-12">
                                 <!--TABEL-->
                                 <table class="datatable table table-striped table-bordered" style="width:100%">
                                     <thead class="table-light">
-                                        <th scope="col">No</th>
-                                        <th scope="col">Id_Perbaikan</th>
-                                        <th scope="col">ID_Aset</th>
-                                        <th scope="col">Tanggal_Perbaikan</th>
-                                        <th scope="col">Nama_Alat</th>
-                                        <th scope="col">Status</th>
-                                        <th class="none">Merek_Alat</th>
-                                        <th class="none">Type_Alat</th>
-                                        <th class="none">Serial_Number</th>
-                                        <th class="none">Lokasi_Alat</th>
+                                        <th class="">No</th>
+                                        <th class="">Id Perbaikan</th>
+                                        <th class="none">ID_Aset</th>
+                                        <th class="none">Tanggal_Perbaikan</th>
+                                        <th class="">Nama Alat</th>
+                                        <th class="">Merek Alat</th>
+                                        <th class="">Type Alat</th>
+                                        <th class="">Serial Number</th>
+                                        <th class="">Lokasi Alat</th>
+                                        <th class="">Status</th>
                                         <th class="none">Pelapor</th>
                                         <th class="none">Keterangan_Kondisi_Alat</th>
                                         <th class="none">Kepala Ruangan</th>
@@ -360,6 +361,10 @@
                                                 <td><?php echo $item['id_aset_reg']; ?></td>
                                                 <td><?php echo $item['tanggal_perbaikan_reg']; ?></td>
                                                 <td><?php echo $item['nama_alat_reg']; ?></td>
+                                                <td><?php echo $item['merek_alat_reg']; ?></td>
+                                                <td><?php echo $item['type_alat_reg']; ?></td>
+                                                <td><?php echo $item['serial_number_reg']; ?></td>
+                                                <td><?php echo $item['lokasi_alat_reg']; ?></td>
                                                 <td>
                                                     <form
                                                         action="{{ url('/dashboard_teknisi/perbaikan_teregistrasi/update', $item->id_perbaikan_reg) }}"
@@ -367,14 +372,10 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <button
-                                                            class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger' }}"
+                                                            class="btn btn-sm btn-{{ $item->status == 0 ? 'warning' : 'danger' }}"
                                                             type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                                                     </form>
                                                 </td>
-                                                <td><?php echo $item['merek_alat_reg']; ?></td>
-                                                <td><?php echo $item['type_alat_reg']; ?></td>
-                                                <td><?php echo $item['serial_number_reg']; ?></td>
-                                                <td><?php echo $item['lokasi_alat_reg']; ?></td>
                                                 <td><?php echo $item['pelapor_reg']; ?></td>
                                                 <td><?php echo $item['keterangan_kondisi_alat_reg']; ?></td>
                                                 <td><?php echo $item['ka_instalasi_reg']; ?></td>
@@ -385,10 +386,14 @@
                                                 <td><?php echo $item['korektif_reg']; ?></td>
                                                 <!--<td><?php echo $item['kode_rs']; ?></td>-->
                                                 <td>
+                                                    <a href="/dashboard_teknisi/perbaikan_teregistrasi/update_perbaikan/{{ $item->id_perbaikan_reg }}/edit" 
+                                                    class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" 
+                                                    title="Edit"> <i class="fa fa-edit"></i></a>
+
                                                     <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}"
-                                                        class="btn btn-xs btn-primary" data-toggle="tooltip"
-                                                        data-placement="top" title="Print"><i
-                                                            class="fa fa-print"></i></a>
+                                                    class="btn btn-xs btn-primary" data-toggle="tooltip"
+                                                    data-placement="top" title="Print"><i
+                                                    class="fa fa-print"></i></a>
                                                 </td>
                                             </tr>
 
@@ -403,6 +408,7 @@
                             </div>
                             <div class="col-md-3"></div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -563,7 +569,7 @@ function autofill_Penghapusan() {
         });
     }
 </script>
-<script>
+<!-- <script>
     document.addEventListener('click', function(event) {
         const selectedText = window.getSelection().toString();
 
@@ -599,5 +605,33 @@ function autofill_Penghapusan() {
             }
         }
     });
+</script> -->
+
+<script>
+function copy(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false);
+    inp.remove();
+
+    const tooltip = document.createElement('p');
+    tooltip.textContent = 'Teks berhasil disalin';
+    tooltip.style.position = 'absolute';
+    tooltip.style.top = event.clientY + 'px';
+    tooltip.style.left = event.clientX + 'px';
+    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '5px 10px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.zIndex = '9999';
+    document.body.appendChild(tooltip);
+
+    // Menghilangkan tooltip setelah beberapa detik
+    setTimeout(() => {
+        document.body.removeChild(tooltip);
+    }, 2000);
+}
 </script>
 @endpush

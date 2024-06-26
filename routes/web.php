@@ -250,10 +250,12 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
 
     Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
-    Route::get('update_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'edit']);
+    Route::get('perbaikan_teregistrasi/update_perbaikan/{id}/edit', [PerbaikanTeregistrasiTeknisiController::class, 'edit_teknisi']);
+    // Route::put('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update_teknisi']);   
     Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
     Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
     Route::put('perbaikan_teregistrasi/update/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateStatusPerbaikanTeknisi']);
+    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'destroy']);
 
     Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
     Route::get('edit_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'edit']);

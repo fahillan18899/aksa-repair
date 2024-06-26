@@ -31,9 +31,9 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url ('dashboard_teknisi/perbaikan_teregistrasi' , $item->id_perbaikan) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                  @csrf
-                  @method('PUT')
+                <form action="{{ url ('dashboard_teknisi/perbaikan_teregistrasi' , $item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                @csrf
+                @method('PUT')
 
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
