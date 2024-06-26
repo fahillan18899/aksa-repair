@@ -258,8 +258,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'destroy']);
 
     Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
-    Route::get('edit_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'edit']);
-    Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
+    Route::get('perbaikan_unregistrasi/edit_perbaikan/{id}/edit', [PerbaikanUserUnregistrasiTeknisiController::class, 'editun_teknisi']);
+    // Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
     Route::get('perbaikan_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'cetak_teknisi']);
     Route::put('perbaikan_unregistrasi/update/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'updateStatusPerbaikanUnTeknisi']);
     

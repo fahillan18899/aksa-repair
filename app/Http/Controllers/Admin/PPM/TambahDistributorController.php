@@ -41,13 +41,20 @@ class TambahDistributorController extends Controller
     public function store(Request $request)
     {
         $data =  $request->validate([
-            'nama_distributor_p' => '',
-            'alamat_distributor_p' => '',
-            'telphone_distributor_p' => '',
-            'email_distributor_p' => '',
-            'teknisi_distributor_p' => '',
-            'telphone_teknisi_dis_p' => '',
+            'nama_distributor_p' => 'required',
+            'alamat_distributor_p' => 'required',
+            'telphone_distributor_p' => 'required',
+            'email_distributor_p' => 'required',
+            'teknisi_distributor_p' => 'required',
+            'telphone_teknisi_dis_p' => 'required',
             'kode_rs' => '',
+        ], [
+            'nama_distributor_p.required' => 'isi data nama distributor',
+            'alamat_distributor_p.required' => 'isi data alamat distributor ',
+            'telphone_distributor_p.required' => 'isi data telphone distributor',
+            'email_distributor_p.required' => 'isi data email distributor',
+            'teknisi_distributor_p.required' => 'isi data teknisi distributor',
+            'telphone_teknisi_dis_p.required' => 'isi data telphone teknisi distributor',
         ]);
 
         $data['kode_rs'] = Auth::user()->kode_rs;

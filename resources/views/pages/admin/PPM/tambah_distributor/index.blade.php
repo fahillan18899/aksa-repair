@@ -41,37 +41,37 @@
                    <div class="form-group row">
                      <label for="nama_distributor_p" class="col-xs-3 col-form-label">Distributor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="nama_distributor_p" type="text" class="form-control" id="nama_distributor_p" placeholder="Nama Distributor" value="">
+                       <input name="nama_distributor_p" type="text" class="form-control" id="nama_distributor_p" placeholder="Nama Distributor" value="" required>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="alamat_distributor_p" class="col-xs-3 col-form-label">Alamat Distributor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="alamat_distributor_p" type="text" class="form-control" id="alamat_distributor_p" placeholder="Alamat Distributor" value="">
+                       <input name="alamat_distributor_p" type="text" class="form-control" id="alamat_distributor_p" placeholder="Alamat Distributor" value="" required>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="telphone_distributor_p" class="col-xs-3 col-form-label">Telphone Distributor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="telphone_distributor_p" type="text" class="form-control" id="telphone_distributor_p" placeholder="Telphone Distributor" value="">
+                       <input name="telphone_distributor_p" type="text" class="form-control" id="telphone_distributor_p" placeholder="Telphone Distributor" value="" required>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="email_distributor_p" class="col-xs-3 col-form-label">Email Distributor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="email_distributor_p" type="text" class="form-control" id="email_distributor_p" placeholder="Email Distributor" value="">
+                       <input name="email_distributor_p" type="text" class="form-control" id="email_distributor_p" placeholder="Email Distributor" value="" required>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="teknisi_distributor_p" class="col-xs-3 col-form-label">Teknisi Distributor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="teknisi_distributor_p" type="text" class="form-control" id="teknisi_distributor_p" placeholder="Teknisi Distributor" value="">
+                       <input name="teknisi_distributor_p" type="text" class="form-control" id="teknisi_distributor_p" placeholder="Teknisi Distributor" value="" required>
                      </div>
                    </div>
                    <div class="form-group row">
                      <label for="telphone_teknisi_dis_p" class="col-xs-3 col-form-label">Telphone Teknisi <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="telphone_teknisi_dis_p" type="text" class="form-control" id="telphone_teknisi_dis_p" placeholder="Telphone Teknisi" value="">
+                       <input name="telphone_teknisi_dis_p" type="text" class="form-control" id="telphone_teknisi_dis_p" placeholder="Telphone Teknisi" value="" required>
                      </div>
                    </div>
 
