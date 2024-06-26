@@ -275,7 +275,7 @@
                 console.log(currentToken)
                 if (currentToken) {
                     setTokenSentToServer(true);
-                    const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
+                    const userCode = "{{ Auth::user()->kode_rs . 'user'}}";
                     subscribeTokenToTopic(currentToken, userCode)
                     alert("Notifikasi Di Aktifkan")
                 } else {

@@ -419,6 +419,27 @@
 
 @push('addon-script')
 <script type="text/javascript">
+    let scanner_teknisi = new Instascan.Scanner({
+        video: document.getElementById('preview_teknisi'),
+        mirror: false
+    });
+    scanner_teknisi.addListener('scan', function(content) {
+        const fruits = content.split(',');
+        $("#id_aset_reg").val(fruits[0]);
+        $("#Merek_Alat_reg").val(fruits[3]);
+        $("#Nama_Alat_reg").val(fruits[2]);
+        $("#Serial_Number_reg").val(fruits[5]);
+        $("#Lokasi_Alat_reg").val(fruits[6]);
+        $("#Type_Alat_reg").val(fruits[4]);
+    });
+
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner_teknisi.start(cameras[0]);
+        } else {
+            console.error("Please enable Camera!");
+        }
+    });
 function autofill_Pengiriman() {
   let Id_Perbaikan_reg = $("#Perbaikan_reg").val();
   $.ajax({
@@ -526,27 +547,7 @@ function autofill_Penghapusan() {
 }
 
 
-    let scanner_teknisi = new Instascan.Scanner({
-        video: document.getElementById('preview_teknisi'),
-        mirror: false
-    });
-    scanner_teknisi.addListener('scan', function(content) {
-        const fruits = content.split(',');
-        $("#id_aset_reg").val(fruits[0]);
-        $("#Merek_Alat_reg").val(fruits[3]);
-        $("#Nama_Alat_reg").val(fruits[2]);
-        $("#Serial_Number_reg").val(fruits[5]);
-        $("#Lokasi_Alat_reg").val(fruits[6]);
-        $("#Type_Alat_reg").val(fruits[4]);
-    });
-
-    Instascan.Camera.getCameras().then(cameras => {
-        if (cameras.length > 0) {
-            scanner_teknisi.start(cameras[1]);
-        } else {
-            console.error("Please enable Camera!");
-        }
-    });
+    
 
     function autofill() {
         let idars = $("#id_aset_reg").val();
