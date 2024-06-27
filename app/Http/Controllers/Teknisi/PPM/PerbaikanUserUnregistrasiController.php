@@ -84,7 +84,7 @@ class PerbaikanUserUnregistrasiController extends Controller
             ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
 
-    public function edit($id)
+    public function editun_teknisi($id)
     {
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();

@@ -92,7 +92,7 @@
                                         @forelse ($itemPesanan as $index => $item)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
-                                                <td>{{ $item->id }}</td>
+                                                <td onclick="copy(this)">{{ $item->id }}</td>
                                                 <td>{{ $item->nama_req }}</td>
                                                 <td>{{ $item->merek_req }}</td>
                                                 <td>{{ $item->type_req }}</td>
@@ -108,8 +108,7 @@
                                                             data-placement="top" title="Validasi">
                                                             Validasi Perbaikan
                                                         </button>
-                                                </td>
-                                                </form>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @empty
@@ -1562,6 +1561,27 @@
 
 @push('addon-script')
 <script>
+    let scanner_teknisi = new Instascan.Scanner({
+        video: document.getElementById('preview_admin'),
+        mirror: false
+    });
+    scanner_teknisi.addListener('scan', function(content) {
+        const fruits = content.split(',');
+        $("#id_aset_reg").val(fruits[0]);
+        $("#Merek_Alat_reg").val(fruits[3]);
+        $("#Nama_Alat_reg").val(fruits[2]);
+        $("#Serial_Number_reg").val(fruits[5]);
+        $("#Lokasi_Alat_reg").val(fruits[6]);
+        $("#Type_Alat_reg").val(fruits[4]);
+    });
+
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner_teknisi.start(cameras[1]);
+        } else {
+            console.error("Please enable Camera!");
+        }
+    });
     let idars = $("#id_aset_reg").val();
 
     function autofill() {
@@ -1705,26 +1725,34 @@
             console.log(xhr.responseText);
         }
     });
-    let scanner_teknisi = new Instascan.Scanner({
-        video: document.getElementById('preview_admin'),
-        mirror: false
-    });
-    scanner_teknisi.addListener('scan', function(content) {
-        const fruits = content.split(',');
-        $("#id_aset_reg").val(fruits[0]);
-        $("#Merek_Alat_reg").val(fruits[3]);
-        $("#Nama_Alat_reg").val(fruits[2]);
-        $("#Serial_Number_reg").val(fruits[5]);
-        $("#Lokasi_Alat_reg").val(fruits[6]);
-        $("#Type_Alat_reg").val(fruits[4]);
-    });
+    
+</script>
 
-    Instascan.Camera.getCameras().then(cameras => {
-        if (cameras.length > 0) {
-            scanner_teknisi.start(cameras[1]);
-        } else {
-            console.error("Please enable Camera!");
-        }
-    });
+<script>
+function copy(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false);
+    inp.remove();
+
+    const tooltip = document.createElement('p');
+    tooltip.textContent = 'Teks berhasil disalin';
+    tooltip.style.position = 'absolute';
+    tooltip.style.top = event.clientY + 'px';
+    tooltip.style.left = event.clientX + 'px';
+    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '5px 10px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.zIndex = '9999';
+    document.body.appendChild(tooltip);
+
+    // Menghilangkan tooltip setelah beberapa detik
+    setTimeout(() => {
+        document.body.removeChild(tooltip);
+    }, 2000);
+}
 </script>
 @endpush

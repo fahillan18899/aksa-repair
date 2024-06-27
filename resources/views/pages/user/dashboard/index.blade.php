@@ -147,6 +147,111 @@
                     <!-- /.info-box-content -->
                 </div>
             </div>
+            <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
+
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="btn-group">
+                    <a class="btn btn-success" href="/dashboard_user/pesanan_user"> <i class="fa fa-plus"></i> Request Perbaikan </a>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <h2>Tabel Perbaikan</h2>
+                </div>
+              </div>  
+            </div>
+
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!--TABEL-->
+                    <table class="datatable table table-striped table-bordered" style="width:100%">
+                      <thead class="table-light">
+                        <th class="">No</th>
+                        <th class="">Id Perbaikan</th>
+                        <th class="none">ID_Aset</th>
+                        <th class="none">Tanggal_Perbaikan</th>
+                        <th class="">Nama Alat</th>
+                        <!-- <th>Status</th> -->
+                        <th class="">Merek Alat</th>
+                        <th class="">Type Alat</th>
+                        <th class="">Serial Number</th>
+                        <th class="">Lokasi Alat</th>
+                        <th class="none">Pelapor</th>
+                        <th class="none">Keterangan_Kondisi_Alat</th>
+                        <th class="none">Kepala Ruangan</th>
+                        <th class="none">Teknisi_1</th>
+                        <th class="none">Teknisi_2</th>
+                        <th class="none">Teknisi_3</th>
+                        <th class="none">suku Cadang</th>
+                        <th class="none">volume</th>
+                        <th class="none">Harga Satuan</th>
+                        <th class="none">Jumlah Harga</th>
+                        <th class="none">Keluhan_Dari_alat</th>
+                        <th class="none">Korektif</th>
+                        <!-- <th class="none">Tombol_Eksekusi</th> -->
+                      </thead>
+                      <tbody>
+                        @forelse ($dataPerbaikan as $index => $item)
+                        <tr class="odd gradeX">
+                          <td><?php echo $index  + 1 ?></td>
+                          <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                          <td><?php echo $item['id_aset_reg'] ?></td>
+                          <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                          <td><?php echo $item['nama_alat_reg'] ?></td>
+                          <!-- <td>
+                            <form action="{{ url('/dashboard/ppm/aset_teregistrasi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
+                              @csrf
+                              @method('PUT')
+                              <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                            </form>
+                          </td> -->
+                          <td><?php echo $item['merek_alat_reg'] ?></td>
+                          <td><?php echo $item['type_alat_reg'] ?></td>
+                          <td><?php echo $item['serial_number_reg'] ?></td>
+                          <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                          <td><?php echo $item['pelapor_reg'] ?></td>
+                          <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                          <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                          <td><?php echo $item['teknisi_1_reg'] ?></td>
+                          <td><?php echo $item['teknisi_2_reg'] ?></td>
+                          <td><?php echo $item['teknisi_3_reg'] ?></td>
+                          <td><?php echo $item['suku_cadang'] ?></td>
+                          <td><?php echo $item['volume'] ?></td>
+                          <td><?php echo $item['harga_satuan'] ?></td>
+                          <td><?php echo $item['jumlah_harga'] ?></td>
+                          <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                          <td><?php echo $item['korektif_reg'] ?></td>
+                          <!-- <td>
+                            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"><
+                            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"><
+                            <form action="{{ url('/dashboard/ppm/perbaikan_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                <i class="fa fa-trash "></i>
+                              </button>
+                            </form>
+                          </td> -->
+                      
+                        @empty
+                        <tr>
+                          <td class="text-center" colspan="7">Data Kosong</td>
+                        </tr>
+                        @endforelse
+                      </tbody>
+                    </table>
+                  <!--TABEL-->
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
     </div>
 

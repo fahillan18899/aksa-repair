@@ -49,6 +49,7 @@ use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
 use App\Http\Controllers\User\PPM\PermintaanBarangController;
+use App\Http\Controllers\User\PPM\PesananUserController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -234,11 +235,14 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
     Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
+    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiController::class, 'destroy']);
     Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiController::class);
     Route::resource('permintaan_barang', PermintaanBarangController::class);
     Route::get('qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
     Route::resource('stock_opname_user', StockOpnameUserController::class);
     Route::get('autofill/{idars}', [PPMController::class, 'autofill']);
+    Route::resource('/pesanan_user', PesananUserController::class);
+    Route::get('/getPesanan_user/{id}', [PesananUserController::class, 'getPesanan_user']);
 
     // API internal datatable
     Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
@@ -257,8 +261,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'destroy']);
 
     Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
-    Route::get('edit_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'edit']);
-    Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
+    Route::get('perbaikan_unregistrasi/edit_perbaikan/{id}/edit', [PerbaikanUserUnregistrasiTeknisiController::class, 'editun_teknisi']);
+    // Route::put('perbaikan_unregistrasi/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'update']);
     Route::get('perbaikan_unregistrasi/cetak_perbaikan/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'cetak_teknisi']);
     Route::put('perbaikan_unregistrasi/update/{id}', [PerbaikanUserUnregistrasiTeknisiController::class, 'updateStatusPerbaikanUnTeknisi']);
     
