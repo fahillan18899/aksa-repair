@@ -86,7 +86,7 @@ class PerbaikanRegistrasiController extends Controller
         $topik = $token . $level;
         $title = $request['nama_alat_reg'];
         $message = 'Alat ' . $title;
-        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
+        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/dashboard_user/perbaikan_teregistrasi');
 
         return redirect()->route('aset_teregistrasi.index')
             ->with('success', 'Data Berhasil Tambahkan.');
