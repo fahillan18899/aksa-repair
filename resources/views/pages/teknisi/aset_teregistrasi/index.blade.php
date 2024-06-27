@@ -435,7 +435,7 @@
 
     Instascan.Camera.getCameras().then(cameras => {
         if (cameras.length > 0) {
-            scanner_teknisi.start(cameras[0]);
+            scanner_teknisi.start(cameras[1]);
         } else {
             console.error("Please enable Camera!");
         }

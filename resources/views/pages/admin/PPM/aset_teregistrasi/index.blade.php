@@ -1561,6 +1561,27 @@
 
 @push('addon-script')
 <script>
+    let scanner_teknisi = new Instascan.Scanner({
+        video: document.getElementById('preview_admin'),
+        mirror: false
+    });
+    scanner_teknisi.addListener('scan', function(content) {
+        const fruits = content.split(',');
+        $("#id_aset_reg").val(fruits[0]);
+        $("#Merek_Alat_reg").val(fruits[3]);
+        $("#Nama_Alat_reg").val(fruits[2]);
+        $("#Serial_Number_reg").val(fruits[5]);
+        $("#Lokasi_Alat_reg").val(fruits[6]);
+        $("#Type_Alat_reg").val(fruits[4]);
+    });
+
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner_teknisi.start(cameras[1]);
+        } else {
+            console.error("Please enable Camera!");
+        }
+    });
     let idars = $("#id_aset_reg").val();
 
     function autofill() {
@@ -1704,26 +1725,6 @@
             console.log(xhr.responseText);
         }
     });
-    let scanner_teknisi = new Instascan.Scanner({
-        video: document.getElementById('preview_admin'),
-        mirror: false
-    });
-    scanner_teknisi.addListener('scan', function(content) {
-        const fruits = content.split(',');
-        $("#id_aset_reg").val(fruits[0]);
-        $("#Merek_Alat_reg").val(fruits[3]);
-        $("#Nama_Alat_reg").val(fruits[2]);
-        $("#Serial_Number_reg").val(fruits[5]);
-        $("#Lokasi_Alat_reg").val(fruits[6]);
-        $("#Type_Alat_reg").val(fruits[4]);
-    });
-
-    Instascan.Camera.getCameras().then(cameras => {
-        if (cameras.length > 0) {
-            scanner_teknisi.start(cameras[1]);
-        } else {
-            console.error("Please enable Camera!");
-        }
-    });
+    
 </script>
 @endpush
