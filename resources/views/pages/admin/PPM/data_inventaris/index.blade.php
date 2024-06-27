@@ -222,7 +222,7 @@
 @endsection
 
 @push('addon-script')
-<script>
+<!-- <script>
   document.addEventListener('click', function(event) {
     const selectedText = window.getSelection().toString();
     
@@ -258,5 +258,5 @@
         }
       }
   });
-</script>
+</script> -->
 @endpush

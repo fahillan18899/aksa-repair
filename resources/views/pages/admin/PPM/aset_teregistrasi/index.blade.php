@@ -92,7 +92,7 @@
                                         @forelse ($itemPesanan as $index => $item)
                                             <tr>
                                                 <td>{{ $index + 1 }}</td>
-                                                <td>{{ $item->id }}</td>
+                                                <td onclick="copy(this)">{{ $item->id }}</td>
                                                 <td>{{ $item->nama_req }}</td>
                                                 <td>{{ $item->merek_req }}</td>
                                                 <td>{{ $item->type_req }}</td>
@@ -1726,5 +1726,33 @@
         }
     });
     
+</script>
+
+<script>
+function copy(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false);
+    inp.remove();
+
+    const tooltip = document.createElement('p');
+    tooltip.textContent = 'Teks berhasil disalin';
+    tooltip.style.position = 'absolute';
+    tooltip.style.top = event.clientY + 'px';
+    tooltip.style.left = event.clientX + 'px';
+    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '5px 10px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.zIndex = '9999';
+    document.body.appendChild(tooltip);
+
+    // Menghilangkan tooltip setelah beberapa detik
+    setTimeout(() => {
+        document.body.removeChild(tooltip);
+    }, 2000);
+}
 </script>
 @endpush
