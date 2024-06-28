@@ -93,7 +93,7 @@
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-xs"
                                                             data-toggle="tooltip" data-placement="top"
-                                                            title="validasi">
+                                                            title="validasi" disabled>
                                                             Validasi perbaikan
                                                         </button>
                                                     </form>
