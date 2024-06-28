@@ -214,7 +214,7 @@
         }
       });
     </script>
-
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div> <!-- /.content-wrapper -->
 </div> <!-- /.content-wrapper -->
 @endsection

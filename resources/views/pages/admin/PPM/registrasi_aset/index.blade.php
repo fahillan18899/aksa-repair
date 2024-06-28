@@ -468,7 +468,7 @@
         });
       })
     </script>
-
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
