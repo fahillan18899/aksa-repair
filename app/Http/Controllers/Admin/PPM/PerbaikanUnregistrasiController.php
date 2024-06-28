@@ -83,11 +83,11 @@ class PerbaikanUnregistrasiController extends Controller
         PerbaikanUnregistrasi::create($request->post());
 
         $token = Auth::user()->kode_rs;
-        $level = 'admin';
+        $level = 'user';
         $topik = $token . $level;
         $title = $request['nama_alat_un'];
         $message = 'Alat ' . $title;
-        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
+        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/dashboard/ppm/aset_unregistrasi');
 
         return redirect()->route('aset_unregistrasi.index')
             ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');

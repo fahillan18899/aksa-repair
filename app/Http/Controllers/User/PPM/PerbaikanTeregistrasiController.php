@@ -85,7 +85,7 @@ class PerbaikanTeregistrasiController extends Controller
         PerbaikanRegistrasi::create($request->post());
         $token = Auth::user()->kode_rs;
 
-        $this->sendPushNotification($request['nama_alat_reg'], 'Alat '.$request['nama_alat_reg'], $token.'admin', 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg');
+        $this->sendPushNotification($request['nama_alat_reg'], 'Alat '.$request['nama_alat_reg'], $token.'admin', 'https://wyasaaplikasi.com/dashboard/ppm/aset_teregistrasi');
 
         return redirect('/dashboard_user/perbaikan_teregistrasi')
             ->with('success', 'Data Berhasil Tambahkan.');

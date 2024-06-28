@@ -25,7 +25,7 @@ class HomeController extends Controller
         $token = Auth::user()->kode_rs;
         $level = 'user';
         $topik = $token . $level;
-        $clickActionUrl = 'https://wyasaaplikasi.com/perbaikan_teregistrasi/perbaikanunreg';
+        $clickActionUrl = 'https://wyasaaplikasi.com/dashboard_user/perbaikan_teregistrasi';
         $title = 'a';
         $message = 'Alat ' . $title;
         // create run the method from App/Helpers.php
