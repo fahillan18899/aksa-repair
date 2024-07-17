@@ -83,6 +83,10 @@
                       <td><?php echo $data['no_sertifikat_kalibrasi'] ?></td>
                     </tr>
                     <tr>
+                      <th width="50%">Kerusakan Alat</th>
+                      <td><?php echo $kerusakan ?></td>
+                    </tr>
+                    <tr>
                       <th width="50%"><br></th>
                       <th width="50%"><br></th>
                     </tr>
@@ -101,12 +105,6 @@
                   </tbody>
                 </table>
               </div>
-            </div>
-          </div>
-
-          <div class="panel-footer no-print text-center">
-            <div class="btn-group">
-              <button type="button" onclick="printContent('PrintMe')" class="btn btn-danger"><i class="fa fa-print"></i> Print</button>
             </div>
           </div>
         </div>
