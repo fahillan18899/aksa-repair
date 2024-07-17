@@ -24,9 +24,6 @@
   <link href="{{ url('assets/css/flash.css') }}" rel="stylesheet" type="text/css" />
   <!-- Theme style -->
   <link href="{{ url('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
-  <!--Themes data table-->
-  <link href="{{ url('assets/css/datatablestyle.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ url('assets/css/datatablebtnstyle.css') }}" rel="stylesheet" type="text/css" />
   <!-- jstree view -->
   <link rel="stylesheet" href="{{ url('assets/vakata-jstree/dist/themes/default/style.min.css') }}" />
   <link rel="manifest" href="{{ url('manifest.json') }}">
