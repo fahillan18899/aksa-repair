@@ -28,8 +28,8 @@ class DashboardController extends Controller
     {
         $item = $request->validate([
             'kode' => 'required|max:2',
-            'angka_awal' => 'required|max:5',
-            'angka_akhir' => 'required|max:5',
+            'angka_awal' => 'required|max:7',
+            'angka_akhir' => 'required|max:7',
         ], [
             'kode.required' => 'Kode wajib diisi',
             'kode.max' => 'Kode maksimal 2 karakter',

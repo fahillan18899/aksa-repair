@@ -57,8 +57,8 @@
   function generateQRCode($i, $item)
   {
    return '<div class="bd-highlight" >
-          <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate("RS" . $item . $i)) . '">
-          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b><b>RS' . $item .  $i . '</b></b></p>
+          <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate("" . $item . $i)) . '">
+          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b><b>' . $item .  $i . '</b></b></p>
          </div>';
   }
   
@@ -70,7 +70,7 @@
    <?php echo generateQRCode($i, $item['kode']); ?>
 
    <?php
-   if ($row_counter % 4 == 0) {
+   if ($row_counter % 3 == 0) {
     echo '</div><div class="d-flex flex-row bd-highlight" style="margin-top: -18px;">';
    }
    $row_counter++;

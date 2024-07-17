@@ -482,6 +482,7 @@
                         <!--Tabel Gedung END-->
                     </div>
                 </div>
+                <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
             </div>
             <!-- /Lokasi Alat-->
         </div>

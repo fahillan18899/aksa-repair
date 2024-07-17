@@ -67,7 +67,7 @@ class RegistrasiAsetController extends Controller
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $jenis = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $distribut = TambahDistributor::all();
+        $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
