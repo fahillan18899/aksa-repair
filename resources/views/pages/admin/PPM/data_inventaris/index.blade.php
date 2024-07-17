@@ -90,6 +90,18 @@
           responsive: true,
           serverSide: true,
           ajax: '{{ url('/dashboard/ppm/aset') }}',
+          dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        buttons: [
+            { extend: 'copy', className: 'btn-sm' },
+            { extend: 'csv', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'excel', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'pdf', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'print', className: 'btn-sm' }
+        ],
           columns: [{
               data: 0,
               name: 'Id_Aset',

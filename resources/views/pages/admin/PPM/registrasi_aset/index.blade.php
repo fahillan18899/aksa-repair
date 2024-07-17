@@ -68,7 +68,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RS_DEMO_1" value="" >
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RS_DEMO_1" value="">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -77,13 +77,13 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="QR Qode" value="" >
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="QR Qode" value="">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <label for="jenis alat" class="col-xs-3 col-form-label">Jenis Alat <i class="text-danger">*</i><a href="{{ url('/dashboard/ppm/tambah_jenis_alat') }}" class="btn btn-sm btn-outline btn-success" style="margin-left:10px;" data-toggle="tooltip" data-placement="top" title="Tambah Jenis Alat"><i class="fa fa-plus-square" aria-hidden="true"></i></a></label>
                     <div class="col-xs-9">
@@ -340,133 +340,79 @@
     <script type="text/javascript">
       // create function with jquery to get api form dashboard/ppm/registrasi yajra laravel?
       $(document).ready(function() {
-        $('#table-register').DataTable({
-          processing: true,
-          responsive: true,
-          serverSide: true,
-          ajax: '{{ url('/dashboard/ppm/aset') }}',
-          columns: [{
-              data: 0,
-              name: 'Id_Aset',
-            },
-            {
-              data: 1,
-              name: 'Jenis_Alat'
-            },
-            {
-              data: 2,
-              name: 'Nama_Alat'
-            },
-            {
-              data: 3,
-              name: 'Merek'
-            },
-            {
-              data: 4,
-              name: 'Type'
-            },
-            {
-              data: 5,
-              name: 'Gambar',
+    $('#table-register').DataTable({
+        processing: true,
+        responsive: true,
+        serverSide: true,
+        ajax: '{{ url('/dashboard/ppm/aset') }}',
+        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
+        lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        buttons: [
+            { extend: 'copy', className: 'btn-sm' },
+            { extend: 'csv', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'excel', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'pdf', title: 'ExampleFile', className: 'btn-sm' },
+            { extend: 'print', className: 'btn-sm' }
+        ],
+        columns: [
+            { data: 0, name: 'Id_Aset' },
+            { data: 1, name: 'Jenis_Alat' },
+            { data: 2, name: 'Nama_Alat' },
+            { data: 3, name: 'Merek' },
+            { data: 4, name: 'Type' },
+            { 
+              data: 5, 
+              name: 'Gambar', 
               render: function(data, type, full, meta) {
-                return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
+                  return `<img src="/storage/${data}" width="100" alt='No Image'>`;
               }
             },
-            {
-              data: 6,
-              name: 'Serial_Number'
-            },
-            {
-              data: 7,
-              name: 'lokasi_alat'
-            },
-            {
-              data: 8,
-              name: 'Tanggal_Kalibrasi'
-            },
-            {
-              data: 9,
-              name: 'Distributor'
-            },
-            {
-              data: 10,
-              name: 'Alamat_Distributor'
-            },
-            {
-              data: 11,
-              name: 'TLP_Distributor'
-            },
-            {
-              data: 12,
-              name: 'Email_Distributor'
-            },
-            {
-              data: 13,
-              name: 'Teknisi_Distributor'
-            },
-            {
-              data: 14,
-              name: 'TLP_T_Distributor'
-            },
-            {
-              data: 15,
-              name: 'No_Sertifikat_Kalibrasi'
-            },
-            {
-              data: 16,
-              name: 'teknisi_ppm'
-            },
-            {
-              data: 17,
-              name: 'harga_perolehan'
-            },
-            {
-              data: 18,
-              name: 'Sumber_Dana'
-            },
-            {
-              data: 19,
-              name: 'Tahun_Perolehan'
-            },
-            {
-              data: 20,
-              name: 'AKL'
-            },
-            {
-              data: 21,
-              name: 'AKD'
-            },
-            {
-              data: 22,
-              name: 'no_inventaris_1'
-            },
-            {
-              data: 23,
-              name: 'umur_alat'
-            },
-            {
-              data: 24,
-              name: 'jadwal_pemeliharaan'
-            },
-            {
+            { data: 6, name: 'Serial_Number' },
+            { data: 7, name: 'lokasi_alat' },
+            { data: 8, name: 'Tanggal_Kalibrasi' },
+            { data: 9, name: 'Distributor' },
+            { data: 10, name: 'Alamat_Distributor' },
+            { data: 11, name: 'TLP_Distributor' },
+            { data: 12, name: 'Email_Distributor' },
+            { data: 13, name: 'Teknisi_Distributor' },
+            { data: 14, name: 'TLP_T_Distributor' },
+            { data: 15, name: 'No_Sertifikat_Kalibrasi' },
+            { data: 16, name: 'teknisi_ppm' },
+            { data: 17, name: 'harga_perolehan' },
+            { data: 18, name: 'Sumber_Dana' },
+            { data: 19, name: 'Tahun_Perolehan' },
+            { data: 20, name: 'AKL' },
+            { data: 21, name: 'AKD' },
+            { data: 22, name: 'no_inventaris_1' },
+            { data: 23, name: 'umur_alat' },
+            { data: 24, name: 'jadwal_pemeliharaan' },
+            { 
               data: 0,
               render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-success btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i></button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
+                  return `
+                    <a href="/dashboard/ppm/data_inventaris/cetak_aset/${data}" target="_blank">
+                      <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Print">
+                        <i class="fa fa-print"></i>
+                      </button>
+                    </a>
+                    <a href="/dashboard/ppm/registrasi/${data}/edit" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info btn-sm">
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <form action="/dashboard/ppm/registrasi/${data}" method="POST" class="d-inline">
+                      @csrf
+                      @method('delete')
+                      <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>`;
               }
-            },
-            
-
-          ],
-        });
-      })
+            }
+        ]
+    });
+});
     </script>
 
   </div> <!-- /.content -->
@@ -474,36 +420,35 @@
 @push('addon-script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
-
-$(document).ready(function(){
-  $('select[name="distributor"]').on('change', function(){
-    var stateID = $(this).val();
-    console.log(stateID);
-    if (stateID) {
-      $.ajax({
-        url: '/dashboard/ppm/getDistributor/' + stateID,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          console.log(data);
-          $.each(data, function(key, value){
-            $('input[id="Alamat_Distributor"]').val(value.alamat_distributor_p);
-            $('input[id="TLP_Distributor"]').val(value.telphone_distributor_p);
-            $('input[id="Email_Distributor"]').val(value.email_distributor_p);
-            $('input[id="Teknisi_Distributor"]').val(value.teknisi_distributor_p);
-            $('input[id="TLP_T_Distributor"]').val(value.telphone_teknisi_dis_p);
-          });
-              }
+  $(document).ready(function() {
+    $('select[name="distributor"]').on('change', function() {
+      var stateID = $(this).val();
+      console.log(stateID);
+      if (stateID) {
+        $.ajax({
+          url: '/dashboard/ppm/getDistributor/' + stateID,
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+            $.each(data, function(key, value) {
+              $('input[id="Alamat_Distributor"]').val(value.alamat_distributor_p);
+              $('input[id="TLP_Distributor"]').val(value.telphone_distributor_p);
+              $('input[id="Email_Distributor"]').val(value.email_distributor_p);
+              $('input[id="Teknisi_Distributor"]').val(value.teknisi_distributor_p);
+              $('input[id="TLP_T_Distributor"]').val(value.telphone_teknisi_dis_p);
             });
-    } else {
-            $('input[id="Alamat_Distributor"]').empty();
-            $('input[id="TLP_Distributor"]').empty();
-            $('input[id="Email_Distributor"]').empty();
-            $('input[id="Teknisi_Distributor"]').empty();
-            $('input[id="TLP_T_Distributor"]').empty();
           }
-  })
-});
+        });
+      } else {
+        $('input[id="Alamat_Distributor"]').empty();
+        $('input[id="TLP_Distributor"]').empty();
+        $('input[id="Email_Distributor"]').empty();
+        $('input[id="Teknisi_Distributor"]').empty();
+        $('input[id="TLP_T_Distributor"]').empty();
+      }
+    })
+  });
 </script>
 
 <script type="text/javascript">

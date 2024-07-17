@@ -79,6 +79,6 @@ class DashboardController extends Controller
         // Tambahkan waktu delay sesuai kebutuhan (2 detik dalam contoh ini)
         sleep(2);
 
-        return redirect('/dashboard/ppm/home');
+        return redirect()->back();
     }
 }

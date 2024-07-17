@@ -10,10 +10,14 @@ class DataAlatController extends Controller
 {
     public function index($id)
     {
-        $data = Registrasi::where('qr_code', $id)->first();
-
-        return view('pages.admin.PPM.data_alat.index', [
-            'data' => $data,
-        ]);
+        $data = Registrasi::where('id_aset', $id)->first();
+        if(is_null($data)) {
+            return redirect('dashboard/ppm/scanner_qr'); 
+        } else {
+            return view('pages.admin.PPM.data_alat.index', [
+                'data' => $data,
+            ]);
+        }
     }
 }
+
