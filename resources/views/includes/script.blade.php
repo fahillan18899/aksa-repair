@@ -38,9 +38,28 @@
 <!-- jstree view -->
 <script src="{{ url('assets/vakata-jstree/dist/jstree.min.js') }}"></script>
 <script src="{{ url('assets/js/instascan.min.js') }}"></script>
+<!--js_datatable-->
+<script src="{{ url('assets/js/datatable.js') }}"></script>
+<script src="{{ url('assets/js/datatablebutton.js') }}"></script>
+<script src="{{ url('assets/js/buttonsdatatable.js') }}"></script>
+<script src="{{ url('assets/js/datatablezip.js') }}"></script>
+<script src="{{ url('assets/js/datatablepdfmake.js') }}"></script>
+<script src="{{ url('assets/js/datatablefont.js') }}"></script>
+<script src="{{ url('assets/js/datatablebtnhtml.js') }}"></script>
+<script src="{{ url('assets/js/datatablebtnprint.js') }}"></script>
 <script>
 $('#scollDatatable').DataTable({
   scrollX: true
+});
+</script>
+
+<script>
+  new DataTable('#example', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+    }
 });
 </script>
 

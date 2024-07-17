@@ -759,8 +759,9 @@
         <div class="row">
             <div class="col">
                 <div class="panel panel-default thumbnail">
+                    <div style="overflow-x:auto;">
                     <div class="panel-body panel-form">
-                        <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
+                        <table class="table table-hover table-bordered" id="example" style="width:100%">
                             <thead class="table-light">
                                 <tr>
                                     <td class="table-primary" rowspan="3"><b>No</b></td>
@@ -954,7 +955,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -1206,6 +1207,8 @@
                 $("input[id=catatan18]").hide();
             }
         });
+
     </script>
+
 @endpush
 @endsection

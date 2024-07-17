@@ -16,7 +16,7 @@ class TambahDistributorController extends Controller
      */
     public function index()
     {
-        $items = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();;
+        $items = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.tambah_distributor.index', [
             'items' => $items
         ]);
