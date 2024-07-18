@@ -69,6 +69,7 @@
                 <option value="RS0007">RSU Ja'far Medika</option>
                 <option value="RS0008">RS PKU Muhammadiyah Wonosobo</option>
                 <option value="RS0009">RS Karanganyar</option>
+                <option value="RS0010">Labkesda Bekasi</option>
               </select>
             </div>
             <div class="form-group">
