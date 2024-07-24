@@ -64,7 +64,7 @@
 
                                     <tr>
                                         <td class="td-custom" width="50%">Id Aset</td>
-                                        <td class="td-custom"><input type="text"></td>
+                                        <td class="td-custom"><?= $item['id_aset']; ?></td>
                                     </tr>
                                     <tr>
                                         <td class="td-custom" width="50%">Jenis Alat</td>

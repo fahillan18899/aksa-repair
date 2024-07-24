@@ -138,7 +138,7 @@
                 </div>
               </div>
             </div>
-
+            <div style="overflow-x:auto;">
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
@@ -223,6 +223,7 @@
                 </div>
                 <div class="col-md-3"></div>
               </div>
+            </div>
             </div>
           </div>
         </div>
