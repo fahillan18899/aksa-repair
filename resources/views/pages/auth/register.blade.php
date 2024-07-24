@@ -71,6 +71,7 @@
                 <option value="RS0009">RS Karanganyar</option>
                 <option value="RS0010">Labkesda Bekasi</option>
                 <option value="RS0011">RSUD Ungaran</option>
+                <option value="RS0012">RS Palang Biru</option>
               </select>
             </div>
             <div class="form-group">
