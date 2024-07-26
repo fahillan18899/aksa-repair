@@ -12,6 +12,24 @@
 </head>
 
 <body>
+  @php
+
+  $hospitals = [
+  ['RS DEMO', 'RS0000'],
+  ['RS BADARUDIN KASIM', 'RS0001'],
+  ['RSI WONOSOBO', 'RS0002'],
+  ['RS PANTI WILASA', 'RS0003'],
+  ['RSUD CILEGON', 'RS0004'],
+  ['RS PONDOK KOPI', 'RS0005'],
+  ['RSUD TEMANGGUNG', 'RS0006'],
+  ['RSU JAFAR MEDIKA', 'RS0007'],
+  ['RS PKU WONOSOBO', 'RS0008'],
+  ['RSUD KARANGANYAR', 'RS0009'],
+  ['LABKESDA BEKASI', 'RS0010'],
+  ['RSUD UNGARAN', 'RS0011'],
+  ['RS PALANG BIRU', 'RS0012'],
+  ];
+  @endphp
   <div class="login-wrapper">
     <div class="container-center">
       <div class="panel panel-bd">
@@ -59,19 +77,9 @@
               <label class="control-label" for="kode_rs">Fasilitas Kesehatan</label>
               <select name="kode_rs" class="form-control" id="kode_rs">
                 <option value="">Pilih Fasilitas Kesehatan</option>
-                <option value="RS0000">Demo</option>
-                <option value="RS0002">RSI Wonosobo</option>
-                <option value="RS0004">RS Cilegon</option>
-                <option value="RS0003">RS Panti Wilasa</option>
-                <option value="RS0001">RS Badarudin Kasim Tabalong</option>
-                <option value="RS0005">RSI Pondok Kopi</option>
-                <option value="RS0006">RSUD Temanggung</option>
-                <option value="RS0007">RSU Ja'far Medika</option>
-                <option value="RS0008">RS PKU Muhammadiyah Wonosobo</option>
-                <option value="RS0009">RS Karanganyar</option>
-                <option value="RS0010">Labkesda Bekasi</option>
-                <option value="RS0011">RSUD Ungaran</option>
-                <option value="RS0012">RS Palang Biru</option>
+                @foreach($hospitals as $hospital)
+                <option value="{{ $hospital[1] }} ">{{ $hospital[0] }} </option>
+                @endforeach
               </select>
             </div>
             <div class="form-group">
