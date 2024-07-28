@@ -27,12 +27,12 @@ class DashboardController extends Controller
     public function storeQrGen(Request $request)
     {
         $item = $request->validate([
-            'kode' => 'required|max:2',
-            'angka_awal' => 'required|max:7',
-            'angka_akhir' => 'required|max:7',
+            'kode' => 'required|max:16',
+            'angka_awal' => 'required|max:16',
+            'angka_akhir' => 'required|max:16',
         ], [
             'kode.required' => 'Kode wajib diisi',
-            'kode.max' => 'Kode maksimal 2 karakter',
+            'kode.max' => 'Kode maksimal 16 karakter',
         ]);
         $item['kode'] = strtoupper($item['kode']);
 
