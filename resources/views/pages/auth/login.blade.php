@@ -28,6 +28,7 @@
   ['LABKESDA BEKASI', 'RS0010'],
   ['RSUD UNGARAN', 'RS0011'],
   ['RS PALANG BIRU', 'RS0012'],
+  ['RSUD M. TH. DJAMAN SANGGAU', 'RS0013'],
   ];
   @endphp
 
