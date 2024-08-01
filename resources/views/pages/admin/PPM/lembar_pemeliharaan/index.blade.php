@@ -908,7 +908,7 @@
   function autofillPemelihara() {
     let idars = $("#id_ase1t").val();
     $.ajax({
-      url: '{{ url(' / dashboard / ppm / autofill / ') }}/' + idars,
+      url: '{{ url('/dashboard/ppm/autofill/') }}/' + idars,
       method: 'GET', // HTTP method (e.g., GET, POST)
       data: {
         idars: idars
