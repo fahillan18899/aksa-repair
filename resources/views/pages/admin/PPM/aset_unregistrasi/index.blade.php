@@ -66,13 +66,6 @@
                     </div>
                   </div>
 
-                  <!--<div class="form-group row">
-                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
-                     <div class="col-xs-9">
-                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="">
-                     </div>
-                   </div>-->
-
                   <div class="form-group row">
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -279,7 +272,7 @@
                       </tr>
                       @empty
                       <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
+                        <td class="text-center" colspan="17">Data Kosong</td>
                       </tr>
                       @endforelse
                     </tbody>
@@ -528,7 +521,7 @@
                       </tr>
                       @empty
                       <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
+                        <td class="text-center" colspan="20">Data Kosong</td>
                       </tr>
                       @endforelse
                     </tbody>
@@ -812,7 +805,7 @@
                       </tr>
                       @empty
                       <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
+                        <td class="text-center" colspan="24">Data Kosong</td>
                       </tr>
                       @endforelse
                     </tbody>
@@ -1024,7 +1017,7 @@
                       </tr>
                       @empty
                       <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
+                        <td class="text-center" colspan="16">Data Kosong</td>
                       </tr>
                       @endforelse
                     </tbody>
