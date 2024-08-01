@@ -40,11 +40,13 @@ class RuanganController extends Controller
         $item = Ruangan::where('id_ruangan', $ruangan)->where('kode_rs', Auth::user()->kode_rs)->first();
         $gedungs = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $rooms = Ruangan::where('kode_rs', Auth::user()->kode_rs)->where('id_ruangan', $ruangan)->first();
 
         return view('pages.admin.PPM.data_kelengkapan.update_ruangan', [
             'item' => $item,
             'teknisis' => $teknisis,
             'gedungs' => $gedungs,
+            'rooms' => $rooms,
         ]);
     }
 

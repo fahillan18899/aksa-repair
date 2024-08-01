@@ -59,13 +59,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">kepala ruangan </label>
+                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <select name="kepala_ruangan" class="form-control" id="kepala_ruangan">
-                        @foreach ($teknisis as $data)
-                        <option value="<?= $data['nama_teknisi']; ?>"><?= $data['nama_teknisi']; ?></option>
-                        @endforeach
-                      </select>
+                      <input name="kepala_ruangan" type="text" class="form-control" id="kepala_ruangan" placeholder="Kepala Ruangan" value="{{ $rooms['kepala_ruangan'] }}" />
                     </div>
                   </div>
 
