@@ -464,7 +464,7 @@
 
                                             @empty
                                                 <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
+                                                    <td class="text-center" colspan="23">Data Kosong</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -819,7 +819,7 @@
 
                                             @empty
                                                 <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
+                                                    <td class="text-center" colspan="25">Data Kosong</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -1227,7 +1227,7 @@
 
                                             @empty
                                                 <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
+                                                    <td class="text-center" colspan="29">Data Kosong</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -1538,7 +1538,7 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
+                                                    <td class="text-center" colspan="20">Data Kosong</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
