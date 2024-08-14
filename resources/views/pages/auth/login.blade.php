@@ -29,6 +29,7 @@
   ['RSUD UNGARAN', 'RS0011'],
   ['RS PALANG BIRU', 'RS0012'],
   ['RSUD M. TH. DJAMAN SANGGAU', 'RS0013'],
+  ['RS PKU MUHAMMADIYAH TEGAL', 'RS0014'],
   ];
   @endphp
 
