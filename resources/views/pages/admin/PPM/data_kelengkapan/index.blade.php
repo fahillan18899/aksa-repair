@@ -398,7 +398,7 @@
                 <th scope="col">No</th>
                 <th scope="col">Ruangan</th>
                 <th scope="col">Gedung</th>
-                <th scope="col">Kepala Taknisi</th>
+                <th scope="col">Kepala Ruangan</th>
                 <th scope="col">Lokasi</th>
                 <th scope="col">Tombol Aksi</th>
               </tr>

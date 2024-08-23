@@ -63,6 +63,20 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="user_ruangan" class="col-xs-3 col-form-label">User Ruangan</label>
+                    <div class="col-xs-9">
+                    <select name="user_ruangan" class="form-control" id="user_ruangan">
+                        <option> -- Pilih Gedung -- </option>
+                        @forelse ($gedung as $gedung)
+                        <option value="<?= $gedung['nama_gedung'] ?>">
+                          <?= $gedung['nama_gedung'] ?>
+                        </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button type="reset" class="ui button">Reset</button>
@@ -100,6 +114,7 @@
                       <th scope="col">Merek</th>
                       <th scope="col">Type Pemakaian</th>
                       <th scope="col">Jumlah</th>
+                      <th scope="col">User Ruangan</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
                   </thead>
@@ -111,6 +126,7 @@
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->jumlah }}</td>
+                      <td>{{ $item->user_ruangan }}</td>
                       <td>
                         <a href="{{ route('permintaan_barang.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('permintaan_barang.destroy', $item->id) }}" method="POST" class="d-inline">

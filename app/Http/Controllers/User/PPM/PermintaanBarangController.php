@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\PPM;
 
 use App\Http\Controllers\Controller;
 use App\Models\PermintaanBarang;
+use App\Models\Gedung;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,9 +12,13 @@ class PermintaanBarangController extends Controller
 {
     public function index()
     {
+        $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $items = PermintaanBarang::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.user.permintaan_barang.index', ['items' => $items]);
+        return view('pages.user.permintaan_barang.index', [
+            'items' => $items,
+            'gedung' => $gedung,
+        ]);
     }
 
     public function store(Request $request)
@@ -23,6 +28,7 @@ class PermintaanBarangController extends Controller
             'merek' => 'required',
             'type' => 'required',
             'jumlah' => 'numeric',
+            'user_ruangan' => 'required',
 
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
@@ -48,6 +54,7 @@ class PermintaanBarangController extends Controller
             'merek' => '',
             'type' => '',
             'jumlah' => '',
+            'user_ruangan' => '',
         ]);
         $permintaan_barang->fill($request->post())->save();
 

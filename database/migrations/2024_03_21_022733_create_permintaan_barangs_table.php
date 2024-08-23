@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('merek', 20)->nullable();
             $table->string('type', 20)->nullable();
             $table->string('jumlah', 20)->nullable();
+            $table->string('user_ruangan', 20)->nullable();
             $table->string('kode_rs');
             $table->timestamps();
         });

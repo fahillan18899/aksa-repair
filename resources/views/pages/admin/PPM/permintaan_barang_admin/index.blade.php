@@ -46,6 +46,7 @@
                       <th scope="col">Merek</th>
                       <th scope="col">Type Pemakaian</th>
                       <th scope="col">Jumlah</th>
+                      <th scope="col">User Ruangan</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
                   </thead>
@@ -57,6 +58,7 @@
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->jumlah }}</td>
+                      <td>{{ $item->user_ruangan }}</td>
                       <td>
                         <a href="{{ route('permintaan_barang_admin.edit', $item->id) }}" class="btn btn-info  btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
                         <form action="{{ route('permintaan_barang_admin.destroy', $item->id) }}" method="POST" class="d-inline">
