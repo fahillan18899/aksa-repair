@@ -37,6 +37,9 @@ class StockOpnameController extends Controller
             'lokasi_pemakaian' => '',
             'tanggal_masuk' => 'required',
             'tanggal_keluar' => '',
+            'id_aset_part' => '',
+            'nama_alat_pengguna_part' => '',
+            'nama_alat_pengguna_part' => '',
         ]);
         $request['kode_rs'] = Auth::user()->kode_rs;
         $request['jumlah_sekarang'] = $request['jumlah_masuk'];

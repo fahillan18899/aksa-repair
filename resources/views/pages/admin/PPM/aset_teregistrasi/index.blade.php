@@ -127,6 +127,76 @@
             </div>
         </div>
         <!---->
+        <!---->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default thumbnail">
+
+                    <div class="panel-heading no-print">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <h2>Tabel Sperpart</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body panel-form">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <!--TABEL-->
+                                <table class="datatable table table-striped table-bordered" style="width:100%">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama Sperpart</th>
+                                            <th scope="col">Type Sperpart</th>
+                                            <th scope="col">Lokasi Pemakaian</th>
+                                            <th scope="col">Jumlah Masuk</th>
+                                            <th scope="col">Jumlah Sekarang</th>
+                                            <th scope="col">Jumlah keluar</th>
+                                            <th scope="col">Tanggal Masuk</th>
+                                            <th scope="col">Tanggal Keluar</th>
+                                            <th scope="col">Harga Part</th>
+                                            <th scope="col">Jumlah harga</th>
+                                            <th scope="col">Id Aset Alat Pengguna</th>
+                                            <th scope="col">Nama Alat Pengguna</th>
+                                            <th scope="col">Lokasi Alat Pengguna</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($itemSperpart as $index => $item)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->type }}</td>
+                                                <td>{{ $item->lokasi_pemakaian }}</td>
+                                                <td>{{ $item->jumlah_masuk }}</td>
+                                                <td>{{ $item->jumlah_sekarang }}</td>
+                                                <td>{{ $item->jumlah_keluar }}</td>
+                                                <td>{{ $item->tanggal_masuk }}</td>
+                                                <td>{{ $item->tanggal_keluar }}</td>
+                                                <td>{{ $item->harga_part }}</td>
+                                                <td>{{ $item->jumlah_harga_part }}</td>
+                                                <td>{{ $item->id_aset_part }}</td>
+                                                <td>{{ $item->nama_alat_pengguna_part }}</td>
+                                                <td>{{ $item->lokasi_alat_pengguna_part }}</td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td class="text-center" colspan="9">Data Kosong</td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <!--TABEL-->
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default thumbnail">
@@ -362,6 +432,159 @@
                 </div>
             </div>
         </div>
+        <!---->
+        <!---->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default thumbnail">
+
+                    <div class="panel-heading no-print">
+                        <h1>Sperpart Yang digunakan</h1>
+                    </div>
+
+                    <div class="panel-body panel-form">
+                        <div class="row">
+                            <div class="col-md-9 col-sm-12">
+                                <form action="{{ url('/dashboard/ppm/penggunaan_sperpart') }}" class="form-inner"
+                                    enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                                    @csrf
+
+                                    <div class="form-group row">
+                                        <label for="nama" class="col-xs-3 col-form-label">Nama Sperpart<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="nama" type="text" class="form-control"
+                                                id="nama" placeholder="Contoh : Selang">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="type" class="col-xs-3 col-form-label">Type Sperpart<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="type" type="text" class="form-control"
+                                                id="type" placeholder="Isi sesuai dengan data alat">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="lokasi_pemakaian" type="text" class="form-control"
+                                                id="lokasi_pemakaian" placeholder="Lokasi dari alat pemakai">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="jumlah_masuk" class="col-xs-3 col-form-label">Jumlah Masuk<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="jumlah_masuk" type="text" class="form-control"
+                                                id="jumlah_masuk" value="-">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="jumlah_sekarang" class="col-xs-3 col-form-label">Jumlah Sekarang<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="jumlah_sekarang" type="text" class="form-control"
+                                                id="jumlah_sekarang" placeholder="Jumlah sekarang">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="jumlah_keluar" class="col-xs-3 col-form-label">Jumlah keluar
+                                          <i class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="jumlah_keluar" type="text" class="form-control"
+                                                id="jumlah_keluar" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="tanggal_masuk" type="text" class="form-control"
+                                                id="tanggal_masuk" placeholder="-" value="<?php echo date(now()); ?>" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="tanggal_keluar" class="col-xs-3 col-form-label">Tanggal Keluar<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="tanggal_keluar" type="text" class="form-control"
+                                                id="tanggal_keluar" placeholder="-" value="<?php echo date(now()); ?>" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="harga_part" class="col-xs-3 col-form-label">Harga Part<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="harga_part" type="text" class="form-control"
+                                                id="harga_part" placeholder="" value="" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="jumlah_harga_part" class="col-xs-3 col-form-label">Jumlah harga<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="jumlah_harga_part" type="text" class="form-control"
+                                                id="jumlah_harga_part" placeholder="" value="" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="id_aset_part" class="col-xs-3 col-form-label">Id Aset Alat Pengguna<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="id_aset_part" type="text" class="form-control"
+                                                id="id_aset_part" placeholder="-" onkeyup="autofillpart()">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="nama_alat_pengguna_part" class="col-xs-3 col-form-label">Nama Alat Pengguna<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="nama_alat_pengguna_part" type="text" class="form-control"
+                                                id="nama_alat_pengguna_part" placeholder="" value="" >
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="lokasi_alat_pengguna_part" class="col-xs-3 col-form-label">Lokasi Alat Pengguna<i
+                                                class="text-danger">*</i></label>
+                                        <div class="col-xs-9">
+                                            <input name="lokasi_alat_pengguna_part" type="text" class="form-control"
+                                                id="lokasi_alat_pengguna_part" placeholder="" value="" >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-offset-3 col-sm-6">
+                                            <div class="ui buttons">
+                                                <button class="ui positive button">Tambah</button>
+                                                <div class="or"></div>
+                                                <button type="reset" class="ui button"
+                                                    type="submit">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!---->
         <div class="row">
             <div class="col-sm-12">
                 <div class="panel panel-default thumbnail">
@@ -1711,21 +1934,23 @@
         });
     }
 
-    $.ajax({
-        url: '{{ url('/dashboard/ppm/autofill/') }}/' + idars,
+    function autofillpart() {
+      let idarspart = $("#id_aset_part").val();
+
+      $.ajax({
+        url: '{{ url('/dashboard/ppm/autofillpart/') }}/' + idarspart,
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-            $("#Nama_Alat_reg").val(data.nama_alat_reg);
-            $("#Merek_Alat_reg").val(data.merek_alat_reg);
-            $("#Serial_Number_reg").val(data.serial_number_reg);
-            $("#Lokasi_Alat_reg").val(data.lokasi_alat_reg);
-            $("#Type_Alat_reg").val(data.type);
+            $("#nama_alat_pengguna_part").val(data.nama_alat);
+            $("#lokasi_alat_pengguna_part").val(data.lokasi_alat);
+            console.log(data);
         },
         error: function(xhr, status, error) {
             console.log(xhr.responseText);
         }
     });
+    }
     
 </script>
 

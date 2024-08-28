@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
 use App\Http\Controllers\Admin\PPM\TambahDistributorController;
 use App\Http\Controllers\Admin\PPM\PesananController;
+use App\Http\Controllers\Admin\PPM\PengggunaanSperpartController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -140,6 +141,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Autofill
         Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
+        Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
         Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
         Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
 
@@ -216,6 +218,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Request Perbaikan
          Route::resource('/pesanan', PesananController::class);
          Route::get('/getPesanan/{id}', [PesananController::class, 'getPesanan']);
+
+        // Penggunaan Sperpart Gudang / Stock opname
+        Route::post('penggunaan_sperpart', [PengggunaanSperpartController::class, 'store']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');

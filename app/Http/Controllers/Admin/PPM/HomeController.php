@@ -110,6 +110,15 @@ class HomeController extends Controller
         ]);
     }
 
+    public function autofillpart($idars)
+    {
+        $data = DB::table('registrasis')->where('id_aset', $idars)->first();
+
+        return response()->json(['nama_alat' => $data->nama_alat,
+                                'lokasi_alat' => $data->lokasi_alat,
+        ]);
+    }
+
     public function autofillPengiriman($id_perbaikan_reg)
     {
         $data = DB::table('perbaikan_registrasis')->where('id_perbaikan_reg', $id_perbaikan_reg)->first();
