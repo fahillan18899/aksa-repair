@@ -472,7 +472,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="lokasi_pemakaian" type="text" class="form-control"
-                                                id="lokasi_pemakaian" placeholder="Lokasi dari alat pemakai">
+                                                id="lokasi_pemakaian" placeholder="Terisi Otomatis" readonly>
                                         </div>
                                     </div>
 
@@ -481,7 +481,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="jumlah_masuk" type="text" class="form-control"
-                                                id="jumlah_masuk" value="-">
+                                                id="jumlah_masuk" value="" placeholder="jumlah stock pertama kali masuk">
                                         </div>
                                     </div>
 
@@ -490,7 +490,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="jumlah_sekarang" type="text" class="form-control"
-                                                id="jumlah_sekarang" placeholder="Jumlah sekarang">
+                                                id="jumlah_sekarang" placeholder="Jumlah sisa stock di gudang">
                                         </div>
                                     </div>
 
@@ -499,7 +499,7 @@
                                           <i class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="jumlah_keluar" type="text" class="form-control"
-                                                id="jumlah_keluar" >
+                                                id="jumlah_keluar" placeholder="Jumlah stock yang digunakan" >
                                         </div>
                                     </div>
 
@@ -507,8 +507,8 @@
                                         <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk<i
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
-                                            <input name="tanggal_masuk" type="text" class="form-control"
-                                                id="tanggal_masuk" placeholder="-" value="<?php echo date(now()); ?>" >
+                                            <input name="tanggal_masuk" type="date" class="form-control"
+                                                id="tanggal_masuk" placeholder="-" value="" >
                                         </div>
                                     </div>
 
@@ -526,7 +526,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="harga_part" type="text" class="form-control"
-                                                id="harga_part" placeholder="" value="" >
+                                                id="harga_part" placeholder="Contoh: Rp.1.000.000" value="" >
                                         </div>
                                     </div>
 
@@ -535,7 +535,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="jumlah_harga_part" type="text" class="form-control"
-                                                id="jumlah_harga_part" placeholder="" value="" >
+                                                id="jumlah_harga_part" placeholder="Contoh: Rp.2.000.000" value="" >
                                         </div>
                                     </div>
 
@@ -544,7 +544,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="id_aset_part" type="text" class="form-control"
-                                                id="id_aset_part" placeholder="-" onkeyup="autofillpart()">
+                                                id="id_aset_part" placeholder="Paste id aset alat disini" onkeyup="autofillpart()">
                                         </div>
                                     </div>
                                     
@@ -553,7 +553,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="nama_alat_pengguna_part" type="text" class="form-control"
-                                                id="nama_alat_pengguna_part" placeholder="" value="" >
+                                                id="nama_alat_pengguna_part" placeholder="Terisi Otomatis" value="" readonly >
                                         </div>
                                     </div>
                                     
@@ -562,7 +562,7 @@
                                                 class="text-danger">*</i></label>
                                         <div class="col-xs-9">
                                             <input name="lokasi_alat_pengguna_part" type="text" class="form-control"
-                                                id="lokasi_alat_pengguna_part" placeholder="" value="" >
+                                                id="lokasi_alat_pengguna_part" placeholder="Terisi Otomatis" value="" readonly >
                                         </div>
                                     </div>
 
@@ -1944,6 +1944,7 @@
         success: function(data) {
             $("#nama_alat_pengguna_part").val(data.nama_alat);
             $("#lokasi_alat_pengguna_part").val(data.lokasi_alat);
+            $("#lokasi_pemakaian").val(data.lokasi_alat);
             console.log(data);
         },
         error: function(xhr, status, error) {
