@@ -63,7 +63,7 @@
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
                         @foreach ($alats as $alat)
-                        <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
+                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -102,7 +102,7 @@
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="lokasi_alat">
                         @foreach ($ruangans as $ruangan)
-                        <option value="<?= $ruangan['lokasi_alat']; ?>"><?= $ruangan['lokasi_alat']; ?></option>
+                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan -> lokasi_alat == $item['lokasi_alat'] ? 'selected' : ''}}>{{$ruangan ->lokasi_alat}}</option>
                         @endforeach
                       </select>
                     </div>

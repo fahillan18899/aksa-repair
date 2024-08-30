@@ -9,6 +9,7 @@ use App\Models\Alat;
 use App\Models\LembarPemeliharaan;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
+use App\Models\Gedung;
 use App\Models\TambahJenisAlat;
 use App\Models\TambahDistributor;
 use Illuminate\Http\Request;
@@ -66,11 +67,13 @@ class RegistrasiAsetController extends Controller
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $jenis = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
         $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.registrasi_aset.index', [
             'items' => $items,
             'ruangans' => $ruangans,
+            'gedung' => $gedung,
             'alats' => $alats,
             'jenis' => $jenis,
             'distribut' => $distribut
