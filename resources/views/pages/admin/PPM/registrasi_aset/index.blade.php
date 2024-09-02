@@ -66,9 +66,9 @@
                   @method('post')
 
                   <div class="form-group row">
-                    <label for="firstname" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
+                    <label for="firstname" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RS_DEMO_1" value="">
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RSX1" value="">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -77,7 +77,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="QR Qode" value="">
+                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Samakan dengan Id Aset" value="">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -111,7 +111,7 @@
                   <div class="form-group row">
                     <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek" class="form-control" type="text" placeholder="Merek" id="Merek">
+                      <input name="merek" class="form-control" type="text" placeholder="Isi sesuai data alat" id="Merek">
                       @if ($errors->has('merek'))
                       <span class="text-danger">{{ $errors->first('merek') }}</span>
                       @endif
@@ -121,14 +121,14 @@
                   <div class="form-group row">
                     <label for="type" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type" class="form-control" type="text" placeholder="Type" id="Type">
+                      <input name="type" class="form-control" type="text" placeholder="Isi sesuai data alat" id="Type">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Serial_Number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="serial_number" class="form-control" type="text" placeholder="Serial Number" id="Serial_Number">
+                      <input name="serial_number" class="form-control" type="text" placeholder="Isi sesuai data alat" id="Serial_Number">
                     </div>
                   </div>
 
@@ -181,63 +181,63 @@
                   <div class="form-group row">
                     <label for="alamat_distributor" class="col-xs-3 col-form-label">Alamat Distributor </label>
                     <div class="col-xs-9">
-                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor" readonly>
+                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_Distributor" class="col-xs-3 col-form-label">Telphone_Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor" readonly>
+                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Email_Distributor" class="col-xs-3 col-form-label">Email Distributor </label>
                     <div class="col-xs-9">
-                      <input name="email_distributor" type="email" class="form-control" id="Email_Distributor" placeholder="Email Distributor" readonly>
+                      <input name="email_distributor" type="email" class="form-control" id="Email_Distributor" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_Distributor" class="col-xs-3 col-form-label">Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor" readonly>
+                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_T_Distributor" class="col-xs-3 col-form-label">Telephone Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor" readonly>
+                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="No_Sertifikat_Kalibrasi" class="col-xs-3 col-form-label">No Sertifikat Kalibrasi</label>
                     <div class="col-xs-9">
-                      <input name="no_sertifikat_kalibrasi" type="text" class="form-control" id="No_Sertifikat_Kalibrasi" placeholder="No Sertifikat Kalibrasi">
+                      <input name="no_sertifikat_kalibrasi" type="text" class="form-control" id="No_Sertifikat_Kalibrasi" placeholder="Nomer sertifikat kalibrasi alat">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_PPM" class="col-xs-3 col-form-label">Teknisi PPM <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="teknisi_ppm" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi PPM">
+                      <input name="teknisi_ppm" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi pelaksana PPM">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Harga_Perolehan" class="col-xs-3 col-form-label">Harga Perolehan </label>
                     <div class="col-xs-9">
-                      <input name="harga_perolehan" type="number" class="form-control" id="Harga_Perolehan" placeholder="Harga Perolehan">
+                      <input name="harga_perolehan" type="number" class="form-control" id="Harga_Perolehan" placeholder="Input dengan angka / number">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="sumber_dana" class="col-xs-3 col-form-label">Sumber Dana </label>
                     <div class="col-xs-9">
-                      <input name="sumber_dana" type="text" class="form-control" id="Sumber_Dana" placeholder="Sumber Dana">
+                      <input name="sumber_dana" type="text" class="form-control" id="Sumber_Dana" placeholder="Contoh : APBD">
                     </div>
                   </div>
 
@@ -245,7 +245,7 @@
                   <div class="form-group row">
                     <label for="Tahun_Perolehan" class="col-xs-3 col-form-label">Tahun Perolehan </label>
                     <div class="col-xs-9">
-                      <input name="tahun_perolehan" type="number" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan">
+                      <input name="tahun_perolehan" type="number" class="form-control" id="Tahun_Perolehan" placeholder="Input dengan angka / number">
                     </div>
                   </div>
 
@@ -253,7 +253,7 @@
                     <label for="akl" class="col-xs-3 col-form-label">AKL</label>
                     <div class="col-xs-9">
                       <input type="radio" onclick="clickAKL()">
-                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="AKL" disabled>
+                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="Pilih salah satu AKL / AKD" disabled>
                     </div>
                   </div>
 
@@ -261,21 +261,21 @@
                     <label for="akd" class="col-xs-3 col-form-label">AKD </label>
                     <div class="col-xs-9">
                       <input type="radio" onclick="clickAKD()">
-                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="AKD" disabled>
+                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="Pilih salah satu AKL / AKD" disabled>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 </label>
                     <div class="col-xs-9">
-                      <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="no inventaris 1">
+                      <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="Nomer Inventaris alat">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2</label>
                     <div class="col-xs-9">
-                      <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="no inventaris 2">
+                      <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="Nomer Inventaris alat (optional)">
                     </div>
                   </div>
 
@@ -311,7 +311,7 @@
                 <th class="none">Type</th>
                 <th class="none">Gambar</th>
                 <th class="none">Serial Number</th>
-                <th class="none">Ruangan</th>
+                <th class="">Ruangan</th>
                 <th class="none">Tanggal_Kalibrasi</th>
                 <th class="none">Distributor</th>
                 <th class="none">Alamat_Distributor</th>

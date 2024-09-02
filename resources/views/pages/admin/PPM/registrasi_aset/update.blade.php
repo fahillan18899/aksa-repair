@@ -111,14 +111,14 @@
                   <div class="form-group row">
                     <label for="Tanggal_Kalibrasi" class="col-xs-3 col-form-label">Tanggal Kalibrasi </label>
                     <div class="col-xs-9">
-                      <input name="tanggal_kalibrasi" type="date" class="form-control" id="Tanggal_Kalibrasi" placeholder="Tanggal_Kalibrasi" value="<?= $item['tanggal_kalibrasi'] ?>">
+                      <input name="tanggal_kalibrasi" type="text" class="form-control" id="Tanggal_Kalibrasi" placeholder="Tanggal_Kalibrasi" value="<?= $item['tanggal_kalibrasi'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="jadwal_pemeliharaan" class="col-xs-3 col-form-label">jadwal pemeliharaan </label>
                     <div class="col-xs-9">
-                      <input name="jadwal_pemeliharaan" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan" value="<?= $item['jadwal_pemeliharaan'] ?>">
+                      <input name="jadwal_pemeliharaan" type="text" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan" value="<?= $item['jadwal_pemeliharaan'] ?>">
                     </div>
                   </div>
 
