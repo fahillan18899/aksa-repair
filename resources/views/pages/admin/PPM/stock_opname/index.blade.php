@@ -58,7 +58,7 @@
                       <th scope="col">Jumlah Keluar</th>
                       <th scope="col">Tanggal Masuk</th>
                       <th scope="col">Tanggal Keluar</th>
-                      <th scope="col">Total</th>
+                      <th scope="col">Sisa Stock</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
                   </thead>
