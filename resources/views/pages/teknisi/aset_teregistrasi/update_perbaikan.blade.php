@@ -32,8 +32,8 @@
             <div class="row">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ url ('dashboard_teknisi/perbaikan_teregistrasi' , $item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                @csrf
-                @method('PUT')
+                  @csrf
+                  @method('PUT')
 
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
@@ -149,6 +149,40 @@
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control"
+                        id="nama_sukucadang1" placeholder="Nama Sperpart yang digunakan" value="<?php echo $item['suku_cadang'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume1"
+                        placeholder="Volume sperpart/ banyak yang digunakan" value="<?php echo $item['volume'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control"
+                        id="harga_satuan1" placeholder="Harga Satuan dari sperpart" value="<?php echo $item['harga_satuan'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control"
+                        id="jumlah_harga1" placeholder="Jumlah Harga Sperpart" value="<?php echo $item['jumlah_harga'] ?>">
                     </div>
                   </div>
 
