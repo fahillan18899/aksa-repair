@@ -210,11 +210,13 @@ class RegistrasiAsetController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.registrasi_aset.update', [
             'ruangans' => $ruangans,
             'alats' => $alats,
             'item' => $item,
+            'distribut' => $distribut,
         ]);
     }
 
@@ -245,6 +247,8 @@ class RegistrasiAsetController extends Controller
             'umur_alat' => '',
             'no_inventaris_1' => '',
             'no_inventaris_2' => '',
+            'akl' => '',
+            'akd' => '',
             'penyusutan_aset' => '',
         ], [
             'gambar.image' => 'Yang diupload bukan gambar',

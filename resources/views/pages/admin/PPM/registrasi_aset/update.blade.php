@@ -123,44 +123,50 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Distributor" class="col-xs-3 col-form-label">Distributor </label>
+                    <label for="Distributor" class="col-xs-3 col-form-label">Distributor</label>
                     <div class="col-xs-9">
-                      <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor" value="<?= $item['distributor'] ?>">
+                      <!-- <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor"> -->
+                      <select name="distributor" class="form-control" id="distributor">
+                        <option>Pilih Distributor</option>
+                        @foreach($distribut as $distribut)
+                        <option value="<?= $distribut['nama_distributor_p']; ?>"><?= $distribut['nama_distributor_p']; ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Alamat_Distributor" class="col-xs-3 col-form-label">Alamat Distributor </label>
                     <div class="col-xs-9">
-                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor" value="<?= $item['alamat_distributor'] ?>">
+                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Alamat Distributor" value="<?= $item['alamat_distributor'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_Distributor" class="col-xs-3 col-form-label">Telphone_Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor" value="<?= $item['tlp_distributor'] ?>">
+                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Telphone Distributor" value="<?= $item['tlp_distributor'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Email_Distributor" class="col-xs-3 col-form-label">Email Distributor </label>
                     <div class="col-xs-9">
-                      <input name="email_distributor" type="text" class="form-control" id="Email_Distributor" placeholder="Email Distributor" value="<?= $item['email_distributor'] ?>">
+                      <input name="email_distributor" type="text" class="form-control" id="Email_Distributor" placeholder="Email Distributor" value="<?= $item['email_distributor'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Teknisi_Distributor" class="col-xs-3 col-form-label">Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor" value="<?= $item['teknisi_distributor'] ?>">
+                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Teknisi Distributor" value="<?= $item['teknisi_distributor'] ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="TLP_T_Distributor" class="col-xs-3 col-form-label">Telephone Teknisi Distributor </label>
                     <div class="col-xs-9">
-                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor" value="<?= $item['tlp_t_distributor'] ?>">
+                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Telephone Teknisi Distributor" value="<?= $item['tlp_t_distributor'] ?>" readonly>
                     </div>
                   </div>
 
@@ -196,6 +202,20 @@
                     <label for="tahun_perolehan" class="col-xs-3 col-form-label">Tahun Perolehan </label>
                     <div class="col-xs-9">
                       <input name="Tahun_Perolehan" type="text" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan" value="<?= $item['tahun_perolehan'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="akl" class="col-xs-3 col-form-label">AKL</label>
+                    <div class="col-xs-9">
+                      <input name="akl" type="text" class="form-control" id="AKL" value="<?= $item['akl'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="akd" class="col-xs-3 col-form-label">AKD </label>
+                    <div class="col-xs-9">
+                      <input name="akd" type="text" class="form-control" id="AKD" value="<?= $item['akd'] ?>">
                     </div>
                   </div>
 
@@ -253,4 +273,39 @@
 
   </div> <!-- /.content -->
 </div>
+@push('addon-script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select[name="distributor"]').on('change', function() {
+      var stateID = $(this).val();
+      console.log(stateID);
+      if (stateID) {
+        $.ajax({
+          url: '/dashboard/ppm/getDistributor/' + stateID,
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+            $.each(data, function(key, value) {
+              $('input[id="Alamat_Distributor"]').val(value.alamat_distributor_p);
+              $('input[id="TLP_Distributor"]').val(value.telphone_distributor_p);
+              $('input[id="Email_Distributor"]').val(value.email_distributor_p);
+              $('input[id="Teknisi_Distributor"]').val(value.teknisi_distributor_p);
+              $('input[id="TLP_T_Distributor"]').val(value.telphone_teknisi_dis_p);
+            });
+          }
+        });
+      } else {
+        $('input[id="Alamat_Distributor"]').empty();
+        $('input[id="TLP_Distributor"]').empty();
+        $('input[id="Email_Distributor"]').empty();
+        $('input[id="Teknisi_Distributor"]').empty();
+        $('input[id="TLP_T_Distributor"]').empty();
+      }
+    })
+  });
+</script>
+
+@endpush
 @endsection
