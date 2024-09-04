@@ -9,6 +9,7 @@ use App\Models\PengembalianRegistrasi;
 use App\Models\PenghapusanRegistrasi;
 use App\Models\PengirimanRegistrasi;
 use App\Models\PerbaikanRegistrasi;
+use App\Models\StockOpname;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
@@ -32,6 +33,7 @@ class PerbaikanTeregistrasiController extends Controller
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $itemSperpart = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
         $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
@@ -50,7 +52,8 @@ class PerbaikanTeregistrasiController extends Controller
             'result_pengiriman' => $result_pengiriman,
             'kode_aset' => $kode_aset,
             'teknisis' => $teknisis,
-            'itemPesanan' => $itemPesanan
+            'itemPesanan' => $itemPesanan,
+            'itemSperpart' => $itemSperpart,
 
         ]);
     }

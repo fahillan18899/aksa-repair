@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('lokasi_alat');
             $table->string('nama_alat');
             $table->date('jadwal');
+            $table->date('jadwal2')->nullable();
+            $table->date('jadwal3')->nullable();
             $table->string('status', 4)->default('1');
             $table->string('kode_rs', 8)->index();
             $table->timestamps();

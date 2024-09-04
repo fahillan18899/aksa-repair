@@ -46,6 +46,7 @@ use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemel
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PerbaikanUserUnregistrasiController as PerbaikanUserUnregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\PengambilanSperpartTeknisiController;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
@@ -280,7 +281,11 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
     Route::post('/lembar_pemeliharaan', [LembarPemeliharaanController::class, 'store']);
 
+    // Penggunaan Sperpart Gudang / Stock opname (Teknisi)
+    Route::post('penggunaan_sperpart', [PengambilanSperpartTeknisiController::class, 'store']);
+
     Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
+    Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
 
     Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 

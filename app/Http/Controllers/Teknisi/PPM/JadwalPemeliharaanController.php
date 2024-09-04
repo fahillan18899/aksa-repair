@@ -20,7 +20,7 @@ class JadwalPemeliharaanController extends Controller
     public function state()
     {
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $states = DB::table("registrasis")->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
+        $states = DB::table("gedungs")->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_gedung')->pluck('nama_gedung', 'id_gedung');
 
         return view('pages.teknisi.jadwal_pemeliharaan.index', [
 
@@ -32,7 +32,7 @@ class JadwalPemeliharaanController extends Controller
     public function city($id)
     {
         $cities = DB::table('registrasis')
-            ->where('lokasi_alat', $id)
+            ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)
             ->pluck('nama_alat', 'id_aset');
 
         return json_encode($cities);

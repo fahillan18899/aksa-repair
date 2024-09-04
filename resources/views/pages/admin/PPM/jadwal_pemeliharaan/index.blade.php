@@ -34,7 +34,7 @@
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
           <div class="panel-heading no-print">
-            <h1>Jadwal Pemeliharaan</h1>
+            <h1>Jadwal Pemeliharaan / Tahun</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -49,7 +49,7 @@
                   <input class="form-control" name="id" type="hidden" id="id">
 
                   <div class="form-group row">
-                    <label for="lokasi_alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
+                    <label for="lokasi_alat" class="col-xs-3 col-form-label">Lokasi Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="lokasi_alat">
                         <option value="">Pilih Lokasi Alat</option>
@@ -60,7 +60,7 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat </label>
+                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control">
                       </select>
@@ -68,9 +68,23 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="slot" class="col-xs-3 col-form-label">Waktu Jadwal<i class="text-danger">*</i></label>
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 1<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input class="form-control" name="jadwal" type="date" placeholder="Waktu Jadwal" id="slot" value="">
+                      <input class="form-control" name="jadwal" type="date" id="slot" value="">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 2</label>
+                    <div class="col-xs-9">
+                      <input class="form-control" name="jadwal2" type="date" id="slot2" value="">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 3</label>
+                    <div class="col-xs-9">
+                      <input class="form-control" name="jadwal3" type="date" id="slot3" value="">
                     </div>
                   </div>
 
@@ -110,7 +124,9 @@
                       <th scope="col">No</th>
                       <th scope="col">Lokasi Alat</th>
                       <th scope="col">Nama Alat</th>
-                      <th scope="col">Jadwal</th>
+                      <th scope="col">Pemeliharaan 1</th>
+                      <th scope="col">Pemeliharaan 2</th>
+                      <th scope="col">Pemeliharaan 3</th>
                       <th scope="col">Keterangan</th>
                     </thead>
                     <tbody>
@@ -120,6 +136,8 @@
                         <td>{{ $items->lokasi_alat }}</td>
                         <td>{{ $items->nama_alat }}</td>
                         <td>{{ $items->jadwal }}</td>
+                        <td>{{ $items->jadwal2 }}</td>
+                        <td>{{ $items->jadwal3 }}</td>
                         <td>
                           <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
                             @csrf
@@ -160,7 +178,8 @@
           success: function(data) {
             $('select[name="nama_alat"]').empty();
             $.each(data, function(key, value) {
-              $('select[name="nama_alat"]').append('<option value="' + value + '">' + value + '</option>');
+              $('select[name="nama_alat"]').append('<option value="' + value +'_'+ key +'">' + value +'_'+ key +'</option>');
+              console.log(value)
             });
           }
         });

@@ -20,7 +20,7 @@ class JadwalPemeliharaanController extends Controller
     public function state()
     {
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $states = DB::table('registrasis')->where('kode_rs', Auth::user()->kode_rs)->distinct('lokasi_alat')->pluck('lokasi_alat', 'id_aset');
+        $states = DB::table('gedungs')->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_gedung')->pluck('nama_gedung', 'id_gedung');
 
         return view('pages.admin.PPM.jadwal_pemeliharaan.index', [
 
@@ -33,7 +33,7 @@ class JadwalPemeliharaanController extends Controller
     {
         $cities = DB::table('registrasis')
             ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)
-            ->pluck('nama_alat', 'id_aset');
+            ->pluck('id_aset','nama_alat');
 
         return json_encode($cities);
     }
@@ -60,6 +60,8 @@ class JadwalPemeliharaanController extends Controller
             'lokasi_alat' => '',
             'nama_alat' => '',
             'jadwal' => '',
+            'jadwal2' =>'',
+            'jadwal3' =>'',
             'kode_rs' => '',
         ]);
         $data['kode_rs'] = Auth::user()->kode_rs;
