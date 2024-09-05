@@ -91,7 +91,7 @@
                     <label for="lokasi_alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat_reg" class="form-control" id="lokasi_alat_reg">
-                      @foreach ($ruangans as $ruangan)
+                        @foreach ($ruangans as $ruangan)
                         <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
                         @endforeach
                       </select>
@@ -135,9 +135,44 @@
                         @foreach ($teknisis as $teknisi)
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
+                      </select>
                     </div>
                   </div>
 
+                  <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama
+                      Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control"
+                        id="nama_sukucadang3" value="<?php echo $item['suku_cadang'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart </label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control"
+                        id="volume3" value="<?php echo $item['volume'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga
+                      Satuan Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control"
+                        id="harga_satuan3" value="<?php echo $item['harga_satuan'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control"
+                        id="jumlah_harga3" value="<?php echo $item['jumlah_harga'] ?>">
+                    </div>
+                  </div>
 
                   <div class="form-group row">
                     <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>

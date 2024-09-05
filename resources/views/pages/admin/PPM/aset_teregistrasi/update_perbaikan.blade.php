@@ -153,6 +153,37 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control"
+                        id="nama_sukucadang1" value="<?php echo $item['suku_cadang'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume1" value="<?php echo $item['volume'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" value="<?php echo $item['harga_satuan'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" value="<?php echo $item['jumlah_harga'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat" value="<?php echo $item['keluhan_dari_alat_reg'] ?>">

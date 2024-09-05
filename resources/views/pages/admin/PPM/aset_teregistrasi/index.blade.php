@@ -666,7 +666,7 @@
                                                         <td><?php echo $item['korektif_reg']; ?></td>
                                                         <td>
                                                             <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}"
-                                                                class="btn btn-xs btn-primary" data-toggle="tooltip"
+                                                                class="btn btn-xs btn-success" data-toggle="tooltip"
                                                                 data-placement="top" title="Edit"><i
                                                                     class="fa fa-edit"></i></a>
 
@@ -1023,7 +1023,7 @@
                                                         <td>
                                                             <a data-toggle="tooltip" data-placement="top" title="Edit"
                                                                 href="{{ route('update_pengiriman.edit', $item->id_perbaikan_reg) }}"
-                                                                class="btn btn-xs btn-primary"><i
+                                                                class="btn btn-xs btn-success"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a data-toggle="tooltip" data-placement="top" title="Cetak"
                                                                 href="/dashboard/ppm/aset_teregistrasi/cetak_pengiriman/{{ $item->id_perbaikan_reg }}"
@@ -1431,7 +1431,7 @@
                                                             <a data-toggle="tooltip" data-placement="top"
                                                                 title="Edit"
                                                                 href="{{ route('update_pengembalian.edit', $item->id_perbaikan_reg) }}"
-                                                                class="btn btn-xs btn-primary"><i
+                                                                class="btn btn-xs btn-success"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a data-toggle="tooltip" data-placement="top"
                                                                 title="Cetak"
@@ -1696,25 +1696,25 @@
                                         <table class="datatable table table-striped table-bordered" style="width:100%">
                                             <thead class="table-light">
                                                 <th scope="col">No</th>
-                                                <th scope="col">Id_Perbaikan</th>
-                                                <th scope="col">Tanggal_Perbaikan</th>
-                                                <th scope="col">Tanggal_Penggudangan</th>
-                                                <th scope="col">Nama_Alat</th>
-                                                <th scope="col">Merek_Alat</th>
-                                                <th scope="col">Type_Alat</th>
-                                                <th scope="col">Serial_Number</th>
-                                                <th scope="col">Lokasi_Alat</th>
-                                                <th scope="col">Pelapor</th>
-                                                <th scope="col">Teknisi_1</th>
-                                                <th scope="col">Teknisi_2</th>
-                                                <th scope="col">Teknisi_3</th>
-                                                <th scope="col">Nama Sperpart</th>
-                                                <th scope="col">Volume Sperpart</th>
-                                                <th scope="col">Harga Satuan Sperpart</th>
-                                                <th scope="col">Jumlah Harga Sperpart</th>
-                                                <th scope="col">Kepala Ruangan</th>
-                                                <th scope="col">Keterangan_Pengguna</th>
-                                                <th scope="col">Tombol_Aksi_Tabel</th>
+                                                <th class="">Id_Perbaikan</th>
+                                                <th class="none">Tanggal_Perbaikan</th>
+                                                <th class="none">Tanggal_Penggudangan</th>
+                                                <th class="">Nama Alat</th>
+                                                <th class="">Merek Alat</th>
+                                                <th class="">Type Alat</th>
+                                                <th class="">Serial Number</th>
+                                                <th class="">Lokasi Alat</th>
+                                                <th class="none">Pelapor</th>
+                                                <th class="none">Teknisi_1</th>
+                                                <th class="none">Teknisi_2</th>
+                                                <th class="none">Teknisi_3</th>
+                                                <th class="none">Nama Sperpart</th>
+                                                <th class="none">Volume Sperpart</th>
+                                                <th class="none">Harga Satuan Sperpart</th>
+                                                <th class="none">Jumlah Harga Sperpart</th>
+                                                <th class="none">Kepala Ruangan</th>
+                                                <th class="none">Keterangan_Pengguna</th>
+                                                <th class="">Tombol_Aksi_Tabel</th>
                                             </thead>
                                             <tbody>
                                                 @forelse ($result_penghapusan as $index => $item)
@@ -1742,7 +1742,7 @@
                                                             <a data-toggle="tooltip" data-placement="top"
                                                                 title="Edit"
                                                                 href="/dashboard/ppm/aset_teregistrasi/update_penghapusan/{{ $item->id_perbaikan_reg }}/edit"
-                                                                class="btn btn-xs btn-primary"><i
+                                                                class="btn btn-xs btn-success"><i
                                                                     class="fa fa-edit"></i></a>
                                                             <a data-toggle="tooltip" data-placement="top"
                                                                 title="Cetak"

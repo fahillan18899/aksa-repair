@@ -153,6 +153,41 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama
+                      Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang" type="text" class="form-control"
+                        id="nama_sukucadang" value="<?= $item['suku_cadang'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume"
+                        value="<?= $item['volume'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control"
+                        id="harga_satuan" value="<?= $item['harga_satuan'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control"
+                        id="jumlah_harga" value="<?= $item['jumlah_harga'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="keterangan_kondisi_alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                     <div class="col-xs-9">
                       <select name="keterangan_kondisi_alat_reg" class="form-control" id="keterangan_kondisi_alat_reg">
