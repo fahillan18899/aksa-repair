@@ -63,9 +63,9 @@
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
                       <select name="nama_alat_un" class="form-control" id="nama_alat_un">
-                      @foreach ($alats as $alat)
-                      <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_un'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
-                      @endforeach
+                        @foreach ($alats as $alat)
+                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_un'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -153,6 +153,34 @@
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="suku_cadang_un" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang_un" type="text" class="form-control" id="suku_cadang_un1" value="<?= $item['suku_cadang_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume_un" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume_un" type="text" class="form-control" id="volume_un1" value="<?= $item['volume_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan_un" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan_un" type="text" class="form-control" id="harga_satuan_un1" value="<?= $item['harga_satuan_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga_un" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga_un" type="text" class="form-control" id="jumlah_harga_un1" value="<?= $item['jumlah_harga_un'] ?>">
                     </div>
                   </div>
 

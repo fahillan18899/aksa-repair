@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('serial_number_un');
             $table->string('lokasi_alat_un');
             $table->string('pelapor_un');
+            $table->string('suku_cadang_un')->nullable();
+            $table->string('volume_un')->nullable();
+            $table->string('harga_satuan_un')->nullable();
+            $table->string('jumlah_harga_un')->nullable();
             $table->string('teknisi_1_un');
             $table->string('teknisi_2_un')->nullable();
             $table->string('teknisi_3_un')->nullable();

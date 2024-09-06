@@ -22,6 +22,10 @@ return new class extends Migration
             $table->string('teknisi_1_un')->nullable();
             $table->string('teknisi_2_un')->nullable();
             $table->string('teknisi_3_un')->nullable();
+            $table->string('suku_cadang_un')->nullable();
+            $table->string('volume_un')->nullable();
+            $table->string('harga_satuan_un')->nullable();
+            $table->string('jumlah_harga_un')->nullable();
             $table->string('nama_rekanan_un')->nullable();
             $table->string('alamat_rekanan_un')->nullable();
             $table->string('teknisi_rekanan_un')->nullable();

@@ -58,15 +58,12 @@
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat </label>
                     <div class="col-xs-9">
                       <select name="nama_alat_un" class="form-control" id="nama_alat_un">
-
                         @foreach ($alats as $alat)
                         <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_un'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
                         @endforeach
-
                       </select>
                     </div>
                   </div>
-
 
                   <div class="form-group row">
                     <label for="merek_alat_un" class="col-xs-3 col-form-label">Merek Alat</label>
@@ -90,14 +87,14 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat<</label>
-                    <div class="col-xs-9">
-                      <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
-                        @foreach ($ruangans as $ruangan)
-                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_un'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
-                        @endforeach
-                      </select>
-                    </div>
+                    <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat </label>
+                        <div class="col-xs-9">
+                          <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
+                            @foreach ($ruangans as $ruangan)
+                            <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_un'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
+                            @endforeach
+                          </select>
+                        </div>
                   </div>
 
                   <div class="form-group row">
@@ -108,15 +105,15 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan Kondisi Alat<</label>
-                    <div class="col-xs-9">
-                      <select name="keterangan_un" class="form-control" id="keterangan_un">
-                        <option value="" selected="selected">Select Keterangan</option>
-                        <option value="Selesai Alat Dikembalikan" <?php if ($item['keterangan_un'] == 'Selesai Alat Dikembalikan') echo "selected" ?>>Selesai Alat Dikembalikan</option>
-                        <option value="Alat Dalam Perbaikan" <?php if ($item['keterangan_un'] == 'Alat Dalam Perbaikan') echo "selected" ?>>Alat Dalam Perbaikan</option>
-                        <option value="Alat Dilanjutkan Ke Rekanan" <?php if ($item['keterangan_un'] == 'Alat Dilanjutkan Ke Rekanan') echo "selected" ?>>Alat Dilanjutkan Ke Rekanan</option>
-                      </select>
-                    </div>
+                    <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan Kondisi Alat </label>
+                        <div class="col-xs-9">
+                          <select name="keterangan_un" class="form-control" id="keterangan_un">
+                            <option value="" selected="selected">Select Keterangan</option>
+                            <option value="Selesai Alat Dikembalikan" <?php if ($item['keterangan_un'] == 'Selesai Alat Dikembalikan') echo "selected" ?>>Selesai Alat Dikembalikan</option>
+                            <option value="Alat Dalam Perbaikan" <?php if ($item['keterangan_un'] == 'Alat Dalam Perbaikan') echo "selected" ?>>Alat Dalam Perbaikan</option>
+                            <option value="Alat Dilanjutkan Ke Rekanan" <?php if ($item['keterangan_un'] == 'Alat Dilanjutkan Ke Rekanan') echo "selected" ?>>Alat Dilanjutkan Ke Rekanan</option>
+                          </select>
+                        </div>
                   </div>
 
                   <div class="form-group row">
@@ -127,48 +124,77 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1<</label>
+                    <label for="teknisi_1_un" class="col-xs-3 col-form-label">Teknisi 1</label>
                     <div class="col-xs-9">
                       <select name="teknisi_1_un" class="form-control" id="teknisi_1_un">
-
                         @foreach ($teknisis as $teknisi)
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
-
                       </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2<</label>
+                    <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                     <div class="col-xs-9">
                       <select name="teknisi_2_un" class="form-control" id="teknisi_2_un">
-
                         @foreach ($teknisis as $teknisi)
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
-
                       </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3<</label>
+                    <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                     <div class="col-xs-9">
                       <select name="teknisi_3_un" class="form-control" id="teknisi_3_un">
-
                         @foreach ($teknisis as $teknisi)
                         <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_un'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
+                    </div>
+                  </div>
 
+                  <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="suku_cadang_un" type="text" class="form-control"
+                        id="nama_sukucadang_un1" value="<?= $item['suku_cadang_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="volume_un" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume_un" type="text" class="form-control" id="volume_un1"
+                        value="<?= $item['volume_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="harga_satuan_un" class="col-xs-3 col-form-label">Harga Satuan Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan_un" type="text" class="form-control"
+                        id="harga_satuan_un1" value="<?= $item['harga_satuan_un'] ?>">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah_harga_un" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
+                    </label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga_un" type="text" class="form-control"
+                        id="jumlah_harga_un1" value="<?= $item['jumlah_harga_un'] ?>">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="keluhan_dari_alat_un" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
                     <div class="col-xs-9">
-                      <input name="keluhan_dari_alat_un" type="text" class="form-control" id="keluhan_dari_alat_un" placeholder="Keluhan Dari Alat" value="<?= $item['keluhan_dari_alat_un'] ?>">
+                      <input name="keluhan_dari_alat_un" type="text" class="form-control"
+                        id="keluhan_dari_alat_un" placeholder="Keluhan Dari Alat" value="<?= $item['keluhan_dari_alat_un'] ?>">
                     </div>
                   </div>
 

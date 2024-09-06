@@ -24,6 +24,10 @@ return new class extends Migration
             $table->string('lokasi_alat_un')->nullable();
             $table->string('keterangan_un')->nullable();
             $table->string('pelapor_un')->nullable();
+            $table->string('suku_cadang_un')->nullable();
+            $table->string('volume_un')->nullable();
+            $table->string('harga_satua_un')->nullable();
+            $table->string('jumlah_harga_un')->nullable();
             $table->string('harga_perbaikan_un')->nullable();
             $table->string('penyebab_kerusakan_un')->nullable();
             $table->string('pengujian_suku_cadang_un')->nullable();

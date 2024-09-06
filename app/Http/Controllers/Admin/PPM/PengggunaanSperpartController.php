@@ -56,7 +56,7 @@ class PengggunaanSperpartController extends Controller
         $request['kode_rs'] = Auth::user()->kode_rs;
         $request['stock'] = $request->jumlah_sekarang - $request->jumlah_keluar;
         StockOpname::create($request->post());
-        return redirect('/dashboard/ppm/aset_teregistrasi')
+        return redirect('/dashboard/ppm/stock_opname')
             ->with('message', 'Data Alat Berhasil di Tambahkan.');
     }
 
