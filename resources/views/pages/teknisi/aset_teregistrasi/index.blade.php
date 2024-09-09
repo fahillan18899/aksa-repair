@@ -464,7 +464,7 @@
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="lokasi_pemakaian" type="text" class="form-control"
-                                                    id="lokasi_pemakaian" placeholder="Terisi Otomatis" readonly>
+                                                    id="lokasi_pemakaian2" placeholder="Terisi Otomatis" readonly>
                                             </div>
                                         </div>
 
@@ -617,7 +617,7 @@
                                             <th class="none">Keluhan Dari alat :</th>
                                             <th class="none">Korektif :</th>
                                             <!--<th scope="col">Tombol_Eksekusi</th>-->
-                                            <th scope="col">Tombol_Eksekusi</th>
+                                            <th class="">Tombol Eksekusi</th>
                                         </thead>
                                         <tbody>
                                             @forelse ($items as $index => $item)
@@ -657,7 +657,7 @@
                                                     <!--<td><?php echo $item['kode_rs']; ?></td>-->
                                                     <td>
                                                         <a href="/dashboard_teknisi/perbaikan_teregistrasi/update_perbaikan/{{ $item->id_perbaikan_reg }}/edit" 
-                                                        class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" 
+                                                        class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" 
                                                         title="Edit"> <i class="fa fa-edit"></i></a>
 
                                                         <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}"

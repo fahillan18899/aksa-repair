@@ -56,7 +56,7 @@ class PengambilanSperpartTeknisiController extends Controller
         $request['kode_rs'] = Auth::user()->kode_rs;
         $request['stock'] = $request->jumlah_sekarang - $request->jumlah_keluar;
         StockOpname::create($request->post());
-        return redirect('/dashboard_teknisi/perbaikan_teregistrasi')
+        return redirect('/dashboard_teknisi/stock_opname_teknisi')
             ->with('message', 'Data Sperpart Berhasil Diambil');
     }
 

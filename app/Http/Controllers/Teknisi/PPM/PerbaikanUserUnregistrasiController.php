@@ -9,6 +9,7 @@ use App\Models\PengembalianUnregistrasi;
 use App\Models\PenghapusanUnregistrasi;
 use App\Models\PengirimanUnregistrasi;
 use App\Models\PerbaikanUnregistrasi;
+use App\Models\StockOpname;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class PerbaikanUserUnregistrasiController extends Controller
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-
+        $itemSperpart = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
         $kodeRs_ = Auth::user()->kode_rs;
 
         $data = DB::table('perbaikan_unregistrasis')
@@ -51,6 +52,7 @@ class PerbaikanUserUnregistrasiController extends Controller
             'alats' => $alats,
             'ruangans' => $ruangans,
             'teknisis' => $teknisis,
+            'itemSperpart' => $itemSperpart,
 
         ]);
     }
@@ -72,6 +74,10 @@ class PerbaikanUserUnregistrasiController extends Controller
             'teknisi_1_un' => '',
             'teknisi_2_un' => '',
             'teknisi_3_un' => '',
+            'suku_cadang_un' => '',
+            'volume_un' => '',
+            'harga_satuan_un' => '',
+            'jumlah_harga_un' => '',
             'keluhan_dari_alat_un' => '',
             'kode_rs' => '',
             'active' => '',
@@ -116,6 +122,10 @@ class PerbaikanUserUnregistrasiController extends Controller
             'teknisi_1_un' => '',
             'teknisi_2_un' => '',
             'teknisi_3_un' => '',
+            'suku_cadang_un' => '',
+            'volume_un' => '',
+            'harga_satuan_un' => '',
+            'jumlah_harga_un' => '',
             'keluhan_dari_alat_un' => '',
             'kode_rs' => '',
 
