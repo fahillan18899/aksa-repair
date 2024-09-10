@@ -20,78 +20,85 @@
     <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
     <!-- alert message -->
-    <!-- content -->
+
+    <!-- Row Atas -->
     <div class="row">
-      <div class="col-lg-6">
-        <div class="panel panel-default" id="js-timer">
-          <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Data Statistik Umur Alat"
-                  ?></h3>
-              <span><?= "Data Statistik Umur Alat" ?></span>
-            </div>
-            <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_umur_alat') }}"><i class="fa fa-eye"></i> Lihat Data </a>
-            </div>
-            <canvas id="pieChart" height="170"></canvas>
-
-          </div> <!-- /.panel-body -->
+      <!-- Statistik Umur Alat -->
+        <div class="col-lg-6">
+          <div class="panel panel-default" id="js-timer">
+            <div class="panel-body">
+              <div class="widget-title">
+                <h3><?= "Data Statistik Umur Alat"
+                    ?></h3>
+                <span><?= "Data Statistik Umur Alat" ?></span>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-success" href="{{ url('dashboard/ppm/data_umur_alat') }}"><i class="fa fa-eye"></i> Lihat Data </a>
+              </div>
+              <canvas id="pieChart" height="170"></canvas>
+            </div> 
+          </div>
         </div>
-      </div>
+      <!-- Statistik Umur Alat end -->
 
-      <div class="col-lg-6">
-        <div class="panel panel-default" id="js-timer">
-          <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Data Statistik Terkalibrasi"
-                  ?></h3>
-              <span><?= "Data Statistik Terkalibrasi" ?></span>
+      <!-- Statistik Terkalibrasi -->
+        <div class="col-lg-6">
+          <div class="panel panel-default" id="js-timer">
+            <div class="panel-body">
+              <div class="widget-title">
+                <h3><?= "Data Statistik Terkalibrasi"
+                    ?></h3>
+                <span><?= "Data Statistik Terkalibrasi" ?></span>
+              </div>
+              <div class="btn-group">
+                <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_terkalibrasi') }}"><i class="fa fa-eye"></i> Lihat Data </a>
+              </div>
+              <canvas id="pieChart2" height="170"></canvas>
             </div>
-            <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_terkalibrasi') }}"><i class="fa fa-eye"></i> Lihat Data </a>
-            </div>
-            <canvas id="pieChart2" height="170"></canvas>
-
-          </div> <!-- /.panel-body -->
+          </div>
         </div>
-      </div>
+      <!-- Statistik Terkalibrasi -->
+    </div>
+    <!-- Row Atas end-->
 
-    </div> <!-- /.content -->
-
-    <!-- content -->
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="panel panel-default" id="js-timer">
-          <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Data Statistik Pemeliharaan Korektif"
-                  ?></h3>
-              <span></span>
+      <!-- Row Bawah -->
+      <div class="row">
+        <!-- Statistik Pemeliharaan Korektif -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" id="js-timer">
+              <div class="panel-body">
+                <div class="widget-title">
+                  <h3><?= "Data Statistik Pemeliharaan Korektif"
+                      ?></h3>
+                  <span></span>
+                </div>
+                <div class="btn-group">
+                  <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_korektif') }}"><i class="fa fa-eye"></i> Lihat Data </a>
+                </div>
+                <canvas id="pieChart3" height="170"></canvas>
+              </div>
             </div>
-            <div class="btn-group">
-              <a class="btn btn-success" href="{{ url('dashboard/ppm/data_alat_korektif') }}"><i class="fa fa-eye"></i> Lihat Data </a>
+          </div>
+        <!-- Statistik Pemeliharaan Korektif end-->
+
+        <!-- Statistik Data Kosong -->
+          <div class="col-lg-6">
+            <div class="panel panel-default" id="js-timer">
+              <div class="panel-body">
+                <div class="widget-title">
+                  <h3><?= "Data Statistik"
+                      ?></h3>
+                  <span><?= "Data Statistik" ?></span>
+
+                </div>
+                <canvas id="pieChart4" height="170"></canvas>
+
+              </div> <!-- /.panel-body -->
             </div>
-            <canvas id="pieChart3" height="170"></canvas>
-
-          </div> <!-- /.panel-body -->
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="panel panel-default" id="js-timer">
-          <div class="panel-body">
-            <div class="widget-title">
-              <h3><?= "Data Statistik"
-                  ?></h3>
-              <span><?= "Data Statistik" ?></span>
-
-            </div>
-            <canvas id="pieChart4" height="170"></canvas>
-
-          </div> <!-- /.panel-body -->
-        </div>
-      </div>
-
-    </div> <!-- /.content -->
+          </div>
+        <!-- Statistik Data Kosong -->
+      </div> 
+      <!-- Row Bawah -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
