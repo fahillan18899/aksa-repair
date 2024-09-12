@@ -201,7 +201,7 @@
                   <div class="form-group row">
                     <label for="tahun_perolehan" class="col-xs-3 col-form-label">Tahun Perolehan </label>
                     <div class="col-xs-9">
-                      <input name="Tahun_Perolehan" type="text" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan" value="<?= $item['tahun_perolehan'] ?>">
+                      <input name="tahun_perolehan" type="text" class="form-control" id="Tahun_Perolehan" placeholder="Tahun Perolehan" value="<?= $item['tahun_perolehan'] ?>">
                     </div>
                   </div>
 

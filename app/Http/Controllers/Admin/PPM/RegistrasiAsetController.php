@@ -261,7 +261,7 @@ class RegistrasiAsetController extends Controller
                 'public'
             );
         }
-        $data['umur_alat'] = date('Y') - $request->tahun_perolehan;
+        $data['umur_alat'] = date('Y') - $data['tahun_perolehan'];
        
         $data['penyusutan_aset'] = $this->helper->hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
         $data['kode_rs'] = Auth::user()->kode_rs;
