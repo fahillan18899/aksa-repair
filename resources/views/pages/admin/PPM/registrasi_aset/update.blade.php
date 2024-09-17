@@ -243,7 +243,7 @@
                   <div class="form-group row">
                     <label for="penyusutan_aset" class="col-xs-3 col-form-label">penyusutan aset </label>
                     <div class="col-xs-9">
-                      <input name="penyusutan_aset" type="text" class="form-control" id="penyusutan_aset" placeholder="penyusutan aset" value="<?= $item['penyusutan_aset'] ?>">
+                      <input name="penyusutan_aset" type="text" class="form-control" id="penyusutan_aset" placeholder="penyusutan aset" value="<?= $item['penyusutan_aset'] ?>%">
                     </div>
                   </div>
 
