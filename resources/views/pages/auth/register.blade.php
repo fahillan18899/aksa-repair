@@ -33,6 +33,7 @@
   ['RS UMI BAROKAH', 'RS0015'],
   ['RSUI BOYOLALI', 'RS0016'],
   ['RS DARUL ISTIQOMAH KENDAL', 'RS0017'],
+  ['RS PANTI NUGROHO', 'RS0018'],
   ];
   @endphp
   <div class="login-wrapper">
