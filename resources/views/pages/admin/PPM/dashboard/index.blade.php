@@ -29,7 +29,8 @@
           <!-- <span class="info-box-icon"><i class="fa fa-edit"></i></span> -->
 
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TEREGISTRASI" ?></span>
+            <span class="info-box-text">
+              <a href="data_inventaris" style="color :white"><?= "JUMLAH ALAT TEREGISTRASI" ?></a></span>
             <span class="info-box-number">{{ $registrasi }}</span>
 
             <div class="progress">
@@ -55,8 +56,8 @@
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">
-              <a href="/dashboard/ppm/aset_teregistrasi/sperpart_perbaikan" 
-              style="color: white;"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a>
+              <a href="view_tabel"
+              style="color :white"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a>
             </span>
             <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
 
@@ -82,7 +83,7 @@
         <div class="info-box bg-navy-blue">
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI"?></span>
+            <span class="info-box-text"><a href="view_tabel2" style="color : white"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI"?></a></span>
             <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
             <div class="progress">
               <div class="progress-bar" style="width: <?= $perbaikanUnregistrasi . '%' ?>"></div>
@@ -106,7 +107,7 @@
         <div class="info-box bg-light-green">
           <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI"?></span>
+            <span class="info-box-text"><a href="view_tabel3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI"?></a></span>
             <span class="info-box-number">{{ $registrasiKalBar }}</span>
             <div class="progress">
               <div class="progress-bar" style="width: <?= $registrasiKalBar . '%' ?>"></div>

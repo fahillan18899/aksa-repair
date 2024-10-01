@@ -93,7 +93,7 @@
                                             @forelse ($itemPesanan as $index => $item)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td onclick="copy(this)">{{ $item->id }}</td>
+                                                    <td data-toggle="tooltip" data-placement="right" title="klik untuk copy ke form" onclick="copy(this)">{{ $item->id }}</td>
                                                     <td>{{ $item->nama_req }}</td>
                                                     <td>{{ $item->merek_req }}</td>
                                                     <td>{{ $item->type_req }}</td>
@@ -113,9 +113,6 @@
                                                     </td>
                                                 </tr>
                                             @empty
-                                                <tr>
-                                                    <td class="text-center" colspan="9">Data Kosong</td>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
@@ -185,9 +182,6 @@
                                                     <td>{{ $item->lokasi_alat_pengguna_part }}</td>
                                                 </tr>
                                             @empty
-                                                <tr>
-                                                    <td class="text-center" colspan="9">Data Kosong</td>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
@@ -221,8 +215,9 @@
                                             <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
-                                                <input name="id_aset_reg" type="text" class="form-control"
-                                                    id="id_aset_reg" placeholder="Copy dan paste id aset di tabel ke sini" onkeyup="autofill()">
+                                                <input name="id_aset_reg" type="text" class="form-control id_aset_reg"
+                                                id="id_aset_reg" placeholder="Klik Id Aset untuk copy ke sini" readonly
+                                                data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data">
                                             </div>
                                         </div>
 
@@ -633,7 +628,8 @@
                                                 @forelse ($items as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td><?php echo $item['id_perbaikan_reg']; ?></td>
+                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form" 
+                                                        onclick="copy2(this)"><?php echo $item['id_perbaikan_reg']; ?></td>
                                                         <td><?php echo $item['id_aset_reg']; ?></td>
                                                         <td><?php echo $item['tanggal_perbaikan_reg']; ?></td>
                                                         <td><?php echo $item['nama_alat_reg']; ?></td>
@@ -688,11 +684,7 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-
                                                 @empty
-                                                    <tr>
-                                                        <td class="text-center" colspan="23">Data Kosong</td>
-                                                    </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
@@ -727,8 +719,8 @@
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
-                                                    id="Perbaikan_reg" placeholder="Copy dan paste id perbaikan ke sini"
-                                                    onkeyup="autofill_Pengiriman()">
+                                                    id="Perbaikan_reg" placeholder="Klik id perbaikan di tabel untuk copy kesini" readonly
+                                                    data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
                                             </div>
                                         </div>
 
@@ -972,11 +964,11 @@
                                                 <th scope="col" class="none">Tanggal_Perbaikan :</th>
                                                 <th scope="col" class="none">Tanggal_Pengiriman :</th>
                                                 <th scope="col" class="none">ID Aset</th>
-                                                <th scope="col" class="">Nama Alat</th>
-                                                <th scope="col" class="">Merek Alat</th>
-                                                <th scope="col" class="">Type Alat</th>
-                                                <th scope="col" class="">Seri Number</th>
-                                                <th scope="col" class="">Lokasi Alat</th>
+                                                <th scope="col" class="">Nama_Alat</th>
+                                                <th scope="col" class="">Merek_Alat</th>
+                                                <th scope="col" class="">Type_Alat</th>
+                                                <th scope="col" class="">Seri_Number</th>
+                                                <th scope="col" class="">Lokasi_Alat</th>
                                                 <th scope="col" class="none">Teknisi 1 :</th>
                                                 <th scope="col" class="none">Teknisi 2 :</th>
                                                 <th scope="col" class="none">Teknisi 3 :</th>
@@ -997,7 +989,8 @@
                                                 @forelse ($result_pengiriman as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td><?php echo $item->id_perbaikan_reg; ?></td>
+                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form"
+                                                        onclick="copy3(this)"><?php echo $item->id_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_pengiriman_reg; ?></td>
                                                         <td><?php echo $item->id_aset_reg; ?></td>
@@ -1043,11 +1036,7 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-
                                                 @empty
-                                                    <tr>
-                                                        <td class="text-center" colspan="25">Data Kosong</td>
-                                                    </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
@@ -1082,8 +1071,8 @@
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
-                                                    id="id_perbaikan_reg2" placeholder="Copy dan paste id perbaikan ke sini" value=""
-                                                    onkeyup="autofill_Pengembalian()">
+                                                    id="id_perbaikan_reg2" placeholder="Klik id perbaikan di tabel untuk copy id kesini" readonly
+                                                    data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
                                             </div>
                                         </div>
 
@@ -1368,15 +1357,15 @@
                                             <thead class="table-light">
                                                 <th scope="col" class="">No</th>
                                                 <th scope="col" class="">Id_Perbaikan</th>
-                                                <th scope="col" class="">Nama Alat</th>
+                                                <th scope="col" class="">Nama_Alat</th>
                                                 <th scope="col" class="none">Tanggal Perbaikan :</th>
                                                 <th scope="col" class="">Merek</th>
                                                 <th scope="col" class="none">Id Aset :</th>
-                                                <th scope="col" class="">Type Alat</th>
+                                                <th scope="col" class="">Type_Alat</th>
                                                 <th scope="col" class="none">Tanggal Pengembalian :</th>
-                                                <th scope="col" class="">Serial Number</th>
+                                                <th scope="col" class="">Serial_Number</th>
                                                 <th scope="col" class="none">Pelapor :</th>
-                                                <th scope="col" class="">Lokasi Alat</th>
+                                                <th scope="col" class="">Lokasi_Alat</th>
                                                 <th scope="col" class="none">Keterangan Kondisi Alat :</th>
                                                 <th scope="col" class="none">Penerima :</th>
                                                 <th scope="col" class="none">Harga Perbaikan :</th>
@@ -1400,7 +1389,8 @@
                                                 @forelse ($result_pengembalian as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td>{{ $item->id_perbaikan_reg }}</td>
+                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form" 
+                                                        onclick="copy4(this)">{{ $item->id_perbaikan_reg }}</td>
                                                         <td>{{ $item->nama_alat_reg }}</td>
                                                         <td>{{ $item->tanggal_perbaikan_reg }}</td>
                                                         <td>{{ $item->merek_reg }}</td>
@@ -1451,11 +1441,7 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-
                                                 @empty
-                                                    <tr>
-                                                        <td class="text-center" colspan="29">Data Kosong</td>
-                                                    </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
@@ -1490,8 +1476,8 @@
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
-                                                    id="Id_Perbaikan_reg3" placeholder="Copy dan paste id perbaikan ke sini"
-                                                    onkeyup="autofill_Penghapusan()">
+                                                    id="Id_Perbaikan_reg3" placeholder="Klik id perbaikan di tabel untuk copy id ke sini" readonly
+                                                    data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
                                             </div>
                                         </div>
 
@@ -1760,13 +1746,9 @@
                                                                     <i class="fa fa-trash "></i>
                                                                 </button>
                                                             </form>
-
                                                         </td>
                                                     </tr>
                                                 @empty
-                                                    <tr>
-                                                        <td class="text-center" colspan="20">Data Kosong</td>
-                                                    </tr>
                                                 @endforelse
                                             </tbody>
                                         </table>
@@ -1788,6 +1770,7 @@
 
 @push('addon-script')
 <script>
+// *Fuction scanner camera* //
     let scanner_teknisi = new Instascan.Scanner({
         video: document.getElementById('preview_admin'),
         mirror: false
@@ -1809,7 +1792,9 @@
             console.error("Please enable Camera!");
         }
     });
+// *Fuction scanner camera end* //
 
+// *Function autofill form sperpart* //
     function autofillpart() {
       let idarspart = $("#id_aset_part").val();
 
@@ -1828,14 +1813,13 @@
         }
     });
     }
+// *Function autofill form sperpart end* //
 
-    let idars = $("#id_aset_reg").val();
-
-    function autofill() {
+// *Fuction autofill form perbaikan* //
+    $('#id_aset_reg').mouseup(function(){
+        if ($(this).val().length > 0){
         let idars = $("#id_aset_reg").val();
-
-
-        $.ajax({
+            $.ajax({
             url: '{{ url('/dashboard_user/autofill/') }}/' + idars,
             method: 'GET',
             dataType: 'json',
@@ -1849,9 +1833,14 @@
             error: function(xhr, status, error) {
                 console.log(xhr.responseText);
             }
-        });
-    }
-    function autofill_Pengiriman() {
+            });
+        }
+    });
+// *Fuction autofill fform perbaikan end* //
+
+// *Fuction autofill form pengiriman* //
+    $('#Perbaikan_reg').mouseup(function(){
+        if ($(this).val().length > 0){
         let Id_Perbaikan_reg = $("#Perbaikan_reg").val();
         $.ajax({
             url: '{{ url('/dashboard/ppm/autofill_pengiriman/') }}/' + Id_Perbaikan_reg,
@@ -1861,7 +1850,6 @@
             },
             dataType: 'json',
             success: function(data) {
-                console.log(data.Nama_Alat_reg)
                 $("#Tanggal_Perbaikan_reg1").val(data.Tanggal_Perbaikan_reg);
                 $("#Id_Aset_reg1").val(data.ID_Aset_reg);
                 $("#Nama_Alat_reg1").val(data.Nama_Alat_reg);
@@ -1884,106 +1872,137 @@
             error: function(xhr, status, error) {
                 console.log(xhr.responseText);
             }
-        });
-    }
+        });    
+        }
+    });
+// *Fuction autofill form pengiriman end* //
 
-    function autofill_Pengembalian() {
-        let Id_Perbaikan_reg = $("#id_perbaikan_reg2").val();
-        $.ajax({
-            url: '{{ url('/dashboard/ppm/autofill_pengiriman/') }}/' + Id_Perbaikan_reg,
-            method: 'GET', // HTTP method (e.g., GET, POST)
-            data: {
-                Id_Perbaikan_reg: Id_Perbaikan_reg
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log(data.Nama_Alat_reg)
-                $("#tanggal_perbaikan_reg2").val(data.Tanggal_Perbaikan_reg);
-                $("#Id_Aset_reg2").val(data.ID_Aset_reg);
-                $("#nama_alat_reg2").val(data.Nama_Alat_reg);
-                $("#merek_reg2").val(data.Merek_Alat_reg);
-                $("#tipe_reg2").val(data.Type_Alat_reg);
-                $("#serial_number_reg2").val(data.Serial_Number_reg);
-                $("#lokasi_alat_reg2").val(data.Lokasi_Alat_reg);
-                $("#teknisi1_reg2").val(data.Teknisi_1_reg);
-                $("#pelapor_reg2").val(data.Pelapor_reg);
-                $("#teknisi2_reg2").val(data.Teknisi_2_reg);
-                $("#teknisi3_reg2").val(data.Teknisi_3_reg);
-                $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
-                $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
-                $("#nama_sukucadang2").val(data.suku_cadang);
-                $("#volume2").val(data.volume);
-                $("#harga_satuan2").val(data.harga_satuan);
-                $("#jumlah_harga2").val(data.jumlah_harga);
+// *Fuction autofill form pengembalian* //
+    $('#id_perbaikan_reg2').mouseup(function(){
+        if ($(this).val().length > 0) {
+            let Id_Perbaikan_reg = $("#id_perbaikan_reg2").val();
+            $.ajax({
+                url: '{{ url('/dashboard/ppm/autofill_pengiriman/') }}/' + Id_Perbaikan_reg,
+                method: 'GET', // HTTP method (e.g., GET, POST)
+                data: {
+                    Id_Perbaikan_reg: Id_Perbaikan_reg
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.Nama_Alat_reg)
+                    $("#tanggal_perbaikan_reg2").val(data.Tanggal_Perbaikan_reg);
+                    $("#Id_Aset_reg2").val(data.ID_Aset_reg);
+                    $("#nama_alat_reg2").val(data.Nama_Alat_reg);
+                    $("#merek_reg2").val(data.Merek_Alat_reg);
+                    $("#tipe_reg2").val(data.Type_Alat_reg);
+                    $("#serial_number_reg2").val(data.Serial_Number_reg);
+                    $("#lokasi_alat_reg2").val(data.Lokasi_Alat_reg);
+                    $("#teknisi1_reg2").val(data.Teknisi_1_reg);
+                    $("#pelapor_reg2").val(data.Pelapor_reg);
+                    $("#teknisi2_reg2").val(data.Teknisi_2_reg);
+                    $("#teknisi3_reg2").val(data.Teknisi_3_reg);
+                    $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
+                    $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
+                    $("#nama_sukucadang2").val(data.suku_cadang);
+                    $("#volume2").val(data.volume);
+                    $("#harga_satuan2").val(data.harga_satuan);
+                    $("#jumlah_harga2").val(data.jumlah_harga);
 
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-        });
-    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    });
+// *Fuction autofill form pengembalian end* //
 
-    function autofill_Penghapusan() {
-        let Id_Perbaikan_reg = $("#Id_Perbaikan_reg3").val();
-        $.ajax({
-            url: '{{ url('/dashboard/ppm/autofill_pengiriman/') }}/' + Id_Perbaikan_reg,
-            method: 'GET', // HTTP method (e.g., GET, POST)
-            data: {
-                Id_Perbaikan_reg: Id_Perbaikan_reg
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log(data.Nama_Alat_reg)
-                $("#Tanggal_Perbaikan_reg3").val(data.Tanggal_Perbaikan_reg);
-                $("#Nama_Alat_reg3").val(data.Nama_Alat_reg);
-                $("#Merek_Alat_reg3").val(data.Merek_Alat_reg);
-                $("#Type_Alat_reg3").val(data.Type_Alat_reg);
-                $("#Serial_Number_reg3").val(data.Serial_Number_reg);
-                $("#Lokasi_Alat_reg3").val(data.Lokasi_Alat_reg);
-                $("#Teknisi_1_reg3").val(data.Teknisi_1_reg);
-                $("#Pelapor_reg3").val(data.Pelapor_reg);
-                $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
-                $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
-                $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
-                $("#nama_sukucadang3").val(data.suku_cadang);
-                $("#volume3").val(data.volume);
-                $("#harga_satuan3").val(data.harga_satuan);
-                $("#jumlah_harga3").val(data.jumlah_harga);
+// *Fuction autofill form penghapusan* //
+    $('#Id_Perbaikan_reg3').mouseup(function(){
+        if ($(this).val().length > 0){
+            let Id_Perbaikan_reg = $("#Id_Perbaikan_reg3").val();
+            $.ajax({
+                url: '{{ url('/dashboard/ppm/autofill_pengiriman/') }}/' + Id_Perbaikan_reg,
+                method: 'GET', // HTTP method (e.g., GET, POST)
+                data: {
+                    Id_Perbaikan_reg: Id_Perbaikan_reg
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data.Nama_Alat_reg)
+                    $("#Tanggal_Perbaikan_reg3").val(data.Tanggal_Perbaikan_reg);
+                    $("#Nama_Alat_reg3").val(data.Nama_Alat_reg);
+                    $("#Merek_Alat_reg3").val(data.Merek_Alat_reg);
+                    $("#Type_Alat_reg3").val(data.Type_Alat_reg);
+                    $("#Serial_Number_reg3").val(data.Serial_Number_reg);
+                    $("#Lokasi_Alat_reg3").val(data.Lokasi_Alat_reg);
+                    $("#Teknisi_1_reg3").val(data.Teknisi_1_reg);
+                    $("#Pelapor_reg3").val(data.Pelapor_reg);
+                    $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
+                    $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
+                    $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
+                    $("#nama_sukucadang3").val(data.suku_cadang);
+                    $("#volume3").val(data.volume);
+                    $("#harga_satuan3").val(data.harga_satuan);
+                    $("#jumlah_harga3").val(data.jumlah_harga);
 
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-        });
-    }
-    
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    });
+// *Fuction autofill form penghapusan* //    
 </script>
 
 <script>
-function copy(that){
-    var inp =document.createElement('input');
-    document.body.appendChild(inp)
-    inp.value =that.textContent
-    inp.select();
-    document.execCommand('copy',false);
-    inp.remove();
+// *function copy id aset* //
+    function copy(that){
+        var inp =document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value =that.textContent
+        inp.select();
+        document.execCommand('copy',false);
+        inp.remove();
+        document.getElementById('id_aset_reg').value = inp.value =that.textContent;
+    }
+// *function copy id aset end* //
 
-    const tooltip = document.createElement('p');
-    tooltip.textContent = 'Teks berhasil disalin';
-    tooltip.style.position = 'absolute';
-    tooltip.style.top = event.clientY + 'px';
-    tooltip.style.left = event.clientX + 'px';
-    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-    tooltip.style.color = '#fff';
-    tooltip.style.padding = '5px 10px';
-    tooltip.style.borderRadius = '5px';
-    tooltip.style.zIndex = '9999';
-    document.body.appendChild(tooltip);
+// *function copy id perbaikan untuk pengiriman* //
+    function copy2(that){
+        var inp =document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value =that.textContent
+        inp.select();
+        document.execCommand('copy',false);
+        inp.remove();
+        document.getElementById('Perbaikan_reg').value = inp.value =that.textContent;
+    }
+// *function copy id perbaikan untuk pengiriman end* //
 
-    // Menghilangkan tooltip setelah beberapa detik
-    setTimeout(() => {
-        document.body.removeChild(tooltip);
-    }, 2000);
-}
+// *function copy id perbaikan untuk pengembalian* //
+    function copy3(that){
+        var inp =document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value =that.textContent
+        inp.select();
+        document.execCommand('copy',false);
+        inp.remove();
+        document.getElementById('id_perbaikan_reg2').value = inp.value =that.textContent;
+    }
+// *function copy id perbaikan untuk pengembalian end* //
+
+// *function copy id perbaikan untuk penghapusan* //
+    function copy4(that){
+        var inp =document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value =that.textContent
+        inp.select();
+        document.execCommand('copy',false);
+        inp.remove();
+        document.getElementById('Id_Perbaikan_reg3').value = inp.value =that.textContent;
+    }
+// *function copy id perbaikan untuk penghapusan end* //
 </script>
 @endpush

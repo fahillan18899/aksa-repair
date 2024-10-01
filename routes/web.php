@@ -39,6 +39,9 @@ use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
 use App\Http\Controllers\Admin\PPM\TambahDistributorController;
 use App\Http\Controllers\Admin\PPM\PesananController;
 use App\Http\Controllers\Admin\PPM\PengggunaanSperpartController;
+use App\Http\Controllers\Admin\PPM\ViewTableController;
+use App\Http\Controllers\Admin\PPM\ViewTableController2;
+use App\Http\Controllers\Admin\PPM\ViewTableController3;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -75,6 +78,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('scanner_qr', ScannerQrController::class);
         Route::resource('analisis_data', AnalisisDataController::class);
         Route::get('data_alat/{id}', [DataAlatController::class, 'index']);
+        Route::resource('view_tabel', ViewTableController::class);
+        Route::resource('view_tabel2', ViewTableController2::class);
+        Route::resource('view_tabel3', ViewTableController3::class);
 
         // menu SOP
         Route::resource('sop_pemakaian', SOPPemakaianController::class);
