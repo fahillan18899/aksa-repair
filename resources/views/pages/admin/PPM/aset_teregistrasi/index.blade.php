@@ -93,7 +93,7 @@
                                             @forelse ($itemPesanan as $index => $item)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td data-toggle="tooltip" data-placement="right" title="klik untuk copy ke form" onclick="copy(this)">{{ $item->id }}</td>
+                                                    <td title="klik untuk copy ke form" onclick="copy(this)">{{ $item->id }}</td>
                                                     <td>{{ $item->nama_req }}</td>
                                                     <td>{{ $item->merek_req }}</td>
                                                     <td>{{ $item->type_req }}</td>
@@ -628,7 +628,7 @@
                                                 @forelse ($items as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form" 
+                                                        <td title="klik disini untuk copy id ke form" 
                                                         onclick="copy2(this)"><?php echo $item['id_perbaikan_reg']; ?></td>
                                                         <td><?php echo $item['id_aset_reg']; ?></td>
                                                         <td><?php echo $item['tanggal_perbaikan_reg']; ?></td>
@@ -989,7 +989,7 @@
                                                 @forelse ($result_pengiriman as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form"
+                                                        <td title="klik disini untuk copy id ke form"
                                                         onclick="copy3(this)"><?php echo $item->id_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_pengiriman_reg; ?></td>
@@ -1389,7 +1389,7 @@
                                                 @forelse ($result_pengembalian as $index => $item)
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
-                                                        <td data-toggle="tooltip" data-placement="right" title="klik disini untuk copy id ke form" 
+                                                        <td title="klik disini untuk copy id ke form" 
                                                         onclick="copy4(this)">{{ $item->id_perbaikan_reg }}</td>
                                                         <td>{{ $item->nama_alat_reg }}</td>
                                                         <td>{{ $item->tanggal_perbaikan_reg }}</td>

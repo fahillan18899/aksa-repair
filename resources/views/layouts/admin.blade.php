@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  <style>
+  <style type="text/css">
     #myBtn {
   display: none;
   position: fixed;
@@ -27,6 +27,11 @@
 #myBtn:hover {
   background-color: #174C93;
 }
+
+#zoom {
+  zoom: 90;
+  zoom: 90%;
+      }
   </style>
   
   <title>@yield('title')</title>
@@ -36,7 +41,7 @@
   @stack('addon-style')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" id="zoom">
   <div class="wrapper">
     @include('includes.topnav')
     @include('includes.sidebar')

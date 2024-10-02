@@ -93,9 +93,6 @@
                         <td>{{ $item->lokasi_alat_pengguna_part }}</td>
                       </tr>
                       @empty
-                      <tr>
-                        <td class="text-center" colspan="9">Data Kosong</td>
-                      </tr>
                       @endforelse
                     </tbody>
                   </table>
@@ -500,7 +497,8 @@
                         @forelse ($perbaikan as $index => $item)
                         <tr>
                           <td>{{ $index + 1 }}</td>
-                          <td><?php echo $item['id_perbaikan_un'] ?></td>
+                          <td title="klik disini untuk copy ke form"
+                          onclick="copyun(this)"><?php echo $item['id_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
                           <td><?php echo $item['nama_alat_un'] ?></td>
                           <td><?php echo $item['merek_alat_un'] ?></td>
@@ -540,9 +538,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="17">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -574,7 +569,8 @@
                     <div class="form-group row">
                       <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un1" placeholder="Id Perbaikan" value="" onkeyup="autofill_Pengiriman_un()">
+                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un1" placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data alat">
                       </div>
                     </div>
 
@@ -789,7 +785,8 @@
                         @forelse ($pengiriman as $index => $item)
                         <tr>
                           <td>{{ $index + 1 }}</td>
-                          <td><?php echo $item['id_perbaikan_un'] ?></td>
+                          <td title="klik disini untuk copy id ke form"
+                          onclick="copyun2(this)"><?php echo $item['id_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_pengiriman_un'] ?></td>
                           <td><?php echo $item['nama_alat_un'] ?></td>
@@ -825,9 +822,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="20">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -859,7 +853,8 @@
                     <div class="form-group row">
                       <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un2" placeholder="Id Perbaikan" value="" onkeyup="autofill_Pengembalian_un()">
+                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un2" placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
                       </div>
                     </div>
 
@@ -1106,7 +1101,8 @@
                         @forelse ($pengembalian as $index => $item)
                         <tr>
                           <td>{{ $index + 1 }}</td>
-                          <td><?php echo $item['id_perbaikan_un']  ?></td>
+                          <td data-toogle="tooltip" data-placement="right" title="klik disini untuk copy id ke form"
+                          onclick="copyun3(this)"><?php echo $item['id_perbaikan_un']  ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un']  ?></td>
                           <td><?php echo $item['tanggal_pengembalian_un']  ?></td>
                           <td><?php echo $item['nama_alat_un']  ?></td>
@@ -1145,9 +1141,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="24">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -1179,7 +1172,8 @@
                     <div class="form-group row">
                       <label for="id_perbaikan_un" class="col-xs-3 col-form-label">Id Perbaikan<i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un3" placeholder="Id Perbaikan" value="" onkeyup="autofill_Penghapusan_un()">
+                        <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un3" placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
                       </div>
                     </div>
 
@@ -1393,9 +1387,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="16">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -1417,6 +1408,8 @@
 
 @push('addon-script')
 <script>
+
+// *Fucntion autofill form sperpart* //
   function autofillpart_un() {
     let idarspart = $("#id_aset_part_un").val();
 
@@ -1435,109 +1428,158 @@
       }
     });
   }
+// *Fucntion autofill form sperpart end* //
 
-  function autofill_Pengiriman_un() {
-    let Id_Perbaikan_un = $("#id_perbaikan_un1").val();
-    $.ajax({
-      url: '{{ url("dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
-      method: 'GET', // HTTP method (e.g., GET, POST)
-      data: {
-        Id_Perbaikan_un: Id_Perbaikan_un
-      },
-      dataType: 'json',
-      success: function(data) {
-        console.log(data.Nama_Alat_reg)
-        $("#tanggal_perbaikan_un1").val(data.tanggal_perbaikan_un);
-        $("#nama_alat_un1").val(data.nama_alat_un);
-        $("#merek_alat_un1").val(data.merek_alat_un);
-        $("#type_alat_un1").val(data.type_alat_un);
-        $("#serial_number_un1").val(data.serial_number_un);
-        $("#lokasi_alat_un1").val(data.lokasi_alat_un);
-        $("#pelapor_un1").val(data.pelapor_un);
-        $("#teknisi_1_un1").val(data.teknisi_1_un);
-        $("#keterangan_un1").val(data.keterangan_un);
-        $("#teknisi_2_un1").val(data.teknisi_2_un);
-        $("#teknisi_3_un1").val(data.teknisi_3_un);
-        $("#suku_cadang_un1").val(data.suku_cadang_un);
-        $("#volume_un1").val(data.volume_un);
-        $("#harga_satuan_un1").val(data.harga_satuan_un);
-        $("#jumlah_harga_un1").val(data.jumlah_harga_un);
-        $("#ka_instalasi_un1").val(data.ka_instalasi_un);
+// *Function autofill form pengiriman* //  
+  $('#id_perbaikan_un1').mouseup(function(){
+    if($(this).val().length > 0){
+      let Id_Perbaikan_un = $("#id_perbaikan_un1").val();
+      $.ajax({
+        url: '{{ url("dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
+        method: 'GET', // HTTP method (e.g., GET, POST)
+        data: {
+          Id_Perbaikan_un: Id_Perbaikan_un
+        },
+        dataType: 'json',
+        success: function(data) {
+          $("#tanggal_perbaikan_un1").val(data.tanggal_perbaikan_un);
+          $("#nama_alat_un1").val(data.nama_alat_un);
+          $("#merek_alat_un1").val(data.merek_alat_un);
+          $("#type_alat_un1").val(data.type_alat_un);
+          $("#serial_number_un1").val(data.serial_number_un);
+          $("#lokasi_alat_un1").val(data.lokasi_alat_un);
+          $("#pelapor_un1").val(data.pelapor_un);
+          $("#teknisi_1_un1").val(data.teknisi_1_un);
+          $("#keterangan_un1").val(data.keterangan_un);
+          $("#teknisi_2_un1").val(data.teknisi_2_un);
+          $("#teknisi_3_un1").val(data.teknisi_3_un);
+          $("#suku_cadang_un1").val(data.suku_cadang_un);
+          $("#volume_un1").val(data.volume_un);
+          $("#harga_satuan_un1").val(data.harga_satuan_un);
+          $("#jumlah_harga_un1").val(data.jumlah_harga_un);
+          $("#ka_instalasi_un1").val(data.ka_instalasi_un);
 
-      },
-      error: function(xhr, status, error) {
-        console.log(xhr.responseText);
-      }
-    });
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    }
+  });
+// *Function autofill form pengiriman end* //
+
+// *Fuction autofill form pengembalian *//
+  $('#id_perbaikan_un2').mouseup(function(){
+    if($(this).val().length > 0){
+      let Id_Perbaikan_un = $("#id_perbaikan_un2").val();
+      $.ajax({
+        url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
+        method: 'GET', // HTTP method (e.g., GET, POST)
+        data: {
+          Id_Perbaikan_un: Id_Perbaikan_un
+        },
+        dataType: 'json',
+        success: function(data) {
+          console.log(data.Nama_Alat_reg)
+          $("#tanggal_perbaikan_un2").val(data.tanggal_perbaikan_un);
+          $("#nama_alat_un2").val(data.nama_alat_un);
+          $("#merek_alat_un2").val(data.merek_alat_un);
+          $("#type_alat_un2").val(data.type_alat_un);
+          $("#serial_number_un2").val(data.serial_number_un);
+          $("#lokasi_alat_un2").val(data.lokasi_alat_un);
+          $("#pelapor_un2").val(data.pelapor_un);
+          $("#teknisi_1_un2").val(data.teknisi_1_un);
+          $("#keterangan_un2").val(data.keterangan_un);
+          $("#teknisi_2_un2").val(data.teknisi_2_un);
+          $("#teknisi_3_un2").val(data.teknisi_3_un);
+          $("#suku_cadang_un2").val(data.suku_cadang_un);
+          $("#volume_un2").val(data.volume_un);
+          $("#harga_satuan_un2").val(data.harga_satuan_un);
+          $("#jumlah_harga_un2").val(data.jumlah_harga_un);
+          $("#ka_instalasi_un2").val(data.ka_instalasi_un);
+
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    }
+  });
+// *Fuction autofill form pengembalian end*//
+
+// *Fuction autofill form penghapusan *//
+  $('#id_perbaikan_un3').mouseup(function(){
+    if($(this).val().length > 0){
+      let Id_Perbaikan_un = $("#id_perbaikan_un3").val();
+      $.ajax({
+        url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
+        method: 'GET', // HTTP method (e.g., GET, POST)
+        data: {
+          Id_Perbaikan_un: Id_Perbaikan_un
+        },
+        dataType: 'json',
+        success: function(data) {
+          $("#tanggal_perbaikan_un3").val(data.tanggal_perbaikan_un);
+          $("#nama_alat_un3").val(data.nama_alat_un);
+          $("#merek_alat_un3").val(data.merek_alat_un);
+          $("#type_alat_un3").val(data.type_alat_un);
+          $("#serial_number_un3").val(data.serial_number_un);
+          $("#lokasi_alat_un3").val(data.lokasi_alat_un);
+          $("#pelapor_un3").val(data.pelapor_un);
+          $("#teknisi_1_un3").val(data.teknisi_1_un);
+          $("#teknisi_2_un3").val(data.teknisi_2_un);
+          $("#teknisi_3_un3").val(data.teknisi_3_un);
+          $("#suku_cadang_un3").val(data.suku_cadang_un);
+          $("#volume_un3").val(data.volume_un);
+          $("#harga_satuan_un3").val(data.harga_satuan_un);
+          $("#jumlah_harga_un3").val(data.jumlah_harga_un);
+          $("#ka_instalasi_un3").val(data.ka_instalasi_un);
+
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    }
+  })
+// *Fuction autofill form penghapusan end*//
+</script>
+
+<script>
+// *function copy id perbaikan untuk form pengiriman *//
+  function copyun(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false)
+    inp.remove();
+    document.getElementById('id_perbaikan_un1').value = inp.value =that.textContent;
   }
+// *function copy id perbaikan untuk form pengiriman end *//
 
-  function autofill_Pengembalian_un() {
-    let Id_Perbaikan_un = $("#id_perbaikan_un2").val();
-    $.ajax({
-      url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
-      method: 'GET', // HTTP method (e.g., GET, POST)
-      data: {
-        Id_Perbaikan_un: Id_Perbaikan_un
-      },
-      dataType: 'json',
-      success: function(data) {
-        console.log(data.Nama_Alat_reg)
-        $("#tanggal_perbaikan_un2").val(data.tanggal_perbaikan_un);
-        $("#nama_alat_un2").val(data.nama_alat_un);
-        $("#merek_alat_un2").val(data.merek_alat_un);
-        $("#type_alat_un2").val(data.type_alat_un);
-        $("#serial_number_un2").val(data.serial_number_un);
-        $("#lokasi_alat_un2").val(data.lokasi_alat_un);
-        $("#pelapor_un2").val(data.pelapor_un);
-        $("#teknisi_1_un2").val(data.teknisi_1_un);
-        $("#keterangan_un2").val(data.keterangan_un);
-        $("#teknisi_2_un2").val(data.teknisi_2_un);
-        $("#teknisi_3_un2").val(data.teknisi_3_un);
-        $("#suku_cadang_un2").val(data.suku_cadang_un);
-        $("#volume_un2").val(data.volume_un);
-        $("#harga_satuan_un2").val(data.harga_satuan_un);
-        $("#jumlah_harga_un2").val(data.jumlah_harga_un);
-        $("#ka_instalasi_un2").val(data.ka_instalasi_un);
-
-      },
-      error: function(xhr, status, error) {
-        console.log(xhr.responseText);
-      }
-    });
+// *function copy id perbaikan untuk form pengembalian *//
+  function copyun2(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false)
+    inp.remove();
+    document.getElementById('id_perbaikan_un2').value = inp.value = that.textContent;
   }
+// *function copy id perbaikan untuk form pengembalian end *//
 
-  function autofill_Penghapusan_un() {
-    let Id_Perbaikan_un = $("#id_perbaikan_un3").val();
-    $.ajax({
-      url: '{{ url("/dashboard/ppm/autofill_pengirimanUn/") }}/' + Id_Perbaikan_un,
-      method: 'GET', // HTTP method (e.g., GET, POST)
-      data: {
-        Id_Perbaikan_un: Id_Perbaikan_un
-      },
-      dataType: 'json',
-      success: function(data) {
-        console.log(data.Nama_Alat_reg)
-        $("#tanggal_perbaikan_un3").val(data.tanggal_perbaikan_un);
-        $("#nama_alat_un3").val(data.nama_alat_un);
-        $("#merek_alat_un3").val(data.merek_alat_un);
-        $("#type_alat_un3").val(data.type_alat_un);
-        $("#serial_number_un3").val(data.serial_number_un);
-        $("#lokasi_alat_un3").val(data.lokasi_alat_un);
-        $("#pelapor_un3").val(data.pelapor_un);
-        $("#teknisi_1_un3").val(data.teknisi_1_un);
-        $("#teknisi_2_un3").val(data.teknisi_2_un);
-        $("#teknisi_3_un3").val(data.teknisi_3_un);
-        $("#suku_cadang_un3").val(data.suku_cadang_un);
-        $("#volume_un3").val(data.volume_un);
-        $("#harga_satuan_un3").val(data.harga_satuan_un);
-        $("#jumlah_harga_un3").val(data.jumlah_harga_un);
-        $("#ka_instalasi_un3").val(data.ka_instalasi_un);
-
-      },
-      error: function(xhr, status, error) {
-        console.log(xhr.responseText);
-      }
-    });
+// *function copy id perbaikan untuk form penghapusan *//
+  function copyun3(that){
+    var inp =document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value =that.textContent
+    inp.select();
+    document.execCommand('copy',false)
+    inp.remove();
+    document.getElementById('id_perbaikan_un3').value = inp.value = that.textContent;
   }
+// *function copy id perbaikan untuk form penghapusan end *//
 </script>
 @endpush
