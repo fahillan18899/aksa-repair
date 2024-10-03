@@ -28,7 +28,15 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
-
+          <div class="panel-heading no-print">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="btn-group">
+                  <a class="btn btn-success" href="/dashboard/ppm/aset_unregistrasi#formun1"> <i class="fa fa-plus"></i> Form Perbaikan Aset Unregistrasi</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="panel-body">
 
             <div class="panel-heading no-print">

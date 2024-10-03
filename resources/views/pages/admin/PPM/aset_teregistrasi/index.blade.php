@@ -199,7 +199,7 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
 
-                        <div class="panel-heading no-print">
+                        <div class="panel-heading no-print" id="form1">
                             <h1>Form Perbaikan Alat Teregistrasi</h1>
                         </div>
 

@@ -29,8 +29,7 @@
 }
 
 #zoom {
-  zoom: 90;
-  zoom: 90%;
+  zoom: 100%;
       }
   </style>
   

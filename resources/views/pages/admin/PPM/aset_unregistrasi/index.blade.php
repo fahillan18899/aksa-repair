@@ -110,7 +110,7 @@
         <div class="col-sm-12">
           <div class="panel panel-default thumbnail">
 
-            <div class="panel-heading no-print">
+            <div class="panel-heading no-print" id="formun1">
               <h1>Form Perbaikan Alat Unregistrasi</h1>
             </div>
 

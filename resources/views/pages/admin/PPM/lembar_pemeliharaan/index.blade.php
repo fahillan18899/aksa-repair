@@ -52,7 +52,7 @@
       <div class="col-sm-9">
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print">
+          <div class="panel-heading no-print" id="formp1">
             <h1>Form Pemeliharaan Alat</h1>
           </div>
 
