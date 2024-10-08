@@ -73,17 +73,145 @@
                 <th class="none">AKD</th>
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
-                <th  class="none">Jadwal</th>
+                <th class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
-
               </thead>
+              <tbody>
+                @forelse ($items as $index => $item)
+                <tr class="odd gradeX">
+                  <td><?php echo $item['id_aset']; ?></td>
+                  <td><?php echo $item['jenis_alat']; ?></td>
+                  <td><?php echo $item['nama_alat']; ?></td>
+                  <td><?php echo $item['merek']; ?></td>
+                  <td><?php echo $item['type']; ?></td>
+                  <td><?php echo $item['gambar']; ?></td>
+                  <td><?php echo $item['serial_number']; ?></td>
+                  <td><?php echo $item['lokasi_alat']; ?></td>
+                  <td><?php echo $item['tanggal_kalibrasi']; ?></td>
+                  <td><?php echo $item['distributor']; ?></td>
+                  <td><?php echo $item['alamat_distributor']; ?></td>
+                  <td><?php echo $item['tlp_distributor']; ?></td>
+                  <td><?php echo $item['email_distributor']; ?></td>
+                  <td><?php echo $item['teknisi_distributor']; ?></td>
+                  <td><?php echo $item['tlp_t_distributor']; ?></td>
+                  <td><?php echo $item['no_sertifikat_kalibrasi']; ?></td>
+                  <td><?php echo $item['teknisi_ppm']; ?></td>
+                  <td><?php echo $item['harga_perolehan']; ?></td>
+                  <td><?php echo $item['sumber_dana']; ?></td>
+                  <td><?php echo $item['tahun_perolehan']; ?></td>
+                  <td><?php echo $item['akl']; ?></td>
+                  <td><?php echo $item['akd']; ?></td>
+                  <td><?php echo $item['no_inventaris_1']; ?></td>
+                  <td><?php echo $item['umur_alat']; ?></td>
+                  <td><?php echo $item['jadwal_pemeliharaan']; ?></td>
+                  <td>
+                    <a href="{{ route('registrasi', $item->id_aset) }}"
+                      class="btn btn-xs btn-success" data-toggle="tooltip"
+                      data-placement="top" title="Edit"><i
+                        class="fa fa-edit"></i></a>
+
+                    <a href="/dashboard/ppm/data_inventaris/cetak_aset/{{ $item->id_aset }}"
+                      class="btn btn-xs btn-primary" target="_blank"
+                      data-toggle="tooltip" data-placement="top"
+                      title="Cetak"><i class="fa fa-print"></i></a>
+
+                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
+                    data-target="#exampleModal<?php echo $item['id_aset'] ?>">
+                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="view" aria-hidden="true"></i>
+                    </button>
+
+                    <form
+                      action="/dashboard/ppm/registrasi/{{ $item->id_aset }}"
+                      method="POST" class="d-inline">
+                      @csrf
+                      @method('DELETE')
+                      <button class="btn btn-danger btn-xs"
+                        data-toggle="tooltip" data-placement="top"
+                        title="Hapus">
+                        <i class="fa fa-trash "></i>
+                      </button>
+
+                                          <!-- modal  -->
+                    <!-- Button trigger modal  -->
+                    <!-- Modal  -->
+                    <div class="modal fade" id="exampleModal<?php echo $item['id_aset'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header" style="color:white; background-color:#042a4a;">
+                            <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="row">
+                              <table class="datatable table table-bordered table-hover" style="width:96%; margin-left:10px;">
+                                <tr>
+                                  <td style="width: 50%;">Id Aset</td>
+                                  <td><?php echo $item['id_aset'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%;">Nama Alat</td>
+                                  <td><?php echo $item['nama_alat'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Jenis Alat</td>
+                                  <td><?php echo $item['jenis_alat'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Merek</td>
+                                  <td><?php echo $item['merek'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Type</td>
+                                  <td><?php echo $item['type'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Serial Number</td>
+                                  <td><?php echo $item['serial_number'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Ruangan</td>
+                                  <td><?php echo $item['lokasi_alat'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Tanggal Kalibrasi</td>
+                                  <td><?php echo $item['tanggal_kalibrasi'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Umur Alat</td>
+                                  <td><?php echo $item['umur_alat'] ?></td>
+                                </tr>
+                                <tr>
+                                  <td style="width: 50%">Penyusutan Aset</td>
+                                  <td><?php echo $item['penyusutan_aset'] ?>%</td>
+                                </tr>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="/dashboard/ppm/data_inventaris/tabel_perbaikan/{{ $item['id_aset'] }}" type="button" class="btn btn-warning">Lihat Kerusakan Alat</a>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- modal -->
+                    </form>
+                  </td>
+                </tr>
+                @empty
+                @endforelse
+              </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <!--TABEL-->
-    <script type="text/javascript">
+  </div> <!-- /.content -->
+</div> <!-- /.content-wrapper -->
+@endsection
+
+@push('addon-script')
+<!--TABEL-->
+<!-- <script type="text/javascript">
       $(document).ready(function() {
         $('#table-register').DataTable({
           processing: true,
@@ -228,47 +356,41 @@
         });
       })
       
-    </script>
-  </div> <!-- /.content -->
-</div> <!-- /.content-wrapper -->
-@endsection
+    </script> -->
 
-@push('addon-script')
-<!-- <script>
-  document.addEventListener('click', function(event) {
-    const selectedText = window.getSelection().toString();
-    
-    if (selectedText.length === 0) {
-        const clickedText = event.target.innerText.trim();
-        
-        if (clickedText.length > 0) {
-            const tempInput = document.createElement('input');
-            tempInput.style = 'position: absolute; left: -1000px; top: -1000px';
-            tempInput.value = clickedText;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            
-            // Menampilkan tooltip
-            const tooltip = document.createElement('div');
-            tooltip.textContent = 'Teks berhasil disalin: ' + clickedText;
-            tooltip.style.position = 'absolute';
-            tooltip.style.top = event.clientY + 'px';
-            tooltip.style.left = event.clientX + 'px';
-            tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-            tooltip.style.color = '#fff';
-            tooltip.style.padding = '5px 10px';
-            tooltip.style.borderRadius = '5px';
-            tooltip.style.zIndex = '9999';
-            document.body.appendChild(tooltip);
-            
-            // Menghilangkan tooltip setelah beberapa detik
-            setTimeout(() => {
-                document.body.removeChild(tooltip);
-            }, 2000);
-        }
-      }
-  });
-</script> -->
+<!-- modal  -->
+<!-- Button trigger modal  -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+ Modal 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-4">
+            Id Aset <br>
+            Jenis <br>
+            Nama <br>
+            Merek <br>
+            Ruangan <br>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- modal -->
 @endpush

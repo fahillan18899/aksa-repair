@@ -42,7 +42,7 @@ class HomeController extends Controller
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
         $dataKalibrasi = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-
+        
         return view(
             'pages.admin.PPM.dashboard.index',
             [
@@ -69,6 +69,18 @@ class HomeController extends Controller
         $item = Registrasi::where('id_aset', $id)->first();
 
         return view('pages.admin.PPM.data_inventaris.cetak_aset', compact('item'));
+    }
+
+    public function tabelKerusakan($id)
+    {
+        $itemPerbaikan = PerbaikanRegistrasi::where('id_aset_reg', $id)
+        ->where('kode_rs', Auth::user()->kode_rs)->get();
+
+        return view('pages.admin.PPM.data_inventaris.tabel_perbaikan', [
+
+            'itemPerbaikan' => $itemPerbaikan,
+
+        ]);
     }
 
     public function qrCodeGenerate($id)

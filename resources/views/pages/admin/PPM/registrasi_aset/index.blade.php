@@ -68,7 +68,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Contoh: RSX1" value="">
+                      <input name="id_aset" type="text" class="form-control" id="firstname1" placeholder="Contoh: RSX1" onkeyup="keyupfill()">
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -77,7 +77,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname" placeholder="Samakan dengan Id Aset" value="">
+                      <input name="id_aset" type="text" class="form-control" id="firstname2" placeholder="Terisi Otomatis" value="" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -461,6 +461,13 @@
 
   function clickAKD() {
     inputAKD.disabled = false;
+  }
+</script>
+
+<script>
+  function keyupfill(){
+    var fill = document.getElementById('firstname1').value;
+    document.getElementById('firstname2').value = fill;
   }
 </script>
 @endpush

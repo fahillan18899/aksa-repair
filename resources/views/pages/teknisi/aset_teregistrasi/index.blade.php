@@ -101,9 +101,6 @@
                                                     </td>
                                                 </tr>
                                             @empty
-                                                <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
@@ -173,9 +170,6 @@
                                                     <td>{{ $item->lokasi_alat_pengguna_part }}</td>
                                                 </tr>
                                             @empty
-                                                <tr>
-                                                    <td class="text-center" colspan="9">Data Kosong</td>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
@@ -193,7 +187,7 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
 
-                        <div class="panel-heading no-print">
+                        <div class="panel-heading no-print" id="form1">
                             <h1>Form Perbaikan Alat Teregistrasi</h1>
                         </div>
 
@@ -668,9 +662,6 @@
                                                 </tr>
 
                                             @empty
-                                                <tr>
-                                                    <td class="text-center" colspan="7">Data Kosong</td>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>

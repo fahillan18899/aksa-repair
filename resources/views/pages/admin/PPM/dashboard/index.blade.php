@@ -34,7 +34,7 @@
             <span class="info-box-number">{{ $registrasi }}</span>
 
             <div class="progress">
-              <div class="progress-bar" style="width: <?= $registrasi . '%' ?>"></div>
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -59,10 +59,9 @@
               <a href="view_tabel"
               style="color :white"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a>
             </span>
-            <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
-
+            <span class="info-box-number">{{ $perbaikanRegistrasi }} / {{ $registrasi }}</span>
             <div class="progress">
-              <div class="progress-bar" style="width: <?= $perbaikanRegistrasi . '%' ?>"></div>
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -84,9 +83,9 @@
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><a href="view_tabel2" style="color : white"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI"?></a></span>
-            <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
+            <span class="info-box-number">{{ $perbaikanUnregistrasi }} </span>
             <div class="progress">
-              <div class="progress-bar" style="width: <?= $perbaikanUnregistrasi . '%' ?>"></div>
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>
@@ -108,9 +107,9 @@
           <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><a href="view_tabel3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI"?></a></span>
-            <span class="info-box-number">{{ $registrasiKalBar }}</span>
+            <span class="info-box-number">{{ $registrasiKalBar }} / {{ $registrasi }}</span>
             <div class="progress">
-              <div class="progress-bar" style="width: <?= $registrasiKalBar . '%' ?>"></div>
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
             <span class="progress-description">
               <?= date('j F, Y'); ?>

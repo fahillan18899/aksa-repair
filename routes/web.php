@@ -50,6 +50,9 @@ use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as Perbaika
 use App\Http\Controllers\Teknisi\PPM\PerbaikanUserUnregistrasiController as PerbaikanUserUnregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PengambilanSperpartTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\ViewTabelController;
+use App\Http\Controllers\Teknisi\PPM\ViewTabelController2;
+use App\Http\Controllers\Teknisi\PPM\ViewTabelController3;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PerbaikanUserUnregistrasiController;
@@ -109,6 +112,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('data_inventaris', [PPMController::class, 'dataInventaris']);
         Route::get('data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
         Route::get('data_inventaris/detail/{id}', [PPMController::class, 'detailData']);
+        Route::get('data_inventaris/tabel_perbaikan/{id}', [PPMController::class, 'tabelKerusakan']);
         Route::get('data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
 
         // menu pemeliharaan korektif
@@ -263,6 +267,9 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
+    Route::resource('view_tabelT', ViewTabelController::class);
+    Route::resource('view_tabelT2', ViewTabelController2::class);
+    Route::resource('view_tabelT3', ViewTabelController3::class);
 
     Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
     Route::get('perbaikan_teregistrasi/update_perbaikan/{id}/edit', [PerbaikanTeregistrasiTeknisiController::class, 'edit_teknisi']);

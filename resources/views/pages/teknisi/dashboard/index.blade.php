@@ -35,150 +35,146 @@
   </section>
 
 <!--Slide-->
-@if ( Auth::user()->kode_rs == "RS0004")
-<div class="mb-5">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img src=" {{ url('assets/images/cilegon4.png') }}"  class="d-block w-100 c-img" alt="...">
+  @if ( Auth::user()->kode_rs == "RS0004")
+  <div class="mb-5">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active c-item">
+            <img src=" {{ url('assets/images/cilegon4.png') }}"  class="d-block w-100 c-img" alt="...">
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{{ url('assets/images/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{{ url('assets/images/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
+          </div>
+          <div class="carousel-item c-item">
+            <img src="{{ url('assets/images/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
+          </div>
         </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-  </div>
-  @endif
+    @endif
 <!--Slide-->
   <!-- /.content-header -->
 
   <!-- Main content -->
   <div class="content">
     <div class="row">
-
-      <?php
-      //if ($this->permission->method('appointment_list', 'read')->access()) {
-      ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-olive">
-        <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
-          <!-- <span class="info-box-icon"><i class="fa fa-edit"></i></span> -->
-
-          <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERGESITRASI" ?></span>
-            <span class="info-box-number">{{ $registrasi }}</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+      <!-- Box Jumlah Alat -->
+        <?php
+        //if ($this->permission->method('appointment_list', 'read')->access()) {
+        ?>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-olive">
+          <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><?= "JUMLAH ALAT TERGESITRASI" ?></span>
+              <span class="info-box-number">{{ $registrasi }}</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y'); ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y'); ?>
-            </span>
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
-      <?php //}
-      ?>
+        <?php //}
+        ?>
+        <?php
+        // if ($this->permission->method('patient_list', 'read')->access()) {
+        ?>
+      <!-- Box Jumlah Alat end -->
 
-      <?php
-      // if ($this->permission->method('patient_list', 'read')->access()) {
-      ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class=" info-box bg-blue">
+      <!-- Box Jumlah Aset Perbaikan Regis -->
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class=" info-box bg-blue">
+            <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">
+                <a href="dashboard_teknisi/view_tabelT" style="color: white"><?= "JUMLAH ASSET PERBAIKAN TERGESITRASI" ?></a>
+              </span>
+              <span class="info-box-number">{{ $perbaikanRegistrasi }} / {{ $registrasi }}</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y'); ?>
+              </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+        <?php // }
+        ?>
+        <?php
+        // if ($this->permission->method('bed_list', 'read')->access()) {
+        ?>
+      <!-- Box Jumlah Aset Perbaikan Regis End -->
+
+      <!-- Box Jumlah Aset Perbaikan Unregis -->
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-navy-blue">
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-          <!-- <span class="info-box-icon"><i class="fa fa-wheelchair"></i></span> -->
-
-          <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN TERGESITRASI" ?></span>
-            <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+            <div class="info-box-content">
+              <span class="info-box-text">
+                <a href="dashboard_teknisi/view_tabelT2" style="color: white"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" ?></a>
+              </span>
+              <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y'); ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y'); ?>
-            </span>
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
-      <?php // }
-      ?>
+        <?php // }
+        ?>
+        <?php
+        //if ($this->permission->method('bed_list', 'read')->access()) {
+        ?>
+      <!-- Box Jumlah Aset Perbaikan Unregis end  -->
 
-
-
-      <?php
-      // if ($this->permission->method('bed_list', 'read')->access()) {
-      ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-navy-blue">
-        <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-          <!-- <span class="info-box-icon"><i class="fa fa-bed"></i></span> -->
-
-          <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" // display('free_bed_list')
-                                        ?></span>
-            <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
+      <!-- Box Jumlah Aset Terkalibrasi -->
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-light-green">
+            <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">
+                <a href="dashboard_teknisi/view_tabelT3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI"?></a>
+              </span>
+              <span class="info-box-number">{{ $lembarPemeliharaan }} / {{ $registrasi }} </span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y'); ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y'); ?>
-            </span>
+            <!-- /.info-box-content -->
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
-      <?php // }
-      ?>
-
-      <?php
-      //if ($this->permission->method('bed_list', 'read')->access()) {
-      ?>
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-light-green">
-          <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
-          <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
-
-          <div class="info-box-content">
-            <span class="info-box-text"><?= "JUMLAH ALAT TERKALIBRASI" // display('discharged')
-                                        ?></span>
-            <span class="info-box-number">{{ $lembarPemeliharaan }}</span>
-
-            <div class="progress">
-              <div class="progress-bar" style="width: 50%"></div>
-            </div>
-            <span class="progress-description">
-              <?= date('j F, Y'); ?>
-            </span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-      <?php // }
-      ?>
+        <?php // }
+        ?>
+      <!-- Box Jumlah Aset Terkalibrasi end  -->
     </div>
   </div>
-
   <?php
   // if ($this->permission->method('graph', 'read')->access()) {
   ?>
