@@ -57,7 +57,6 @@
                       <th scope="col">Tanggal Masuk</th>
                       <th scope="col">Tanggal Keluar</th>
                       <th scope="col">Total</th>
-                      <!--<th scope="col">Tombol_Aksi_Table</th>-->
                     </tr>
                   </thead>
                   <tbody>
@@ -72,21 +71,8 @@
                       <td>{{ $item->tanggal_masuk }}</td>
                       <td>{{ $item->tanggal_keluar }}</td>
                       <td>{{ $item->stock }}</td>
-                      <!--<td>
-                        <a href="{{ route('stock_opname.edit', $item->id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit "></i> </a>
-                        <form action="{{ route('stock_opname.destroy', $item->id) }}" method="POST" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </form>
-                      </td>-->
                     </tr>
                     @empty
-                    <tr>
-                      <td class="text-center" colspan="10">Data Kosong</td>
-                    </tr>
                     @endforelse
                   </tbody>
                 </table>

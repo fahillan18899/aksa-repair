@@ -21,9 +21,6 @@
     <div id="demoModeEnable"></div>
     <!-- alert message -->
 
-
-
-
     <!-- content -->
     <div class="row">
       <div class="col-sm-12 ">
@@ -139,9 +136,6 @@
                       </td>
                     </tr>
                     @empty
-                    <tr>
-                      <td class="text-center" colspan="10">Data Kosong</td>
-                    </tr>
                     @endforelse
                   </tbody>
                 </table>

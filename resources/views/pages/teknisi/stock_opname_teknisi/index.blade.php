@@ -72,9 +72,6 @@
 
                     </tr>
                     @empty
-                    <tr>
-                      <td class="text-center" colspan="10">Data Kosong</td>
-                    </tr>
                     @endforelse
                   </tbody>
                 </table>

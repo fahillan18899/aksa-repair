@@ -1,12 +1,12 @@
 @extends('layouts.user')
 
 @section('content')
-    @if (Auth::user()->kode_rs == 'RS0004')
-        @push('prepend-style')
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        @endpush
-    @endif
+@if (Auth::user()->kode_rs == 'RS0004')
+@push('prepend-style')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+@endpush
+@endif
 @section('title', 'Dashboard')
 <style>
     .c-item {
@@ -34,37 +34,37 @@
 
     <!--Slide-->
     @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == 'RS0004')
-        <div class="mb-5">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active c-item">
-                        <img src=" {{ url('assets/images/cilegon4.png') }}" class="d-block w-100 c-img" alt="...">
-                    </div>
-                    <div class="carousel-item c-item">
-                        <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
-                    </div>
-                    <div class="carousel-item c-item">
-                        <img src="{{ url('assets/images/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
-                    </div>
-                    <div class="carousel-item c-item">
-                        <img src="{{ url('assets/images/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
-                    </div>
-                    <div class="carousel-item c-item">
-                        <img src="{{ url('assets/images/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
-                    </div>
+    <div class="mb-5">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active c-item">
+                    <img src=" {{ url('assets/images/cilegon4.png') }}" class="d-block w-100 c-img" alt="...">
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+                <div class="carousel-item c-item">
+                    <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
+                </div>
+                <div class="carousel-item c-item">
+                    <img src="{{ url('assets/images/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
+                </div>
+                <div class="carousel-item c-item">
+                    <img src="{{ url('assets/images/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
+                </div>
+                <div class="carousel-item c-item">
+                    <img src="{{ url('assets/images/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
+                </div>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </div>
     @endif
     <!--Slide-->
     <!-- /.content-header -->
@@ -72,6 +72,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="row">
+            <!-- Box Jumlah Alat -->
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="info-box bg-olive">
                     <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
@@ -80,7 +81,7 @@
                         <span class="info-box-number">{{ $registrasi }}</span>
 
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
                         <span class="progress-description">
                             <?= date('j F, Y') ?>
@@ -89,17 +90,17 @@
                     <!-- /.info-box-content -->
                 </div>
             </div>
+            <!-- Box Jumlah Alat end-->
 
+            <!-- Box Jumlah Aset Perbaikan Regis -->
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class=" info-box bg-blue">
                     <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-
                     <div class="info-box-content">
                         <span class="info-box-text"><?= 'JUMLAH ASSET PERBAIKAN TERGESITRASI' ?></span>
-                        <span class="info-box-number">{{ $perbaikanRegistrasi }}</span>
-
+                        <span class="info-box-number">{{ $perbaikanRegistrasi }} / {{ $registrasi }}</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
                         <span class="progress-description">
                             <?= date('j F, Y') ?>
@@ -107,16 +108,17 @@
                     </div>
                 </div>
             </div>
+            <!-- Box Jumlah Aset Perbaikan Regis end-->
 
+            <!-- Box Jumlah Aset Perbaikan Unregis -->
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="info-box bg-navy-blue">
                     <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">JUMLAH ASSET PERBAIKAN UNRGESITRASI</span>
                         <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
-
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
                         <span class="progress-description">
                             <?= date('j F, Y') ?>
@@ -125,20 +127,17 @@
                     <!-- /.info-box-content -->
                 </div>
             </div>
+            <!-- Box Jumlah Aset Perbaikan Unregis end -->
 
+            <!-- Box Jumlah Aset Terkalibrasi -->
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                 <div class="info-box bg-light-green">
                     <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
-                    <!-- <span class="info-box-icon"><i class="fa fa-sign-out"></i></span> -->
-
                     <div class="info-box-content">
-                        <span class="info-box-text"><?= 'JUMLAH ALAT TERKALIBRASI'
-// display('discharged')
-?></span>
-                        <span class="info-box-number">{{ $lembarPemeliharaan }}</span>
-
+                        <span class="info-box-text"><?= 'JUMLAH ALAT TERKALIBRASI' ?></span>
+                        <span class="info-box-number">{{ $lembarPemeliharaan }} / {{$registrasi}}</span>
                         <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
                         <span class="progress-description">
                             <?= date('j F, Y') ?>
@@ -147,111 +146,88 @@
                     <!-- /.info-box-content -->
                 </div>
             </div>
+            <!-- Box Jumlah Aset Terkalibrasi end -->
             <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default thumbnail">
+                <div class="col-sm-12">
+                    <div class="panel panel-default thumbnail">
 
-            <div class="panel-heading no-print">
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="btn-group">
-                    <a class="btn btn-success" href="/dashboard_user/pesanan_user"> <i class="fa fa-plus"></i> Request Perbaikan </a>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <h2>Tabel Perbaikan</h2>
-                </div>
-              </div>  
-            </div>
+                        <div class="panel-heading no-print">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="btn-group">
+                                        <a class="btn btn-success" href="/dashboard_user/pesanan_user"> <i class="fa fa-plus"></i> Request Perbaikan </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <h2>Tabel Perbaikan</h2>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                    <table class="datatable table table-striped table-bordered" style="width:100%">
-                      <thead class="table-light">
-                        <th class="">No</th>
-                        <th class="">Id Perbaikan</th>
-                        <th class="none">ID_Aset</th>
-                        <th class="none">Tanggal_Perbaikan</th>
-                        <th class="">Nama Alat</th>
-                        <!-- <th>Status</th> -->
-                        <th class="">Merek Alat</th>
-                        <th class="">Type Alat</th>
-                        <th class="">Serial Number</th>
-                        <th class="">Lokasi Alat</th>
-                        <th class="none">Pelapor</th>
-                        <th class="none">Keterangan_Kondisi_Alat</th>
-                        <th class="none">Kepala Ruangan</th>
-                        <th class="none">Teknisi_1</th>
-                        <th class="none">Teknisi_2</th>
-                        <th class="none">Teknisi_3</th>
-                        <th class="none">suku Cadang</th>
-                        <th class="none">volume</th>
-                        <th class="none">Harga Satuan</th>
-                        <th class="none">Jumlah Harga</th>
-                        <th class="none">Keluhan_Dari_alat</th>
-                        <th class="none">Korektif</th>
-                        <!-- <th class="none">Tombol_Eksekusi</th> -->
-                      </thead>
-                      <tbody>
-                        @forelse ($dataPerbaikan as $index => $item)
-                        <tr class="odd gradeX">
-                          <td><?php echo $index  + 1 ?></td>
-                          <td><?php echo $item['id_perbaikan_reg'] ?></td>
-                          <td><?php echo $item['id_aset_reg'] ?></td>
-                          <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-                          <td><?php echo $item['nama_alat_reg'] ?></td>
-                          <!-- <td>
-                            <form action="{{ url('/dashboard/ppm/aset_teregistrasi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
-                              @csrf
-                              @method('PUT')
-                              <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
-                            </form>
-                          </td> -->
-                          <td><?php echo $item['merek_alat_reg'] ?></td>
-                          <td><?php echo $item['type_alat_reg'] ?></td>
-                          <td><?php echo $item['serial_number_reg'] ?></td>
-                          <td><?php echo $item['lokasi_alat_reg'] ?></td>
-                          <td><?php echo $item['pelapor_reg'] ?></td>
-                          <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-                          <td><?php echo $item['ka_instalasi_reg'] ?></td>
-                          <td><?php echo $item['teknisi_1_reg'] ?></td>
-                          <td><?php echo $item['teknisi_2_reg'] ?></td>
-                          <td><?php echo $item['teknisi_3_reg'] ?></td>
-                          <td><?php echo $item['suku_cadang'] ?></td>
-                          <td><?php echo $item['volume'] ?></td>
-                          <td><?php echo $item['harga_satuan'] ?></td>
-                          <td><?php echo $item['jumlah_harga'] ?></td>
-                          <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-                          <td><?php echo $item['korektif_reg'] ?></td>
-                          <!-- <td>
-                            <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"><
-                            <a href="/dashboard/ppm/aset_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Cetak"><i class="fa fa-print"><
-                            <form action="{{ url('/dashboard/ppm/perbaikan_teregistrasi',$item->id_perbaikan_reg) }}" method="POST" class="d-inline">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                                <i class="fa fa-trash "></i>
-                              </button>
-                            </form>
-                          </td> -->
-                      
-                        @empty
-                        <tr>
-                          <td class="text-center" colspan="7">Data Kosong</td>
-                        </tr>
-                        @endforelse
-                      </tbody>
-                    </table>
-                  <!--TABEL-->
+                        <div class="panel-body panel-form">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <!--TABEL-->
+                                    <table class="datatable table table-striped table-bordered" style="width:100%">
+                                        <thead class="table-light">
+                                            <th class="">No</th>
+                                            <th class="">Id Perbaikan</th>
+                                            <th class="none">ID_Aset</th>
+                                            <th class="none">Tanggal_Perbaikan</th>
+                                            <th class="">Nama Alat</th>
+                                            <th class="">Merek Alat</th>
+                                            <th class="">Type Alat</th>
+                                            <th class="">Serial Number</th>
+                                            <th class="">Lokasi Alat</th>
+                                            <th class="none">Pelapor</th>
+                                            <th class="none">Keterangan_Kondisi_Alat</th>
+                                            <th class="none">Kepala Ruangan</th>
+                                            <th class="none">Teknisi_1</th>
+                                            <th class="none">Teknisi_2</th>
+                                            <th class="none">Teknisi_3</th>
+                                            <th class="none">suku Cadang</th>
+                                            <th class="none">volume</th>
+                                            <th class="none">Harga Satuan</th>
+                                            <th class="none">Jumlah Harga</th>
+                                            <th class="none">Keluhan_Dari_alat</th>
+                                            <th class="none">Korektif</th>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($dataPerbaikan as $index => $item)
+                                            <tr class="odd gradeX">
+                                                <td><?php echo $index  + 1 ?></td>
+                                                <td><?php echo $item['id_perbaikan_reg'] ?></td>
+                                                <td><?php echo $item['id_aset_reg'] ?></td>
+                                                <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
+                                                <td><?php echo $item['nama_alat_reg'] ?></td>
+                                                <td><?php echo $item['merek_alat_reg'] ?></td>
+                                                <td><?php echo $item['type_alat_reg'] ?></td>
+                                                <td><?php echo $item['serial_number_reg'] ?></td>
+                                                <td><?php echo $item['lokasi_alat_reg'] ?></td>
+                                                <td><?php echo $item['pelapor_reg'] ?></td>
+                                                <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
+                                                <td><?php echo $item['ka_instalasi_reg'] ?></td>
+                                                <td><?php echo $item['teknisi_1_reg'] ?></td>
+                                                <td><?php echo $item['teknisi_2_reg'] ?></td>
+                                                <td><?php echo $item['teknisi_3_reg'] ?></td>
+                                                <td><?php echo $item['suku_cadang'] ?></td>
+                                                <td><?php echo $item['volume'] ?></td>
+                                                <td><?php echo $item['harga_satuan'] ?></td>
+                                                <td><?php echo $item['jumlah_harga'] ?></td>
+                                                <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
+                                                <td><?php echo $item['korektif_reg'] ?></td>
+                                                @empty
+                                                @endforelse
+                                        </tbody>
+                                    </table>
+                                    <!--TABEL-->
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3"></div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
         </div>
     </div>
 

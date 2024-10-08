@@ -66,13 +66,6 @@
                     </div>
                   </div>
 
-                  <!--<div class="form-group row">
-                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
-                     <div class="col-xs-9">
-                       <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un" placeholder="Nama Alat" value="">
-                     </div>
-                   </div>-->
-
                   <div class="form-group row">
                     <label for="nama_alat_un" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -175,65 +168,56 @@
             <div class="row">
               <div class="col-md-12 col-sm-12">
                 <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th class="">No</th>
-                      <th class="">Id_Perbaikan</th>
-                      <th class="">Tanggal_Perbaikan</th>
-                      <th class="">Nama_Alat</th>
-                      <th class="">Status</th>
-                      <th class="none">Merek_Alat</th>
-                      <th class="none">Type_Alat</th>
-                      <th class="none">Serial_Number</th>
-                      <th class="none">Lokasi_Alat</th>
-                      <th class="none">Pelapor</th>
-                      <th class="none">Keterangan</th>
-                      <th class="none">Kepala Ruangan</th>
-                      <th class="none">Teknisi_1</th>
-                      <th class="none">Teknisi_2</th>
-                      <th class="none">Teknisi_3</th>
-                      <th class="none">Keluhan_Dari_Alat</th>
-                      <!--<th scope="col">Tombol_Aksi</th>-->
-                    </thead>
-                    <tbody>
-                      @forelse ($perbaikan as $index => $item)
-                      <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td><?php echo $item['id_perbaikan_un'] ?></td>
-                        <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-                        <td><?php echo $item['nama_alat_un'] ?></td>
-                        <td>
-                          <form action="" class="form-inner" method="post">
-                            @csrf
-                            @method('PUT')
-                            <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
-                          </form>
-                        </td>
-                        <td><?php echo $item['merek_alat_un'] ?></td>
-                        <td><?php echo $item['type_alat_un'] ?></td>
-                        <td><?php echo $item['serial_number_un'] ?></td>
-                        <td><?php echo $item['lokasi_alat_un'] ?></td>
-                        <td><?php echo $item['pelapor_un'] ?></td>
-                        <td><?php echo $item['keterangan_un'] ?></td>
-                        <td><?php echo $item['ka_instalasi_un'] ?></td>
-                        <td><?php echo $item['teknisi_1_un'] ?></td>
-                        <td><?php echo $item['teknisi_2_un'] ?></td>
-                        <td><?php echo $item['teknisi_3_un'] ?></td>
-                        <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
-                        <!--<td>
-                          <a data-toggle="tooltip" data-placement="top" title="Edit" href="/dashboard/ppm/aset_unregistrasi/edit_perbaikan/{{ $item->id_perbaikan_un }}/edit" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></a>
-
-                          <a data-toggle="tooltip" data-placement="top" title="Print" href="/dashboard/ppm/aset_unregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_un }}" class="btn btn-xs btn-primary"><i class="fa fa-print"></i></a>
-                        </td>-->
-                      </tr>
-                      @empty
-                      <tr>
-                        <td class="text-center" colspan="7">Data Kosong</td>
-                      </tr>
-                      @endforelse
-                    </tbody>
-                  </table>
-    <!--TABEL-->
+                <table class="datatable table table-striped table-bordered" style="width:100%">
+                  <thead class="table-light">
+                    <th class="">No</th>
+                    <th class="">Id_Perbaikan</th>
+                    <th class="">Tanggal_Perbaikan</th>
+                    <th class="">Nama_Alat</th>
+                    <th class="">Status</th>
+                    <th class="none">Merek_Alat</th>
+                    <th class="none">Type_Alat</th>
+                    <th class="none">Serial_Number</th>
+                    <th class="none">Lokasi_Alat</th>
+                    <th class="none">Pelapor</th>
+                    <th class="none">Keterangan</th>
+                    <th class="none">Kepala Ruangan</th>
+                    <th class="none">Teknisi_1</th>
+                    <th class="none">Teknisi_2</th>
+                    <th class="none">Teknisi_3</th>
+                    <th class="none">Keluhan_Dari_Alat</th>
+                  </thead>
+                  <tbody>
+                    @forelse ($perbaikan as $index => $item)
+                    <tr>
+                      <td>{{ $index + 1 }}</td>
+                      <td><?php echo $item['id_perbaikan_un'] ?></td>
+                      <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
+                      <td><?php echo $item['nama_alat_un'] ?></td>
+                      <td>
+                        <form action="" class="form-inner" method="post">
+                          @csrf
+                          @method('PUT')
+                          <button class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger'}}" type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui'}}</button>
+                        </form>
+                      </td>
+                      <td><?php echo $item['merek_alat_un'] ?></td>
+                      <td><?php echo $item['type_alat_un'] ?></td>
+                      <td><?php echo $item['serial_number_un'] ?></td>
+                      <td><?php echo $item['lokasi_alat_un'] ?></td>
+                      <td><?php echo $item['pelapor_un'] ?></td>
+                      <td><?php echo $item['keterangan_un'] ?></td>
+                      <td><?php echo $item['ka_instalasi_un'] ?></td>
+                      <td><?php echo $item['teknisi_1_un'] ?></td>
+                      <td><?php echo $item['teknisi_2_un'] ?></td>
+                      <td><?php echo $item['teknisi_3_un'] ?></td>
+                      <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
+                    </tr>
+                    @empty
+                    @endforelse
+                  </tbody>
+                </table>
+                <!--TABEL-->
               </div>
               <div class="col-md-3"></div>
             </div>
@@ -241,8 +225,6 @@
         </div>
       </div>
     </div>
-
-
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection
