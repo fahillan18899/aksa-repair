@@ -79,7 +79,7 @@
                                             @forelse ($itemPesanan as $index => $item)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td onclick="copy(this)"><span>{{ $item->id }}<span></td>
+                                                    <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id }}<span></td>
                                                     <td>{{ $item->nama_req }}</td>
                                                     <td>{{ $item->merek_req }}</td>
                                                     <td>{{ $item->type_req }}</td>
@@ -204,7 +204,8 @@
                                                     class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_aset_reg" type="text" class="form-control"
-                                                    id="id_aset_reg" placeholder="Copy dan paste id aset di tabel ke sini" onkeyup="autofill()">
+                                                    id="id_aset_reg" placeholder="Klik id aset untuk copy ke sini" readonly
+                                                    data-toggle="tooltip" data-palcement="top" title="klik disini untuk load data alat">
                                             </div>
                                         </div>
 
@@ -681,6 +682,7 @@
 
 @push('addon-script')
 <script type="text/javascript">
+// *Function scanner camera* //
     let scanner_teknisi = new Instascan.Scanner({
         video: document.getElementById('preview_teknisi'),
         mirror: false
@@ -702,139 +704,34 @@
             console.error("Please enable Camera!");
         }
     });
-function autofill_Pengiriman() {
-  let Id_Perbaikan_reg = $("#Perbaikan_reg").val();
-  $.ajax({
-    url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
-    method: 'GET', // HTTP method (e.g., GET, POST)
-    data: {
-      Id_Perbaikan_reg: Id_Perbaikan_reg
-    },
-    dataType: 'json',
-    success: function(data) {
-      console.log(data.Nama_Alat_reg)
-      $("#Tanggal_Perbaikan_reg1").val(data.Tanggal_Perbaikan_reg);
-      $("#Id_Aset_reg1").val(data.ID_Aset_reg);
-      $("#Nama_Alat_reg1").val(data.Nama_Alat_reg);
-      $("#Merek_Alat_reg1").val(data.Merek_Alat_reg);
-      $("#Type_Alat_reg1").val(data.Type_Alat_reg);
-      $("#Seri_Number_reg1").val(data.Serial_Number_reg);
-      $("#Lokasi_Alat_reg1").val(data.Lokasi_Alat_reg);
-      $("#Teknisi_1_reg1").val(data.Teknisi_1_reg);
-      $("#Pelapor_reg1").val(data.Pelapor_reg);
-      $("#Teknisi_2_reg1").val(data.Teknisi_2_reg);
-      $("#Teknisi_3_reg1").val(data.Teknisi_3_reg);
-      $("#Keterangan_Kondisi_Alat_reg1").val(data.Keterangan_Kondisi_Alat_reg);
-      $("#KA_Instalasi_reg1").val(data.Ka_Instalasi_reg);
-      $("#nama_sukucadang").val(data.suku_cadang);
-      $("#volume").val(data.volume);
-      $("#harga_satuan").val(data.harga_satuan);
-      $("#jumlah_harga").val(data.jumlah_harga);
+// *Function scanner camera* //
 
-    },
-    error: function(xhr, status, error) {
-      console.log(xhr.responseText);
-    }
-  });
-}
+// *Function autofill form perbaikan* // 
+    $('#id_aset_reg').mouseup(function(){
+        if($(this).val().length > 0){
+            let idars = $("#id_aset_reg").val();
+            $.ajax({
+                url: '{{ url('/dashboard_user/autofill/') }}/' + idars,
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $("#Nama_Alat_reg").val(data.nama_alat_reg);
+                    $("#Merek_Alat_reg").val(data.merek_alat_reg);
+                    $("#Serial_Number_reg").val(data.serial_number_reg);
+                    $("#Lokasi_Alat_reg").val(data.lokasi_alat_reg);
+                    $("#Type_Alat_reg").val(data.type);
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+    })
+// *Function autofill form perbaikan end* //    
 
-function autofill_Pengembalian() {
-  let Id_Perbaikan_reg = $("#id_perbaikan_reg2").val();
-  $.ajax({
-    url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
-    method: 'GET', // HTTP method (e.g., GET, POST)
-    data: {
-      Id_Perbaikan_reg: Id_Perbaikan_reg
-    },
-    dataType: 'json',
-    success: function(data) {
-      console.log(data.Nama_Alat_reg)
-      $("#tanggal_perbaikan_reg2").val(data.Tanggal_Perbaikan_reg);
-      $("#Id_Aset_reg2").val(data.ID_Aset_reg);
-      $("#nama_alat_reg2").val(data.Nama_Alat_reg);
-      $("#merek_reg2").val(data.Merek_Alat_reg);
-      $("#tipe_reg2").val(data.Type_Alat_reg);
-      $("#serial_number_reg2").val(data.Serial_Number_reg);
-      $("#lokasi_alat_reg2").val(data.Lokasi_Alat_reg);
-      $("#teknisi1_reg2").val(data.Teknisi_1_reg);
-      $("#pelapor_reg2").val(data.Pelapor_reg);
-      $("#teknisi2_reg2").val(data.Teknisi_2_reg);
-      $("#teknisi3_reg2").val(data.Teknisi_3_reg);
-      $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
-      $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
-      $("#nama_sukucadang2").val(data.suku_cadang);
-      $("#volume2").val(data.volume);
-      $("#harga_satuan2").val(data.harga_satuan);
-      $("#jumlah_harga2").val(data.jumlah_harga);
-
-    },
-    error: function(xhr, status, error) {
-      console.log(xhr.responseText);
-    }
-  });
-}
-
-function autofill_Penghapusan() {
-  let Id_Perbaikan_reg = $("#Id_Perbaikan_reg3").val();
-  $.ajax({
-    url: '{{ url("/dashboard/ppm/autofill_pengiriman/") }}/' + Id_Perbaikan_reg,
-    method: 'GET', // HTTP method (e.g., GET, POST)
-    data: {
-      Id_Perbaikan_reg: Id_Perbaikan_reg
-    },
-    dataType: 'json',
-    success: function(data) {
-      console.log(data.Nama_Alat_reg)
-      $("#Tanggal_Perbaikan_reg3").val(data.Tanggal_Perbaikan_reg);
-      $("#Nama_Alat_reg3").val(data.Nama_Alat_reg);
-      $("#Merek_Alat_reg3").val(data.Merek_Alat_reg);
-      $("#Type_Alat_reg3").val(data.Type_Alat_reg);
-      $("#Serial_Number_reg3").val(data.Serial_Number_reg);
-      $("#Lokasi_Alat_reg3").val(data.Lokasi_Alat_reg);
-      $("#Teknisi_1_reg3").val(data.Teknisi_1_reg);
-      $("#Pelapor_reg3").val(data.Pelapor_reg);
-      $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
-      $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
-      $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
-      $("#nama_sukucadang3").val(data.suku_cadang);
-      $("#volume3").val(data.volume);
-      $("#harga_satuan3").val(data.harga_satuan);
-      $("#jumlah_harga3").val(data.jumlah_harga);
-
-    },
-    error: function(xhr, status, error) {
-      console.log(xhr.responseText);
-    }
-  });
-}
-
-
-    
-
-    function autofill() {
-        let idars = $("#id_aset_reg").val();
-
-
-        $.ajax({
-            url: '{{ url('/dashboard_user/autofill/') }}/' + idars,
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                $("#Nama_Alat_reg").val(data.nama_alat_reg);
-                $("#Merek_Alat_reg").val(data.merek_alat_reg);
-                $("#Serial_Number_reg").val(data.serial_number_reg);
-                $("#Lokasi_Alat_reg").val(data.lokasi_alat_reg);
-                $("#Type_Alat_reg").val(data.type);
-            },
-            error: function(xhr, status, error) {
-                console.log(xhr.responseText);
-            }
-        });
-    }
-
+// *Function autofill from sperpart* //
     function autofillpart2() {
       let idarspart = $("#id_aset_part2").val();
-
       $.ajax({
         url: '{{ url('/dashboard_teknisi/autofillpart/') }}/' + idarspart,
         method: 'GET',
@@ -850,70 +747,20 @@ function autofill_Penghapusan() {
         }
     });
     }
+// *Function autofill from sperpart end* //   
 </script>
-<!-- <script>
-    document.addEventListener('click', function(event) {
-        const selectedText = window.getSelection().toString();
-
-        if (selectedText.length === 0) {
-            const clickedText = event.target.innerText.trim();
-
-            if (clickedText.length > 0) {
-                const tempInput = document.createElement('input');
-                tempInput.style = 'position: absolute; left: -1000px; top: -1000px';
-                tempInput.value = clickedText;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-
-                // Menampilkan tooltip
-                const tooltip = document.createElement('div');
-                tooltip.textContent = 'Teks berhasil disalin: ' + clickedText;
-                tooltip.style.position = 'absolute';
-                tooltip.style.top = event.clientY + 'px';
-                tooltip.style.left = event.clientX + 'px';
-                tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-                tooltip.style.color = '#fff';
-                tooltip.style.padding = '5px 10px';
-                tooltip.style.borderRadius = '5px';
-                tooltip.style.zIndex = '9999';
-                document.body.appendChild(tooltip);
-
-                // Menghilangkan tooltip setelah beberapa detik
-                setTimeout(() => {
-                    document.body.removeChild(tooltip);
-                }, 2000);
-            }
-        }
-    });
-</script> -->
 
 <script>
-function copy(that){
-    var inp =document.createElement('input');
-    document.body.appendChild(inp)
-    inp.value =that.textContent
-    inp.select();
-    document.execCommand('copy',false);
-    inp.remove();
-
-    const tooltip = document.createElement('p');
-    tooltip.textContent = 'Teks berhasil disalin';
-    tooltip.style.position = 'absolute';
-    tooltip.style.top = event.clientY + 'px';
-    tooltip.style.left = event.clientX + 'px';
-    tooltip.style.background = 'rgba(0, 0, 0, 0.7)';
-    tooltip.style.color = '#fff';
-    tooltip.style.padding = '5px 10px';
-    tooltip.style.borderRadius = '5px';
-    tooltip.style.zIndex = '9999';
-    document.body.appendChild(tooltip);
-
-    // Menghilangkan tooltip setelah beberapa detik
-    setTimeout(() => {
-        document.body.removeChild(tooltip);
-    }, 2000);
+// *fucntion copy id aset* //
+    function copy(that){
+        var inp =document.createElement('input');
+        document.body.appendChild(inp)
+        inp.value =that.textContent
+        inp.select();
+        document.execCommand('copy',false);
+        inp.remove();
+        document.getElementById('id_aset_reg').value = inp.value = that.textContent;
+// *fucntion copy id aset end* //
 }
 </script>
 @endpush

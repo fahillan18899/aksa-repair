@@ -470,5 +470,6 @@
     document.getElementById('firstname2').value = fill;
   }
 </script>
+
 @endpush
 @endsection

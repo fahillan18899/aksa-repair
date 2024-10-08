@@ -146,9 +146,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="7">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -161,7 +158,7 @@
         </div>
       </div>
     <!-- Tabel Jadwal Pemeliharaan end-->
-     
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 <script type="text/javascript">
@@ -177,8 +174,8 @@
             $('select[name="nama_alat"]').empty();
             $.each(data, function(key, value) {
               $('select[name="nama_alat"]').append('<option value="' + value +'_'+ key +'">' + value +'_'+ key +'</option>');
-              console.log(value)
             });
+            console.log(key)
           }
         });
       } else {

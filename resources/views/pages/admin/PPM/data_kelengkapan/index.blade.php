@@ -368,27 +368,25 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="ruangan_alat" class="col-xs-3 col-form-label">Ruangan Alat
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="ruangan_alat" type="text" class="form-control" id="ruangan_alat" placeholder="Ruangan Alat" />
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
                     <label for="gedung" class="col-xs-3 col-form-label">Gedung
                       <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="ruangan" class="form-control" id="gedung">
-                        <option>
-                          -- Pilih Gedung --
-                        </option>
+                        <option>-- Pilih Gedung --</option>
                         @forelse ($gedung as $gedung)
                         <option value="<?= $gedung['nama_gedung'] ?>">
                           <?= $gedung['nama_gedung'] ?>
                         </option>
                         @endforeach
                       </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="ruangan_alat" class="col-xs-3 col-form-label">Ruangan Alat
+                      <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="ruangan_alat" type="text" class="form-control" id="ruangan_alat" placeholder="Ruangan Alat" />
                     </div>
                   </div>
 
@@ -527,5 +525,14 @@
       tab4.style.display ="none"
     }
   }
+</script>
+
+<script>
+  $(document).ready(function(){
+    $('select[name="ruangan"]').on('change', function() {
+      var lokasi = document.getElementById('gedung').value;
+      document.getElementById('ruangan_alat').value = lokasi
+    });
+  });
 </script>
 @endpush

@@ -21,7 +21,7 @@ class RuanganController extends Controller
             'kode_rs' => '',
         ]);
 
-        $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
+        $lokasi_alat = $request->ruangan_alat;
         Ruangan::create([
             'id_ruangan' => $request->id_ruangan,
             'ruangan_alat' => $request->ruangan_alat,
@@ -52,7 +52,7 @@ class RuanganController extends Controller
 
     public function update(Request $request, Ruangan $ruangan)
     {
-        $lokasi_alat = $request->ruangan_alat . ',' . $request->ruangan;
+        $lokasi_alat = $request->ruangan_alat;
         $request->validate([
             'id_ruangan' => '',
             'ruangan_alat' => '',

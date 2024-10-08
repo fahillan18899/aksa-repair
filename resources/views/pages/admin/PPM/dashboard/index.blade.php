@@ -192,9 +192,6 @@
                           <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
                           <td><?php echo $item['korektif_reg'] ?></td>
                           @empty
-                        <tr>
-                          <td class="text-center" colspan="7">Data Kosong</td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>
@@ -397,9 +394,6 @@
 
                   </tr>
                   @empty
-                  <tr>
-                    <td class="text-center" colspan="7">Data Kosong</td>
-                  </tr>
                   @endforelse
                 </tbody>
               </table>
