@@ -70,4 +70,11 @@ class JadwalPemeliharaanController extends Controller
         return redirect('/dashboard/ppm/jadwal_pemeliharaan')
             ->with('success', 'Data Perbaikan Berhasil Di Tambahkan.');
     }
+
+    public function destroy($id)
+    {
+        $items = JadwalPemeliharaan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $items->delete();
+        return redirect('/dashboard/ppm/jadwal_pemeliharaan')->with('success', 'Data Berhasil Dihapus');
+    }
 }

@@ -193,6 +193,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'store'])->name('jadwal_pemeliharaan.store');
         Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'city']);
         Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanController::class, 'updateStatus']);
+        Route::delete('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'destroy']);
 
         // lembar_pemeliharaan
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);

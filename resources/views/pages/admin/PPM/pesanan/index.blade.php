@@ -54,7 +54,8 @@
                       <select name="id" class="form-control" id="id">
                       <option>Pilih Id Aset</option>
                         @foreach($dataInv as $dataInv)
-                        <option value="<?= $dataInv['id_aset']; ?>"><?= $dataInv['id_aset']; ?></option>
+                        <option value="<?= $dataInv['id_aset']; ?>">
+                                       <?= $dataInv['id_aset']; ?>_<?= $dataInv['nama_alat']; ?>_<?= $dataInv['serial_number']; ?>_<?= $dataInv['lokasi_alat']; ?></option>
                         @endforeach
                       </select>
                      </div>

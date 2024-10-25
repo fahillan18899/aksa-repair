@@ -293,7 +293,7 @@
                                             @forelse ($itemPesanan as $index => $item)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td title="klik untuk copy ke form" onclick="copy(this)">{{ $item->id }}</td>
+                                                    <td title="klik untuk copy ke form" onclick="copy(this)" style="cursor: pointer;">{{ $item->id }}</td>
                                                     <td>{{ $item->nama_req }}</td>
                                                     <td>{{ $item->merek_req }}</td>
                                                     <td>{{ $item->type_req }}</td>
@@ -348,7 +348,8 @@
                                             <div class="col-xs-9">
                                                 <input name="id_aset_reg" type="text" class="form-control id_aset_reg"
                                                 id="id_aset_reg" placeholder="Klik Id Aset untuk copy ke sini" readonly
-                                                data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data">
+                                                data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data"
+                                                style="cursor: pointer;">
                                             </div>
                                         </div>
 
@@ -357,7 +358,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control" 
-                                                id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly>
+                                                id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -367,7 +369,8 @@
                                             <div class="col-xs-9">
                                                 <input name="tanggal_perbaikan_reg" type="text" class="form-control"
                                                 id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan"
-                                                value="<?php echo date(now()); ?>" readonly>
+                                                value="<?php echo date(now()); ?>" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -376,7 +379,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="nama_alat_reg" type="text" class="form-control"
-                                                id="Nama_Alat_reg" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Nama_Alat_reg" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -385,7 +389,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="merek_alat_reg" type="text" class="form-control"
-                                                id="Merek_Alat_reg" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Merek_Alat_reg" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -394,7 +399,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="type_alat_reg" type="text" class="form-control"
-                                                id="Type_Alat_reg" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Type_Alat_reg" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -403,7 +409,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="Serial_Number_reg" type="text" class="form-control"
-                                                id="Serial_Number_reg" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Serial_Number_reg" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -412,7 +419,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="lokasi_alat_reg" type="text" class="form-control"
-                                                id="Lokasi_Alat_reg" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Lokasi_Alat_reg" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -580,7 +588,7 @@
                                         @forelse ($items as $index => $item)
                                         <tr class="odd gradeX">
                                             <td><?php echo $index + 1; ?></td>
-                                            <td title="klik disini untuk copy id ke form" onclick="copy2(this)"><?php echo $item['id_perbaikan_reg']; ?></td>
+                                            <td title="klik disini untuk copy id ke form" onclick="copy2(this)" style="cursor: pointer;"><?php echo $item['id_perbaikan_reg']; ?></td>
                                             <td><?php echo $item['id_aset_reg']; ?></td>
                                             <td><?php echo $item['tanggal_perbaikan_reg']; ?></td>
                                             <td><?php echo $item['nama_alat_reg']; ?></td>
@@ -667,7 +675,8 @@
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
                                                 id="Perbaikan_reg" placeholder="Klik id perbaikan di tabel untuk copy kesini" readonly
-                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
+                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data"
+                                                style="cursor: pointer;">
                                             </div>
                                         </div>
 
@@ -676,7 +685,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="tanggal_perbaikan_reg" type="text" class="form-control"
-                                                id="Tanggal_Perbaikan_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Tanggal_Perbaikan_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -686,7 +696,8 @@
                                             <div class="col-xs-9">
                                                 <input name="tanggal_pengiriman_reg" type="text" class="form-control"
                                                 id="Tanggal_Pengiriman_reg" placeholder="Tanggal Pengiriman"
-                                                value="<?php echo date('Y-m-d'); ?>" readonly>
+                                                value="<?php echo date('Y-m-d'); ?>" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -695,7 +706,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="id_aset_reg" type="text" class="form-control"
-                                                id="Id_Aset_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Id_Aset_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -704,7 +716,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="nama_alat_reg" type="text" class="form-control"
-                                                id="Nama_Alat_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Nama_Alat_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -713,7 +726,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="merek_alat_reg" type="text" class="form-control"
-                                                id="Merek_Alat_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Merek_Alat_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -722,7 +736,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="type_alat_reg" type="text" class="form-control"
-                                                id="Type_Alat_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Type_Alat_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -731,7 +746,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="seri_number_reg" type="text" class="form-control"
-                                                id="Seri_Number_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Seri_Number_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -740,7 +756,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="lokasi_alat_reg" type="text" class="form-control"
-                                                id="Lokasi_Alat_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Lokasi_Alat_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -749,7 +766,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="pelapor_reg" type="text" class="form-control"
-                                                id="Pelapor_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Pelapor_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -758,7 +776,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_1_reg" type="text" class="form-control"
-                                                id="Teknisi_1_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Teknisi_1_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -766,7 +785,8 @@
                                             <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_2_reg" type="text" class="form-control"
-                                                id="Teknisi_2_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Teknisi_2_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -774,7 +794,8 @@
                                             <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_3_reg" type="text" class="form-control"
-                                                id="Teknisi_3_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="Teknisi_3_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -782,7 +803,8 @@
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
-                                                id="nama_sukucadang" placeholder="Terisi Otomatis" readonly>
+                                                id="nama_sukucadang" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -790,7 +812,8 @@
                                             <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="volume" type="text" class="form-control" id="volume"
-                                                placeholder="Terisi Otomatis" readonly>
+                                                placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -798,7 +821,8 @@
                                             <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="harga_satuan" type="text" class="form-control"
-                                                id="harga_satuan" placeholder="Terisi Otomatis" readonly>
+                                                id="harga_satuan" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -806,7 +830,8 @@
                                             <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="jumlah_harga" type="text" class="form-control"
-                                                id="jumlah_harga" placeholder="Terisi Otomatis" readonly>
+                                                id="jumlah_harga" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -816,7 +841,8 @@
                                             <div class="col-xs-9">
                                                 <input name="keterangan_kondisi_alat_reg" type="text"
                                                 class="form-control" id="Keterangan_Kondisi_Alat_reg1"
-                                                placeholder="Terisi Otomatis" readonly>
+                                                placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -824,7 +850,8 @@
                                             <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                                             <div class="col-xs-9">
                                                 <input name="ka_instalasi_reg" type="text" class="form-control"
-                                                id="KA_Instalasi_reg1" placeholder="Terisi Otomatis" readonly>
+                                                id="KA_Instalasi_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -912,7 +939,7 @@
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
                                                         <td title="klik disini untuk copy id ke form"
-                                                        onclick="copy3(this)"><?php echo $item->id_perbaikan_reg; ?></td>
+                                                        onclick="copy3(this)" style="cursor: pointer;"><?php echo $item->id_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_perbaikan_reg; ?></td>
                                                         <td><?php echo $item->tanggal_pengiriman_reg; ?></td>
                                                         <td><?php echo $item->id_aset_reg; ?></td>
@@ -994,7 +1021,8 @@
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
                                                 id="id_perbaikan_reg2" placeholder="Klik id perbaikan di tabel untuk copy id kesini" readonly
-                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
+                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data"
+                                                style="cursor: pointer;">
                                             </div>
                                         </div>
 
@@ -1003,7 +1031,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="Id_Aset_reg" type="text" class="form-control"
-                                                id="Id_Aset_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Id_Aset_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1012,7 +1041,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="nama_alat_reg" type="text" class="form-control"
-                                                id="nama_alat_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="nama_alat_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1021,8 +1051,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="tanggal_perbaikan_reg" type="text" class="form-control"
-                                                id="tanggal_perbaikan_reg2" placeholder="Terisi Otomatis"
-                                                value="" readonly>
+                                                id="tanggal_perbaikan_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1031,7 +1061,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="merek_reg" type="text" class="form-control"
-                                                id="merek_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="merek_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1040,7 +1071,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="tipe_reg" type="text" class="form-control"
-                                                id="tipe_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="tipe_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1050,7 +1082,8 @@
                                             <div class="col-xs-9">
                                                 <input name="tanggal_pengembalian_reg" type="text"
                                                 class="form-control" id="tanggal_pengembalian_reg2"
-                                                placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                                placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1059,7 +1092,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="serial_number_reg" type="text" class="form-control"
-                                                id="serial_number_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="serial_number_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1068,7 +1102,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="pelapor_reg" type="text" class="form-control"
-                                                id="pelapor_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="pelapor_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1077,7 +1112,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="lokasi_alat_reg" type="text" class="form-control"
-                                                id="lokasi_alat_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="lokasi_alat_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1086,7 +1122,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="keterangan_reg" type="text" class="form-control"
-                                                id="keterangan_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="keterangan_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1111,7 +1148,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi1_reg" type="text" class="form-control"
-                                                id="teknisi1_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="teknisi1_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1119,7 +1157,8 @@
                                             <label for="teknisi2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi2_reg" type="text" class="form-control"
-                                                id="teknisi2_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="teknisi2_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1127,7 +1166,8 @@
                                             <label for="teknisi3_reg" class="col-xs-3 col-form-label">Teknisi 3 </label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi3_reg" type="text" class="form-control"
-                                                id="teknisi3_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="teknisi3_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1136,7 +1176,8 @@
                                                 <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="ka_instalasi_reg" type="text" class="form-control"
-                                                id="ka_instalasi_reg2" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="ka_instalasi_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1144,7 +1185,8 @@
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
-                                                d="nama_sukucadang2" placeholder="Terisi Otomatis" readonly>
+                                                id="nama_sukucadang2" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1152,7 +1194,8 @@
                                             <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="volume" type="text" class="form-control" id="volume2"
-                                                placeholder="Terisi Otomatis" readonly>
+                                                placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1160,7 +1203,8 @@
                                             <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="harga_satuan" type="text" class="form-control"
-                                                id="harga_satuan2" placeholder="Terisi Otomatis" readonly>
+                                                id="harga_satuan2" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1168,7 +1212,8 @@
                                             <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="jumlah_harga" type="text" class="form-control"
-                                                id="jumlah_harga2" placeholder="Terisi Otomatis" readonly>
+                                                id="jumlah_harga2" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1276,7 +1321,7 @@
                                                     <tr class="odd gradeX">
                                                         <td><?php echo $index + 1; ?></td>
                                                         <td title="klik disini untuk copy id ke form" 
-                                                        onclick="copy4(this)">{{ $item->id_perbaikan_reg }}</td>
+                                                        onclick="copy4(this)" style="cursor: pointer;">{{ $item->id_perbaikan_reg }}</td>
                                                         <td>{{ $item->nama_alat_reg }}</td>
                                                         <td>{{ $item->tanggal_perbaikan_reg }}</td>
                                                         <td>{{ $item->merek_reg }}</td>
@@ -1362,7 +1407,8 @@
                                             <div class="col-xs-9">
                                                 <input name="id_perbaikan_reg" type="text" class="form-control"
                                                 id="Id_Perbaikan_reg3" placeholder="Klik id perbaikan di tabel untuk copy id ke sini" readonly
-                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
+                                                data-toggle="tooltip" data-placement="top" title="klik disini untuk load data"
+                                                style="cursor: pointer;">
                                             </div>
                                         </div>
 
@@ -1372,7 +1418,8 @@
                                             <div class="col-xs-9">
                                                 <input name="tanggal_perbaikan_reg" type="text"
                                                 class="form-control" id="Tanggal_Perbaikan_reg3"
-                                                placeholder="Terisi Otomatis" value="" readonly>
+                                                placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1380,9 +1427,9 @@
                                             <label for="Tanggal_Penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
-                                                <input name="tanggal_penggudangan_reg" type="text"
-                                                class="form-control" id="Tanggal_Penggudangan_reg3"
-                                                placeholder="Tanggal Penggudangan" value="<?php echo date('Y-m-d'); ?>" readonly>
+                                                <input name="tanggal_penggudangan_reg" type="text" class="form-control" 
+                                                id="Tanggal_Penggudangan_reg3" placeholder="Tanggal Penggudangan" 
+                                                value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1391,7 +1438,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="nama_alat_reg" type="text" class="form-control"
-                                                id="Nama_Alat_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Nama_Alat_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1400,7 +1448,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="merek_alat_reg" type="text" class="form-control"
-                                                id="Merek_Alat_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Merek_Alat_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1409,7 +1458,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="type_alat_reg" type="text" class="form-control"
-                                                id="Type_Alat_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Type_Alat_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1418,7 +1468,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="serial_number_reg" type="text" class="form-control"
-                                                id="Serial_Number_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Serial_Number_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1427,7 +1478,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="lokasi_alat_reg" type="text" class="form-control"
-                                                id="Lokasi_Alat_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Lokasi_Alat_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1436,7 +1488,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="pelapor_reg" type="text" class="form-control"
-                                                id="Pelapor_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Pelapor_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1445,7 +1498,8 @@
                                             <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_1_reg" type="text" class="form-control"
-                                                id="Teknisi_1_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Teknisi_1_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1453,7 +1507,8 @@
                                             <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_2_reg" type="text" class="form-control"
-                                                id="Teknisi_2_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Teknisi_2_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1461,7 +1516,8 @@
                                             <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
                                             <div class="col-xs-9">
                                                 <input name="teknisi_3_reg" type="text" class="form-control"
-                                                id="Teknisi_3_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="Teknisi_3_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1469,7 +1525,8 @@
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
-                                                id="nama_sukucadang3" placeholder="Terisi Otomatis" readonly>
+                                                id="nama_sukucadang3" placeholder="Terisi Otomatis" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1477,7 +1534,8 @@
                                             <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="volume" type="text" class="form-control"
-                                                id="volume3" placeholder="Terisi Otomatis" readonly>
+                                                id="volume3" placeholder="Terisi Otomatis" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1485,7 +1543,8 @@
                                             <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="harga_satuan" type="text" class="form-control"
-                                                id="harga_satuan3" placeholder="Terisi Otomatis" readonly>
+                                                id="harga_satuan3" placeholder="Terisi Otomatis" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1493,7 +1552,8 @@
                                             <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
                                             <div class="col-xs-9">
                                                 <input name="jumlah_harga" type="text" class="form-control"
-                                                id="jumlah_harga3" placeholder="Terisi Otomatis" readonly>
+                                                id="jumlah_harga3" placeholder="Terisi Otomatis" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 
@@ -1501,7 +1561,8 @@
                                             <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                                             <div class="col-xs-9">
                                                 <input name="ka_instalasi_reg" type="text" class="form-control"
-                                                id="KA_Instalasi_reg3" placeholder="Terisi Otomatis" value="" readonly>
+                                                id="KA_Instalasi_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
                                             </div>
                                         </div>
 

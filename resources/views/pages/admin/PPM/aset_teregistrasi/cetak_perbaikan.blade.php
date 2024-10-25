@@ -1,13 +1,32 @@
 @extends('layouts.admin')
 @section('title', 'Cetak Perbaikan Reg')
 @push('addon-style')
-  <style>
-    .td-custom {
-      padding: 5px 0 5px 80px; 
-      text-align: left;
-      border-color: #b8b4b4;
-    }
-  </style>
+<style>
+  .td-custom {
+    padding: 5px 0 5px 80px;
+    text-align: left;
+    border-color: #b8b4b4;
+
+  }
+
+  #sig-canvas1 {
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
+
+  #sig-canvas2 {
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
+
+  #sig-canvas3 {
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+  }
+</style>
 @endpush
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -102,35 +121,47 @@
                   <tr>
                     <td class="td-custom" width="50%">Waktu Pelaporan</td>
                     <td class="td-custom"> <?php date_default_timezone_set('Asia/Jakarta');
-                          echo date('h:i:s a'); ?></td>
+                                            echo date('h:i:s a'); ?></td>
                   </tr>
                   <tr>
                     <td class="td-custom" width="50%">Waktu Teknisi Datang</td>
                     <td class="td-custom"><?php echo $item[''] ?></td>
                   </tr>
                   <tr>
-                    <td class="td-custom" width="25%">Teknisi 1</td>
-                    <td class="td-custom" width="25%">Pelapor</td>
+                    <td style="text-align: center;" class="td-custom" width="25%"><b>Teknisi 1</b></td>
+                    <td style="text-align:  center;" class="td-custom" width="25%"><b>Pelapor</b></td>
                   </tr>
                   <tr>
-                    <td width="25%"><br><br><br><br></td>
-                    <td width="25%"><br><br><br><br></td>
-                  </tr>
-                  <tr>
-                    <td class="td-custom"><?php echo $item['teknisi_1_reg'] ?></td>
-                    <td class="td-custom"><?php echo $item['pelapor_reg'] ?></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: center; padding: 5px 0 5px 0;" width="7%" colspan="2">
-                    Kepala Ruangan
+                    <td width="25%">
+                      <!-- Tandatangan -->
+                      <img style="margin-left: 100px;" id="sig-image1" src="" alt="Tanda tangan akan muncul disini" />
+                      <!-- Tandatangan N-->
+                    </td>
+                    <td width="25%">
+                      <!-- Tandatangan -->
+                      <img style="margin-left: 100px;" id="sig-image2" src="" alt="Tanda tangan akan muncul disini" />
+                      <!-- Tandatangan N-->
                     </td>
                   </tr>
                   <tr>
-                    <td width="25%" colspan="2"><br><br><br><br></td>
+                    <td style="text-align: center;" class="td-custom"><?php echo $item['teknisi_1_reg'] ?></td>
+                    <td style="text-align: center;" class="td-custom"><?php echo $item['pelapor_reg'] ?></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center; padding: 5px 0 5px 0;" width="7%" colspan="2">
+                      <b>Kepala Ruangan</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td width="25%" colspan="2">
+                      <!-- Tandatangan -->
+                      <img style="margin-left: 230px;" id="sig-image3" src="" alt="Tanda tangan akan muncul disini" />
+                      <!-- Tandatangan N-->
+                    </td>
                   </tr>
                   <tr>
                     <td width="7%" colspan="2" style="text-align: center; padding: 5px 0 5px 0;">
-                    <?php echo $item['ka_instalasi_reg'] ?>
+                      <?php echo $item['ka_instalasi_reg'] ?>
                     </td>
                   </tr>
                 </tbody>
@@ -146,6 +177,553 @@
       </div>
     </div>
   </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <table>
+    <tr>
+      <!-- ttd 1-->
+      <!-- Content -->
+        <td>
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-md-12">
+              <h1>E-Signature</h1>
+              <p>Tanda tangan Teknisi</p>
+            </div>
+          </div>
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-md-12">
+              <canvas id="sig-canvas1" width="150" height="100">
+                Get a better browser, bro.
+              </canvas>
+            </div>
+          </div>
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-md-12">
+              <button class="btn btn-primary" id="sig-submitBtn1">Submit Signature</button>
+              <button class="btn btn-default" id="sig-clearBtn1">Clear Signature</button>
+            </div>
+          </div>
+          <br />
+          <div class="row hidden">
+            <div class="col-md-12">
+              <textarea id="sig-dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+            </div>
+          </div>
+          <br />
+          <div class="row" style="margin-left: 5px;">
+            <div class="col-md-12">
+            </div>
+          </div>
+        </td>
+      <!-- ttd 1N-->
+      <!-- ttd 2-->
+      <!-- Content -->
+      <td>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <h1>E-Signature</h1>
+            <p>Tanda tangan Pelapor</p>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <canvas id="sig-canvas2" width="150" height="100">
+              Get a better browser, bro.
+            </canvas>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <button class="btn btn-primary" id="sig-submitBtn2">Submit Signature</button>
+            <button class="btn btn-default" id="sig-clearBtn2">Clear Signature</button>
+          </div>
+        </div>
+        <br />
+        <div class="row hidden">
+          <div class="col-md-12">
+            <textarea id="sig-dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+          </div>
+        </div>
+        <br />
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
 
+          </div>
+        </div>
+      </td>
+      <!-- ttd 2N-->
+      <!-- ttd 3-->
+      <!-- Content -->
+      <td>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <h1>E-Signature</h1>
+            <p>Tanda tangan Kepala Ruangan</p>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <canvas id="sig-canvas3" width="150" height="100">
+              Get a better browser, bro.
+            </canvas>
+          </div>
+        </div>
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+            <button class="btn btn-primary" id="sig-submitBtn3">Submit Signature</button>
+            <button class="btn btn-default" id="sig-clearBtn3">Clear Signature</button>
+          </div>
+        </div>
+        <br />
+        <div class="row hidden">
+          <div class="col-md-12">
+            <textarea id="sig-dataUrl3" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+          </div>
+        </div>
+        <br />
+        <div class="row" style="margin-left: 5px;">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+      </td>
+      <!-- ttd 3N-->
+    </tr>
+  </table>
 </div> <!-- /.content -->
 @endsection
+@push('addon-script')
+<script>
+  // ttd 1
+  (function() {
+    window.requestAnimFrame = (function(callback) {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimaitonFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+    })();
+
+    var canvas = document.getElementById("sig-canvas1");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#222222";
+    ctx.lineWidth = 4;
+
+    var drawing = false;
+    var mousePos = {
+      x: 0,
+      y: 0
+    };
+
+
+    // --
+    var lastPos = mousePos;
+
+    canvas.addEventListener("mousedown", function(e) {
+      drawing = true;
+      lastPos = getMousePos(canvas, e);
+    }, false);
+
+    canvas.addEventListener("mouseup", function(e) {
+      drawing = false;
+    }, false);
+
+    canvas.addEventListener("mousemove", function(e) {
+      mousePos = getMousePos(canvas, e);
+    }, false);
+    // --
+
+    // Add touch event support for mobile
+    canvas.addEventListener("touchstart", function(e) {
+
+    }, false);
+
+    canvas.addEventListener("touchmove", function(e) {
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchstart", function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchend", function(e) {
+      var me = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(me);
+    }, false);
+
+    function getMousePos(canvasDom, mouseEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: mouseEvent.clientX - rect.left,
+        y: mouseEvent.clientY - rect.top
+      }
+    }
+
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      }
+    }
+
+    function renderCanvas() {
+      if (drawing) {
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+        lastPos = mousePos;
+      }
+    }
+    // Add touch event support for mobile N
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchend", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchmove", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+
+    (function drawLoop() {
+      requestAnimFrame(drawLoop);
+      renderCanvas();
+    })();
+
+    function clearCanvas() {
+      canvas.width = canvas.width;
+    }
+    // Prevent scrolling when touching the canvas N
+
+    // Set up the UI
+    var sigText = document.getElementById("sig-dataUrl1");
+    var sigImage = document.getElementById("sig-image1");
+    var clearBtn = document.getElementById("sig-clearBtn1");
+    var submitBtn = document.getElementById("sig-submitBtn1");
+    clearBtn.addEventListener("click", function(e) {
+      clearCanvas();
+      sigText.innerHTML = "Data URL for your signature will go here!";
+      sigImage.setAttribute("src", "");
+    }, false);
+    submitBtn.addEventListener("click", function(e) {
+      var dataUrl = canvas.toDataURL();
+      sigText.innerHTML = dataUrl;
+      sigImage.setAttribute("src", dataUrl);
+    }, false);
+
+  })();
+  // ttd S 1
+</script>
+
+<script>
+  // ttd 2
+  (function() {
+    window.requestAnimFrame = (function(callback) {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimaitonFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+    })();
+
+    var canvas = document.getElementById("sig-canvas2");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#222222";
+    ctx.lineWidth = 4;
+
+    var drawing = false;
+    var mousePos = {
+      x: 0,
+      y: 0
+    };
+
+
+    // --
+    var lastPos = mousePos;
+
+    canvas.addEventListener("mousedown", function(e) {
+      drawing = true;
+      lastPos = getMousePos(canvas, e);
+    }, false);
+
+    canvas.addEventListener("mouseup", function(e) {
+      drawing = false;
+    }, false);
+
+    canvas.addEventListener("mousemove", function(e) {
+      mousePos = getMousePos(canvas, e);
+    }, false);
+    // --
+
+    // Add touch event support for mobile
+    canvas.addEventListener("touchstart", function(e) {
+
+    }, false);
+
+    canvas.addEventListener("touchmove", function(e) {
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchstart", function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchend", function(e) {
+      var me = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(me);
+    }, false);
+
+    function getMousePos(canvasDom, mouseEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: mouseEvent.clientX - rect.left,
+        y: mouseEvent.clientY - rect.top
+      }
+    }
+
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      }
+    }
+
+    function renderCanvas() {
+      if (drawing) {
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+        lastPos = mousePos;
+      }
+    }
+    // Add touch event support for mobile N
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchend", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchmove", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+
+    (function drawLoop() {
+      requestAnimFrame(drawLoop);
+      renderCanvas();
+    })();
+
+    function clearCanvas() {
+      canvas.width = canvas.width;
+    }
+    // Prevent scrolling when touching the canvas N
+
+    // Set up the UI
+    var sigText = document.getElementById("sig-dataUrl2");
+    var sigImage = document.getElementById("sig-image2");
+    var clearBtn = document.getElementById("sig-clearBtn2");
+    var submitBtn = document.getElementById("sig-submitBtn2");
+    clearBtn.addEventListener("click", function(e) {
+      clearCanvas();
+      sigText.innerHTML = "Data URL for your signature will go here!";
+      sigImage.setAttribute("src", "");
+    }, false);
+    submitBtn.addEventListener("click", function(e) {
+      var dataUrl = canvas.toDataURL();
+      sigText.innerHTML = dataUrl;
+      sigImage.setAttribute("src", dataUrl);
+    }, false);
+
+  })();
+  // ttd S 2
+</script>
+
+<script>
+  // ttd 3
+  (function() {
+    window.requestAnimFrame = (function(callback) {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimaitonFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+    })();
+
+    var canvas = document.getElementById("sig-canvas3");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#222222";
+    ctx.lineWidth = 4;
+
+    var drawing = false;
+    var mousePos = {
+      x: 0,
+      y: 0
+    };
+
+
+    // --
+    var lastPos = mousePos;
+
+    canvas.addEventListener("mousedown", function(e) {
+      drawing = true;
+      lastPos = getMousePos(canvas, e);
+    }, false);
+
+    canvas.addEventListener("mouseup", function(e) {
+      drawing = false;
+    }, false);
+
+    canvas.addEventListener("mousemove", function(e) {
+      mousePos = getMousePos(canvas, e);
+    }, false);
+    // --
+
+    // Add touch event support for mobile
+    canvas.addEventListener("touchstart", function(e) {
+
+    }, false);
+
+    canvas.addEventListener("touchmove", function(e) {
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchstart", function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchend", function(e) {
+      var me = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(me);
+    }, false);
+
+    function getMousePos(canvasDom, mouseEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: mouseEvent.clientX - rect.left,
+        y: mouseEvent.clientY - rect.top
+      }
+    }
+
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      }
+    }
+
+    function renderCanvas() {
+      if (drawing) {
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+        lastPos = mousePos;
+      }
+    }
+    // Add touch event support for mobile N
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchend", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchmove", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+
+    (function drawLoop() {
+      requestAnimFrame(drawLoop);
+      renderCanvas();
+    })();
+
+    function clearCanvas() {
+      canvas.width = canvas.width;
+    }
+    // Prevent scrolling when touching the canvas N
+
+    // Set up the UI
+    var sigText = document.getElementById("sig-dataUrl3");
+    var sigImage = document.getElementById("sig-image3");
+    var clearBtn = document.getElementById("sig-clearBtn3");
+    var submitBtn = document.getElementById("sig-submitBtn3");
+    clearBtn.addEventListener("click", function(e) {
+      clearCanvas();
+      sigText.innerHTML = "Data URL for your signature will go here!";
+      sigImage.setAttribute("src", "");
+    }, false);
+    submitBtn.addEventListener("click", function(e) {
+      var dataUrl = canvas.toDataURL();
+      sigText.innerHTML = dataUrl;
+      sigImage.setAttribute("src", dataUrl);
+    }, false);
+
+  })();
+  // ttd S 3
+</script>
+@endpush

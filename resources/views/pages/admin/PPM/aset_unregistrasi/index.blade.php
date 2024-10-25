@@ -279,7 +279,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un" 
-                        placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly>
+                        placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -288,7 +289,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un" 
-                        placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>" readonly>
+                        placeholder="Tanggal Perbaikan" value="<?php echo date('Y-m-d') ?>" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -297,7 +299,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <select name="nama_alat_un" class="form-control" id="nama_alat_un">
-                          <option>Pilih Alat</option>
+                          <option>-- Pilih Alat --</option>
                           @foreach ($alats as $alat)
                           <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                           @endforeach
@@ -310,7 +312,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un" 
-                        placeholder="Merek Alat" value="">
+                        placeholder="Isi sesuai data alat" value="">
                       </div>
                     </div>
 
@@ -319,7 +321,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="type_alat_un" type="text" class="form-control" id="type_alat_un" 
-                        placeholder="Type Alat" value="">
+                        placeholder="Isi sesuai data alat" value="">
                       </div>
                     </div>
 
@@ -328,7 +330,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="serial_number_un" type="text" class="form-control" id="serial_number_un" 
-                        placeholder="Serial Number" value="">
+                        placeholder="Isi sesuai data alat" value="">
                       </div>
                     </div>
 
@@ -336,7 +338,7 @@
                       <label for="lokasi_alat_un" class="col-xs-3 col-form-label">Lokasi Alat</label>
                       <div class="col-xs-9">
                         <select name="lokasi_alat_un" class="form-control" id="lokasi_alat_un">
-                          <option value="" selected="selected">Pilih Lokasi</option>
+                        <option>-- Pilih Lokasi --</option>
                           @foreach ($ruangans as $alat)
                           <option value="<?= $alat['lokasi_alat']; ?>"><?= $alat['lokasi_alat']; ?></option>
                           @endforeach
@@ -349,7 +351,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="pelapor_un" type="text" class="form-control" id="pelapor_un" 
-                        placeholder="Pelapor" value="">
+                        placeholder="Isi sesuai data alat" value="">
                       </div>
                     </div>
 
@@ -357,7 +359,7 @@
                       <label for="keterangan_un" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
                       <div class="col-xs-9">
                         <select name="keterangan_un" class="form-control" id="keterangan_un">
-                          <option value="" selected="selected">Select Keterangan</option>
+                          <option>--Pilih Keterangan --</option>
                           <option value="Selesai Alat Dikembalikan">Selesai Alat Dikembalikan</option>
                           <option value="Alat Dalam Perbaikan">Alat Dalam Perbaikan</option>
                           <option value="Alat Dilanjutkan Ke Rekanan">Alat Dilanjutkan Ke Rekanan</option>
@@ -370,7 +372,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un" 
-                        placeholder="Kepala Ruangan" value="">
+                        placeholder="Isi sesuai data alat" value="">
                       </div>
                     </div>
 
@@ -379,7 +381,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <select name="teknisi_1_un" class="form-control" id="teknisi_1_un">
-                          <option value="" selected="selected">Select Teknisi </option>
+                          <option>-- Pilih Teknisi 1 --</option>
                           @foreach ($teknisis as $teknisi)
                           <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                           @endforeach
@@ -391,7 +393,7 @@
                       <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                       <div class="col-xs-9">
                         <select name="teknisi_2_un" class="form-control" id="teknisi_2_un">
-                          <option value="" selected="selected">Select Teknisi</option>
+                        <option>-- Pilih Teknisi 2 --</option>
                           @foreach ($teknisis as $teknisi)
                           <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                           @endforeach
@@ -403,7 +405,7 @@
                       <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                       <div class="col-xs-9">
                         <select name="teknisi_3_un" class="form-control" id="teknisi_3_un">
-                          <option value="" selected="selected">Select Teknisi</option>
+                        <option>-- Pilih Teknisi 3 --</option>
                           @foreach ($teknisis as $teknisi)
                           <option value="<?= $teknisi['nama_teknisi']; ?>"><?= $teknisi['nama_teknisi']; ?></option>
                           @endforeach
@@ -500,7 +502,7 @@
                         <tr>
                           <td>{{ $index + 1 }}</td>
                           <td title="klik disini untuk copy ke form"
-                          onclick="copyun(this)"><?php echo $item['id_perbaikan_un'] ?></td>
+                          onclick="copyun(this)" style="cursor: pointer;"><?php echo $item['id_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
                           <td><?php echo $item['nama_alat_un'] ?></td>
                           <td><?php echo $item['merek_alat_un'] ?></td>
@@ -573,7 +575,8 @@
                       <div class="col-xs-9">
                         <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un1" 
                         placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
-                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data alat">
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data alat"
+                        style="cursor: pointer;">
                       </div>
                     </div>
 
@@ -582,7 +585,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un1" 
-                        placeholder="Tanggal Perbaikan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -591,7 +594,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_pengiriman_un" type="text" class="form-control" id="tanggal_pengiriman_un" 
-                        placeholder="Tanggal Pengiriman" value="<?php echo date('Y-m-d') ?>" readonly>
+                        placeholder="Tanggal Pengiriman" value="<?php echo date('Y-m-d') ?>" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -600,7 +604,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un1" 
-                        placeholder="Nama Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -609,7 +614,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un1" 
-                        placeholder="Merek Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -618,7 +624,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="type_alat_un" type="text" class="form-control" id="type_alat_un1" 
-                        placeholder="Type Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -627,7 +634,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="serial_number_un" type="text" class="form-control" id="serial_number_un1" 
-                        placeholder="Seri Number" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -636,7 +644,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un1" 
-                        placeholder="Lokasi Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -645,7 +654,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="pelapor_un" type="text" class="form-control" id="pelapor_un1" 
-                        placeholder="Teknisi 1" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -654,7 +664,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="keterangan_un" type="text" class="form-control" id="keterangan_un1" 
-                        placeholder="Keterangan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -663,7 +674,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un1" 
-                        placeholder="Teknisi 2" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -671,7 +683,8 @@
                       <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                       <div class="col-xs-9">
                         <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un1" 
-                        placeholder="Teknisi 2" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -679,7 +692,8 @@
                       <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                       <div class="col-xs-9">
                         <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un1" 
-                        placeholder="Teknisi 3" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -687,7 +701,7 @@
                     <label for="suku_cadang_un" class="col-xs-3 col-form-label">Nama Sperpart</label>
                       <div class="col-xs-9">
                         <input name="suku_cadang_un" type="text" class="form-control" id="suku_cadang_un1" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -695,7 +709,7 @@
                     <label for="volume_un" class="col-xs-3 col-form-label">Volume Sperpart</label>
                       <div class="col-xs-9">
                         <input name="volume_un" type="text" class="form-control" id="volume_un1" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -703,7 +717,7 @@
                     <label for="harga_satuan_un" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
                       <div class="col-xs-9">
                         <input name="harga_satuan_un" type="text" class="form-control" id="harga_satuan_un1" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -711,7 +725,7 @@
                     <label for="jumlah_harga_un" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
                       <div class="col-xs-9">
                         <input name="jumlah_harga_un" type="text" class="form-control" id="jumlah_harga_un1" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -719,7 +733,7 @@
                       <label for="nama_rekanan_un" class="col-xs-3 col-form-label">Nama Rekan</label>
                       <div class="col-xs-9">
                         <input name="nama_rekanan_un" type="text" class="form-control" id="nama_rekanan_un" 
-                        placeholder="Nama Rekan" value="">
+                        placeholder="Nama PT / Perusahaan rekanan / pihak ke-3" value="">
                       </div>
                     </div>
 
@@ -727,7 +741,7 @@
                       <label for="alamat_rekanan_un" class="col-xs-3 col-form-label">Alamat Rekan</label>
                       <div class="col-xs-9">
                         <input name="alamat_rekanan_un" type="text" class="form-control" id="alamat_rekanan_un" 
-                        placeholder="Alamat Rekan" value="">
+                        placeholder="Alamat PT / Perusahaan rekanan / pihak ke-3" value="">
                       </div>
                     </div>
 
@@ -735,7 +749,7 @@
                       <label for="teknisi_rekanan_un" class="col-xs-3 col-form-label">Teknisi Rekanan</label>
                       <div class="col-xs-9">
                         <input name="teknisi_rekanan_un" type="text" class="form-control" id="teknisi_rekanan_un" 
-                        placeholder="Teknisi Rekanan" value="">
+                        placeholder="Teknisi PT / Perusahaan rekanan / pihak ke-3" value="">
                       </div>
                     </div>
 
@@ -743,7 +757,7 @@
                       <label for="telphone_teknisi_rek_un" class="col-xs-3 col-form-label">Telp_Teknisi_Rekanan_reg</label>
                       <div class="col-xs-9">
                         <input name="telphone_teknisi_rek_un" type="text" class="form-control" id="telphone_teknisi_rek_un" 
-                        placeholder="Telp_Teknisi_Rekanan_reg" value="">
+                        placeholder="Telp Teknisi PT / Perusahaan rekanan / pihak ke-3" value="">
                       </div>
                     </div>
 
@@ -751,7 +765,7 @@
                       <label for="ka_instalasi_un" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                       <div class="col-xs-9">
                         <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un1" 
-                        placeholder="Kepala Ruangan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -804,7 +818,7 @@
                         <tr>
                           <td>{{ $index + 1 }}</td>
                           <td title="klik disini untuk copy id ke form"
-                          onclick="copyun2(this)"><?php echo $item['id_perbaikan_un'] ?></td>
+                          onclick="copyun2(this)" style="cursor: pointer;"><?php echo $item['id_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
                           <td><?php echo $item['tanggal_pengiriman_un'] ?></td>
                           <td><?php echo $item['nama_alat_un'] ?></td>
@@ -873,7 +887,8 @@
                       <div class="col-xs-9">
                         <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un2" 
                         placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
-                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data"
+                        style="cursor: pointer;">
                       </div>
                     </div>
 
@@ -882,7 +897,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un2" 
-                        placeholder="Tanggal Perbaikan" value="" readonly>
+                        placeholder="Tanggal Perbaikan" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -891,7 +906,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_pengembalian_un" type="text" class="form-control" id="tanggal_pengembalian_un2" 
-                        placeholder="Tanggal Pengembalian" value="<?php echo date('Y-m-d') ?>" readonly>
+                        placeholder="Tanggal Pengembalian" value="<?php echo date('Y-m-d') ?>" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -900,7 +916,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un2" 
-                        placeholder="Nama Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -909,7 +925,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="peneriama_alat_un" type="text" class="form-control" id="peneriama_alat_un" 
-                        placeholder="Peneriama Alat" value="">
+                        placeholder="penerima barang kembali" value="">
                       </div>
                     </div>
 
@@ -918,7 +934,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un2" 
-                        placeholder="Merek" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -927,7 +943,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un2" 
-                        placeholder="Kepala ruangan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -936,7 +952,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="type_alat_un" type="text" class="form-control" id="type_alat_un2" 
-                        placeholder="Type Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -945,7 +961,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un2" 
-                        placeholder="Teknisi 1" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -954,7 +970,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="serial_number_un" type="text" class="form-control" id="serial_number_un2" 
-                        placeholder="Serial Number" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -962,7 +978,7 @@
                       <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                       <div class="col-xs-9">
                         <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un2" 
-                        placeholder="Teknisi 2" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -970,7 +986,7 @@
                       <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                       <div class="col-xs-9">
                         <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un2" 
-                        placeholder="Teknisi 3" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -979,7 +995,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un2" 
-                        placeholder="Lokasi Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -988,7 +1004,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="keterangan_un" type="text" class="form-control" id="keterangan_un2" 
-                        placeholder="Keterangan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -997,7 +1013,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="pelapor_un" type="text" class="form-control" id="pelapor_un2" 
-                        placeholder="Pelapor" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1005,7 +1021,7 @@
                     <label for="suku_cadang_un" class="col-xs-3 col-form-label">Nama Sperpart</label>
                       <div class="col-xs-9">
                         <input name="suku_cadang_un" type="text" class="form-control" id="suku_cadang_un2" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1013,7 +1029,7 @@
                     <label for="volume_un" class="col-xs-3 col-form-label">Volume Sperpart</label>
                       <div class="col-xs-9">
                         <input name="volume_un" type="text" class="form-control" id="volume_un2" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1021,7 +1037,7 @@
                     <label for="harga_satuan_un" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
                       <div class="col-xs-9">
                         <input name="harga_satuan_un" type="text" class="form-control" id="harga_satuan_un2" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1029,7 +1045,7 @@
                     <label for="jumlah_harga_un" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
                       <div class="col-xs-9">
                         <input name="jumlah_harga_un" type="text" class="form-control" id="jumlah_harga_un2" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1037,7 +1053,7 @@
                       <label for="harga_perbaikan_un" class="col-xs-3 col-form-label">Harga Perbaikan </label>
                       <div class="col-xs-9">
                         <input name="harga_perbaikan_un" type="text" class="form-control" id="harga_perbaikan_un" 
-                        placeholder="Harga Perbaikan" value="">
+                        placeholder="Biaya yang dihabiskan / yang digunakan" value="">
                       </div>
                     </div>
 
@@ -1045,7 +1061,7 @@
                       <label for="penyebab_kerusakan_un" class="col-xs-3 col-form-label">Penyebab Kerusakan</label>
                       <div class="col-xs-9">
                         <input name="penyebab_kerusakan_un" type="text" class="form-control" id="penyebab_kerusakan_un" 
-                        placeholder="Penyebab Kerusakan" value="">
+                        placeholder="Penyebab rusaknya alat" value="">
                       </div>
                     </div>
 
@@ -1142,7 +1158,7 @@
                         <tr>
                           <td>{{ $index + 1 }}</td>
                           <td data-toogle="tooltip" data-placement="right" title="klik disini untuk copy id ke form"
-                          onclick="copyun3(this)"><?php echo $item['id_perbaikan_un']  ?></td>
+                          onclick="copyun3(this)" style="cursor: pointer;"><?php echo $item['id_perbaikan_un']  ?></td>
                           <td><?php echo $item['tanggal_perbaikan_un']  ?></td>
                           <td><?php echo $item['tanggal_pengembalian_un']  ?></td>
                           <td><?php echo $item['nama_alat_un']  ?></td>
@@ -1214,7 +1230,8 @@
                       <div class="col-xs-9">
                         <input name="id_perbaikan_un" type="text" class="form-control" id="id_perbaikan_un3" 
                         placeholder="klik id perbaikan di tabel untuk mengisi form" readonly
-                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data">
+                        data-toggle="tooltip" data-placement="top" title="klik disini untuk load data"
+                        style="cursor: pointer;">
                       </div>
                     </div>
 
@@ -1223,7 +1240,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_perbaikan_un" type="text" class="form-control" id="tanggal_perbaikan_un3" 
-                        placeholder="Tanggal Perbaikan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1232,7 +1249,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="nama_alat_un" type="text" class="form-control" id="nama_alat_un3" 
-                        placeholder="Nama Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1241,7 +1258,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="merek_alat_un" type="text" class="form-control" id="merek_alat_un3" 
-                        placeholder="Merek Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1250,7 +1267,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="type_alat_un" type="text" class="form-control" id="type_alat_un3" 
-                        placeholder="Type Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1259,7 +1276,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="serial_number_un" type="text" class="form-control" id="serial_number_un3" 
-                        placeholder="Serial Number" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1268,7 +1285,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="lokasi_alat_un" type="text" class="form-control" id="lokasi_alat_un3" 
-                        placeholder="Lokasi Alat" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1277,7 +1294,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="pelapor_un" type="text" class="form-control" id="pelapor_un3" 
-                        placeholder="Pelapor" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1286,7 +1303,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="teknisi_1_un" type="text" class="form-control" id="teknisi_1_un3" 
-                        placeholder="Teknisi 1" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1294,7 +1311,7 @@
                       <label for="teknisi_2_un" class="col-xs-3 col-form-label">Teknisi 2</label>
                       <div class="col-xs-9">
                         <input name="teknisi_2_un" type="text" class="form-control" id="teknisi_2_un3" 
-                        placeholder="Teknisi 2" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1302,7 +1319,7 @@
                       <label for="teknisi_3_un" class="col-xs-3 col-form-label">Teknisi 3</label>
                       <div class="col-xs-9">
                         <input name="teknisi_3_un" type="text" class="form-control" id="teknisi_3_un3" 
-                        placeholder="Teknisi 3" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1310,7 +1327,7 @@
                     <label for="suku_cadang_un" class="col-xs-3 col-form-label">Nama Sperpart</label>
                       <div class="col-xs-9">
                         <input name="suku_cadang_un" type="text" class="form-control" id="suku_cadang_un3" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1318,7 +1335,7 @@
                     <label for="volume_un" class="col-xs-3 col-form-label">Volume Sperpart</label>
                       <div class="col-xs-9">
                         <input name="volume_un" type="text" class="form-control" id="volume_un3" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1326,7 +1343,7 @@
                     <label for="harga_satuan_un" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
                       <div class="col-xs-9">
                         <input name="harga_satuan_un" type="text" class="form-control" id="harga_satuan_un3" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1334,7 +1351,7 @@
                     <label for="jumlah_harga_un" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
                       <div class="col-xs-9">
                         <input name="jumlah_harga_un" type="text" class="form-control" id="jumlah_harga_un3" 
-                        placeholder="Terisi Otomatis" readonly>
+                        placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1343,7 +1360,8 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="tanggal_penggudangan_un" type="text" class="form-control" id="tanggal_penggudangan_un" 
-                        placeholder="Tanggal Penggudangan" value="<?php echo date('Y-m-d') ?>" readonly>
+                        placeholder="Tanggal Penggudangan" value="<?php echo date('Y-m-d') ?>" readonly
+                        style="cursor: not-allowed;">
                       </div>
                     </div>
 
@@ -1352,7 +1370,7 @@
                       <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
                         <input name="ka_instalasi_un" type="text" class="form-control" id="ka_instalasi_un3" 
-                        placeholder="Kepala Ruangan" value="" readonly>
+                        placeholder="Terisi Otomatis" value="" readonly style="cursor: not-allowed;">
                       </div>
                     </div>
 

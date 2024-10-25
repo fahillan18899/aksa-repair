@@ -127,6 +127,7 @@
                         <th scope="col">Pemeliharaan 2</th>
                         <th scope="col">Pemeliharaan 3</th>
                         <th scope="col">Keterangan</th>
+                        <th scope="col">Tombol Aksi</th>
                       </thead>
                       <tbody>
                         @forelse ($items as $index =>$items)
@@ -142,6 +143,16 @@
                               @csrf
                               @method('PUT')
                               <button class="btn btn-{{ $items->status == 0 ? 'warning' : 'danger' }}" type="submit">{{ $items->status == 0 ? 'Sudah di Pelihara' : 'Belum di Pelihara' }}</button>
+                            </form>
+                          </td>
+                          <td>
+                          <form
+                              action="{{ url('/dashboard/ppm/jadwal_pemeliharaan', $items->id) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')    
+                                <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                  <i class="fa fa-trash "></i>
+                                </button>    
                             </form>
                           </td>
                         </tr>
