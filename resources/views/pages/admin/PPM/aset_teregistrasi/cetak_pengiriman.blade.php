@@ -64,10 +64,6 @@
               <table width="84%" border="1px dot yellow" cellspacing="10" style="margin: 5% 0 0 8%">
                 <tbody>
                   <tr>
-                    <th width="50%"><br><br></th>
-                    <th width="50%"><br><br></th>
-                  </tr>
-                  <tr>
                     <th width="7%" colspan="2">
                       <h3 class="text-center">Laporan Formulir Pengiriman Aset</h3>
                     </th>
