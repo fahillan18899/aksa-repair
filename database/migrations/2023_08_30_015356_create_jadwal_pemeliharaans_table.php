@@ -15,6 +15,7 @@ return new class extends Migration
             $table->date('jadwal');
             $table->date('jadwal2')->nullable();
             $table->date('jadwal3')->nullable();
+            $table->date('jadwal4')->nullable();
             $table->string('status', 4)->default('1');
             $table->string('kode_rs', 8)->index();
             $table->timestamps();

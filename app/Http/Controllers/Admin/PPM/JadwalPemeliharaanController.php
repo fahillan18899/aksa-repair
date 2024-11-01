@@ -62,6 +62,7 @@ class JadwalPemeliharaanController extends Controller
             'jadwal' => '',
             'jadwal2' =>'',
             'jadwal3' =>'',
+            'jadwal4' =>'',
             'kode_rs' => '',
         ]);
         $data['kode_rs'] = Auth::user()->kode_rs;

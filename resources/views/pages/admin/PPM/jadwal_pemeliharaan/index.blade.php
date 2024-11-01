@@ -87,6 +87,13 @@
                     </div>
 
                     <div class="form-group row">
+                      <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 4</label>
+                      <div class="col-xs-9">
+                        <input class="form-control" name="jadwal4" type="date" id="slot4" value="">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
                       <div class="col-sm-offset-3 col-sm-6">
                         <div class="ui buttons">
                           <button type="reset" class="ui button">Reset</button>
@@ -126,6 +133,7 @@
                         <th scope="col">Pemeliharaan 1</th>
                         <th scope="col">Pemeliharaan 2</th>
                         <th scope="col">Pemeliharaan 3</th>
+                        <th scope="col">Pemeliharaan 4</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Tombol Aksi</th>
                       </thead>
@@ -138,6 +146,7 @@
                           <td>{{ $items->jadwal }}</td>
                           <td>{{ $items->jadwal2 }}</td>
                           <td>{{ $items->jadwal3 }}</td>
+                          <td>{{ $items->jadwal4 }}</td>
                           <td>
                             <form action="{{ url('/dashboard/ppm/jadwal_pemeliharaan/update', $items->id) }}" class="form-inner" method="post">
                               @csrf
