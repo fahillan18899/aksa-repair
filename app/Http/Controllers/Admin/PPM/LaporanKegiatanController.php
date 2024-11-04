@@ -24,4 +24,12 @@ class LaporanKegiatanController extends Controller
 
         ]);
     }
+
+    public function destroy($id)
+    {
+
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item->delete();
+        return redirect('/dashboard/ppm/laporan_kegiatan')->with('success', 'Data Berhasil Di Hapus.');
+    }
 }

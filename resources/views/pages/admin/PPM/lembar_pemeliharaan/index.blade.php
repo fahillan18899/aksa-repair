@@ -860,6 +860,16 @@
                     <td>{{ $item->engginer }}</td>
                     <td>
                       <a data-toggle="tooltip" data-placement="right" title="Cetak" href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary" target="_blank"><i class="fa fa-print"></i></a>
+
+                      <form
+                        action="{{ url('/dashboard/ppm/lembar_pemeliharaan', $item->id_ppm) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')    
+                        <button class="btn btn-danger btn-xs"
+                          data-toggle="tooltip" data-placement="top" title="Hapus">
+                          <i class="fa fa-trash "></i>
+                        </button>    
+                      </form>
                     </td>
 
                   </tr>

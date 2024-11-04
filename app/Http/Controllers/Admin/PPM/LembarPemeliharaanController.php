@@ -118,7 +118,7 @@ class LembarPemeliharaanController extends Controller
         $data['kode_rs'] = Auth::user()->kode_rs;
         LembarPemeliharaan::create($data);
 
-        return redirect()->route('lembar_pemeliharaan.index')
+        return redirect('/dashboard/ppm/lembar_pemeliharaan')
             ->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
 
@@ -148,7 +148,7 @@ class LembarPemeliharaanController extends Controller
         $lembarPemeliharaan = LembarPemeliharaan::findOrFail($id_ppm);
         $lembarPemeliharaan->delete();
 
-        return redirect()->route('lembar-pemeliharaan.index')
+        return redirect('/dashboard/ppm/lembar_pemeliharaan')
             ->with('success', 'Lembar Pemeliharaan berhasil dihapus.');
     }
 

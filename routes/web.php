@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
+use App\Http\Controllers\Admin\PPM\LaporanKegiatanUnController;
+use App\Http\Controllers\Admin\PPM\LaporanKegiatanPpmController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
@@ -201,6 +203,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // menu laporan
         Route::get('laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
+        Route::delete('laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy']);
+        Route::delete('laporan_kegiatan_un/{id}', [LaporanKegiatanUnController::class, 'destroyun']);
+        Route::delete('laporan_kegiatan_ppm/{id}', [LaporanKegiatanPpmController::class, 'destroyppm']);
 
         //  stock opname
         Route::resource('stock_opname', StockOpnameController::class);
