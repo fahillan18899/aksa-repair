@@ -93,7 +93,7 @@
                    <div class="form-group row">
                      <label for="tanggal_req" class="col-xs-3 col-form-label">Tanggal <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php echo date(now()) ?>" readonly>
+                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
                      </div>
                    </div>
 
