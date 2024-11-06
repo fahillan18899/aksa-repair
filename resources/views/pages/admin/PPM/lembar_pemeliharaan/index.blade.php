@@ -625,21 +625,21 @@
                   <div class="form-group row">
                     <label for="mulai_bekerja" class="col-xs-3 col-form-label">Mulai Bekerja <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="mulai_bekerja" type="date" class="form-control" id="mulai_bekerja" placeholder="Maulai Bekerja">
+                      <input name="mulai_bekerja" type="text" class="form-control" id="start-time" placeholder="Maulai Bekerja" onkeyup="hitungSelisih()">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="selesai_kerja" class="col-xs-3 col-form-label">Selesai Bekerja<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="selesai_kerja" type="date" class="form-control" id="selesai_kerja" placeholder="Selesai Bekerja">
+                      <input name="selesai_kerja" type="text" class="form-control" id="end-time" placeholder="Selesai Bekerja" onkeyup="hitungSelisih()">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="durasi" class="col-xs-3 col-form-label">Durasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="durasi" type="text" class="form-control" id="durasi" placeholder="Durasi">
+                      <input name="durasi" type="text" class="form-control" id="hasil" placeholder="Durasi" readonly>
                     </div>
                   </div>
 
@@ -1134,5 +1134,26 @@
   });
 </script>
 
+<script>
+    // Menampilkan waktu saat ini di kolom input waktu mulai
+    var currentTime = new Date();
+    var currentHours = currentTime.getHours();
+    var currentMinutes = currentTime.getMinutes();
+    var currentTimeString = ("0" + currentHours).slice(-2) + ":" + ("0" + currentMinutes).slice(-2);
+    document.getElementById("start-time").value = currentTimeString;
+     document.getElementById("end-time").value = currentTimeString;
+    function hitungSelisih() {
+      var startTime = document.getElementById("start-time").value;
+      var endTime = document.getElementById("end-time").value;
+
+      var start = new Date("1970-01-01 " + startTime);
+      var end = new Date("1970-01-01 " + endTime);
+
+      var diff = end - start;
+      var diffHours = Math.floor(diff / (1000 * 60 * 60));
+ var diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("hasil").value = diffHours + " jam " + diffMinutes + " menit";
+    }
+</script>
 @endpush
 @endsection

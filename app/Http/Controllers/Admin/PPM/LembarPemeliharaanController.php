@@ -114,7 +114,6 @@ class LembarPemeliharaanController extends Controller
             'kode_rs' => '',
         ]);
     
-
         $data['kode_rs'] = Auth::user()->kode_rs;
         LembarPemeliharaan::create($data);
 
