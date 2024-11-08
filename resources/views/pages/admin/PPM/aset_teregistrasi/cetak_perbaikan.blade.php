@@ -65,6 +65,9 @@
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0008")
               <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop PKU Muhammadiyah Wonosobo" width="100%">
               @endif
+              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0017")
+              <img src="{{ url('assets/kop-surat/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
+              @endif
             </div>
             <div class="card-body">
 
@@ -116,8 +119,7 @@
                   </tr>
                   <tr>
                     <td class="td-custom" width="50%">Waktu Pelaporan</td>
-                    <td class="td-custom"> <?php date_default_timezone_set('Asia/Jakarta');
-                                            echo date('h:i:s a'); ?></td>
+                    <td class="td-custom"> <?php date_default_timezone_set('Asia/Jakarta'); echo date('h:i:s a'); ?></td>
                   </tr>
                   <tr>
                     <td class="td-custom" width="50%">Waktu Teknisi Datang</td>

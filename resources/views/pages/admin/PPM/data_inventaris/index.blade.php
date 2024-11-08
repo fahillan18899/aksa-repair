@@ -84,7 +84,7 @@
                   <td><?php echo $item['nama_alat']; ?></td>
                   <td><?php echo $item['merek']; ?></td>
                   <td><?php echo $item['type']; ?></td>
-                  <td><?php echo $item['gambar']; ?></td>
+                  <td><img style="width: 80px; height: 80px;"  alt='No Image' src="{{ URL::asset('storage/'.$item->foto_pendukung) }}"></td>
                   <td><?php echo $item['serial_number']; ?></td>
                   <td><?php echo $item['lokasi_alat']; ?></td>
                   <td><?php echo $item['tanggal_kalibrasi']; ?></td>
