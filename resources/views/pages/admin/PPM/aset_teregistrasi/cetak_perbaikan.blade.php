@@ -66,7 +66,7 @@
               <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop PKU Muhammadiyah Wonosobo" width="100%">
               @endif
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0017")
-              <img src="{{ url('assets/images/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
+              <img src="{{ url('/assets/images/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
               @endif
             </div>
             <div class="card-body">
