@@ -134,7 +134,7 @@
                 <div class="info-box bg-light-green">
                     <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text"><?= 'JUMLAH ALAT TERKALIBRASI' ?></span>
+                        <span class="info-box-text"><?= 'JUMLAH ALAT TERPELIHARA' ?></span>
                         <span class="info-box-number">{{ $lembarPemeliharaan }} / {{$registrasi}}</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>

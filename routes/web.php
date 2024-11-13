@@ -45,6 +45,7 @@ use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
 use App\Http\Controllers\Admin\PPM\PemantauanController;
+use App\Http\Controllers\Admin\PPM\LkAlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -243,6 +244,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //Pemantauan
         Route::resource('/pemantauan', PemantauanController::class);
         Route::get('/getPemantauan/{id}', [PemantauanController::class, 'getPemantauan']);
+
+        //LK Alat
+        Route::resource('/lk_alat', LkAlatController::class);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');

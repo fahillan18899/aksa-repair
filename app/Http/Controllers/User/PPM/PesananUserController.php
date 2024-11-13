@@ -53,6 +53,7 @@ class PesananUserController extends Controller
             'merek_req' => '',
             'type_req' => '',
             'sn_req' => '',
+            'kerusakan_req' => '',
             'pelapor_req' => '',
             'tanggal_req' => '',
             'kode_rs' => '',

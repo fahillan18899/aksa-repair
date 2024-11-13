@@ -84,6 +84,12 @@
                      </div>
                    </div>
                    <div class="form-group row">
+                     <label for="kerusakan_req" class="col-xs-3 col-form-label">Kerusakan Alat<i class="text-danger">*</i></label>
+                     <div class="col-xs-9">
+                       <input name="kerusakan_req" type="text" class="form-control" id="kerusakan_req" placeholder="Kerusakan Pada Alat">
+                     </div>
+                   </div>
+                   <div class="form-group row">
                      <label for="pelapor_req" class="col-xs-3 col-form-label">Pelapor <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
                        <input name="pelapor_req" type="text" class="form-control" id="pelapor_req" placeholder="Pelapor" value="{{ Auth::user()->username }}" readonly>
@@ -92,7 +98,7 @@
                    <div class="form-group row">
                      <label for="tanggal_req" class="col-xs-3 col-form-label">Tanggal <i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php echo date(now()) ?>" readonly>
+                       <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
                      </div>
                    </div>
 
@@ -126,12 +132,13 @@
                  <table class="datatable table table-striped table-bordered" style="width:100%">
                    <thead class="table-light">
                      <tr>
-                       <th scope="col">No</th>
+                       <th scope="col" class="none">No</th>
                        <th scope="col">Id Aset</th>
                        <th scope="col">Nama Alat</th>
                        <th scope="col">Merek Alat</th>
                        <th scope="col">Type Alat</th>
                        <th scope="col">Serial Number</th>
+                       <th scope="col">Kerusakan Alat</th>
                        <th scope="col">Pelapor</th>
                        <th scope="col">Tanggal</th>
                        <th scope="col">Tombol_Aksi_Table</th>
@@ -146,6 +153,7 @@
                        <td>{{ $item->merek_req }}</td>
                        <td>{{ $item->type_req }}</td>
                        <td>{{ $item->sn_req }}</td>
+                       <td>{{ $item->kerusakan_req }}</td>
                        <td>{{ $item->pelapor_req }}</td>
                        <td>{{ $item->tanggal_req }}</td>
                        <td>

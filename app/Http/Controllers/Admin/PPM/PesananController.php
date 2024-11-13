@@ -54,6 +54,7 @@ class PesananController extends Controller
             'merek_req' => '',
             'type_req' => '',
             'sn_req' => '',
+            'kerusakan_req' => '',
             'pelapor_req' => '',
             'tanggal_req' => '',
             'kode_rs' => '',
@@ -64,7 +65,7 @@ class PesananController extends Controller
         $dataPesanan['kode_rs'] = Auth::user()->kode_rs;
         Pesanan::create($dataPesanan);
         return redirect('/dashboard/ppm/pesanan')
-            ->with('succes', 'Data Alat Berhasil di Tambahkan.');
+            ->with('success', 'Data Alat Berhasil di Tambahkan.');
     }
 
     /**

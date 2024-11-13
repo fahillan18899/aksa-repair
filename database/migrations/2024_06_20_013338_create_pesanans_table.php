@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('merek_req');
             $table->string('type_req');
             $table->string('sn_req');
+            $table->string('kerusakan_req');
             $table->string('pelapor_req');
             $table->string('tanggal_req');
             $table->string('kode_rs');
