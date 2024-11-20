@@ -36,6 +36,7 @@
   ['RS PANTI NUGROHO', 'RS0018'],
   ['RS PRIMA SEHAT PEKALONGAN', 'RS0019'],
   ['RSI KLATEN', 'RS0020'],
+  ['RSI AT-TIN', 'RS0021'],
   ];
   @endphp
 
