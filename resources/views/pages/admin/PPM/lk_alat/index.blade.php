@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'LK Autoclave')
+@section('title', 'LK Alat Kesehatan')
 <style>
   div.scrollmenu {
     background-color: #f1f1f1;
@@ -90,7 +90,7 @@
                 <div class="panel-body panel-form">
                 <div class="row">
                     <div class="col-md-12 col-md-12">
-                    <form action="{{ route('lk_alat.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ url('/dashboard/ppm/tambahAnesthesi') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                         @csrf
                         @method('POST')
 
@@ -416,7 +416,7 @@
               <div class="panel-body panel-form">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ url('/dashboard/ppm/tambahDentalUnit') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                       @csrf
                       @method('POST')
 
@@ -428,55 +428,55 @@
                                 <label for="id_alat" class="form-label">ID Alat <i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" onkeyup="autofillPemelihara()">
+                                <input name="id_alat" id="" type="text" class="form-control" onkeyup="autofillPemelihara()">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
+                                <label for="merek_tipe" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">No Seri<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="merek_tipe" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
+                                <label for="ruangan" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="ruangan" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
+                                <label for="no_seri" class="form-label">No Seri<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                <input name="no_seri" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                <label for="operator_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" >
+                                <input name="operator_alat" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                <label for="tanggal" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
+                                <input name="tanggal" id="" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-sm-3">
+                                <label for="alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="alat" id="" type="text" class="form-control" >
+                                </div>
+                                <div class="col-sm-3">
+                                <label for="pelaksana" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="pelaksana" id="" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -494,26 +494,26 @@
                         </tr>
                         <tr>
                             <td>Pressure Meter</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek1"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe1"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri1" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Electrick Safety Analyzer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek2"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe2"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri2" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Thermohygrometer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek3"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe3"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri3" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- ALAT UKUR DAN BAHAN AYANG DIGUNAKAN N-->
 
-                    <!-- KONDISI ALAT -->
+                    <!-- KONDISI RUANGAN -->
                         <h4><b>C. KONDISI RUANGAN</b></h4>
 
                         <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
@@ -523,14 +523,14 @@
                         </tr>
                         <tr>
                             <td>Suhu</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="suhu" class="form-control form-control-sm" ></td>
                         </tr>
                         <tr>
                             <td>Kelembapan nisbi</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="kelembapan" class="form-control form-control-sm" ></td>
                         </tr>
                         </table>
-                    <!-- KONDISI ALAT N-->
+                    <!-- KONDISI RUANGAN N-->
 
                     <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT -->
                         <h4><b>D. PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT</b></h4>
@@ -543,53 +543,53 @@
                         </tr>
                         <tr>
                             <td>1. Cek seluruh bagian badan</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_1"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>2. Cek satuan daya</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_2" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_2"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>3. Cek tombol / switch</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_3" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_3"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>4. Cek fungsi foot switch</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_4" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_4"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>5. Cek selang air dan udara</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_5" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_5"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>6. Cek kabel suplay dan sambungan</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_6" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_6"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>7. Cek lampu</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_7" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_7"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>8. Cek fungsi water jet dan hand piece</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_8" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_8"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>9. Cek gerakan dental cair</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_9" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_9"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>10. Cek composer dan tekanan</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_10" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_10"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
@@ -604,29 +604,29 @@
                             </tr>
                             <tr>
                                 <td>Main Voltage / Live-Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_1" class="form-control form-control-sm" type="text"></td>
                                 <td align="center">220 ± 10% V</td>
                             </tr>
                             <tr>
                                 <td>Protectiv Earth Resistance</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_2" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 0,2 Ω</td>
                             </tr>
                             <tr>
                                 <td>Insulation Resistance / Mains-PE</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_3" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u>></u> 2 MΩ</td>
                             </tr>
                             <tr>
                                 <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_4" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             </table>
                     <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
                     <!-- KESIMPULAN -->
-                        <h4><b>F. KESIMPULAN</b></h4>
+                        <h4><b>G. KESIMPULAN</b></h4>
 
                         <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
                         <tr>
@@ -635,15 +635,15 @@
                         </tr>
                         <tr>
                             <td>Kondisi fisik dan fungsi</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_fisik_fungsi" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Keselamatan Listrik</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_listrik" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kinerja Alat Kesehatan</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_kinerja" type="text" class="form-control"></td>
                         </tr>
                         </table>
                         
@@ -688,7 +688,7 @@
               <div class="panel-body panel-form">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ url('/dashboard/ppm/tambahDhiatermy') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                       @csrf
                       @method('POST')
 
@@ -700,55 +700,55 @@
                                 <label for="id_alat" class="form-label">ID Alat <i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" onkeyup="autofillPemelihara()">
+                                <input name="id_alat" id="" type="text" class="form-control" onkeyup="autofillPemelihara()">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
+                                <label for="merek_tipe" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">No Seri<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="merek_tipe" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
+                                <label for="ruangan" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="ruangan" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
+                                <label for="no_seri" class="form-label">No Seri<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                <input name="no_seri" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                <label for="operator_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" >
+                                <input name="operator_alat" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                <label for="tanggal" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
+                                <input name="tanggal" id="" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-sm-3">
+                                <label for="alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="alat" id="" type="text" class="form-control" >
+                                </div>
+                                <div class="col-sm-3">
+                                <label for="pelaksana" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="pelaksana" id="" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -766,21 +766,21 @@
                         </tr>
                         <tr>
                             <td>Pressure Meter</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek1"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe1"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri1" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Electrick Safety Analyzer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek2"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe2"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri2" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Thermohygrometer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek3"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe3"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri3" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- ALAT UKUR DAN BAHAN AYANG DIGUNAKAN N-->
@@ -795,11 +795,11 @@
                         </tr>
                         <tr>
                             <td>Suhu</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="suhu" class="form-control form-control-sm" ></td>
                         </tr>
                         <tr>
                             <td>Kelembapan nisbi</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="kelembapan" class="form-control form-control-sm" ></td>
                         </tr>
                         </table>
                     <!-- KONDISI RUANGAN N-->
@@ -815,43 +815,43 @@
                         </tr>
                         <tr>
                             <td>1. Cek seluruh bagian alat</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_1"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>2. Cek catu daya</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_2" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_2"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>3. Cek tombol / switch</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_3" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_3"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>4. Cek kabel dan elektroda</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_4" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_4"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>5. Cek kipas pendingin tabung</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_5" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_5"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>6. Cek fungsi indikator</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_6" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_6"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>7. Cek timer</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_7" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_7"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>8. Cek fungsi tuning</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_8" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_8"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
@@ -866,29 +866,29 @@
                             </tr>
                             <tr>
                                 <td>Main Voltage / Live-Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_1" class="form-control form-control-sm" type="text"></td>
                                 <td align="center">220 ± 10% V</td>
                             </tr>
                             <tr>
                                 <td>Protectiv Earth Resistance</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_2" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 0,2 Ω</td>
                             </tr>
                             <tr>
                                 <td>Insulation Resistance / Mains-PE</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_3" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u>></u> 2 MΩ</td>
                             </tr>
                             <tr>
                                 <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_4" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             </table>
                     <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
                     <!-- KESIMPULAN -->
-                        <h4><b>F. KESIMPULAN</b></h4>
+                        <h4><b>G. KESIMPULAN</b></h4>
 
                         <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
                         <tr>
@@ -897,15 +897,15 @@
                         </tr>
                         <tr>
                             <td>Kondisi fisik dan fungsi</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_fisik_fungsi" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Keselamatan Listrik</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_listrik" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kinerja Alat Kesehatan</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_kinerja" type="text" class="form-control"></td>
                         </tr>
                         </table>
                         
@@ -950,7 +950,7 @@
               <div class="panel-body panel-form">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ url('/dashboard/ppm/tambahDopler') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                       @csrf
                       @method('POST')
 
@@ -962,55 +962,55 @@
                                 <label for="id_alat" class="form-label">ID Alat <i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" onkeyup="autofillPemelihara()">
+                                <input name="id_alat" id="" type="text" class="form-control" onkeyup="autofillPemelihara()">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
+                                <label for="merek_tipe" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">No Seri<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="merek_tipe" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
+                                <label for="ruangan" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="ruangan" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
+                                <label for="no_seri" class="form-label">No Seri<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                <input name="no_seri" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                <label for="operator_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" >
+                                <input name="operator_alat" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                <label for="tanggal" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
+                                <input name="tanggal" id="" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-sm-3">
+                                <label for="alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="alat" id="" type="text" class="form-control" >
+                                </div>
+                                <div class="col-sm-3">
+                                <label for="pelaksana" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="pelaksana" id="" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -1028,27 +1028,27 @@
                         </tr>
                         <tr>
                             <td>Fetal simulator</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek1"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe1"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri1" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Electrick Safety Analyzer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek2"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe2"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri2" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Digital Caliper</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek3"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe3"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri3" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Thermohygrometer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek4"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe4"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri4" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- ALAT UKUR DAN BAHAN AYANG DIGUNAKAN N-->
@@ -1063,11 +1063,11 @@
                         </tr>
                         <tr>
                             <td>Suhu</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="suhu" class="form-control form-control-sm" ></td>
                         </tr>
                         <tr>
                             <td>Kelembapan nisbi</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="kelembapan" class="form-control form-control-sm" ></td>
                         </tr>
                         </table>
                     <!-- KONDISI RUANGAN N-->
@@ -1083,28 +1083,28 @@
                         </tr>
                         <tr>
                             <td>1. Cek seluruh bagian alat</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="Baik"></td>
+                            <td align="center"><input name="keterangan_1"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>2. Cek display</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_2" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="Baik"></td>
+                            <td align="center"><input name="keterangan_2"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>3. Cek tombol / switch</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_3" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="Baik"></td>
+                            <td align="center"><input name="keterangan_3"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>4. Cek fungsi probe</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_4" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="Baik"></td>
+                            <td align="center"><input name="keterangan_4"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>5. Cek bateray</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_5" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="Baik"></td>
+                            <td align="center"><input name="keterangan_5"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
@@ -1119,52 +1119,52 @@
                             </tr>
                             <tr>
                                 <td>Main Voltage / Live-Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_1" class="form-control form-control-sm" type="text"></td>
                                 <td align="center">220 ± 10% V</td>
                             </tr>
                             <tr>
                                 <td>Current Amp</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_2" class="form-control form-control-sm" type="text"></td>
                                 <td align="center">-</td>
                             </tr>
                             <tr>
                                 <td>Protectiv Earth Resistance</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_3" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 0,2 Ω</td>
                             </tr>
                             <tr>
                                 <td>Insulation Resistance / Mains-PE</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_4" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u>></u> 2 MΩ</td>
                             </tr>
                             <tr>
                                 <td>Earth Leakage Current Normal Polarity</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_5" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             <tr>
                                 <td>Earth Leakage Current Reverse Polarity</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_6" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             <tr>
                                 <td>Encloser Leakage Current Normal Polarity Closed Earth</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_7" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 100 μA</td>
                             </tr>
                             <tr>
                                 <td>Encloser Leakage Current Normal Polarity Open Earth</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_8" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             <tr>
                                 <td>Encloser Leakage Current Reverse Polarity Closed Earth</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_9" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 100 μA</td>
                             </tr>
                             <tr>
                                 <td>Encloser Leakage Current Reverse Polarity Open Earth</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_10" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             </table>
@@ -1191,55 +1191,55 @@
                         <tr>
                             <td rowspan="5" align="center"><b>Heart Rate (bpm)</b></td>
                             <td align="center"><b>30</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_1" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_2" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_3" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_4" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_5" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_30_6" type="text" class="form-control"></td>
                             <td align="center"> ±5%</td>
                         </tr>
                         <tr>
                             <td align="center"><b>60</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_1" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_2" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_3" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_4" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_5" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_60_6" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td align="center"><b>120</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_1" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_2" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_3" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_4" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_5" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_120_6" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td align="center"><b>180</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_1" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_2" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_3" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_4" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_5" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_180_6" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td align="center"><b>240</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_1" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_2" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_3" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_4" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_5" type="text" class="form-control"></td>
+                            <td align="center"><input name="hasil_pengukuran_240_6" type="text" class="form-control"></td>
                         </tr>
                         </table>
                     <!-- PENGUKKURAN KINERJA N -->
 
                     <!-- KESIMPULAN -->
-                        <h4><b>F. KESIMPULAN</b></h4>
+                        <h4><b>G. KESIMPULAN</b></h4>
 
                         <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
                         <tr>
@@ -1248,15 +1248,15 @@
                         </tr>
                         <tr>
                             <td>Kondisi fisik dan fungsi</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_fisik_fungsi" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Keselamatan Listrik</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_listrik" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kinerja Alat Kesehatan</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_kinerja" type="text" class="form-control"></td>
                         </tr>
                         </table>
                         
@@ -1301,7 +1301,7 @@
               <div class="panel-body panel-form">
                 <div class="row">
                   <div class="col-md-12 col-sm-12">
-                    <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ url('/dashboard/ppm/tambahBedside') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                       @csrf
                       @method('POST')
 
@@ -1313,55 +1313,55 @@
                                 <label for="id_alat" class="form-label">ID Alat <i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" onkeyup="autofillPemelihara()">
+                                <input name="id_alat" id="" type="text" class="form-control" onkeyup="autofillPemelihara()">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
+                                <label for="merek_tipe" class="form-label">Merek / Tipe<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row" style="margin-top: 10px;">
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
-                                </div>
-                                <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">No Seri<i class="text-danger">*</i></label>
-                                </div>
-                                <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="merek_tipe" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
+                                <label for="ruangan" class="form-label">Nama Ruangan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control">
+                                <input name="ruangan" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
+                                <label for="no_seri" class="form-label">No Seri<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                <input name="no_seri" id="" type="text" class="form-control">
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 10px;">
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                <label for="operator_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" >
+                                <input name="operator_alat" id="" type="text" class="form-control">
                                 </div>
                                 <div class="col-sm-3">
-                                <label for="id_alat" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                <label for="tanggal" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
                                 </div>
                                 <div class="col-sm-3">
-                                <input name="id_alat" id="id_ase1t" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
+                                <input name="tanggal" id="" type="text" class="form-control" value="<?php date_default_timezone_set('Asia/Jakarta'); echo date(now()) ?>" readonly>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 10px;">
+                                <div class="col-sm-3">
+                                <label for="alat" class="form-label">Nama Alat<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="alat" id="" type="text" class="form-control" >
+                                </div>
+                                <div class="col-sm-3">
+                                <label for="pelaksana" class="form-label">Petugas Pelaksana<i class="text-danger">*</i></label>
+                                </div>
+                                <div class="col-sm-3">
+                                <input name="pelaksana" id="" type="text" class="form-control" value="{{ Auth::user()->username }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -1379,21 +1379,21 @@
                         </tr>
                         <tr>
                             <td>Electrical safety analyzer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek1"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe1"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri1" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Vital signs simulator</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek2"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe2"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri2" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>Thermohygrometer</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_merek3"  class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_tipe3"   class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="ukur_noseri3" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- ALAT UKUR DAN BAHAN AYANG DIGUNAKAN N-->
@@ -1408,11 +1408,11 @@
                         </tr>
                         <tr>
                             <td>Suhu</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="suhu" class="form-control form-control-sm" ></td>
                         </tr>
                         <tr>
                             <td>Kelembapan nisbi</td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" ></td>
+                            <td align="center"><input name="kelembapan" class="form-control form-control-sm" ></td>
                         </tr>
                         </table>
                     <!-- KONDISI RUANGAN N-->
@@ -1428,63 +1428,58 @@
                         </tr>
                         <tr>
                             <td>1. Chassing / Housing</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_1" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_1"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>2. Labeling</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_2" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_2"   class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>3. Mount</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_3" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_3" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>4. Alarm / Interlock</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_4" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_4" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>5. Indikator / Displays</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_5" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_5" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>6. Line Cord</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_6" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_6" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>7. Recorder</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_7" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_7" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>8. Circuit Breaker / Fuse</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_8" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_8" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>9. Control / Switches</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_9" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_9" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>10. Back up battry powered</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_10" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_10" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         <tr>
                             <td>11. Charging systems</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>11. Accessories</td>
-                            <td align="center"><input name="cek_a_1" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;"></td>
-                            <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                            <td align="center"><input name="fisik_fungsi_11" class="form-check-input" type="checkbox" value="Baik" style="width: 80%; height: 20px;"></td>
+                            <td align="center"><input name="keterangan_11" class="form-control form-control-sm" type="text"></td>
                         </tr>
                         </table>
                     <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
@@ -1499,22 +1494,22 @@
                             </tr>
                             <tr>
                                 <td>Main Voltage / Live-Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_1" class="form-control form-control-sm" type="text"></td>
                                 <td align="center">220 ± 10% V</td>
                             </tr>
                             <tr>
                                 <td>Protectiv Earth Resistance</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_2" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 0,2 Ω</td>
                             </tr>
                             <tr>
                                 <td>Insulation Resistance / Mains-PE</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_3" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u>></u> 2 MΩ</td>
                             </tr>
                             <tr>
                                 <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
-                                <td align="center"><input name="cek_a_1" class="form-control form-control-sm" type="text"></td>
+                                <td align="center"><input name="listrik_4" class="form-control form-control-sm" type="text"></td>
                                 <td align="center"><u><</u> 500 μA</td>
                             </tr>
                             </table>
@@ -1533,20 +1528,20 @@
                         <tr>
                             <td rowspan="4" align="center"><b>Tekanan Darah (mmhg)</b></td>
                             <td align="center"><b>60 / 30 (40)</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="nilai_inbp_40" type="text" class="form-control"></td>
                             <td rowspan="4" align="center"><b> ± 10 mmHg</b></td>
                         </tr>
                         <tr>
                           <td align="center"><b>120 / 80 (93)</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_inbp_93" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>150 / 100 (117)</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_inbp_117" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>200 / 150 (167)</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_inbp_167" type="text" class="form-control"></td>
                         </tr>
                         </table>
 
@@ -1561,28 +1556,28 @@
                         <tr>
                             <td rowspan="6" align="center"><b>ECG (BPM)</b></td>
                             <td align="center"><b>30</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="nilai_heart_30" type="text" class="form-control"></td>
                             <td rowspan="6" align="center"><b> ± 5%</b></td>
                         </tr>
                         <tr>
                           <td align="center"><b>60</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_heart_60" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>90</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_heart_90" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>120</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_heart_120" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>180</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_heart_180" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>240</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_heart_240" type="text" class="form-control"></td>
                         </tr>
                         </table>
 
@@ -1597,24 +1592,24 @@
                         <tr>
                             <td rowspan="5" align="center"><b>SPO2(%)</b></td>
                             <td align="center"><b>80</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="nilai_spo2_80" type="text" class="form-control"></td>
                             <td rowspan="5" align="center"><b> ± 3%</b></td>
                         </tr>
                         <tr>
                           <td align="center"><b>85</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_spo2_85" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>90</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_spo2_90" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>95</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_spo2_95" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>100</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_spo2_100" type="text" class="form-control"></td>
                         </tr>
                         </table>
 
@@ -1629,30 +1624,30 @@
                         <tr>
                             <td rowspan="5" align="center"><b>Respirasi (Brpm)</b></td>
                             <td align="center"><b>10</b></td>
-                            <td align="center"><input type="text" class="form-control"></td>
+                            <td align="center"><input name="nilai_respirasi_10" type="text" class="form-control"></td>
                             <td rowspan="5" align="center"><b> ± 5%</b></td>
                         </tr>
                         <tr>
                           <td align="center"><b>30</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_respirasi_30" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>40</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_respirasi_40" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>60</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_respirasi_60" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                           <td align="center"><b>80</b></td>
-                          <td align="center"><input type="text" class="form-control"></td>
+                          <td align="center"><input name="nilai_respirasi_80" type="text" class="form-control"></td>
                         </tr>
                         </table>
                     <!-- PENGUKKURAN KINERJA N -->
 
                     <!-- KESIMPULAN -->
-                        <h4><b>F. KESIMPULAN</b></h4>
+                        <h4><b>G. KESIMPULAN</b></h4>
 
                         <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
                         <tr>
@@ -1661,15 +1656,15 @@
                         </tr>
                         <tr>
                             <td>Kondisi fisik dan fungsi</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_fisik_fungsi" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Keselamatan Listrik</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_listrik" type="text" class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kinerja Alat Kesehatan</td>
-                            <td align="center"><b style="color: red;">Tidak Laik</b></td>
+                            <td align="center"><input name="kesimpulan_kinerja" type="text" class="form-control"></td>
                         </tr>
                         </table>
                         

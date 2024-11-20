@@ -246,7 +246,12 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/getPemantauan/{id}', [PemantauanController::class, 'getPemantauan']);
 
         //LK Alat
-        Route::resource('/lk_alat', LkAlatController::class);
+        Route::get('/lk_alat', [LkAlatController::class, 'index']);
+        Route::post('/tambahAnesthesi', [LkAlatController::class, 'store']);
+        Route::post('/tambahDentalUnit', [LkAlatController::class, 'storeDentalUnit']);
+        Route::post('/tambahDhiatermy', [LkAlatController::class, 'storeDhiatermy']);
+        Route::post('/tambahDopler', [LkAlatController::class, 'storeDopler']);
+        Route::post('/tambahBedside', [LkAlatController::class, 'storeBedside']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');

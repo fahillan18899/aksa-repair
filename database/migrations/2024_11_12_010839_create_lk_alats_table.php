@@ -32,14 +32,6 @@ return new class extends Migration
             $table->string('ukur_merek2', 10);
             $table->string('ukur_tipe2', 10);
             $table->string('ukur_noseri2', 10);
-            // Alat ukur 3
-            $table->string('ukur_merek3', 10);
-            $table->string('ukur_tipe3', 10);
-            $table->string('ukur_noseri3', 10);
-            // Alat ukur 4
-            $table->string('ukur_merek4', 10);
-            $table->string('ukur_tipe4', 10);
-            $table->string('ukur_noseri4', 10);
             // Kondisi ruangan
             $table->string('suhu', 10);
             $table->string('kelembapan', 10);
