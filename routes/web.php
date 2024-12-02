@@ -248,10 +248,15 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //LK Alat
         Route::get('/lk_alat', [LkAlatController::class, 'index']);
         Route::post('/tambahAnesthesi', [LkAlatController::class, 'store']);
+        Route::get('/lk_alat/edit_anestesi/{id}/edit', [LkAlatController::class, 'edit']);
+        Route::get('/lk_alat/show_anestesi/{id}/show', [LkAlatController::class, 'show']);
+        Route::put('/lk_alat/edit_anestesi/{id}', [LkAlatController::class, 'update'])->name('update_anestesi.update');
+        Route::delete('tambahAnesthesi/{id}', [LkAlatController::class, 'destroy']);
         Route::post('/tambahDentalUnit', [LkAlatController::class, 'storeDentalUnit']);
         Route::post('/tambahDhiatermy', [LkAlatController::class, 'storeDhiatermy']);
         Route::post('/tambahDopler', [LkAlatController::class, 'storeDopler']);
         Route::post('/tambahBedside', [LkAlatController::class, 'storeBedside']);
+        Route::get('/getLkAlat/{id}', [LkAlatController::class, 'getLkAlat']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');
