@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Cetak Perbaikan Un')
+@section('title', 'show lk anestesi')
 @push('addon-style')
 <style>
   .td-custom {
