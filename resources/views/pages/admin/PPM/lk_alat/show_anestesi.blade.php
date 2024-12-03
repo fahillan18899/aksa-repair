@@ -70,12 +70,11 @@
               <img src="{{ url('assets/kop-surat/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
               @endif
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
-              <img src="{{ url('assets/kop-surat/kop_surat_klaten.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
+              <img src="{{ url('assets/kop-surat/kop_surat_klaten1.png') }}" alt="Kop Klaten" width="100%">
               @endif
             </div>
+            <h3><center>LAPORAN PEMELIHARAAN ANESTESI</center></h3>
             <div class="card-body" style="padding: 25px;">
-
-            <h3 class="text-center ">REPORT FORM PERBAIKAN UNREGISTRASI USER</h3>
             <!-- A. PENDATAAN ALAT -->
               <h4><b>A. PENDATAAN ALAT</b></h4>
               <div class="form-group row" style="border-style: groove; padding: 15px;">
@@ -165,6 +164,7 @@
                 </tbody>
               </table>
             <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN N-->
+            <br>
             <br>
             <br>
             <br>
