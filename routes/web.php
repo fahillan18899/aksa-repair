@@ -247,15 +247,39 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //LK Alat
         Route::get('/lk_alat', [LkAlatController::class, 'index']);
-        Route::post('/tambahAnesthesi', [LkAlatController::class, 'store']);
-        Route::get('/lk_alat/edit_anestesi/{id}/edit', [LkAlatController::class, 'edit']);
-        Route::get('/lk_alat/show_anestesi/{id}/show', [LkAlatController::class, 'show']);
-        Route::put('/lk_alat/edit_anestesi/{id}', [LkAlatController::class, 'update'])->name('update_anestesi.update');
-        Route::delete('tambahAnesthesi/{id}', [LkAlatController::class, 'destroy']);
-        Route::post('/tambahDentalUnit', [LkAlatController::class, 'storeDentalUnit']);
-        Route::post('/tambahDhiatermy', [LkAlatController::class, 'storeDhiatermy']);
-        Route::post('/tambahDopler', [LkAlatController::class, 'storeDopler']);
+        //Anestesi
+            Route::post('/tambahAnesthesi', [LkAlatController::class, 'store']);
+            Route::get('/lk_alat/edit_anestesi/{id}/edit', [LkAlatController::class, 'edit']);
+            Route::get('/lk_alat/show_anestesi/{id}/show', [LkAlatController::class, 'show']);
+            Route::put('/lk_alat/edit_anestesi/{id}', [LkAlatController::class, 'update'])->name('update_anestesi.update');
+            Route::delete('tambahAnesthesi/{id}', [LkAlatController::class, 'destroy']);
+        //end anestesi    
+        //Dental unit    
+            Route::post('/tambahDentalUnit', [LkAlatController::class, 'storeDentalUnit']);
+            Route::get('/lk_alat/edit_dental_unit/{id}/edit', [LkAlatController::class, 'editDentalUnit']);
+            Route::put('/lk_alat/edit_dental_unit/{id}', [LkAlatController::class, 'updateDentalUnit'])->name('update_dental_unit.update');
+            Route::get('/lk_alat/show_dental_unit/{id}/show', [LkAlatController::class, 'showDentalUnit']);
+            Route::delete('tambahDentalUnit/{id}', [LkAlatController::class, 'destroyDentalUnit']);
+        //end dental unit
+        //Dhiatermy
+            Route::post('/tambahDhiatermy', [LkAlatController::class, 'storeDhiatermy']);
+            Route::get('/lk_alat/edit_dhiatermy/{id}/edit', [LkAlatController::class, 'editDhiatermy']);
+            Route::put('/lk_alat/edit_dhiatermy/{id}', [LkAlatController::class, 'updateDhiatermy'])->name('update_dhiatermy.update');
+            Route::get('/lk_alat/show_dhiatermy/{id}/show', [LkAlatController::class, 'showDhiatermy']);
+            Route::delete('tambahDhiatermy/{id}', [LkAlatController::class, 'destroyDhiatermy']);
+        //end Dhiatermy
+        //Dopler
+            Route::post('/tambahDopler', [LkAlatController::class, 'storeDopler']);
+            Route::get('/lk_alat/edit_dopler/{id}/edit', [LkAlatController::class, 'editDopler']);
+            Route::put('/lk_alat/edit_dopler/{id}', [LkAlatController::class, 'updateDopler'])->name('update_dopler.update');
+            Route::get('/lk_alat/show_dopler/{id}/show', [LkAlatController::class, 'showDopler']);
+            Route::delete('tambahDopler/{id}', [LkAlatController::class, 'destroyDopler']);
+        //end Dopler
         Route::post('/tambahBedside', [LkAlatController::class, 'storeBedside']);
+        Route::get('/lk_alat/edit_bedside/{id}/edit', [LkAlatController::class, 'editBedside']);
+        Route::put('/lk_alat/edit_bedside/{id}', [LkAlatController::class, 'updateBedside'])->name('update_bedside.update');
+        Route::get('/lk_alat/show_bedside/{id}/show', [LkAlatController::class, 'showBedside']);
+        Route::delete('tambahBedside/{id}', [LkAlatController::class, 'destroyBedside']);
         Route::get('/getLkAlat/{id}', [LkAlatController::class, 'getLkAlat']);
 
         // API internal datatable

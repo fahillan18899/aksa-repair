@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'show lk anestesi')
+@section('title', 'show lk dhiatermy')
 @push('addon-style')
 <style>
   .td-custom {
@@ -73,7 +73,7 @@
               <img src="{{ url('assets/kop-surat/kop_surat_klaten1.png') }}" alt="Kop Klaten" width="100%">
               @endif
             </div>
-            <h3><center>LAPORAN PEMELIHARAAN ANESTESI</center></h3>
+            <h3><center>LAPORAN PEMELIHARAAN DHIATERMY</center></h3>
             <div class="card-body" style="padding: 25px;">
             <!-- A. PENDATAAN ALAT -->
               <h4><b>A. PENDATAAN ALAT</b></h4>
@@ -150,23 +150,26 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Gas Flow Analyzer</td>
+                  <td>Pressure Meter</td>
                   <td align="center"><?php echo $item['ukur_merek1'] ?></td>
                   <td align="center"><?php echo $item['ukur_tipe1'] ?></td>
                   <td align="center"><?php echo $item['ukur_noseri1'] ?></td>
                 </tr>
                 <tr>
-                  <td>Thermohygrometer</td>
+                  <td>Electrick Safety Analyzer	</td>
                   <td align="center"><?php echo $item['ukur_merek2'] ?></td>
                   <td align="center"><?php echo $item['ukur_tipe2'] ?></td>
                   <td align="center"><?php echo $item['ukur_noseri2'] ?></td>
                 </tr>
+                <tr>
+                  <td>Thermohygrometer</td>
+                  <td align="center"><?php echo $item['ukur_merek3'] ?></td>
+                  <td align="center"><?php echo $item['ukur_tipe3'] ?></td>
+                  <td align="center"><?php echo $item['ukur_noseri3'] ?></td>
+                </tr>
                 </tbody>
               </table>
             <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN N-->
-            <br>
-            <br>
-            <br>
             <br>
             <!-- C. KONDISI RUANGAN -->
               <h4><b>C. KONDISI RUANGAN</b></h4>
@@ -202,69 +205,44 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>1. Chasingss / Housing</td>
+                  <td>1. Cek seluruh bagian alat</td>
                   <td align="center"><?php echo $item['fisik_fungsi_1'] ?></td>
                   <td align="center"><?php echo $item['keterangan_1'] ?></td>
                 </tr>
                 <tr>
-                  <td>2. Mount / Fastener</td>
+                  <td>2. Cek catu daya</td>
                   <td align="center"><?php echo $item['fisik_fungsi_2'] ?></td>
                   <td align="center"><?php echo $item['keterangan_2'] ?></td>
                 </tr>
                 <tr>
-                  <td>3. Breathing circuit termasuk filter</td>
+                  <td>3. Cek tombol / switch</td>
                   <td align="center"><?php echo $item['fisik_fungsi_3'] ?></td>
                   <td align="center"><?php echo $item['keterangan_3'] ?></td>
                 </tr>
                 <tr>
-                  <td>4. AC plug / Receptacles</td>
+                  <td>4. Cek kabel dan elektroda</td>
                   <td align="center"><?php echo $item['fisik_fungsi_4'] ?></td>
                   <td align="center"><?php echo $item['keterangan_4'] ?></td>
                 </tr>
                 <tr>
-                  <td>5. Line Cord</td>
+                  <td>5. Cek kipas pendingin tabung</td>
                   <td align="center"><?php echo $item['fisik_fungsi_5'] ?></td>
                   <td align="center"><?php echo $item['keterangan_5'] ?></td>
                 </tr>
                 <tr>
-                  <td>6. Battery / Charger</td>
+                  <td>6. Cek fungsi indikator</td>
                   <td align="center"><?php echo $item['fisik_fungsi_6'] ?></td>
                   <td align="center"><?php echo $item['keterangan_6'] ?></td>
                 </tr>
                 <tr>
-                  <td>7. Circuit Breaker / Fuse</td>
+                  <td>7. Cek timer</td>
                   <td align="center"><?php echo $item['fisik_fungsi_7'] ?></td>
                   <td align="center"><?php echo $item['keterangan_7'] ?></td>
                 </tr>
                 <tr>
-                  <td>8. Labeling</td>
+                  <td>8. Cek fungsi tuning</td>
                   <td align="center"><?php echo $item['fisik_fungsi_8'] ?></td>
                   <td align="center"><?php echo $item['keterangan_8'] ?></td>
-                </tr>
-                <tr>
-                  <td>9. Indicator / Displays</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_9'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_9'] ?></td>
-                </tr>
-                <tr>
-                  <td>10. Alarm / Interlock</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_10'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_10'] ?></td>
-                </tr>
-                <tr>
-                  <td>11. Bellows</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_11'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_11'] ?></td>
-                </tr>
-                <tr>
-                  <td>12. Controls / Switches</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_12'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_12'] ?></td>
-                </tr>
-                <tr>
-                  <td>13. Bellows</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_13'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_13'] ?></td>
                 </tr>
                 </tbody>
               </table>
@@ -305,55 +283,8 @@
               </table>
             <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
-            <!-- PENGUKURAN KINERJA -->
-              <h4><b>F. PENGUKURAN KINERJA</b></h4>
-              <table class="table table-hover table-bordered" style="width:80%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Jenis Gas</b></td>
-                  <td align="center"><b>Setting Pada Alat</b></td>
-                  <td align="center"><b>Terukur</b></td>
-                  <td align="center"><b>Toleransi</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td align="center" rowspan="7"><?php echo $item['jenis_gas'] ?></td>
-                  <td align="center"><?php echo $item['seting_alat_1'] ?></td>
-                  <td align="center"><?php echo $item['terukur_1'] ?></td>
-                  <td align="center" rowspan="7">± 10%</td>
-                </tr>
-
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_2'] ?></td>
-                  <td align="center"><?php echo $item['terukur_2'] ?></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_3'] ?></td>
-                  <td align="center"><?php echo $item['terukur_3'] ?></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_4'] ?></td>
-                  <td align="center"><?php echo $item['terukur_4'] ?></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_5'] ?></td>
-                  <td align="center"><?php echo $item['terukur_5'] ?></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_6'] ?></td>
-                  <td align="center"><?php echo $item['terukur_6'] ?></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['seting_alat_7'] ?></td>
-                  <td align="center"><?php echo $item['terukur_7'] ?></td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- PENGUKURAN KINERJA N-->
-
             <!-- KESIMPULAN -->
-              <h4><b>G. KESIMPULAN</b></h4>
+              <h4><b>F. KESIMPULAN</b></h4>
               <table class="table table-hover table-bordered" style="width:100%">
                 <thead>
                 <tr>
