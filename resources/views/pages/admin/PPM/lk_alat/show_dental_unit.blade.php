@@ -70,282 +70,250 @@
               <img src="{{ url('assets/kop-surat/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
               @endif
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
-              <img src="{{ url('assets/kop-surat/kop_surat_klaten1.png') }}" alt="Kop Klaten" width="100%">
+              <img src="{{ url('assets/kop-surat/kop-surat-dental-unit2.png') }}" alt="Kop Klaten" width="100%">
               @endif
             </div>
             <h3><center>LAPORAN PEMELIHARAAN DENTAL UNIT</center></h3>
-            <div class="card-body" style="padding: 25px;">
-            <!-- A. PENDATAAN ALAT -->
-              <h4><b>A. PENDATAAN ALAT</b></h4>
-              <div class="form-group row" style="border-style: groove; padding: 15px;">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <label for="id_alat" class="form-label">ID Alat </label>
+            <div class="card-body" style="padding: 15px;">
+              <!-- A. PENDATAAN ALAT -->
+                <div class="form-group row" style="border-style: groove; padding: 15px;">
+                <table class="table" style="width:100%">
+                  <tr>
+                    <td style="width: 20%;"><b>ID Alat</b></td>
+                    <td style="width: 20%;"><?php echo $item['id_alat'] ?></td>
+                    <td style="width: 20%;"><b>Merek / Tipe</b></td>
+                    <td style="width: 20%;"><?php echo $item['merek_tipe'] ?></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 20%;"><b>Nama Ruangan</b></td>
+                    <td style="width: 20%;"><?php echo $item['ruangan'] ?></td>
+                    <td style="width: 20%;"><b>No Seri</b></td>
+                    <td style="width: 20%;"><?php echo $item['no_seri'] ?></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 20%;"><b>User / Operator Alat</b></td>
+                    <td style="width: 20%;"><?php echo $item['operator_alat'] ?></td>
+                    <td style="width: 20%;"><b>Tanggal Pelaksanaan</b></td>
+                    <td style="width: 20%;"><?php echo $item['tanggal'] ?></td>
+                  </tr>
+                  <tr>
+                    <td style="width: 20%;"><b>Nama Alat</b></td>
+                    <td style="width: 20%;"><?php echo $item['alat'] ?></td>
+                    <td style="width: 20%;"><b>Petugas Pelaksana</b></td>
+                    <td style="width: 20%;"><?php echo $item['pelaksana'] ?></td>
+                  </tr>
+                </table>
                 </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['id_alat'] ?>
-                </div>
-                  <div class="col-sm-3">
-                    <label for="merek_tipe" class="form-label">Merek / Tipe</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['merek_tipe'] ?>
-                </div>
-              </div>
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col-sm-3">
-                    <label for="ruangan" class="form-label">Nama Ruangan</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['ruangan'] ?>
-                </div>
-                  <div class="col-sm-3">
-                    <label for="no_seri" class="form-label">No Seri</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['no_seri'] ?>
-                </div>
-              </div>
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col-sm-3">
-                    <label for="operator_alat" class="form-label">User / Operator Alat</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['operator_alat'] ?>
-                </div>
-                  <div class="col-sm-3">
-                    <label for="tanggal" class="form-label">Tanggal Pelaksanaan</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['tanggal'] ?>
-                </div>
-              </div>
-                <div class="row" style="margin-top: 10px;">
-                  <div class="col-sm-3">
-                    <label for="alat" class="form-label">Nama Alat</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['alat'] ?>
-                </div>
-                  <div class="col-sm-3">
-                    <label for="pelaksana" class="form-label">Petugas Pelaksana</label>
-                </div>
-                  <div class="col-sm-3">
-                    <?php echo $item['pelaksana'] ?>
-                </div>
-              </div>
-              </div>
-            <!-- A. PENDATAAN ALAT N-->
+              <!-- A. PENDATAAN ALAT N-->
 
-            <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN -->
-              <h4><b>B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN</b></h4>
-              <table class="table table-hover table-bordered"  style="width:100%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Nama Alat</b></td>
-                  <td align="center"><b>Merek</b></td>
-                  <td align="center"><b>Tipe / Model</b></td>
-                  <td align="center"><b>NO Seri</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Pressure Meter</td>
-                  <td align="center"><?php echo $item['ukur_merek1'] ?></td>
-                  <td align="center"><?php echo $item['ukur_tipe1'] ?></td>
-                  <td align="center"><?php echo $item['ukur_noseri1'] ?></td>
-                </tr>
-                <tr>
-                  <td>Electrick Safety Analyzer	</td>
-                  <td align="center"><?php echo $item['ukur_merek2'] ?></td>
-                  <td align="center"><?php echo $item['ukur_tipe2'] ?></td>
-                  <td align="center"><?php echo $item['ukur_noseri2'] ?></td>
-                </tr>
-                <tr>
-                  <td>Thermohygrometer</td>
-                  <td align="center"><?php echo $item['ukur_merek3'] ?></td>
-                  <td align="center"><?php echo $item['ukur_tipe3'] ?></td>
-                  <td align="center"><?php echo $item['ukur_noseri3'] ?></td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN N-->
-            <br>
-            <br>
-            <!-- C. KONDISI RUANGAN -->
-              <h4><b>C. KONDISI RUANGAN</b></h4>
-              <table class="table table-hover table-bordered" style="width:80%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Parameter</b></td>
-                  <td align="center"><b>Terukur</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Suhu</td>
-                  <td align="center"><?php echo $item['suhu'] ?></td>
-                </tr>
-                <tr>
-                  <td>Kelembapan nisbi</td>
-                  <td align="center"><?php echo $item['kelembapan'] ?></td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- C. KONDISI RUANGAN N-->
+              <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN -->
+                <h4><b>B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN</b></h4>
+                <table class="table table-hover table-bordered"  style="width:100%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Nama Alat</b></td>
+                    <td align="center"><b>Merek</b></td>
+                    <td align="center"><b>Tipe / Model</b></td>
+                    <td align="center"><b>NO Seri</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Pressure Meter</td>
+                    <td align="center"><?php echo $item['ukur_merek1'] ?></td>
+                    <td align="center"><?php echo $item['ukur_tipe1'] ?></td>
+                    <td align="center"><?php echo $item['ukur_noseri1'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>Electrick Safety Analyzer	</td>
+                    <td align="center"><?php echo $item['ukur_merek2'] ?></td>
+                    <td align="center"><?php echo $item['ukur_tipe2'] ?></td>
+                    <td align="center"><?php echo $item['ukur_noseri2'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>Thermohygrometer</td>
+                    <td align="center"><?php echo $item['ukur_merek3'] ?></td>
+                    <td align="center"><?php echo $item['ukur_tipe3'] ?></td>
+                    <td align="center"><?php echo $item['ukur_noseri3'] ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+              <!-- B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN N-->
+             
+              <!-- C. KONDISI RUANGAN -->
+                <h4><b>C. KONDISI RUANGAN</b></h4>
+                <table class="table table-hover table-bordered" style="width:80%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Parameter</b></td>
+                    <td align="center"><b>Terukur</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Suhu</td>
+                    <td align="center"><?php echo $item['suhu'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>Kelembapan nisbi</td>
+                    <td align="center"><?php echo $item['kelembapan'] ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+              <!-- C. KONDISI RUANGAN N-->
 
-            <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT -->
-              <h4><b>D. PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT</b></h4>
-              <table class="table table-hover table-bordered" style="width:100%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Deskripsi</b></td>
-                  <td align="center"><b>Baik / Rusak</b></td>
-                  <td align="center"><b>Keterangan</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>1. Cek seluruh bagian badan	</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_1'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_1'] ?></td>
-                </tr>
-                <tr>
-                  <td>2. Cek satuan daya</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_2'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_2'] ?></td>
-                </tr>
-                <tr>
-                  <td>3. Cek tombol / switch</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_3'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_3'] ?></td>
-                </tr>
-                <tr>
-                  <td>4. Cek fungsi foot switch</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_4'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_4'] ?></td>
-                </tr>
-                <tr>
-                  <td>5. Cek selang air dan udara</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_5'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_5'] ?></td>
-                </tr>
-                <tr>
-                  <td>6. Cek kabel suplay dan sambungan</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_6'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_6'] ?></td>
-                </tr>
-                <tr>
-                  <td>7. Cek lampu</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_7'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_7'] ?></td>
-                </tr>
-                <tr>
-                  <td>8. Cek fungsi water jet dan hand piece</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_8'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_8'] ?></td>
-                </tr>
-                <tr>
-                  <td>9. Cek gerakan dental cair</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_9'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_9'] ?></td>
-                </tr>
-                <tr>
-                  <td>10. Cek composer dan tekanan</td>
-                  <td align="center"><?php echo $item['fisik_fungsi_10'] ?></td>
-                  <td align="center"><?php echo $item['keterangan_10'] ?></td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
+              <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT -->
+                <h4><b>D. PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT</b></h4>
+                <table class="table table-hover table-bordered" style="width:100%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Deskripsi</b></td>
+                    <td align="center"><b>Baik / Rusak</b></td>
+                    <td align="center"><b>Keterangan</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>1. Cek seluruh bagian badan	</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_1'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_1'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>2. Cek satuan daya</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_2'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_2'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>3. Cek tombol / switch</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_3'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_3'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>4. Cek fungsi foot switch</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_4'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_4'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>5. Cek selang air dan udara</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_5'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_5'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>6. Cek kabel suplay dan sambungan</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_6'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_6'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>7. Cek lampu</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_7'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_7'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>8. Cek fungsi water jet dan hand piece</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_8'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_8'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>9. Cek gerakan dental cair</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_9'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_9'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>10. Cek composer dan tekanan</td>
+                    <td align="center"><?php echo $item['fisik_fungsi_10'] ?></td>
+                    <td align="center"><?php echo $item['keterangan_10'] ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+              <!-- PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT N-->
 
-            <!-- PENGUKURAN KESELAMATAN LISTRIK -->
-              <h4><b>E. PENGUKURAN KESELAMATAN LISTRIK</b></h4>
-              <table class="table table-hover table-bordered" style="width:100%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Parameter</b></td>
-                  <td align="center"><b>Terukur</b></td>
-                  <td align="center"><b>Ambang Batas</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Main Voltage / Live-Neutral</td>
-                  <td align="center"><?php echo $item['listrik_1'] ?></td>
-                  <td align="center">220 ± 10% V</td>
-                </tr>
-                <tr>
-                  <td>Protectiv Earth Resistance</td>
-                  <td align="center"><?php echo $item['listrik_2'] ?></td>
-                  <td align="center"><u><</u> 0,2 Ω</td>
-                </tr>
-                <tr>
-                  <td>Insulation Resistance / Mains-PE</td>
-                  <td align="center"><?php echo $item['listrik_3'] ?></td>
-                  <td align="center"><u>></u> 2 MΩ</td>
-                </tr>
-                <tr>
-                  <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
-                  <td align="center"><?php echo $item['listrik_4'] ?></td>
-                  <td align="center"><u><</u> 500 μA</td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
+              <!-- PENGUKURAN KESELAMATAN LISTRIK -->
+                <h4><b>E. PENGUKURAN KESELAMATAN LISTRIK</b></h4>
+                <table class="table table-hover table-bordered" style="width:100%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Parameter</b></td>
+                    <td align="center"><b>Terukur</b></td>
+                    <td align="center"><b>Ambang Batas</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Main Voltage / Live-Neutral</td>
+                    <td align="center"><?php echo $item['listrik_1'] ?></td>
+                    <td align="center">220 ± 10% V</td>
+                  </tr>
+                  <tr>
+                    <td>Protectiv Earth Resistance</td>
+                    <td align="center"><?php echo $item['listrik_2'] ?></td>
+                    <td align="center"><u><</u> 0,2 Ω</td>
+                  </tr>
+                  <tr>
+                    <td>Insulation Resistance / Mains-PE</td>
+                    <td align="center"><?php echo $item['listrik_3'] ?></td>
+                    <td align="center"><u>></u> 2 MΩ</td>
+                  </tr>
+                  <tr>
+                    <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
+                    <td align="center"><?php echo $item['listrik_4'] ?></td>
+                    <td align="center"><u><</u> 500 μA</td>
+                  </tr>
+                  </tbody>
+                </table>
+              <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
-            <!-- KESIMPULAN -->
-              <h4><b>F. KESIMPULAN</b></h4>
-              <table class="table table-hover table-bordered" style="width:100%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Parameter</b></td>
-                  <td align="center"><b>Hasil Pengamatan</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Kondisi fisik dan fungsi</td>
-                  <td align="center"><?php echo $item['kesimpulan_fisik_fungsi'] ?></td>
-                </tr>
-                <tr>
-                  <td>Keselamatan Listrik</td>
-                  <td align="center"><?php echo $item['kesimpulan_listrik'] ?></td>
-                </tr>
-                <tr>
-                  <td>Kinerja Alat Kesehatan</td>
-                  <td align="center"><?php echo $item['kesimpulan_kinerja'] ?></td>
-                </tr>
-                </tbody>
-              </table>
-              <div class="form-group row">
-                <label for="catatan" class="col-xs-3 col-form-label">Catatan<i class="text-danger">*</i></label>
-                <div class="col-xs-9">
-                <textarea class="form-control" name="" id="" maxlength="255" rows="5" cols="50" readonly><?php echo $item['catatan'] ?></textarea>
+              <!-- KESIMPULAN -->
+                <h4><b>F. KESIMPULAN</b></h4>
+                <table class="table table-hover table-bordered" style="width:100%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Parameter</b></td>
+                    <td align="center"><b>Hasil Pengamatan</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Kondisi fisik dan fungsi</td>
+                    <td align="center"><?php echo $item['kesimpulan_fisik_fungsi'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>Keselamatan Listrik</td>
+                    <td align="center"><?php echo $item['kesimpulan_listrik'] ?></td>
+                  </tr>
+                  <tr>
+                    <td>Kinerja Alat Kesehatan</td>
+                    <td align="center"><?php echo $item['kesimpulan_kinerja'] ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+                <div class="form-group row">
+                  <label for="catatan" class="col-xs-3 col-form-label">Catatan<i class="text-danger">*</i></label>
+                  <div class="col-xs-9">
+                  <textarea class="form-control" name="" id="" maxlength="255" rows="1" cols="50" readonly><?php echo $item['catatan'] ?></textarea>
+                  </div>
                 </div>
-              </div>
-            <!-- KESIMPULAN -->
+              <!-- KESIMPULAN -->
 
-            <!-- KESIMPULAN -->
-              <table class="table table-hover table-bordered" style="width:50%">
-                <thead>
-                <tr>
-                  <td align="center"><b>Ttd. Pelaksana</b></td>
-                  <td align="center"><b>Ttd. User</b></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td><img style="margin-left: 50px;" id="sig-image1" src="" alt="Tanda tangan akan muncul disini" /></td>
-                  <td><img style="margin-left: 50px;" id="sig-image2" src="" alt="Tanda tangan akan muncul disini" /></td>
-                </tr>
-                <tr>
-                  <td align="center"><?php echo $item['pelaksana']; ?></td>
-                  <td align="center"><?php echo $item['operator_alat']; ?></td>
-                </tr>
-                </tbody>
-              </table>
-            <!-- KESIMPULAN -->
+              <!-- TTD -->
+                <table class="table table-hover table-bordered" style="width:50%">
+                  <thead>
+                  <tr>
+                    <td align="center"><b>Ttd. Pelaksana</b></td>
+                    <td align="center"><b>Ttd. User</b></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><img style="margin-left: 50px;" id="sig-image1" src="" alt="Tanda tangan akan muncul disini" /></td>
+                    <td><img style="margin-left: 50px;" id="sig-image2" src="" alt="Tanda tangan akan muncul disini" /></td>
+                  </tr>
+                  <tr>
+                    <td align="center"><?php echo $item['pelaksana']; ?></td>
+                    <td align="center"><?php echo $item['operator_alat']; ?></td>
+                  </tr>
+                  </tbody>
+                </table>
+              <!-- TTD -->
             </div>
           </div>
           <div class="panel-footer no-print text-center">

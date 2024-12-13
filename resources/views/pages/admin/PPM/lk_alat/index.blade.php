@@ -792,14 +792,14 @@
                    <tbody>
                      @forelse ($items2 as $index => $item)
                      <tr>
-                       <td align="center"> {{ $item->id_alat }}</td>
-                       <td align="center"> {{ $item->ruangan }}</td>
-                       <td align="center"> {{ $item->operator_alat }}</td>
-                       <td align="center"> {{ $item->alat }}</td>
-                       <td align="center"> {{ $item->merek_tipe }}</td>
-                       <td align="center"> {{ $item->no_seri }}</td>
-                       <td align="center"> {{ $item->tanggal }}</td>
-                       <td align="center">
+                       <td> {{ $item->id_alat }}</td>
+                       <td> {{ $item->ruangan }}</td>
+                       <td> {{ $item->operator_alat }}</td>
+                       <td> {{ $item->alat }}</td>
+                       <td> {{ $item->merek_tipe }}</td>
+                       <td> {{ $item->no_seri }}</td>
+                       <td> {{ $item->tanggal }}</td>
+                       <td>
                          <a href="/dashboard/ppm/lk_alat/edit_dental_unit/{{ $item->id }}/edit" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="Left" title="Edit"> <i class="fa fa-edit"></i></a>
                          <a href="/dashboard/ppm/lk_alat/show_dental_unit/{{ $item->id }}/show" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="Left" title="Detail"> <i class="fa fa-eye"></i></a>
                          <form action="{{ url('/dashboard/ppm/tambahDentalUnit', $item->id) }}" method="POST" class="d-inline">
