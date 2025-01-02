@@ -38,6 +38,7 @@
   ['RSI KLATEN', 'RS0020'],
   ['RSI AT-TIN', 'RS0021'],
   ['RS HARAPAN IBU PURBALINGGA', 'RS0022'],
+  ['RSDJ DR RM SOEDJARWADI', 'RS0023'],
   ];
   @endphp
   <div class="login-wrapper">
