@@ -39,6 +39,7 @@
   ['RSI AT-TIN', 'RS0021'],
   ['RS HARAPAN IBU PURBALINGGA', 'RS0022'],
   ['RSDJ DR RM SOEDJARWADI', 'RS0023'],
+  ['RSUI YAKSSI', 'RS0024'],
   ];
   @endphp
   <div class="login-wrapper">
