@@ -41,6 +41,7 @@
   ['RSJD DR RM SOEDJARWADI', 'RS0023'],
   ['RSUI YAKSSI', 'RS0024'],
   ['RSUI KUSTATI', 'RS0025'],
+  ['RSUD DR SOESELO', 'RS0026'],
   ];
   @endphp
 
