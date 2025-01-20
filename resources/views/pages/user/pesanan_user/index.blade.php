@@ -85,7 +85,7 @@
                    <div class="form-group row">
                      <label for="id" class="col-xs-3 col-form-label">ID<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="id" type="text" class="form-control" id="id_qr" placeholder="ID" value="">
+                       <input name="id" type="text" class="form-control" id="id_qr" placeholder="Terisi Otomatis" readonly>
                      </div>
                    </div>
                    <div class="form-group row">

@@ -27,7 +27,7 @@
             </div>
         @endif
         <!-- Scanner QR -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-3">
                     <div class="panel panel-default thumbnail">
                         <div class="panel-heading no-print">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         <!-- Scanner QR end -->
 
         <!-- Tabel Permintaan Perbaikan -->
@@ -118,7 +118,7 @@
         <!-- Tabel Permintaan Perbaikan end -->
 
         <!-- Form Perbaikan -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default thumbnail">
                         <div class="panel-heading no-print">
@@ -317,7 +317,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         <!-- Form Perbaikan end -->
 
         <!-- Tabel Perbaikan -->
