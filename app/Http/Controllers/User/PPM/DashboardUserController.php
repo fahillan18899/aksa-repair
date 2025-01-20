@@ -7,6 +7,7 @@ use App\Models\LembarPemeliharaan;
 use App\Models\PerbaikanRegistrasi;
 use App\Models\PerbaikanUnregistrasi;
 use App\Models\Registrasi;
+use Illuminate\Support\Facades\DB;
 use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,11 @@ class DashboardUserController extends Controller
 
     public function index()
     {
+        $userName_ = Auth::user()->username;
         $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', Auth::user()->username)->get();
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $userName_)->get();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
 
@@ -36,6 +39,7 @@ class DashboardUserController extends Controller
                 'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
                 'lembarPemeliharaan' => $lembarPemeliharaan,
                 'dataPerbaikan' => $dataPerbaikan,
+                'itemPesanan' => $itemPesanan,
             ]);
     }
 

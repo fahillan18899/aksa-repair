@@ -25,12 +25,13 @@ class PerbaikanTeregistrasiController extends Controller
 
     public function index()
     {
-        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
+        $userName_ = Auth::user()->username;
+        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $userName_)->where('active', 1)->get();
         $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->get();
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $userName_)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
 

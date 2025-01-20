@@ -19,7 +19,8 @@ class PesananUserController extends Controller
     public function index()
     {
         $kodeRs_ = Auth::user()->kode_rs;
-        $items = DB::table('pesanans')->where('kode_rs', $kodeRs_)->get();
+        $userName_ = Auth::user()->username;
+        $items = DB::table('pesanans')->where('kode_rs', $kodeRs_)->where('pelapor_req', $userName_)->get();
         $dataInv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.user.pesanan_user.index', [
 
