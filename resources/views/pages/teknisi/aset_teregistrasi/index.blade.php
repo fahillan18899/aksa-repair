@@ -79,7 +79,7 @@
                                             @forelse ($itemPesanan as $index => $item)
                                                 <tr>
                                                     <td>{{ $index + 1 }}</td>
-                                                    <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id }}<span></td>
+                                                    <td title="klik untuk copy ke form" style="cursor: pointer;" onclick="copy(this)"><span>{{ $item->id }}<span></td>
                                                     <td>{{ $item->nama_req }}</td>
                                                     <td>{{ $item->merek_req }}</td>
                                                     <td>{{ $item->type_req }}</td>
@@ -205,7 +205,8 @@
                                             <div class="col-xs-9">
                                                 <input name="id_aset_reg" type="text" class="form-control"
                                                     id="id_aset_reg" placeholder="Klik id aset untuk copy ke sini" readonly
-                                                    data-toggle="tooltip" data-palcement="top" title="klik disini untuk load data alat">
+                                                    data-toggle="tooltip" data-palcement="top" title="klik disini untuk load data alat"
+                                                    style="cursor: pointer;">
                                             </div>
                                         </div>
 
