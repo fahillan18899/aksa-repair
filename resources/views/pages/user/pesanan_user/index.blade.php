@@ -33,6 +33,28 @@
       </ul>
     </div>
     @endif
+     <!-- Scanner QR -->
+       <div class="row">
+        <div class="col-sm-3">
+          <div class="panel panel-default thumbnail">
+            <div class="panel-heading no-print">
+              <h2 class="text-center">Scan QR Code</h2>
+            </div>
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <div id="app">
+                        <div class="preview-container">
+                            <video id="preview_user"></video>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+       </div>
+     <!-- Scanner QR end -->
      <!-- content -->
      <div class="row">
        <div class="col-sm-12">
@@ -54,9 +76,16 @@
                       <select name="id" class="form-control" id="id">
                       <option>Pilih Id Aset</option>
                         @foreach($dataInv as $dataInv)
-                        <option value="<?= $dataInv['id_aset']; ?>"><?= $dataInv['id_aset']; ?></option>
+                        <option value="<?= $dataInv['id_aset']; ?>">
+                                       <?= $dataInv['id_aset']; ?>_<?= $dataInv['nama_alat']; ?>_<?= $dataInv['serial_number']; ?>_<?= $dataInv['lokasi_alat']; ?></option>
                         @endforeach
                       </select>
+                     </div>
+                   </div>
+                   <div class="form-group row">
+                     <label for="id" class="col-xs-3 col-form-label">ID<i class="text-danger">*</i></label>
+                     <div class="col-xs-9">
+                       <input name="id" type="text" class="form-control" id="id_qr" placeholder="ID" value="">
                      </div>
                    </div>
                    <div class="form-group row">
@@ -86,7 +115,7 @@
                    <div class="form-group row">
                      <label for="kerusakan_req" class="col-xs-3 col-form-label">Kerusakan Alat<i class="text-danger">*</i></label>
                      <div class="col-xs-9">
-                       <input name="kerusakan_req" type="text" class="form-control" id="kerusakan_req" placeholder="Kerusakan Pada Alat">
+                       <input name="kerusakan_req" type="text" class="form-control" id="kerusakan_req" placeholder="Kerusakan Pada Alat" required>
                      </div>
                    </div>
                    <div class="form-group row">
@@ -182,8 +211,56 @@
  </div> <!-- /.content-wrapper -->
  @endsection
  @push('addon-script')
+ <script type="text/javascript">
+ // *Function scanner camera* // 
+    let scanner_user = new Instascan.Scanner({
+        video: document.getElementById('preview_user'),
+        mirror: false
+    });
+    scanner_user.addListener('scan', function(content) {
+        const fruits = content.split(',');
+        $("#id_qr").val(fruits[0]);
+    });
+
+    Instascan.Camera.getCameras().then(cameras => {
+        if (cameras.length > 0) {
+            scanner_user.start(cameras[1]);
+        } else {
+            console.error("Please enable Camera!");
+        }
+    });
+// *Function scanner camera end* //
+</script>
 <script type="text/javascript">
   $('select[name="id"]').on('change', function(){
+    var stateIDInv = $(this).val();
+    console.log(stateIDInv);
+    if (stateIDInv) {
+      $.ajax({
+        url: '/dashboard_user/getPesanan_user/' + stateIDInv,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          console.log(data);
+          $.each(data, function(key, value){
+            $('input[id="id_qr"]').val(value.id_aset);
+            $('input[id="nama_req"]').val(value.nama_alat);
+            $('input[id="merek_req"]').val(value.merek);
+            $('input[id="type_req"]').val(value.type);
+            $('input[id="sn_req"]').val(value.serial_number);
+          });
+              }
+            });
+    } else {
+            $('input[id="nama_req"]').empty();
+            $('input[id="merek_req"]').empty();
+            $('input[id="type_req"]').empty();
+            $('input[id="sn_req"]').empty();
+          }
+  })
+</script>
+<script type="text/javascript">
+  $('#id_qr').mouseup(function(){
     var stateIDInv = $(this).val();
     console.log(stateIDInv);
     if (stateIDInv) {
