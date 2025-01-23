@@ -542,6 +542,13 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                                            <div class="col-xs-9">
+                                                <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <div class="col-sm-offset-3 col-sm-6">
                                                 <div class="ui buttons">
                                                     <button class="ui positive button">Tambah</button>
@@ -582,6 +589,7 @@
                                             <th scope="col" class="none">Jumlah Harga Sperpart :</th>
                                             <th scope="col" class="none">Keluhan Dari alat :</th>
                                             <th scope="col" class="none">Korektif :</th>
+                                            <th scope="col" class="none">Foto Perbaikan :</th>
                                             <th scope="col" class="">Tombol Eksekusi</th>
                                         </thead>
                                         <tbody>
@@ -618,6 +626,7 @@
                                             <td><?php echo $item['jumlah_harga']; ?></td>
                                             <td><?php echo $item['keluhan_dari_alat_reg']; ?></td>
                                             <td><?php echo $item['korektif_reg']; ?></td>
+                                            <td><img style="width: 80px; height: 80px;"  alt='No Image' src="{{ URL::asset('storage/'.$item->foto_perbaikan) }}"></td>
                                             <td>
                                                 <a href="{{ route('update_perbaikan.edit', $item->id_perbaikan_reg) }}"
                                                     class="btn btn-xs btn-success" data-toggle="tooltip"
