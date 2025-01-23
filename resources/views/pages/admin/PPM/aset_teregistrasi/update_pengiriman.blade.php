@@ -153,6 +153,28 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi_4_reg" class="form-control" id="teknisi_4_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_4_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi_5_reg" class="form-control" id="teknisi_5_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_5_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama
                       Sperpart</label>
                     <div class="col-xs-9">

@@ -179,6 +179,28 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="teknisi4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi4_reg" class="form-control" id="teknisi4_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi4_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="teknisi5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi5_reg" class="form-control" id="teknisi5_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi5_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="ka_instalasi_reg" type="text" class="form-control" id="ka_instalasi_reg2" placeholder="Kepala Ruangan" value="<?= $item['ka_instalasi_reg'] ?>">

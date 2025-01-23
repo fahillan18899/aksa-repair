@@ -493,6 +493,32 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                                            <div class="col-xs-9">
+                                                <select name="teknisi_4_reg" class="form-control" id="Teknisi_4_reg">
+                                                    <option>-- Pilih Teknisi --</option>
+                                                    @foreach ($teknisis as $teknisi)
+                                                        <option value="<?= $teknisi['nama_teknisi'] ?>">
+                                                        <?= $teknisi['nama_teknisi'] ?></option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                                            <div class="col-xs-9">
+                                                <select name="teknisi_5_reg" class="form-control" id="Teknisi_5_reg">
+                                                    <option>-- Pilih Teknisi --</option>
+                                                    @foreach ($teknisis as $teknisi)
+                                                        <option value="<?= $teknisi['nama_teknisi'] ?>">
+                                                        <?= $teknisi['nama_teknisi'] ?></option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control" id="nama_sukucadang1" 
@@ -583,6 +609,8 @@
                                             <th scope="col" class="none">Teknisi 1 :</th>
                                             <th scope="col" class="none">Teknisi 2 :</th>
                                             <th scope="col" class="none">Teknisi 3 :</th>
+                                            <th scope="col" class="none">Teknisi 4 :</th>
+                                            <th scope="col" class="none">Teknisi 5 :</th>
                                             <th scope="col" class="none">Nama Sperpart :</th>
                                             <th scope="col" class="none">Volume Sperpart :</th>
                                             <th scope="col" class="none">Harga Satuan Sperpart :</th>
@@ -620,6 +648,8 @@
                                             <td><?php echo $item['teknisi_1_reg']; ?></td>
                                             <td><?php echo $item['teknisi_2_reg']; ?></td>
                                             <td><?php echo $item['teknisi_3_reg']; ?></td>
+                                            <td><?php echo $item['teknisi_4_reg']; ?></td>
+                                            <td><?php echo $item['teknisi_5_reg']; ?></td>
                                             <td><?php echo $item['suku_cadang']; ?></td>
                                             <td><?php echo $item['volume']; ?></td>
                                             <td><?php echo $item['harga_satuan']; ?></td>
@@ -809,6 +839,24 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi_4_reg" type="text" class="form-control"
+                                                id="Teknisi_4_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi_5_reg" type="text" class="form-control"
+                                                id="Teknisi_5_reg1" placeholder="Terisi Otomatis" readonly
+                                                style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
@@ -930,6 +978,8 @@
                                                 <th scope="col" class="none">Teknisi 1 :</th>
                                                 <th scope="col" class="none">Teknisi 2 :</th>
                                                 <th scope="col" class="none">Teknisi 3 :</th>
+                                                <th scope="col" class="none">Teknisi 4 :</th>
+                                                <th scope="col" class="none">Teknisi 5 :</th>
                                                 <th scope="col" class="none">Nama Sperpart :</th>
                                                 <th scope="col" class="none">Volume Sperpart :</th>
                                                 <th scope="col" class="none">Harga Satuan Sperpart :</th>
@@ -960,6 +1010,8 @@
                                                         <td><?php echo $item->teknisi_1_reg; ?></td>
                                                         <td><?php echo $item->teknisi_2_reg; ?></td>
                                                         <td><?php echo $item->teknisi_3_reg; ?></td>
+                                                        <td><?php echo $item->teknisi_4_reg; ?></td>
+                                                        <td><?php echo $item->teknisi_5_reg; ?></td>
                                                         <td><?php echo $item['suku_cadang']; ?></td>
                                                         <td><?php echo $item['volume']; ?></td>
                                                         <td><?php echo $item['harga_satuan']; ?></td>
@@ -1181,6 +1233,24 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="teknisi4_reg" class="col-xs-3 col-form-label">Teknisi 4 </label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi4_reg" type="text" class="form-control"
+                                                id="teknisi4_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="teknisi5_reg" class="col-xs-3 col-form-label">Teknisi 5 </label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi5_reg" type="text" class="form-control"
+                                                id="teknisi5_reg2" placeholder="Terisi Otomatis" value="" readonly
+                                                style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan
                                                 <i class="text-danger">*</i></label>
                                             <div class="col-xs-9">
@@ -1312,6 +1382,8 @@
                                                 <th scope="col" class="none">Teknisi 1 :</th>
                                                 <th scope="col" class="none">Teknisi 2 :</th>
                                                 <th scope="col" class="none">Teknisi 3 :</th>
+                                                <th scope="col" class="none">Teknisi 4 :</th>
+                                                <th scope="col" class="none">Teknisi 5 :</th>
                                                 <th scope="col" class="none">Nama Sperpart :</th>
                                                 <th scope="col" class="none">Volume Sperpart :</th>
                                                 <th scope="col" class="none">Harga Satuan Sperpart :</th>
@@ -1346,6 +1418,8 @@
                                                         <td>{{ $item->teknisi1_reg }}</td>
                                                         <td>{{ $item->teknisi2_reg }}</td>
                                                         <td>{{ $item->teknisi3_reg }}</td>
+                                                        <td>{{ $item->teknisi4_reg }}</td>
+                                                        <td>{{ $item->teknisi5_reg }}</td>
                                                         <td><?php echo $item['suku_cadang']; ?></td>
                                                         <td><?php echo $item['volume']; ?></td>
                                                         <td><?php echo $item['harga_satuan']; ?></td>
@@ -1531,6 +1605,24 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi_4_reg" type="text" class="form-control"
+                                                id="Teknisi_4_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                                            <div class="col-xs-9">
+                                                <input name="teknisi_5_reg" type="text" class="form-control"
+                                                id="Teknisi_5_reg3" placeholder="Terisi Otomatis" value="" 
+                                                readonly style="cursor: not-allowed;">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
@@ -1616,6 +1708,8 @@
                                                 <th class="none">Teknisi_1</th>
                                                 <th class="none">Teknisi_2</th>
                                                 <th class="none">Teknisi_3</th>
+                                                <th class="none">Teknisi_4</th>
+                                                <th class="none">Teknisi_5</th>
                                                 <th class="none">Nama Sperpart</th>
                                                 <th class="none">Volume Sperpart</th>
                                                 <th class="none">Harga Satuan Sperpart</th>
@@ -1640,6 +1734,8 @@
                                                         <td>{{ $item->teknisi_1_reg }}</td>
                                                         <td>{{ $item->teknisi_2_reg }}</td>
                                                         <td>{{ $item->teknisi_3_reg }}</td>
+                                                        <td>{{ $item->teknisi_4_reg }}</td>
+                                                        <td>{{ $item->teknisi_5_reg }}</td>
                                                         <td>{{ $item['suku_cadang'] }}</td>
                                                         <td>{{ $item['volume'] }}</td>
                                                         <td>{{ $item['harga_satuan'] }}</td>
@@ -1782,6 +1878,8 @@
                 $("#Pelapor_reg1").val(data.Pelapor_reg);
                 $("#Teknisi_2_reg1").val(data.Teknisi_2_reg);
                 $("#Teknisi_3_reg1").val(data.Teknisi_3_reg);
+                $("#Teknisi_4_reg1").val(data.Teknisi_4_reg);
+                $("#Teknisi_5_reg1").val(data.Teknisi_5_reg);
                 $("#Keterangan_Kondisi_Alat_reg1").val(data.Keterangan_Kondisi_Alat_reg);
                 $("#KA_Instalasi_reg1").val(data.Ka_Instalasi_reg);
                 $("#nama_sukucadang").val(data.suku_cadang);
@@ -1822,6 +1920,8 @@
                     $("#pelapor_reg2").val(data.Pelapor_reg);
                     $("#teknisi2_reg2").val(data.Teknisi_2_reg);
                     $("#teknisi3_reg2").val(data.Teknisi_3_reg);
+                    $("#teknisi4_reg2").val(data.Teknisi_4_reg);
+                    $("#teknisi5_reg2").val(data.Teknisi_5_reg);
                     $("#keterangan_reg2").val(data.Keterangan_Kondisi_Alat_reg);
                     $("#ka_instalasi_reg2").val(data.Ka_Instalasi_reg);
                     $("#nama_sukucadang2").val(data.suku_cadang);
@@ -1861,6 +1961,8 @@
                     $("#Pelapor_reg3").val(data.Pelapor_reg);
                     $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
                     $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
+                    $("#Teknisi_4_reg3").val(data.Teknisi_4_reg);
+                    $("#Teknisi_5_reg3").val(data.Teknisi_5_reg);
                     $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
                     $("#nama_sukucadang3").val(data.suku_cadang);
                     $("#volume3").val(data.volume);
