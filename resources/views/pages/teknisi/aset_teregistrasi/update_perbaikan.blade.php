@@ -153,6 +153,28 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi_4_reg" class="form-control" id="Teknisi_4_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_4_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                    <div class="col-xs-9">
+                      <select name="teknisi_5_reg" class="form-control" id="Teknisi_5_reg">
+                        @foreach ($teknisis as $teknisi)
+                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_5_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control"
@@ -198,6 +220,13 @@
                     <div class="col-xs-9">
                       <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif" value="<?php echo $item['korektif_reg'] ?>">
                     </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                      <div class="col-xs-9">
+                          <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
+                      </div>
                   </div>
 
                   <div class="form-group row">

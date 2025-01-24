@@ -352,6 +352,32 @@
                                         </div>
 
                                         <div class="form-group row">
+                                            <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                                            <div class="col-xs-9">
+                                                <select name="teknisi_4_reg" class="form-control" id="Teknisi_4_reg">
+                                                    <option>-- Pilih Teknisi --</option>
+                                                    @foreach ($teknisis as $teknisi)
+                                                        <option value="<?= $teknisi['nama_teknisi'] ?>">
+                                                            <?= $teknisi['nama_teknisi'] ?></option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                                            <div class="col-xs-9">
+                                                <select name="teknisi_5_reg" class="form-control" id="Teknisi_5_reg">
+                                                    <option>-- Pilih Teknisi --</option>
+                                                    @foreach ($teknisis as $teknisi)
+                                                        <option value="<?= $teknisi['nama_teknisi'] ?>">
+                                                            <?= $teknisi['nama_teknisi'] ?></option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
                                             <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                                             <div class="col-xs-9">
                                                 <input name="suku_cadang" type="text" class="form-control"
@@ -399,6 +425,13 @@
                                             <div class="col-xs-9">
                                                 <input name="korektif_reg" type="text" class="form-control"
                                                     id="Korektif_reg" placeholder="Korektif">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                                            <div class="col-xs-9">
+                                                <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
                                             </div>
                                         </div>
 
@@ -606,12 +639,15 @@
                                             <th class="none">Teknisi 1 :</th>
                                             <th class="none">Teknisi 2 :</th>
                                             <th class="none">Teknisi 3 :</th>
+                                            <th class="none">Teknisi 4 :</th>
+                                            <th class="none">Teknisi 5 :</th>
                                             <th class="none">Nama Sperpart :</th>
                                             <th class="none">Volume Sperpart :</th>
                                             <th class="none">Harga Satuan Sperpart :</th>
                                             <th class="none">Jumlah Harga Sperpart :</th>
                                             <th class="none">Keluhan Dari alat :</th>
                                             <th class="none">Korektif :</th>
+                                            <th scope="col" class="none">Foto Perbaikan :</th>
                                             <!--<th scope="col">Tombol_Eksekusi</th>-->
                                             <th class="">Tombol Eksekusi</th>
                                         </thead>
@@ -644,12 +680,15 @@
                                                     <td><?php echo $item['teknisi_1_reg']; ?></td>
                                                     <td><?php echo $item['teknisi_2_reg']; ?></td>
                                                     <td><?php echo $item['teknisi_3_reg']; ?></td>
+                                                    <td><?php echo $item['teknisi_4_reg']; ?></td>
+                                                    <td><?php echo $item['teknisi_5_reg']; ?></td>
                                                     <td><?php echo $item['suku_cadang']; ?></td>
                                                     <td><?php echo $item['volume']; ?></td>
                                                     <td><?php echo $item['harga_satuan']; ?></td>
                                                     <td><?php echo $item['jumlah_harga']; ?></td>
                                                     <td><?php echo $item['keluhan_dari_alat_reg']; ?></td>
                                                     <td><?php echo $item['korektif_reg']; ?></td>
+                                                    <td><img style="width: 80px; height: 80px;"  alt='No Image' src="{{ URL::asset('storage/'.$item->foto_perbaikan) }}"></td>
                                                     <!--<td><?php echo $item['kode_rs']; ?></td>-->
                                                     <td>
                                                         <a href="/dashboard_teknisi/perbaikan_teregistrasi/update_perbaikan/{{ $item->id_perbaikan_reg }}/edit" 

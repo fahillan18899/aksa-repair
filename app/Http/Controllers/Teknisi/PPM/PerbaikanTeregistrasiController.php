@@ -75,10 +75,20 @@ class PerbaikanTeregistrasiController extends Controller
             'teknisi_1_reg' => '',
             'teknisi_2_reg' => '',
             'teknisi_3_reg' => '',
+            'teknisi_4_reg' => '',
+            'teknisi_5_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
+            'foto_perbaikan' => '',
             'active' => '',
         ]);
+
+        if (isset($request['foto_perbaikan'])) {
+            $request['foto_perbaikan'] = $request->file('foto_perbaikan')->store(
+                'assets/gallery',
+                'public'
+            );
+        }
 
         $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
@@ -125,10 +135,20 @@ class PerbaikanTeregistrasiController extends Controller
             'teknisi_1_reg' => '',
             'teknisi_2_reg' => '',
             'teknisi_3_reg' => '',
+            'teknisi_4_reg' => '',
+            'teknisi_5_reg' => '',
             'keluhan_dari_alat_reg' => '',
             'korektif_reg' => '',
+            'foto_perbaikan' => '',
             'active' => '',
         ]);
+
+        if (isset($request['foto_perbaikan'])) {
+            $request['foto_perbaikan'] = $request->file('foto_perbaikan')->store(
+                'assets/gallery',
+                'public'
+            );
+        }
 
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
         $perbaikanRegistrasi->update($request->post());
