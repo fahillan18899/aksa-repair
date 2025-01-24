@@ -21,7 +21,7 @@ class PesananUserController extends Controller
         $kodeRs_ = Auth::user()->kode_rs;
         $userName_ = Auth::user()->username;
         $items = DB::table('pesanans')->where('kode_rs', $kodeRs_)->where('pelapor_req', $userName_)->get();
-        $dataInv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $dataInv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->where('lokasi_alat', $userName_)->get();
         return view('pages.user.pesanan_user.index', [
 
             'items' => $items,
