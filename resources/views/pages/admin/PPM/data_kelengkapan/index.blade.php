@@ -106,11 +106,6 @@
                             </td>
                           </tr>
                           @empty
-                          <tr>
-                            <td class="text-center" colspan="3">
-                              Data Kosong
-                            </td>
-                          </tr>
                           @endforelse
                         </tbody>
                       </table>
@@ -212,11 +207,6 @@
                             </td>
                           </tr>
                           @empty
-                          <tr>
-                            <td class="text-center" colspan="3">
-                              Data Kosong
-                            </td>
-                          </tr>
                           @endforelse
                         </tbody>
                       </table>
@@ -322,11 +312,6 @@
                             </td>
                           </tr>
                           @empty
-                          <tr>
-                            <td class="text-center" colspan="3">
-                              Data Kosong
-                            </td>
-                          </tr>
                           @endforelse
                         </tbody>
                       </table>
@@ -462,11 +447,6 @@
                           </td>
                         </tr>
                         @empty
-                        <tr>
-                          <td class="text-center" colspan="6">
-                            Data Kosong
-                          </td>
-                        </tr>
                         @endforelse
                       </tbody>
                     </table>

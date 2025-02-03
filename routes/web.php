@@ -45,6 +45,7 @@ use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
 use App\Http\Controllers\Admin\PPM\PemantauanController;
+use App\Http\Controllers\Admin\PPM\LkInspeksiController;
 use App\Http\Controllers\Admin\PPM\LkAlatController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
@@ -281,6 +282,13 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/lk_alat/show_bedside/{id}/show', [LkAlatController::class, 'showBedside']);
         Route::delete('tambahBedside/{id}', [LkAlatController::class, 'destroyBedside']);
         Route::get('/getLkAlat/{id}', [LkAlatController::class, 'getLkAlat']);
+
+        Route::get('lk_inspeksi', [LkInspeksiController::class, 'index']);
+        Route::get('/lk_inspeksi/data', [LkInspeksiController::class, 'data']);
+        Route::post('/lk_inspeksi', [LkInspeksiController::class, 'store']);
+        Route::get('lk_inspeksi', [LkInspeksiController::class, 'state']);
+        Route::get('lk_inspeksi/{id}', [LkInspeksiController::class, 'city']);
+        Route::get('lk_inspeksi/data', [LkInspeksiController::class, 'data']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');

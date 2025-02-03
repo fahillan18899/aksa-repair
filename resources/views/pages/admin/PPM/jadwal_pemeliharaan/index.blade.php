@@ -193,9 +193,8 @@
           success: function(data) {
             $('select[name="nama_alat"]').empty();
             $.each(data, function(key, value) {
-              $('select[name="nama_alat"]').append('<option value="' + value +'_'+ key +'">' + value +'_'+ key +'</option>');
+              $('select[name="nama_alat"]').append('<option value="' + value.id_aset +'_'+ value.nama_alat +'">' + value.id_aset +'_'+ value.nama_alat +'</option>');
             });
-            console.log(key)
           }
         });
       } else {
