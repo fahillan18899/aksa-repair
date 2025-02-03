@@ -44,14 +44,14 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col" rowspan="2">No</th>
-                      <th scope="col" rowspan="2">Bulan / Tahun</th>
-                      <th scope="col" rowspan="2">Lokasi</th>
-                      <th scope="col" rowspan="2">Nama Alat</th>
-                      <th scope="col" rowspan="2">No Seri</th>
-                      <th scope="col">Pemeriksaan Fisik</th>
-                      <th scope="col">Kelengkapan Alat</th>
-                      <th scope="col">Fungsi Alat</th>
+                      <th rowspan="2" align="center">No</th>
+                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Bulan / Tahun</th>
+                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Lokasi</th>
+                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Nama Alat</th>
+                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">No Seri</th>
+                      <th style="width: 10%;" align="center" class="text-center">Pemeriksaan Fisik</th>
+                      <th style="width: 10%;" align="center" class="text-center">Kelengkapan Alat</th>
+                      <th style="width: 10%;" align="center" class="text-center">Fungsi Alat</th>
                       <th scope="col" rowspan="2">Catatan</th>
                     </tr>
                     <tr>
