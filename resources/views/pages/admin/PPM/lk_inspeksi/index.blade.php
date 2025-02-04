@@ -114,55 +114,67 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('select[id="lokasi_alat"]').on('change', function() {
-      var stateID = $(this).val();
-      if (stateID) {
-        $.ajax({
-          url: '/dashboard/ppm/lk_inspeksi/' + stateID,
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-            $('select[id="nama_alat"]').empty();
-            $('select[id="nomer_seri"]').empty();
-            $.each(data, function(key, value) {
-              $('select[id="nama_alat"]').append('<option value="' + value.id_aset +'_'+ value.nama_alat +'">' + value.id_aset +'_'+ value.nama_alat +'</option>');
-              $('select[id="nomer_seri"]').append('<option value="' + value.id_aset +'_'+ value.serial_number +'">' + value.id_aset +'_'+ value.serial_number +'</option>');
+        var stateID = $(this).val();
+        if (stateID) {
+            $.ajax({
+                url: '/dashboard/ppm/lk_inspeksi/' + stateID,
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    if (data.length > 0) { 
+                        data.forEach((item, index) => {
+                            let i = index + 1; // Mulai dari 1
+                            $('input[id="nama_alat_' + i + '"]').val(item.id_aset + '_' + item.nama_alat);
+                            $('input[id="nomer_seri_' + i + '"]').val(item.serial_number);
+                        });
+                    } else {
+                        $('input[id^="nama_alat_"]').val('');
+                        $('input[id^="nomer_seri_"]').val('');
+                    }
+                }
             });
-            console.log(key)
-          }
-        });
-      } else {
-        $('select[name="nama_alat"]').empty();
-      }
+        }
     });
-  });
+});
+
+
 </script>
 <script>
 $(document).ready(function() {
-  let rowCount = 1; // Menyimpan jumlah baris
-  // Fungsi untuk menambah baris ke tabel
+    let rowCount = 1; // Menyimpan jumlah baris
+    const maxRows = 15; // Maksimal baris
+
+    // Fungsi untuk menambah baris ke tabel
     $("#addRow").click(function() {
-      let newRow = 
-      `<tr>
-        <td>${rowCount}</td>
-        <td><select name="nama_alat_${rowCount}" id="nama_alat" type="text" class="form-control"></select></td>
-        <td><select name="nomer_seri_${rowCount}" id="nomer_seri" type="text" class="form-control"></select></td>
-        <td><input name="periksa_fisik_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-        <td><input name="lengkap_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-        <td><input name="fungsi_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-        <td><input name="catatan_${rowCount}" type="text" class="form-control"></td>
-        <td><button type="button" class="removeRow">Hapus</button></td>
-      </tr>`;
+        if (rowCount > maxRows) {
+            alert("Maksimal row telah tercapai!");
+            return; // Menghentikan eksekusi jika sudah mencapai batas
+        }
+
+        let newRow = 
+        `<tr>
+            <td>${rowCount}</td>
+            <td><input name="nama_alat_${rowCount}" id="nama_alat_${rowCount}" type="text" class="form-control"></td>
+            <td><input name="nomer_seri_${rowCount}" id="nomer_seri_${rowCount}" type="text" class="form-control"></td>
+            <td><input name="periksa_fisik_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
+            <td><input name="lengkap_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
+            <td><input name="fungsi_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
+            <td><input name="catatan_${rowCount}" type="text" class="form-control"></td>
+            <td><button type="button" class="removeRow">Hapus</button></td>
+        </tr>`;
                 
-      // Menambah baris baru ke tbody
-      $("#dynamicTable tbody").append(newRow);
-      rowCount++; // Menambah nomor ID untuk input berikutnya
+        // Menambah baris baru ke tbody
+        $("#dynamicTable tbody").append(newRow);
+        rowCount++; // Menambah nomor ID untuk input berikutnya
     });
 
     // Fungsi untuk menghapus baris
     $(document).on("click", ".removeRow", function() {
         $(this).closest("tr").remove();
+        rowCount--; // Mengurangi rowCount ketika baris dihapus
     });
 });
+
 </script>
 
 @endpush
