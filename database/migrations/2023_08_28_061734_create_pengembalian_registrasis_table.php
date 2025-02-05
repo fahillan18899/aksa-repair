@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('teknisi1_reg')->nullable();
             $table->string('teknisi2_reg')->nullable();
             $table->string('teknisi3_reg')->nullable();
+            $table->string('teknisi4_reg')->nullable();
+            $table->string('teknisi5_reg')->nullable();
             $table->string('suku_cadang')->nullable();
             $table->string('volume')->nullable();
             $table->string('harga_satuan')->nullable();

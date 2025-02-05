@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('lk_inspeksis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_alat', 10)->nullable();
+            $table->string('bulan_tahun', 20)->nullable();
+            $table->string('lokasi_alat', 100)->nullable();
+            $table->string('nama_alat', 100)->nullable();
             $table->string('nomer_seri', 15)->nullable();
             $table->string('periksa_fisik', 7)->nullable();
             $table->string('lengkap_alat', 7)->nullable();

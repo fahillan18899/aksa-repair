@@ -28,31 +28,18 @@ class LkInspeksiController extends Controller
 
     public function state()
     {
-        $states = DB::table('gedungs')->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_gedung')->pluck('nama_gedung', 'id_gedung');
+        $states = DB::table('gedungs')->where('kode_rs', Auth::user()->kode_rs)
+        ->distinct('nama_gedung')->pluck('nama_gedung', 'id_gedung');
 
-        return view('pages.admin.PPM.lk_inspeksi.index', [
-
-            'states' => $states,
-        ]);
+        return view('pages.admin.PPM.lk_inspeksi.index', ['states' => $states,]);
     }
 
     public function city($id)
     {
         $cities = DB::table('registrasis')
-            ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)
-            ->get();
+            ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->get();
 
         return json_encode($cities);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -72,7 +59,7 @@ class LkInspeksiController extends Controller
         // Prepare an array of alat data using a loop
         $alatData = [];
     
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             // Get the input values dynamically for each alat
             $nama_alat = $request->input("nama_alat_$i");
             $nomer_seri = $request->input("nomer_seri_$i");
@@ -144,6 +131,16 @@ class LkInspeksiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+    {
+        //
+    }
+
+/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         //
     }
