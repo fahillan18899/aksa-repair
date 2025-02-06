@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Http;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
-        return view('pages.admin.home');
-    }
-
     public function qrGen()
     {
         return view('pages.admin.qr_code');

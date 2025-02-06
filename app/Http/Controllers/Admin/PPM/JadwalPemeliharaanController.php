@@ -33,8 +33,8 @@ class JadwalPemeliharaanController extends Controller
     {
         $cities = DB::table('registrasis')
             ->where('lokasi_alat', $id)->where('kode_rs', Auth::user()->kode_rs)
-            ->pluck('id_aset','nama_alat');
-
+            ->get();
+            
         return json_encode($cities);
     }
 

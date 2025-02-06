@@ -16,7 +16,8 @@ class HomeController extends Controller
 {
     private Helper $helper;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->helper = new Helper();
     }
 
@@ -35,25 +36,29 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $registrasiKalBar = Registrasi::where('kode_rs', Auth::user()->kode_rs)->whereNotNull('tanggal_kalibrasi')->count();
-        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
-        $dataKalibrasi = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
-        
+        $kodeRs = Auth::user()->kode_rs; // Mengambil kode_rs dari user yang sudah login
+
+        $registrasi = Registrasi::where('kode_rs', $kodeRs)->count();
+        $registrasiKalBar = Registrasi::where('kode_rs', $kodeRs)->whereNotNull('tanggal_kalibrasi')->count();
+        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->count();
+        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', $kodeRs)->count();
+        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', $kodeRs)->count();
+
+        // Mengambil data yang diperlukan dalam 1 query untuk lebih efisien
+        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->get();
+        $dataKalibrasi = LembarPemeliharaan::where('kode_rs', $kodeRs)->get();
+
         return view(
             'pages.admin.PPM.dashboard.index',
-            [
-                'registrasi' => $registrasi,
-                'registrasiKalBar' => $registrasiKalBar,
-                'perbaikanRegistrasi' => $perbaikanRegistrasi,
-                'dataPerbaikan' => $dataPerbaikan,
-                'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
-                'lembarPemeliharaan' => $lembarPemeliharaan,
-                'dataKalibrasi' => $dataKalibrasi,
-            ]
+            compact(
+                'registrasi',
+                'registrasiKalBar',
+                'perbaikanRegistrasi',
+                'dataPerbaikan',
+                'perbaikanUnregistrasi',
+                'lembarPemeliharaan',
+                'dataKalibrasi'
+            )
         );
     }
 
@@ -74,7 +79,7 @@ class HomeController extends Controller
     public function tabelKerusakan($id)
     {
         $itemPerbaikan = PerbaikanRegistrasi::where('id_aset_reg', $id)
-        ->where('kode_rs', Auth::user()->kode_rs)->get();
+            ->where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.data_inventaris.tabel_perbaikan', [
 
@@ -104,7 +109,7 @@ class HomeController extends Controller
         $itemKerusakan = PerbaikanRegistrasi::where('id_aset_reg', $id)->count();
 
         return view('pages.admin.PPM.data_inventaris.detail', [
-            
+
             'itemData' => $itemData,
             'itemKerusakan' => $itemKerusakan
         ]);
@@ -114,7 +119,8 @@ class HomeController extends Controller
     {
         $data = DB::table('registrasis')->where('id_aset', $idars)->first();
 
-        return response()->json(['nama_alat_reg' => $data->nama_alat,
+        return response()->json([
+            'nama_alat_reg' => $data->nama_alat,
             'merek_alat_reg' => $data->merek,
             'serial_number_reg' => $data->serial_number,
             'lokasi_alat_reg' => $data->lokasi_alat,
@@ -126,8 +132,9 @@ class HomeController extends Controller
     {
         $data = DB::table('registrasis')->where('id_aset', $idars)->first();
 
-        return response()->json(['nama_alat' => $data->nama_alat,
-                                'lokasi_alat' => $data->lokasi_alat,
+        return response()->json([
+            'nama_alat' => $data->nama_alat,
+            'lokasi_alat' => $data->lokasi_alat,
         ]);
     }
 
@@ -184,6 +191,4 @@ class HomeController extends Controller
             'keluhan_dari_alat_un' => $data->keluhan_dari_alat_un,
         ]);
     }
-
-    
 }

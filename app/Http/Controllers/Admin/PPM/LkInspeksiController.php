@@ -100,6 +100,21 @@ class LkInspeksiController extends Controller
             ->with('success', 'Data Alat Berhasil di Tambahkan.');
     }
     
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = LkInspeksi::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
+        $item->delete();
+
+        return redirect('/dashboard/ppm/lk_inspeksi/data')
+            ->with('success', 'Data User Berhasil di Hapus');
+    }
 
     /**
      * Display the specified resource.
@@ -145,14 +160,4 @@ class LkInspeksiController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -68,7 +68,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
-    Route::get('home', [DashboardController::class, 'index'])->name('dashboard');
 
     // menu human serource
     Route::resource('human_resource', HumanResourceController::class);
@@ -289,6 +288,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('lk_inspeksi', [LkInspeksiController::class, 'state']);
         Route::get('lk_inspeksi/{id}', [LkInspeksiController::class, 'city']);
         Route::get('lk_inspeksi/data', [LkInspeksiController::class, 'data']);
+        Route::delete('lk_inspeksi/data/{id}', [LkInspeksiController::class, 'destroy']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');
