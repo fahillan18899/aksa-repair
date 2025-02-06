@@ -56,29 +56,22 @@
                 <table id="printContent" class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th colspan="9" class="text-center">FORM MONITORING</th>
+                      <th colspan="8" class="text-center"><img src="{{ url('assets/kop-surat/kop surat Form Inspeksi noBorder.jpg') }}" alt="Kop Klaten" width="100%"></th>
                     </tr>
                     <tr>
-                      <th rowspan="2" align="center">No</th>
-                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Bulan_/_Tahun</th>
-                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Lokasi</th>
-                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">Nama Alat</th>
-                      <th style="width: 20%;" rowspan="2" align="center" class="text-center">No Seri</th>
-                      <th style="width: 10%;" align="center" class="text-center">Pemeriksaan Fisik</th>
-                      <th style="width: 10%;" align="center" class="text-center">Kelengkapan Alat</th>
-                      <th style="width: 10%;" align="center" class="text-center">Fungsi Alat</th>
-                      <th scope="col" rowspan="2">Catatan</th>
-                    </tr>
-                    <tr>
-                      <th scope="col">Baik / Rusak</th>
-                      <th scope="col">Lengkap / Tidak Lengkap</th>
-                      <th scope="col">Baik / Rusak</th>
+                      <th align="center" class="text-center">Bulan_/_Tahun</th>
+                      <th align="center" class="text-center">Lokasi</th>
+                      <th align="center" class="text-center">Nama_Alat</th>
+                      <th align="center" class="text-center">No_Seri</th>
+                      <th align="center" class="text-center">Pemeriksaan Fisik</th>
+                      <th align="center" class="text-center">Kelengkapan Alat</th>
+                      <th align="center" class="text-center">Fungsi Alat</th>
+                      <th align="center" class="text-center">Catatan</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse ($data as $index => $data)
                     <tr class="text-center">
-                      <td>{{ $index + 1 }}</td>
                       <td>{{ $data->bulan_tahun }}</td>
                       <td>{{ $data->lokasi_alat }}</td>
                       <td>{{ $data->nama_alat }}</td>
@@ -93,14 +86,12 @@
                   </tbody>
                   <thead>
                     <tr>
-                      <th></th>
-                      <th colspan="3">
-                        
-                      </th>
                       <th colspan="4">
                         
                       </th>
-                      <th></th>
+                      <th colspan="5">
+                        
+                      </th>
                     </tr>
                     <tr>
                       <th colspan="4">
@@ -216,39 +207,39 @@
 @push('addon-script')
 <script>
   // FUNGSI PRINT
-function printTableMonitoring() {
-  var printContent = document.getElementById("printContent").outerHTML;
-  var originalContent = document.body.innerHTML;
-  document.body.innerHTML = 
-  `<html>
-    <head>
-      <title>Print Table</title>
-      <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        th, td {
-          border: 1px solid black;
-          padding: 8px;
-          text-align: center;
-        }
-        th {
-          background-color:rgb(241, 236, 236);
-          }
-      </style>
-    </head>
-    <body>
-        ${printContent}
-    </body>
-  </html`;
-  window.print();
-  document.body.innerHTML = originalContent;
-}
-// FUNGSI PRINT END
+    function printTableMonitoring() {
+      var printContent = document.getElementById("printContent").outerHTML;
+      var originalContent = document.body.innerHTML;
+      document.body.innerHTML = 
+      `<html>
+        <head>
+          <title>Print Table</title>
+          <style>
+            table {
+              width: 100%;
+              border-collapse: collapse;
+            }
+            th, td {
+              border: 1px solid black;
+              padding: 8px;
+              text-align: center;
+            }
+            th {
+              background-color:rgb(241, 236, 236);
+              }
+          </style>
+        </head>
+        <body>
+            ${printContent}
+        </body>
+      </html`;
+      window.print();
+      document.body.innerHTML = originalContent;
+    }
+  // FUNGSI PRINT END
 </script>
 <script>
-  // FUNGSI TTD DIGITAL
+// FUNGSI TTD DIGITAL
     // ttd 1
     (function() {
       window.requestAnimFrame = (function(callback) {

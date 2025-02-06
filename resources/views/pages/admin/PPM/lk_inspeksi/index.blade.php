@@ -79,9 +79,9 @@
                         <td rowspan="2" align="center"><b>Catatan</b></td>
                       </tr>
                       <tr>
-                        <td align="center"><b>Baik / Rusak</b></td>
-                        <td align="center"><b>Lengkap / Kurang Lengkap</b></td>
-                        <td align="center"><b>Baik / Rusak</b></td>
+                        <td align="center"><b>Kondisi</b></td>
+                        <td align="center"><b>Kondisi</b></td>
+                        <td align="center"><b>Kondisi</b></td>
                       </tr>
                     </thead>
                     <tbody id="optionA">
@@ -125,7 +125,7 @@ $(document).ready(function() {
             if (data.length > 0) {
               data.forEach((item, index) => {
                 let i = index + 1; // Mulai dari 1
-                $('input[id="nama_alat_' + i + '"]').val(item.id_aset + '_' + item.nama_alat);
+                $('input[id="nama_alat_' + i + '"]').val(item.nama_alat);
                 $('input[id="nomer_seri_' + i + '"]').val(item.serial_number);
               });
             } else {
