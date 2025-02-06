@@ -66,7 +66,7 @@
                       <th style="width: 10%;" align="center" class="text-center">Pemeriksaan Fisik</th>
                       <th style="width: 10%;" align="center" class="text-center">Kelengkapan Alat</th>
                       <th style="width: 10%;" align="center" class="text-center">Fungsi Alat</th>
-                      <th scope="col">Catatan</th>
+                      <th scope="col" align="center">Catatan</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -59,7 +59,7 @@ class LkInspeksiController extends Controller
         // Prepare an array of alat data using a loop
         $alatData = [];
     
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 110; $i++) {
             // Get the input values dynamically for each alat
             $nama_alat = $request->input("nama_alat_$i");
             $nomer_seri = $request->input("nomer_seri_$i");
