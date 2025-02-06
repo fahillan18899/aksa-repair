@@ -59,14 +59,14 @@
                       <th colspan="8" class="text-center"><img src="{{ url('assets/kop-surat/kop surat Form Inspeksi noBorder.jpg') }}" alt="Kop Klaten" width="100%"></th>
                     </tr>
                     <tr>
-                      <th align="center" class="text-center">Bulan_/_Tahun</th>
-                      <th align="center" class="text-center">Lokasi</th>
-                      <th align="center" class="text-center">Nama_Alat</th>
-                      <th align="center" class="text-center">No_Seri</th>
-                      <th align="center" class="text-center">Pemeriksaan Fisik</th>
-                      <th align="center" class="text-center">Kelengkapan Alat</th>
-                      <th align="center" class="text-center">Fungsi Alat</th>
-                      <th align="center" class="text-center">Catatan</th>
+                      <th style="width: 20%;" align="center" class="text-center">Bulan_/_Tahun</th>
+                      <th style="width: 20%;" align="center" class="text-center">Lokasi</th>
+                      <th style="width: 20%;" align="center" class="text-center">Nama_Alat</th>
+                      <th style="width: 20%;" align="center" class="text-center">No_Seri</th>
+                      <th style="width: 10%;" align="center" class="text-center">Pemeriksaan Fisik</th>
+                      <th style="width: 10%;" align="center" class="text-center">Kelengkapan Alat</th>
+                      <th style="width: 10%;" align="center" class="text-center">Fungsi Alat</th>
+                      <th scope="col">Catatan</th>
                     </tr>
                   </thead>
                   <tbody>
