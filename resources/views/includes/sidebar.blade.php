@@ -52,17 +52,24 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
+            @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == !"RS0020")
             <ul class="treeview-menu">
               <li class="{{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li>
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
-              <li class="{{ request()->is('dashboard/ppm/lk_alat') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_alat">lk alat</a></li>
-              @endif
               <li class="{{ request()->is('dashboard/ppm/pemantauan') ? 'active' : '' }}"><a href="/dashboard/ppm/pemantauan">Pemantauan Alat</a></li>
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
-              <li class="{{ request()->is('dashboard/ppm/lk_inspeksi') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_inspeksi">Monitoring</a></li>
-              @endif
               <li class="{{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li>
+              <!-- <li class="{{ request()->is('dashboard/ppm/lk_inspeksi') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_inspeksi">Monitoring</a></li> -->
+              <!-- <li class="{{ request()->is('dashboard/ppm/lk_alat') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_alat">lk alat</a></li> -->
             </ul>
+            @endif
+            @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+            <ul class="treeview-menu">
+              <li class="{{ request()->is('dashboard/ppm/lk_alat') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_alat">Pemeliharaan ALKES</a></li>
+              <li class="{{ request()->is('dashboard/ppm/lk_inspeksi') ? 'active' : '' }}"><a href="/dashboard/ppm/lk_inspeksi">Monitoring ALKES</a></li>
+              <!-- <li class="{{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/lembar_pemeliharaan">Lembar Pemeliharaan Alat</a></li> -->
+              <!-- <li class="{{ request()->is('dashboard/ppm/pemantauan') ? 'active' : '' }}"><a href="/dashboard/ppm/pemantauan">Pemantauan Alat</a></li> -->
+              <!-- <li class="{{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}"><a href="/dashboard/ppm/jadwal_pemeliharaan">Jadwal Pemeliharaan</a></li> -->
+            </ul>
+            @endif
           </li>
         </ul>
       </li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Http\Controllers\Controller;
-use App\Models\LembarPemeliharaan;
+use App\Models\Registrasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,10 +16,10 @@ class ViewTableController3 extends Controller
      */
     public function index()
     {
-        $asetPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->orderBy('lokasi_alat', 'asc')->get();
 
         return view('pages.admin.PPM.view_tabel3.tabel_pemeliharaan', [
-            'asetPemeliharaan' => $asetPemeliharaan,
+            'items' => $items
         ]);
     }
 
