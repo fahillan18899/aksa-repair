@@ -148,6 +148,7 @@
   // FUNGSI AUTOFILL END
 </script>
 <script>
+  //FUNGSI TAMBAH ROW
   $(document).ready(function() {
     let rowCount = 1; // Menyimpan jumlah baris yang ada
     const maxRows = 110; // Maksimal jumlah baris
@@ -156,7 +157,7 @@
     $("#generateRows").click(function() {
       let inputRows = parseInt($("#rowCountInput").val()); // Ambil jumlah baris dari input
       if (isNaN(inputRows) || inputRows <= 0) {
-        alert("Masukkan angka yang valid!"); 
+        alert("Masukkan angka yang valid!");
         return;
       }
 
@@ -169,16 +170,16 @@
       // Loop untuk menambahkan baris sebanyak yang diminta
       for (let i = 0; i < inputRows; i++) {
         let newRow = `
-          <tr>
-            <td>${rowCount}</td>
-            <td><input name="nama_alat_${rowCount}" id="nama_alat_${rowCount}" type="text" class="form-control"></td>
-            <td><input name="nomer_seri_${rowCount}" id="nomer_seri_${rowCount}" type="text" class="form-control"></td>
-            <td align="center"><input name="periksa_fisik_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-            <td align="center"><input name="lengkap_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-            <td align="center"><input name="fungsi_alat_${rowCount}" type="checkbox" class="form-check-input" value="Ya" checked></td>
-            <td><input name="catatan_${rowCount}" type="text" class="form-control"></td>
-            <td><button type="button" class="removeRow">Hapus</button></td>
-          </tr>`;
+            <tr>
+              <td>${rowCount}</td>
+              <td><input name="nama_alat_${rowCount}" id="nama_alat_${rowCount}" type="text" class="form-control"></td>
+              <td><input name="nomer_seri_${rowCount}" id="nomer_seri_${rowCount}" type="text" class="form-control"></td>
+              <td align="center"><input name="periksa_fisik_${rowCount}" type="checkbox" class="form-check-input" value="Baik" checked></td>
+              <td align="center"><input name="lengkap_alat_${rowCount}" type="checkbox" class="form-check-input" value="Lengkap" checked></td>
+              <td align="center"><input name="fungsi_alat_${rowCount}" type="checkbox" class="form-check-input" value="Baik" checked></td>
+              <td><input name="catatan_${rowCount}" type="text" class="form-control"></td>
+              <td><button type="button" class="removeRow">Hapus</button></td>
+            </tr>`;
 
         $("#dynamicTable tbody").append(newRow);
         rowCount++; // Tambah nomor ID untuk input berikutnya
@@ -191,6 +192,7 @@
       rowCount--; // Mengurangi rowCount ketika baris dihapus
     });
   });
+  //FUNGSI TAMBAH ROW END
 </script>
 @endpush
 @endsection
