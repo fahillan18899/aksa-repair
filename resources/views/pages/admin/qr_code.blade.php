@@ -50,7 +50,7 @@
 
 
 <body onload="autoClick();">
-
+@if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == !"RS0004")
  <div class="d-flex flex-row bd-highlight">
   <?php
 
@@ -79,8 +79,37 @@
   <?php endfor; ?>
 
  </div>
+ @endif
+ @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0004")
+ <div class="d-flex flex-row bd-highlight">
+  <?php
 
+  function generateQRCode2($i, $item)
+  {
+   return '<div class="bd-highlight" >
+          <img src="data:image/png;base64,' . base64_encode(QrCode::format('png')->margin(1.5)->size(60)->generate("" . $item . $i)) . '">
+          <p class="text-center " style="font-size: 8px; margin-top: -31px; padding-bottom: 5px; margin-left: 5px; important"><b><b>' . $item .  $i . '</b></b></p>
+         </div>';
+  }
+  
 
+  $row_counter = 1;
+
+  for ($i = $item['angka_awal']; $i <= $item['angka_akhir']; $i++) : ?>
+
+   <?php echo generateQRCode2($i, $item['kode']); ?>
+
+   <?php
+   if ($row_counter % 2 == 0) {
+    echo '</div><div class="d-flex flex-row bd-highlight" style="margin-top: -18px;">';
+   }
+   $row_counter++;
+   ?>
+
+  <?php endfor; ?>
+
+ </div>
+ @endif
 </body>
 
 </html>
