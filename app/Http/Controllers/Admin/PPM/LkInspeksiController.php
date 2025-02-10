@@ -106,15 +106,28 @@ class LkInspeksiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    // public function destroy($id)
+    // {
+    //     $item = LkInspeksi::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+    //     $item->delete();
+    //     return redirect('/dashboard/ppm/lk_inspeksi/data')
+    //         ->with('success', 'Data User Berhasil di Hapus');
+    // }
+
+    public function destroyMultiple(Request $request)
     {
-        $item = LkInspeksi::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
 
-        $item->delete();
-
-        return redirect('/dashboard/ppm/lk_inspeksi/data')
-            ->with('success', 'Data User Berhasil di Hapus');
+        if (!$request->has('ids')) {
+            return response()->json(['message' => 'Tidak ada data yang dipilih'], 400);
+        }
+    
+        LkInspeksi::whereIn('id', $request->ids)
+            ->where('kode_rs', Auth::user()->kode_rs)
+            ->delete();
+    
+        return response()->json(['message' => 'Data yang dipilih berhasil dihapus!']);
     }
+    
 
     /**
      * Display the specified resource.

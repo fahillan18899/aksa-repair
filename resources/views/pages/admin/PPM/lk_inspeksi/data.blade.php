@@ -22,6 +22,7 @@
     cursor: crosshair;
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -59,6 +60,7 @@
                       <th colspan="8" class="text-center"><img src="{{ url('assets/kop-surat/kop surat Form Inspeksi noBorder.jpg') }}" alt="Kop Klaten" width="100%"></th>
                     </tr>
                     <tr>
+                      <th class="actionColumn"><input type="checkbox" id="checkAll"></th> <!-- Checkbox untuk memilih semua -->
                       <th style="width: 20%;" align="center" class="text-center">Bulan_/_Tahun</th>
                       <th style="width: 20%;" align="center" class="text-center">Lokasi</th>
                       <th style="width: 20%;" align="center" class="text-center">Nama_Alat</th>
@@ -67,12 +69,13 @@
                       <th style="width: 10%;" align="center" class="text-center">Kelengkapan Alat</th>
                       <th style="width: 10%;" align="center" class="text-center">Fungsi Alat</th>
                       <th scope="col" align="center">Catatan</th>
-                      <th class="actionColumn" scope="col" align="center">Toombol Aksi</th>
+                      <!-- <th class="actionColumn" scope="col" align="center">Toombol Aksi</th> -->
                     </tr>
                   </thead>
                   <tbody>
                     @forelse ($data as $index => $data)
                     <tr class="text-center">
+                      <td class="actionColumn"><input type="checkbox" class="delete-checkbox" value="{{ $data->id }}"></td> <!-- Checkbox untuk setiap baris -->
                       <td>{{ $data->bulan_tahun }}</td>
                       <td>{{ $data->lokasi_alat }}</td>
                       <td>{{ $data->nama_alat }}</td>
@@ -81,7 +84,7 @@
                       <td>{{ $data->lengkap_alat }}</td>
                       <td>{{ $data->fungsi_alat }}</td>
                       <td>{{ $data->catatan }}</td>
-                      <td class="actionColumn">
+                      <!-- <td class="actionColumn">
                         <form action="{{ url('/dashboard/ppm/lk_inspeksi/data', $data->id) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
@@ -90,9 +93,9 @@
                           </button>
                         </form>
                       </td>
-                    </tr>
-                    @empty
-                    @endforelse
+                    </tr> -->
+                      @empty
+                      @endforelse
                   </tbody>
                   <thead>
                     <tr>
@@ -125,6 +128,8 @@
                     </tr>
                   </thead>
                 </table>
+                <!-- Tombol Hapus Massal -->
+                <button class="btn btn-danger mt-3" id="deleteSelected">Hapus yang Dipilih</button>
                 <!-- Tombol Print -->
                 <button class="btn btn-primary mb-3" onclick="printTableMonitoring()">Print</button>
                 <!-- TABEL -->
@@ -222,33 +227,33 @@
     var originalContent = document.body.innerHTML;
     document.body.innerHTML =
       `<html>
-        <head>
-          <title>Print Table</title>
-          <style>
-            table {
-              width: 100%;
-              border-collapse: collapse;
-            }
-            th, td {
-              border: 1px solid black;
-              padding: 8px;
-              text-align: center;
-            }
-            th {
-              background-color:rgb(241, 236, 236);
+          <head>
+            <title>Print Table</title>
+            <style>
+              table {
+                width: 100%;
+                border-collapse: collapse;
               }
-              
-            @media print {
-              .actionColumn {
-              display: none !important;
+              th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
               }
-            }
-          </style>
-        </head>
-        <body>
-            ${printContent}
-        </body>
-      </html`;
+              th {
+                background-color:rgb(241, 236, 236);
+                }
+                
+              @media print {
+                .actionColumn {
+                display: none !important;
+                }
+              }
+            </style>
+          </head>
+          <body>
+              ${printContent}
+          </body>
+        </html`;
     window.print();
     document.body.innerHTML = originalContent;
   }
@@ -543,4 +548,55 @@
   // ttd S 2
   // FUNGSI TTD DIGITAL END
 </script>
+<script>
+  //FUNGSI CEKLIST HAPUS
+  $(document).ready(function() {
+    // Pilih Semua Checkbox
+    $("#checkAll").click(function() {
+      $(".delete-checkbox").prop("checked", this.checked);
+    });
+
+    // Hapus Item yang Dipilih
+    $("#deleteSelected").click(function() {
+      let selectedIds = [];
+      $(".delete-checkbox:checked").each(function() {
+        selectedIds.push($(this).val());
+      });
+
+      if (selectedIds.length === 0) {
+        Swal.fire({
+        icon: 'info',
+        title: 'Ups!',
+        text: 'Pilih setidaknya satu data untuk dihapus!',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+        return;
+      }
+
+      if (!confirm("Apakah Anda yakin ingin menghapus data yang dipilih?")) {
+        return;
+      }
+
+      // Kirim AJAX Request ke Server
+      $.ajax({
+        url: "{{ route('delete.multiple') }}",
+        type: "POST",
+        data: {
+          _token: "{{ csrf_token() }}",
+          ids: selectedIds
+        },
+        success: function(response) {
+          alert(response.message);
+          location.reload(); // Reload halaman setelah menghapus data
+        },
+        error: function(xhr) {
+          alert("Terjadi kesalahan saat menghapus data!");
+        }
+      });
+    });
+  });
+  //FUNGSI CEKLIST HAPUS END
+</script>
+
 @endpush

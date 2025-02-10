@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Lembar Kerja Monitoring')
+@section('title', 'Lembar Kerja Inspeksi')
 
 <!-- Content Wrapper. Contains page content -->
 <style>
@@ -10,6 +10,7 @@
     height: 30px;
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -17,8 +18,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-cogs"></i></div>
       <div class="header-title">
-        <h1>LK Monitoring</h1>
-        <small>Form LK Monitoring</small>
+        <h1>LK Inspeksi</h1>
+        <small>Form LK Inspeksi</small>
       </div>
     </div>
   </section>
@@ -38,7 +39,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print" id="formp1">
-            <h1>Form LK Monitoring</h1>
+            <h1>Form LK Inspeksi</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -118,6 +119,8 @@
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+
+
 @push('addon-script')
 <script>
   // FUNGSI AUTOFILL
@@ -161,11 +164,17 @@
         return;
       }
 
-      // Cek apakah jumlah baris akan melebihi batas
-      if (rowCount + inputRows > maxRows) {
-        alert("Maksimal row telah tercapai!");
-        return;
-      }
+// Cek apakah jumlah baris akan melebihi batas
+if (rowCount + inputRows > maxRows) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Batas Maksimal Tercapai!',
+        text: 'Anda hanya bisa menambahkan maksimal ' + maxRows + ' baris.',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
+    return;
+}
 
       // Loop untuk menambahkan baris sebanyak yang diminta
       for (let i = 0; i < inputRows; i++) {

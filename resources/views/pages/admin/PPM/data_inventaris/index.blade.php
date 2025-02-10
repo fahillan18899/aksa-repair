@@ -84,7 +84,7 @@
                   <td><?php echo $item['nama_alat']; ?></td>
                   <td><?php echo $item['merek']; ?></td>
                   <td><?php echo $item['type']; ?></td>
-                  <td><img style="width: 80px; height: 80px;"  alt='No Image' src="{{ URL::asset('storage/'.$item->foto_pendukung) }}"></td>
+                  <td><img style="width: 80px; height: 80px;" alt='No Image' src="{{ URL::asset('storage/'.$item->foto_pendukung) }}"></td>
                   <td><?php echo $item['serial_number']; ?></td>
                   <td><?php echo $item['lokasi_alat']; ?></td>
                   <td><?php echo $item['tanggal_kalibrasi']; ?></td>
@@ -116,8 +116,8 @@
                       title="Cetak"><i class="fa fa-print"></i></a>
 
                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                    data-target="#exampleModal<?php echo $item['id_aset'] ?>">
-                    <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="view" aria-hidden="true"></i>
+                      data-target="#exampleModal<?php echo $item['id_aset'] ?>">
+                      <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="view" aria-hidden="true"></i>
                     </button>
 
                     <form
@@ -131,69 +131,69 @@
                         <i class="fa fa-trash "></i>
                       </button>
 
-                                          <!-- modal  -->
-                    <!-- Button trigger modal  -->
-                    <!-- Modal  -->
-                    <div class="modal fade" id="exampleModal<?php echo $item['id_aset'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header" style="color:white; background-color:#042a4a;">
-                            <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
-                          </div>
-                          <div class="modal-body">
-                            <div class="row">
-                              <table class="datatable table table-bordered table-hover" style="width:96%; margin-left:10px;">
-                                <tr>
-                                  <td style="width: 50%;">Id Aset</td>
-                                  <td><?php echo $item['id_aset'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%;">Nama Alat</td>
-                                  <td><?php echo $item['nama_alat'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Jenis Alat</td>
-                                  <td><?php echo $item['jenis_alat'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Merek</td>
-                                  <td><?php echo $item['merek'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Type</td>
-                                  <td><?php echo $item['type'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Serial Number</td>
-                                  <td><?php echo $item['serial_number'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Ruangan</td>
-                                  <td><?php echo $item['lokasi_alat'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Tanggal Kalibrasi</td>
-                                  <td><?php echo $item['tanggal_kalibrasi'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Umur Alat</td>
-                                  <td><?php echo $item['umur_alat'] ?></td>
-                                </tr>
-                                <tr>
-                                  <td style="width: 50%">Penyusutan Aset</td>
-                                  <td><?php echo $item['penyusutan_aset'] ?>%</td>
-                                </tr>
-                              </table>
+                      <!-- modal  -->
+                      <!-- Button trigger modal  -->
+                      <!-- Modal  -->
+                      <div class="modal fade" id="exampleModal<?php echo $item['id_aset'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header" style="color:white; background-color:#042a4a;">
+                              <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
                             </div>
-                          </div>
-                          <div class="modal-footer">
-                            <a href="/dashboard/ppm/data_inventaris/tabel_perbaikan/{{ $item['id_aset'] }}" type="button" class="btn btn-warning">Lihat Kerusakan Alat</a>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <div class="modal-body">
+                              <div class="row">
+                                <table class="datatable table table-bordered table-hover" style="width:96%; margin-left:10px;">
+                                  <tr>
+                                    <td style="width: 50%;">Id Aset</td>
+                                    <td><?php echo $item['id_aset'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%;">Nama Alat</td>
+                                    <td><?php echo $item['nama_alat'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Jenis Alat</td>
+                                    <td><?php echo $item['jenis_alat'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Merek</td>
+                                    <td><?php echo $item['merek'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Type</td>
+                                    <td><?php echo $item['type'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Serial Number</td>
+                                    <td><?php echo $item['serial_number'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Ruangan</td>
+                                    <td><?php echo $item['lokasi_alat'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Tanggal Kalibrasi</td>
+                                    <td><?php echo $item['tanggal_kalibrasi'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Umur Alat</td>
+                                    <td><?php echo $item['umur_alat'] ?></td>
+                                  </tr>
+                                  <tr>
+                                    <td style="width: 50%">Penyusutan Aset</td>
+                                    <td><?php echo $item['penyusutan_aset'] ?>%</td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="/dashboard/ppm/data_inventaris/tabel_perbaikan/{{ $item['id_aset'] }}" type="button" class="btn btn-warning">Lihat Kerusakan Alat</a>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- modal -->
+                      <!-- modal -->
                     </form>
                   </td>
                 </tr>

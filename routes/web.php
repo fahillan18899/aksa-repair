@@ -288,7 +288,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('lk_inspeksi', [LkInspeksiController::class, 'state']);
         Route::get('lk_inspeksi/{id}', [LkInspeksiController::class, 'city']);
         Route::get('lk_inspeksi/data', [LkInspeksiController::class, 'data']);
-        Route::delete('lk_inspeksi/data/{id}', [LkInspeksiController::class, 'destroy']);
+        Route::post('/dashboard/ppm/lk_inspeksi/data/delete-multiple', [LkInspeksiController::class, 'destroyMultiple'])->name('delete.multiple');
+        // Route::delete('lk_inspeksi/data/{id}', [LkInspeksiController::class, 'destroy']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');
