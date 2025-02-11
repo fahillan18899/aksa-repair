@@ -42,6 +42,7 @@
   ['RSUI YAKSSI', 'RS0024'],
   ['RSUI KUSTATI', 'RS0025'],
   ['RSUD DR SOESELO', 'RS0026'],
+  ['RS AMAL SEHAT WONOGIRI', 'RS0027'],
   ];
   @endphp
   <div class="login-wrapper">
