@@ -50,7 +50,7 @@
 
 
 <body onload="autoClick();">
-@if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == !"RS0004")
+@if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0004")
  <div class="d-flex flex-row bd-highlight">
   <?php
 
@@ -70,7 +70,7 @@
    <?php echo generateQRCode($i, $item['kode']); ?>
 
    <?php
-   if ($row_counter % 3 == 0) {
+   if ($row_counter % 1 == 0) {
     echo '</div><div class="d-flex flex-row bd-highlight" style="margin-top: -18px;">';
    }
    $row_counter++;

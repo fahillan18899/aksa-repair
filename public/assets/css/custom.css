@@ -70,6 +70,8 @@ body {
     transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     margin-left: 250px;
     z-index: 820;
+    margin-left: 250px; /* Sesuai lebar sidebar agar tidak tertutup */
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .layout-top-nav .content-wrapper,
@@ -785,20 +787,20 @@ hr {
 /*--- Component: Sidebar ---*/
 
 .main-sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    padding-top: 60px;
-    min-height: 100%;
-    width: 250px;
-    z-index: 810;
+    height: 100vh; /* Agar sidebar penuh tinggi */
+    width: 250px; /* Atur lebar sidebar */
+    overflow-y: auto; /*Tambahkan scroll jika konten melebihi tinggi */
+    background-color: #042a4a; /* Warna background sesuai tema */
+    z-index: 1000; /* Pastikan sidebar di atas konten lain */
     font-family: 'Alegreya Sans', sans-serif;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
     -webkit-transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-    background-color: #042a4a;
 }
 
 @media (max-width: 767px) {
@@ -833,7 +835,8 @@ hr {
 }
 
 .sidebar {
-    padding-bottom: 10px;
+    height: 100%;
+    padding-bottom: 50px;
 }
 
 .sidebar-form input:focus {

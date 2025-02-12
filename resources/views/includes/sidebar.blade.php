@@ -3,10 +3,10 @@
   <div class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel text-center">
-      <div class="image">
+      <!-- <div class="image">
         <img src="{{ url('assets_web/img/placeholder/profile.png') }}" class="img-circle" alt="User Image">
-      </div>
-      <div class="info">
+      </div> -->
+      <div class="info" style="margin-top: 80px;">
         <p>{{ Auth::user()->username }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i>
           {{ Auth::user()->user_role }} </a>
@@ -19,7 +19,7 @@
       @can(['RSUD_TEMANGGUNG', 'admin'])
       <li class="{{ request()->is('dashboard/ppm/registrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi"><i class="fa fa-check-square-o"></i>Registrasi Alat Print QR</a></li>
       @endcan
-      <li class="{{ request()->is('dashboard/ppm/registrasi-aset') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi-aset"><i class="fa fa-check-square"></i>Registrasi Alat Bawa QR<b style="color: red">(NEW)</b></a></li>
+      <li class="{{ request()->is('dashboard/ppm/registrasi-aset') ? 'active' : '' }}"><a href="/dashboard/ppm/registrasi-aset"><i class="fa fa-check-square"></i>Registrasi Alat</a></li>
       <li class="{{ request()->is('dashboard/ppm/data_inventaris') ? 'active' : '' }}"><a href="/dashboard/ppm/data_inventaris"><i class="fa fa-archive" aria-hidden="true"></i>Data Inventaris</a></li>
       <!---->
       <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }}
@@ -44,7 +44,7 @@
               <!-- <li class=""><a href="/dashboard/ppm/aset_non_alkes">Non-Aset</a></li> -->
             </ul>
           </li>
-          @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == !"RS0020")
+          @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0020")
           <li class="treeview {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
             <a href="#">
               <span>Pemeliharaan Preverentive</span>

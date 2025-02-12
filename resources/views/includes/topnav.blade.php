@@ -1,3 +1,25 @@
+<style>
+  .main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #222d32; /* Sesuaikan dengan tema */
+    z-index: 1030; /* Pastikan header ada di atas elemen lain */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan agar terlihat lebih menarik */
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.content-wrapper {
+    margin-top: 60px; /* Pastikan konten tidak tertutup header */
+    transition: margin-top 0.3s ease-in-out;
+}
+
+</style>
 <header class="main-header">
   <a href="" class="logo">
     <span class="logo-mini">

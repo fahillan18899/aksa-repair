@@ -133,7 +133,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat </label>
+                    <label for="Lokasi_Alat" class="col-xs-3 col-form-label">Lokasi Alat<i class="text-danger">*</i> </label>
                     <div class="col-xs-9">
                       <select name="lokasi_alat" class="form-control" id="Lokasi_Alat">
                         <option>Pilih Lokasi Alat</option>
@@ -221,7 +221,7 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="Teknisi_PPM" class="col-xs-3 col-form-label">Teknisi PPM <i class="text-danger">*</i></label>
+                    <label for="Teknisi_PPM" class="col-xs-3 col-form-label">Teknisi PPM</label>
                     <div class="col-xs-9">
                       <input name="teknisi_ppm" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi pelaksana PPM">
                     </div>
