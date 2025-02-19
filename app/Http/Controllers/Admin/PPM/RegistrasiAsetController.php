@@ -10,6 +10,7 @@ use App\Models\LembarPemeliharaan;
 use App\Models\Registrasi;
 use App\Models\Ruangan;
 use App\Models\Gedung;
+use App\Models\Nomklatur;
 use App\Models\TambahJenisAlat;
 use App\Models\TambahDistributor;
 use Illuminate\Http\Request;
@@ -28,7 +29,12 @@ class RegistrasiAsetController extends Controller
 
     public function json()
     {
-        $b = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nama_alat', 'merek', 'type', 'gambar', 'serial_number', 'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 'harga_perolehan', 'sumber_dana', 'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 'umur_alat', 'jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
+        $b = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nomklatur', 'nama_alat', 'merek', 
+        'type', 'gambar', 'serial_number', 'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 
+        'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 
+        'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 
+        'harga_perolehan', 'sumber_dana', 'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 
+        'umur_alat', 'jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
         $c = DataTables::eloquent($b)->make(false);
 
         return $c;
@@ -66,6 +72,7 @@ class RegistrasiAsetController extends Controller
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $jenis = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -75,6 +82,7 @@ class RegistrasiAsetController extends Controller
             'ruangans' => $ruangans,
             'gedung' => $gedung,
             'alats' => $alats,
+            'nomklatur' => $nomklatur,
             'jenis' => $jenis,
             'distribut' => $distribut
         ]);
@@ -85,6 +93,7 @@ class RegistrasiAsetController extends Controller
         $data = $request->validate([
             'id_aset' => 'required|unique:registrasis',
             'qr_code' => '',
+            'nomklatur' => '',
             'jenis_alat' => 'required|max:50',
             'nama_alat' => 'required|max:50',
             'merek' => 'required|max:50',
@@ -209,12 +218,14 @@ class RegistrasiAsetController extends Controller
     {
         $item = Registrasi::where('id_aset', $id)->first();
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
         $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
         $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.admin.PPM.registrasi_aset.update', [
             'ruangans' => $ruangans,
             'alats' => $alats,
+            'nomklatur' => $nomklatur,
             'item' => $item,
             'distribut' => $distribut,
         ]);
@@ -225,6 +236,7 @@ class RegistrasiAsetController extends Controller
         $data = $request->validate([
             'jenis_alat' => '',
             'nama_alat' => '',
+            'nomklatur' => '',
             'merek' => '',
             'type' => '',
             'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
@@ -303,5 +315,11 @@ class RegistrasiAsetController extends Controller
     {
       $distributor = TambahDistributor::where("nama_distributor_p", $id)->get();
       return json_encode($distributor);
+    }
+
+    public function getNomklatur($id)
+    {
+      $nomklatur = Nomklatur::where("nama_nomklatur", $id)->get();
+      return json_encode($nomklatur);
     }
 }

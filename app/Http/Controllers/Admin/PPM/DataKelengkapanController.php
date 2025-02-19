@@ -6,6 +6,7 @@ use App\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use App\Models\Gedung;
+use App\Models\Nomklatur;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ class DataKelengkapanController extends Controller
     {
         $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
         $alat = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisi = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $items = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
 
@@ -52,6 +54,14 @@ class DataKelengkapanController extends Controller
         $kodeAlat = $dataAlat->maxIDALAT;
         $kodeAlat = $this->helper->formatKodeKelengkapan($kodeAlat, $kodeRs_);
 
+        // Kode Alat
+        $dataAlat = DB::table('nomklaturs')
+            ->select(DB::raw('max(id_nomklatur) as maxIDALAT'))
+            ->where('kode_rs', $kodeRs_)
+            ->first();
+        $kodeAlat2 = $dataAlat->maxIDALAT;
+        $kodeAlat2 = $this->helper->formatKodeKelengkapan2($kodeAlat2, $kodeRs_);
+
         // Kode Lokasi
         $dataLokasi = DB::table('ruangans')
             ->select(DB::raw('max(id_ruangan) as maxIDLOKASI'))
@@ -63,10 +73,12 @@ class DataKelengkapanController extends Controller
         return view('pages.admin.PPM.data_kelengkapan.index', [
             'gedung' => $gedung,
             'alats' => $alat,
+            'nomklatur' => $nomklatur,
             'teknisi' => $teknisi,
             'items' => $items,
             'kodeGedung' => $kodeGedung,
             'kodeAlat' => $kodeAlat,
+            'kodeAlat2' => $kodeAlat2,
             'kodeTeknisi' => $kodeTeknisi,
             'kodeLokasi' => $kodeLokasi,
         ]);

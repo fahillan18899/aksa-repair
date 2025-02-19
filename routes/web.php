@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HumanResourceController;
 use App\Http\Controllers\Admin\PPM\AlatController;
+use App\Http\Controllers\Admin\PPM\NomklaturController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\AsetUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
@@ -96,12 +97,13 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('sop_administrasi', SOPAdministrasi::class);
 
         // menu data kelengkapan
-        Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index']);
+        Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
 
         Route::resource('gedung', GedungController::class);
         Route::resource('alat', AlatController::class);
         Route::resource('teknisi', TeknisiController::class);
         Route::resource('ruangan', RuanganController::class);
+        Route::resource('nomklatur', NomklaturController::class);
 
         // menu registrasi
         Route::get('registrasi', [RegistrasiAsetController::class, 'oldIndex'])->name('registrasi.index');
@@ -110,6 +112,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('registrasi/{registrasi}/edit', [RegistrasiAsetController::class, 'edit'])->name('registrasi');
         Route::put('registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
         Route::delete('registrasi/{registrasi}', [RegistrasiAsetController::class, 'destroy']);
+        Route::get('/registrasi-aset/getNomklatur/{id}', [RegistrasiAsetController::class, 'getNomklatur']);
 
         // menu data inventaris
         Route::resource('data_inventaris', DashboardController::class);

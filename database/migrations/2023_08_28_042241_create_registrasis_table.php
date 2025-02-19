@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('registrasis', function (Blueprint $table) {
             $table->string('id_aset')->primary();
             $table->string('qr_code')->nullable();
+            $table->string('nomklatur')->nullable();
             $table->string('jenis_alat');
             $table->string('nama_alat');
             $table->string('merek');

@@ -77,7 +77,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="firstname2" placeholder="Terisi Otomatis" value="" readonly>
+                      <input name="qr_code" type="text" class="form-control" id="firstname2" placeholder="Terisi Otomatis" value="" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -100,13 +100,30 @@
                     <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
+                        @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0020")
                         <option>Pilih Alat</option>
                         @foreach($alats as $alat)
                         <option value="<?= $alat['nama_alat']; ?>"><?= $alat['nama_alat']; ?></option>
                         @endforeach
+                        @endif
+                        @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+                        <option>Pilih Alat</option>
+                        @foreach($nomklatur as $nomklatur)
+                        <option value="<?= $nomklatur['nama_nomklatur']; ?>"><?= $nomklatur['nama_nomklatur']; ?></option>
+                        @endforeach
+                        @endif
                       </select>
                     </div>
                   </div>
+
+                  @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+                  <div class="form-group row">
+                    <label for="nomklatur" class="col-xs-3 col-form-label">Kode Alat <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="nomklatur" class="form-control" type="text" placeholder="Nomklatur" id="nomklatur" readonly>
+                    </div>
+                  </div>
+                  @endif
 
                   <div class="form-group row">
                     <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
@@ -306,6 +323,9 @@
               <thead class="table-light">
                 <th>Id Aset</th>
                 <th>Jenis</th>
+                @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+                <th>Nomklatur</th>
+                @endif
                 <th>Nama</th>
                 <th>Merek</th>
                 <th class="none">Type</th>
@@ -328,7 +348,7 @@
                 <th class="none">AKD</th>
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
-                <th  class="none">Jadwal</th>
+                <th class="none">Jadwal</th>
                 <th>Tombol_Aksi_Tabel</th>
               </thead>
             </table>
@@ -338,83 +358,149 @@
     </div>
     <!--TABEL-->
     <script type="text/javascript">
-      // create function with jquery to get api form dashboard/ppm/registrasi yajra laravel?
       $(document).ready(function() {
-    $('#table-register').DataTable({
-        processing: true,
-        responsive: true,
-        serverSide: true,
-        ajax: '{{ url('/dashboard/ppm/aset') }}',
-        dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-        lengthMenu: [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        buttons: [
-            { extend: 'copy', className: 'btn-sm' },
-            { extend: 'csv', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'excel', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'pdf', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'print', className: 'btn-sm' }
-        ],
-        columns: [
-            { data: 0, name: 'Id_Aset' },
-            { data: 1, name: 'Jenis_Alat' },
-            { data: 2, name: 'Nama_Alat' },
-            { data: 3, name: 'Merek' },
-            { data: 4, name: 'Type' },
-            { 
-              data: 5, 
-              name: 'Gambar', 
-              render: function(data, type, full, meta) {
-                  return `<img src="/storage/${data}" width="100" alt='No Image'>`;
-              }
-            },
-            { data: 6, name: 'Serial_Number' },
-            { data: 7, name: 'lokasi_alat' },
-            { data: 8, name: 'Tanggal_Kalibrasi' },
-            { data: 9, name: 'Distributor' },
-            { data: 10, name: 'Alamat_Distributor' },
-            { data: 11, name: 'TLP_Distributor' },
-            { data: 12, name: 'Email_Distributor' },
-            { data: 13, name: 'Teknisi_Distributor' },
-            { data: 14, name: 'TLP_T_Distributor' },
-            { data: 15, name: 'No_Sertifikat_Kalibrasi' },
-            { data: 16, name: 'teknisi_ppm' },
-            { data: 17, name: 'harga_perolehan' },
-            { data: 18, name: 'Sumber_Dana' },
-            { data: 19, name: 'Tahun_Perolehan' },
-            { data: 20, name: 'AKL' },
-            { data: 21, name: 'AKD' },
-            { data: 22, name: 'no_inventaris_1' },
-            { data: 23, name: 'umur_alat' },
-            { data: 24, name: 'jadwal_pemeliharaan' },
-            { 
-              data: 0,
-              render: function(data, type, full, meta) {
-                  return `
-                    <a href="/dashboard/ppm/data_inventaris/cetak_aset/${data}" target="_blank">
-                      <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Print">
-                        <i class="fa fa-print"></i>
-                      </button>
-                    </a>
-                    <a href="/dashboard/ppm/registrasi/${data}/edit" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info btn-sm">
-                      <i class="fa fa-edit"></i>
-                    </a>
-                    <form action="/dashboard/ppm/registrasi/${data}" method="POST" class="d-inline">
+        let columns = [{
+            data: '0',
+            name: 'Id_Aset'
+          },
+          {
+            data: '1',
+            name: 'Jenis_Alat'
+          },
+
+          @json(Auth::user() -> user_role == 'admin' && Auth::user() -> kode_rs == "RS0020") ? {
+            data: '2',
+            name: 'Nomklatur'
+          } : null,
+
+          {
+            data: '3',
+            name: 'Nama_Alat'
+          },
+          {
+            data: '4',
+            name: 'Merek'
+          },
+          {
+            data: '5',
+            name: 'Type'
+          },
+          {
+            data: '6',
+            name: 'Gambar',
+            render: function(data) {
+              return `<img src="/storage/${data}" width="100" alt='No Image'>`;
+            }
+          },
+          {
+            data: '7',
+            name: 'Serial_Number'
+          },
+          {
+            data: '8',
+            name: 'lokasi_alat'
+          },
+          {
+            data: '9',
+            name: 'Tanggal_Kalibrasi'
+          },
+          {
+            data: '10',
+            name: 'Distributor'
+          },
+          {
+            data: '11',
+            name: 'Alamat_Distributor'
+          },
+          {
+            data: '12',
+            name: 'TLP_Distributor'
+          },
+          {
+            data: '13',
+            name: 'Email_Distributor'
+          },
+          {
+            data: '14',
+            name: 'Teknisi_Distributor'
+          },
+          {
+            data: '15',
+            name: 'TLP_T_Distributor'
+          },
+          {
+            data: '16',
+            name: 'No_Sertifikat_Kalibrasi'
+          },
+          {
+            data: '17',
+            name: 'teknisi_ppm'
+          },
+          {
+            data: '18',
+            name: 'harga_perolehan'
+          },
+          {
+            data: '19',
+            name: 'Sumber_Dana'
+          },
+          {
+            data: '20',
+            name: 'Tahun_Perolehan'
+          },
+          {
+            data: '21',
+            name: 'AKL'
+          },
+          {
+            data: '22',
+            name: 'AKD'
+          },
+          {
+            data: '23',
+            name: 'no_inventaris_1'
+          },
+          {
+            data: '24',
+            name: 'umur_alat'
+          },
+          {
+            data: '25',
+            name: 'jadwal_pemeliharaan'
+          },
+          {
+            data: '0',
+            render: function(data) {
+              return `
+                <a href="/dashboard/ppm/data_inventaris/cetak_aset/${data}" target="_blank">
+                  <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="top" title="Print"><i class="fa fa-print"></i></button>
+                </a>
+                <a href="/dashboard/ppm/registrasi/${data}/edit" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                  <i class="fa fa-edit"></i>
+                </a>
+                <form action="/dashboard/ppm/registrasi/${data}" method="POST" class="d-inline">
                       @csrf
                       @method('delete')
                       <button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
                         <i class="fa fa-trash"></i>
                       </button>
-                    </form>`;
-              }
+                    </form>
+              `;
             }
-        ]
-    });
-});
+          }
+        ].filter(item => item !== null); // 🔥 Hapus elemen `null` agar tidak error
+
+        $('#table-register').DataTable({
+          processing: true,
+          responsive: true,
+          serverSide: true,
+          ajax: '{{ url('/dashboard/ppm/aset') }}',
+          columns: columns
+        });
+      });
     </script>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
@@ -452,6 +538,30 @@
 </script>
 
 <script type="text/javascript">
+  $(document).ready(function() {
+    $('select[name="nama_alat"]').on('change', function() {
+      var stateID = $(this).val();
+      console.log(stateID);
+      if (stateID) {
+        $.ajax({
+          url: '/dashboard/ppm/registrasi-aset/getNomklatur/' + stateID,
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+            $.each(data, function(key, value) {
+              $('input[id="nomklatur"]').val(value.kode_nomklatur);
+            });
+          }
+        });
+      } else {
+        $('input[id="nomklatur"]').empty();
+      }
+    })
+  });
+</script>
+
+<script type="text/javascript">
   let inputAKL = document.querySelector('#AKL');
   let inputAKD = document.querySelector('#AKD');
 
@@ -465,7 +575,7 @@
 </script>
 
 <script>
-  function keyupfill(){
+  function keyupfill() {
     var fill = document.getElementById('firstname1').value;
     document.getElementById('firstname2').value = fill;
   }

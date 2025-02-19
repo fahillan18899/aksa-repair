@@ -21,10 +21,10 @@
   <div class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel text-center">
-      <!-- <div class="image">
+      <div class="image" style="margin-top: 60px;">
         <img src="{{ url('assets_web/img/placeholder/profile.png') }}" class="img-circle" alt="User Image">
-      </div> -->
-      <div class="info" style="margin-top: 80px;">
+      </div>
+      <div class="info" style="margin-top: 10px;">
         <p>{{ Auth::user()->username }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i>
           {{ Auth::user()->user_role }} </a>

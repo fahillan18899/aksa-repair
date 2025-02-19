@@ -156,4 +156,14 @@ class Helper
 
         return $kode;
     }
+
+    public function formatKodeKelengkapan2($kodeKelengkapan, $kodeRs_)
+    {
+        $urutanAlat = (int) substr($kodeKelengkapan, 5, 6);
+        $urutanAlat++;
+
+        $kode = $kodeRs_ . sprintf('%04s', $urutanAlat);
+
+        return $kode;
+    }
 }

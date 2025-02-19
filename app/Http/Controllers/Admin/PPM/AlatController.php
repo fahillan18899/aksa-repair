@@ -11,9 +11,10 @@ class AlatController extends Controller
 {
     public function store(Request $request)
     {
+        
         $request->validate([
-            'id_alat' => 'required',
-            'nama_alat' => 'required',
+            'id_alat' => '',
+            'nama_alat' => '',
             'kode_rs' => '',
         ]);
 
@@ -29,8 +30,10 @@ class AlatController extends Controller
     public function edit($id)
     {
         $item = Alat::where('id_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
-        return view('pages.admin.PPM.data_kelengkapan.update_alat', compact('item'));
+        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        return view('pages.admin.PPM.data_kelengkapan.update_alat', compact(
+            'item',
+            'alats',));
     }
 
     public function update(Request $request, Alat $alat)
@@ -41,7 +44,6 @@ class AlatController extends Controller
         ]);
 
         $alat->fill($request->post())->save();
-
         return redirect('/dashboard/ppm/data_kelengkapan')
             ->with('success', 'Data Alat Berhasil di Ubah.');
     }
@@ -49,9 +51,7 @@ class AlatController extends Controller
     public function destroy($id)
     {
         $item = Alat::where('id_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
         $item->delete();
-
         return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Alat Berhasil Di Hapus.');
     }
 }

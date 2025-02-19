@@ -121,6 +121,7 @@
     <!-- Row Gedung end-->
 
     <!-- Row Alat -->
+    @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0020")
       <div class="row">
         <div class="col-sm-12">
           <!-- Form Alat -->
@@ -213,13 +214,129 @@
                     </div>
                   </div>
                 </div>
-                <!--Tabel Gedung END-->
+                <!--Tabel Alat END-->
               </div>
             </div>
-          <!--Tabel Gedung end-->
+          <!--Tabel Alat end-->
         </div>
       </div>
+    @endif  
     <!-- Row Alat end-->
+
+    <!-- Row Nomklatur -->
+    @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+      <div class="row">
+        <div class="col-sm-12">
+          <!-- Form Nomklatur -->
+          <div class="panel panel-default thumbnail">
+            <div class="panel-heading no-print">
+              <div class="btn-group">
+                <a class="btn btn-primary" onclick="hidden5()">
+                  <i class="fa fa-list"></i> Daftar Alat Nomklatur
+                </a>
+              </div>
+            </div>
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-9 col-sm-12">
+                  <form action="{{ route('nomklatur.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    @csrf
+                    <input type="hidden" name="kode_rs" />
+
+                    <div class="form-group row">
+                      <label for="id_nomklatur" class="col-xs-3 col-form-label">ID Alat
+                      </label>
+                      <div class="col-xs-9">
+                        <input name="id_nomklatur" type="text" class="form-control" id="id_nomklatur" placeholder="id alat" value="{{ $kodeAlat2 }}" readonly />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="nama_nomklatur" class="col-xs-3 col-form-label">Nama Alat
+                        <i class="text-danger">*</i></label>
+                      <div class="col-xs-9">
+                        <input name="nama_nomklatur" type="text" class="form-control" id="nama_nomklatur" placeholder="Nama Alat" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="kode_nomklatur" class="col-xs-3 col-form-label">Kode Nomklatur
+                        <i class="text-danger">*</i></label>
+                      <div class="col-xs-9">
+                        <input name="kode_nomklatur" type="text" class="form-control" id="kode_nomklatur" placeholder="Nama Alat" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-offset-3 col-sm-6">
+                        <div class="ui buttons">
+                          <button type="reset" class="ui button">
+                            Reset
+                          </button>
+                          <div class="or"></div>
+                          <button class="ui positive button" type="submit">
+                            Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Form Nonklatur end-->
+
+          <!--Tabel Nomklatur-->
+            <div id="tab5" style="display: none">
+              <div class="panel panel-default thumbnail">
+                <div class="panel-body panel-form">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                      <table class="datatable table table-striped table-bordered">
+                        <thead class="table-light">
+                          <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Id Alat</th>
+                            <th scope="col">Nama Alat</th>
+                            <th scope="col">Kode Nomklatur</th>
+                            <th scope="col">Tombol Aksi</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @forelse ($nomklatur as $index => $item)
+                          <tr>
+                            <td scope="row">{{ $index + 1 }}</td>
+                            <td scope="row">{{ $item->id_nomklatur }}</td>
+                            <td scope="row">{{ $item->nama_nomklatur }}</td>
+                            <td scope="row">{{ $item->kode_nomklatur }}</td>
+                            <td scope="row">
+                              <a href="{{ route('nomklatur.edit', $item ->id)  }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+
+                              <form action="{{ route('nomklatur.destroy', $item ->id)  }}" method="POST" style="display: inline">
+                                @csrf @method('delete')
+                                <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                  <i class="fa fa-trash"></i>
+                                </button>
+                              </form>
+                            </td>
+                          </tr>
+                          @empty
+                          @endforelse
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!--Tabel Nomklatur END-->
+              </div>
+            </div>
+          <!--Tabel Nomklatur end-->
+        </div>
+      </div>
+    @endif  
+    <!-- Row Nomklatur end-->
 
     <!--Row Teknisi -->
       <div class="row">
@@ -499,6 +616,15 @@
 
   function hidden4() {
     var tab4 = document.getElementById('tab4');
+    if (tab4.style.display === "none"){
+      tab4.style.display = "block"
+    } else {
+      tab4.style.display ="none"
+    }
+  }
+
+  function hidden5() {
+    var tab4 = document.getElementById('tab5');
     if (tab4.style.display === "none"){
       tab4.style.display = "block"
     } else {

@@ -59,15 +59,33 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat </label>
+                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat</label>
                     <div class="col-xs-9">
                       <select name="nama_alat" class="form-control" id="Nama_Alat">
-                        @foreach ($alats as $alat)
+                        @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0020")
+                        <option>Pilih Alat</option>
+                        @foreach($alats as $alat)
                         <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
                         @endforeach
+                        @endif
+                        @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+                        <option>Pilih Alat</option>
+                        @foreach($nomklatur as $nomklatur)
+                        <option value="{{ $nomklatur->nama_nomklatur }}" {{ $nomklatur-> nama_alat == $nomklatur['nama_nomklatur'] ? 'selected' : '' }}>{{ $nomklatur->nama_nomklatur }}</option>
+                        @endforeach
+                        @endif
                       </select>
                     </div>
                   </div>
+
+                  @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
+                  <div class="form-group row">
+                    <label for="nomklatur" class="col-xs-3 col-form-label">Kode Alat</label>
+                    <div class="col-xs-9">
+                      <input name="nomklatur" class="form-control" type="text" placeholder="Nomklatur" id="nomklatur" value="<?= $item['nomklatur'] ?>">
+                    </div>
+                  </div>
+                  @endif
 
                   <div class=" form-group row">
                     <label for="Merek" class="col-xs-3 col-form-label">Merek </label>
@@ -306,6 +324,28 @@
     })
   });
 </script>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select[name="nama_alat"]').on('change', function() {
+      var stateID = $(this).val();
+      console.log(stateID);
+      if (stateID) {
+        $.ajax({
+          url: '/dashboard/ppm/registrasi-aset/getNomklatur/' + stateID,
+          type: "GET",
+          dataType: "json",
+          success: function(data) {
+            console.log(data);
+            $.each(data, function(key, value) {
+              $('input[id="nomklatur"]').val(value.kode_nomklatur);
+            });
+          }
+        });
+      } else {
+        $('input[id="nomklatur"]').empty();
+      }
+    })
+  });
+</script>
 @endpush
 @endsection
