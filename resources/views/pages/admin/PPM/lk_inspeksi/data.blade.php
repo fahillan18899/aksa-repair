@@ -132,6 +132,102 @@
                 <button class="btn btn-danger mt-3" id="deleteSelected">Hapus yang Dipilih</button>
                 <!-- Tombol Print -->
                 <button class="btn btn-primary mb-3" onclick="printTableMonitoring()">Print</button>
+                <button type="button" class="btn btn-info mb-3" data-toggle="modal"data-target="#exampleModal">
+                  TTD
+                </button>
+                <!-- modal  -->
+                <!-- Button trigger modal  -->
+                <!-- Modal  -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header" style="color:white; background-color:#042a4a;">
+                        <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <table>
+                            <tr>
+                              <!-- ttd 1-->
+                              <!-- Content -->
+                              <td>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <p>Tanda tangan Teknisi</p>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <canvas id="ttd_canvas1" width="150" height="100">
+                                      Get a better browser, bro.
+                                    </canvas>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <button class="btn btn-primary" id="ttd_submitBtn1">Submit Signature</button>
+                                    <button class="btn btn-default" id="ttd_clearBtn1">Clear Signature</button>
+                                  </div>
+                                </div>
+                                <br />
+                                <div class="row hidden">
+                                  <div class="col-md-12">
+                                    <textarea id="ttd_dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                                  </div>
+                                </div>
+                                <br />
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                  </div>
+                                </div>
+                              </td>
+                              <!-- ttd 1N-->
+                              <!-- ttd 2-->
+                              <!-- Content -->
+                              <td>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <p>Tanda tangan Pelapor</p>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <canvas id="ttd_canvas2" width="150" height="100">
+                                      Get a better browser, bro.
+                                    </canvas>
+                                  </div>
+                                </div>
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+                                    <button class="btn btn-primary" id="ttd_submitBtn2">Submit Signature</button>
+                                    <button class="btn btn-default" id="ttd_clearBtn2">Clear Signature</button>
+                                  </div>
+                                </div>
+                                <br />
+                                <div class="row hidden">
+                                  <div class="col-md-12">
+                                    <textarea id="ttd_dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                                  </div>
+                                </div>
+                                <br />
+                                <div class="row" style="margin-left: 5px;">
+                                  <div class="col-md-12">
+
+                                  </div>
+                                </div>
+                              </td>
+                              <!-- ttd 2N-->
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal -->
                 <!-- TABEL -->
               </div>
               <div class="col-md-3"></div>
@@ -141,81 +237,6 @@
       </div>
     </div>
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-    <table>
-      <tr>
-        <!-- ttd 1-->
-        <!-- Content -->
-        <td>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <h1>E-Signature</h1>
-              <p>Tanda tangan Teknisi</p>
-            </div>
-          </div>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <canvas id="ttd_canvas1" width="150" height="100">
-                Get a better browser, bro.
-              </canvas>
-            </div>
-          </div>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <button class="btn btn-primary" id="ttd_submitBtn1">Submit Signature</button>
-              <button class="btn btn-default" id="ttd_clearBtn1">Clear Signature</button>
-            </div>
-          </div>
-          <br />
-          <div class="row hidden">
-            <div class="col-md-12">
-              <textarea id="ttd_dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-            </div>
-          </div>
-          <br />
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-            </div>
-          </div>
-        </td>
-        <!-- ttd 1N-->
-        <!-- ttd 2-->
-        <!-- Content -->
-        <td>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <h1>E-Signature</h1>
-              <p>Tanda tangan Pelapor</p>
-            </div>
-          </div>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <canvas id="ttd_canvas2" width="150" height="100">
-                Get a better browser, bro.
-              </canvas>
-            </div>
-          </div>
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-              <button class="btn btn-primary" id="ttd_submitBtn2">Submit Signature</button>
-              <button class="btn btn-default" id="ttd_clearBtn2">Clear Signature</button>
-            </div>
-          </div>
-          <br />
-          <div class="row hidden">
-            <div class="col-md-12">
-              <textarea id="ttd_dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-            </div>
-          </div>
-          <br />
-          <div class="row" style="margin-left: 5px;">
-            <div class="col-md-12">
-
-            </div>
-          </div>
-        </td>
-        <!-- ttd 2N-->
-      </tr>
-    </table>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection
@@ -565,12 +586,12 @@
 
       if (selectedIds.length === 0) {
         Swal.fire({
-        icon: 'info',
-        title: 'Ups!',
-        text: 'Pilih setidaknya satu data untuk dihapus!',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'OK'
-    });
+          icon: 'info',
+          title: 'Ups!',
+          text: 'Pilih setidaknya satu data untuk dihapus!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
         return;
       }
 
