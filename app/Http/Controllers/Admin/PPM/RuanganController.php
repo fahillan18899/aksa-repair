@@ -5,73 +5,64 @@ namespace App\Http\Controllers\Admin\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\Gedung;
 use App\Models\Ruangan;
-use App\Models\Teknisi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RuanganController extends Controller
 {
     public function store(Request $request)
-    {
-        $request->validate([
-            'id_ruangan' => '',
-            'ruangan_alat' => 'required',
-            'ruangan' => 'required',
+    {   
+    $validated = $request->validate([
+            'id_ruangan'     => 'required',
+            'ruangan_alat'   => 'required',
+            'ruangan'        => 'required',
             'kepala_ruangan' => 'required',
-            'kode_rs' => '',
         ]);
 
-        $lokasi_alat = $request->ruangan_alat;
-        Ruangan::create([
-            'id_ruangan' => $request->id_ruangan,
-            'ruangan_alat' => $request->ruangan_alat,
-            'ruangan' => $request->ruangan,
-            'kepala_ruangan' => $request->kepala_ruangan,
-            'lokasi_alat' => $lokasi_alat,
-            'kode_rs' => Auth::user()->kode_rs,
+        Ruangan::create($validated + [
+            'lokasi_alat' => $validated['ruangan_alat'],
+            'kode_rs'     => auth()->user()->kode_rs
         ]);
 
-        return redirect('/dashboard/ppm/data_kelengkapan')
-            ->with('success', 'Data Ruangan Berhasil di Tambahkan.');
+        return redirect()->route('data_kelengkapan')
+        ->with('success', 'Data Ruangan Berhasil Ditambahkan.');
     }
 
     public function edit($ruangan)
     {
-        $item = Ruangan::where('id_ruangan', $ruangan)->where('kode_rs', Auth::user()->kode_rs)->first();
-        $gedungs = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $rooms = Ruangan::where('kode_rs', Auth::user()->kode_rs)->where('id_ruangan', $ruangan)->first();
-
-        return view('pages.admin.PPM.data_kelengkapan.update_ruangan', [
-            'item' => $item,
-            'teknisis' => $teknisis,
-            'gedungs' => $gedungs,
-            'rooms' => $rooms,
-        ]);
+        $item = Ruangan::where('kode_rs', auth()->user()->kode_rs)
+                       ->where('id_ruangan', $ruangan)->firstOrFail();
+        $gedungs = Gedung::where('kode_rs', auth()->user()->kode_rs)->get();
+       
+        return view('pages.admin.PPM.data_kelengkapan.update_ruangan',
+        compact('item', 'gedungs'));
     }
 
-    public function update(Request $request, Ruangan $ruangan)
+    public function update(Request $request, $id)
     {
-        $lokasi_alat = $request->ruangan_alat;
-        $request->validate([
-            'id_ruangan' => '',
-            'ruangan_alat' => '',
-            'ruangan' => '',
-            'lokasi_alat' => $lokasi_alat,
-        ]);
+       $validated = $request->validate([
+        'id_ruangan'     => 'required',
+        'ruangan_alat'   => 'required',
+        'ruangan'        => 'required',
+        'kepala_ruangan' => 'required',
+       ]);
 
-        $ruangan->fill($request->post())->save();
+       $ruangan = Ruangan::where('kode_rs', auth()->user()->kode_rs)
+                         ->where('id_ruangan', $id)->firstOrFail();
 
-        return redirect('/dashboard/ppm/data_kelengkapan')
-            ->with('success', 'Data Berhasil Ubah.');
+       $ruangan->update($validated + [
+        'lokasi_alat' => $validated['ruangan_alat'],
+        'kode_rs'     => auth()->user()->kode_rs,
+       ]);
+
+       return redirect()->route('data_kelengkapan')
+       ->with('success', 'Data Ruangan Berhasil Diganti');
     }
 
     public function destroy($id)
     {
         $item = Ruangan::where('id_ruangan', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
         $item->delete();
-
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Ruangan Berhasil Di Hapus.');
+        return redirect()->route('data_kelengkapan')->with('success', 'Data Ruangan Berhasil Di Hapus.');
     }
 }

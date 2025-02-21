@@ -34,16 +34,16 @@
                   @method('PUT')
 
                   <div class="form-group row">
-                    <label for="id_ruangan" class="col-xs-3 col-form-label">Id Ruangan <i class="text-danger">*</i></label>
+                    <label for="id_ruangan" class="col-xs-3 col-form-label">Id Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="id_ruangan" type="text" class="form-control" id="id_ruangan" placeholder="id gedung" value="<?= $item['id_ruangan'] ?>" readonly>
+                      <input name="id_ruangan" type="text" class="form-control" id="id_ruangan" placeholder="id gedung" value=" {{ $item['id_ruangan'] }} " readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="ruangan_alat" class="col-xs-3 col-form-label">nama Ruangan <i class="text-danger">*</i></label>
+                    <label for="ruangan_alat" class="col-xs-3 col-form-label">nama Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ruangan_alat" type="text" class="form-control" id="ruangan_alat" placeholder="nama gedung" value="<?= $item['ruangan_alat'] ?>">
+                      <input name="ruangan_alat" type="text" class="form-control" id="ruangan_alat" placeholder="nama gedung" value="{{ $item['ruangan_alat'] }}">
                     </div>
                   </div>
 
@@ -59,9 +59,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
+                    <label for="kepala_ruangan" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="kepala_ruangan" type="text" class="form-control" id="kepala_ruangan" placeholder="Kepala Ruangan" value="{{ $rooms['kepala_ruangan'] }}" />
+                      <input name="kepala_ruangan" type="text" class="form-control" id="kepala_ruangan" placeholder="Kepala Ruangan" value="{{ $item['kepala_ruangan'] }}" />
                     </div>
                   </div>
 

@@ -11,49 +11,42 @@ class TeknisiController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
+    $data = $request->validate([
             'id_teknisi' => 'required',
             'nama_teknisi' => 'required',
-            'kode_rs' => 'required',
         ]);
 
-        Teknisi::create([
-            'id_teknisi' => $request->id_teknisi,
-            'nama_teknisi' => $request->nama_teknisi,
-            'kode_rs' => Auth::user()->kode_rs,
-        ]);
-
-        return redirect('/dashboard/ppm/data_kelengkapan')
-            ->with('message', 'Data Teknisi Berhasil di Tambahkan.');
+        Teknisi::create(array_merge($data, ['kode_rs' => auth()->user()->kode_rs]));
+        return redirect()->route('data_kelengkapan')
+        ->with('success', 'Data Teknisi Berhasil Ditambahkan.');
     }
 
     public function edit($teknisi)
     {
         $item = Teknisi::where('id_teknisi', $teknisi)->where('kode_rs', Auth::user()->kode_rs)->first();
-
-        return view('pages.admin.PPM.data_kelengkapan.update_teknisi', compact('item'));
+        return view('pages.admin.PPM.data_kelengkapan.update_teknisi',
+        compact('item'));
     }
 
-    public function update(Request $request, Teknisi $teknisi)
+    public function update(Request $request, $id)
     {
-        $request->validate([
+    $data = $request->validate([
             'id_teknisi' => '',
             'nama_teknisi' => '',
         ]);
 
-        $teknisi->fill($request->post())->save();
-
-        return redirect('/dashboard/ppm/data_kelengkapan')
-            ->with('success', 'Data Teknisi Berhasil Tambahkan.');
+        $teknisi = Teknisi::findOrFail($id);
+        $teknisi->fill(array_merge($data))->save();
+        
+        return redirect()->route('data_kelengkapan')
+        ->with('success', 'Data Teknisi Berhasil diubah.');
     }
 
     public function destroy($id)
     {
-
         $item = Teknisi::where('id_teknisi', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
         $item->delete();
-
-        return redirect('/dashboard/ppm/data_kelengkapan')->with('success', 'Data Teknisi Berhasil Di Hapus.');
+        return redirect()->route('data_kelengkapan')
+        ->with('success', 'Data Teknisi Berhasil Dihapus.');
     }
 }
