@@ -37,7 +37,7 @@
                       <label for="id_nomklatur" class="col-xs-3 col-form-label">ID Alat
                       </label>
                       <div class="col-xs-9">
-                        <input name="id_nomklatur" type="text" class="form-control" id="id_nomklatur" value="<?= $item['id_nomklatur'] ?>" />
+                        <input name="id_nomklatur" type="text" class="form-control" id="id_nomklatur" value="{{ $item['id_nomklatur'] }}" />
                       </div>
                     </div>
 
@@ -45,7 +45,7 @@
                       <label for="nama_nomklatur" class="col-xs-3 col-form-label">Nama Alat
                         <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="nama_nomklatur" type="text" class="form-control" id="nama_nomklatur" value="<?= $item['nama_nomklatur'] ?>" />
+                        <input name="nama_nomklatur" type="text" class="form-control" id="nama_nomklatur" value="{{ $item['nama_nomklatur'] }}" />
                       </div>
                     </div>
 
@@ -53,7 +53,7 @@
                       <label for="kode_nomklatur" class="col-xs-3 col-form-label">Kode Nomklatur
                         <i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="kode_nomklatur" type="text" class="form-control" id="kode_nomklatur" value="<?= $item['kode_nomklatur'] ?>" />
+                        <input name="kode_nomklatur" type="text" class="form-control" id="kode_nomklatur" value="{{ $item['kode_nomklatur'] }}" />
                       </div>
                     </div>
 

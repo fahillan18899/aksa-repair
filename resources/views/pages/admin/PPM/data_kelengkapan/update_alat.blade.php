@@ -36,14 +36,14 @@
                   <div class="form-group row">
                     <label for="id_alat" class="col-xs-3 col-form-label">id alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_alat" type="text" class="form-control" id="id_alat" placeholder="id gedung" value="<?= $item['id_alat'] ?>" readonly>
+                      <input name="id_alat" type="text" class="form-control" id="id_alat" placeholder="id gedung" value="{{ $item['id_alat'] }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">nama gedung <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" type="text" class="form-control" id="nama_alat" placeholder="nama gedung" value="<?= $item['nama_alat'] ?>">
+                      <input name="nama_alat" type="text" class="form-control" id="nama_alat" placeholder="nama gedung" value="{{ $item['nama_alat'] }}">
                     </div>
                   </div>
 
