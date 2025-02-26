@@ -16,14 +16,6 @@
   </section>
   <!-- Main content -->
   <div class="content">
-    <!-- demo mode enable alert -->
-    <div id="demoModeEnable"></div>
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
-
     @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
@@ -36,13 +28,12 @@
     <!-- content -->
 
     <div class="row">
-      <div class="col-sm-12 col-md-10">
+      <div class="col-sm-12 col-md-12">
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print d-inline">
+          <div class="panel-heading no-print d-inline col-sm-12 col-md-12">
             <div class="row">
               <div class="col-md-7">
-
                 <h1>Form Registrasi Alat</h1>
               </div>
               <div class="col-md-2">
@@ -60,7 +51,9 @@
 
           <div class="panel-body panel-form">
             <div class="row">
-              <div class=" col-sm-12">
+              <div class=" col-sm-12" style="padding-top: 10px;">
+                <!-- Tombol Toggle hidden-->
+                <button type="button" class="btn btn-primary mb-3" id="toggleForm" data-toggle="tooltip" data-placement="top" title="Form Detail"><i class="fa fa-list" aria-hidden="true"></i></button>
                 <form action="{{ url('dashboard/ppm/registrasi') }}" class="form-inner" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                   @csrf
                   @method('post')
@@ -77,7 +70,7 @@
                   <div class="form-group row">
                     <label for="firstname" class="col-xs-3 col-form-label">QR Qode <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="qr_code" type="text" class="form-control" id="firstname2" placeholder="Terisi Otomatis" value="" readonly>
+                      <input name="qr_code" type="text" class="form-control" id="firstname2" placeholder="Terisi Otomatis" value="" style="cursor: not-allowed;" readonly>
                       @if ($errors->has('firstname'))
                       <span class="text-danger">{{ $errors->first('firstname') }}</span>
                       @endif
@@ -161,142 +154,105 @@
                     </div>
                   </div>
 
-                  <div class="form-group row">
-                    <label for="gambar" class="col-xs-3 col-form-label">Gambar </label>
-                    <div class="col-xs-9">
-                      <input name="gambar" class="form-control" type="file" id="gambar">
+                  <!-- Form (Awalnya Hidden) -->
+                  <div id="formContainer" style="display: none;">
+                    <div class="form-group row">
+                      <label for="gambar" class="col-xs-3 col-form-label">Gambar</label>
+                      <div class="col-xs-9">
+                        <input name="gambar" class="form-control" type="file" id="gambar">
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group row">
-                    <label for="Tanggal_Kalibrasi" class="col-xs-3 col-form-label">Tanggal Kalibrasi </label>
-                    <div class="col-xs-9">
-                      <input name="tanggal_kalibrasi" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan">
+                    <div class="form-group row">
+                      <label for="Tanggal_Kalibrasi" class="col-xs-3 col-form-label">Tanggal Kalibrasi</label>
+                      <div class="col-xs-9">
+                        <input name="tanggal_kalibrasi" type="date" class="form-control" id="tanggal_kalibrasi">
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group row">
-                    <label for="jadwal_pemeliharaan" class="col-xs-3 col-form-label">jadwal pemeliharaan </label>
-                    <div class="col-xs-9">
-                      <input name="jadwal_pemeliharaan" type="date" class="form-control" id="jadwal_pemeliharaan" placeholder="jadwal_pemeliharaan">
+                    <div class="form-group row">
+                      <label for="jadwal_pemeliharaan" class="col-xs-3 col-form-label">Jadwal Pemeliharaan</label>
+                      <div class="col-xs-9">
+                        <input name="jadwal_pemeliharaan" type="date" class="form-control" id="jadwal_pemeliharaan">
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group row">
-                    <label for="Distributor" class="col-xs-3 col-form-label">Distributor <a href="{{ url('/dashboard/ppm/tambah_distributor') }}" class="btn btn-sm btn-success btn-outline" style="margin-left:10px"><i class="fa fa-plus-square" aria-hidden="true"></i></a></label>
-                    <div class="col-xs-9">
-                      <!-- <input name="distributor" type="text" class="form-control" id="Distributor" placeholder="Distributor"> -->
-                      <select name="distributor" class="form-control" id="distributor">
-                        <option>Pilih Distributor</option>
-                        @foreach($distribut as $distribut)
-                        <option value="<?= $distribut['nama_distributor_p']; ?>"><?= $distribut['nama_distributor_p']; ?></option>
-                        @endforeach
-                      </select>
+                    <!-- Distributor Dropdown -->
+                    <div class="form-group row">
+                      <label for="Distributor" class="col-xs-3 col-form-label">
+                        Distributor
+                        <a href="{{ url('/dashboard/ppm/tambah_distributor') }}" class="btn btn-sm btn-success btn-outline" style="margin-left:10px">
+                          <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        </a>
+                      </label>
+                      <div class="col-xs-9">
+                        <select name="distributor" class="form-control" id="distributor" data-url="{{ url('/dashboard/ppm/getDistributor') }}">
+                          <option>Pilih Distributor</option>
+                          @foreach($distribut as $item)
+                          <option value="{{ $item->nama_distributor_p }}">{{ $item->nama_distributor_p }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group row">
-                    <label for="alamat_distributor" class="col-xs-3 col-form-label">Alamat Distributor </label>
-                    <div class="col-xs-9">
-                      <input name="alamat_distributor" type="text" class="form-control" id="Alamat_Distributor" placeholder="Terisi Otomatis" readonly>
+                    @php
+                    $fields = [
+                    'alamat_distributor' => 'Alamat Distributor',
+                    'tlp_distributor' => 'Telepon Distributor',
+                    'email_distributor' => 'Email Distributor',
+                    'teknisi_distributor' => 'Teknisi Distributor',
+                    'tlp_t_distributor' => 'Telepon Teknisi Distributor'
+                    ];
+                    @endphp
+
+                    @foreach($fields as $name => $label)
+                    <div class="form-group row">
+                      <label for="{{ $name }}" class="col-xs-3 col-form-label">{{ $label }}</label>
+                      <div class="col-xs-9">
+                        <input name="{{ $name }}" type="text" class="form-control" id="{{ $name }}"
+                          placeholder="Terisi Otomatis" style="cursor: not-allowed;" readonly>
+                      </div>
                     </div>
-                  </div>
+                    @endforeach
 
-                  <div class="form-group row">
-                    <label for="TLP_Distributor" class="col-xs-3 col-form-label">Telphone_Distributor </label>
-                    <div class="col-xs-9">
-                      <input name="tlp_distributor" type="text" class="form-control" id="TLP_Distributor" placeholder="Terisi Otomatis" readonly>
+                    @php
+                    $fields2 = [
+                    'no_sertifikat_kalibrasi' => 'No Sertifikat Kalibrasi',
+                    'teknisi_ppm' => 'Teknisi PPM',
+                    'harga_perolehan' => 'Harga Perolehan',
+                    'sumber_dana' => 'Sumber Dana',
+                    'tahun_perolehan' => 'Tahun Perolehan',
+                    'no_inventaris_1' => 'No Inventaris 1',
+                    'no_inventaris_2' => 'No Inventaris 2',
+                    ];
+                    @endphp
+
+                    @foreach($fields2 as $name2 => $label2)
+                    <div class="form-group row">
+                      <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}</label>
+                      <div class="col-xs-9">
+                        <input name="{{ $name2 }}" class="form-control" id="{{ $name2 }}" type="text" placeholder="Isi Sesuai Data Alat">
+                      </div>
                     </div>
-                  </div>
+                    @endforeach
 
-                  <div class="form-group row">
-                    <label for="Email_Distributor" class="col-xs-3 col-form-label">Email Distributor </label>
-                    <div class="col-xs-9">
-                      <input name="email_distributor" type="email" class="form-control" id="Email_Distributor" placeholder="Terisi Otomatis" readonly>
+                    <div class="form-group row">
+                      <label for="akl" class="col-xs-3 col-form-label">AKL</label>
+                      <div class="col-xs-9">
+                        <input type="radio" onclick="clickAKL()">
+                        <input name="akl" type="text" class="form-control" id="AKL" placeholder="Pilih salah satu AKL / AKD" disabled>
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="form-group row">
-                    <label for="Teknisi_Distributor" class="col-xs-3 col-form-label">Teknisi Distributor </label>
-                    <div class="col-xs-9">
-                      <input name="teknisi_distributor" type="text" class="form-control" id="Teknisi_Distributor" placeholder="Terisi Otomatis" readonly>
+                    <div class="form-group row">
+                      <label for="akd" class="col-xs-3 col-form-label">AKD</label>
+                      <div class="col-xs-9">
+                        <input type="radio" onclick="clickAKD()">
+                        <input name="akd" type="text" class="form-control" id="AKD" placeholder="Pilih salah satu AKL / AKD" disabled>
+                      </div>
                     </div>
-                  </div>
+                  </div> <!-- END Form Container -->
 
-                  <div class="form-group row">
-                    <label for="TLP_T_Distributor" class="col-xs-3 col-form-label">Telephone Teknisi Distributor </label>
-                    <div class="col-xs-9">
-                      <input name="tlp_t_distributor" type="text" class="form-control" id="TLP_T_Distributor" placeholder="Terisi Otomatis" readonly>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="No_Sertifikat_Kalibrasi" class="col-xs-3 col-form-label">No Sertifikat Kalibrasi</label>
-                    <div class="col-xs-9">
-                      <input name="no_sertifikat_kalibrasi" type="text" class="form-control" id="No_Sertifikat_Kalibrasi" placeholder="Nomer sertifikat kalibrasi alat">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Teknisi_PPM" class="col-xs-3 col-form-label">Teknisi PPM</label>
-                    <div class="col-xs-9">
-                      <input name="teknisi_ppm" type="text" class="form-control" id="Teknisi_PPM" placeholder="Teknisi pelaksana PPM">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Harga_Perolehan" class="col-xs-3 col-form-label">Harga Perolehan </label>
-                    <div class="col-xs-9">
-                      <input name="harga_perolehan" type="number" class="form-control" id="Harga_Perolehan" placeholder="Input dengan angka / number">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="sumber_dana" class="col-xs-3 col-form-label">Sumber Dana </label>
-                    <div class="col-xs-9">
-                      <input name="sumber_dana" type="text" class="form-control" id="Sumber_Dana" placeholder="Contoh : APBD">
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                    <label for="Tahun_Perolehan" class="col-xs-3 col-form-label">Tahun Perolehan </label>
-                    <div class="col-xs-9">
-                      <input name="tahun_perolehan" type="number" class="form-control" id="Tahun_Perolehan" placeholder="Input dengan angka / number">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="akl" class="col-xs-3 col-form-label">AKL</label>
-                    <div class="col-xs-9">
-                      <input type="radio" onclick="clickAKL()">
-                      <input name="akl" type="text" class="form-control" id="AKL" placeholder="Pilih salah satu AKL / AKD" disabled>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="akd" class="col-xs-3 col-form-label">AKD </label>
-                    <div class="col-xs-9">
-                      <input type="radio" onclick="clickAKD()">
-                      <input name="akd" type="text" class="form-control" id="AKD" placeholder="Pilih salah satu AKL / AKD" disabled>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="no_inventaris_1" class="col-xs-3 col-form-label">no inventaris 1 </label>
-                    <div class="col-xs-9">
-                      <input name="no_inventaris_1" type="text" class="form-control" id="no_inventaris_1" placeholder="Nomer Inventaris alat">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="no_inventaris_2" class="col-xs-3 col-form-label">no inventaris 2</label>
-                    <div class="col-xs-9">
-                      <input name="no_inventaris_2" type="text" class="form-control" id="no_inventaris_2" placeholder="Nomer Inventaris alat (optional)">
-                    </div>
-                  </div>
-
-                  <!-- if representative picture is already uploaded -->
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
@@ -494,7 +450,7 @@
           processing: true,
           responsive: true,
           serverSide: true,
-          ajax: '{{ url('/dashboard/ppm/aset') }}',
+          ajax: '{{ route('dataAset') }}',
           columns: columns
         });
       });
@@ -504,36 +460,28 @@
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('select[name="distributor"]').on('change', function() {
-      var stateID = $(this).val();
-      console.log(stateID);
-      if (stateID) {
-        $.ajax({
-          url: '/dashboard/ppm/getDistributor/' + stateID,
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-              $('input[id="Alamat_Distributor"]').val(value.alamat_distributor_p);
-              $('input[id="TLP_Distributor"]').val(value.telphone_distributor_p);
-              $('input[id="Email_Distributor"]').val(value.email_distributor_p);
-              $('input[id="Teknisi_Distributor"]').val(value.teknisi_distributor_p);
-              $('input[id="TLP_T_Distributor"]').val(value.telphone_teknisi_dis_p);
-            });
+    $('#distributor').on('change', function() {
+      let distributorName = $(this).val();
+      let url = $(this).data('url') + '/' + distributorName;
+      if (distributorName) {
+        $.getJSON(url, function(data) {
+          if (data.length) {
+            let distributor = data[0]; // Ambil data pertama
+            $('#alamat_distributor').val(distributor.alamat_distributor_p || '');
+            $('#tlp_distributor').val(distributor.telphone_distributor_p || '');
+            $('#email_distributor').val(distributor.email_distributor_p || '');
+            $('#teknisi_distributor').val(distributor.teknisi_distributor_p || '');
+            $('#tlp_t_distributor').val(distributor.telphone_teknisi_dis_p || '');
           }
         });
       } else {
-        $('input[id="Alamat_Distributor"]').empty();
-        $('input[id="TLP_Distributor"]').empty();
-        $('input[id="Email_Distributor"]').empty();
-        $('input[id="Teknisi_Distributor"]').empty();
-        $('input[id="TLP_T_Distributor"]').empty();
+        $('input').val('');
       }
-    })
+    });
   });
 </script>
 
@@ -581,5 +529,26 @@
   }
 </script>
 
+<script>
+  $(document).ready(function() {
+    $("#toggleForm").click(function() {
+      $("#formContainer").fadeToggle(300); // Animasi muncul/hilang
+      let buttonText = $("#formContainer").is(":visible");
+    });
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+    Swal.fire({
+      icon: 'success',
+      title: 'Sukses!',
+      text: '{{ session("success") }}',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    @endif
+  });
+</script>
 @endpush
 @endsection

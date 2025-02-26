@@ -106,8 +106,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('nomklatur', NomklaturController::class);
 
         // menu registrasi
-        Route::get('registrasi', [RegistrasiAsetController::class, 'oldIndex'])->name('registrasi.index');
-        Route::get('registrasi-aset', [RegistrasiAsetController::class, 'index']);
+        Route::get('registrasi', [RegistrasiAsetController::class, 'oldIndex']);
+        Route::get('registrasi-aset', [RegistrasiAsetController::class, 'index'])->name('registrasi.index');
         Route::post('registrasi', [RegistrasiAsetController::class, 'store']);
         Route::get('registrasi/{registrasi}/edit', [RegistrasiAsetController::class, 'edit'])->name('registrasi');
         Route::put('registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
@@ -235,7 +235,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Tambah Distributor
         Route::resource('/tambah_distributor', TambahDistributorController::class);
-        Route::get('/getDistributor/{id}', [RegistrasiAsetController::class, 'getDistributor']);
+        Route::get('/getDistributor/{id}', [RegistrasiAsetController::class, 'getDistributor'])->name('getDistributor');
+
 
         // Request Perbaikan
          Route::resource('/pesanan', PesananController::class);
@@ -295,7 +296,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Route::delete('lk_inspeksi/data/{id}', [LkInspeksiController::class, 'destroy']);
 
         // API internal datatable
-        Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('aa');
+        Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('dataAset');
 
 
     });

@@ -15,11 +15,6 @@
   <div class="content">
     <div id="demoModeEnable"></div>
 
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
     <!-- Row Gedung -->
     <div class="row">
       <div class="col-sm-12">
@@ -585,6 +580,7 @@
 @endsection
 
 @push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   function hiddenTab(tabId) {
     var tab = document.getElementById(tabId);
@@ -598,6 +594,20 @@
       var lokasi = document.getElementById('gedung').value;
       document.getElementById('ruangan_alat').value = lokasi
     });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+    Swal.fire({
+      icon: 'success',
+      title: 'Sukses!',
+      text: '{{ session("success") }}',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    @endif
   });
 </script>
 @endpush

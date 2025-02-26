@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Http\Controllers\Controller;
 use App\Models\Alat;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AlatController extends Controller
@@ -19,14 +19,15 @@ class AlatController extends Controller
         ]);
 
         Alat::create(array_merge($data, ['kode_rs' => auth()->user()->kode_rs]));
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Alat Berhasil Ditambahkan.');
+        session()->flash('success', 'Data Berhasil Disimpan');
+        return redirect()->route('data_kelengkapan');
     }
 
     public function edit($id)
     {
-        $item = Alat::where('id_alat', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $kode_rs  = Auth::user()->kode_rs;
+        $alats    = Alat::where('kode_rs', $kode_rs)->get();
+        $item     = Alat::where('id_alat', $id)->where('kode_rs', $kode_rs)->first();
         return view('pages.admin.PPM.data_kelengkapan.update_alat', 
         
         compact( 'item', 'alats',));
@@ -41,9 +42,9 @@ class AlatController extends Controller
 
         $alat = Alat::findOrFail($id);
         $alat->fill(array_merge($data))->save();
+        session()->flash('success', 'Data berhasil disimpan');
 
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Alat Berhasil di Ubah.');
+        return redirect()->route('data_kelengkapan');
     }
 
     public function destroy($id)

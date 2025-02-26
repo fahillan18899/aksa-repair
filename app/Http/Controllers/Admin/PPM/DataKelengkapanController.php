@@ -21,12 +21,14 @@ class DataKelengkapanController extends Controller
     }
 
     public function index()
-    {
-        $gedung    = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alat      = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisi   = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $lokasi    = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
+    //
+    {   
+        $kode_rs   = Auth::user()->kode_rs;
+        $alat      = Alat::where('kode_rs', $kode_rs)->get();
+        $gedung    = Gedung::where('kode_rs', $kode_rs)->get();
+        $lokasi    = Ruangan::where('kode_rs', $kode_rs)->get();
+        $teknisi   = Teknisi::where('kode_rs', $kode_rs)->get();
+        $nomklatur = Nomklatur::where('kode_rs', $kode_rs)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
 

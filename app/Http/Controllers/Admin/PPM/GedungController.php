@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Http\Controllers\Controller;
 use App\Models\Gedung;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class GedungController extends Controller
 {
@@ -17,8 +17,9 @@ class GedungController extends Controller
         ]);
 
         Gedung::create(array_merge($data, ['kode_rs' => auth()->user()->kode_rs]));
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Gedung Berhasil Ditambahkan.');
+        session()->flash('success', 'Data Berhasil Disimpan');
+
+        return redirect()->route('data_kelengkapan');
     }
 
     public function edit($gedung)
@@ -37,9 +38,9 @@ class GedungController extends Controller
 
         $gedung = Gedung::findOrFail($id);
         $gedung->fill(array_merge($data))->save();
-
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Gedung Berhasil diubah.');
+        session()->flash('success', 'Data berhasil disimpan');
+        
+        return redirect()->route('data_kelengkapan');
     }
 
     public function destroy($id)

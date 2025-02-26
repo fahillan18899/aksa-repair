@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Helper;
-use App\Http\Controllers\Controller;
-use App\Imports\RegistrasiAsetsImport;
 use App\Models\Alat;
-use App\Models\LembarPemeliharaan;
-use App\Models\Registrasi;
-use App\Models\Ruangan;
 use App\Models\Gedung;
+use App\Models\Ruangan;
 use App\Models\Nomklatur;
+use App\Models\Registrasi;
+use Illuminate\Http\Request;
 use App\Models\TambahJenisAlat;
 use App\Models\TambahDistributor;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Imports\RegistrasiAsetsImport;
 use Yajra\DataTables\Facades\DataTables;
 
 class RegistrasiAsetController extends Controller
@@ -29,243 +27,138 @@ class RegistrasiAsetController extends Controller
 
     public function json()
     {
-        $b = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nomklatur', 'nama_alat', 'merek', 
-        'type', 'gambar', 'serial_number', 'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 
-        'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 
-        'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 
-        'harga_perolehan', 'sumber_dana', 'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 
-        'umur_alat', 'jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
-        $c = DataTables::eloquent($b)->make(false);
+        $b = Registrasi::query()->select
+        (['id_aset', 'jenis_alat', 'nomklatur', 
+        'nama_alat', 'merek', 'type', 'gambar', 'serial_number',
+        'lokasi_alat', 'tanggal_kalibrasi','distributor', 'distributor',
+        'alamat_distributor', 'tlp_distributor','email_distributor', 'teknisi_distributor',
+        'tlp_t_distributor','no_sertifikat_kalibrasi', 'teknisi_ppm','harga_perolehan','sumber_dana',
+        'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1','umur_alat', 'jadwal_pemeliharaan'])
+        ->where('kode_rs', Auth::user()->kode_rs);
+        return DataTables::eloquent($b)->make(false);
 
-        return $c;
-
-    }
-
-    public function oldIndex()
-    {
-        $kodeRs_ = Auth::user()->kode_rs;
-
-        $data = DB::table('registrasis')
-            ->select(DB::raw('max(id_aset) as maxIDASET'))
-            ->where('kode_rs', $kodeRs_)
-            ->first();
-        $kodeAset = $data->maxIDASET;
-
-        $urutan = (int) substr($kodeAset, 12, 13);
-        $urutan++;
-
-        $date = date('ymd');
-        $kodeAset = $kodeRs_ . $date . sprintf('%05s', $urutan);
-
-        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
-        return view('pages.admin.PPM.registrasi_aset.old-index', [
-            'items' => $items,
-            'kodeAset' => $kodeAset,
-            'ruangans' => $ruangans,
-            'alats' => $alats,
-        ]);
     }
 
     public function index()
     {
-        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $gedung = Gedung::where('kode_rs', Auth::user()->kode_rs)->get();
-        $jenis = TambahJenisAlat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
-        return view('pages.admin.PPM.registrasi_aset.index', [
-            'items' => $items,
-            'ruangans' => $ruangans,
-            'gedung' => $gedung,
-            'alats' => $alats,
-            'nomklatur' => $nomklatur,
-            'jenis' => $jenis,
-            'distribut' => $distribut
-        ]);
+        $kode_rs   = Auth::user()->kode_rs;
+        $alats     = Alat::where('kode_rs',$kode_rs)->get();
+        $gedung    = Gedung::where('kode_rs',$kode_rs)->get();
+        $ruangans  = Ruangan::where('kode_rs',$kode_rs)->get();
+        $nomklatur = Nomklatur::where('kode_rs',$kode_rs)->get();
+        $items     = Registrasi::where('kode_rs',$kode_rs)->get();
+        $jenis     = TambahJenisAlat::where('kode_rs',$kode_rs)->get();
+        $distribut = TambahDistributor::where('kode_rs',$kode_rs)->get();
+        return view('pages.admin.PPM.registrasi_aset.index',
+        compact('alats', 'gedung', 'ruangans', 'nomklatur', 'items', 'jenis', 'distribut'));
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id_aset' => 'required|unique:registrasis',
-            'qr_code' => '',
-            'nomklatur' => '',
-            'jenis_alat' => 'required|max:50',
-            'nama_alat' => 'required|max:50',
-            'merek' => 'required|max:50',
-            'type' => 'required|max:50',
-            'serial_number' => 'required|max:50',
-            'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
-            'lokasi_alat' => 'required',
-            'tanggal_kalibrasi' => '',
-            'distributor' => '',
-            'alamat_distributor' => '',
-            'tlp_distributor' => '',
-            'email_distributor' => '',
-            'teknisi_distributor' => '',
-            'tlp_t_distributor' => '',
+            'akd'                     => '',
+            'akl'                     => '',
+            'type'                    => 'required|max:50',
+            'merek'                   => 'required|max:50',
+            'gambar'                  => 'image|mimes:jpg,png,jpeg,svg|max:4096',
+            'kode_rs'                 => '',
+            'qr_code'                 => '',
+            'id_aset'                 => 'required|unique:registrasis',
+            'nomklatur'               => '',
+            'nama_alat'               => 'required|max:50',
+            'umur_alat'               => '',
+            'jenis_alat'              => 'required|max:50',
+            'lokasi_alat'             => 'required',
+            'distributor'             => '',
+            'sumber_dana'             => '',
+            'teknisi_ppm'             => '',
+            'serial_number'           => 'required|max:50',
+            'tlp_distributor'         => '',
+            'harga_perolehan'         => '',
+            'tahun_perolehan'         => '',
+            'penyusutan_aset'         => '',
+            'no_inventaris_1'         => '',
+            'no_inventaris_2'         => '',
+            'tanggal_kalibrasi'       => '',
+            'email_distributor'       => '',
+            'tlp_t_distributor'       => '',
+            'alamat_distributor'      => '',
+            'teknisi_distributor'     => '',
+            'jadwal_pemeliharaan'     => '',
             'no_sertifikat_kalibrasi' => '',
-            'teknisi_ppm' => '',
-            'harga_perolehan' => '',
-            'sumber_dana' => '',
-            'tahun_perolehan' => '',
-            'kode_rs' => '',
-            'jadwal_pemeliharaan' => '',
-            'umur_alat' => '',
-            'no_inventaris_1' => '',
-            'no_inventaris_2' => '',
-            'akl' => '',
-            'akd' => '',
-            'penyusutan_aset' => '',
         ], [
-            'gambar.image' => 'Yang diupload bukan gambar',
-            'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
-            'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
             'id_aset.unique' => 'Id Sudah Digunakan',
+            'gambar.image'   => 'Yang diupload bukan gambar',
+            'gambar.max'     => 'Ukuran Gambar Maksimal 4MB',
+            'gambar.mimes'   => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
         ]);
 
         if (isset($data['gambar'])) {
-            $data['gambar'] = $request->file('gambar')->store(
-                'assets/gallery',
-                'public'
-            );
+            $data['gambar'] = $request
+            ->file('gambar')->store('assets/gallery','public'); 
         }
 
         $data['umur_alat'] = date('Y') - $data['tahun_perolehan'];
-
         if ($data['umur_alat'] > 0) {
-            $data['penyusutan_aset'] = $this->helper->hitung($data['umur_alat'], $data['tahun_perolehan']);
-        } else {
-            $data['penyusutan_aset'] = 0;
-        }
+            $data['penyusutan_aset'] = $this->helper
+            ->hitung($data['umur_alat'], $data['tahun_perolehan']); } 
+        else { $data['penyusutan_aset'] = 0; }
+
         $data['kode_rs'] = Auth::user()->kode_rs;
-
-        $res = [
-            'tanggal' => $data['tanggal_kalibrasi'],
-            'kegiatan' => 'Pemelihraan',
-            'engineer' => '',
-            'id_aset' => $data['id_aset'],
-            'qr_code' => '',
-            'nama_alat' => $data['nama_alat'],
-            'serial_number' => $data['serial_number'],
-            'merek' => $data['merek'],
-            'instalasi' => '',
-            'tipe' => $data['type'],
-            'ruangan' => $data['lokasi_alat'],
-            'hand_hygiene' => '',
-            'menyiapkan_alat_dan_bahan' => '',
-            'alat_pelindung_diri' => '',
-            'mengoprasikan_alat_kalibrasi' => '',
-            'ktd' => '',
-            'mengoprasikan_alat' => '',
-            'identifikasi_bahaya' => '',
-            'badan_selungkup1' => '',
-            'badan_selungkup2' => '',
-            'alat_sistem_interlock1' => '',
-            'alat_sistem_interlock2' => '',
-            'kabel_kelenturan1' => '',
-            'kabel_kelenturan2' => '',
-            'sistem_pengunci1' => '',
-            'sistem_pengunci2' => '',
-            'tombol_saklar1' => '',
-            'tombol_saklar2' => '',
-            'label_penandaan1' => '',
-            'label_penandaan2' => '',
-            'display_layar1' => '',
-            'display_layar2' => '',
-            'aksesoris1' => '',
-            'aksesoris2' => '',
-            'indikator_bunyi1' => '',
-            'indikator_bunyi2' => '',
-            'pembersihan' => '',
-            'pengencangan_bagian_alat' => '',
-            'pelumasan' => '',
-            'kalibrasi_berkala' => '',
-            'penggantian_bahan_habis_pakai' => '',
-            'cek_alat' => '',
-            'nama_sukucadang' => '',
-            'volume' => '',
-            'harga_satuan' => '',
-            'jumlah_harga' => '',
-            'evaluasi' => '',
-            'status' => '',
-            'status1' => '',
-            'mulai_bekerja' => '',
-            'selesai_kerja' => '',
-            'durasi' => '',
-            'user' => '',
-            'engginer' => '',
-            'kode_rs' => '',
-        ];
-
-        $res['kode_rs'] = Auth::user()->kode_rs;
-
-        if (isset($data['tanggal_kalibrasi'])) {
-            LembarPemeliharaan::create($res);
-        }
-
         Registrasi::create($data);
+        session()->flash('success', 'Data berhasil disimpan');
 
-        return redirect('/dashboard/ppm/registrasi-aset')
-        ->with('success', 'Data Registrasi Alat Berhasil Di Tambahkan');
+        return redirect()->route('registrasi.index');
     }
 
     public function edit($id)
     {
-        $item = Registrasi::where('id_aset', $id)->first();
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $nomklatur = Nomklatur::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
-        $distribut = TambahDistributor::where('kode_rs', Auth::user()->kode_rs)->get();
+        $kode_rs   = Auth::user()->kode_rs;
+        $alats     = Alat::where('kode_rs', $kode_rs)->get();
+        $ruangans  = Ruangan::where('kode_rs', $kode_rs)->get();
+        $item      = Registrasi::where('id_aset', $id)->first();
+        $nomklatur = Nomklatur::where('kode_rs', $kode_rs)->get();
+        $distribut = TambahDistributor::where('kode_rs', $kode_rs)->get();
 
-        return view('pages.admin.PPM.registrasi_aset.update', [
-            'ruangans' => $ruangans,
-            'alats' => $alats,
-            'nomklatur' => $nomklatur,
-            'item' => $item,
-            'distribut' => $distribut,
-        ]);
+        return view('pages.admin.PPM.registrasi_aset.update', 
+        compact('alats', 'item', 'ruangans', 'nomklatur', 'distribut'));
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'jenis_alat' => '',
-            'nama_alat' => '',
-            'nomklatur' => '',
-            'merek' => '',
-            'type' => '',
-            'gambar' => 'image|mimes:jpg,png,jpeg,svg|max:4096',
-            'serial_number' => '',
-            'lokasi_alat' => '',
-            'tanggal_kalibrasi' => '',
-            'distributor' => '',
-            'alamat_distributor' => '',
-            'tlp_distributor' => '',
-            'email_distributor' => '',
-            'teknisi_distributor' => '',
-            'tlp_t_distributor' => '',
+            'type'                    => '',
+            'akl'                     => '',
+            'akd'                     => '',
+            'merek'                   => '',
+            'gambar'                  => 'image|mimes:jpg,png,jpeg,svg|max:4096',
+            'kode_rs'                 => '',
+            'nomklatur'               => '',
+            'nama_alat'               => '',
+            'umur_alat'               => '',
+            'jenis_alat'              => '',
+            'lokasi_alat'             => '',
+            'distributor'             => '',
+            'teknisi_ppm'             => '',
+            'sumber_dana'             => '',
+            'serial_number'           => '',
+            'tlp_distributor'         => '',
+            'harga_perolehan'         => '',
+            'tahun_perolehan'         => '',
+            'no_inventaris_1'         => '',
+            'penyusutan_aset'         => '',
+            'no_inventaris_2'         => '',
+            'email_distributor'       => '',
+            'tanggal_kalibrasi'       => '',
+            'tlp_t_distributor'       => '',
+            'alamat_distributor'      => '',
+            'teknisi_distributor'     => '',
+            'jadwal_pemeliharaan'     => '',
             'no_sertifikat_kalibrasi' => '',
-            'teknisi_ppm' => '',
-            'harga_perolehan' => '',
-            'sumber_dana' => '',
-            'tahun_perolehan' => '',
-            'kode_rs' => '',
-            'jadwal_pemeliharaan' => '',
-            'umur_alat' => '',
-            'no_inventaris_1' => '',
-            'no_inventaris_2' => '',
-            'akl' => '',
-            'akd' => '',
-            'penyusutan_aset' => '',
         ], [
             'gambar.image' => 'Yang diupload bukan gambar',
+            'gambar.max'   => 'Ukuran Gambar Maksimal 4MB',
             'gambar.mimes' => 'Gambar Harus Berkstensi jpg,png,jpeg,svg',
-            'gambar.max' => 'Ukuran Gambar Maksimal 4MB',
         ]);
         if (isset($data['gambar'])) {
             $data['gambar'] = $request->file('gambar')->store(
@@ -273,26 +166,25 @@ class RegistrasiAsetController extends Controller
                 'public'
             );
         }
+        
         $data['umur_alat'] = date('Y') - $data['tahun_perolehan'];
-       
         $data['penyusutan_aset'] = $this->helper->hitungPenyusutan($data['umur_alat'], $request->tahun_perolehan);
         $data['kode_rs'] = Auth::user()->kode_rs;
-
         $registrasi = Registrasi::findOrFail($id);
         $registrasi->update($data);
+        session()->flash('success', 'Data berhasil disimpan');
 
-        return redirect('/dashboard/ppm/registrasi-aset')
-        ->with('success', 'Data Registrasi Alat Berhasil Di Ubah.');
+        return redirect()->route('registrasi.index');
     }
 
     public function destroy($id)
     {
-
-        $item = Registrasi::where('id_aset', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
+        $item = Registrasi::where('id_aset', $id)
+        ->where('kode_rs', Auth::user()->kode_rs)->first();
         $item->delete();
 
-        return redirect('/dashboard/ppm/registrasi-aset')->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
+        return redirect()->route('registrasi.index')
+        ->with('success', 'Data Registrasi Alat Berhasil Di Hapus.');
     }
 
     public function import(Request $request)
@@ -311,15 +203,44 @@ class RegistrasiAsetController extends Controller
         return response()->download($path);
     }
 
-    public function getDistributor($id)
+    public function getDistributor($namaDistributor)
     {
-      $distributor = TambahDistributor::where("nama_distributor_p", $id)->get();
-      return json_encode($distributor);
+        $distributor = TambahDistributor::where("nama_distributor_p", $namaDistributor)->first();
+        return response()->json($distributor ? [$distributor] : []);
     }
+    
 
     public function getNomklatur($id)
     {
       $nomklatur = Nomklatur::where("nama_nomklatur", $id)->get();
       return json_encode($nomklatur);
     }
+
+ // public function oldIndex()
+    // {
+    //     $kodeRs_ = Auth::user()->kode_rs;
+
+    //     $data = DB::table('registrasis')
+    //         ->select(DB::raw('max(id_aset) as maxIDASET'))
+    //         ->where('kode_rs', $kodeRs_)
+    //         ->first();
+    //     $kodeAset = $data->maxIDASET;
+
+    //     $urutan = (int) substr($kodeAset, 12, 13);
+    //     $urutan++;
+
+    //     $date = date('ymd');
+    //     $kodeAset = $kodeRs_ . $date . sprintf('%05s', $urutan);
+
+    //     $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+    //     $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+    //     $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+    //     return view('pages.admin.PPM.registrasi_aset.old-index', [
+    //         'items' => $items,
+    //         'kodeAset' => $kodeAset,
+    //         'ruangans' => $ruangans,
+    //         'alats' => $alats,
+    //     ]);
+    // }
+
 }

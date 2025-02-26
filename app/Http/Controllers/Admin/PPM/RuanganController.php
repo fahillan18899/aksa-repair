@@ -23,9 +23,8 @@ class RuanganController extends Controller
             'lokasi_alat' => $validated['ruangan_alat'],
             'kode_rs'     => auth()->user()->kode_rs
         ]);
-
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Ruangan Berhasil Ditambahkan.');
+        session()->flash('success', 'Data Berhasil Disimpan');
+        return redirect()->route('data_kelengkapan');
     }
 
     public function edit($ruangan)
@@ -54,9 +53,8 @@ class RuanganController extends Controller
         'lokasi_alat' => $validated['ruangan_alat'],
         'kode_rs'     => auth()->user()->kode_rs,
        ]);
-
-       return redirect()->route('data_kelengkapan')
-       ->with('success', 'Data Ruangan Berhasil Diganti');
+       session()->flash('success', 'Data Berhasil Disimpan');
+       return redirect()->route('data_kelengkapan');
     }
 
     public function destroy($id)

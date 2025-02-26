@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Http\Controllers\Controller;
 use App\Models\Teknisi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class TeknisiController extends Controller
@@ -17,8 +17,8 @@ class TeknisiController extends Controller
         ]);
 
         Teknisi::create(array_merge($data, ['kode_rs' => auth()->user()->kode_rs]));
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Teknisi Berhasil Ditambahkan.');
+        session()->flash('success', 'Data Berhasil Disimpan');
+        return redirect()->route('data_kelengkapan');
     }
 
     public function edit($teknisi)
@@ -37,9 +37,8 @@ class TeknisiController extends Controller
 
         $teknisi = Teknisi::findOrFail($id);
         $teknisi->fill(array_merge($data))->save();
-        
-        return redirect()->route('data_kelengkapan')
-        ->with('success', 'Data Teknisi Berhasil diubah.');
+        session()->flash('success', 'Data Berhasil Disimpan');
+        return redirect()->route('data_kelengkapan');
     }
 
     public function destroy($id)
