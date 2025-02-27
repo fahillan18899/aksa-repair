@@ -43,6 +43,7 @@
   ['RSUI KUSTATI', 'RS0025'],
   ['RSUD DR SOESELO', 'RS0026'],
   ['RS AMAL SEHAT WONOGIRI', 'RS0027'],
+  ['RS ORTOPEDI SIAGA UTAMA', 'RS0028'],
   ];
   @endphp
   <div class="login-wrapper">
