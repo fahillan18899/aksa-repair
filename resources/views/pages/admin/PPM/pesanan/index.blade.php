@@ -225,7 +225,7 @@
   })
 </script>
 
-<!-- Tambahkan script untuk mengaktifkan QR Scanner -->
+<!-- Tambahkan script untuk QR Scanner -->
 <script src="https://unpkg.com/html5-qrcode"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -242,26 +242,32 @@
         scannerActive = true;
 
         html5QrCode = new Html5Qrcode("qr-reader");
-        html5QrCode.start(
-          { facingMode: "environment" }, // Gunakan kamera belakang
-          {
-            fps: 10,  // Frame per detik
-            qrbox: { width: 250, height: 250 },
-            rememberLastUsedCamera: true, // Ingat kamera terakhir digunakan
-            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-            experimentalFeatures: { useBarCodeDetectorIfSupported: true } // Gunakan detektor barcode jika didukung
-          },
-          function(decodedText) {
-            inputField.value = decodedText; // Isi input dengan hasil scan
-            html5QrCode.stop(); // Hentikan scanner setelah berhasil scan
-            qrScanner.style.display = "none"; // Sembunyikan scanner
-            scannerActive = false;
-          },
-          function(errorMessage) {
-            console.log(errorMessage); // Debug jika gagal scan
+        Html5Qrcode.getCameras().then(devices => {
+          if (devices.length > 0) {
+            let backCamera = devices.find(device => device.label.toLowerCase().includes("back")) || devices[0];
+
+            html5QrCode.start(
+              backCamera.id, // Pilih kamera belakang jika tersedia
+              {
+                fps: 10,
+                qrbox: { width: 250, height: 250 },
+                rememberLastUsedCamera: true
+              },
+              function(decodedText) {
+                inputField.value = decodedText; // Isi input dengan hasil scan
+                html5QrCode.stop(); // Hentikan scanner setelah berhasil scan
+                qrScanner.style.display = "none"; // Sembunyikan scanner
+                scannerActive = false;
+              },
+              function(errorMessage) {
+                console.log(errorMessage); // Debug jika gagal scan
+              }
+            ).catch(err => {
+              console.log("Error memulai scanner: ", err);
+            });
           }
-        ).catch(err => {
-          console.log("Error memulai scanner: ", err);
+        }).catch(err => {
+          console.log("Tidak dapat mengakses kamera: ", err);
         });
       }
     });
