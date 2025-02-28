@@ -34,7 +34,6 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-12 col-sm-12">
-
                 <!--TABEL-->
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
@@ -49,22 +48,36 @@
                   </thead>
                   <tbody>
                     @forelse ($items as $item)
-                    <tr>
+                    @php
+                    $warna = ''; // Default tanpa warna
+
+                    // Pastikan tanggal_kalibrasi tidak "-" dan merupakan tanggal valid
+                    if ($item->tanggal_kalibrasi != '-' && strtotime($item->tanggal_kalibrasi)) {
+                    $hariTersisa = now()->diffInDays($item->tanggal_kalibrasi, false);
+
+                    if ($hariTersisa < 0) {
+                      $warna='background-color: #ffcccc; color: red;' ; // Merah (Sudah lewat)
+                      } elseif ($hariTersisa < 15) {
+                      $warna='background-color: #fff3cd; color: #856404;' ; // Kuning (Kurang dari 15 hari)
+                      }
+                      }
+                      @endphp
+
+                      <tr style="{{ $warna }}">
                       <td>{{ $item->id_aset }}</td>
                       <td>{{ $item->nama_alat }}</td>
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
-                      <td>{{ $item->lokasi_alat}}</td>
+                      <td>{{ $item->lokasi_alat }}</td>
                       <td>{{ $item->tanggal_kalibrasi }}</td>
-                    </tr>
-                    @empty
-                    <tr>
-                      <td class="text-center" colspan="10">Data Kosong</td>
-                    </tr>
-                    @endforelse
+                      </tr>
+                      @empty
+                      @endforelse
                   </tbody>
+
                 </table>
                 <!--TABEL-->
+
               </div>
               <div class="col-md-3"></div>
             </div>
