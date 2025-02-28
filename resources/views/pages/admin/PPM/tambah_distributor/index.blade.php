@@ -39,39 +39,39 @@
                    @csrf
 
                    <div class="form-group row">
-                     <label for="nama_distributor_p" class="col-xs-3 col-form-label">Distributor <i class="text-danger">*</i></label>
+                     <label for="nama_distributor_p" class="col-xs-3 col-form-label">Distributor</label>
                      <div class="col-xs-9">
-                       <input name="nama_distributor_p" type="text" class="form-control" id="nama_distributor_p" placeholder="Nama Distributor" value="" required>
+                       <input name="nama_distributor_p" type="text" class="form-control" id="nama_distributor_p" placeholder="Nama Distributor">
                      </div>
                    </div>
                    <div class="form-group row">
-                     <label for="alamat_distributor_p" class="col-xs-3 col-form-label">Alamat Distributor <i class="text-danger">*</i></label>
+                     <label for="alamat_distributor_p" class="col-xs-3 col-form-label">Alamat Distributor</label>
                      <div class="col-xs-9">
-                       <input name="alamat_distributor_p" type="text" class="form-control" id="alamat_distributor_p" placeholder="Alamat Distributor" value="" required>
+                       <input name="alamat_distributor_p" type="text" class="form-control" id="alamat_distributor_p" placeholder="Alamat Distributor">
                      </div>
                    </div>
                    <div class="form-group row">
-                     <label for="telphone_distributor_p" class="col-xs-3 col-form-label">Telphone Distributor <i class="text-danger">*</i></label>
+                     <label for="telphone_distributor_p" class="col-xs-3 col-form-label">Telphone Distributor</label>
                      <div class="col-xs-9">
-                       <input name="telphone_distributor_p" type="text" class="form-control" id="telphone_distributor_p" placeholder="Telphone Distributor" value="" required>
+                       <input name="telphone_distributor_p" type="text" class="form-control" id="telphone_distributor_p" placeholder="Telphone Distributor">
                      </div>
                    </div>
                    <div class="form-group row">
-                     <label for="email_distributor_p" class="col-xs-3 col-form-label">Email Distributor <i class="text-danger">*</i></label>
+                     <label for="email_distributor_p" class="col-xs-3 col-form-label">Email Distributor</label>
                      <div class="col-xs-9">
-                       <input name="email_distributor_p" type="text" class="form-control" id="email_distributor_p" placeholder="Email Distributor" value="" required>
+                       <input name="email_distributor_p" type="text" class="form-control" id="email_distributor_p" placeholder="Email Distributor">
                      </div>
                    </div>
                    <div class="form-group row">
-                     <label for="teknisi_distributor_p" class="col-xs-3 col-form-label">Teknisi Distributor <i class="text-danger">*</i></label>
+                     <label for="teknisi_distributor_p" class="col-xs-3 col-form-label">Teknisi Distributor</label>
                      <div class="col-xs-9">
-                       <input name="teknisi_distributor_p" type="text" class="form-control" id="teknisi_distributor_p" placeholder="Teknisi Distributor" value="" required>
+                       <input name="teknisi_distributor_p" type="text" class="form-control" id="teknisi_distributor_p" placeholder="Teknisi Distributor">
                      </div>
                    </div>
                    <div class="form-group row">
-                     <label for="telphone_teknisi_dis_p" class="col-xs-3 col-form-label">Telphone Teknisi <i class="text-danger">*</i></label>
+                     <label for="telphone_teknisi_dis_p" class="col-xs-3 col-form-label">Telphone Teknisi</label>
                      <div class="col-xs-9">
-                       <input name="telphone_teknisi_dis_p" type="text" class="form-control" id="telphone_teknisi_dis_p" placeholder="Telphone Teknisi" value="" required>
+                       <input name="telphone_teknisi_dis_p" type="text" class="form-control" id="telphone_teknisi_dis_p" placeholder="Telphone Teknisi">
                      </div>
                    </div>
 
@@ -108,10 +108,10 @@
                        <th scope="col">No</th>
                        <th scope="col">Nama Distributor</th>
                        <th scope="col">Alamat Distributor</th>
-                       <th scope="col">Telphone Distributor</th>
+                       <th scope="col">Tlp Distributor</th>
                        <th scope="col">Email Distributor</th>
                        <th scope="col">Teknisi Distributor</th>
-                       <th scope="col">Telphone Teknisi Distributor</th>
+                       <th scope="col">Tlp Teknisi Distributor</th>
                        <th scope="col">Tombol_Aksi_Table</th>
                      </tr>
                    </thead>
@@ -139,9 +139,6 @@
                        </td>
                      </tr>
                      @empty
-                     <tr>
-                       <td class="text-center" colspan="7">Data Kosong</td>
-                     </tr>
                      @endforelse
                    </tbody>
                  </table>

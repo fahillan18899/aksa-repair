@@ -99,6 +99,7 @@ class RegistrasiAsetController extends Controller
         }
 
         $data['umur_alat'] = date('Y') - $data['tahun_perolehan'];
+        if($data['tahun_perolehan'] == ''){ $data['umur_alat'] = date('Y') - date('Y'); }
         if ($data['umur_alat'] > 0) {
             $data['penyusutan_aset'] = $this->helper
             ->hitung($data['umur_alat'], $data['tahun_perolehan']); } 

@@ -219,9 +219,7 @@
                     $fields2 = [
                     'no_sertifikat_kalibrasi' => 'No Sertifikat Kalibrasi',
                     'teknisi_ppm' => 'Teknisi PPM',
-                    'harga_perolehan' => 'Harga Perolehan',
                     'sumber_dana' => 'Sumber Dana',
-                    'tahun_perolehan' => 'Tahun Perolehan',
                     'no_inventaris_1' => 'No Inventaris 1',
                     'no_inventaris_2' => 'No Inventaris 2',
                     ];
@@ -232,6 +230,22 @@
                       <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}</label>
                       <div class="col-xs-9">
                         <input name="{{ $name2 }}" class="form-control" id="{{ $name2 }}" type="text" placeholder="Isi Sesuai Data Alat">
+                      </div>
+                    </div>
+                    @endforeach
+
+                    @php
+                    $fields3 = [
+                    'harga_perolehan' => 'Harga Perolehan',
+                    'tahun_perolehan' => 'Tahun Perolehan',
+                      ]
+                    @endphp
+
+                    @foreach($fields3 as $name3 => $label3)
+                    <div class="form-group row">
+                      <label for="{{ $name3 }}" class="col-xs-3 col-form-label">{{ $label3 }}</label>
+                      <div class="col-xs-9">
+                        <input name="{{ $name3 }}" class="form-control" id="{{ $name3 }}" type="text" placeholder="Isi dengan angka">
                       </div>
                     </div>
                     @endforeach
@@ -549,6 +563,25 @@
     });
     @endif
   });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const hargaInput = document.getElementById("harga_perolehan");
+
+    hargaInput.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
+        if (value) {
+            e.target.value = formatRupiah(value);
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    function formatRupiah(angka) {
+        return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+});
 </script>
 @endpush
 @endsection
