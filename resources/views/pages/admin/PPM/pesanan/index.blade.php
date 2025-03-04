@@ -2,6 +2,14 @@
 
 @section('content')
 @section('title', 'Request Perbaikan')
+<style>
+  .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Pastikan modal body penuh */
+}
+</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -34,8 +42,6 @@
     </div>
     @endif
     <!-- content -->
-    <!-- Tempat menampilkan QR scanner -->
-    <div id="qr-reader" style="width: 300px; display: none;"></div>
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
@@ -49,30 +55,18 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('pesanan.store')}}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-                  @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs !== "RS0000")
-                    <div class="form-group row">
-                     <label for="id" class="col-xs-3 col-form-label">Id Aset<i class="text-danger">*</i></label>
-                     <div class="col-xs-9">
-                      <select name="id" class="form-control" id="id">
-                      <option>Pilih Id Aset</option>
-                        @foreach($dataInv as $dataInv)
-                        <option value="<?= $dataInv['id_aset']; ?>">
-                                       <?= $dataInv['id_aset']; ?>_<?= $dataInv['nama_alat']; ?>_<?= $dataInv['serial_number']; ?>_<?= $dataInv['lokasi_alat']; ?></option>
-                        @endforeach
-                      </select>
-                     </div>
-                    </div> 
-                    @endif
-                  @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0000")  
                   <!-- Tambahkan tombol dan div untuk scanner -->
                   <div class="form-group row">
-                    <label for="id_req" class="col-xs-3 col-form-label">Id Aset <i class="text-danger">*</i></label>
+                  <i class="text-danger">*</i><label for="note" class="col-xs-12 col-form-label">Klik Colom Pengisian id aset untuk load data setelah id aset muncul atau ada</label>
+                  </div>
+                  <div class="form-group row">
+                    <label for="id" class="col-xs-3 col-form-label">Id Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_req" type="text" class="form-control" id="id_req" placeholder="Scan QR atau input manual">
-                      <button type="button" class="btn btn-primary mt-2" id="startScan">Scan QR</button>
+                      <input name="id" type="text" class="form-control" id="id" 
+                      placeholder="id alat muncul setelah scan qr / ketik manual id aset alat" style="cursor: pointer;" 
+                      data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data">
                     </div>
                   </div>
-                  @endif
                   <div class="form-group row">
                     <label for="nama_req" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -112,15 +106,16 @@
                   <div class="form-group row">
                     <label for="tanggal_req" class="col-xs-3 col-form-label">Tanggal <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal" value="<?php date_default_timezone_set('Asia/Jakarta');
-                                                                                                                                echo date(now()) ?>" readonly>
+                      <input name="tanggal_req" type="text" class="form-control" id="tanggal_req" placeholder="Tanggal"
+                        value="<?php date_default_timezone_set('Asia/Jakarta');
+                                echo date(now()) ?>" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button type="reset" class="ui button">Reset</button>
+                        <button type="button" class="btn btn-primary mt-2" id="startScan" data-toggle="modal"data-target="#exampleModal">Scan QR</button>
                         <div class="or"></div>
                         <button class="ui positive button">Save</button>
                       </div>
@@ -195,13 +190,33 @@
     </div>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white; background-color:#042a4a;">
+        <h5 class="modal-title" id="exampleModalLabel">Camera</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center">
+          <!-- Area scanner -->
+          <div id="qr-reader" style="width: 300px; display: none;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
 @endsection
 @push('addon-script')
 <script type="text/javascript">
-  $('select[name="id"]').on('change', function() {
+  $('input[name="id"]').on('click', function() {
     var stateIDInv = $(this).val();
     console.log(stateIDInv);
-    if (stateIDInv) {
+    if (stateIDInv !== '') {
       $.ajax({
         url: '/dashboard/ppm/getPesanan/' + stateIDInv,
         type: "GET",
@@ -230,7 +245,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const qrScanner = document.getElementById("qr-reader");
-    const inputField = document.getElementById("id_req");
+    const inputField = document.getElementById("id");
     const startScanButton = document.getElementById("startScan");
 
     let scannerActive = false;
@@ -250,7 +265,10 @@
               backCamera.id, // Pilih kamera belakang jika tersedia
               {
                 fps: 10,
-                qrbox: { width: 250, height: 250 },
+                qrbox: {
+                  width: 250,
+                  height: 250
+                },
                 rememberLastUsedCamera: true
               },
               function(decodedText) {
