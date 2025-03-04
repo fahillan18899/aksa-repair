@@ -218,32 +218,27 @@
 @endsection
 @push('addon-script')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript">
-  $('input[name="id"]').on('click', function() {
-    var stateIDInv = $(this).val();
-    console.log(stateIDInv);
-    if (stateIDInv !== '') {
-      $.ajax({
-        url: '/dashboard/ppm/getPesanan/' + stateIDInv,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          console.log(data);
-          $.each(data, function(key, value) {
-            $('input[id="nama_req"]').val(value.nama_alat);
-            $('input[id="merek_req"]').val(value.merek);
-            $('input[id="type_req"]').val(value.type);
-            $('input[id="sn_req"]').val(value.serial_number);
-          });
-        }
-      });
-    } else {
-      $('input[id="nama_req"]').empty();
-      $('input[id="merek_req"]').empty();
-      $('input[id="type_req"]').empty();
-      $('input[id="sn_req"]').empty();
-    }
-  })
+<script>
+  $(document).ready(function() {
+    $('#id').on('click', function() {
+      let stateIDInv = $(this).val().trim();
+      console.log("ID yang dimasukkan:", stateIDInv);
+
+      if (!stateIDInv) return; // Jika kosong, hentikan proses
+
+      fetch(`/dashboard/ppm/getPesanan/${encodeURIComponent(stateIDInv)}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Data dari server:", data);
+          let alat = Array.isArray(data) ? data[0] : data || {};
+          $('#nama_req').val(alat.nama_alat || '');
+          $('#merek_req').val(alat.merek || '');
+          $('#type_req').val(alat.type || '');
+          $('#sn_req').val(alat.serial_number || '');
+        })
+        .catch(error => console.error("Error AJAX:", error));
+    });
+  });
 </script>
 
 <!-- Tambahkan script untuk QR Scanner -->
