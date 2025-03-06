@@ -109,6 +109,7 @@ class LembarPemeliharaanController extends Controller
             'mulai_bekerja' => '',
             'selesai_kerja' => '',
             'durasi' => '',
+            'tanggal_selesai' => '',
             'user' => '',
             'engginer' => '',
             'kode_rs' => '',

@@ -80,6 +80,7 @@ return new class extends Migration
             $table->string('mulai_bekerja', 20)->nullable();
             $table->string('selesai_kerja', 20)->nullable();
             $table->string('durasi', 10)->nullable();
+            $table->string('tanggal_selesai')->nullable();
             $table->string('user', 10)->nullable();
             $table->string('engginer', 50)->nullable();
             $table->string('kode_rs', 10)->index()->nullable();

@@ -127,13 +127,6 @@
                     </div>
                   </div>
 
-                  <!--<div class="form-group row">
-                    <label for="instalasi" class="col-xs-3 col-form-label">Ka Instalasi <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="instalasi" type="text" class="form-control" id="instalasi" placeholder="Ka Instalasi">
-                    </div>
-                  </div>-->
-
                   <div class="form-group row">
                     <label for="tipe" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -644,6 +637,13 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="tanggal_selesai" class="col-xs-3 col-form-label">Tanggal Selesai<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="tanggal_selesai" type="date" class="form-control" id="hasil" placeholder="tanggal_selesai">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="user" class="col-xs-3 col-form-label">User<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="user" type="text" class="form-control" id="user" placeholder="User">
@@ -702,6 +702,7 @@
                     <td class="table-primary" rowspan="3"><b>Mulai_Bekerja</b></td>
                     <td class="table-primary" rowspan="3"><b>Selesai_Kerja</b></td>
                     <td class="table-primary" rowspan="3"><b>Durasi</b></td>
+                    <td class="table-primary" rowspan="3"><b>Tanggal Selesai</b></td>
                     <td class="table-primary" rowspan="3"><b>User</b></td>
                     <td class="table-primary" rowspan="3"><b>Engineer</b></td>
                     <td class="table-primary" rowspan="3"><b>Tombol_Aksi</b></td>
@@ -856,6 +857,7 @@
                     <td>{{ $item->mulai_bekerja }}</td>
                     <td>{{ $item->selesai_kerja }}</td>
                     <td>{{ $item->durasi }}</td>
+                    <td>{{ $item->tanggal_selesai }}</td>
                     <td>{{ $item->user }}</td>
                     <td>{{ $item->engginer }}</td>
                     <td>
