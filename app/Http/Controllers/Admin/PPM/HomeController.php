@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Helper;
-use App\Http\Controllers\Controller;
-use App\Models\LembarPemeliharaan;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\PerbaikanUnregistrasi;
 use App\Models\Registrasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\LembarPemeliharaan;
+use App\Models\PerbaikanRegistrasi;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Models\PerbaikanUnregistrasi;
 
 class HomeController extends Controller
 {
@@ -50,26 +50,20 @@ class HomeController extends Controller
         $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->get();
         $dataKalibrasi = LembarPemeliharaan::where('kode_rs', $kodeRs)->get();
 
-        return view(
-            'pages.admin.PPM.dashboard.index',
-            compact(
-                'registrasi',
-                'registrasiKalBar',
-                'perbaikanRegistrasi',
-                'dataPerbaikan',
-                'perbaikanUnregistrasi',
-                'lembarPemeliharaan',
-                'dataKalibrasi'
-            )
+        return view('pages.admin.PPM.dashboard.index',
+        compact('registrasi', 'registrasiKalBar', 'perbaikanRegistrasi',
+                'dataPerbaikan', 'perbaikanUnregistrasi', 'lembarPemeliharaan', 
+                'dataKalibrasi')
         );
     }
 
     public function dataInventaris()
     {
-        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-
-        return view('pages.admin.PPM.data_inventaris.index', ['items' => $items]);
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->paginate(10); // Batasi 10 data per halaman
+    
+        return view('pages.admin.PPM.data_inventaris.index', compact('items'));
     }
+    
 
     public function printDataInventaris($id)
     {
@@ -83,11 +77,7 @@ class HomeController extends Controller
         $itemPerbaikan = PerbaikanRegistrasi::where('id_aset_reg', $id)
             ->where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.admin.PPM.data_inventaris.tabel_perbaikan', [
-
-            'itemPerbaikan' => $itemPerbaikan,
-
-        ]);
+        return view('pages.admin.PPM.data_inventaris.tabel_perbaikan',compact('itemPerbaikan'));
     }
 
     public function qrCodeGenerate($id)
@@ -110,11 +100,7 @@ class HomeController extends Controller
         $itemData = Registrasi::where('id_aset', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         $itemKerusakan = PerbaikanRegistrasi::where('id_aset_reg', $id)->count();
 
-        return view('pages.admin.PPM.data_inventaris.detail', [
-
-            'itemData' => $itemData,
-            'itemKerusakan' => $itemKerusakan
-        ]);
+        return view('pages.admin.PPM.data_inventaris.detail', compact('itemData', 'itemKerusakan'));
     }
 
     public function autofill($idars)

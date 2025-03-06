@@ -2,6 +2,21 @@
 
 @section('content')
 @section('title', 'Data Inventaris')
+<style>
+  .pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+
+  .pagination .page-item.disabled .page-link {
+    color: #6c757d;
+  }
+
+  .table-modal td:first-child {
+        width: 50%;
+    }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -50,10 +65,10 @@
             <table id="table-register" class="datatable table table-striped table-bordered" style="width:100%">
               <thead class="table-light">
                 <th>Id Aset</th>
-                <th>Jenis</th>
+                <th class="none">Jenis</th>
                 <th>Nama</th>
                 <th>Merek</th>
-                <th class="none">Type</th>
+                <th>Type</th>
                 <th class="none">Gambar</th>
                 <th>Serial Number</th>
                 <th>Ruangan</th>
@@ -79,31 +94,31 @@
               <tbody>
                 @forelse ($items as $index => $item)
                 <tr class="odd gradeX">
-                  <td><?php echo $item['id_aset']; ?></td>
-                  <td><?php echo $item['jenis_alat']; ?></td>
-                  <td><?php echo $item['nama_alat']; ?></td>
-                  <td><?php echo $item['merek']; ?></td>
-                  <td><?php echo $item['type']; ?></td>
+                  <td>{{ $item->id_aset }}</td>
+                  <td>{{ $item->jenis_alat }}</td>
+                  <td>{{ $item->nama_alat }}</td>
+                  <td>{{ $item->merek }}</td>
+                  <td>{{ $item->type }}</td>
                   <td><img style="width: 80px; height: 80px;" alt='No Image' src="{{ URL::asset('storage/'.$item->foto_pendukung) }}"></td>
-                  <td><?php echo $item['serial_number']; ?></td>
-                  <td><?php echo $item['lokasi_alat']; ?></td>
-                  <td><?php echo $item['tanggal_kalibrasi']; ?></td>
-                  <td><?php echo $item['distributor']; ?></td>
-                  <td><?php echo $item['alamat_distributor']; ?></td>
-                  <td><?php echo $item['tlp_distributor']; ?></td>
-                  <td><?php echo $item['email_distributor']; ?></td>
-                  <td><?php echo $item['teknisi_distributor']; ?></td>
-                  <td><?php echo $item['tlp_t_distributor']; ?></td>
-                  <td><?php echo $item['no_sertifikat_kalibrasi']; ?></td>
-                  <td><?php echo $item['teknisi_ppm']; ?></td>
-                  <td><?php echo $item['harga_perolehan']; ?></td>
-                  <td><?php echo $item['sumber_dana']; ?></td>
-                  <td><?php echo $item['tahun_perolehan']; ?></td>
-                  <td><?php echo $item['akl']; ?></td>
-                  <td><?php echo $item['akd']; ?></td>
-                  <td><?php echo $item['no_inventaris_1']; ?></td>
-                  <td><?php echo $item['umur_alat']; ?></td>
-                  <td><?php echo $item['jadwal_pemeliharaan']; ?></td>
+                  <td>{{ $item->serial_number }}</td>
+                  <td>{{ $item->lokasi_alat }}</td>
+                  <td>{{ $item->tanggal_kalibrasi }}</td>
+                  <td>{{ $item->distributor }}</td>
+                  <td>{{ $item->alamat_distributor }}</td>
+                  <td>{{ $item->tlp_distributor }}</td>
+                  <td>{{ $item->email_distributor }}</td>
+                  <td>{{ $item->teknisi_distributor }}</td>
+                  <td>{{ $item->tlp_t_distributor }}</td>
+                  <td>{{ $item->no_sertifikat_kalibrasi }}</td>
+                  <td>{{ $item->teknisi_ppm }}</td>
+                  <td>{{ $item->harga_perolehan }}</td>
+                  <td>{{ $item->sumber_dana }}</td>
+                  <td>{{ $item->tahun_perolehan }}</td>
+                  <td>{{ $item->akl }}</td>
+                  <td>{{ $item->akd }}</td>
+                  <td>{{ $item->no_inventaris_1 }}</td>
+                  <td>{{ $item->umur_alat }}</td>
+                  <td>{{ $item->jadwal_pemeliharaan }}</td>
                   <td>
                     <a href="{{ route('registrasi', $item->id_aset) }}"
                       class="btn btn-xs btn-success" data-toggle="tooltip"
@@ -116,7 +131,7 @@
                       title="Cetak"><i class="fa fa-print"></i></a>
 
                     <button type="button" class="btn btn-info btn-xs" data-toggle="modal"
-                      data-target="#exampleModal<?php echo $item['id_aset'] ?>">
+                      data-target="#exampleModal{{ $item->id_aset }}">
                       <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="view" aria-hidden="true"></i>
                     </button>
 
@@ -142,47 +157,17 @@
                             </div>
                             <div class="modal-body">
                               <div class="row">
-                                <table class="datatable table table-bordered table-hover" style="width:96%; margin-left:10px;">
-                                  <tr>
-                                    <td style="width: 50%;">Id Aset</td>
-                                    <td><?php echo $item['id_aset'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%;">Nama Alat</td>
-                                    <td><?php echo $item['nama_alat'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Jenis Alat</td>
-                                    <td><?php echo $item['jenis_alat'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Merek</td>
-                                    <td><?php echo $item['merek'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Type</td>
-                                    <td><?php echo $item['type'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Serial Number</td>
-                                    <td><?php echo $item['serial_number'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Ruangan</td>
-                                    <td><?php echo $item['lokasi_alat'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Tanggal Kalibrasi</td>
-                                    <td><?php echo $item['tanggal_kalibrasi'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Umur Alat</td>
-                                    <td><?php echo $item['umur_alat'] ?></td>
-                                  </tr>
-                                  <tr>
-                                    <td style="width: 50%">Penyusutan Aset</td>
-                                    <td><?php echo $item['penyusutan_aset'] ?>%</td>
-                                  </tr>
+                                <table class="datatable table table-bordered table-hover table-modal" style="width:96%; margin-left:10px;">
+                                  <tr><td>Id Aset</td><td>{{ $item->id_aset }}</td></tr>
+                                  <tr><td>Nama Alat</td><td>{{ $item->nama_alat }}</td></tr>
+                                  <tr><td>Jenis Alat</td><td>{{ $item->jenis_alat }}</td></tr>
+                                  <tr><td>Merek</td><td>{{ $item->merek }}</td></tr>
+                                  <tr><td>Type</td><td>{{ $item->type }}</td></tr>
+                                  <tr><td>Serial Number</td><td>{{ $item->serial_number }}</td></tr>
+                                  <tr><td>Ruangan</td><td>{{ $item->lokasi_alat }}</td></tr>
+                                  <tr><td>Tanggal Kalibrasi</td><td>{{ $item->tanggal_kalibrasi }}</td></tr>
+                                  <tr><td>Umur Alat</td><td>{{ $item->umur_alat }}</td></tr>
+                                  <tr><td>Penyusutan Aset</td><td>{{ $item->penyusutan_aset }}%</td></tr>
                                 </table>
                               </div>
                             </div>
@@ -201,6 +186,47 @@
                 @endforelse
               </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+              <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <!-- Tombol First & Previous -->
+                  <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $items->url(1) }}">&laquo; First</a>
+                  </li>
+                  <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $items->previousPageUrl() }}">&laquo;</a>
+                  </li>
+
+                  <!-- Loop Halaman -->
+                  @php
+                  $start = max(1, $items->currentPage() - 2);
+                  $end = min($items->lastPage(), $items->currentPage() + 2);
+                  @endphp
+
+                  @if ($start > 1)
+                  <li class="page-item disabled"><span class="page-link">...</span></li>
+                  @endif
+
+                  @foreach (range($start, $end) as $page)
+                  <li class="page-item {{ $page == $items->currentPage() ? 'active' : '' }}">
+                    <a class="page-link" href="{{ $items->url($page) }}">{{ $page }}</a>
+                  </li>
+                  @endforeach
+
+                  @if ($end < $items->lastPage())
+                    <li class="page-item disabled"><span class="page-link">...</span></li>
+                    @endif
+
+                    <!-- Tombol Next & Last -->
+                    <li class="page-item {{ $items->hasMorePages() ? '' : 'disabled' }}">
+                      <a class="page-link" href="{{ $items->nextPageUrl() }}">&raquo;</a>
+                    </li>
+                    <li class="page-item {{ $items->hasMorePages() ? '' : 'disabled' }}">
+                      <a class="page-link" href="{{ $items->url($items->lastPage()) }}">Last &raquo;</a>
+                    </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -208,189 +234,3 @@
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection
-
-@push('addon-script')
-<!--TABEL-->
-<!-- <script type="text/javascript">
-      $(document).ready(function() {
-        $('#table-register').DataTable({
-          processing: true,
-          responsive: true,
-          serverSide: true,
-          ajax: '{{ url('/dashboard/ppm/aset') }}',
-          dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
-        lengthMenu: [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        buttons: [
-            { extend: 'copy', className: 'btn-sm' },
-            { extend: 'csv', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'excel', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'pdf', title: 'ExampleFile', className: 'btn-sm' },
-            { extend: 'print', className: 'btn-sm' }
-        ],
-          columns: [{
-              data: 0,
-              name: 'Id_Aset',
-            },
-            {
-              data: 1,
-              name: 'Jenis_Alat'
-            },
-            {
-              data: 2,
-              name: 'Nama_Alat'
-            },
-            {
-              data: 3,
-              name: 'Merek'
-            },
-            {
-              data: 4,
-              name: 'Type'
-            },
-            {
-              data: 5,
-              name: 'Gambar',
-              render: function(data, type, full, meta) {
-                return "<img src=\"/storage/" + data + "\" width=\"100\"  alt='No Image'>"
-              }
-            },
-            {
-              data: 6,
-              name: 'Serial_Number'
-            },
-            {
-              data: 7,
-              name: 'lokasi_alat'
-            },
-            {
-              data: 8,
-              name: 'Tanggal_Kalibrasi'
-            },
-            {
-              data: 9,
-              name: 'Distributor'
-            },
-            {
-              data: 10,
-              name: 'Alamat_Distributor'
-            },
-            {
-              data: 11,
-              name: 'TLP_Distributor'
-            },
-            {
-              data: 12,
-              name: 'Email_Distributor'
-            },
-            {
-              data: 13,
-              name: 'Teknisi_Distributor'
-            },
-            {
-              data: 14,
-              name: 'TLP_T_Distributor'
-            },
-            {
-              data: 15,
-              name: 'No_Sertifikat_Kalibrasi'
-            },
-            {
-              data: 16,
-              name: 'teknisi_ppm'
-            },
-            {
-              data: 17,
-              name: 'harga_perolehan'
-            },
-            {
-              data: 18,
-              name: 'Sumber_Dana'
-            },
-            {
-              data: 19,
-              name: 'Tahun_Perolehan'
-            },
-            {
-              data: 20,
-              name: 'AKL'
-            },
-            {
-              data: 21,
-              name: 'AKD'
-            },
-            {
-              data: 22,
-              name: 'no_inventaris_1'
-            },
-            {
-              data: 23,
-              name: 'umur_alat'
-            },
-            {
-              data: 24,
-              name: 'jadwal_pemeliharaan'
-            },
-            {
-              data: 0,
-              render: function(data, type, full, meta) {
-                return `<a href=\"/dashboard/ppm/data_inventaris/cetak_aset/${data}"\"  target=\"_blank\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Print\"><i class=\"fa fa-print\"></i></button></a>
-                <a href=\"/dashboard/ppm/registrasi/${data}/edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\" class=\"btn btn-info btn-sm\"> <i class=\"fa fa-edit\"></i> </a>
-                <a href=\"/dashboard/ppm/data_inventaris/detail/${data}\""  target=\"_blank\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Detail\" class=\"btn btn-success btn-sm\"> <i class=\"fa fa-eye\"></i> </a>
-                <form action=\"/dashboard/ppm/registrasi/${data}\" method=\"POST\" class=\"d-inline\">
-                            @csrf
-                            @method('delete')
-                            <button class=\"btn btn-danger btn-sm\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Hapus\">
-                              <i class=\"fa fa-trash\"></i>
-                            </button>
-                          </form>`
-              }
-
-            },
-
-
-
-          ],
-        });
-      })
-      
-    </script> -->
-
-<!-- modal  -->
-<!-- Button trigger modal  -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
- Modal 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-sm-4">
-            Id Aset <br>
-            Jenis <br>
-            Nama <br>
-            Merek <br>
-            Ruangan <br>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-<!-- modal -->
-@endpush
