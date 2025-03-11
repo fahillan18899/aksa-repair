@@ -59,7 +59,7 @@ class HomeController extends Controller
 
     public function dataInventaris()
     {
-        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->paginate(10); // Batasi 10 data per halaman
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
     
         return view('pages.admin.PPM.data_inventaris.index', compact('items'));
     }

@@ -3,16 +3,6 @@
 @section('content')
 @section('title', 'Data Inventaris')
 <style>
-  .pagination .page-item.active .page-link {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: white;
-  }
-
-  .pagination .page-item.disabled .page-link {
-    color: #6c757d;
-  }
-
   .table-modal td:first-child {
         width: 50%;
     }
@@ -186,47 +176,6 @@
                 @endforelse
               </tbody>
             </table>
-            <div class="d-flex justify-content-center">
-              <nav aria-label="Page navigation">
-                <ul class="pagination">
-                  <!-- Tombol First & Previous -->
-                  <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
-                    <a class="page-link" href="{{ $items->url(1) }}">&laquo; First</a>
-                  </li>
-                  <li class="page-item {{ $items->onFirstPage() ? 'disabled' : '' }}">
-                    <a class="page-link" href="{{ $items->previousPageUrl() }}">&laquo;</a>
-                  </li>
-
-                  <!-- Loop Halaman -->
-                  @php
-                  $start = max(1, $items->currentPage() - 2);
-                  $end = min($items->lastPage(), $items->currentPage() + 2);
-                  @endphp
-
-                  @if ($start > 1)
-                  <li class="page-item disabled"><span class="page-link">...</span></li>
-                  @endif
-
-                  @foreach (range($start, $end) as $page)
-                  <li class="page-item {{ $page == $items->currentPage() ? 'active' : '' }}">
-                    <a class="page-link" href="{{ $items->url($page) }}">{{ $page }}</a>
-                  </li>
-                  @endforeach
-
-                  @if ($end < $items->lastPage())
-                    <li class="page-item disabled"><span class="page-link">...</span></li>
-                    @endif
-
-                    <!-- Tombol Next & Last -->
-                    <li class="page-item {{ $items->hasMorePages() ? '' : 'disabled' }}">
-                      <a class="page-link" href="{{ $items->nextPageUrl() }}">&raquo;</a>
-                    </li>
-                    <li class="page-item {{ $items->hasMorePages() ? '' : 'disabled' }}">
-                      <a class="page-link" href="{{ $items->url($items->lastPage()) }}">Last &raquo;</a>
-                    </li>
-                </ul>
-              </nav>
-            </div>
           </div>
         </div>
       </div>
