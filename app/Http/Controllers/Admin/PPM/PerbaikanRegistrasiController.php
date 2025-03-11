@@ -195,6 +195,21 @@ class PerbaikanRegistrasiController extends Controller
         return back();
     }
 
+    public function kondisiAlat($id)
+    {
+        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        if ($item) {
+            if ($item->keterangan_kondisi_alat_reg == '0') {
+                $item->keterangan_kondisi_alat_reg = '1';
+            } else {
+                $item->keterangan_kondisi_alat_reg = '0';
+            }
+
+            $item->save();
+        }
+        return back();
+    }
+
     public function destroy($id)
     {
 

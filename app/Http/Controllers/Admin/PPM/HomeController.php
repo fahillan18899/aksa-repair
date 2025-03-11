@@ -145,7 +145,6 @@ class HomeController extends Controller
             'Teknisi_3_reg' => $data->teknisi_3_reg,
             'Teknisi_4_reg' => $data->teknisi_4_reg,
             'Teknisi_5_reg' => $data->teknisi_5_reg,
-            'Keterangan_Kondisi_Alat_reg' => $data->keterangan_kondisi_alat_reg,
             'Ka_Instalasi_reg' => $data->ka_instalasi_reg,
             'suku_cadang' => $data->suku_cadang,
             'volume' => $data->volume,

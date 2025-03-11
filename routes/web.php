@@ -134,7 +134,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::put('aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
         Route::get('aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak']);
         Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy']);
-        Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan']);
+        Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan'])->name('status_perbaikan');
+        Route::put('aset_teregistrasi/update2/{id}', [PerbaikanRegistrasiController::class, 'kondisiAlat'])->name('kondisi_alat');
 
         // Pengiriman Aset Teregistrasi
         Route::post('tambah_pengiriman', [PengirimanRegistrasiController::class, 'store']);

@@ -34,7 +34,6 @@ class PengirimanRegistrasiController extends Controller
             'harga_satuan' => '',
             'jumlah_harga' => '',
             'pelapor_reg' => '',
-            'keterangan_kondisi_alat_reg' => '',
             'ka_instalasi_reg' => '',
             'nama_rekan_reg' => '',
             'alamat_rekan_reg' => '',

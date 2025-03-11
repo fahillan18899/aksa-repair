@@ -25,7 +25,6 @@ class PengembalianRegistrasiController extends Controller
             'serial_number_reg' => '',
             'pelapor_reg' => '',
             'lokasi_alat_reg' => '',
-            'keterangan_reg' => '',
             'penerima_reg' => '',
             'harga_perbaikan_reg' => '',
             'teknisi1_reg' => '',

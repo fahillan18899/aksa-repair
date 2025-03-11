@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('serial_number_reg')->nullable();
             $table->string('pelapor_reg')->nullable();
             $table->string('lokasi_alat_reg')->nullable();
-            $table->string('keterangan_reg')->nullable();
             $table->string('penerima_reg')->nullable();
             $table->string('harga_perbaikan_reg')->nullable();
             $table->string('teknisi1_reg')->nullable();
