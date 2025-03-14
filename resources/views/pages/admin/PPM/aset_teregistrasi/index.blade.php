@@ -212,7 +212,15 @@
                     <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
                     <div class="col-xs-9">
                       <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg"
-                        placeholder="Pelapor (user yang melaporkan kerusakan alat)">
+                        placeholder="Terisi Otomatis" readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
+                    <div class="col-xs-9">
+                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg"
+                        placeholder="Terisi Otomatis" readonly >
                     </div>
                   </div>
 
@@ -320,14 +328,6 @@
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga1"
                         placeholder="Jumlah Harga Sperpart">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
-                    <div class="col-xs-9">
-                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg"
-                        placeholder="Kerusakan yang ada dialat">
                     </div>
                   </div>
 
@@ -1639,11 +1639,13 @@
       .then(data => {
         console.log("Data dari server: ", data);
         let item = Array.isArray(data) ? data[0] : data || {};
-        $('#Nama_Alat_reg').val(item.nama_alat_reg || '');
-        $('#Merek_Alat_reg').val(item.merek_alat_reg || '');
-        $('#Serial_Number_reg').val(item.serial_number_reg || '');
-        $('#Lokasi_Alat_reg').val(item.lokasi_alat_reg || '');
-        $('#Type_Alat_reg').val(item.type || '');
+        $('#Nama_Alat_reg').val(item.nama_req	 || '');
+        $('#Merek_Alat_reg').val(item.merek_req || '');
+        $('#Serial_Number_reg').val(item.sn_req || '');
+        $('#Lokasi_Alat_reg').val(item.lokasi_req || '');
+        $('#Type_Alat_reg').val(item.type_req || '');
+        $('#Pelapor_reg').val(item.pelapor_req || '');
+        $('#Keluhan_Dari_alat_reg').val(item.kerusakan_req || '');
       })
       .catch(error => console.error("Error AJAX:", error));
     });

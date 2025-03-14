@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Helper;
 use App\Models\Registrasi;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LembarPemeliharaan;
@@ -103,17 +104,10 @@ class HomeController extends Controller
         return view('pages.admin.PPM.data_inventaris.detail', compact('itemData', 'itemKerusakan'));
     }
 
-    public function autofill($idars)
+    public function autofill($id)
     {
-        $data = DB::table('registrasis')->where('id_aset', $idars)->first();
-
-        return response()->json([
-            'nama_alat_reg' => $data->nama_alat,
-            'merek_alat_reg' => $data->merek,
-            'serial_number_reg' => $data->serial_number,
-            'lokasi_alat_reg' => $data->lokasi_alat,
-            'type' => $data->type,
-        ]);
+        $data = Pesanan::where('id', $id)->first();
+        return json_encode($data);
     }
 
     public function autofillpart($idars)

@@ -27,6 +27,7 @@ class PesananController extends Controller
             'merek_req' => '',
             'type_req' => '',
             'sn_req' => '',
+            'lokasi_req' => '',
             'kerusakan_req' => '',
             'pelapor_req' => '',
             'tanggal_req' => '',

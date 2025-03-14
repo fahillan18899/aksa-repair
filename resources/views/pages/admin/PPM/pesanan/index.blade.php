@@ -65,25 +65,31 @@
                   <div class="form-group row">
                     <label for="nama_req" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_req" type="text" class="form-control" id="nama_req" placeholder="Nama Alat" value="" readonly>
+                      <input name="nama_req" type="text" class="form-control" id="nama_req" placeholder="Terisi Otomatis" value="" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="merek_req" class="col-xs-3 col-form-label">Merek Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek_req" type="text" class="form-control" id="merek_req" placeholder="Merek Alat" value="" readonly>
+                      <input name="merek_req" type="text" class="form-control" id="merek_req" placeholder="Terisi Otomatis" value="" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="type_req" class="col-xs-3 col-form-label">Type Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type_req" type="text" class="form-control" id="type_req" placeholder="Type Alat" value="" readonly>
+                      <input name="type_req" type="text" class="form-control" id="type_req" placeholder="Terisi Otomatis" value="" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="sn_req" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="sn_req" type="text" class="form-control" id="sn_req" placeholder="Serial Number" value="" readonly>
+                      <input name="sn_req" type="text" class="form-control" id="sn_req" placeholder="Terisi Otomatis" value="" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="lokasi_req" class="col-xs-3 col-form-label">Lokasi <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="lokasi_req" type="text" class="form-control" id="lokasi_req" placeholder="Terisi Otomatis" value="" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -152,6 +158,7 @@
                         <th scope="col">Merek Alat</th>
                         <th scope="col">Type Alat</th>
                         <th scope="col">Serial Number</th>
+                        <th scope="col">Lokasi</th>
                         <th scope="col">Kerusakan Alat</th>
                         <th scope="col">Pelapor</th>
                         <th scope="col">Tanggal</th>
@@ -167,6 +174,7 @@
                         <td>{{ $item->merek_req }}</td>
                         <td>{{ $item->type_req }}</td>
                         <td>{{ $item->sn_req }}</td>
+                        <td>{{ $item->lokasi_req }}</td>
                         <td>{{ $item->kerusakan_req }}</td>
                         <td>{{ $item->pelapor_req }}</td>
                         <td>{{ $item->tanggal_req }}</td>
@@ -234,7 +242,8 @@
           $('#nama_req').val(alat.nama_alat || '');
           $('#merek_req').val(alat.merek || '');
           $('#type_req').val(alat.type || '');
-          $('#sn_req').val(alat.serial_number || '');
+          $('#sn_req').val(alat.serial_number || ''); 
+          $('#lokasi_req').val(alat.lokasi_alat || ''); 
         })
         .catch(error => console.error("Error AJAX:", error));
     });
