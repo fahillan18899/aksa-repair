@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin\PPM;
 
 use App\Helper;
-use App\Http\Controllers\Controller;
 use App\Models\Alat;
-use App\Models\PengembalianRegistrasi;
-use App\Models\PenghapusanRegistrasi;
-use App\Models\PengirimanRegistrasi;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\StockOpname;
 use App\Models\Ruangan;
 use App\Models\Teknisi;
+use App\Models\StockOpname;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\PerbaikanRegistrasi;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Models\PengirimanRegistrasi;
+use App\Models\PenghapusanRegistrasi;
+use App\Models\PengembalianRegistrasi;
 
 class PerbaikanRegistrasiController extends Controller
 {
@@ -26,34 +26,27 @@ class PerbaikanRegistrasiController extends Controller
 
     public function index()
     {
-        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-        $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-        $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-        $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $itemSperpart = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
-        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->get();
-        $kodeRs_ = Auth::user()->kode_rs;
+        $kodeRs             = Auth::user()->kode_rs;
+        $teknisis            = Teknisi::where('kode_rs', $kodeRs)->get();
+        $itemSperpart        = StockOpname::where('kode_rs', $kodeRs)->get();
+        $itemPesanan         = DB::table('pesanans')->where('kode_rs', $kodeRs)->get();
+        $items               = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->where('active', 1)->get();
+        $result_pengiriman   = PengirimanRegistrasi::where('kode_rs', $kodeRs)->where('active', 1)->get();
+        $result_penghapusan  = PenghapusanRegistrasi::where('kode_rs', $kodeRs)->where('active', 1)->get();
+        $result_pengembalian = PengembalianRegistrasi::where('kode_rs', $kodeRs)->where('active', 1)->get();
+        
 
         $data = DB::table('perbaikan_registrasis')
-            ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
-            ->where('kode_rs', Auth::user()->kode_rs)
-            ->first();
+                ->select(DB::raw('max(id_perbaikan_reg) as idPerbaikan'))
+                ->where('kode_rs', Auth::user()->kode_rs)
+                ->first();
+
         $kodeAset = $data->idPerbaikan;
+        $kode_aset = $this->helper->formatKodeAsetB($kodeAset, $kodeRs);
 
-        $kode_aset = $this->helper->formatKodeAsetB($kodeAset, $kodeRs_);
-
-        return view('pages.admin.PPM.aset_teregistrasi.index', [
-            'items' => $items,
-            'result_pengembalian' => $result_pengembalian,
-            'result_penghapusan' => $result_penghapusan,
-            'result_pengiriman' => $result_pengiriman,
-            'kode_aset' => $kode_aset,
-            'teknisis' => $teknisis,
-            'itemPesanan' => $itemPesanan,
-            'itemSperpart' => $itemSperpart,
-
-        ]);
+        return view('pages.admin.PPM.aset_teregistrasi.index',
+        compact('teknisis', 'itemSperpart', 'itemPesanan', 'items',
+                'result_pengiriman', 'result_pengembalian', 'result_penghapusan', 'kode_aset'));
     }
 
     public function store(Request $request)
@@ -107,19 +100,14 @@ class PerbaikanRegistrasiController extends Controller
 
     public function edit($id)
     {
-
-        $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $ruangans = Ruangan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $kodeRs = Auth::user()->kode_rs;
+        $alats = Alat::where('kode_rs', $kodeRs)->get();
+        $teknisis = Teknisi::where('kode_rs', $kodeRs)->get();
+        $ruangans = Ruangan::where('kode_rs', $kodeRs)->get();
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
 
-        return view('pages.admin.PPM.aset_teregistrasi.update_perbaikan', [
-
-            'alats' => $alats,
-            'item' => $item,
-            'teknisis' => $teknisis,
-            'ruangans' => $ruangans,
-        ]);
+        return view('pages.admin.PPM.aset_teregistrasi.update_perbaikan',
+        compact('alats', 'teknisis', 'ruangans', 'item'));
 
     }
 
@@ -189,7 +177,6 @@ class PerbaikanRegistrasiController extends Controller
             } else {
                 $item->status = '0';
             }
-
             $item->save();
         }
         return back();
@@ -212,11 +199,8 @@ class PerbaikanRegistrasiController extends Controller
 
     public function destroy($id)
     {
-
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
         $item->delete();
-
         return redirect('/dashboard/ppm/aset_teregistrasi')->with('success', 'Data Berhasil Di Hapus.');
     }
 }
