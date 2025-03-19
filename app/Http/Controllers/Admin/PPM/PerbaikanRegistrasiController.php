@@ -26,7 +26,7 @@ class PerbaikanRegistrasiController extends Controller
 
     public function index()
     {
-        $kodeRs             = Auth::user()->kode_rs;
+        $kodeRs              = Auth::user()->kode_rs;
         $teknisis            = Teknisi::where('kode_rs', $kodeRs)->get();
         $itemSperpart        = StockOpname::where('kode_rs', $kodeRs)->get();
         $itemPesanan         = DB::table('pesanans')->where('kode_rs', $kodeRs)->get();
@@ -52,30 +52,16 @@ class PerbaikanRegistrasiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_perbaikan_reg' => 'unique:perbaikan_registrasis|required',
-            'id_aset_reg' => '',
-            'tanggal_perbaikan_reg' => '',
-            'nama_alat_reg' => '',
-            'merek_alat_reg' => '',
-            'type_alat_reg' => '',
+            'id_perbaikan_reg'  => 'unique:perbaikan_registrasis|required',
+            'id_aset_reg'       => '',
+            'nama_alat_reg'     => '',
+            'merek_alat_reg'    => '',
+            'type_alat_reg'     => '',
             'serial_number_reg' => '',
-            'lokasi_alat_reg' => '',
-            'pelapor_reg' => '',
-            'keterangan_kondisi_alat_reg' => '',
-            'ka_instalasi_reg' => '',
-            'teknisi_1_reg' => '',
-            'teknisi_2_reg' => '',
-            'teknisi_3_reg' => '',
-            'teknisi_4_reg' => '',
-            'teknisi_5_reg' => '',
-            'suku_cadang' => '',
-            'volume' => '',
-            'harga_satuan' => '',
-            'jumlah_harga' => '',
-            'keluhan_dari_alat_reg' => '',
-            'korektif_reg' => '',
-            'foto_perbaikan' => '',
-            'active' => '',
+            'lokasi_alat_reg'   => '',
+            'korektif_reg'      => '',
+            'foto_perbaikan'    => '',
+            'active'            => '',
         ]);
 
         if (isset($request['foto_perbaikan'])) {
@@ -100,11 +86,11 @@ class PerbaikanRegistrasiController extends Controller
 
     public function edit($id)
     {
-        $kodeRs = Auth::user()->kode_rs;
-        $alats = Alat::where('kode_rs', $kodeRs)->get();
+        $kodeRs   = Auth::user()->kode_rs;
+        $alats    = Alat::where('kode_rs', $kodeRs)->get();
         $teknisis = Teknisi::where('kode_rs', $kodeRs)->get();
         $ruangans = Ruangan::where('kode_rs', $kodeRs)->get();
-        $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        $item     = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
 
         return view('pages.admin.PPM.aset_teregistrasi.update_perbaikan',
         compact('alats', 'teknisis', 'ruangans', 'item'));
@@ -114,26 +100,16 @@ class PerbaikanRegistrasiController extends Controller
     public function update(Request $request, $perbaikanRegistrasi)
     {
         $request->validate([
-            'id_perbaikan_reg' => '',
-            'id_aset_reg' => '',
-            'tanggal_perbaikan_reg' => '',
-            'nama_alat_reg' => '',
-            'merek_alat_reg' => '',
-            'type_alat_reg' => '',
+            'id_perbaikan_reg'  => '',
+            'id_aset_reg'       => '',
+            'nama_alat_reg'     => '',
+            'merek_alat_reg'    => '',
+            'type_alat_reg'     => '',
             'serial_number_reg' => '',
-            'lokasi_alat_reg' => '',
-            'pelapor_reg' => '',
-            'keterangan_kondisi_alat_reg' => '',
-            'ka_instalasi_reg' => '',
-            'teknisi_1_reg' => '',
-            'teknisi_2_reg' => '',
-            'teknisi_3_reg' => '',
-            'teknisi_4_reg' => '',
-            'teknisi_5_reg' => '',
-            'keluhan_dari_alat_reg' => '',
-            'korektif_reg' => '',
-            'foto_perbaikan' => '',
-            'active' => '',
+            'lokasi_alat_reg'   => '',
+            'korektif_reg'      => '',
+            'foto_perbaikan'    => '',
+            'active'            => '',
         ]);
 
         if (isset($request['foto_perbaikan'])) {
@@ -146,7 +122,6 @@ class PerbaikanRegistrasiController extends Controller
         $perbaikanRegistrasi = PerbaikanRegistrasi::findOrFail($perbaikanRegistrasi);
         $perbaikanRegistrasi->update($request->post());
 
-
         return redirect()->route('aset_teregistrasi.index')
             ->with('success', 'Data Berhasil Ubah.');
     }
@@ -154,7 +129,6 @@ class PerbaikanRegistrasiController extends Controller
     public function cetak($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-
         return view('pages.admin.PPM.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }
 
@@ -162,10 +136,7 @@ class PerbaikanRegistrasiController extends Controller
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
 
-        return view('pages.admin.PPM.aset_teregistrasi.sperpart_perbaikan', [
-            'items' => $items,
-
-        ]);
+        return view('pages.admin.PPM.aset_teregistrasi.sperpart_perbaikan',compact('items'));
     }
 
     public function updateStatusPerbaikan($id)

@@ -120,31 +120,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function autofillPengiriman($id_perbaikan_reg)
+    public function autofillPengiriman($id)
     {
-        $data = DB::table('perbaikan_registrasis')->where('id_perbaikan_reg', $id_perbaikan_reg)->first();
-
-        return response()->json([
-            'Id_Perbaikan_reg' => $data->id_perbaikan_reg,
-            'Tanggal_Perbaikan_reg' => $data->tanggal_perbaikan_reg,
-            'ID_Aset_reg' => $data->id_aset_reg,
-            'Nama_Alat_reg' => $data->nama_alat_reg,
-            'Merek_Alat_reg' => $data->merek_alat_reg,
-            'Type_Alat_reg' => $data->type_alat_reg,
-            'Serial_Number_reg' => $data->serial_number_reg,
-            'Lokasi_Alat_reg' => $data->lokasi_alat_reg,
-            'Teknisi_1_reg' => $data->teknisi_1_reg,
-            'Pelapor_reg' => $data->pelapor_reg,
-            'Teknisi_2_reg' => $data->teknisi_2_reg,
-            'Teknisi_3_reg' => $data->teknisi_3_reg,
-            'Teknisi_4_reg' => $data->teknisi_4_reg,
-            'Teknisi_5_reg' => $data->teknisi_5_reg,
-            'Ka_Instalasi_reg' => $data->ka_instalasi_reg,
-            'suku_cadang' => $data->suku_cadang,
-            'volume' => $data->volume,
-            'harga_satuan' => $data->harga_satuan,
-            'jumlah_harga' => $data->jumlah_harga,
-        ]);
+        $data = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)->first();
+        return json_encode($data);
     }
 
     public function autofillPengirimanUn($id_perbaikan_un)

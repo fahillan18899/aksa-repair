@@ -73,6 +73,7 @@
                       <th scope="col">Type Alat</th>
                       <th scope="col">Serial Number</th>
                       <th scope="col">Pelapor</th>
+                      <th scope="col">Kerusakan Alat</th>
                       <th scope="col">Tanggal</th>
                       <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
@@ -87,6 +88,7 @@
                       <td>{{ $item->type_req }}</td>
                       <td>{{ $item->sn_req }}</td>
                       <td>{{ $item->pelapor_req }}</td>
+                      <td>{{ $item->kerusakan_req }}</td>
                       <td>{{ $item->tanggal_req }}</td>
                       <td>
                         <form action="{{ route('pesanan.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -126,103 +128,40 @@
                 <form action="{{ route('perbaikan.store') }}" class="form-inner"
                   enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+
                   <div class="form-group row">
-                    <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset
+                    <label for="ID Aset reg" class="col-xs-3 col-form-label">ID Aset
                       <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset_reg" type="text" class="form-control id_aset_reg"
-                        id="id_aset_reg" placeholder="Klik id aset alat untuk copy ke sini / Scan Qr code" readonly
-                        data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data" style="cursor: pointer;">
+                      <input name="id_aset_reg" type="text" class="form-control"
+                        id="id_aset_reg" placeholder="Klik id aset alat atau Scan Qr code"
+                        readonly data-toggle="tooltip" data-placement="top"
+                        title="Klik disini untuk load data" style="cursor: pointer;">
                     </div>
                   </div>
 
-                  <!-- <div class="form-group row">
-                    <label for="" class="col-xs-3 col-form-label">ID Perbaikan
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="id_perbaikan_reg" type="hidden" class="form-control"
-                        id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
-                        style="cursor: not-allowed;">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                        id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan"
-                        value="<?php echo date(now()); ?>" readonly
-                        style="cursor: not-allowed;">
-                    <!-- </div>
-                  </div> -->
-
+                  @php
+                  $field = [
+                    'nama_alat_reg'     => 'Nama Alat',
+                    'merek_alat_reg'    => 'Merek',
+                    'type_alat_reg'     => 'Type',
+                    'serial_number_reg' => 'Serial Number',
+                    'lokasi_alat_reg'   => 'Lokasi Alat',
+                    ]
+                  @endphp
+                  
+                  @foreach($field as $name => $label)
                   <div class="form-group row">
-                    <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat
+                    <label for="{{ $name }}" class="col-xs-3 col-form-label">{{ $label }}
                       <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat_reg" type="text" class="form-control"
-                        id="Nama_Alat_reg" placeholder="Terisi Otomatis" readonly
+                      <input name="{{ $name }}" type="text" class="form-control"
+                        id="{{ $name }}" placeholder="Terisi Otomatis" readonly
                         style="cursor: not-allowed;">
                     </div>
                   </div>
-
-                  <div class="form-group row">
-                    <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="merek_alat_reg" type="text" class="form-control"
-                        id="Merek_Alat_reg" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="type_alat_reg" type="text" class="form-control"
-                        id="Type_Alat_reg" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="serial_number_reg" class="col-xs-3 col-form-label">Serial Number
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="Serial_Number_reg" type="text" class="form-control"
-                        id="Serial_Number_reg" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat
-                      <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="lokasi_alat_reg" type="text" class="form-control"
-                        id="Lokasi_Alat_reg" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                    </div>
-                  </div>
-
-                  <!-- <div class="form-group row">
-                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
-                    <div class="col-xs-9"> -->
-                      <input name="pelapor_reg" type="hidden" class="form-control" id="Pelapor_reg"
-                        placeholder="Terisi Otomatis" readonly>
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
-                    <div class="col-xs-9"> -->
-                      <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="Keluhan_Dari_alat_reg"
-                        placeholder="Terisi Otomatis" readonly>
-                    <!-- </div>
-                  </div> -->
-
+                  @endforeach
+                  
                   <div class="form-group row">
                     <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
@@ -244,9 +183,10 @@
                       </select>
                     </div>
                     <div class="col-xs-3">
-                      <button type="button" class="btn btn-primary mt-2" id="btnTambahTeknisi" 
-                       data-toggle="tooltip" data-placement="top" title="Tambah Teknisi" 
-                       style="cursor: pointer;">+</button></div>
+                      <button type="button" class="btn btn-primary mt-2" id="btnTambahTeknisi"
+                        data-toggle="tooltip" data-placement="top" title="Tambah Teknisi"
+                        style="cursor: pointer;">+</button>
+                    </div>
                   </div>
 
                   @for ($i = 2; $i <= 5; $i++)
@@ -262,61 +202,102 @@
                     </div>
                     </div>
                   @endfor
-                  
-              <!-- <div class="form-group row">
-                <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                <div class="col-xs-9"> -->
-                  <input name="suku_cadang" type="hidden" class="form-control" id="nama_sukucadang1" placeholder="Nama Sperpart yang digunakan">
-                <!-- </div>
-              </div> -->
 
-              <!-- <div class="form-group row">
-                <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                <div class="col-xs-9"> -->
-                  <input name="volume" type="hidden" class="form-control" id="volume1" placeholder="Volume sperpart/ banyak yang digunakan">
-                <!-- </div>
-              </div> -->
-
-              <!-- <div class="form-group row">
-                <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                <div class="col-xs-9"> -->
-                  <input name="harga_satuan" type="hidden" class="form-control" id="harga_satuan1" placeholder="Harga Satuan dari sperpart">
-                <!-- </div>
-              </div> -->
-
-              <!-- <div class="form-group row">
-                <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
-                <div class="col-xs-9"> -->
-                  <input name="jumlah_harga" type="hidden" class="form-control" id="jumlah_harga1" placeholder="Jumlah Harga Sperpart">
-                <!-- </div>
-              </div> -->
-
-              <div class="form-group row">
-                <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
-                <div class="col-xs-9">
-                  <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Solusi yang harus dilakukan">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
-                <div class="col-xs-9">
-                  <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-sm-offset-3 col-sm-6">
-                  <div class="ui buttons">
-                    <button class="ui positive button">Tambah</button>
-                    <div class="or"></div>
-                    <button type="button" class="btn btn-info mt-2" id="startScan" data-toggle="modal" data-target="#exampleModal">Scan QR</button>
-                    <div class="or"></div>
-                    <a class="btn btn-primary" onclick="hiddenPerbaikan()"> Daftar Perbaikan </a>
+                  <div class="form-group row">
+                    <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
+                    <div class="col-xs-9">
+                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" 
+                      placeholder="Solusi yang harus dilakukan">
+                    </div>
                   </div>
-                </div>
-              </div>
-              </form>
+
+                  <div class="form-group row">
+                    <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                    <div class="col-xs-9">
+                      <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
+                    </div>
+                  </div>
+
+                  <!-- <div class="form-group row">
+                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
+                      <div class="col-xs-9"> -->
+                      <input name="pelapor_reg" type="hidden" class="form-control" id="Pelapor_reg"
+                        placeholder="Terisi Otomatis" readonly>
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
+                      <div class="col-xs-9"> -->
+                        <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="Keluhan_Dari_alat_reg"
+                        placeholder="Terisi Otomatis" readonly>
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                      <div class="col-xs-9"> -->
+                        <input name="suku_cadang" type="hidden" class="form-control" id="nama_sukucadang1" 
+                        placeholder="Nama Sperpart yang digunakan">
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                      <div class="col-xs-9"> -->
+                        <input name="volume" type="hidden" class="form-control" id="volume1" 
+                        placeholder="Volume sperpart/ banyak yang digunakan">
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
+                      <div class="col-xs-9"> -->
+                        <input name="harga_satuan" type="hidden" class="form-control" id="harga_satuan1" 
+                        placeholder="Harga Satuan dari sperpart">
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
+                      <div class="col-xs-9"> -->
+                        <input name="jumlah_harga" type="hidden" class="form-control" id="jumlah_harga1" 
+                        placeholder="Jumlah Harga Sperpart">
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="" class="col-xs-3 col-form-label">ID Perbaikan
+                      <i class="text-danger">*</i></label>
+                        <div class="col-xs-9"> -->
+                        <input name="id_perbaikan_reg" type="hidden" class="form-control"
+                          id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
+                          style="cursor: not-allowed;">
+                    <!-- </div>
+                  </div> -->
+
+                  <!-- <div class="form-group row">
+                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
+                      <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                        <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
+                        id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan"
+                        value="<?php echo date(now()); ?>" readonly
+                        style="cursor: not-allowed;">
+                    <!-- </div>
+                  </div> -->
+                  <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                      <div class="ui buttons">
+                        <button class="ui positive button">Tambah</button>
+                        <div class="or"></div>
+                        <button type="button" class="btn btn-info mt-2" id="startScan" data-toggle="modal" data-target="#exampleModal">Scan QR</button>
+                        <div class="or"></div>
+                        <a class="btn btn-primary" onclick="hiddenPerbaikan()"> Daftar Perbaikan </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
             </div>
             <div class="col-md-3"></div>
             <!--Tabel Perbaikan-->
@@ -455,189 +436,29 @@
                       style="cursor: pointer;">
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                      id="Tanggal_Perbaikan_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Pengiriman_reg" class="col-xs-3 col-form-label">Tanggal Pengiriman
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_pengiriman_reg" type="hidden" class="form-control"
-                      id="Tanggal_Pengiriman_reg" placeholder="Tanggal Pengiriman"
-                      value="<?php echo date('Y-m-d'); ?>" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="id_aset_reg" type="hidden" class="form-control"
-                      id="Id_Aset_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
+                @php
+                  $field2 = [
+                    'nama_alat_reg'   => 'Nama Alat',
+                    'merek_alat_reg'  => 'Merek',
+                    'type_alat_reg'   => 'Type',
+                    'seri_number_reg' => 'Serial Number',
+                    'lokasi_alat_reg' => 'Lokasi Alat'
+                    ]
+                @endphp
+                
+                @for($i = 6; $i <= 6; $i++)
+                @foreach($field2 as $name2 => $label2)
                 <div class="form-group row">
-                  <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat
-                    <i class="text-danger">*</i></label>
+                  <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}
+                  <i class="text-danger">*</i></label>
                   <div class="col-xs-9">
-                    <input name="nama_alat_reg" type="text" class="form-control"
-                      id="Nama_Alat_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
+                    <input name="{{ $name2 }}" type="text" class="form-control"
+                    id="{{ $name2 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
                   </div>
                 </div>
-
-                <div class="form-group row">
-                  <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="merek_alat_reg" type="text" class="form-control"
-                      id="Merek_Alat_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="type_alat_reg" type="text" class="form-control"
-                      id="Type_Alat_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="Seri_Number_reg" class="col-xs-3 col-form-label">Seri Number
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="seri_number_reg" type="text" class="form-control"
-                      id="Seri_Number_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="lokasi_alat_reg" class="col-xs-3 col-form-label">Lokasi Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="lokasi_alat_reg" type="text" class="form-control"
-                      id="Lokasi_Alat_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="pelapor_reg" type="hidden" class="form-control"
-                      id="Pelapor_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_1_reg" type="hidden" class="form-control"
-                      id="Teknisi_1_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_2_reg" type="hidden" class="form-control"
-                      id="Teknisi_2_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_3_reg" type="hidden" class="form-control"
-                      id="Teknisi_3_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_4_reg" type="hidden" class="form-control"
-                      id="Teknisi_4_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_5_reg" type="hidden" class="form-control"
-                      id="Teknisi_5_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="suku_cadang" type="hidden" class="form-control"
-                      id="nama_sukucadang" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="volume" type="hidden" class="form-control" id="volume"
-                      placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="harga_satuan" type="hidden" class="form-control"
-                      id="harga_satuan" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="jumlah_harga" type="hidden" class="form-control"
-                      id="jumlah_harga" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
-                  <div class="col-xs-9"> -->
-                    <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                      id="KA_Instalasi_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
+                @endforeach
+                @endfor
                 <div class="form-group row">
                   <label for="Nama_Rekan_reg" class="col-xs-3 col-form-label">Nama Rekan</label>
                   <div class="col-xs-9">
@@ -671,6 +492,137 @@
                       placeholder="Telp Teknisi PT / Perusahaan rekanan / pihak ke-3">
                   </div>
                 </div>
+                <!-- <div class="form-group row">
+                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
+                    <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                      <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
+                        id="Tanggal_Perbaikan_reg1" placeholder="Terisi Otomatis" readonly
+                        style="cursor: not-allowed;">
+                      <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
+                    <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                        <input name="id_aset_reg" type="hidden" class="form-control"
+                        id="Id_Aset_reg1" placeholder="Terisi Otomatis" readonly
+                        style="cursor: not-allowed;">
+                      <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
+                    <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                        <input name="pelapor_reg" type="hidden" class="form-control"
+                        id="Pelapor_reg1" placeholder="Terisi Otomatis" readonly
+                        style="cursor: not-allowed;">
+                      <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
+                    <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                        <input name="teknisi_1_reg" type="hidden" class="form-control"
+                        id="Teknisi_1_reg1" placeholder="Terisi Otomatis" readonly
+                        style="cursor: not-allowed;">
+                      <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi_2_reg" type="hidden" class="form-control"
+                      id="Teknisi_2_reg1" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi_3_reg" type="hidden" class="form-control"
+                      id="Teknisi_3_reg1" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi_4_reg" type="hidden" class="form-control"
+                      id="Teknisi_4_reg1" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi_5_reg" type="hidden" class="form-control"
+                      id="Teknisi_5_reg1" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
+                    <div class="col-xs-9"> -->
+                      <input name="ka_instalasi_reg" type="hidden" class="form-control"
+                      id="KA_Instalasi_reg1" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9"> -->
+                      <input name="suku_cadang" type="hidden" class="form-control"
+                      id="nama_sukucadang" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9"> -->
+                      <input name="volume" type="hidden" class="form-control" id="volume"
+                      placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
+                    <div class="col-xs-9"> -->
+                      <input name="harga_satuan" type="hidden" class="form-control"
+                      id="harga_satuan" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
+                    <div class="col-xs-9"> -->
+                      <input name="jumlah_harga" type="hidden" class="form-control"
+                      id="jumlah_harga" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Tanggal_Pengiriman_reg" class="col-xs-3 col-form-label">Tanggal Pengiriman
+                    <i class="text-danger">*</i></label>
+                      <div class="col-xs-9"> -->
+                        <input name="tanggal_pengiriman_reg" type="hidden" class="form-control"
+                        id="Tanggal_Pengiriman_reg" placeholder="Tanggal Pengiriman"
+                        value="<?php echo date('Y-m-d'); ?>" readonly
+                        style="cursor: not-allowed;">
+                      <!-- </div>
+                </div> -->
 
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
@@ -808,97 +760,29 @@
                       style="cursor: pointer;">
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="Id_Aset_reg" type="hidden" class="form-control"
-                      id="Id_Aset_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
+                @php
+                  $field3 = [
+                    'nama_alat_reg'     => 'Nama Alat',
+                    'merek_reg'         => 'Merek',
+                    'tipe_reg'          => 'Type',
+                    'serial_number_reg' => 'Serial Number',
+                    'lokasi_alat_reg'   => 'Lokasi Alat'
+                    ]
+                @endphp
+                
+                @for($i = 7; $i <= 7; $i++)
+                @foreach($field3 as $name3 => $label3)
                 <div class="form-group row">
-                  <label for="nama_alat_reg" class="col-xs-3 col-form-label">Nama Alat
-                    <i class="text-danger">*</i></label>
+                  <label for="{{ $name3 }}" class="col-xs-3 col-form-label">{{ $label3 }}
+                  <i class="text-danger">*</i></label>
                   <div class="col-xs-9">
-                    <input name="nama_alat_reg" type="text" class="form-control"
-                      id="nama_alat_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
+                    <input name="{{ $name3 }}" type="text" class="form-control"
+                    id="{{ $name3 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <label for="tanggal_perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                      id="tanggal_perbaikan_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <div class="form-group row">
-                  <label for="merek_reg" class="col-xs-3 col-form-label">Merek
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="merek_reg" type="text" class="form-control"
-                      id="merek_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="tipe_reg" class="col-xs-3 col-form-label">Type
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="tipe_reg" type="text" class="form-control"
-                      id="tipe_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <!-- <div class="form-group row">
-                  <label for="tanggal_pengembalian_reg" class="col-xs-3 col-form-label">Tanggal Pengembalian
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_pengembalian_reg" type="hidden"
-                      class="form-control" id="tanggal_pengembalian_reg2"
-                      placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <div class="form-group row">
-                  <label for="serial_number_reg" class="col-xs-3 col-form-label">Serial Number
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="serial_number_reg" type="text" class="form-control"
-                      id="serial_number_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="lokasi_alat_reg" class="col-xs-3 col-form-label">Lokasi Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="lokasi_alat_reg" type="text" class="form-control"
-                      id="lokasi_alat_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <!-- <div class="form-group row">
-                  <label for="pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                  <input name="pelapor_reg" type="hidden" class="form-control"
-                      id="pelapor_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
+                @endforeach
+                @endfor
 
                 <div class="form-group row">
                   <label for="penerima_reg" class="col-xs-3 col-form-label">Penerima</label>
@@ -916,98 +800,6 @@
                   </div>
                 </div>
 
-                <!-- <div class="form-group row">
-                  <label for="teknisi1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi1_reg" type="hidden" class="form-control"
-                      id="teknisi1_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi2_reg" type="hidden" class="form-control"
-                      id="teknisi2_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi3_reg" class="col-xs-3 col-form-label">Teknisi 3 </label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi3_reg" type="hidden" class="form-control"
-                      id="teknisi3_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi4_reg" class="col-xs-3 col-form-label">Teknisi 4 </label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi4_reg" type="hidden" class="form-control"
-                      id="teknisi4_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi5_reg" class="col-xs-3 col-form-label">Teknisi 5 </label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi5_reg" type="hidden" class="form-control"
-                      id="teknisi5_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                      id="ka_instalasi_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="suku_cadang" type="hidden" class="form-control"
-                      id="nama_sukucadang2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="volume" type="hidden" class="form-control" id="volume2"
-                      placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="harga_satuan" type="hidden" class="form-control"
-                      id="harga_satuan2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="jumlah_harga" type="hidden" class="form-control"
-                      id="jumlah_harga2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
                 <div class="form-group row">
                   <label for="penyebab_kerusakan_reg" class="col-xs-3 col-form-label">Penyebab Kerusakan </label>
                   <div class="col-xs-9">
@@ -1017,8 +809,7 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="solusi_perbaikan_reg"
-                    class="col-xs-3 col-form-label">Solusi Perbaikan </label>
+                  <label for="solusi_perbaikan_reg" class="col-xs-3 col-form-label">Solusi Perbaikan </label>
                   <div class="col-xs-9">
                     <input name="solusi_perbaikan_reg" type="text" class="form-control"
                       id="solusi_perbaikan_reg2" placeholder="Solusi yang diambil">
@@ -1058,6 +849,138 @@
                   </div>
                 </div>
 
+                <!-- <div class="form-group row">
+                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                      <input name="Id_Aset_reg" type="hidden" class="form-control"
+                      id="Id_Aset_reg2" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="tanggal_perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                    <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
+                      id="tanggal_perbaikan_reg2" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="tanggal_pengembalian_reg" class="col-xs-3 col-form-label">Tanggal Pengembalian
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                    <input name="tanggal_pengembalian_reg" type="hidden"
+                      class="form-control" id="tanggal_pengembalian_reg2"
+                      placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="pelapor_reg" class="col-xs-3 col-form-label">Pelapor
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                    <input name="pelapor_reg" type="hidden" class="form-control"
+                      id="pelapor_reg2" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi1_reg" class="col-xs-3 col-form-label">Teknisi 1
+                  <i class="text-danger">*</i></label>
+                  <div class="col-xs-9"> -->
+                  <input name="teknisi1_reg" type="hidden" class="form-control"
+                    id="teknisi1_reg2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi2_reg" type="hidden" class="form-control"
+                    id="teknisi2_reg2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi3_reg" class="col-xs-3 col-form-label">Teknisi 3 </label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi3_reg" type="hidden" class="form-control"
+                    id="teknisi3_reg2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi4_reg" class="col-xs-3 col-form-label">Teknisi 4 </label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi4_reg" type="hidden" class="form-control"
+                      id="teknisi4_reg2" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi5_reg" class="col-xs-3 col-form-label">Teknisi 5 </label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi5_reg" type="hidden" class="form-control"
+                    id="teknisi5_reg2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                      <input name="ka_instalasi_reg" type="hidden" class="form-control"
+                      id="ka_instalasi_reg2" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                  <div class="col-xs-9"> -->
+                    <input name="suku_cadang" type="hidden" class="form-control"
+                    id="nama_sukucadang2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                  <div class="col-xs-9"> -->
+                    <input name="volume" type="hidden" class="form-control" id="volume2"
+                    placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
+                  <div class="col-xs-9"> -->
+                    <input name="harga_satuan" type="hidden" class="form-control"
+                    id="harga_satuan2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
+                  <div class="col-xs-9"> -->
+                    <input name="jumlah_harga" type="hidden" class="form-control"
+                    id="jumlah_harga2" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
                     <div class="ui buttons">
@@ -1203,177 +1126,29 @@
                   </div>
                 </div>
 
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_perbaikan_reg" type="hidden"
-                      class="form-control" id="Tanggal_Perbaikan_reg3"
-                      placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="tanggal_penggudangan_reg" type="hidden" class="form-control"
-                      id="Tanggal_Penggudangan_reg3" placeholder="Tanggal Penggudangan"
-                      value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
+                @php
+                  $field4 = [
+                    'nama_alat_reg'     => 'Nama Alat',
+                    'merek_alat_reg'         => 'Merek',
+                    'type_alat_reg'          => 'Type',
+                    'serial_number_reg' => 'Serial Number',
+                    'lokasi_alat_reg'   => 'Lokasi Alat'
+                    ]
+                @endphp
+                
+                @for($i = 8; $i <= 8; $i++)
+                @foreach($field4 as $name4 => $label4)
                 <div class="form-group row">
-                  <label for="Nama_Alat_reg" class="col-xs-3 col-form-label">Nama Alat
-                    <i class="text-danger">*</i></label>
+                  <label for="{{ $name4 }}" class="col-xs-3 col-form-label">{{ $label4 }}
+                  <i class="text-danger">*</i></label>
                   <div class="col-xs-9">
-                    <input name="nama_alat_reg" type="text" class="form-control"
-                      id="Nama_Alat_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
+                    <input name="{{ $name4 }}" type="text" class="form-control"
+                    id="{{ $name4 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
                   </div>
                 </div>
-
-                <div class="form-group row">
-                  <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="merek_alat_reg" type="text" class="form-control"
-                      id="Merek_Alat_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="type_alat_reg" type="text" class="form-control"
-                      id="Type_Alat_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="serial_number_reg" type="text" class="form-control"
-                      id="Serial_Number_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9">
-                    <input name="lokasi_alat_reg" type="text" class="form-control"
-                      id="Lokasi_Alat_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  </div>
-                </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="pelapor_reg" type="hidden" class="form-control"
-                      id="Pelapor_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                    <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_1_reg" type="hidden" class="form-control"
-                      id="Teknisi_1_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_2_reg" type="hidden" class="form-control"
-                      id="Teknisi_2_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_3_reg" type="hidden" class="form-control"
-                      id="Teknisi_3_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_4_reg" type="hidden" class="form-control"
-                      id="Teknisi_4_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_5_reg" type="hidden" class="form-control"
-                      id="Teknisi_5_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="suku_cadang" type="hidden" class="form-control"
-                      id="nama_sukucadang3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="volume" type="hidden" class="form-control"
-                      id="volume3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="harga_satuan" type="hidden" class="form-control"
-                      id="harga_satuan3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="jumlah_harga" type="hidden" class="form-control"
-                      id="jumlah_harga3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
-                  <div class="col-xs-9"> -->
-                    <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                      id="KA_Instalasi_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
+                @endforeach
+                @endfor
 
                 <div class="form-group row">
                   <label for="Keterangan_Pengguna_reg" class="col-xs-3 col-form-label">Keterangan Pengguna</label>
@@ -1383,6 +1158,128 @@
                       placeholder="Keterangan Pengguna terhadap alat, contoh : mati total">
                   </div>
                 </div>
+
+                <!-- <div class="form-group row">
+                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                    <input name="tanggal_perbaikan_reg" type="hidden"
+                      class="form-control" id="Tanggal_Perbaikan_reg3"
+                      placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Tanggal_Penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                      <input name="tanggal_penggudangan_reg" type="hidden" class="form-control"
+                      id="Tanggal_Penggudangan_reg3" placeholder="Tanggal Penggudangan"
+                      value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
+                    <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
+                  <i class="text-danger">*</i></label>
+                  <div class="col-xs-9"> -->
+                    <input name="pelapor_reg" type="hidden" class="form-control"
+                    id="Pelapor_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
+                  <i class="text-danger">*</i></label>
+                    <div class="col-xs-9"> -->
+                      <input name="teknisi_1_reg" type="hidden" class="form-control"
+                      id="Teknisi_1_reg3" placeholder="Terisi Otomatis"
+                      readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi_2_reg" type="hidden" class="form-control"
+                    id="Teknisi_2_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi_3_reg" type="hidden" class="form-control"
+                    id="Teknisi_3_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi_4_reg" type="hidden" class="form-control"
+                    id="Teknisi_4_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
+                  <div class="col-xs-9"> -->
+                    <input name="teknisi_5_reg" type="hidden" class="form-control"
+                    id="Teknisi_5_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                  <div class="col-xs-9"> -->
+                    <input name="suku_cadang" type="hidden" class="form-control"
+                    id="nama_sukucadang3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart </label>
+                  <div class="col-xs-9"> -->
+                    <input name="volume" type="hidden" class="form-control"
+                    id="volume3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
+                  <div class="col-xs-9"> -->
+                    <input name="harga_satuan" type="hidden" class="form-control"
+                    id="harga_satuan3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
+                  <div class="col-xs-9"> -->
+                    <input name="jumlah_harga" type="hidden" class="form-control"
+                    id="jumlah_harga3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
+
+                <!-- <div class="form-group row">
+                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
+                  <div class="col-xs-9"> -->
+                    <input name="ka_instalasi_reg" type="hidden" class="form-control"
+                    id="KA_Instalasi_reg3" placeholder="Terisi Otomatis"
+                    readonly style="cursor: not-allowed;">
+                  <!-- </div>
+                </div> -->
 
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
@@ -1568,7 +1465,7 @@
     let idarspart = $("#id_aset_part").val();
 
     $.ajax({
-      url: '{{ url(' / dashboard / ppm / autofillpart / ') }}/' + idarspart,
+      url: '{{ url('/dashboard/ppm/autofillpart/') }}/'+ idarspart,
       method: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -1598,11 +1495,11 @@
         .then(data => {
           console.log("Data dari server: ", data);
           let item = Array.isArray(data) ? data[0] : data || {};
-          $('#Nama_Alat_reg').val(item.nama_req || '');
-          $('#Merek_Alat_reg').val(item.merek_req || '');
-          $('#Serial_Number_reg').val(item.sn_req || '');
-          $('#Lokasi_Alat_reg').val(item.lokasi_req || '');
-          $('#Type_Alat_reg').val(item.type_req || '');
+          $('#nama_alat_reg').val(item.nama_req || '');
+          $('#merek_alat_reg').val(item.merek_req || '');
+          $('#serial_number_reg').val(item.sn_req || '');
+          $('#lokasi_alat_reg').val(item.lokasi_req || '');
+          $('#type_alat_reg').val(item.type_req || '');
           $('#Pelapor_reg').val(item.pelapor_req || '');
           $('#Keluhan_Dari_alat_reg').val(item.kerusakan_req || '');
         })
@@ -1625,20 +1522,20 @@
         .then(data => {
           console.log("Data dari server: ", data);
           let item2 = Array.isArray(data) ? data[0] : data || {};
-          $('#Tanggal_Perbaikan_reg1').val(item2.Tanggal_Perbaikan_reg || '');
-          $('#Id_Aset_reg1').val(item2.ID_Aset_reg || '');
-          $('#Nama_Alat_reg1').val(item2.Nama_Alat_reg || '');
-          $('#Merek_Alat_reg1').val(item2.Merek_Alat_reg || '');
-          $('#Type_Alat_reg1').val(item2.Type_Alat_reg || '');
-          $('#Seri_Number_reg1').val(item2.Serial_Number_reg || '');
-          $('#Lokasi_Alat_reg1').val(item2.Lokasi_Alat_reg || '');
-          $('#Pelapor_reg1').val(item2.Pelapor_reg || '');
-          $('#Teknisi_1_reg1').val(item2.Teknisi_1_reg || '');
-          $('#Teknisi_2_reg1').val(item2.Teknisi_2_reg || '');
-          $('#Teknisi_3_reg1').val(item2.Teknisi_3_reg || '');
-          $('#Teknisi_4_reg1').val(item2.Teknisi_4_reg || '');
-          $('#Teknisi_5_reg1').val(item2.Teknisi_5_reg || '');
-          $('#KA_Instalasi_reg1').val(item2.Ka_Instalasi_reg || '');
+          $('#Tanggal_Perbaikan_reg1').val(item2.tanggal_perbaikan_reg || '');
+          $('#Id_Aset_reg1').val(item2.id_aset_reg || '');
+          $('#nama_alat_reg_6').val(item2.nama_alat_reg || '');
+          $('#merek_alat_reg_6').val(item2.merek_alat_reg || '');
+          $('#type_alat_reg_6').val(item2.type_alat_reg || '');
+          $('#seri_number_reg_6').val(item2.serial_number_reg || '');
+          $('#lokasi_alat_reg_6').val(item2.lokasi_alat_reg || '');
+          $('#Pelapor_reg1').val(item2.pelapor_reg || '');
+          $('#Teknisi_1_reg1').val(item2.teknisi_1_reg || '');
+          $('#Teknisi_2_reg1').val(item2.teknisi_2_reg || '');
+          $('#Teknisi_3_reg1').val(item2.teknisi_3_reg || '');
+          $('#Teknisi_4_reg1').val(item2.teknisi_4_reg || '');
+          $('#Teknisi_5_reg1').val(item2.teknisi_5_reg || '');
+          $('#KA_Instalasi_reg1').val(item2.ka_instalasi_reg || '');
           $('#nama_sukucadang').val(item2.suku_cadang || '');
           $('#volume').val(item2.volume || '');
           $('#harga_satuan').val(item2.harga_satuan || '');
@@ -1662,20 +1559,20 @@
         .then(data => {
           console.log("Data dari server: ", data);
           let item3 = Array.isArray(data) ? data[0] : data || {};
-          $('#tanggal_perbaikan_reg2').val(item3.Tanggal_Perbaikan_reg || '');
-          $('#Id_Aset_reg2').val(item3.ID_Aset_reg || '');
-          $('#nama_alat_reg2').val(item3.Nama_Alat_reg || '');
-          $('#merek_reg2').val(item3.Merek_Alat_reg || '');
-          $('#tipe_reg2').val(item3.Type_Alat_reg || '');
-          $('#serial_number_reg2').val(item3.Serial_Number_reg || '');
-          $('#pelapor_reg2').val(item3.Pelapor_reg || '');
-          $('#lokasi_alat_reg2').val(item3.Lokasi_Alat_reg || '');
-          $('#teknisi1_reg2').val(item3.Teknisi_1_reg || '');
-          $('#teknisi2_reg2').val(item3.Teknisi_2_reg || '');
-          $('#teknisi3_reg2').val(item3.Teknisi_3_reg || '');
-          $('#teknisi4_reg2').val(item3.Teknisi_4_reg || '');
-          $('#teknisi5_reg2').val(item3.Teknisi_5_reg || '');
-          $('#ka_instalasi_reg2').val(item3.Ka_Instalasi_reg || '');
+          $('#tanggal_perbaikan_reg2').val(item3.tanggal_perbaikan_reg || '');
+          $('#Id_Aset_reg2').val(item3.id_aset_reg || '');
+          $('#nama_alat_reg_7').val(item3.nama_alat_reg || '');
+          $('#merek_reg_7').val(item3.merek_alat_reg || '');
+          $('#tipe_reg_7').val(item3.type_alat_reg || '');
+          $('#serial_number_reg_7').val(item3.serial_number_reg || '');
+          $('#pelapor_reg2').val(item3.pelapor_reg || '');
+          $('#lokasi_alat_reg_7').val(item3.lokasi_alat_reg || '');
+          $('#teknisi1_reg2').val(item3.teknisi_1_reg || '');
+          $('#teknisi2_reg2').val(item3.teknisi_2_reg || '');
+          $('#teknisi3_reg2').val(item3.teknisi_3_reg || '');
+          $('#teknisi4_reg2').val(item3.teknisi_4_reg || '');
+          $('#teknisi5_reg2').val(item3.teknisi_5_reg || '');
+          $('#ka_instalasi_reg2').val(item3.ka_instalasi_reg || '');
           $('#nama_sukucadang2').val(item3.suku_cadang || '');
           $('#volume2').val(item3.volume || '');
           $('#harga_satuan2').val(item3.harga_satuan || '');
@@ -1685,46 +1582,6 @@
     })
   })
   // *Fuction autofill form pengembalian end* //
-
-  // *Fuction autofill form penghapusan* //
-  $('#Id_Perbaikan_reg3').mouseup(function() {
-    if ($(this).val().length > 0) {
-      let Id_Perbaikan_reg = $("#Id_Perbaikan_reg3").val();
-      $.ajax({
-        url: '{{ url(' / dashboard / ppm / autofill_pengiriman / ') }}/' + Id_Perbaikan_reg,
-        method: 'GET', // HTTP method (e.g., GET, POST)
-        data: {
-          Id_Perbaikan_reg: Id_Perbaikan_reg
-        },
-        dataType: 'json',
-        success: function(data) {
-          console.log(data.Nama_Alat_reg)
-          $("#Tanggal_Perbaikan_reg3").val(data.Tanggal_Perbaikan_reg);
-          $("#Nama_Alat_reg3").val(data.Nama_Alat_reg);
-          $("#Merek_Alat_reg3").val(data.Merek_Alat_reg);
-          $("#Type_Alat_reg3").val(data.Type_Alat_reg);
-          $("#Serial_Number_reg3").val(data.Serial_Number_reg);
-          $("#Lokasi_Alat_reg3").val(data.Lokasi_Alat_reg);
-          $("#Teknisi_1_reg3").val(data.Teknisi_1_reg);
-          $("#Pelapor_reg3").val(data.Pelapor_reg);
-          $("#Teknisi_2_reg3").val(data.Teknisi_2_reg);
-          $("#Teknisi_3_reg3").val(data.Teknisi_3_reg);
-          $("#Teknisi_4_reg3").val(data.Teknisi_4_reg);
-          $("#Teknisi_5_reg3").val(data.Teknisi_5_reg);
-          $("#KA_Instalasi_reg3").val(data.Ka_Instalasi_reg);
-          $("#nama_sukucadang3").val(data.suku_cadang);
-          $("#volume3").val(data.volume);
-          $("#harga_satuan3").val(data.harga_satuan);
-          $("#jumlah_harga3").val(data.jumlah_harga);
-
-        },
-        error: function(xhr, status, error) {
-          console.log(xhr.responseText);
-        }
-      });
-    }
-  });
-  // *Fuction autofill form penghapusan end* //
 
   // *Fuction autofill form penghapusan* //
   $(document).ready(function() {
@@ -1739,19 +1596,19 @@
         .then(data => {
           console.log("Data dari server : ", data);
           let item4 = Array.isArray(data) ? data[0] : data || {};
-          $('#Tanggal_Perbaikan_reg3').val(item4.Tanggal_Perbaikan_reg || '');
-          $('#Nama_Alat_reg3').val(item4.Nama_Alat_reg || '');
-          $('#Merek_Alat_reg3').val(item4.Merek_Alat_reg || '');
-          $('#Type_Alat_reg3').val(item4.Type_Alat_reg || '');
-          $('#Serial_Number_reg3').val(item4.Serial_Number_reg || '');
-          $('#Lokasi_Alat_reg3').val(item4.Lokasi_Alat_reg || '');
-          $('#Pelapor_reg3').val(item4.Pelapor_reg || '');
-          $('#Teknisi_1_reg3').val(item4.Teknisi_1_reg || '');
-          $('#Teknisi_2_reg3').val(item4.Teknisi_2_reg || '');
-          $('#Teknisi_3_reg3').val(item4.Teknisi_3_reg || '');
-          $('#Teknisi_4_reg3').val(item4.Teknisi_4_reg || '');
-          $('#Teknisi_5_reg3').val(item4.Teknisi_5_reg || '');
-          $('#KA_Instalasi_reg3').val(item4.Ka_Instalasi_reg || '');
+          $('#Tanggal_Perbaikan_reg3').val(item4.tanggal_perbaikan_reg || '');
+          $('#nama_alat_reg_8').val(item4.nama_alat_reg || '');
+          $('#merek_alat_reg_8').val(item4.merek_alat_reg || '');
+          $('#type_alat_reg_8').val(item4.type_alat_reg || '');
+          $('#serial_number_reg_8').val(item4.serial_number_reg || '');
+          $('#lokasi_alat_reg_8').val(item4.lokasi_alat_reg || '');
+          $('#Pelapor_reg3').val(item4.pelapor_reg || '');
+          $('#Teknisi_1_reg3').val(item4.teknisi_1_reg || '');
+          $('#Teknisi_2_reg3').val(item4.teknisi_2_reg || '');
+          $('#Teknisi_3_reg3').val(item4.teknisi_3_reg || '');
+          $('#Teknisi_4_reg3').val(item4.teknisi_4_reg || '');
+          $('#Teknisi_5_reg3').val(item4.teknisi_5_reg || '');
+          $('#KA_Instalasi_reg3').val(item4.ka_instalasi_reg || '');
           $('#nama_sukucadang3').val(item4.suku_cadang || '');
           $('#volume3').val(item4.volume || '');
           $('#harga_satuan3').val(item4.harga_satuan || '');
@@ -1871,17 +1728,17 @@
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let count = 2;
-        document.getElementById("btnTambahTeknisi").addEventListener("click", function () {
-            if (count <= 5) {
-                document.getElementById("teknisi_" + count).style.display = "flex";
-                count++;
-                if (count > 5) {
-                    this.style.display = "none";
-                }
-            }
-        });
+  document.addEventListener("DOMContentLoaded", function() {
+    let count = 2;
+    document.getElementById("btnTambahTeknisi").addEventListener("click", function() {
+      if (count <= 5) {
+        document.getElementById("teknisi_" + count).style.display = "flex";
+        count++;
+        if (count > 5) {
+          this.style.display = "none";
+        }
+      }
     });
+  });
 </script>
 @endpush

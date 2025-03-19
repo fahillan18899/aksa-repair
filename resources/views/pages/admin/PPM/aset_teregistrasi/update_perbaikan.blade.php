@@ -36,86 +36,82 @@
                   @method('PUT')
 
                   <div class="form-group row">
-                    <label for="ID_Perbaikan_reg" class="col-xs-3 col-form-label">ID Perbaikan<i class="text-danger">*</i></label>
+                    <label for="ID_Perbaikan_reg" class="col-xs-3 col-form-label">ID Perbaikan</label>
                     <div class="col-xs-9">
-                      <input name="id_perbaikan_reg" type="text" class="form-control" id="id_perbaikan_reg" placeholder="ID Perbaikan" value="<?php echo $item['id_perbaikan_reg'] ?>" readonly>
+                      <input name="id_perbaikan_reg" type="text" class="form-control" id="id_perbaikan_reg" 
+                      placeholder="ID Perbaikan" value="{{ $item->id_perbaikan_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
+                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan</label>
                     <div class="col-xs-9">
-                      <input name="tanggal_perbaikan_reg" type="date" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo $item['tanggal_perbaikan_reg'] ?>" readonly>
+                      <input name="tanggal_perbaikan_reg" type="text" class="form-control" id="Tanggal_Perbaikan_reg" 
+                      placeholder="Tanggal Perbaikan" value=" {{ $item->tanggal_perbaikan_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
+                    <label for="nama alat" class="col-xs-3 col-form-label">Nama Alat</label>
                     <div class="col-xs-9">
-                      <select name="nama_alat_reg" class="form-control" id="nama_alat_reg">
-                        @foreach ($alats as $alat)
-                        <option value="{{ $alat->nama_alat }}" {{ $alat-> nama_alat == $item['nama_alat_reg'] ? 'selected' : '' }}>{{ $alat->nama_alat }}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                    <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="merek_alat_reg" type="text" class="form-control" id="Merek_Alat_reg" placeholder="Merek Alat" value="<?php echo $item['merek_alat_reg'] ?>">
+                      <input name="nama_alat_reg" class="form-control" id="nama_alat_reg" 
+                      value="{{ $item->nama_alat_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
+                    <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat</label>
                     <div class="col-xs-9">
-                      <input name="type_alat_reg" type="text" class="form-control" id="Type_Alat_reg" placeholder="Type Alat" value="<?php echo $item['type_alat_reg'] ?>">
+                      <input name="merek_alat_reg" type="text" class="form-control" id="Merek_Alat_reg" 
+                      placeholder="Type Alat" value="{{ $item->merek_alat_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
+                    <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat</label>
                     <div class="col-xs-9">
-                      <input name="serial_number_reg" type="text" class="form-control" id="Serial_Number_reg" placeholder="Serial Number" value="<?php echo $item['serial_number_reg'] ?>">
+                      <input name="type_alat_reg" type="text" class="form-control" id="Type_Alat_reg" 
+                      placeholder="Type Alat" value="{{ $item->type_alat_reg }}" readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number</label>
+                    <div class="col-xs-9">
+                      <input name="serial_number_reg" type="text" class="form-control" id="Serial_Number_reg"
+                      placeholder="Serial Number" value="{{ $item->serial_number_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Lokasi_Alat_reg" class="col-xs-3 col-form-label">Lokasi Alat </label>
                     <div class="col-xs-9">
-                      <select name="lokasi_alat_reg" class="form-control" id="Lokasi_Alat_reg">
-                        @foreach ($ruangans as $ruangan)
-                        <option value="{{ $ruangan->lokasi_alat }}" {{ $ruangan-> lokasi_alat == $item['lokasi_alat_reg'] ? 'selected' : '' }}>{{ $ruangan->lokasi_alat }}</option>
-                        @endforeach
-                      </select>
+                      <input name="lokasi_alat_reg" class="form-control" id="Lokasi_Alat_reg"
+                      value="{{ $item->lokasi_alat_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
+                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
                     <div class="col-xs-9">
-                      <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor" value="<?php echo $item['pelapor_reg'] ?>">
+                      <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" 
+                      placeholder="Pelapor" value="{{ $item->pelapor_reg }}" readonly>
                     </div>
                   </div>
 
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
-                    <div class="col-xs-9">
-                      <select name="keterangan_kondisi_alat_reg" class="form-control" id="Keterangan_Kondisi_Alat_reg">
-                        <option selected="selected">Pilih Keterangan</option>
-                        <option value="Selesai Alat Dikembalikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Selesai Alat Dikembalikan') echo "selected" ?>>Selesai Alat Dikembalikan</option>
-                        <option value="Alat Dalam Perbaikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dalam Perbaikan') echo "selected" ?>>Alat Dalam Perbaikan</option>
-                        <option value="Alat Dilanjutkan Ke Rekanan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dilanjutkan Ke Rekanan') echo "selected" ?>>Alat Dilanjutkan Ke Rekanan</option>
-                      </select>
-                    </div>
-                  </div>
+                    <div class="col-xs-9"> -->
+                      <input name="keterangan_kondisi_alat_reg" type="hidden" class="form-control" 
+                      id="Keterangan_Kondisi_Alat_reg" value="{{ $item->keterangan_kondisi_alat_reg }}">
+                    <!-- </div>
+                  </div> -->
 
                   <div class="form-group row">
-                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
+                    <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Kepala Ruangan" value="<?php echo $item['ka_instalasi_reg'] ?>">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" 
+                      placeholder="Kepala Ruangan" value="{{ $item->ka_instalasi_reg }}">
                     </div>
                   </div>
 
@@ -124,7 +120,9 @@
                     <div class="col-xs-9">
                       <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
                         @foreach ($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_1_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        <option value="{{ $teknisi->nama_teknisi }}" 
+                        {{ $teknisi->nama_teknisi ==  $item['teknisi_1_reg'] ? 'selected' : '' }}>
+                        {{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -135,7 +133,9 @@
                     <div class="col-xs-9">
                       <select name="teknisi_2_reg" class="form-control" id="Teknisi_2_reg">
                         @foreach ($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_2_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        <option value="{{ $teknisi->nama_teknisi }}" 
+                        {{ $teknisi->nama_teknisi ==  $item['teknisi_2_reg'] ? 'selected' : '' }}>
+                        {{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -146,7 +146,9 @@
                     <div class="col-xs-9">
                       <select name="teknisi_3_reg" class="form-control" id="Teknisi_3_reg">
                         @foreach ($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        <option value="{{ $teknisi->nama_teknisi }}" 
+                        {{ $teknisi->nama_teknisi ==  $item['teknisi_3_reg'] ? 'selected' : '' }}>
+                        {{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -157,7 +159,9 @@
                     <div class="col-xs-9">
                       <select name="teknisi_4_reg" class="form-control" id="Teknisi_4_reg">
                         @foreach ($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_4_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        <option value="{{ $teknisi->nama_teknisi }}" 
+                        {{ $teknisi->nama_teknisi ==  $item['teknisi_4_reg'] ? 'selected' : '' }}>
+                        {{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -168,7 +172,9 @@
                     <div class="col-xs-9">
                       <select name="teknisi_5_reg" class="form-control" id="Teknisi_5_reg">
                         @foreach ($teknisis as $teknisi)
-                        <option value="{{ $teknisi->nama_teknisi }}" {{ $teknisi->nama_teknisi ==  $item['teknisi_5_reg'] ? 'selected' : '' }}>{{ $teknisi->nama_teknisi }} </option>
+                        <option value="{{ $teknisi->nama_teknisi }}" 
+                        {{ $teknisi->nama_teknisi ==  $item['teknisi_5_reg'] ? 'selected' : '' }}>
+                        {{ $teknisi->nama_teknisi }} </option>
                         @endforeach
                       </select>
                     </div>
@@ -178,14 +184,14 @@
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control"
-                        id="nama_sukucadang1" value="<?php echo $item['suku_cadang'] ?>">
+                        id="nama_sukucadang1" value="{{ $item->suku_cadang }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
                     <div class="col-xs-9">
-                      <input name="volume" type="text" class="form-control" id="volume1" value="<?php echo $item['volume'] ?>">
+                      <input name="volume" type="text" class="form-control" id="volume1" value="{{ $item->volume }}" >
                     </div>
                   </div>
 
@@ -193,7 +199,7 @@
                     <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart
                     </label>
                     <div class="col-xs-9">
-                      <input name="harga_satuan" type="text" class="form-control" value="<?php echo $item['harga_satuan'] ?>">
+                      <input name="harga_satuan" type="text" class="form-control" value="{{ $item->harga_satuan}} ">
                     </div>
                   </div>
 
@@ -201,21 +207,23 @@
                     <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart
                     </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_harga" type="text" class="form-control" value="<?php echo $item['jumlah_harga'] ?>">
+                      <input name="jumlah_harga" type="text" class="form-control" value="{{ $item->jumlah_harga }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
+                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
                     <div class="col-xs-9">
-                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat" value="<?php echo $item['keluhan_dari_alat_reg'] ?>">
+                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" 
+                      placeholder="Keluhan Dari Alat" value="{{ $item->keluhan_dari_alat_reg }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif" value="<?php echo $item['korektif_reg'] ?>">
+                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" 
+                      placeholder="Korektif" value="{{ $item->korektif_reg }}">
                     </div>
                   </div>
 
@@ -239,10 +247,3 @@
 
 </div> <!-- /.content -->
 @endsection
-
-
-
-
-<!-- <script src="./assets/js/bs-5.js"></script>
-<script src="../js/scripts.js"></script>
-<script src="./assets/libraries/jquery.min.js"></script> -->
