@@ -12,18 +12,18 @@ return new class extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->string('type')->nullable();
-            $table->string('lokasi_pemakaian')->nullable();
             $table->integer('jumlah_masuk')->nullable();
-            $table->integer('jumlah_sekarang')->nullable();
-            $table->integer('jumlah_keluar')->nullable();
             $table->date('tanggal_masuk')->nullable();
-            $table->date('tanggal_keluar')->nullable();
             $table->integer('stock');
-            $table->string('harga_part');
-            $table->string('jumlah_harga_part');
-            $table->string('id_aset_part');
-            $table->string('nama_alat_pengguna_part');
-            $table->string('lokasi_alat_pengguna_part');
+            // $table->string('lokasi_pemakaian')->nullable();
+            // $table->integer('jumlah_sekarang')->nullable();
+            // $table->date('tanggal_keluar')->nullable();
+            // $table->integer('jumlah_keluar')->nullable();
+            // $table->string('harga_part');
+            // $table->string('jumlah_harga_part');
+            // $table->string('id_aset_part');
+            // $table->string('nama_alat_pengguna_part');
+            // $table->string('lokasi_alat_pengguna_part');
             $table->string('kode_rs');
 
             $table->timestamps();

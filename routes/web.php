@@ -129,7 +129,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('aset_teregistrasi/sperpart_perbaikan', [PerbaikanRegistrasiController::class, 'sperpart'])->name('sperpart_perbaikan.sperpart');
 
         // perbaikansan aset teregistrasi
-        Route::post('aset_teregistrasi', [PerbaikanRegistrasiController::class, 'store'])->name('perbaikan.store');
+        Route::post('aset_teregistrasi/create', [PerbaikanRegistrasiController::class, 'create'])->name('perbaikan.create');
+        Route::post('aset_teregistrasi/store', [PerbaikanRegistrasiController::class, 'store'])->name('perbaikan.store');
         Route::put('aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
         Route::get('update_perbaikan/{id}/edit', [PerbaikanRegistrasiController::class, 'edit'])->name('update_perbaikan.edit');
         Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy'])->name('perbaikan.destroy');

@@ -72,6 +72,48 @@ class PerbaikanRegistrasiController extends Controller
         }
 
         $request['kode_rs'] = Auth::user()->kode_rs;
+        // Cek stok
+        $stock = StockOpname::where('nama', $request->suku_cadang)->first();
+        if (!$stock || $stock->stock < $request->volume) {
+            return back()->with('error', "Stok {$request->suku_cadang} tidak cukup!");
+        }
+        PerbaikanRegistrasi::create($request->post());
+        // Kurangi stok
+        $stock->decrement('stock', $request->volume);
+        $token = Auth::user()->kode_rs;
+        $level = 'user';
+        $topik = $token . $level;
+        $title = $request['nama_alat_reg'];
+        $message = 'Alat ' . $title;
+        $this->helper->sendPushNotification($title, $message, $topik, 'https://wyasaaplikasi.com/dashboard_user/perbaikan_teregistrasi');
+
+        return redirect()->route('aset_teregistrasi.index')
+            ->with('success', 'Data Berhasil Tambahkan.');
+    }
+
+    public function create(Request $request) 
+    {
+        $request->validate([
+            'id_perbaikan_reg'  => 'unique:perbaikan_registrasis|required',
+            'id_aset_reg'       => '',
+            'nama_alat_reg'     => '',
+            'merek_alat_reg'    => '',
+            'type_alat_reg'     => '',
+            'serial_number_reg' => '',
+            'lokasi_alat_reg'   => '',
+            'korektif_reg'      => '',
+            'foto_perbaikan'    => '',
+            'active'            => '',
+        ]);
+
+        if (isset($request['foto_perbaikan'])) {
+            $request['foto_perbaikan'] = $request->file('foto_perbaikan')->store(
+                'assets/gallery',
+                'public'
+            );
+        }
+
+        $request['kode_rs'] = Auth::user()->kode_rs;
         PerbaikanRegistrasi::create($request->post());
         $token = Auth::user()->kode_rs;
         $level = 'user';
@@ -135,7 +177,6 @@ class PerbaikanRegistrasiController extends Controller
     public function sperpart()
     {
         $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-
         return view('pages.admin.PPM.aset_teregistrasi.sperpart_perbaikan',compact('items'));
     }
 

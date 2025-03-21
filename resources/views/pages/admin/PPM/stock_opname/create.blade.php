@@ -56,30 +56,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian</label>
-                    <div class="col-xs-9">
-                      <input name="lokasi_pemakaian" class="form-control" type="text" placeholder="Lokasi Pemakaian" id="lokasi_pemakaian">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="jumlah_keluar" class="col-xs-3 col-form-label">jumlah keluar </label>
-                    <div class="col-xs-9">
-                      <input name="jumlah_keluar" class="form-control" type="number" placeholder="jumlah keluar" id="jumlah_keluar" value="">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
                     <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="tanggal_masuk" class="form-control" type="date" placeholder="Tanggal Masuk" id="tanggal_masuk" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="tanggal_keluar" class="col-xs-3 col-form-label">Tanggal Keluar </label>
-                    <div class="col-xs-9">
-                      <input name="tanggal_keluar" class="form-control" type="date" placeholder="Tanggal Kelar" id="tanggal_keluar">
                     </div>
                   </div>
 

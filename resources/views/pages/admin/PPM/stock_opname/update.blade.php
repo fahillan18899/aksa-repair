@@ -60,26 +60,26 @@
                     </div>
                   </div>
 
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="jumlah_sekarang" class="col-xs-3 col-form-label">jumlah sekarang </label>
                     <div class="col-xs-9">
                       <input name="jumlah_sekarang" class="form-control" type="number" placeholder="jumlah sekarang" id="jumlah_sekarang" value="<?= $item['jumlah_sekarang'] ?>">
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="jumlah_keluar" class="col-xs-3 col-form-label">jumlah keluar </label>
                     <div class="col-xs-9">
                       <input name="jumlah_keluar" class="form-control" type="number" placeholder="jumlah keluar" id="jumlah_keluar" value="<?= $item['jumlah_keluar'] ?>">
                     </div>
-                  </div>
+                  </div> -->
 
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="lokasi_pemakaian" class="col-xs-3 col-form-label">Lokasi Pemakaian </label>
                     <div class="col-xs-9">
                       <input name="lokasi_pemakaian" class="form-control" type="text" placeholder="Lokasi Pemakaian" id="lokasi_pemakaian" value="<?= $item['lokasi_pemakaian'] ?>">
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group row">
                     <label for="tanggal_masuk" class="col-xs-3 col-form-label">Tanggal Masuk </label>
@@ -88,12 +88,12 @@
                     </div>
                   </div>
 
-                  <div class=" form-group row">
+                  <!-- <div class=" form-group row">
                     <label for="tanggal_keluar" class="col-xs-3 col-form-label">Tanggal Kelar </label>
                     <div class="col-xs-9">
                       <input name="tanggal_keluar" class="form-control" type="date" placeholder="Tanggal Kelar" id="tanggal_keluar" value="<?= $item['tanggal_keluar'] ?>">
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
@@ -105,30 +105,6 @@
                     </div>
                   </div>
                 </form>
-              </div>
-              <div class="col-md-3">
-                @if ($selisih_jumlah_terakhir === null)
-                  <h3>tidak ada data selisih terakhir, edit data anda</h3>
-                @elseif ($selisih_jumlah_terakhir->selisih_jumlah_masuk_keluar_terakhir == 0)
-                  <h3>Selisih Jumlah Sekarang/Keluar Terakhir (Tidak Terpakai)</h3>
-                  <h1 class="text-center">Tidak Tersedia</h1>
-                @else
-                  <h3>Selisih Jumlah Sekarang/Keluar Terakhir (Tidak Terpakai)</h3>
-                  <h1 class="text-center">{{ $selisih_jumlah_terakhir->selisih_jumlah_masuk_keluar_terakhir }}</h1>
-                @endif
-              </div>
-              <div class="line-vertical-right"></div>
-              <div class="line-vertical-left"></div>
-              <div class="col-md-3">
-                @if ($sparepart_belum_terpakai === null)
-                  <h3>tidak ada data selisih terakhir, edit data anda</h3>
-                @elseif ($sparepart_belum_terpakai == 0)
-                  <h1 class="text-center">Tidak Tersedia</h1>
-                  <h3>Selisih Sparepart Masuk dan yang Terpakai (Tidak Terpakai)</h3>
-                @else
-                  <h1 class="text-center">{{ $sparepart_belum_terpakai }}</h1>
-                  <h3>Selisih Sparepart Masuk dan yang Terpakai (Tidak Terpakai)</h3>
-                @endif
               </div>
             </div>
           </div>

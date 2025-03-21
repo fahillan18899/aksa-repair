@@ -10,6 +10,26 @@
     height: 100%;
     /* Pastikan modal body penuh */
   }
+  
+  .modal-dialog2 {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+}
+
+.modal-content2 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body2 {
+  flex: 1;
+  overflow-y: auto;
+  color:black; 
+  background-color:white;
+}
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -125,7 +145,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('perbaikan.store') }}" class="form-inner"
+                <form action="{{ route('perbaikan.create') }}" class="form-inner"
                   enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
 
@@ -218,78 +238,24 @@
                     </div>
                   </div>
 
-                  <!-- <div class="form-group row">
-                    <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
-                      <div class="col-xs-9"> -->
-                      <input name="pelapor_reg" type="hidden" class="form-control" id="Pelapor_reg"
-                        placeholder="Terisi Otomatis" readonly>
-                    <!-- </div>
-                  </div> -->
+                  @php
+                  $fieldHiden1 = [
+                    'pelapor_reg', 'keluhan_dari_alat_reg', 'suku_cadang',
+                    'volume', 'harga_satuan', 'jumlah_harga',
+                    ]
+                  @endphp
+                  @foreach($fieldHiden1 as $hidden1)
+                  <input name="{{ $hidden1 }}" type="hidden" class="form-control" id="{{ $hidden1 }}" readonly>
+                  @endforeach
+                  <input name="id_perbaikan_reg" type="hidden" class="form-control" id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly style="cursor: not-allowed;">
+                  <input name="tanggal_perbaikan_reg" type="hidden" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo date(now()); ?>" readonly style="cursor: not-allowed;">
 
-                  <!-- <div class="form-group row">
-                    <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
-                      <div class="col-xs-9"> -->
-                        <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="Keluhan_Dari_alat_reg"
-                        placeholder="Terisi Otomatis" readonly>
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                      <div class="col-xs-9"> -->
-                        <input name="suku_cadang" type="hidden" class="form-control" id="nama_sukucadang1" 
-                        placeholder="Nama Sperpart yang digunakan">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                      <div class="col-xs-9"> -->
-                        <input name="volume" type="hidden" class="form-control" id="volume1" 
-                        placeholder="Volume sperpart/ banyak yang digunakan">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                      <div class="col-xs-9"> -->
-                        <input name="harga_satuan" type="hidden" class="form-control" id="harga_satuan1" 
-                        placeholder="Harga Satuan dari sperpart">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
-                      <div class="col-xs-9"> -->
-                        <input name="jumlah_harga" type="hidden" class="form-control" id="jumlah_harga1" 
-                        placeholder="Jumlah Harga Sperpart">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="" class="col-xs-3 col-form-label">ID Perbaikan
-                      <i class="text-danger">*</i></label>
-                        <div class="col-xs-9"> -->
-                        <input name="id_perbaikan_reg" type="hidden" class="form-control"
-                          id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
-                          style="cursor: not-allowed;">
-                    <!-- </div>
-                  </div> -->
-
-                  <!-- <div class="form-group row">
-                    <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                      <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                        <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                        id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan"
-                        value="<?php echo date(now()); ?>" readonly
-                        style="cursor: not-allowed;">
-                    <!-- </div>
-                  </div> -->
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>
+                        <div class="or"></div>
+                        <button type="button" class="btn btn-warning mt-2" data-toggle="modal" data-target="#exampleModal2">Penggantian Sperpart</button>
                         <div class="or"></div>
                         <button type="button" class="btn btn-info mt-2" id="startScan" data-toggle="modal" data-target="#exampleModal">Scan QR</button>
                         <div class="or"></div>
@@ -446,7 +412,7 @@
                     ]
                 @endphp
                 
-                @for($i = 6; $i <= 6; $i++)
+                @for($i = 2; $i <= 2; $i++)
                 @foreach($field2 as $name2 => $label2)
                 <div class="form-group row">
                   <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}
@@ -492,137 +458,30 @@
                       placeholder="Telp Teknisi PT / Perusahaan rekanan / pihak ke-3">
                   </div>
                 </div>
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                    <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                      <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                        id="Tanggal_Perbaikan_reg1" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                      <!-- </div>
-                </div> -->
+                @php
+                $fieldHiden2 = [
+                  'tanggal_perbaikan_reg' => 'tanggal_perbaikan_reg',
+                  'id_aset_reg' => 'id_aset_reg',
+                  'pelapor_reg' => 'pelapor_reg',
+                  'teknisi_1_reg' => 'teknisi_1_reg',
+                  'teknisi_2_reg' => 'teknisi_2_reg',
+                  'teknisi_3_reg' => 'teknisi_3_reg',
+                  'teknisi_4_reg' => 'teknisi_4_reg',
+                  'teknisi_5_reg' => 'teknisi_5_reg',
+                  'ka_instalasi_reg' => 'ka_instalasi_reg',
+                  'suku_cadang' => 'suku_cadang',
+                  'volume' => 'volume',
+                  'harga_satuan' => 'harga_satuan',
+                  'jumlah_harga' => 'jumlah_harga',
+                  ]
+                @endphp
+                @for($i = 2; $i <=2; $i++)
+                @foreach($fieldHiden2 as $hidden2 => $id2)
+                <input name="{{ $hidden2 }}" id="{{ $id2 }}_{{$i}}" type="hidden" class="form-control" readonly>
+                @endforeach
+                @endfor
+                <input name="tanggal_pengiriman_reg" type="hidden" class="form-control" id="Tanggal_Pengiriman_reg" placeholder="Tanggal Pengiriman" value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
 
-                <!-- <div class="form-group row">
-                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
-                    <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                        <input name="id_aset_reg" type="hidden" class="form-control"
-                        id="Id_Aset_reg1" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                      <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                    <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                        <input name="pelapor_reg" type="hidden" class="form-control"
-                        id="Pelapor_reg1" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                      <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                    <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                        <input name="teknisi_1_reg" type="hidden" class="form-control"
-                        id="Teknisi_1_reg1" placeholder="Terisi Otomatis" readonly
-                        style="cursor: not-allowed;">
-                      <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi_2_reg" type="hidden" class="form-control"
-                      id="Teknisi_2_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi_3_reg" type="hidden" class="form-control"
-                      id="Teknisi_3_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi_4_reg" type="hidden" class="form-control"
-                      id="Teknisi_4_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi_5_reg" type="hidden" class="form-control"
-                      id="Teknisi_5_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
-                    <div class="col-xs-9"> -->
-                      <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                      id="KA_Instalasi_reg1" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                    <div class="col-xs-9"> -->
-                      <input name="suku_cadang" type="hidden" class="form-control"
-                      id="nama_sukucadang" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                    <div class="col-xs-9"> -->
-                      <input name="volume" type="hidden" class="form-control" id="volume"
-                      placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                    <div class="col-xs-9"> -->
-                      <input name="harga_satuan" type="hidden" class="form-control"
-                      id="harga_satuan" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                    <div class="col-xs-9"> -->
-                      <input name="jumlah_harga" type="hidden" class="form-control"
-                      id="jumlah_harga" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Pengiriman_reg" class="col-xs-3 col-form-label">Tanggal Pengiriman
-                    <i class="text-danger">*</i></label>
-                      <div class="col-xs-9"> -->
-                        <input name="tanggal_pengiriman_reg" type="hidden" class="form-control"
-                        id="Tanggal_Pengiriman_reg" placeholder="Tanggal Pengiriman"
-                        value="<?php echo date('Y-m-d'); ?>" readonly
-                        style="cursor: not-allowed;">
-                      <!-- </div>
-                </div> -->
 
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
@@ -630,7 +489,7 @@
                       <button class="ui positive button">Tambah</button>
                       <div class="or"></div>
                       <button type="reset" class="ui button" type="submit">Reset</button>
-                      <div class="or"></div>
+                      <div class="or"></div> id
                       <a class="btn btn-primary" onclick="hiddenPengiriman()"> Daftar Pengiriman </a>
                     </div>
                   </div>
@@ -770,7 +629,7 @@
                     ]
                 @endphp
                 
-                @for($i = 7; $i <= 7; $i++)
+                @for($i = 3; $i <= 3; $i++)
                 @foreach($field3 as $name3 => $label3)
                 <div class="form-group row">
                   <label for="{{ $name3 }}" class="col-xs-3 col-form-label">{{ $label3 }}
@@ -848,139 +707,30 @@
                       placeholder="Penggantian sperpart yang digunakan dialat">
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Id_Aset_reg" class="col-xs-3 col-form-label">ID Aset
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="Id_Aset_reg" type="hidden" class="form-control"
-                      id="Id_Aset_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="tanggal_perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                    <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
-                      id="tanggal_perbaikan_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="tanggal_pengembalian_reg" class="col-xs-3 col-form-label">Tanggal Pengembalian
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                    <input name="tanggal_pengembalian_reg" type="hidden"
-                      class="form-control" id="tanggal_pengembalian_reg2"
-                      placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                    <input name="pelapor_reg" type="hidden" class="form-control"
-                      id="pelapor_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                  <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                  <input name="teknisi1_reg" type="hidden" class="form-control"
-                    id="teknisi1_reg2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi2_reg" type="hidden" class="form-control"
-                    id="teknisi2_reg2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi3_reg" class="col-xs-3 col-form-label">Teknisi 3 </label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi3_reg" type="hidden" class="form-control"
-                    id="teknisi3_reg2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi4_reg" class="col-xs-3 col-form-label">Teknisi 4 </label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi4_reg" type="hidden" class="form-control"
-                      id="teknisi4_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi5_reg" class="col-xs-3 col-form-label">Teknisi 5 </label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi5_reg" type="hidden" class="form-control"
-                    id="teknisi5_reg2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                      id="ka_instalasi_reg2" placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="suku_cadang" type="hidden" class="form-control"
-                    id="nama_sukucadang2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="volume" type="hidden" class="form-control" id="volume2"
-                    placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="harga_satuan" type="hidden" class="form-control"
-                    id="harga_satuan2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="jumlah_harga" type="hidden" class="form-control"
-                    id="jumlah_harga2" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
+                @php
+                $fieldHiden3 = [
+                  'id_aset_reg' => 'id_aset_reg',
+                  'tanggal_perbaikan_reg' => 'tanggal_perbaikan_reg',
+                  'pelapor_reg' => 'pelapor_reg',
+                  'teknisi1_reg' => 'teknisi1_reg',
+                  'teknisi2_reg' => 'teknisi2_reg',
+                  'teknisi3_reg' => 'teknisi3_reg',
+                  'teknisi4_reg' => 'teknisi4_reg',
+                  'teknisi5_reg' => 'teknisi5_reg',
+                  'ka_instalasi_reg' => 'ka_instalasi_reg',
+                  'suku_cadang' => 'suku_cadang',
+                  'volume' => 'volume',
+                  'harga_satuan' => 'harga_satuan',
+                  'jumlah_harga' => 'jumlah_harga',
+                  ]
+                @endphp
+                @for($i = 3; $i <=3; $i++)
+                @foreach($fieldHiden3 as $hidden3 => $id3)
+                <input name="{{ $hidden3 }}" id="{{ $id3 }}_{{$i}}" type="hidden" class="form-control" readonly>
+                @endforeach
+                @endfor
+                <input name="tanggal_pengembalian_reg" type="hidden" class="form-control" id="tanggal_pengembalian_reg2" placeholder="tanggal pengembalian" value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
+                
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
                     <div class="ui buttons">
@@ -1129,14 +879,14 @@
                 @php
                   $field4 = [
                     'nama_alat_reg'     => 'Nama Alat',
-                    'merek_alat_reg'         => 'Merek',
-                    'type_alat_reg'          => 'Type',
+                    'merek_alat_reg'    => 'Merek',
+                    'type_alat_reg'     => 'Type',
                     'serial_number_reg' => 'Serial Number',
                     'lokasi_alat_reg'   => 'Lokasi Alat'
                     ]
                 @endphp
                 
-                @for($i = 8; $i <= 8; $i++)
+                @for($i = 4; $i <= 4; $i++)
                 @foreach($field4 as $name4 => $label4)
                 <div class="form-group row">
                   <label for="{{ $name4 }}" class="col-xs-3 col-form-label">{{ $label4 }}
@@ -1158,129 +908,30 @@
                       placeholder="Keterangan Pengguna terhadap alat, contoh : mati total">
                   </div>
                 </div>
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                    <input name="tanggal_perbaikan_reg" type="hidden"
-                      class="form-control" id="Tanggal_Perbaikan_reg3"
-                      placeholder="Terisi Otomatis" readonly
-                      style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Tanggal_Penggudangan_reg" class="col-xs-3 col-form-label">Tanggal Penggudangan
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="tanggal_penggudangan_reg" type="hidden" class="form-control"
-                      id="Tanggal_Penggudangan_reg3" placeholder="Tanggal Penggudangan"
-                      value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
-                    <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor
-                  <i class="text-danger">*</i></label>
-                  <div class="col-xs-9"> -->
-                    <input name="pelapor_reg" type="hidden" class="form-control"
-                    id="Pelapor_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                  <i class="text-danger">*</i></label>
-                    <div class="col-xs-9"> -->
-                      <input name="teknisi_1_reg" type="hidden" class="form-control"
-                      id="Teknisi_1_reg3" placeholder="Terisi Otomatis"
-                      readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_2_reg" class="col-xs-3 col-form-label">Teknisi 2</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_2_reg" type="hidden" class="form-control"
-                    id="Teknisi_2_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_3_reg" class="col-xs-3 col-form-label">Teknisi 3</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_3_reg" type="hidden" class="form-control"
-                    id="Teknisi_3_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_4_reg" class="col-xs-3 col-form-label">Teknisi 4</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_4_reg" type="hidden" class="form-control"
-                    id="Teknisi_4_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="teknisi_5_reg" class="col-xs-3 col-form-label">Teknisi 5</label>
-                  <div class="col-xs-9"> -->
-                    <input name="teknisi_5_reg" type="hidden" class="form-control"
-                    id="Teknisi_5_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="suku_cadang" type="hidden" class="form-control"
-                    id="nama_sukucadang3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="volume" type="hidden" class="form-control"
-                    id="volume3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart</label>
-                  <div class="col-xs-9"> -->
-                    <input name="harga_satuan" type="hidden" class="form-control"
-                    id="harga_satuan3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart </label>
-                  <div class="col-xs-9"> -->
-                    <input name="jumlah_harga" type="hidden" class="form-control"
-                    id="jumlah_harga3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
-                <!-- <div class="form-group row">
-                  <label for="KA_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
-                  <div class="col-xs-9"> -->
-                    <input name="ka_instalasi_reg" type="hidden" class="form-control"
-                    id="KA_Instalasi_reg3" placeholder="Terisi Otomatis"
-                    readonly style="cursor: not-allowed;">
-                  <!-- </div>
-                </div> -->
-
+                @php
+                $fieldHiden4 = [
+                  'tanggal_perbaikan_reg' => 'tanggal_perbaikan_reg',
+                  'pelapor_reg' => 'pelapor_reg',
+                  'teknisi_1_reg' => 'teknisi_1_reg',
+                  'teknisi_2_reg' => 'teknisi_2_reg',
+                  'teknisi_3_reg' => 'teknisi_3_reg',
+                  'teknisi_4_reg' => 'teknisi_4_reg',
+                  'teknisi_5_reg' => 'teknisi_5_reg',
+                  'suku_cadang' => 'suku_cadang',
+                  'volume' => 'volume',
+                  'harga_satuan' => 'harga_satuan',
+                  'jumlah_harga' => 'jumlah_harga',
+                  'ka_instalasi_reg' => 'ka_instalasi_reg',
+                  ]
+                @endphp
+                @for($i = 4; $i <= 4; $i++)
+                @foreach($fieldHiden4 as $hidden4 => $id4)
+                <input name="{{ $hidden4 }}" id="{{ $id4 }}_{{$i}}" type="hidden" class="form-control" placeholder="Terisi Otomatis" readonly style="cursor: not-allowed;">
+                @endforeach
+                @endfor
+                <input name="tanggal_penggudangan_reg" type="hidden" class="form-control" id="Tanggal_Penggudangan_reg3" 
+                placeholder="Tanggal Penggudangan" value="<?php echo date('Y-m-d'); ?>" readonly style="cursor: not-allowed;">
+                
                 <div class="form-group row">
                   <div class="col-sm-offset-3 col-sm-6">
                     <div class="ui buttons">
@@ -1404,6 +1055,263 @@
   </div>
 </div>
 <!-- modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog2" role="document">
+    <div class="modal-content2">
+      <div class="modal-header" style="color:white; background-color:#042a4a;">
+        <h5 class="modal-title" id="exampleModalLabel">Form Perbaikan ganti sperpart</h5>
+      </div>
+      <div class="modal-body2">
+      <!--Tabel Permintaan Perbaikan-->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
+
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-5">
+                  <h2>Tabel Permintaan Perbaikan</h2>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+
+                  <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">ID Aset</th>
+                        <th scope="col">Nama Alat</th>
+                        <th scope="col">Merek Alat</th>
+                        <th scope="col">Type Alat</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Pelapor</th>
+                        <th scope="col">Kerusakan Alat</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Tombol Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @forelse ($itemPesanan as $index => $item)
+                      <tr>
+                        <td title="klik untuk copy ke form" onclick="copy5(this)" style="cursor: pointer;">{{ $item->id }}</td>
+                        <td>{{ $item->nama_req }}</td>
+                        <td>{{ $item->merek_req }}</td>
+                        <td>{{ $item->type_req }}</td>
+                        <td>{{ $item->sn_req }}</td>
+                        <td>{{ $item->pelapor_req }}</td>
+                        <td>{{ $item->kerusakan_req }}</td>
+                        <td>{{ $item->tanggal_req }}</td>
+                        <td>
+                          <form action="{{ route('pesanan.destroy', $item->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
+                              Validasi Perbaikan
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
+                  <!--TABEL-->
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Tabel Permintaan Perbaikan end-->
+        <div class="panel-body panel-form">
+          <div class="row">
+            <div class="col-md-9 col-sm-12">
+              <form action="{{ route('perbaikan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+              @csrf
+              <div class="form-group row">
+                <label for="ID Aset reg" class="col-xs-3 col-form-label">ID Aset
+                <i class="text-danger">*</i></label>
+                <div class="col-xs-9">
+                  <input name="id_aset_reg" type="text" class="form-control"
+                  id="id_aset_reg_5" placeholder="Klik id aset alat atau Scan Qr code"
+                  readonly data-toggle="tooltip" data-placement="top"
+                  title="Klik disini untuk load data" style="cursor: pointer;">
+                </div>
+              </div>
+              @php
+              $field5 = [
+                'nama_alat_reg'     => 'Nama Alat',
+                'merek_alat_reg'    => 'Merek',
+                'type_alat_reg'     => 'Type',
+                'serial_number_reg' => 'Serial Number',
+                'lokasi_alat_reg'   => 'Lokasi Alat',
+                ]
+              @endphp
+              @for ($i = 5; $i <= 5; $i++)    
+              @foreach($field5 as $name5 => $label5)
+              <div class="form-group row">
+                <label for="{{ $name5 }}" class="col-xs-3 col-form-label">{{ $label5 }}
+                  <i class="text-danger">*</i></label>
+                <div class="col-xs-9">
+                  <input name="{{ $name5 }}" type="text" class="form-control"
+                    id="{{ $name5 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
+                    style="cursor: not-allowed;">
+                </div>
+              </div>
+              @endforeach
+              @endfor
+
+              <div class="form-group row">
+                <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
+                <div class="col-xs-9">
+                  <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg"
+                    placeholder="Kepala Ruangan yang betanggung jawab">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
+                  <i class="text-danger">*</i></label>
+                <div class="col-xs-5">
+                  <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
+                    <option>-- Pilih Teknisi --</option>
+                    @foreach ($teknisis as $teknisi)
+                    <option value="<?= $teknisi['nama_teknisi'] ?>">
+                      <?= $teknisi['nama_teknisi'] ?></option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col-xs-3">
+                  <button type="button" class="btn btn-primary mt-2" id="btnTambahTeknisi2"
+                    data-toggle="tooltip" data-placement="top" title="Tambah Teknisi"
+                    style="cursor: pointer;">+</button>
+                </div>
+              </div>
+
+              @for ($i = 2; $i <= 5; $i++)
+                <div class="form-group row teknisi-field" id="teknisi2_{{ $i }}" style="display: none;">
+                <label for="Teknisi_{{ $i }}_reg" class="col-xs-3 col-form-label">Teknisi {{ $i }}</label>
+                <div class="col-xs-5">
+                  <select name="teknisi_{{ $i }}_reg" class="form-control" id="Teknisi_{{ $i }}_reg">
+                    <option value="-">-- Pilih Teknisi --</option>
+                    @foreach ($teknisis as $teknisi)
+                    <option value="{{ $teknisi['nama_teknisi'] }}">{{ $teknisi['nama_teknisi'] }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                </div>
+              @endfor
+
+              <div class="form-group row">
+                <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
+                <div class="col-xs-9">
+                  <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" 
+                  placeholder="Solusi yang harus dilakukan">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                <div class="col-xs-9">
+                  <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
+                </div>
+              </div>
+              
+              <div class="form-group row">
+                <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                  <div class="col-xs-9">
+                  <select name="suku_cadang" class="form-control" id="nama_sukucadang1">
+                  <option>-- Pilih Item --</option>
+                    @foreach ($itemSperpart as $part)
+                    <option value="<?= $part['nama'] ?>">
+                      <?= $part['nama'] ?></option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                  <div class="col-xs-9">
+                    <input name="volume" type="text" class="form-control" id="volume_part" 
+                    placeholder="Volume sperpart/ banyak yang digunakan">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
+                  <div class="col-xs-9">
+                    <input name="harga_satuan" type="text" class="form-control" id="harga_satuan_part" 
+                    placeholder="Harga Satuan dari sperpart">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
+                  <div class="col-xs-9">
+                    <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga_part" 
+                    placeholder="Jumlah Harga Sperpart" readonly>
+                </div>
+              </div>
+              <!-- <div class="form-group row">
+                <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor</label>
+                  <div class="col-xs-9"> -->
+                  <input name="pelapor_reg" type="hidden" class="form-control" id="Pelapor_reg_5"
+                  placeholder="Terisi Otomatis" readonly>
+                <!-- </div>
+              </div> -->
+
+              <!-- <div class="form-group row">
+                <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat</label>
+                  <div class="col-xs-9"> -->
+                    <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="Keluhan_Dari_alat_reg_5"
+                    placeholder="Terisi Otomatis" readonly>
+                <!-- </div>
+              </div> -->
+
+              <!-- <div class="form-group row">
+                <label for="" class="col-xs-3 col-form-label">ID Perbaikan
+                <i class="text-danger">*</i></label>
+                <div class="col-xs-9"> -->
+                    <input name="id_perbaikan_reg" type="hidden" class="form-control"
+                    id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly
+                    style="cursor: not-allowed;">
+                <!-- </div>
+              </div> -->
+
+              <!-- <div class="form-group row">
+                <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan
+                  <i class="text-danger">*</i></label>
+                  <div class="col-xs-9"> -->
+                    <input name="tanggal_perbaikan_reg" type="hidden" class="form-control"
+                    id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan"
+                    value="<?php echo date(now()); ?>" readonly
+                    style="cursor: not-allowed;">
+                <!-- </div>
+              </div> -->
+              <div class="form-group row">
+                <div class="col-sm-offset-3 col-sm-6">
+                  <div class="ui buttons">
+                    <button class="ui positive button">Tambah</button>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="color:black; background-color:#042a4a;">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
 @endsection
 
 @push('addon-script')
@@ -1460,26 +1368,33 @@
   });
 </script>
 <script>
-  // *Function autofill form sperpart* //
-  function autofillpart() {
-    let idarspart = $("#id_aset_part").val();
 
-    $.ajax({
-      url: '{{ url('/dashboard/ppm/autofillpart/') }}/'+ idarspart,
-      method: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        $("#nama_alat_pengguna_part").val(data.nama_alat);
-        $("#lokasi_alat_pengguna_part").val(data.lokasi_alat);
-        $("#lokasi_pemakaian").val(data.lokasi_alat);
-        console.log(data);
-      },
-      error: function(xhr, status, error) {
-        console.log(xhr.responseText);
-      }
+// *Function autofill form perbaikan_part* //
+$(document).ready(function() {
+    $('#id_aset_reg_5').on('click', function() {
+      let idPart = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
+      console.log("ID yang dimasukan :", idPart); // cek id 
+
+      if (!idPart) return; //Kalo kosong proses berhenti
+
+      //Ambil data pake API dan kirim ke masing-masing field / input        
+      fetch(`/dashboard/ppm/autofillpart/${encodeURIComponent(idPart)}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Data dari server: ", data);
+          let item = Array.isArray(data) ? data[0] : data || {};
+          $('#nama_alat_reg_5').val(item.nama_req || '');
+          $('#merek_alat_reg_5').val(item.merek_req || '');
+          $('#serial_number_reg_5').val(item.sn_req || '');
+          $('#lokasi_alat_reg_5').val(item.lokasi_req || '');
+          $('#type_alat_reg_5').val(item.type_req || '');
+          $('#Pelapor_reg_5').val(item.pelapor_req || '');
+          $('#Keluhan_Dari_alat_reg_5').val(item.kerusakan_req || '');
+        })
+        .catch(error => console.error("Error AJAX:", error));
     });
-  }
-  // *Function autofill form sperpart end* //
+  });
+  // *Function autofill form perbaikan_part* //
 
   // *Function autofill form perbaikan* //
   $(document).ready(function() {
@@ -1500,8 +1415,8 @@
           $('#serial_number_reg').val(item.sn_req || '');
           $('#lokasi_alat_reg').val(item.lokasi_req || '');
           $('#type_alat_reg').val(item.type_req || '');
-          $('#Pelapor_reg').val(item.pelapor_req || '');
-          $('#Keluhan_Dari_alat_reg').val(item.kerusakan_req || '');
+          $('#pelapor_reg').val(item.pelapor_req || '');
+          $('#keluhan_dari_alat_reg').val(item.kerusakan_req || '');
         })
         .catch(error => console.error("Error AJAX:", error));
     });
@@ -1522,24 +1437,24 @@
         .then(data => {
           console.log("Data dari server: ", data);
           let item2 = Array.isArray(data) ? data[0] : data || {};
-          $('#Tanggal_Perbaikan_reg1').val(item2.tanggal_perbaikan_reg || '');
-          $('#Id_Aset_reg1').val(item2.id_aset_reg || '');
-          $('#nama_alat_reg_6').val(item2.nama_alat_reg || '');
-          $('#merek_alat_reg_6').val(item2.merek_alat_reg || '');
-          $('#type_alat_reg_6').val(item2.type_alat_reg || '');
-          $('#seri_number_reg_6').val(item2.serial_number_reg || '');
-          $('#lokasi_alat_reg_6').val(item2.lokasi_alat_reg || '');
-          $('#Pelapor_reg1').val(item2.pelapor_reg || '');
-          $('#Teknisi_1_reg1').val(item2.teknisi_1_reg || '');
-          $('#Teknisi_2_reg1').val(item2.teknisi_2_reg || '');
-          $('#Teknisi_3_reg1').val(item2.teknisi_3_reg || '');
-          $('#Teknisi_4_reg1').val(item2.teknisi_4_reg || '');
-          $('#Teknisi_5_reg1').val(item2.teknisi_5_reg || '');
-          $('#KA_Instalasi_reg1').val(item2.ka_instalasi_reg || '');
-          $('#nama_sukucadang').val(item2.suku_cadang || '');
-          $('#volume').val(item2.volume || '');
-          $('#harga_satuan').val(item2.harga_satuan || '');
-          $('#jumlah_harga').val(item2.jumlah_harga || '');
+          $('#tanggal_perbaikan_reg_2').val(item2.tanggal_perbaikan_reg || '');
+          $('#id_aset_reg_2').val(item2.id_aset_reg || '');
+          $('#nama_alat_reg_2').val(item2.nama_alat_reg || '');
+          $('#merek_alat_reg_2').val(item2.merek_alat_reg || '');
+          $('#type_alat_reg_2').val(item2.type_alat_reg || '');
+          $('#seri_number_reg_2').val(item2.serial_number_reg || '');
+          $('#lokasi_alat_reg_2').val(item2.lokasi_alat_reg || '');
+          $('#pelapor_reg_2').val(item2.pelapor_reg || '');
+          $('#teknisi_1_reg_2').val(item2.teknisi_1_reg || '');
+          $('#teknisi_2_reg_2').val(item2.teknisi_2_reg || '');
+          $('#teknisi_3_reg_2').val(item2.teknisi_3_reg || '');
+          $('#teknisi_4_reg_2').val(item2.teknisi_4_reg || '');
+          $('#teknisi_5_reg_2').val(item2.teknisi_5_reg || '');
+          $('#ka_instalasi_reg_2').val(item2.ka_instalasi_reg || '');
+          $('#suku_cadang_2').val(item2.suku_cadang || '');
+          $('#volume_2').val(item2.volume || '');
+          $('#harga_satuan_2').val(item2.harga_satuan || '');
+          $('#jumlah_harga_2').val(item2.jumlah_harga || '');
         })
         .catch(error => console.log("ERROR AJAX:", error));
     });
@@ -1559,24 +1474,24 @@
         .then(data => {
           console.log("Data dari server: ", data);
           let item3 = Array.isArray(data) ? data[0] : data || {};
-          $('#tanggal_perbaikan_reg2').val(item3.tanggal_perbaikan_reg || '');
-          $('#Id_Aset_reg2').val(item3.id_aset_reg || '');
-          $('#nama_alat_reg_7').val(item3.nama_alat_reg || '');
-          $('#merek_reg_7').val(item3.merek_alat_reg || '');
-          $('#tipe_reg_7').val(item3.type_alat_reg || '');
-          $('#serial_number_reg_7').val(item3.serial_number_reg || '');
-          $('#pelapor_reg2').val(item3.pelapor_reg || '');
-          $('#lokasi_alat_reg_7').val(item3.lokasi_alat_reg || '');
-          $('#teknisi1_reg2').val(item3.teknisi_1_reg || '');
-          $('#teknisi2_reg2').val(item3.teknisi_2_reg || '');
-          $('#teknisi3_reg2').val(item3.teknisi_3_reg || '');
-          $('#teknisi4_reg2').val(item3.teknisi_4_reg || '');
-          $('#teknisi5_reg2').val(item3.teknisi_5_reg || '');
-          $('#ka_instalasi_reg2').val(item3.ka_instalasi_reg || '');
-          $('#nama_sukucadang2').val(item3.suku_cadang || '');
-          $('#volume2').val(item3.volume || '');
-          $('#harga_satuan2').val(item3.harga_satuan || '');
-          $('#jumlah_harga2').val(item3.jumlah_harga || '');
+          $('#tanggal_perbaikan_reg_3').val(item3.tanggal_perbaikan_reg || '');
+          $('#id_aset_reg_3').val(item3.id_aset_reg || '');
+          $('#nama_alat_reg_3').val(item3.nama_alat_reg || '');
+          $('#merek_reg_3').val(item3.merek_alat_reg || '');
+          $('#tipe_reg_3').val(item3.type_alat_reg || '');
+          $('#serial_number_reg_3').val(item3.serial_number_reg || '');
+          $('#pelapor_reg_3').val(item3.pelapor_reg || '');
+          $('#lokasi_alat_reg_3').val(item3.lokasi_alat_reg || '');
+          $('#teknisi1_reg_3').val(item3.teknisi_1_reg || '');
+          $('#teknisi2_reg_3').val(item3.teknisi_2_reg || '');
+          $('#teknisi3_reg_3').val(item3.teknisi_3_reg || '');
+          $('#teknisi4_reg_3').val(item3.teknisi_4_reg || '');
+          $('#teknisi5_reg_3').val(item3.teknisi_5_reg || '');
+          $('#ka_instalasi_reg_3').val(item3.ka_instalasi_reg || '');
+          $('#suku_cadang_3').val(item3.suku_cadang || '');
+          $('#volume_3').val(item3.volume || '');
+          $('#harga_satuan_3').val(item3.harga_satuan || '');
+          $('#jumlah_harga_3').val(item3.jumlah_harga || '');
         })
         .catch(error => console.log("ERROR AJAX : ", error))
     })
@@ -1596,23 +1511,23 @@
         .then(data => {
           console.log("Data dari server : ", data);
           let item4 = Array.isArray(data) ? data[0] : data || {};
-          $('#Tanggal_Perbaikan_reg3').val(item4.tanggal_perbaikan_reg || '');
-          $('#nama_alat_reg_8').val(item4.nama_alat_reg || '');
-          $('#merek_alat_reg_8').val(item4.merek_alat_reg || '');
-          $('#type_alat_reg_8').val(item4.type_alat_reg || '');
-          $('#serial_number_reg_8').val(item4.serial_number_reg || '');
-          $('#lokasi_alat_reg_8').val(item4.lokasi_alat_reg || '');
-          $('#Pelapor_reg3').val(item4.pelapor_reg || '');
-          $('#Teknisi_1_reg3').val(item4.teknisi_1_reg || '');
-          $('#Teknisi_2_reg3').val(item4.teknisi_2_reg || '');
-          $('#Teknisi_3_reg3').val(item4.teknisi_3_reg || '');
-          $('#Teknisi_4_reg3').val(item4.teknisi_4_reg || '');
-          $('#Teknisi_5_reg3').val(item4.teknisi_5_reg || '');
-          $('#KA_Instalasi_reg3').val(item4.ka_instalasi_reg || '');
-          $('#nama_sukucadang3').val(item4.suku_cadang || '');
-          $('#volume3').val(item4.volume || '');
-          $('#harga_satuan3').val(item4.harga_satuan || '');
-          $('#jumlah_harga3').val(item4.jumlah_harga || '');
+          $('#tanggal_perbaikan_reg_4').val(item4.tanggal_perbaikan_reg || '');
+          $('#nama_alat_reg_4').val(item4.nama_alat_reg || '');
+          $('#merek_alat_reg_4').val(item4.merek_alat_reg || '');
+          $('#type_alat_reg_4').val(item4.type_alat_reg || '');
+          $('#serial_number_reg_4').val(item4.serial_number_reg || '');
+          $('#lokasi_alat_reg_4').val(item4.lokasi_alat_reg || '');
+          $('#pelapor_reg_4').val(item4.pelapor_reg || '');
+          $('#teknisi_1_reg_4').val(item4.teknisi_1_reg || '');
+          $('#teknisi_2_reg_4').val(item4.teknisi_2_reg || '');
+          $('#teknisi_3_reg_4').val(item4.teknisi_3_reg || '');
+          $('#teknisi_4_reg_4').val(item4.teknisi_4_reg || '');
+          $('#teknisi_5_reg_4').val(item4.teknisi_5_reg || '');
+          $('#ka_instalasi_reg_4').val(item4.ka_instalasi_reg || '');
+          $('#suku_cadang_4').val(item4.suku_cadang || '');
+          $('#volume_4').val(item4.volume || '');
+          $('#harga_satuan_4').val(item4.harga_satuan || '');
+          $('#jumlah_harga_4').val(item4.jumlah_harga || '');
         })
         .catch(error => console.log("ERROR AJAX : ", error))
     })
@@ -1666,6 +1581,18 @@
     document.execCommand('copy', false);
     inp.remove();
     document.getElementById('Id_Perbaikan_reg3').value = inp.value = that.textContent;
+  }
+  // *function copy id perbaikan untuk penghapusan end* //
+
+  // *function copy id perbaikan untuk penghapusan* //
+  function copy5(that) {
+    var inp = document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value = that.textContent
+    inp.select();
+    document.execCommand('copy', false);
+    inp.remove();
+    document.getElementById('id_aset_reg_5').value = inp.value = that.textContent;
   }
   // *function copy id perbaikan untuk penghapusan end* //
 </script>
@@ -1740,5 +1667,61 @@
       }
     });
   });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let count = 2;
+    document.getElementById("btnTambahTeknisi2").addEventListener("click", function() {
+      if (count <= 5) {
+        document.getElementById("teknisi2_" + count).style.display = "flex";
+        count++;
+        if (count > 5) {
+          this.style.display = "none";
+        }
+      }
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const hargaInput = document.getElementById("harga_satuan_part");
+
+    hargaInput.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
+        if (value) {
+            e.target.value = formatRupiah(value);
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    function formatRupiah(angka) {
+        return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const volumeInput = document.getElementById("volume_part");
+    const hargaSatuanInput = document.getElementById("harga_satuan_part");
+    const jumlahHargaInput = document.getElementById("jumlah_harga_part");
+
+    const formatRupiah = (angka) => "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    const cleanRupiah = (angka) => angka.replace(/[^0-9]/g, "");
+
+    const hitungJumlahHarga = () => {
+        const volume = parseFloat(volumeInput.value) || 0;
+        const hargaSatuan = parseFloat(cleanRupiah(hargaSatuanInput.value)) || 0;
+        jumlahHargaInput.value = volume * hargaSatuan ? formatRupiah((volume * hargaSatuan).toString()) : "";
+    };
+
+    [hargaSatuanInput, volumeInput].forEach(input => {
+        input.addEventListener("input", () => {
+            if (input === hargaSatuanInput) input.value = formatRupiah(cleanRupiah(input.value));
+            hitungJumlahHarga();
+        });
+    });
+});
+
 </script>
 @endpush
