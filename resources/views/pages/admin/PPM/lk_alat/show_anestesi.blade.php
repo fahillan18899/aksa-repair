@@ -168,7 +168,7 @@
                 @foreach($item->pemeriksa_kondisi as $chek)
                   <tr>
                     <td align="center">{{ $chek['deskrip'] ?? '-' }}</td>
-                    <td align="center">{{ $chek['kondisi'] ?? '-' }}</td>
+                    <td align="center">{{ $chek['kondisi'] ?? 'Rusak' }}</td>
                     <td align="center">{{ $chek['keterangan'] ?? '-' }}</td>
                   </tr>
                   @endforeach
