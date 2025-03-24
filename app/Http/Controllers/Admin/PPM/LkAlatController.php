@@ -51,7 +51,7 @@ class LkAlatController extends Controller
             'kelembapan' => '',
             'pemeriksa_kondisi' => 'array',
             'pemeriksa_kondisi.*.deskrip' => 'required',
-            'pemeriksa_kondisi.*.kondisi' => 'required',
+            'pemeriksa_kondisi.*.kondisi' => '',
             'pemeriksa_kondisi.*.keterangan' => 'required',
             'listrik_1' => '',
             'listrik_2' => '',
