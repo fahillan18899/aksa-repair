@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'show lk anestesi')
+@section('title', 'Lembar Kerja Pemeliharaan')
 @push('addon-style')
 <style>
   .td-custom {
@@ -42,39 +42,12 @@
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0000")
               <img src="{{ url('assets/kop-surat/kop_surat_demo.png') }}" alt="Kop Surat" width="100%">
               @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0001")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Badarudin Kasim" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0002")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Rsi Wonosobo" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0003")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Pantiwilasa" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0004")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Cilegon" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0005")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Pondok kopi" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0006")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop RS Temangung" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0007")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop Ja'far" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0008")
-              <img src="{{ url('assets/kop-surat/xxx.png') }}" alt="Kop PKU Muhammadiyah Wonosobo" width="100%">
-              @endif
-              @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0017")
-              <img src="{{ url('assets/kop-surat/kop_surat_kendal.png') }}" alt="Kop Darul Istiqomah Kendal" width="100%">
-              @endif
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
               <img src="{{ url('assets/kop-surat/kop-surat-anesthesi3.png') }}" alt="Kop Klaten" width="100%">
               @endif
             </div>
             <h3>
-              <center>LAPORAN PEMELIHARAAN ANESTESI</center>
+              <center>LAPORAN PEMELIHARAAN ALAT KESEHATAN</center>
             </h3>
             <div class="card-body" style="padding: 25px;">
               <!-- A. PENDATAAN ALAT -->
@@ -82,27 +55,27 @@
                 <table class="table" style="width:100%">
                   <tr>
                     <td style="width: 20%;"><b>ID Alat</b></td>
-                    <td style="width: 20%;"><?php echo $item['id_alat'] ?></td>
+                    <td style="width: 20%;">{{ $item['id_alat'] }}</td>
                     <td style="width: 20%;"><b>Merek / Tipe</b></td>
-                    <td style="width: 20%;"><?php echo $item['merek_tipe'] ?></td>
+                    <td style="width: 20%;">{{ $item['merek_tipe'] }}</td>
                   </tr>
                   <tr>
                     <td style="width: 20%;"><b>Nama Ruangan</b></td>
-                    <td style="width: 20%;"><?php echo $item['ruangan'] ?></td>
+                    <td style="width: 20%;">{{ $item['ruangan'] }}</td>
                     <td style="width: 20%;"><b>No Seri</b></td>
-                    <td style="width: 20%;"><?php echo $item['no_seri'] ?></td>
+                    <td style="width: 20%;">{{ $item['no_seri'] }}</td>
                   </tr>
                   <tr>
                     <td style="width: 20%;"><b>User / Operator Alat</b></td>
-                    <td style="width: 20%;"><?php echo $item['operator_alat'] ?></td>
+                    <td style="width: 20%;">{{ $item['operator_alat'] }}</td>
                     <td style="width: 20%;"><b>Tanggal Pelaksanaan</b></td>
-                    <td style="width: 20%;"><?php echo $item['tanggal'] ?></td>
+                    <td style="width: 20%;">{{ $item['tanggal'] }}</td>
                   </tr>
                   <tr>
                     <td style="width: 20%;"><b>Nama Alat</b></td>
-                    <td style="width: 20%;"><?php echo $item['alat'] ?></td>
+                    <td style="width: 20%;">{{ $item['alat'] }}</td>
                     <td style="width: 20%;"><b>Petugas Pelaksana</b></td>
-                    <td style="width: 20%;"><?php echo $item['pelaksana'] ?></td>
+                    <td style="width: 20%;">{{ $item['pelaksana'] }}</td>
                   </tr>
                 </table>
               </div>
@@ -143,12 +116,12 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Suhu</td>
-                    <td align="center"><?php echo $item['suhu'] ?></td>
+                    <td><b>Suhu</b></td>
+                    <td align="center">{{ $item['suhu'] }}</td>
                   </tr>
                   <tr>
-                    <td>Kelembapan nisbi</td>
-                    <td align="center"><?php echo $item['kelembapan'] ?></td>
+                    <td><b>Kelembapan nisbi</b></td>
+                    <td align="center">{{ $item['kelembapan'] }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -188,26 +161,24 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Main Voltage / Live-Neutral</td>
-                    <td align="center"><?php echo $item['listrik_1'] ?></td>
-                    <td align="center">220 ± 10% V</td>
+                    <td><b>Main Voltage / Live-Neutral</b></td>
+                    <td align="center">{{ $item['listrik_1'] }}</td>
+                    <td align="center"><b>220 ± 10% V</b></td>
                   </tr>
                   <tr>
-                    <td>Protectiv Earth Resistance</td>
-                    <td align="center"><?php echo $item['listrik_2'] ?></td>
-                    <td align="center"><u>
-                        << /u> 0,2 Ω</td>
+                    <td><b>Protectiv Earth Resistance</b></td>
+                    <td align="center">{{ $item['listrik_2'] }}</td>
+                    <td align="center"><b><u><</u> 0,2 Ω</b></td>
                   </tr>
                   <tr>
-                    <td>Insulation Resistance / Mains-PE</td>
-                    <td align="center"><?php echo $item['listrik_3'] ?></td>
-                    <td align="center"><u>></u> 2 MΩ</td>
+                    <td><b>Insulation Resistance / Mains-PE</b></td>
+                    <td align="center">{{ $item['listrik_3'] }}</td>
+                    <td align="center"><b><u>></u> 2 MΩ</b></td>
                   </tr>
                   <tr>
-                    <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
-                    <td align="center"><?php echo $item['listrik_4'] ?></td>
-                    <td align="center"><u>
-                        << /u> 500 μA</td>
+                    <td><b>Earth Leakage Current Normal Polarity Closed Neutral</b></td>
+                    <td align="center">{{ $item['listrik_4'] }}</td>
+                    <td align="center"><b><u><</u> 500 μA</b></td>
                   </tr>
                 </tbody>
               </table>
@@ -230,16 +201,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Kondisi fisik dan fungsi</td>
-                    <td align="center"><?php echo $item['kesimpulan_fisik_fungsi'] ?></td>
+                    <td><b>Kondisi fisik dan fungsi</b></td>
+                    <td align="center">{{ $item['kesimpulan_fisik_fungsi'] }}</td>
                   </tr>
                   <tr>
-                    <td>Keselamatan Listrik</td>
-                    <td align="center"><?php echo $item['kesimpulan_listrik'] ?></td>
+                    <td><b>Keselamatan Listrik</b></td>
+                    <td align="center">{{ $item['kesimpulan_listrik'] }}</td>
                   </tr>
                   <tr>
-                    <td>Kinerja Alat Kesehatan</td>
-                    <td align="center"><?php echo $item['kesimpulan_kinerja'] ?></td>
+                    <td><b>Kinerja Alat Kesehatan</b></td>
+                    <td align="center">{{ $item['kesimpulan_kinerja'] }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -265,8 +236,8 @@
                     <td><img style="margin-left: 50px;" id="sig-image2" src="" alt="Tanda tangan akan muncul disini" /></td>
                   </tr>
                   <tr>
-                    <td align="center"><?php echo $item['pelaksana']; ?></td>
-                    <td align="center"><?php echo $item['operator_alat']; ?></td>
+                    <td align="center">{{ $item['pelaksana'] }}</td>
+                    <td align="center">{{ $item['operator_alat'] }}</td>
                   </tr>
                 </tbody>
               </table>

@@ -3,34 +3,8 @@
 @section('content')
 @section('title', 'LK Alat Kesehatan')
 <style>
-  div.scrollmenu {
-    background-color: #f1f1f1;
-    overflow: auto;
-    white-space: nowrap;
-    border: 1px solid #ccc;
-    box-sizing: inherit;
-    margin-top: -20px;
-  }
-
-  div.scrollmenu a {
-    display: inline-block;
-    color: black;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .scrollmenu a:hover {
-    background-color: #ddd;
-  }
-
-  .scrollmenu:not(:hover) a.active {
-    background-color: #ccc;
-  }
-
-  .tabcontent>.active {
-    display: block;
+  input[readonly] {
+    cursor: not-allowed;
   }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -47,9 +21,6 @@
       </div>
     </div>
   </section>
-  <div class="scrollmenu ">
-    <a class="tablinks active" id="defaultOpen" onclick="openCity(event, 'Anaesthesi')">AED</a>
-  </div>
   <!-- Main content -->
   <div class="content">
     <!-- demo mode enable alert -->
@@ -69,7 +40,7 @@
           <div class="panel panel-default thumbnail">
 
             <div class="panel-heading no-print">
-              <h1>Form Pemeliharaan AED</h1>
+              <h1>Form Pemeliharaan Alkes</h1>
             </div>
 
             <div class="panel-body panel-form">
@@ -127,7 +98,8 @@
                           <label for="operator_alat" class="form-label">User / Operator Alat<i class="text-danger">*</i></label>
                         </div>
                         <div class="col-sm-3">
-                          <input name="operator_alat" id="operator_alat" type="text" class="form-control">
+                          <input name="operator_alat" id="operator_alat" type="text" class="form-control"
+                          placeholder="Isi sesuai dengan data">
                         </div>
                         <div class="col-sm-3">
                           <label for="tanggal" class="form-label">Tanggal Pelaksanaan<i class="text-danger">*</i></label>
@@ -156,22 +128,22 @@
                     <!--A PENDATAAN ALAT N-->
 
                     <!--B ALAT UKUR DAN BAHAN AYANG DIGUNAKAN -->
-                    <h4><b>B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN</b></h4>
-                    <a class="btn btn-primary" id="addRow" style="margin-bottom: 5px;">Tambah Baris</a>
-                    <table class="table table-hover table-bordered" id="dynamicTable" style="width:100%">
-                      <thead>
-                        <tr>
-                          <td align="center"><b>Nama Alat</b></td>
-                          <td align="center"><b>Merek</b></td>
-                          <td align="center"><b>Tipe / Model</b></td>
-                          <td align="center"><b>NO Seri</b></td>
-                          <td align="center"><b>Action</b></td>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <!-- Inputan Dinamis -->
-                      </tbody>
-                    </table>
+                      <h4><b>B. ALAT UKUR DAN BAHAN YANG DIGUNAKAN</b></h4>
+                      <a class="btn btn-primary" id="addRow" style="margin-bottom: 5px;">Tambah Baris</a>
+                      <table class="table table-hover table-bordered" id="dynamicTable" style="width:100%">
+                        <thead>
+                          <tr>
+                            <td align="center"><b>Nama Alat</b></td>
+                            <td align="center"><b>Merek</b></td>
+                            <td align="center"><b>Tipe / Model</b></td>
+                            <td align="center"><b>Serial Number</b></td>
+                            <td align="center"><b>Action</b></td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Inputan Dinamis -->
+                        </tbody>
+                      </table>
                     <!--B ALAT UKUR DAN BAHAN AYANG DIGUNAKAN N-->
 
                     <!--C KONDISI RUANGAN -->
@@ -185,12 +157,14 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Suhu</td>
-                          <td align="center"><input name="suhu" class="form-control form-control-sm"></td>
+                          <td><b>Suhu</b></td>
+                          <td align="center"><input name="suhu" type="number"
+                          class="form-control form-control-sm" placeholder="Isi dengan angka"></td>
                         </tr>
                         <tr>
-                          <td>Kelembapan nisbi</td>
-                          <td align="center"><input name="kelembapan" class="form-control form-control-sm"></td>
+                          <td><b>Kelembapan nisbi</b></td>
+                          <td align="center"><input name="kelembapan" type="number" 
+                          class="form-control form-control-sm" placeholder="Isi dengan angka"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -226,26 +200,24 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Main Voltage / Live-Neutral</td>
+                          <td><b>Main Voltage / Live-Neutral</b></td>
                           <td align="center"><input name="listrik_1" class="form-control form-control-sm" type="text"></td>
                           <td align="center">220 ± 10% V</td>
                         </tr>
                         <tr>
-                          <td>Protectiv Earth Resistance</td>
+                          <td><b>Protectiv Earth Resistance</b></td>
                           <td align="center"><input name="listrik_2" class="form-control form-control-sm" type="text"></td>
-                          <td align="center"><u>
-                              << /u> 0,2 Ω</td>
+                          <td align="center"><u><</u> 0,2 Ω</td>
                         </tr>
                         <tr>
-                          <td>Insulation Resistance / Mains-PE</td>
+                          <td><b>Insulation Resistance / Mains-PE</b></td>
                           <td align="center"><input name="listrik_3" class="form-control form-control-sm" type="text"></td>
                           <td align="center"><u>></u> 2 MΩ</td>
                         </tr>
                         <tr>
-                          <td>Earth Leakage Current Normal Polarity Closed Neutral</td>
+                          <td><b>Earth Leakage Current Normal Polarity Closed Neutral</b></td>
                           <td align="center"><input name="listrik_4" class="form-control form-control-sm" type="text"></td>
-                          <td align="center"><u>
-                              << /u> 500 μA</td>
+                          <td align="center"><u><</u> 500 μA</td>
                         </tr>
                       </tbody>
                     </table>
@@ -266,15 +238,15 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Kondisi fisik dan fungsi</td>
+                          <td><b>Kondisi fisik dan fungsi</b></td>
                           <td align="center"><input name="kesimpulan_fisik_fungsi" type="text" class="form-control"></td>
                         </tr>
                         <tr>
-                          <td>Keselamatan Listrik</td>
+                          <td><b>Keselamatan Listrik</b></td>
                           <td align="center"><input name="kesimpulan_listrik" type="text" class="form-control"></td>
                         </tr>
                         <tr>
-                          <td>Kinerja Alat Kesehatan</td>
+                          <td><b>Kinerja Alat Kesehatan</b></td>
                           <td align="center"><input name="kesimpulan_kinerja" type="text" class="form-control"></td>
                         </tr>
                       </tbody>
@@ -352,23 +324,6 @@
 </div> <!-- /.content-wrapper -->
 @push('addon-script')
 <script>
-  // ** function tab change ** //
-  function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace("active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += "active";
-  }
-  // Get the element with id="defaultOpen" and click on it
-  document.getElementById("defaultOpen").click();
-  // ** function tab change N ** //
 
   // ** function autofill Anesthesi ** //
   $('select[name="data_lkAlat"]').on('change', function() {
@@ -400,35 +355,6 @@
   });
   // ** function autofill Anesthesi N ** //
 
-  // ** function autofill Dental Unit ** //
-  $('select[name="data_lkAlat2"]').on('change', function() {
-    var lkAlatInv = $(this).val();
-    console.log(lkAlatInv);
-    if (lkAlatInv) {
-      $.ajax({
-        url: '/dashboard/ppm/getLkAlat/' + lkAlatInv,
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-          console.log(data);
-          $.each(data, function(key, value) {
-            $('input[id="id_alat2"]').val(value.id_aset);
-            $('input[id="ruangan2"]').val(value.lokasi_alat);
-            $('input[id="alat2"]').val(value.nama_alat);
-            $('input[id="merek_tipe2"]').val(value.merek);
-            $('input[id="no_seri2"]').val(value.serial_number);
-          });
-        }
-      });
-    } else {
-      $('input[id="id_alat2"]').empty();
-      $('input[id="ruangan2"]').empty();
-      $('input[id="alat2"]').empty();
-      $('input[id="merek_tipe2"]').empty();
-      $('input[id="no_seri2"]').empty();
-    }
-  });
-  // ** function autofill Dental Unit N ** //
 </script>
 
 <script>
@@ -449,10 +375,10 @@
 
       let newRow = 
       `<tr>
-        <td align="center"><input name="alat_ukur[${rowCount}][nama]" class="form-control form-control-sm" type="text"></td>
-        <td align="center"><input name="alat_ukur[${rowCount}][merek]" class="form-control form-control-sm" type="text"></td>
-        <td align="center"><input name="alat_ukur[${rowCount}][type]" class="form-control form-control-sm" type="text"></td>
-        <td align="center"><input name="alat_ukur[${rowCount}][noseri]" class="form-control form-control-sm" type="text"></td>
+        <td align="center"><input class="form-control form-control-sm" type="text" name="alat_ukur[${rowCount}][nama]" placeholder="Nama alat ukur"></td>
+        <td align="center"><input class="form-control form-control-sm" type="text" name="alat_ukur[${rowCount}][merek]" placeholder="Merek alat ukur"></td>
+        <td align="center"><input class="form-control form-control-sm" type="text" name="alat_ukur[${rowCount}][type]" placeholder="Tipe alat ukur"></td>
+        <td align="center"><input class="form-control form-control-sm" type="text" name="alat_ukur[${rowCount}][noseri]" placeholder="No seri alat ukur"></td>
         <td><button type="button" class="removeRow">Hapus</button></td>
       </tr>`;
 
@@ -484,9 +410,9 @@
       }
       let newRow = 
       `<tr>
-        <td align="center"><input name="pemeriksa_kondisi[${rowCount}][deskrip]" class="form-control form-control-sm" type="text"></td>
+        <td align="center"><input name="pemeriksa_kondisi[${rowCount}][deskrip]" placeholder="Komponen diperiksa" class="form-control form-control-sm" type="text"></td>
         <td align="center"><input name="pemeriksa_kondisi[${rowCount}][kondisi]" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="baik"></td>
-        <td align="center"><input name="pemeriksa_kondisi[${rowCount}][keterangan]" class="form-control form-control-sm" type="text"></td>
+        <td align="center"><input name="pemeriksa_kondisi[${rowCount}][keterangan]" placeholder="keterangan kondisi fisik & fungsi" class="form-control form-control-sm" type="text"></td>
         <td><button type="button" class="removeRow2">Hapus</button></td>
       </tr>`;
 
