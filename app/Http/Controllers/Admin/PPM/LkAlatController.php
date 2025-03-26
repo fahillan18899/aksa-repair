@@ -57,6 +57,12 @@ class LkAlatController extends Controller
             'listrik_2' => '',
             'listrik_3' => '',
             'listrik_4' => '',
+            'judul' => 'array',
+            'kinerja' => 'array',
+            'kinerja.*.parameter' => '',
+            'kinerja.*.setting' => '',
+            'kinerja.*.terukur' => '',
+            'kinerja.*.toleransi' => '',
             'kesimpulan_fisik_fungsi' => '',
             'kesimpulan_listrik' => '',
             'kesimpulan_kinerja' => '',
@@ -67,6 +73,8 @@ class LkAlatController extends Controller
         $data['kode_rs'] = Auth::user()->kode_rs;
         $data['alat_ukur'] = json_encode($request->alat_ukur); // Konversi array ke JSON
         $data['pemeriksa_kondisi'] = json_encode($request->pemeriksa_kondisi); // Konversi array ke JSON
+        $data['kinerja'] = json_encode($request->kinerja); // Konversi array ke JSON
+        $data['judul'] = json_encode($request->judul); // Konversi array ke JSON
         LkAlat::create($data);
         return redirect('/dashboard/ppm/lk_alat')
             ->with('success', 'Data Alat Berhasil di Tambahkan.');
@@ -81,6 +89,7 @@ class LkAlatController extends Controller
         // Pastikan alat_ukur dalam bentuk array
         $item->alat_ukur = is_string($item->alat_ukur) ? json_decode($item->alat_ukur, true) : $item->alat_ukur;
         $item->pemeriksa_kondisi = is_string($item->pemeriksa_kondisi) ? json_decode($item->pemeriksa_kondisi, true) : $item->pemeriksa_kondisi;
+        $item->kinerja = is_string($item->kinerja) ? json_decode($item->kinerja, true) : $item->kinerja;
 
     
         return view('pages.admin.PPM.lk_alat.show_anestesi', compact('item'));

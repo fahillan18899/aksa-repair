@@ -185,7 +185,31 @@
               <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
               <!-- PENGUKURAN KINERJA -->
-              <!-- empty -->
+                <h4><b>F. PENGUKURAN KINERJA ALAT</b></h4>
+                <div class="col-xs-3" style="padding-bottom: 3px; margin-left: -15px;">
+                  <h3>{{ $item['judul'] }}</h3>
+                </div>
+                <table class="table table-hover table-bordered" id="dynamicTableC" style="width:100%">
+                  <thead>
+                    <tr>
+                      <td align="center"><b>Parameter</b></td>
+                      <td align="center"><b>Setting Alat</b></td>
+                      <td align="center"><b>Terukur</b></td>
+                      <td align="center"><b>Toleransi</b></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  @foreach($item->kinerja as $kinerja)
+                  <tr>
+                    <td align="center">{{ $kinerja['parameter'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['setting'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['terukur'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['toleransi'] ?? '-' }}</td>
+                  </tr>
+                  @endforeach
+                  </tbody>
+                </table>
+                <!---->
               <!-- PENGUKURAN KINERJA N-->
 
               <!-- KESIMPULAN -->

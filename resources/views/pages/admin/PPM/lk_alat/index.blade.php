@@ -172,8 +172,8 @@
 
                     <!--D PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT -->
                     <h4><b>D. PEMERIKSAAN KONDISI FISIK DAN FUNGSI ALAT</b></h4>
-                    <a class="btn btn-primary" id="addRow2" style="margin-bottom: 5px;">Tambah Baris</a>
-                    <table class="table table-hover table-bordered" id="dynamicTable2" style="width:100%">
+                    <a class="btn btn-primary" id="addRowB" style="margin-bottom: 5px;">Tambah Baris</a>
+                    <table class="table table-hover table-bordered" id="dynamicTableB" style="width:100%">
                       <thead>
                         <tr>
                           <td align="center"><b>Deskripsi</b></td>
@@ -224,11 +224,11 @@
                     <!--E PENGUKURAN KESELAMATAN LISTRIK N-->
 
                     <!--F PENGUKURAN KINERJA -->
-                      <!-- empty -->
+                      <div id="tablesContainer"></div>
                     <!--F PENGUKURAN KINERJA N-->
 
-                    <!--F KESIMPULAN -->
-                    <h4><b>F. KESIMPULAN</b></h4>
+                    <!--G KESIMPULAN -->
+                    <h4><b>G. KESIMPULAN</b></h4>
                     <table class="table table-hover table-bordered" style="width:100%">
                       <thead>
                         <tr>
@@ -257,7 +257,7 @@
                         <textarea name="catatan" class="form-control" placeholder="Catatan" id="catatan" maxlength="255" rows="5"></textarea>
                       </div>
                     </div>
-                    <!--F KESIMPULAN -->
+                    <!--G KESIMPULAN -->
                     <div class="form-group row">
                       <div class="col-sm-offset-3 col-sm-6">
                         <div class="ui buttons">
@@ -400,7 +400,7 @@
     const rowMax = 6; // Batas maksimal baris
 
     // Fungsi untuk menambah baris ke tabel
-    $("#addRow2").click(function() {
+    $("#addRowB").click(function() {
       if(rowCount >= rowMax){
         Swal.fire({
           icon: "warning",
@@ -413,19 +413,88 @@
         <td align="center"><input name="pemeriksa_kondisi[${rowCount}][deskrip]" placeholder="Komponen diperiksa" class="form-control form-control-sm" type="text"></td>
         <td align="center"><input name="pemeriksa_kondisi[${rowCount}][kondisi]" class="form-check-input" type="checkbox" style="width: 80%; height: 20px;" value="baik"></td>
         <td align="center"><input name="pemeriksa_kondisi[${rowCount}][keterangan]" placeholder="keterangan kondisi fisik & fungsi" class="form-control form-control-sm" type="text"></td>
-        <td><button type="button" class="removeRow2">Hapus</button></td>
+        <td><button type="button" class="removeRowB">Hapus</button></td>
       </tr>`;
 
       // Menambah baris baru ke tbody
-      $("#dynamicTable2 tbody").append(newRow);
+      $("#dynamicTableB tbody").append(newRow);
       rowCount++; // Menambah nomor ID untuk input berikutnya
     });
 
     // Fungsi untuk menghapus baris
-    $(document).on("click", ".removeRow2", function() {
+    $(document).on("click", ".removeRowB", function() {
       $(this).closest("tr").remove();
     });
   });
 </script>
+
+<script>
+$(document).ready(function() {
+  let rowCount = 0; // Menyimpan jumlah baris
+  let rowMax = 5; // Maksimal baris per tabel
+  let tableIndex = 0; // Indeks untuk tabel baru
+
+  function createNewTable() {
+    tableIndex++; // Tambah indeks tabel
+
+    let newTable = `
+      <div class="table-container">
+        <h4><b>F. PENGUKURAN KINERJA ALAT (${tableIndex})</b></h4>
+        <a class="btn btn-primary addRowC" style="margin-bottom: 5px;">Tambah Baris</a>
+        <br>
+        <div class="col-xs-3" style="padding-bottom: 3px; margin-left: -15px;">
+          <input name="judul[${tableIndex}]" type="text" class="form-control" placeholder="Judul Tabel">
+        </div>
+        <table class="table table-hover table-bordered dynamicTableC" style="width:100%">
+          <thead>
+            <tr>
+              <td align="center"><b>Parameter</b></td>
+              <td align="center"><b>Setting Alat</b></td>
+              <td align="center"><b>Terukur</b></td>
+              <td align="center"><b>Toleransi</b></td>
+              <td align="center"><b>Action</b></td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    `;
+
+    $("#tablesContainer").append(newTable);
+  }
+
+  // Fungsi untuk menambah baris ke dalam tabel yang aktif
+  $(document).on("click", ".addRowC", function() {
+    rowCount++;
+    let table = $(this).siblings(".dynamicTableC").find("tbody"); // Dapatkan tbody dari tabel yang sesuai
+    let currentRowCount = table.find("tr").length; // Hitung jumlah baris di tabel ini
+
+    if (currentRowCount >= rowMax) {
+      createNewTable();
+    } else {
+      let newRow = `
+        <tr>
+          <td align="center"><input name="kinerja[${rowCount}][parameter]" placeholder="-" class="form-control form-control-sm" type="text"></td>
+          <td align="center"><input name="kinerja[${rowCount}][setting]" placeholder="-" class="form-control form-control-sm" type="text"></td>
+          <td align="center"><input name="kinerja[${rowCount}][terukur]" placeholder="-" class="form-control form-control-sm" type="text"></td>
+          <td align="center"><input name="kinerja[${rowCount}][toleransi]" placeholder="-" class="form-control form-control-sm" type="text"></td>
+          <td><button type="button" class="btn btn-danger removeRowC">Hapus</button></td>
+        </tr>
+      `;
+      table.append(newRow);
+    }
+  });
+
+  // Fungsi untuk menghapus baris
+  $(document).on("click", ".removeRowC", function() {
+    $(this).closest("tr").remove();
+  });
+
+  // Tambahkan tabel pertama saat halaman dimuat
+  createNewTable();
+});
+</script>
+
+
 @endpush
 @endsection

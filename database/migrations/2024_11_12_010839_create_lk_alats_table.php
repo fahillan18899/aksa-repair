@@ -34,6 +34,9 @@ return new class extends Migration
             $table->string('listrik_2', 5);
             $table->string('listrik_3', 5);
             $table->string('listrik_4', 5);
+            // kinerja alat
+            $table->string('judul', 10);
+            $table->string('kinerja', 10);
             // kesimpulan
             $table->string('kesimpulan_fisik_fungsi', 10);
             $table->string('kesimpulan_listrik', 10);
