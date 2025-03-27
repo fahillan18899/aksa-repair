@@ -10,13 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LkAlatController extends Controller
 {
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $items  = LkAlat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $Inv    = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $Inv2   = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        return view('pages.admin.PPM.lk_alat.index', 
+        $items = LkAlat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $Inv   = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $Inv2  = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
+        return view('pages.admin.PPM.lk_alat.index',
         compact('Inv', 'Inv2', 'items'));
     }
 
@@ -36,16 +40,26 @@ class LkAlatController extends Controller
             'alat_ukur.*.merek' => '',
             'alat_ukur.*.type' => '',
             'alat_ukur.*.noseri' => '',
+            'suhu' => '',
+            'kelembapan' => '',
             'pemeriksa_kondisi' => 'array',
             'pemeriksa_kondisi.*.deskrip' => '',
             'pemeriksa_kondisi.*.kondisi' => '',
             'pemeriksa_kondisi.*.keterangan' => '',
+            'listrik_1' => '',
+            'listrik_2' => '',
+            'listrik_3' => '',
+            'listrik_4' => '',
             'judul' => 'array',
             'kinerja' => 'array',
             'kinerja.*.parameter' => '',
             'kinerja.*.setting' => '',
             'kinerja.*.terukur' => '',
             'kinerja.*.toleransi' => '',
+            'kesimpulan_fisik_fungsi' => '',
+            'kesimpulan_listrik' => '',
+            'kesimpulan_kinerja' => '',
+            'catatan' => '',
             'kode_rs' => '',
         ]);
 
@@ -66,10 +80,10 @@ class LkAlatController extends Controller
             ->firstOrFail(); // Pastikan jika data tidak ditemukan, langsung error 404
 
         // Pastikan alat_ukur dalam bentuk array
-        $item->judul = is_string($item->judul) ? json_decode($item->judul, true) ?? [] : $item->judul;
-        $item->kinerja = is_string($item->kinerja) ? json_decode($item->kinerja, true) : $item->kinerja;
         $item->alat_ukur = is_string($item->alat_ukur) ? json_decode($item->alat_ukur, true) : $item->alat_ukur;
         $item->pemeriksa_kondisi = is_string($item->pemeriksa_kondisi) ? json_decode($item->pemeriksa_kondisi, true) : $item->pemeriksa_kondisi;
+        $item->kinerja = is_string($item->kinerja) ? json_decode($item->kinerja, true) : $item->kinerja;
+        $item->judul = is_string($item->judul) ? json_decode($item->judul, true) ?? [] : $item->judul;
     
         return view('pages.admin.PPM.lk_alat.show_anestesi', compact('item'));
     }
@@ -77,6 +91,7 @@ class LkAlatController extends Controller
     public function destroy($id)
     {
         $item = LkAlat::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+
         $item->delete();
 
         return redirect('/dashboard/ppm/lk_alat')
