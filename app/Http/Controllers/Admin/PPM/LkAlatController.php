@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\PPM;
 
 use App\Models\LkAlat;
 use App\Models\Registrasi;
-use App\Models\LkDentalUnit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +20,8 @@ class LkAlatController extends Controller
         $Inv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $Inv2 = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $items = LkAlat::where('kode_rs', Auth::user()->kode_rs)->get();
-        $items2 = LkDentalUnit::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.lk_alat.index', 
-        compact('Inv', 'Inv2', 'items', 'items2'));
+        compact('Inv', 'Inv2', 'items'));
     }
 
     public function store(Request $request)
