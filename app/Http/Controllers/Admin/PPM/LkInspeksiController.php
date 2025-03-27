@@ -100,20 +100,6 @@ class LkInspeksiController extends Controller
             ->with('success', 'Data Alat Berhasil di Tambahkan.');
     }
     
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy($id)
-    // {
-    //     $item = LkInspeksi::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-    //     $item->delete();
-    //     return redirect('/dashboard/ppm/lk_inspeksi/data')
-    //         ->with('success', 'Data User Berhasil di Hapus');
-    // }
-
     public function destroyMultiple(Request $request)
     {
 
@@ -126,51 +112,6 @@ class LkInspeksiController extends Controller
             ->delete();
     
         return response()->json(['message' => 'Data yang dipilih berhasil dihapus!']);
-    }
-    
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-/**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
 }
