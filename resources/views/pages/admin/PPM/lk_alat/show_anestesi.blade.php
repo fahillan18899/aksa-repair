@@ -9,23 +9,35 @@
     border-color: #b8b4b4;
   }
 
-  #sig-canvas1 {
-    border: 2px dotted #CCCCCC;
+  #ttd_canvas1 {
+    border: 2px dotted rgb(21, 20, 20);
     border-radius: 15px;
     cursor: crosshair;
   }
 
-  #sig-canvas2 {
-    border: 2px dotted #CCCCCC;
+  #ttd_canvas2 {
+    border: 2px dotted rgb(21, 20, 20);
     border-radius: 15px;
     cursor: crosshair;
   }
 
-  #sig-canvas3 {
-    border: 2px dotted #CCCCCC;
-    border-radius: 15px;
-    cursor: crosshair;
-  }
+  .modal-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+}
+
+.modal-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+}
 </style>
 @endpush
 @section('content')
@@ -138,7 +150,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach($item->pemeriksa_kondisi as $chek)
+                  @foreach($item->pemeriksa_kondisi as $chek)
                   <tr>
                     <td align="center">{{ $chek['deskrip'] ?? '-' }}</td>
                     <td align="center">{{ $chek['kondisi'] ?? 'Rusak' }}</td>
@@ -168,7 +180,8 @@
                   <tr>
                     <td><b>Protectiv Earth Resistance</b></td>
                     <td align="center">{{ $item['listrik_2'] }}</td>
-                    <td align="center"><b><u><</u> 0,2 Ω</b></td>
+                    <td align="center"><b><u>
+                          << /u> 0,2 Ω</b></td>
                   </tr>
                   <tr>
                     <td><b>Insulation Resistance / Mains-PE</b></td>
@@ -178,27 +191,60 @@
                   <tr>
                     <td><b>Earth Leakage Current Normal Polarity Closed Neutral</b></td>
                     <td align="center">{{ $item['listrik_4'] }}</td>
-                    <td align="center"><b><u><</u> 500 μA</b></td>
+                    <td align="center"><b><u>
+                          << /u> 500 μA</b></td>
                   </tr>
                 </tbody>
               </table>
               <!-- PENGUKURAN KESELAMATAN LISTRIK N-->
 
               <!-- PENGUKURAN KINERJA -->
-                <h4><b>F. PENGUKURAN KINERJA ALAT</b></h4>
-                <div class="col-xs-3" style="padding-bottom: 3px; margin-left: -15px;">
-                  <h3>{{ $item['judul'] }}</h3>
-                </div>
-                <table class="table table-hover table-bordered" id="dynamicTableC" style="width:100%">
-                  <thead>
-                    <tr>
-                      <td align="center"><b>Parameter</b></td>
-                      <td align="center"><b>Setting Alat</b></td>
-                      <td align="center"><b>Terukur</b></td>
-                      <td align="center"><b>Toleransi</b></td>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <h4><b>F. PENGUKURAN KINERJA ALAT</b></h4>
+
+              @if(is_array($item->judul))
+              @php
+              $judulArray = is_array($item->judul) ? array_values($item->judul) : [];
+              @endphp
+              @foreach(array_chunk($item->kinerja, 5) as $index => $kinerjaChunk)
+              <div class="col-xs-3" style="padding-bottom: 3px; margin-left: -15px;">
+                <h3>{{ $judulArray[$index] ?? 'Judul Tidak Tersedia' }}</h3>
+              </div>
+
+              <table class="table table-hover table-bordered" id="dynamicTableC_{{ $index }}" style="width:100%">
+                <thead>
+                  <tr>
+                    <td align="center"><b>Parameter</b></td>
+                    <td align="center"><b>Setting Alat</b></td>
+                    <td align="center"><b>Terukur</b></td>
+                    <td align="center"><b>Toleransi</b></td>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($kinerjaChunk as $kinerja)
+                  <tr>
+                    <td align="center">{{ $kinerja['parameter'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['setting'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['terukur'] ?? '-' }}</td>
+                    <td align="center">{{ $kinerja['toleransi'] ?? '-' }}</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+              @endforeach
+              @else
+              <div class="col-xs-3" style="padding-bottom: 3px; margin-left: -15px;">
+                <h3>{{ $item->judul ?? '-' }}</h3>
+              </div>
+              <table class="table table-hover table-bordered" id="dynamicTableC" style="width:100%">
+                <thead>
+                  <tr>
+                    <td align="center"><b>Parameter</b></td>
+                    <td align="center"><b>Setting Alat</b></td>
+                    <td align="center"><b>Terukur</b></td>
+                    <td align="center"><b>Toleransi</b></td>
+                  </tr>
+                </thead>
+                <tbody>
                   @foreach($item->kinerja as $kinerja)
                   <tr>
                     <td align="center">{{ $kinerja['parameter'] ?? '-' }}</td>
@@ -207,11 +253,11 @@
                     <td align="center">{{ $kinerja['toleransi'] ?? '-' }}</td>
                   </tr>
                   @endforeach
-                  </tbody>
-                </table>
-                <!---->
-              <!-- PENGUKURAN KINERJA N-->
+                </tbody>
+              </table>
+              @endif
 
+              <!-- PENGUKURAN KINERJA -->
               <!-- KESIMPULAN -->
               <br>
               <br>
@@ -256,8 +302,8 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><img style="margin-left: 50px;" id="sig-image1" src="" alt="Tanda tangan akan muncul disini" /></td>
-                    <td><img style="margin-left: 50px;" id="sig-image2" src="" alt="Tanda tangan akan muncul disini" /></td>
+                    <td><img style="margin-left: 50px;" id="ttd_image1" src="" alt="Tanda tangan akan muncul disini" /></td>
+                    <td><img style="margin-left: 50px;" id="ttd_image2" src="" alt="Tanda tangan akan muncul disini" /></td>
                   </tr>
                   <tr>
                     <td align="center">{{ $item['pelaksana'] }}</td>
@@ -270,93 +316,151 @@
           </div>
           <div class="panel-footer no-print text-center">
             <div class="btn-group">
-              <button type="button" onclick="printContent('PrintMe')" class="btn btn-danger"><i
-                  class="fa fa-print"></i> Print</button>
+              <button type="button" class="btn btn-info mb-3" 
+              data-toggle="modal"data-target="#exampleModal">TTD</button>
+              <button type="button" onclick="printContent('PrintMe')" 
+              class="btn btn-danger" style="margin-left: 5px;"><i class="fa fa-print"></i> Print</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <table>
-    <tr>
-      <!-- ttd 1-->
-      <!-- Content -->
-      <td>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <h1>E-Signature</h1>
-            <p>Tanda tangan Pelaksana</p>
-          </div>
-        </div>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <canvas id="sig-canvas1" width="150" height="100">
-              Get a better browser, bro.
-            </canvas>
-          </div>
-        </div>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <button class="btn btn-primary" id="sig-submitBtn1">Submit Signature</button>
-            <button class="btn btn-default" id="sig-clearBtn1">Clear Signature</button>
-          </div>
-        </div>
-        <br />
-        <div class="row hidden">
-          <div class="col-md-12">
-            <textarea id="sig-dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-          </div>
-        </div>
-        <br />
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-          </div>
-        </div>
-      </td>
-      <!-- ttd 1N-->
-      <!-- ttd 2-->
-      <!-- Content -->
-      <td>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <h1>E-Signature</h1>
-            <p>Tanda tangan User</p>
-          </div>
-        </div>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <canvas id="sig-canvas2" width="150" height="100">
-              Get a better browser, bro.
-            </canvas>
-          </div>
-        </div>
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
-            <button class="btn btn-primary" id="sig-submitBtn2">Submit Signature</button>
-            <button class="btn btn-default" id="sig-clearBtn2">Clear Signature</button>
-          </div>
-        </div>
-        <br />
-        <div class="row hidden">
-          <div class="col-md-12">
-            <textarea id="sig-dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-          </div>
-        </div>
-        <br />
-        <div class="row" style="margin-left: 5px;">
-          <div class="col-md-12">
+</div> <!-- /.content -->
+<!-- Modal  -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white; background-color:#042a4a;">
+        <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <table>
+            <tr>
+              <!-- ttd 1-->
+              <!-- Content -->
+              <td>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <p>Tanda tangan Teknisi</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <canvas id="ttd_canvas1" width="150" height="100">
+                      Get a better browser, bro.
+                    </canvas>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" id="ttd_submitBtn1">Submit Signature</button>
+                    <button class="btn btn-default" id="ttd_clearBtn1">Clear Signature</button>
+                  </div>
+                </div>
+                <br />
+                <div class="row hidden">
+                  <div class="col-md-12">
+                    <textarea id="ttd_dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                  </div>
+                </div>
+                <br />
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                  </div>
+                </div>
+              </td>
+              <!-- ttd 1N-->
+              <!-- ttd 2-->
+              <!-- Content -->
+              <td>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <p>Tanda tangan Pelapor</p>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <canvas id="ttd_canvas2" width="150" height="100">
+                      Get a better browser, bro.
+                    </canvas>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" id="ttd_submitBtn2">Submit Signature</button>
+                    <button class="btn btn-default" id="ttd_clearBtn2">Clear Signature</button>
+                  </div>
+                </div>
+                <br />
+                <div class="row hidden">
+                  <div class="col-md-12">
+                    <textarea id="ttd_dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                  </div>
+                </div>
+                <br />
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
 
-          </div>
+                  </div>
+                </div>
+              </td>
+              <!-- ttd 2N-->
+            </tr>
+          </table>
         </div>
-      </td>
-      <!-- ttd 2N-->
-    </tr>
-  </table>
-</div> <!-- /.content -->\
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
 @endsection
 @push('addon-script')
 <script>
+  // FUNGSI PRINT
+  function printTableMonitoring() {
+    var printContent = document.getElementById("printContent").outerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML =
+      `<html>
+          <head>
+            <title>Print Table</title>
+            <style>
+              table {
+                width: 100%;
+                border-collapse: collapse;
+              }
+              th, td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: center;
+              }
+              th {
+                background-color:rgb(241, 236, 236);
+                }
+                
+              @media print {
+                .actionColumn {
+                display: none !important;
+                }
+              }
+            </style>
+          </head>
+          <body>
+              ${printContent}
+          </body>
+        </html`;
+    window.print();
+    document.body.innerHTML = originalContent;
+  }
+  // FUNGSI PRINT END
+</script>
+<script>
+  // FUNGSI TTD DIGITAL
   // ttd 1
   (function() {
     window.requestAnimFrame = (function(callback) {
@@ -370,7 +474,7 @@
         };
     })();
 
-    var canvas = document.getElementById("sig-canvas1");
+    var canvas = document.getElementById("ttd_canvas1");
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
@@ -482,10 +586,10 @@
     // Prevent scrolling when touching the canvas N
 
     // Set up the UI
-    var sigText = document.getElementById("sig-dataUrl1");
-    var sigImage = document.getElementById("sig-image1");
-    var clearBtn = document.getElementById("sig-clearBtn1");
-    var submitBtn = document.getElementById("sig-submitBtn1");
+    var sigText = document.getElementById("ttd_dataUrl1");
+    var sigImage = document.getElementById("ttd_image1");
+    var clearBtn = document.getElementById("ttd_clearBtn1");
+    var submitBtn = document.getElementById("ttd_submitBtn1");
     clearBtn.addEventListener("click", function(e) {
       clearCanvas();
       sigText.innerHTML = "Data URL for your signature will go here!";
@@ -499,9 +603,7 @@
 
   })();
   // ttd S 1
-</script>
 
-<script>
   // ttd 2
   (function() {
     window.requestAnimFrame = (function(callback) {
@@ -515,7 +617,7 @@
         };
     })();
 
-    var canvas = document.getElementById("sig-canvas2");
+    var canvas = document.getElementById("ttd_canvas2");
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
@@ -627,10 +729,10 @@
     // Prevent scrolling when touching the canvas N
 
     // Set up the UI
-    var sigText = document.getElementById("sig-dataUrl2");
-    var sigImage = document.getElementById("sig-image2");
-    var clearBtn = document.getElementById("sig-clearBtn2");
-    var submitBtn = document.getElementById("sig-submitBtn2");
+    var sigText = document.getElementById("ttd_dataUrl2");
+    var sigImage = document.getElementById("ttd_image2");
+    var clearBtn = document.getElementById("ttd_clearBtn2");
+    var submitBtn = document.getElementById("ttd_submitBtn2");
     clearBtn.addEventListener("click", function(e) {
       clearCanvas();
       sigText.innerHTML = "Data URL for your signature will go here!";
@@ -644,6 +746,6 @@
 
   })();
   // ttd S 2
+  // FUNGSI TTD DIGITAL END
 </script>
-
 @endpush

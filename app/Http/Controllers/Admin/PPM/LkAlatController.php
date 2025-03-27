@@ -90,7 +90,7 @@ class LkAlatController extends Controller
         $item->alat_ukur = is_string($item->alat_ukur) ? json_decode($item->alat_ukur, true) : $item->alat_ukur;
         $item->pemeriksa_kondisi = is_string($item->pemeriksa_kondisi) ? json_decode($item->pemeriksa_kondisi, true) : $item->pemeriksa_kondisi;
         $item->kinerja = is_string($item->kinerja) ? json_decode($item->kinerja, true) : $item->kinerja;
-
+        $item->judul = is_string($item->judul) ? json_decode($item->judul, true) ?? [] : $item->judul;
     
         return view('pages.admin.PPM.lk_alat.show_anestesi', compact('item'));
     }
