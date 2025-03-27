@@ -55,7 +55,7 @@
               <img src="{{ url('assets/kop-surat/kop_surat_demo.png') }}" alt="Kop Surat" width="100%">
               @endif
               @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
-              <img src="{{ url('assets/kop-surat/kop-surat-anesthesi3.png') }}" alt="Kop Klaten" width="100%">
+              <img src="{{ url('assets/kop-surat/kop_surat_lk_pemeliharaan.png') }}" alt="Kop Klaten" width="100%">
               @endif
             </div>
             <h3>
