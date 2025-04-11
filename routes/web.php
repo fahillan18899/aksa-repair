@@ -161,6 +161,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Autofill
         Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
+        Route::get('autofill_pelihara/{idars}', [PPMController::class, 'autofill_pelihara']);
         Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
         Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
         Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
@@ -205,7 +206,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // lembar_pemeliharaan
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
-        Route::get('lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanController::class, 'cetak']); /*fungsi print*/
+        Route::get('lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanController::class, 'show']); /*fungsi print*/
 
         // menu laporan
         Route::get('laporan_kegiatan', [LaporanKegiatanController::class, 'index']);

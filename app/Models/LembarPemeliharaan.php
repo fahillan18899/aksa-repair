@@ -10,4 +10,11 @@ class LembarPemeliharaan extends Model
     protected $primaryKey = 'id_ppm';
     protected $guarded = [];
     protected $keyType = 'string';
+    protected $casts = [ 'persiapan' => 'array', ];
+    protected $fillable = [ 'kode_rs','id_ppm','tanggal','kegiatan','engineer','id_aset','nama_alat', 'serial_number',
+    'merek','tipe','ruangan','persiapan','pemantauan','preverentif','cek_alat','nama_sukucadang',
+    'volume','harga_satuan','jumlah_harga','evaluasi','status','status1','mulai_bekerja','selesai_kerja',
+    'durasi','tanggal_selesai','user','engginer',
+  ];
+    
 }

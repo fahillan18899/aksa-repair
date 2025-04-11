@@ -110,6 +110,12 @@ class HomeController extends Controller
         return json_encode($data);
     }
 
+    public function autofill_pelihara($id)
+    {
+        $data = Registrasi::where('id_aset', $id)->first();
+        return json_encode($data);
+    }
+
     public function autofillpart($id)
     {
         $data = Pesanan::where('id', $id)->first();

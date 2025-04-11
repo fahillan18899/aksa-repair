@@ -2,7 +2,19 @@
 
 @section('content')
 @section('title', 'Lembar Pemeliharaan')
+<style>
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Pastikan modal body penuh */
+  }
 
+  input[readonly] {
+    cursor: not-allowed;
+  }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -26,28 +38,6 @@
       <p>{{ $message }}</p>
     </div>
     @endif
-
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="panel panel-default thumbnail">
-          <div class="panel-heading no-print">
-            <h2 class="text-center">Scan QR Code</h2>
-          </div>
-          <div class="panel-body panel-form">
-            <div class="row">
-              <div class="col-md-12 col-sm-12">
-                <div id="app">
-                  <div class="preview-container">
-                    <video id="preview_lembar_admin"></video>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="row">
       <div class="col-sm-9">
         <div class="panel panel-default thumbnail">
@@ -64,7 +54,9 @@
                   @method('POST')
 
                   <input name="id_ppm" type="hidden" class="form-control" id="id_ppm" placeholder="id">
-
+                  <div class="form-group row">
+                    <button type="button" class="btn btn-primary mt-2" id="startScan" data-toggle="modal" data-target="#exampleModal">Scan QR</button>
+                  </div>
                   <div class="form-group row">
                     <label for="tanggal" class="col-xs-3 col-form-label">Tanggal Pemeliharaan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -98,46 +90,47 @@
                     </div>
                     <br>
                   </center>
-
+                  <i class="text-danger">*</i><p>Klik input id untuk load data</p>
                   <div class="form-group row">
                     <label for="id_aset" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset" type="text" class="form-control" id="id_ase1t" placeholder="ID Aset" onkeyup="autofillPemelihara()">
+                      <input name="id_aset" type="text" class="form-control" id="id_ase1t" placeholder="ID Aset"
+                      style="cursor: pointer;">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat </label>
+                    <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" type="text" class="form-control" id="nama_alat1" placeholder="Nama Alat">
+                      <input name="nama_alat" type="text" class="form-control" id="nama_alat1" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="serial_number" class="col-xs-3 col-form-label">Serial Number <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="serial_number" type="text" class="form-control" id="serial_number1" placeholder="Serial Number">
+                      <input name="serial_number" type="text" class="form-control" id="serial_number1" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek" type="text" class="form-control" id="merek1" placeholder="Merek">
+                      <input name="merek" type="text" class="form-control" id="merek1" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="tipe" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tipe" type="text" class="form-control" id="tipe1" placeholder="Type">
+                      <input name="tipe" type="text" class="form-control" id="tipe1" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="ruangan" class="col-xs-3 col-form-label">Ruangan <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ruangan" type="text" class="form-control" id="ruangan1" placeholder="Ruangan">
+                      <input name="ruangan" type="text" class="form-control" id="ruangan1" placeholder="Terisi Otomatis" readonly>
                     </div>
                   </div>
 
@@ -148,80 +141,29 @@
                     <br>
                   </center>
 
+                  @php
+                  $persiapan = [
+                    'hand_hygiene'  => 'Hand Hygiene',
+                    'menyiapkan_alat_dan_bahan' => 'Menyiapkan Alat & Bahan',
+                    'alat_pelindung_diri' => 'Alat Pelindung Diri',
+                    'mengoprasikan_alat_kalibrasi' => 'Mengoprasikan Alat Kalibrasi',
+                    'ktd' => 'KTD',
+                    'mengoprasikan_alat' => 'Mengoprasikan Alat',
+                    'identifikasi_bahaya' => 'Identifikasi Bahaya'
+                    ]
+                  @endphp
+                  @foreach($persiapan as $name => $label)
                   <div class="form-group row">
-                    <label for="hand_hygiene" class="col-xs-3 col-form-label">Hand Hygiene
-                    </label>
+                    <label for="{{ $name }}" class="col-xs-3 col-form-label">{{ $label }}</label>
                     <div class="col-xs-9">
-                      <select name="hand_hygiene" class="form-control" id="hand_hygiene">
+                      <select name="persiapan[{{ $name }}]" class="form-control">
                         <option value="Ya">Ya</option>
                         <option value="Tidak">Tidak</option>
                       </select>
                     </div>
                   </div>
-
-                  <div class="form-group row">
-                    <label for="menyiapkan_alat_dan_bahan" class="col-xs-3 col-form-label">Menyiapkan Alat & Bahan </label>
-                    <div class="col-xs-9">
-                      <select name="menyiapkan_alat_dan_bahan" class="form-control" id="menyiapkan_alat_dan_bahan">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="alat_pelindung_diri" class="col-xs-3 col-form-label">Alat
-                      Pelindung Diri </label>
-                    <div class="col-xs-9">
-                      <select name="alat_pelindung_diri" class="form-control" id="alat_pelindung_diri">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="mengoprasikan_alat_kalibrasi" class="col-xs-3 col-form-label">Mengoprasikan Alat Kalibrasi </label>
-                    <div class="col-xs-9">
-                      <select name="mengoprasikan_alat_kalibrasi" class="form-control" id="mengoprasikan_alat_kalibrasi">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="ktd" class="col-xs-3 col-form-label">KTD </label>
-                    <div class="col-xs-9">
-                      <select name="ktd" class="form-control" id="ktd">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="mengoprasikan_alat" class="col-xs-3 col-form-label">Mengoprasikan
-                      Alat </label>
-                    <div class="col-xs-9">
-                      <select name="mengoprasikan_alat" class="form-control" id="mengoprasikan_alat">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="identifikasi_bahaya" class="col-xs-3 col-form-label">Identifikasi
-                      Bahaya </label>
-                    <div class="col-xs-9">
-                      <select name="identifikasi_bahaya" class="form-control" id="identifikasi_bahaya">
-                        <option value="Ya">Ya</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
+                  @endforeach
+                
                   <center>
                     <div class="row" style="border-style: groove;">
                       <h3>PEMANTAUAN FISIK DAN FUNGSI</h3>
@@ -230,200 +172,191 @@
                   </center>
                   <!---->
                   <div class="form-group row">
-                    <label for="badan_selungkup" class="col-xs-3 col-form-label">Badan / Selungkup
-                    </label>
+                    <label for="badan_selungkup" class="col-xs-3 col-form-label">Badan / Selungkup</label>
                   </div>
                   <div class="form-group row">
-                    <label for="badan_selungkup1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="badan_selungkup1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="badan_selungkup1" class="form-control" id="badan_selungkup1">
+                      <select name="pemantauan[badan_selungkup1]" class="form-control" id="badan_selungkup1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan1" id="catatan1" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan1]" id="catatan1" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="badan_selungkup2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="badan_selungkup2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="badan_selungkup2" class="form-control" id="badan_selungkup2">
+                      <select name="pemantauan[badan_selungkup2]" class="form-control" id="badan_selungkup2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan2" id="catatan2" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan2]" id="catatan2" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="alat_sistem_interlock1" class="col-xs-3 col-form-label">Alat
-                      Sistem Interlock </label>
+                    <label for="alat_sistem_interlock1" class="col-xs-3 col-form-label">Alat Sistem Interlock</label>
                   </div>
                   <div class="form-group row">
-                    <label for="alat_sistem_interlock1" class="col-xs-3 col-form-label">Fisik
-                    </label>
+                    <label for="alat_sistem_interlock1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="alat_sistem_interlock1" class="form-control" id="alat_sistem_interlock1">
+                      <select name="pemantauan[alat_sistem_interlock1]" class="form-control" id="alat_sistem_interlock1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan3" id="catatan3" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan3]" id="catatan3" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="alat_sistem_interlock2" class="col-xs-3 col-form-label">Fungsi
-                    </label>
+                    <label for="alat_sistem_interlock2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="alat_sistem_interlock2" class="form-control" id="alat_sistem_interlock2">
+                      <select name="pemantauan[alat_sistem_interlock2]" class="form-control" id="alat_sistem_interlock2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan4" id="catatan4" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan4]" id="catatan4" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="kabel_kelenturan1" class="col-xs-3 col-form-label">Kabel
-                      Kelenturan </label>
+                    <label for="kabel_kelenturan1" class="col-xs-3 col-form-label">Kabel Kelenturan</label>
                   </div>
                   <div class="form-group row">
-                    <label for="kabel_kelenturan1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="kabel_kelenturan1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="kabel_kelenturan1" class="form-control" id="kabel_kelenturan1">
+                      <select name="pemantauan[kabel_kelenturan1]" class="form-control" id="kabel_kelenturan1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan5" id="catatan5" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan5]" id="catatan5" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="kabel_kelenturan2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="kabel_kelenturan2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="kabel_kelenturan2" class="form-control" id="kabel_kelenturan2">
+                      <select name="pemantauan[kabel_kelenturan2]" class="form-control" id="kabel_kelenturan2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan6" id="catatan6" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan6]" id="catatan6" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="sistem_pengunci1" class="col-xs-3 col-form-label">Sistem
-                      Pengunci</label>
+                    <label for="sistem_pengunci1" class="col-xs-3 col-form-label">Sistem Pengunci</label>
                   </div>
                   <div class="form-group row">
-                    <label for="sistem_pengunci1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="sistem_pengunci1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="sistem_pengunci1" class="form-control" id="sistem_pengunci1">
+                      <select name="pemantauan[sistem_pengunci1]" class="form-control" id="sistem_pengunci1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan7" id="catatan7" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan7]" id="catatan7" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="sistem_pengunci2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="sistem_pengunci2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="sistem_pengunci2" class="form-control" id="sistem_pengunci2">
+                      <select name="pemantauan[sistem_pengunci2]" class="form-control" id="sistem_pengunci2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan8" id="catatan8" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan8]" id="catatan8" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="tombol_saklar1" class="col-xs-3 col-form-label">Tombol
-                      Saklar</label>
+                    <label for="tombol_saklar1" class="col-xs-3 col-form-label">Tombol Saklar</label>
                   </div>
                   <div class="form-group row">
-                    <label for="tombol_saklar1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="tombol_saklar1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="tombol_saklar1" class="form-control" id="tombol_saklar1">
+                      <select name="pemantauan[tombol_saklar1]" class="form-control" id="tombol_saklar1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan9" id="catatan9" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan9]" id="catatan9" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="tombol_saklar2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="tombol_saklar2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="tombol_saklar2" class="form-control" id="tombol_saklar2">
+                      <select name="pemantauan[tombol_saklar2]" class="form-control" id="tombol_saklar2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan10" id="catatan10" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan10]" id="catatan10" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="label_penandaan1" class="col-xs-3 col-form-label">Label
-                      Penandaan</label>
+                    <label for="label_penandaan1" class="col-xs-3 col-form-label">Label Penandaan</label>
                   </div>
                   <div class="form-group row">
-                    <label for="label_penandaan1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="label_penandaan1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="label_penandaan1" class="form-control" id="label_penandaan1">
+                      <select name="pemantauan[label_penandaan1]" class="form-control" id="label_penandaan1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan11" id="catatan11" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan11]" id="catatan11" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="label_penandaan2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="label_penandaan2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="label_penandaan2" class="form-control" id="label_penandaan2">
+                      <select name="pemantauan[label_penandaan2]" class="form-control" id="label_penandaan2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan12" id="catatan12" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan12]" id="catatan12" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="display_layar1" class="col-xs-3 col-form-label">Display
-                      Layar</label>
+                    <label for="display_layar1" class="col-xs-3 col-form-label">Display Layar</label>
                   </div>
                   <div class="form-group row">
-                    <label for="display_layar1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="display_layar1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="display_layar1" class="form-control" id="display_layar1">
+                      <select name="pemantauan[display_layar1]" class="form-control" id="display_layar1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan13" id="catatan13" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan13]" id="catatan13" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="display_layar2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="display_layar2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="display_layar2" class="form-control" id="display_layar2">
+                      <select name="pemantauan[display_layar2]" class="form-control" id="display_layar2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan14" id="catatan14" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan14]" id="catatan14" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -431,54 +364,53 @@
                     <label for="aksesoris1" class="col-xs-3 col-form-label">Aksesoris</label>
                   </div>
                   <div class="form-group row">
-                    <label for="aksesoris1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="aksesoris1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="aksesoris1" class="form-control" id="aksesoris1">
+                      <select name="pemantauan[aksesoris1]" class="form-control" id="aksesoris1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan15" id="catatan15" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan15]" id="catatan15" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="aksesoris2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="aksesoris2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="aksesoris2" class="form-control" id="aksesoris2">
+                      <select name="pemantauan[aksesoris2]" class="form-control" id="aksesoris2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan16" id="catatan16" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan16]" id="catatan16" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
                   <div class="form-group row">
-                    <label for="indikator_bunyi1" class="col-xs-3 col-form-label">Indikator
-                      Bunyi</label>
+                    <label for="indikator_bunyi1" class="col-xs-3 col-form-label">Indikator Bunyi</label>
                   </div>
                   <div class="form-group row">
-                    <label for="indikator_bunyi1" class="col-xs-3 col-form-label">Fisik </label>
+                    <label for="indikator_bunyi1" class="col-xs-3 col-form-label">Fisik</label>
                     <div class="col-xs-9">
-                      <select name="indikator_bunyi1" class="form-control" id="indikator_bunyi1">
+                      <select name="pemantauan[indikator_bunyi1]" class="form-control" id="indikator_bunyi1">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan17" id="catatan17" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan17]" id="catatan17" placeholder="Catatan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="indikator_bunyi2" class="col-xs-3 col-form-label">Fungsi </label>
+                    <label for="indikator_bunyi2" class="col-xs-3 col-form-label">Fungsi</label>
                     <div class="col-xs-9">
-                      <select name="indikator_bunyi2" class="form-control" id="indikator_bunyi2">
+                      <select name="pemantauan[indikator_bunyi2]" class="form-control" id="indikator_bunyi2">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                         <option value='lainya'>Lainya</option>
                       </select>
-                      <input class="form-control" type="text" name="catatan18" id="catatan18" placeholder="Catatan">
+                      <input class="form-control" type="text" name="pemantauan[catatan18]" id="catatan18" placeholder="Catatan">
                     </div>
                   </div>
                   <!---->
@@ -489,56 +421,26 @@
                     <br>
                   </center>
 
+                  @php
+                  $preventif = [
+                    'pembersihan' => 'Pembersihan',
+                    'pengencangan_bagian_alat' => 'Pengencangan Bagian Alat',
+                    'pelumasan' => 'Pelumasan',
+                    'kalibrasi_berkala' => 'Kalibrasi Berkala',
+                    'penggantian_bahan_habis_pakai' => 'Penggantian Bahan Habis Pakai',
+                    ]
+                  @endphp
+                  @foreach($preventif as $name2 => $label2)
                   <div class="form-group row">
-                    <label for="pembersihan" class="col-xs-3 col-form-label">Pembersihan</label>
+                    <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}</label>
                     <div class="col-xs-9">
-                      <select name="pembersihan" class="form-control" id="pembersihan">
+                      <select name="preverentif[{{ $name2 }}]" class="form-control">
                         <option value="Baik">Baik</option>
                         <option value="Tidak">Tidak</option>
                       </select>
                     </div>
                   </div>
-
-                  <div class="form-group row">
-                    <label for="pengencangan_bagian_alat" class="col-xs-3 col-form-label">Pengencangan Bagian Alat</label>
-                    <div class="col-xs-9">
-                      <select name="pengencangan_bagian_alat" class="form-control" id="pengencangan_bagian_alat">
-                        <option value="Baik">Baik</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="pelumasan" class="col-xs-3 col-form-label">Pelumasan</label>
-                    <div class="col-xs-9">
-                      <select name="pelumasan" class="form-control" id="pelumasan">
-                        <option value="Baik">Baik</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="kalibrasi_berkala" class="col-xs-3 col-form-label">Kalibrasi
-                      Berkala</label>
-                    <div class="col-xs-9">
-                      <select name="kalibrasi_berkala" class="form-control" id="kalibrasi_berkala">
-                        <option value="Baik">Baik</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="penggantian_bahan_habis_pakai" class="col-xs-3 col-form-label">Penggantian Bahan Habis Pakai</label>
-                    <div class="col-xs-9">
-                      <select name="penggantian_bahan_habis_pakai" class="form-control" id="penggantian_bahan_habis_pakai">
-                        <option value="Baik">Baik</option>
-                        <option value="Tidak">Tidak</option>
-                      </select>
-                    </div>
-                  </div>
+                  @endforeach
 
                   <center>
                     <div class="row" style="border-style: groove;">
@@ -562,30 +464,30 @@
                   </center>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang<i class="text-danger">*</i></label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
                     <div class="col-xs-9">
                       <input name="nama_sukucadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="volume" class="col-xs-3 col-form-label">Volume <i class="text-danger">*</i></label>
+                    <label for="volume" class="col-xs-3 col-form-label">Volume </label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume" placeholder="Volume">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan <i class="text-danger">*</i></label>
+                    <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan </label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control" id="harga_satuan" placeholder="Harga Satuan">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga <i class="text-danger">*</i></label>
+                    <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga </label>
                     <div class="col-xs-9">
-                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga" placeholder="Jumlah Harga" readonly>
                     </div>
                   </div>
 
@@ -679,268 +581,149 @@
         <div class="panel panel-default thumbnail">
           <div style="overflow-x:auto;">
             <div class="panel-body panel-form">
-              <table class="table table-hover table-bordered" id="scollDatatable" style="width:100%">
+              
+              <!--TABEL-->
+              <table class="datatable table table-striped table-bordered" id="scollDatatable" style="width:100%">
                 <thead class="table-light">
                   <tr>
-                    <td class="table-primary" rowspan="3"><b>No</b></td>
-                    <td class="table-primary" rowspan="3"><b>Tanggal_Pemeliharaan</b></td>
-                    <td class="table-primary" rowspan="3"><b>Kegiatan</b></td>
-                    <td class="table-primary" rowspan="3"><b>Engineer</b></td>
-                    <td class="table-info" colspan="6" align="center"><b>Data_Alat</b></td>
-                    <td class="table-success" colspan="7" align="center"><b>Persiapan</b></td>
-                    <td class="table-active" colspan="36" align="center">
-                      <b>pemantauan_fisik_&_fungsi</b>
-                    </td>
-                    <td class="table-danger" colspan="5" align="center">
-                      <b>pemeliharaan_preventife</b>
-                    </td>
-                    <td class="table-info" rowspan="3" align="center"><b>tindakan</b></td>
-                    <td class="table-warning" colspan="4" align="center"><b>Suku_Cadang</b></td>
-                    <td class="table-primary" rowspan="3"><b>Evaluasi_Dan_Rekomendasi</b></td>
-                    <td class="table-primary" rowspan="3"><b>Status</b></td>
-                    <td class="table-primary" rowspan="3"><b>Status2</b></td>
-                    <td class="table-primary" rowspan="3"><b>Mulai_Bekerja</b></td>
-                    <td class="table-primary" rowspan="3"><b>Selesai_Kerja</b></td>
-                    <td class="table-primary" rowspan="3"><b>Durasi</b></td>
-                    <td class="table-primary" rowspan="3"><b>Tanggal Selesai</b></td>
-                    <td class="table-primary" rowspan="3"><b>User</b></td>
-                    <td class="table-primary" rowspan="3"><b>Engineer</b></td>
-                    <td class="table-primary" rowspan="3"><b>Tombol_Aksi</b></td>
-
-                  </tr>
-
-                  <tr>
-                    <td class="table-info" rowspan="2"><b>Id_Aset_Registrasi</b></td>
-                    <td class="table-info" rowspan="2"><b>Nama_Alat</b></td>
-                    <td class="table-info" rowspan="2"><b>Serial_Number</b></td>
-                    <td class="table-info" rowspan="2"><b>Merek</b></td>
-                    <td class="table-info" rowspan="2"><b>Tipe</b></td>
-                    <td class="table-info" rowspan="2"><b>Ruangan</b></td>
-                    <td class="table-success" rowspan="2"><b>Hand_Hygiene</b></td>
-                    <td class="table-success" rowspan="2"><b>Menyiapkan_Alat_&_Bahan_Kerja</b></td>
-                    <td class="table-success" rowspan="2"><b>Alat_Pelindung_Diri</b></td>
-                    <td class="table-success" rowspan="2"><b>Mengoprasikan_Alat_Kalibrasi</b></td>
-                    <td class="table-success" rowspan="2"><b>KTD</b></td>
-                    <td class="table-success" rowspan="2"><b>Mengoprasikan_Alat</b></td>
-                    <td class="table-success" rowspan="2"><b>Idntifikasi_Bahaya</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Badan/Selungkup</b></td>
-                    <td class="table-dark" colspan="4" align="center">
-                      <b>Alarm_&_Sistem_Interlock</b>
-                    </td>
-                    <td class="table-dark" colspan="4" align="center"><b>Kabel_&_Kelenturannya</b>
-                    </td>
-                    <td class="table-dark" colspan="4" align="center"><b>Sistem_Pengunci</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Tombol_&_Saklar</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Label/Penandaan</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Display/Layar</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Aksesoris</b></td>
-                    <td class="table-dark" colspan="4" align="center"><b>Indikator_Bunyi</b></td>
-                    <td class="table-danger" rowspan="2"><b>Pembersihan</b></td>
-                    <td class="table-danger" rowspan="2"><b>Pengencangan_Bagian_Alat</b></td>
-                    <td class="table-danger" rowspan="2"><b>Pelumasan</b></td>
-                    <td class="table-danger" rowspan="2"><b>Kalibrasi_Berkala</b></td>
-                    <td class="table-danger" rowspan="2"><b>Penggantian_Bahan_Habis_Pakai</b></td>
-                    <td class="table-warning" rowspan="2"><b>Nama_Suku_Cadang</b></td>
-                    <td class="table-warning" rowspan="2"><b>Volume</b></td>
-                    <td class="table-warning" rowspan="2"><b>Harga_Satuan</b></td>
-                    <td class="table-warning" rowspan="2"><b>Jumlah_Harga</b></td>
-                  </tr>
-
-                  <tr class="text-center">
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fisik</b></td>
-                    <td class="light"><b>catatan</b></td>
-                    <td class="light"><b>Fungsi</b></td>
-                    <td class="light"><b>catatan</b></td>
+                    <th scope="col">No</th>
+                    <th scope="col">Tanggal Pemeliharaan</th>
+                    <th scope="col">Id Aset</th>
+                    <th scope="col">Nama Alat</th>
+                    <th scope="col">Merek</th>
+                    <th scope="col">Tipe</th>
+                    <th scope="col">Serial Number</th>
+                    <th scope="col">Ruangan</th>
+                    <th scope="col">Tombol Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @forelse ($lembarPemeliharaans as $index => $item)
                   <tr>
-                    <td>{{ $index + 1 }}</td>
+                    <td> {{ $index + 1 }}</td>
                     <td>{{ $item->tanggal }}</td>
-                    <td>{{ $item->kegiatan }}</td>
-                    <td>{{ $item->engineer }}</td>
                     <td>{{ $item->id_aset }}</td>
                     <td>{{ $item->nama_alat }}</td>
-                    <td>{{ $item->serial_number }}</td>
                     <td>{{ $item->merek }}</td>
                     <td>{{ $item->tipe }}</td>
+                    <td>{{ $item->serial_number }}</td>
                     <td>{{ $item->ruangan }}</td>
-                    <td>{{ $item->hand_hygiene }}</td>
-                    <td>{{ $item->menyiapkan_alat_dan_bahan }}</td>
-                    <td>{{ $item->alat_pelindung_diri }}</td>
-                    <td>{{ $item->mengoprasikan_alat_kalibrasi }}</td>
-                    <td>{{ $item->ktd }}</td>
-                    <td>{{ $item->mengoprasikan_alat }}</td>
-                    <td>{{ $item->identifikasi_bahaya }}</td>
-                    <td>{{ $item->badan_selungkup1 }}</td>
-                    <td>{{ $item->catatan1 }}</td>
-                    <td>{{ $item->badan_selungkup2 }}</td>
-                    <td>{{ $item->catatan2 }}</td>
-                    <td>{{ $item->alat_sistem_interlock1 }}</td>
-                    <td>{{ $item->catatan3 }}</td>
-                    <td>{{ $item->alat_sistem_interlock2 }}</td>
-                    <td>{{ $item->catatan4 }}</td>
-                    <td>{{ $item->kabel_kelenturan1 }}</td>
-                    <td>{{ $item->catatan5 }}</td>
-                    <td>{{ $item->kabel_kelenturan2 }}</td>
-                    <td>{{ $item->catatan6 }}</td>
-                    <td>{{ $item->sistem_pengunci1 }}</td>
-                    <td>{{ $item->catatan7 }}</td>
-                    <td>{{ $item->sistem_pengunci2 }}</td>
-                    <td>{{ $item->catatan8 }}</td>
-                    <td>{{ $item->tombol_saklar1 }}</td>
-                    <td>{{ $item->catatan9 }}</td>
-                    <td>{{ $item->tombol_saklar2 }}</td>
-                    <td>{{ $item->catatan10 }}</td>
-                    <td>{{ $item->label_penandaan1 }}</td>
-                    <td>{{ $item->catatan11 }}</td>
-                    <td>{{ $item->label_penandaan2 }}</td>
-                    <td>{{ $item->catatan12 }}</td>
-                    <td>{{ $item->display_layar1 }}</td>
-                    <td>{{ $item->catatan13 }}</td>
-                    <td>{{ $item->display_layar2 }}</td>
-                    <td>{{ $item->catatan14 }}</td>
-                    <td>{{ $item->aksesoris1 }}</td>
-                    <td>{{ $item->catatan15 }}</td>
-                    <td>{{ $item->aksesoris2 }}</td>
-                    <td>{{ $item->catatan16 }}</td>
-                    <td>{{ $item->indikator_bunyi1 }}</td>
-                    <td>{{ $item->catatan17 }}</td>
-                    <td>{{ $item->indikator_bunyi2 }}</td>
-                    <td>{{ $item->catatan18 }}</td>
-                    <td>{{ $item->pembersihan }}</td>
-                    <td>{{ $item->pengencangan_bagian_alat }}</td>
-                    <td>{{ $item->pelumasan }}</td>
-                    <td>{{ $item->kalibrasi_berkala }}</td>
-                    <td>{{ $item->penggantian_bahan_habis_pakai }}</td>
-                    <td>{{ $item->cek_alat }}</td>
-                    <td>{{ $item->nama_sukucadang }}</td>
-                    <td>{{ $item->volume }}</td>
-                    <td>{{ $item->harga_satuan }}</td>
-                    <td>{{ $item->jumlah_harga }}</td>
-                    <td>{{ $item->evaluasi }}</td>
-                    <td>{{ $item->status }}</td>
-                    <td>{{ $item->status1 }}</td>
-                    <td>{{ $item->mulai_bekerja }}</td>
-                    <td>{{ $item->selesai_kerja }}</td>
-                    <td>{{ $item->durasi }}</td>
-                    <td>{{ $item->tanggal_selesai }}</td>
-                    <td>{{ $item->user }}</td>
-                    <td>{{ $item->engginer }}</td>
                     <td>
-                      <a data-toggle="tooltip" data-placement="right" title="Cetak" href="/dashboard/ppm/lembar_pemeliharaan/cetak_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary" target="_blank"><i class="fa fa-print"></i></a>
-
-                      <form
-                        action="{{ url('/dashboard/ppm/lembar_pemeliharaan', $item->id_ppm) }}" method="POST" class="d-inline">
-                        @csrf
-                        @method('DELETE')    
-                        <button class="btn btn-danger btn-xs"
-                          data-toggle="tooltip" data-placement="top" title="Hapus">
-                          <i class="fa fa-trash "></i>
-                        </button>    
-                      </form>
+                      <a data-toggle="tooltip" data-placement="right" title="View Detail" href="/dashboard/ppm/lembar_pemeliharaan/{{ $item->id_ppm }}" class="btn btn-xs btn-primary" target="_blank"><i class="fa fa-eye"></i></a>
                     </td>
-
                   </tr>
                   @empty
-                  <tr>
-                    <td class="text-center" colspan="7">Data Kosong</td>
-                  </tr>
                   @endforelse
                 </tbody>
               </table>
+              <!--TABEL-->
             </div>
           </div>
         </div>
       </div>
     </div>
     <!--TABEL-->
-
-
     <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="color:white; background-color:#042a4a;">
+        <h5 class="modal-title" id="exampleModalLabel">Camera</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center">
+          <!-- Area scanner -->
+          <div id="qr-reader" style="width: 300px; display: none;"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal -->
 @push('addon-script')
 <script>
-  let scanner_teknisi = new Instascan.Scanner({
-    video: document.getElementById('preview_lembar_admin'),
-    mirror: false
-  });
-  scanner_teknisi.addListener('scan', function(content) {
-    const fruits = content.split(',');
-    $("#id_aset_reg").val(fruits[0]);
-    $("#Merek_Alat_reg").val(fruits[3]);
-    $("#Nama_Alat_reg").val(fruits[2]);
-    $("#Serial_Number_reg").val(fruits[5]);
-    $("#Lokasi_Alat_reg").val(fruits[6]);
-    $("#Type_Alat_reg").val(fruits[4]);
-  });
+  // *Function autofill form perbaikan* //
+  $(document).ready(function() {
+    $('#id_ase1t').on('click', function() {
+      let idAset = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
+      console.log("ID yang dimasukan :", idAset); // cek id 
 
-  Instascan.Camera.getCameras().then(cameras => {
-    if (cameras.length > 0) {
-      scanner_teknisi.start(cameras[1]);
-    } else {
-      console.error("Please enable Camera!");
-    }
+      if (!idAset) return; //Kalo kosong proses berhenti
+
+      //Ambil data pake API dan kirim ke masing-masing field / input        
+      fetch(`/dashboard/ppm/autofill_pelihara/${encodeURIComponent(idAset)}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log("Data dari server: ", data);
+          let item = Array.isArray(data) ? data[0] : data || {};
+          $('#nama_alat1').val(item.nama_alat || '');
+          $('#merek1').val(item.merek || '');
+          $('#serial_number1').val(item.serial_number || '');
+          $('#tipe1').val(item.type || '');
+          $('#ruangan1').val(item.lokasi_alat || '');
+        })
+        .catch(error => console.error("Error AJAX:", error));
+    });
   });
+  // *Function autofill form perbaikan* //
+</script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+  //FUNGSI CAMERA
+  document.addEventListener("DOMContentLoaded", function() {
+    const qrScanner = document.getElementById("qr-reader");
+    const inputField = document.getElementById("id_ase1t");
+    const startScanButton = document.getElementById("startScan");
 
-  function autofillPemelihara() {
-    let idars = $("#id_ase1t").val();
-    $.ajax({
-      url: '{{ url('/dashboard/ppm/autofill/') }}/' + idars,
-      method: 'GET', // HTTP method (e.g., GET, POST)
-      data: {
-        idars: idars
-      },
-      dataType: 'json',
-      success: function(data) {
-        $("#nama_alat1").val(data.nama_alat_reg);
-        $("#merek1").val(data.merek_alat_reg);
-        $("#serial_number1").val(data.serial_number_reg);
-        $("#tipe1").val(data.type);
-        $("#ruangan1").val(data.lokasi_alat_reg);
+    let scannerActive = false;
+    let html5QrCode;
 
-      },
-      error: function(xhr, status, error) {
-        console.log(xhr.responseText);
+    startScanButton.addEventListener("click", function() {
+      if (!scannerActive) {
+        qrScanner.style.display = "block"; // Tampilkan scanner
+        scannerActive = true;
+
+        html5QrCode = new Html5Qrcode("qr-reader");
+        Html5Qrcode.getCameras().then(devices => {
+          if (devices.length > 0) {
+            let backCamera = devices.find(device => device.label.toLowerCase().includes("back")) || devices[0];
+
+            html5QrCode.start(
+              backCamera.id, // Pilih kamera belakang jika tersedia
+              {
+                fps: 10,
+                qrbox: {
+                  width: 250,
+                  height: 250
+                },
+                rememberLastUsedCamera: true
+              },
+              function(decodedText) {
+                inputField.value = decodedText; // Isi input dengan hasil scan
+                html5QrCode.stop(); // Hentikan scanner setelah berhasil scan
+                qrScanner.style.display = "none"; // Sembunyikan scanner
+                scannerActive = false;
+              },
+              function(errorMessage) {
+                console.log(errorMessage); // Debug jika gagal scan
+              }
+            ).catch(err => {
+              console.log("Error memulai scanner: ", err);
+            });
+          }
+        }).catch(err => {
+          console.log("Tidak dapat mengakses kamera: ", err);
+        });
       }
     });
-  }
-
-
+  });
+  //FUNGSI CAMERA
 
   /*badan_selungkup1*/
   $("input[id=catatan1]").hide();
@@ -1156,6 +939,48 @@
  var diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       document.getElementById("hasil").value = diffHours + " jam " + diffMinutes + " menit";
     }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const hargaInput = document.getElementById("harga_satuan");
+
+    hargaInput.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
+        if (value) {
+            e.target.value = formatRupiah(value);
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    function formatRupiah(angka) {
+        return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const volumeInput = document.getElementById("volume");
+    const hargaSatuanInput = document.getElementById("harga_satuan");
+    const jumlahHargaInput = document.getElementById("jumlah_harga");
+
+    const formatRupiah = (angka) => "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    const cleanRupiah = (angka) => angka.replace(/[^0-9]/g, "");
+
+    const hitungJumlahHarga = () => {
+        const volume = parseFloat(volumeInput.value) || 0;
+        const hargaSatuan = parseFloat(cleanRupiah(hargaSatuanInput.value)) || 0;
+        jumlahHargaInput.value = volume * hargaSatuan ? formatRupiah((volume * hargaSatuan).toString()) : "";
+    };
+
+    [hargaSatuanInput, volumeInput].forEach(input => {
+        input.addEventListener("input", () => {
+            if (input === hargaSatuanInput) input.value = formatRupiah(cleanRupiah(input.value));
+            hitungJumlahHarga();
+        });
+    });
+});
+
 </script>
 @endpush
 @endsection
