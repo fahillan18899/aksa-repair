@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lokasi_alat_reg')->nullable();
             $table->string('pelapor_reg')->nullable();
             $table->string('keterangan_kondisi_alat_reg')->nullable();
-            $table->string('ka_instalasi_reg')->nullable();
+            $table->string('ka_instalasi_reg')->default('1');
             $table->string('teknisi_1_reg')->nullable();
             $table->string('teknisi_2_reg')->nullable();
             $table->string('teknisi_3_reg')->nullable();
