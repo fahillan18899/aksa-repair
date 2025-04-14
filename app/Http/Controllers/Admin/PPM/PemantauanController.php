@@ -11,40 +11,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PemantauanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $Inv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $invPemantauan = pemantauan::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        return view('pages.admin.PPM.pemantauan.index', [
-
-            'invPemantauan' => $invPemantauan,
-            'Inv' => $Inv,
-            'teknisis' => $teknisis,
-        ]);
+        $invPemantauan = pemantauan::where('kode_rs', Auth::user()->kode_rs)->get();
+        return view('pages.admin.PPM.pemantauan.index',
+        compact('Inv', 'invPemantauan', 'teknisis'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -59,31 +34,33 @@ class PemantauanController extends Controller
             'merek_pemantauan' => '',
             'type_pemantauan' => '',
             'ruangan_pemantauan' => '',
-            'hand_hygiene' => '',
-            'menyiapkan_alat_dan_bahan' => '',
-            'alat_pelindung_diri' => '',
-            'mengoprasikan_alat_kalibrasi' => '',
-            'ktd' => '',
-            'mengoprasikan_alat' => '',
-            'identifikasi_bahaya' => '',
-            'badan_selungkup1' => '',
-            'badan_selungkup2' => '',
-            'kabel_kelenturan1' => '',
-            'kabel_kelenturan2' => '',
-            'tombol_saklar1' => '',
-            'tombol_saklar2' => '',
-            'display_layar1' => '',
-            'display_layar2' => '',
-            'indikator_bunyi1' => '',
-            'indikator_bunyi2' => '',
-            'alarm_sistem_interlock1' => '',
-            'alarm_sistem_interlock2' => '',
-            'sistem_pengunci1' => '',
-            'sistem_pengunci2' => '',
-            'label_penandaan1' => '',
-            'label_penandaan2' => '',
-            'aksesoris1' => '',
-            'aksesoris2' => '',
+            'persiapan' => 'required|array',
+            'persiapan.hand_hygiene' => 'required|string',
+            'persiapan.menyiapkan_alat_dan_bahan' => 'required|string',
+            'persiapan.alat_pelindung_diri' => 'required|string',
+            'persiapan.mengoprasikan_alat_kalibrasi' => 'required|string',
+            'persiapan.ktd' => 'required|string',
+            'persiapan.mengoprasikan_alat' => 'required|string',
+            'persiapan.identifikasi_bahaya' => 'required|string',
+            'pemantauan' => 'required|array',
+            'pemantauan.badan_selungkup1' => 'required|string',
+            'pemantauan.badan_selungkup2' => 'required|string',
+            'pemantauan.kabel_kelenturan1' => 'required|string',
+            'pemantauan.kabel_kelenturan2' => 'required|string',
+            'pemantauan.tombol_saklar1' => 'required|string',
+            'pemantauan.tombol_saklar2' => 'required|string',
+            'pemantauan.display_layar1' => 'required|string',
+            'pemantauan.display_layar2' => 'required|string',
+            'pemantauan.indikator_bunyi1' => 'required|string',
+            'pemantauan.indikator_bunyi2' => 'required|string',
+            'pemantauan.alarm_sistem_interlock1' => 'required|string',
+            'pemantauan.alarm_sistem_interlock2' => 'required|string',
+            'pemantauan.sistem_pengunci1' => 'required|string',
+            'pemantauan.sistem_pengunci2' => 'required|string',
+            'pemantauan.label_penandaan1' => 'required|string',
+            'pemantauan.label_penandaan2' => 'required|string',
+            'pemantauan.aksesoris1' => 'required|string',
+            'pemantauan.aksesoris2' => 'required|string',
             'cek_alat' => '',
             'nama_sukucadang' => '',
             'volume' => '',
@@ -103,21 +80,36 @@ class PemantauanController extends Controller
             );
         }
         $data['kode_rs'] = Auth::user()->kode_rs;
+        $data['persiapan'] = json_encode($data['persiapan']);
+        $data['pemantauan'] = json_encode($data['pemantauan']);
         pemantauan::create($data);
 
         return redirect()->route('pemantauan.index')
         ->with('success', 'Pemantauan Berhasil Disimpan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $items = pemantauan::where('id_pemantauan', $id)->where('kode_rs', Auth::user()->kode_rs)->get();
+        foreach ($items as $item) {
+            $item->persiapan = json_decode(trim($item->persiapan), true);
+            if (is_string($item->persiapan)) {
+                $item->persiapan = json_decode($item->persiapan, true);
+            }
+        
+            $item->pemantauan = json_decode(trim($item->pemantauan), true);
+            if (is_string($item->pemantauan)) {
+                $item->pemantauan = json_decode($item->pemantauan, true);
+            }
+        }
+        return view('pages.admin.PPM.pemantauan.cetak', compact('items'));
+    }
+
+    //Autofill Selected
+    public function getPemantauan($id)
+    {
+      $pemantauan = Registrasi::where("id_aset", $id)->get();
+      return json_encode($pemantauan);
     }
 
     /**
@@ -154,10 +146,13 @@ class PemantauanController extends Controller
         //
     }
 
-    //Autofill Selected
-    public function getPemantauan($id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-      $pemantauan = Registrasi::where("id_aset", $id)->get();
-      return json_encode($pemantauan);
+        //
     }
 }
