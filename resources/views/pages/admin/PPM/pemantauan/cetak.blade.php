@@ -165,16 +165,16 @@
                 <tbody>
                   @forelse ($items as $index => $item3)
                   <tr>
-                    <td align="center">{{ $item3->pemantauan['badan_selungkup1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['badan_selungkup2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['kabel_kelenturan1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['kabel_kelenturan2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['tombol_saklar1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['tombol_saklar2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['display_layar1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['display_layar2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['indikator_bunyi1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['indikator_bunyi2'] }}</td>
+                    <td align="center">{{ $item3->pemantauan['badan_selungkup1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['badan_selungkup2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['kabel_kelenturan1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['kabel_kelenturan2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['tombol_saklar1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['tombol_saklar2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['display_layar1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['display_layar2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['indikator_bunyi1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['indikator_bunyi2'] ?? 'Buruk' }}</td>
                   </tr>
                   <thead class="table-light">
                   <tr>
@@ -195,14 +195,14 @@
                   </tr>
                 </thead>
                 <tr>
-                    <td align="center">{{ $item3->pemantauan['alarm_sistem_interlock1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['alarm_sistem_interlock2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['sistem_pengunci1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['sistem_pengunci2'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['label_penandaan1'] }}</td>
-                    <td align="center">{{ $item3->pemantauan['label_penandaan2'] }}</td>
-                    <td colspan="2" align="center">{{ $item3->pemantauan['aksesoris1'] }}</td>
-                    <td colspan="2" align="center">{{ $item3->pemantauan['aksesoris2'] }}</td>
+                    <td align="center">{{ $item3->pemantauan['alarm_sistem_interlock1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['alarm_sistem_interlock2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['sistem_pengunci1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['sistem_pengunci2'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['label_penandaan1'] ?? 'Buruk' }}</td>
+                    <td align="center">{{ $item3->pemantauan['label_penandaan2'] ?? 'Buruk' }}</td>
+                    <td colspan="2" align="center">{{ $item3->pemantauan['aksesoris1'] ?? 'Buruk' }}</td>
+                    <td colspan="2" align="center">{{ $item3->pemantauan['aksesoris2'] ?? 'Buruk' }}</td>
                   </tr>
                   @empty
                   @endforelse
