@@ -32,7 +32,10 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="btn-group">
-                  <a class="btn btn-success" href="/dashboard_teknisi/perbaikan_unregistrasi#form2"> <i class="fa fa-plus"></i> Form Perbaikan Aset Teregistrasi</a>
+                  <a class="btn btn-success" href="/dashboard_teknisi/perbaikan_unregistrasi#form2"
+                    data-toggle="tooltip" data-placement="right" title="Tambah Daftar Perbaikan">
+                    <i class="fa fa-plus"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -41,7 +44,7 @@
 
             <div class="panel-heading no-print">
               <div class="">
-                <h1>Tabel Perbaikan Aset Teregistrasi</h1>
+                <h1>Daftar Perbaikan Aset Unregistrasi</h1>
               </div>
             </div>
             <!-- Tab panes -->
@@ -56,39 +59,22 @@
                       <thead class="table-light">
                         <th scope="col">No</th>
                         <th scope="col">Id_Perbaikan</th>
-                        <th scope="col">Tanggal_Perbaikan</th>
                         <th scope="col">Nama_Alat</th>
                         <th scope="col">Merek_Alat</th>
                         <th scope="col">Type_Alat</th>
                         <th scope="col">Serial_Number</th>
                         <th scope="col">Lokasi_Alat</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Keterangan_Kondisi_Alat</th>
-                        <th scope="col">Instalasi</th>
-                        <th scope="col">Teknisi_1</th>
-                        <th scope="col">Teknisi_2</th>
-                        <th scope="col">Teknisi_3</th>
-                        <th scope="col">Keluhan_Dari_alat</th>
                       </thead>
                       <tbody>
                         @forelse ($asetPerbaikanT2 as $index => $item)
                         <tr class="odd gradeX">
-                          <td><?php echo $index  + 1 ?></td>
-                          <td title="klik untuk copy ke form"
-                            onclick="copyv1(this)"><?php echo $item['id_perbaikan_un'] ?></td>
-                          <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-                          <td><?php echo $item['nama_alat_un'] ?></td>
-                          <td><?php echo $item['merek_alat_un'] ?></td>
-                          <td><?php echo $item['type_alat_un'] ?></td>
-                          <td><?php echo $item['serial_number_un'] ?></td>
-                          <td><?php echo $item['lokasi_alat_un'] ?></td>
-                          <td><?php echo $item['pelapor_un'] ?></td>
-                          <td><?php echo $item['keterangan_un'] ?></td>
-                          <td><?php echo $item['ka_instalasi_un'] ?></td>
-                          <td><?php echo $item['teknisi_1_un'] ?></td>
-                          <td><?php echo $item['teknisi_2_un'] ?></td>
-                          <td><?php echo $item['teknisi_3_un'] ?></td>
-                          <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
+                          <td>{{ $index + 1 }}</td>
+                          <td>{{ $item->id_perbaikan_un }}</td>
+                          <td>{{ $item->nama_alat_un }}</td>
+                          <td>{{ $item->merek_alat_un }}</td>
+                          <td>{{ $item->type_alat_un }}</td>
+                          <td>{{ $item->serial_number_un }}</td>
+                          <td>{{ $item->lokasi_alat_un }}</td>
                         </tr>
                         @empty
                         @endforelse
@@ -100,11 +86,9 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-    <!--Tabel Perbaikan aset regis end-->
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 @endsection

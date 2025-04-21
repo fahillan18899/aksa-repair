@@ -342,7 +342,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
     // API internal datatable
-    Route::get('/aset', [DashboardTeknisiController::class, 'json'])->name('api-aset-teknisi');
+    // Route::get('/aset', [DashboardTeknisiController::class, 'json'])->name('api-aset-teknisi');
 
 });
 

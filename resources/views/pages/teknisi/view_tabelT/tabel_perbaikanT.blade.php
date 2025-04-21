@@ -32,7 +32,10 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="btn-group">
-                  <a class="btn btn-success" href="/dashboard_teknisi/perbaikan_teregistrasi#form1"> <i class="fa fa-plus"></i> Form Perbaikan Aset Teregistrasi</a>
+                  <a class="btn btn-success" href="/dashboard_teknisi/perbaikan_teregistrasi#form1"
+                    data-toggle="tooltip" data-placement="right" title="Tambah Daftar Perbaikan">
+                    <i class="fa fa-plus"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -41,7 +44,7 @@
 
             <div class="panel-heading no-print">
               <div class="">
-                <h1>Tabel Perbaikan Aset Teregistrasi</h1>
+                <h1>Daftar Perbaikan Aset Teregistrasi</h1>
               </div>
             </div>
             <!-- Tab panes -->
@@ -55,44 +58,23 @@
                     <table class="datatable table table-striped table-bordered" style="width:100%">
                       <thead class="table-light">
                         <th scope="col">No</th>
-                        <th scope="col">Id_Perbaikan</th>
                         <th scope="col">ID_Aset</th>
-                        <th scope="col">Tanggal_Perbaikan</th>
                         <th scope="col">Nama_Alat</th>
                         <th scope="col">Merek_Alat</th>
                         <th scope="col">Type_Alat</th>
                         <th scope="col">Serial_Number</th>
                         <th scope="col">Lokasi_Alat</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Keterangan_Kondisi_Alat</th>
-                        <th scope="col">Instalasi</th>
-                        <th scope="col">Teknisi_1</th>
-                        <th scope="col">Teknisi_2</th>
-                        <th scope="col">Teknisi_3</th>
-                        <th scope="col">Keluhan_Dari_alat</th>
-                        <th scope="col">Korektif</th>
                       </thead>
                       <tbody>
                         @forelse ($asetPerbaikanT as $index => $item)
                         <tr class="odd gradeX">
-                          <td><?php echo $index  + 1 ?></td>
-                          <td title="klik untuk copy ke form"
-                            onclick="copyv1(this)"><?php echo $item['id_perbaikan_reg'] ?></td>
-                          <td><?php echo $item['id_aset_reg'] ?></td>
-                          <td><?php echo $item['tanggal_perbaikan_reg'] ?></td>
-                          <td><?php echo $item['nama_alat_reg'] ?></td>
-                          <td><?php echo $item['merek_alat_reg'] ?></td>
-                          <td><?php echo $item['type_alat_reg'] ?></td>
-                          <td><?php echo $item['serial_number_reg'] ?></td>
-                          <td><?php echo $item['lokasi_alat_reg'] ?></td>
-                          <td><?php echo $item['pelapor_reg'] ?></td>
-                          <td><?php echo $item['keterangan_kondisi_alat_reg'] ?></td>
-                          <td><?php echo $item['ka_instalasi_reg'] ?></td>
-                          <td><?php echo $item['teknisi_1_reg'] ?></td>
-                          <td><?php echo $item['teknisi_2_reg'] ?></td>
-                          <td><?php echo $item['teknisi_3_reg'] ?></td>
-                          <td><?php echo $item['keluhan_dari_alat_reg'] ?></td>
-                          <td><?php echo $item['korektif_reg'] ?></td>
+                          <td>{{ $index + 1 }}</td>
+                          <td>{{ $item->id_aset_reg }}</td>
+                          <td>{{ $item->nama_alat_reg }}</td>
+                          <td>{{ $item->merek_alat_reg }}</td>
+                          <td>{{ $item->type_alat_reg }}</td>
+                          <td>{{ $item->serial_number_reg }}</td>
+                          <td>{{ $item->lokasi_alat_reg }}</td>
                         </tr>
                         @empty
                         @endforelse
