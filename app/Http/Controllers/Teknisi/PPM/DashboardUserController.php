@@ -17,12 +17,14 @@ class DashboardUserController extends Controller
     {
         $kodeRs                = Auth::user()->kode_rs;
         $registrasi            = Registrasi::where('kode_rs', $kodeRs)->count();
-        $lembarPemeliharaan    = LembarPemeliharaan::where('kode_rs', $kodeRs)->count();
+        $alatTerkalibrasi      = Registrasi::where('kode_rs', $kodeRs)
+        ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
+        ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->count();
         $perbaikanRegistrasi   = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->count();
         $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', $kodeRs)->count();
 
         return view('pages.teknisi.dashboard.index',
-        compact('registrasi', 'perbaikanRegistrasi', 'perbaikanUnregistrasi', 'lembarPemeliharaan'));
+        compact('registrasi', 'perbaikanRegistrasi', 'perbaikanUnregistrasi', 'alatTerkalibrasi'));
     }
 
     

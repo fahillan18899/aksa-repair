@@ -103,9 +103,9 @@
             <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">
-                <a href="dashboard_teknisi/view_tabelT3" style="color: white"><?= "JUMLAH ALAT TERPELIHARA"?></a>
+                <a href="dashboard_teknisi/view_tabelT3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI"?></a>
               </span>
-              <span class="info-box-number">{{ $lembarPemeliharaan }} / {{ $registrasi }} </span>
+              <span class="info-box-number">{{ $alatTerkalibrasi }} / {{ $registrasi }} </span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
