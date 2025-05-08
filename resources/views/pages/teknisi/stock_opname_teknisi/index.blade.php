@@ -48,13 +48,9 @@
                       <th scope="col">No</th>
                       <th scope="col">Nama SparePart</th>
                       <th scope="col">Type</th>
-                      <th scope="col">Lokasi Pemakaian</th>
                       <th scope="col">Jumlah Masuk</th>
-                      <th scope="col">Jumlah Keluar</th>
                       <th scope="col">Tanggal Masuk</th>
-                      <th scope="col">Tanggal Keluar</th>
                       <th scope="col">Total</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -63,11 +59,8 @@
                       <td>{{ $index + 1 }}</td>
                       <td>{{ $item->nama }}</td>
                       <td>{{ $item->type }}</td>
-                      <td>{{ $item->lokasi_pemakaian }}</td>
                       <td>{{ $item->jumlah_masuk }}</td>
-                      <td>{{ $item->jumlah_keluar }}</td>
                       <td>{{ $item->tanggal_masuk }}</td>
-                      <td>{{ $item->tanggal_keluar }}</td>
                       <td>{{ $item->stock }}</td>
 
                     </tr>

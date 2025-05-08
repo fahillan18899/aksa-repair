@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teknisi\PPM;
 
 use App\Http\Controllers\Controller;
 use App\Models\LembarPemeliharaan;
+use App\Models\Registrasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -16,11 +17,12 @@ class ViewTabelController3 extends Controller
      */
     public function index()
     {
-        $asetPemeliharaanT = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
+        $asetPemeliharaanT = Registrasi::where('kode_rs', Auth::user()->kode_rs)
+        ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
+        ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->get();
 
-        return view('pages.teknisi.view_tabelT3.tabel_pemeliharaanT3', [
-            'asetPemeliharaanT' => $asetPemeliharaanT,
-        ]);
+        return view('pages.teknisi.view_tabelT3.tabel_pemeliharaanT3',
+        compact('asetPemeliharaanT'));
     }
 
     /**

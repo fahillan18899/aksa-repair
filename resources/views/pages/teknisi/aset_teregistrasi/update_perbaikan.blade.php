@@ -31,21 +31,21 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ url ('dashboard_teknisi/perbaikan_teregistrasi' , $item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ url ('dashboard_teknisi/perbaikan_teknisi' , $item->id_perbaikan_reg) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
 
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id_aset_reg" type="text" class="form-control" id="id_aset_reg" placeholder="ID Aset" value="<?php echo $item['id_aset_reg'] ?>" readonly>
+                      <input name="id_aset_reg" type="text" class="form-control" id="id_aset_reg" placeholder="ID Aset" value="{{ $item->id_aset_reg }}" readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Tanggal_Perbaikan_reg" class="col-xs-3 col-form-label">Tanggal Perbaikan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_perbaikan_reg" type="date" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo $item['tanggal_perbaikan_reg'] ?>" readonly>
+                      <input name="tanggal_perbaikan_reg" type="date" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="{{ $item->tanggal_perbaikan_reg }}" readonly>
                     </div>
                   </div>
 
@@ -64,21 +64,21 @@
                   <div class="form-group row">
                     <label for="Merek_Alat_reg" class="col-xs-3 col-form-label">Merek Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="merek_alat_reg" type="text" class="form-control" id="Merek_Alat_reg" placeholder="Merek Alat" value="<?php echo $item['merek_alat_reg'] ?>">
+                      <input name="merek_alat_reg" type="text" class="form-control" id="Merek_Alat_reg" placeholder="Merek Alat" value="{{ $item->merek_alat_reg }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Type_Alat_reg" class="col-xs-3 col-form-label">Type Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type_alat_reg" type="text" class="form-control" id="Type_Alat_reg" placeholder="Type Alat" value="<?php echo $item['type_alat_reg'] ?>">
+                      <input name="type_alat_reg" type="text" class="form-control" id="Type_Alat_reg" placeholder="Type Alat" value="{{ $item->type_alat_reg }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Serial_Number_reg" class="col-xs-3 col-form-label">Serial Number<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="serial_number_reg" type="text" class="form-control" id="Serial_Number_reg" placeholder="Serial Number" value="<?php echo $item['serial_number_reg'] ?>">
+                      <input name="serial_number_reg" type="text" class="form-control" id="Serial_Number_reg" placeholder="Serial Number" value="{{ $item->serial_number_reg }}">
                     </div>
                   </div>
 
@@ -96,26 +96,16 @@
                   <div class="form-group row">
                     <label for="Pelapor_reg" class="col-xs-3 col-form-label">Pelapor<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor" value="<?php echo $item['pelapor_reg'] ?>">
+                      <input name="pelapor_reg" type="text" class="form-control" id="Pelapor_reg" placeholder="Pelapor" value="{{ $item->pelapor_reg }}">
                     </div>
                   </div>
 
-                  <div class="form-group row">
-                    <label for="Keterangan_Kondisi_Alat_reg" class="col-xs-3 col-form-label">Keterangan Kondisi Alat</label>
-                    <div class="col-xs-9">
-                      <select name="keterangan_kondisi_alat_reg" class="form-control" id="Keterangan_Kondisi_Alat_reg">
-                        <option selected="selected">Pilih Keterangan</option>
-                        <option value="Selesai Alat Dikembalikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Selesai Alat Dikembalikan') echo "selected" ?>>Selesai Alat Dikembalikan</option>
-                        <option value="Alat Dalam Perbaikan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dalam Perbaikan') echo "selected" ?>>Alat Dalam Perbaikan</option>
-                        <option value="Alat Dilanjutkan Ke Rekanan" <?php if ($item['keterangan_kondisi_alat_reg'] == 'Alat Dilanjutkan Ke Rekanan') echo "selected" ?>>Alat Dilanjutkan Ke Rekanan</option>
-                      </select>
-                    </div>
-                  </div>
+                    <input class="form-control" type="hidden" name="keterangan_kondisi_alat_reg" id="Keterangan_Kondisi_Alat_reg" value="{{ $item->keterangan_kondisi_alat_reg }}"> 
 
                   <div class="form-group row">
                     <label for="ka_instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Kepala Ruangan" value="<?php echo $item['ka_instalasi_reg'] ?>">
+                      <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg" placeholder="Kepala Ruangan" value="{{ $item->ka_instalasi_reg }}">
                     </div>
                   </div>
 
@@ -178,7 +168,7 @@
                     <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
                     <div class="col-xs-9">
                       <input name="suku_cadang" type="text" class="form-control"
-                        id="nama_sukucadang1" placeholder="Nama Sperpart yang digunakan" value="<?php echo $item['suku_cadang'] ?>">
+                        id="nama_sukucadang1" placeholder="Nama Sperpart yang digunakan" value="{{ $item->suku_cadang }}">
                     </div>
                   </div>
 
@@ -186,7 +176,7 @@
                     <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
                     <div class="col-xs-9">
                       <input name="volume" type="text" class="form-control" id="volume1"
-                        placeholder="Volume sperpart/ banyak yang digunakan" value="<?php echo $item['volume'] ?>">
+                        placeholder="Volume sperpart/ banyak yang digunakan" value="{{ $item->volume }}">
                     </div>
                   </div>
 
@@ -195,7 +185,7 @@
                     </label>
                     <div class="col-xs-9">
                       <input name="harga_satuan" type="text" class="form-control"
-                        id="harga_satuan1" placeholder="Harga Satuan dari sperpart" value="<?php echo $item['harga_satuan'] ?>">
+                        id="harga_satuan1" placeholder="Harga Satuan dari sperpart" value="{{ $item->harga_satuan }}">
                     </div>
                   </div>
 
@@ -204,21 +194,21 @@
                     </label>
                     <div class="col-xs-9">
                       <input name="jumlah_harga" type="text" class="form-control"
-                        id="jumlah_harga1" placeholder="Jumlah Harga Sperpart" value="<?php echo $item['jumlah_harga'] ?>">
+                        id="jumlah_harga1" placeholder="Jumlah Harga Sperpart" value="{{ $item->jumlah_harga }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Keluhan_Dari_alat_reg" class="col-xs-3 col-form-label">Keluhan Dari Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat" value="<?php echo $item['keluhan_dari_alat_reg'] ?>">
+                      <input name="keluhan_dari_alat_reg" type="text" class="form-control" id="Keluhan_Dari_alat_reg" placeholder="Keluhan Dari Alat" value="{{ $item->keluhan_dari_alat_reg }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif" value="<?php echo $item['korektif_reg'] ?>">
+                      <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" placeholder="Korektif" value="{{ $item->korektif_reg }}">
                     </div>
                   </div>
 

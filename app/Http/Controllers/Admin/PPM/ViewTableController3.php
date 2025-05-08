@@ -16,7 +16,9 @@ class ViewTableController3 extends Controller
      */
     public function index()
     {
-        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->orderBy('lokasi_alat', 'asc')->get();
+        $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)
+        ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
+        ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->orderBy('lokasi_alat', 'asc')->get();
 
         return view('pages.admin.PPM.view_tabel3.tabel_pemeliharaan', [
             'items' => $items

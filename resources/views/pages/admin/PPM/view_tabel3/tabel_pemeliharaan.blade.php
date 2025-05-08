@@ -43,6 +43,7 @@
                       <th scope="col">Merek</th>
                       <th scope="col">Type</th>
                       <th scope="col">Lokasi</th>
+                      <th scope="col">Serial Number</th>
                       <th scope="col">Tanggal Kalibrasi</th>
                     </tr>
                   </thead>
@@ -69,6 +70,7 @@
                       <td>{{ $item->merek }}</td>
                       <td>{{ $item->type }}</td>
                       <td>{{ $item->lokasi_alat }}</td>
+                      <td>{{ $item->serial_number }}</td>
                       <td>{{ $item->tanggal_kalibrasi }}</td>
                       </tr>
                       @empty

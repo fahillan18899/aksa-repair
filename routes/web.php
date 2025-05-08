@@ -310,13 +310,15 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::resource('view_tabelT2', ViewTabelController2::class);
     Route::resource('view_tabelT3', ViewTabelController3::class);
 
-    Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiTeknisiController::class);
-    Route::get('perbaikan_teregistrasi/update_perbaikan/{id}/edit', [PerbaikanTeregistrasiTeknisiController::class, 'edit_teknisi']);
-    // Route::put('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update_teknisi']);   
+    Route::get('perbaikan_teknisi', [PerbaikanTeregistrasiTeknisiController::class, 'index'])->name('perbaikan_teknisi.index');
+    Route::post('perbaikan_teknisi/store', [PerbaikanTeregistrasiTeknisiController::class, 'store'])->name('perbaikan_teknisi.store');
+    Route::post('perbaikan_teknisi/create', [PerbaikanTeregistrasiTeknisiController::class, 'create'])->name('perbaikan_teknisi.create');
+    Route::get('perbaikan_teknisi/update_perbaikan/{id}/edit', [PerbaikanTeregistrasiTeknisiController::class, 'edit_teknisi']);
+    Route::put('perbaikan_teknisi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update_teknisi']);   
     Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
     Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
-    Route::put('perbaikan_teregistrasi/update/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateStatusPerbaikanTeknisi']);
-    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'destroy']);
+    Route::put('perbaikan_teknisi/update/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateStatusPerbaikanTeknisi']);
+    Route::put('perbaikan_teknisi/kondisi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateKondisiAlat']);
 
     Route::resource('perbaikan_unregistrasi', PerbaikanUserUnregistrasiTeknisiController::class);
     Route::get('perbaikan_unregistrasi/edit_perbaikan/{id}/edit', [PerbaikanUserUnregistrasiTeknisiController::class, 'editun_teknisi']);

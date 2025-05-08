@@ -31,22 +31,13 @@
           <div class="panel-heading no-print">
             <div class="row">
               <div class="col-md-6">
-                <div class="btn-group">
-                  <a class="btn btn-success" href="/dashboard_teknisi/lembar_pemeliharaan#form3"
-                    data-toggle="toltip" data-placement="right" title="Tambah Daftar Aser Terpelihara">
-                    <i class="fa fa-plus"></i>
-                  </a>
-                </div>
+              <div class="">
+                <h1>Daftar Aset Terkalibrasi</h1>
+              </div>
               </div>
             </div>
           </div>
           <div class="panel-body">
-
-            <div class="panel-heading no-print">
-              <div class="">
-                <h1>Daftar Aset Terpelihara</h1>
-              </div>
-            </div>
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>
@@ -63,17 +54,33 @@
                         <th scope="col">Tipe</th>
                         <th scope="col">Serial Number</th>
                         <th scope="col">Lokasi</th>
+                        <th scope="col">Tanggal Kalibrasi</th>
                       </thead>
                       <tbody>
                         @forelse ($asetPemeliharaanT as $index => $item)
-                        <tr>
+                        @php
+                        $warna = ''; // Default tanpa warna
+
+                        // Pastikan tanggal_kalibrasi tidak "-" dan merupakan tanggal valid
+                        if ($item->tanggal_kalibrasi != '-' && strtotime($item->tanggal_kalibrasi)) {
+                          $hariTersisa = now()->diffInDays($item->tanggal_kalibrasi, false);
+
+                          if ($hariTersisa < 0) {
+                            $warna='background-color: #ffcccc; color: red;' ; // Merah (sudah lewat)
+                          } elseif ($hariTersisa < 15) {
+                            $warna='background-color: #fff3cd; color: #856404;' ; //Kuning (Sudah mendekati)
+                          }
+                        }
+                        @endphp
+                        <tr style="{{ $warna }}">
                           <td>{{ $index + 1 }}</td>
                           <td>{{ $item->id_aset }}</td>
                           <td>{{ $item->nama_alat }}</td>
                           <td>{{ $item->merek }}</td>
-                          <td>{{ $item->tipe }}</td>
+                          <td>{{ $item->type }}</td>
                           <td>{{ $item->serial_number }}</td>
-                          <td>{{ $item->ruangan }}</td>
+                          <td>{{ $item->lokasi_alat }}</td>
+                          <td>{{ $item->tanggal_kalibrasi }}</td>
                         </tr>
                         @empty
                         @endforelse

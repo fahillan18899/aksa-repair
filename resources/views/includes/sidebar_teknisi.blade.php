@@ -54,7 +54,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ request()->is('dashboard_teknisi/perbaikan_teregistrasi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_teregistrasi">Aset Teregistrasi</a></li>
+              <li class="{{ request()->is('dashboard_teknisi/perbaikan_teregistrasi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_teknisi">Aset Teregistrasi</a></li>
               <li class="{{ request()->is('dashboard_teknisi/perbaikan_unregistrasi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
             </ul>
           </li>
