@@ -44,7 +44,6 @@ class HomeController extends Controller
         ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
         ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->count();
-        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', $kodeRs)->count();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', $kodeRs)->count();
 
         // Mengambil data yang diperlukan dalam 1 query untuk lebih efisien
@@ -53,7 +52,7 @@ class HomeController extends Controller
 
         return view('pages.admin.PPM.dashboard.index',
         compact('registrasi', 'registrasiKalBar', 'perbaikanRegistrasi',
-                'dataPerbaikan', 'perbaikanUnregistrasi', 'lembarPemeliharaan', 
+                'dataPerbaikan', 'lembarPemeliharaan', 
                 'dataKalibrasi')
         );
     }

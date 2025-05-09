@@ -86,7 +86,6 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
                       <th scope="col">ID Aset</th>
                       <th scope="col">Nama Alat</th>
                       <th scope="col">Merek Alat</th>
@@ -101,7 +100,6 @@
                   <tbody>
                     @forelse ($itemPesanan as $index => $item)
                     <tr>
-                      <td>{{ $index + 1 }}</td>
                       <td title="klik untuk copy ke form" onclick="copy(this)" style="cursor: pointer;">{{ $item->id }}</td>
                       <td>{{ $item->nama_req }}</td>
                       <td>{{ $item->merek_req }}</td>
@@ -148,7 +146,13 @@
                 <form action="{{ route('perbaikan.create') }}" class="form-inner"
                   enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-
+                  <div class="from-group row">
+                  <div class="col-xs-9 mt-2">
+                    <button type="button" class="btn btn-warning btn-sm" id="unregisterBtn">
+                      UNREGISTERED
+                    </button>
+                  </div>
+                  </div>
                   <div class="form-group row">
                     <label for="ID Aset reg" class="col-xs-3 col-form-label">ID Aset
                       <i class="text-danger">*</i></label>
@@ -1722,6 +1726,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+</script>
+<script>
+  document.getElementById('unregisterBtn').addEventListener('click', function() {
+    // Atur nilai dari id_aset_reg
+    const idInput = document.getElementById('id_aset_reg');
+    idInput.value = 'UNREGISTERED';
 
+    //Jadikan input enable
+    const inputFields = [
+
+      'nama_alat_reg',
+      'merek_alat_reg',
+      'type_alat_reg',
+      'serial_number_reg',
+      'lokasi_alat_reg',
+    ]; 
+
+    inputFields.forEach(function (id) {
+      const input = document.getElementById(id);
+      input.removeAttribute('readonly');
+      input.style.cursor = 'text';
+      input.placeholder = 'Wajib terisi';
+    });
+  });
 </script>
 @endpush

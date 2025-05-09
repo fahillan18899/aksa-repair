@@ -13,8 +13,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="pe-7s-note2"></i></div>
       <div class="header-title">
-        <h1>Aset Perbaikan</h1>
-        <small>Tabel Aset Perbaikan</small>
+        <h1>Aset Unregistered</h1>
+        <small>Tabel Aset Unregistered</small>
       </div>
     </div>
   </section>
@@ -31,19 +31,11 @@
           <div class="panel-heading no-print">
             <div class="row">
               <div class="col-md-6">
-                <div class="btn-group">
-                  <a class="btn btn-success" href="/dashboard/ppm/aset_unregistrasi#formun1"> <i class="fa fa-plus"></i> Form Perbaikan Aset Unregistrasi</a>
-                </div>
+              <h1>DAFTAR UNREGITERED</h1>
               </div>
             </div>
           </div>
           <div class="panel-body">
-
-            <div class="panel-heading no-print">
-              <div class="">
-                <h1>Tabel Perbaikan Aset Unregistrasi</h1>
-              </div>
-            </div>
             <!-- Tab panes -->
             <div class="col-xs-12 tab-content">
               <br>
@@ -73,31 +65,7 @@
                         <th scope="col">Korektif</th>
                       </thead>
                       <tbody>
-                        @forelse ($asetPerbaikanUn as $index => $item)
-                        <tr class="odd gradeX">
-                          <td><?php echo $index  + 1 ?></td>
-                          <td><?php echo $item['id_perbaikan_un'] ?></td>
-                          <td><?php echo $item['id_aset_un'] ?></td>
-                          <td><?php echo $item['tanggal_perbaikan_un'] ?></td>
-                          <td><?php echo $item['nama_alat_un'] ?></td>
-                          <td><?php echo $item['merek_alat_un'] ?></td>
-                          <td><?php echo $item['type_alat_un'] ?></td>
-                          <td><?php echo $item['serial_number_un'] ?></td>
-                          <td><?php echo $item['lokasi_alat_un'] ?></td>
-                          <td><?php echo $item['pelapor_un'] ?></td>
-                          <td><?php echo $item['keterangan_kondisi_alat_un'] ?></td>
-                          <td><?php echo $item['ka_instalasi_un'] ?></td>
-                          <td><?php echo $item['teknisi_1_un'] ?></td>
-                          <td><?php echo $item['teknisi_2_un'] ?></td>
-                          <td><?php echo $item['teknisi_3_un'] ?></td>
-                          <td><?php echo $item['keluhan_dari_alat_un'] ?></td>
-                          <td><?php echo $item['korektif_un'] ?></td>
-                        </tr>
-                        @empty
-                        <tr>
-                          <td class="text-center" colspan="7">Data Kosong</td>
-                        </tr>
-                        @endforelse
+
                       </tbody>
                     </table>
                     <!-- /.table-responsive -->

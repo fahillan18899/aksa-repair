@@ -83,7 +83,7 @@
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><a href="view_tabel2" style="color : white"><?= "JUMLAH ASSET PERBAIKAN UNREGISTRASI" ?></a></span>
-            <span class="info-box-number">{{ $perbaikanUnregistrasi }} </span>
+            <span class="info-box-number">KOSONG </span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>

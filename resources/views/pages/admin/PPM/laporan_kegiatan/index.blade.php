@@ -51,7 +51,7 @@
                         <th scope="col">Lokasi_Alat</th>
                       </thead>
                       <tbody>
-                        @forelse ($regsitrasi as $index => $item)
+                        @forelse ($registrasi as $index => $item)
                         <tr class="odd gradeX">
                           <td>{{ $item->id_perbaikan_reg }}</td>
                           <td>{{ $item->nama_alat_reg }}</td>
@@ -105,17 +105,7 @@
                         <th scope="col">Lokasi_Alat</th>
                       </thead>
                       <tbody>
-                        @forelse ($unregsitrasi as $index => $item)
-                        <tr>
-                          <td>{{ $item->id_perbaikan_un }}</td>
-                          <td>{{ $item->nama_alat_un }}</td>
-                          <td>{{ $item->merek_alat_un }}</td>
-                          <td>{{ $item->type_alat_un }}</td>
-                          <td>{{ $item->serial_number_un }}</td>
-                          <td>{{ $item->lokasi_alat_un  }}</td>
-                        </tr>
-                        @empty
-                        @endforelse
+                        <!-- KOSONG -->
                       </tbody>
                     </table>
                     <!-- /.table-responsive -->
@@ -137,7 +127,7 @@
           <div class="panel-body">
             <div class="panel-heading no-print">
               <div class="">
-                <h1>History Tabel Pemeliharaan Aset Teregistrasi</h1>
+                <h1>History Tabel Pemeliharaan Aset</h1>
               </div>
             </div>
             <!-- Tab panes -->
