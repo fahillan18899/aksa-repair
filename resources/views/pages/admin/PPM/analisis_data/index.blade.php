@@ -149,7 +149,7 @@
               echo $registered;
               ?>,
               <?php
-              echo $unRegistered;
+              // echo $unRegistered;
               ?>,
             ],
             borderWidth: 1,
@@ -178,7 +178,6 @@
             data: [
               <?= $perbaikan ?>,
               <?= $totalAlat ?>,
-              <?= $perbaikanUn ?>
             ],
             borderWidth: 1,
             backgroundColor: ['#3FD01C', '#3FEBC5', '#EB553F']
@@ -206,7 +205,6 @@
             data: [
               <?= $perbaikan ?>,
               <?= $t5_ ?>,
-              <?= $perbaikanUn ?>
             ],
             borderWidth: 1,
             backgroundColor: ['#7a7a7a', '#000'],

@@ -41,20 +41,20 @@ class AnalisisDataController extends Controller
             ->whereRaw("kode_rs = '{$kode_rs}'")
             ->count();
 
-        $unRegistered = DB::table('registrasis')
-        ->where('tanggal_kalibrasi', NULL)
-            ->whereRaw("kode_rs = '$kode_rs'")
-            ->count();
+        // $unRegistered = DB::table('registrasis')
+        // ->where('tanggal_kalibrasi', NULL)
+        //     ->whereRaw("kode_rs = '$kode_rs'")
+        //     ->count();
 
         $perbaikan = DB::table('perbaikan_registrasis')
             ->whereNotNull('id_perbaikan_reg')
             ->whereRaw("perbaikan_registrasis.kode_rs = '$kode_rs'")
         ->count();
 
-        $perbaikanUn = DB::table('perbaikan_unregistrasis')
-        ->whereNotNull('id_perbaikan_un')
-        ->whereRaw("perbaikan_unregistrasis.kode_rs = '$kode_rs'")
-        ->count();
+        // $perbaikanUn = DB::table('perbaikan_unregistrasis')
+        // ->whereNotNull('id_perbaikan_un')
+        // ->whereRaw("perbaikan_unregistrasis.kode_rs = '$kode_rs'")
+        // ->count();
 
         $totalAlat = DB::table('registrasis')
         ->whereNotNull('id_aset')
@@ -69,9 +69,9 @@ class AnalisisDataController extends Controller
                 't10' => $t10,
                 'semuaAlat' => $semuaAlat,
                 'registered' => $registered,
-                'unRegistered' => $unRegistered,
+                // 'unRegistered' => $unRegistered,
                 'perbaikan' => $perbaikan,
-                'perbaikanUn' => $perbaikanUn,
+                // 'perbaikanUn' => $perbaikanUn,
                 'totalAlat' => $totalAlat,
             ]
         );
