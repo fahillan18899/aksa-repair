@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\HumanResourceController;
 use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\NomklaturController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
-use App\Http\Controllers\Admin\PPM\AsetUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\PPM\GedungController;
@@ -13,18 +12,13 @@ use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
-use App\Http\Controllers\Admin\PPM\LaporanKegiatanUnController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanPpmController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PengembalianUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PenghapusanUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PengirimanUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PerbaikanUnregistrasiController;
 use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
@@ -80,7 +74,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // menu dashboard SIMRS
         Route::get('home', [PPMController::class, 'dashboard']);
         Route::resource('data_inventaris', DashboardController::class);
-        Route::resource('aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('aset_non_alkes', DashboardController::class);
         Route::resource('laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('scanner_qr', ScannerQrController::class);
@@ -123,7 +116,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
 
         // menu pemeliharaan korektif
-        Route::resource('aset_unregistrasi', AsetUnregistrasiController::class);
         Route::resource('aset_non_alkes', DashboardController::class);
         Route::get('aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index'])->name('aset_teregistrasi.index');
         Route::get('aset_teregistrasi/sperpart_perbaikan', [PerbaikanRegistrasiController::class, 'sperpart'])->name('sperpart_perbaikan.sperpart');
@@ -181,7 +173,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // menu laporan
         Route::get('laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
         Route::delete('laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy']);
-        Route::delete('laporan_kegiatan_un/{id}', [LaporanKegiatanUnController::class, 'destroyun']);
         Route::delete('laporan_kegiatan_ppm/{id}', [LaporanKegiatanPpmController::class, 'destroyppm']);
 
         //  stock opname
