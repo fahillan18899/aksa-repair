@@ -79,7 +79,7 @@
               <span class="info-box-text">
                 <a href="dashboard_teknisi/view_tabelT2" style="color: white"><?= "JUMLAH ASSET PERBAIKAN UNRGESITRASI" ?></a>
               </span>
-              <span class="info-box-number">{{ $perbaikanUnregistrasi }}</span>
+              <span class="info-box-number">KOSONG</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -171,10 +171,8 @@
             mode: 'nearest',
             intersect: true
           }
-
         }
       });
-
     });
   </script>
   <?php // }
@@ -189,7 +187,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
 
-<script>
+<!-- <script>
     const firebaseConfig = {
         apiKey: "{{ config('app.api_key') }}",
         authDomain: "{{ config('app.auth_domain') }}",
@@ -253,5 +251,5 @@
     function isTokenSentToServer() {
         return window.localStorage.getItem('sentToServer') == 1;
     }
-</script>
+</script> -->
 @endpush

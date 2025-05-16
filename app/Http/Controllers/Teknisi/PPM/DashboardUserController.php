@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Teknisi\PPM;
 
 use App\Models\Registrasi;
-use App\Models\LembarPemeliharaan;
 use App\Models\PerbaikanRegistrasi;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Models\PerbaikanUnregistrasi;
 use Yajra\DataTables\Facades\DataTables;
 
 class DashboardUserController extends Controller
@@ -21,10 +19,9 @@ class DashboardUserController extends Controller
         ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
         ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->count();
         $perbaikanRegistrasi   = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->count();
-        $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', $kodeRs)->count();
 
         return view('pages.teknisi.dashboard.index',
-        compact('registrasi', 'perbaikanRegistrasi', 'perbaikanUnregistrasi', 'alatTerkalibrasi'));
+        compact('registrasi', 'perbaikanRegistrasi', 'alatTerkalibrasi'));
     }
 
     

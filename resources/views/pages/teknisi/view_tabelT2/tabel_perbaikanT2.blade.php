@@ -66,18 +66,6 @@
                         <th scope="col">Lokasi_Alat</th>
                       </thead>
                       <tbody>
-                        @forelse ($asetPerbaikanT2 as $index => $item)
-                        <tr class="odd gradeX">
-                          <td>{{ $index + 1 }}</td>
-                          <td>{{ $item->id_perbaikan_un }}</td>
-                          <td>{{ $item->nama_alat_un }}</td>
-                          <td>{{ $item->merek_alat_un }}</td>
-                          <td>{{ $item->type_alat_un }}</td>
-                          <td>{{ $item->serial_number_un }}</td>
-                          <td>{{ $item->lokasi_alat_un }}</td>
-                        </tr>
-                        @empty
-                        @endforelse
                       </tbody>
                     </table>
                     <!-- /.table-responsive -->

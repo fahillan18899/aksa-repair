@@ -30,15 +30,12 @@
           {{ Auth::user()->user_role }} </a>
       </div>
     </div>
-
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
-
       <li class="{{ request()->is('dashboard_teknisi') ? 'active' : '' }}">
         <a href="/dashboard_teknisi"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-
-      <li class="{{ request()->is('dashboard_teknisi/perbaikan_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/perbaikan_unregistrasi') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/jadwal_pemeliharaan') ? 'active' : '' }} treeview">
+      <li class="{{ request()->is('dashboard_teknisi/perbaikan_teknisi') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/jadwal_pemeliharaan') ? 'active' : '' }} treeview">
         <a href="#">
           <i class="fa fa-wrench" aria-hidden="true"></i><span>Pemeliharaan Aset </span>
           <span class="pull-right-container">
@@ -46,7 +43,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard_teknisi/perbaikan_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/perbaikan_unregistrasi') ? 'active' : '' }} treeview">
+          <li class="{{ request()->is('dashboard_teknisi/perbaikan_teknisi') ? 'active' : '' }} treeview">
             <a href="#">
               <span>Pemeliharaan Korektif</span>
               <span class="pull-right-container">
@@ -54,11 +51,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ request()->is('dashboard_teknisi/perbaikan_teregistrasi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_teknisi">Aset Teregistrasi</a></li>
-              <li class="{{ request()->is('dashboard_teknisi/perbaikan_unregistrasi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_unregistrasi">Aset Unregistrasi</a></li>
+              <li class="{{ request()->is('dashboard_teknisi/perbaikan_teknisi') ? 'active' : '' }}"><a href="/dashboard_teknisi/perbaikan_teknisi">Aset Teregistrasi</a></li>
             </ul>
           </li>
-
           <li class="{{ request()->is('dashboard_teknisi/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard_teknisi/jadwal_pemeliharaan') ? 'active' : '' }} treeview">
             <a href="#">
               <span>Pemeliharaan Preverentive</span>
@@ -78,9 +73,6 @@
           <i class="fa fa-archive"></i> <span>Stock Opname</span>
         </a>
       </li>
-
-
-
     </ul>
   </div> <!-- /.sidebar -->
 </aside>

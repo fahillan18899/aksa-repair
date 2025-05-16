@@ -76,13 +76,13 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Id Aset</th>
-                      <th scope="col">Nama Alat</th>
-                      <th scope="col">Merek Alat</th>
-                      <th scope="col">Type Alat</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Merek</th>
+                      <th scope="col">Type</th>
                       <th scope="col">Serial Number</th>
                       <th scope="col">Pelapor</th>
-                      <th scope="col">Kerusakan Alat</th>
+                      <th scope="col">Kerusakan</th>
                       <th scope="col">Tanggal</th>
                     </tr>
                   </thead>
@@ -126,6 +126,13 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('teknisi.perbaikan_teknisi.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  <div class="from-group row">
+                  <div class="col-xs-9 mt-2">
+                    <button type="button" class="btn btn-warning btn-sm" id="unregisterBtn">
+                      UNREGISTERED
+                    </button>
+                  </div>
+                  </div>
                   <div class="form-group row">
                     <label for="ID_Aset_reg" class="col-xs-3 col-form-label">ID Aset<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -259,13 +266,13 @@
                       <th class="none">Id Perbaikan</th>
                       <th class="none">ID_Aset :</th>
                       <th class="none">Tanggal_Perbaikan :</th>
-                      <th class="">Nama Alat</th>
-                      <th class="">Merek Alat</th>
-                      <th class="">Type Alat</th>
+                      <th class="">Nama</th>
+                      <th class="">Merek</th>
+                      <th class="">Type</th>
                       <th class="">Serial Number</th>
-                      <th class="">Lokasi Alat</th>
+                      <th class="">Lokasi</th>
                       <th class="">Status</th>
-                      <th class="">Keterangan Kondisi Alat </th>
+                      <th class="">Kondisi Alat </th>
                       <th class="none">Pelapor :</th>
                       <th class="none">Kepala Ruangan :</th>
                       <th class="none">Teknisi 1 :</th>
@@ -735,5 +742,30 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+</script>
+
+<script>
+  document.getElementById('unregisterBtn').addEventListener('click', function() {
+    // Atur nilai dari id_aset_reg
+    const idInput = document.getElementById('id_aset_reg');
+    idInput.value = 'UNREGISTERED';
+
+    //Jadikan input enable
+    const inputFields = [
+
+      'nama_alat_reg',
+      'merek_alat_reg',
+      'type_alat_reg',
+      'serial_number_reg',
+      'lokasi_alat_reg',
+    ]; 
+
+    inputFields.forEach(function (id) {
+      const input = document.getElementById(id);
+      input.removeAttribute('readonly');
+      input.style.cursor = 'text';
+      input.placeholder = 'Wajib terisi';
+    });
+  });
 </script>
 @endpush

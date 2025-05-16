@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Teknisi\PPM;
 
 use App\Http\Controllers\Controller;
-use App\Models\PerbaikanUnregistrasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -16,12 +15,7 @@ class ViewTabelController2 extends Controller
      */
     public function index()
     {
-        $asetPerbaikanT2 = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->where('active', 1)->get();
-
-        return view('pages.teknisi.view_tabelT2.tabel_perbaikanT2', [
-
-            'asetPerbaikanT2' => $asetPerbaikanT2,
-        ]);
+        return view('pages.teknisi.view_tabelT2.tabel_perbaikanT2');
     }
 
     /**
