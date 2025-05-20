@@ -280,14 +280,15 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanTeknisiController::class, 'city']);
     Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanTeknisiController::class, 'updateStatusTeknisi']);
     Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
-    Route::get('/lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
-    Route::post('/lembar_pemeliharaan', [LembarPemeliharaanController::class, 'store']);
+    Route::get('/lembar_pemeliharaan/cetak/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
+    Route::post('/lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'store']);
 
     // Penggunaan Sperpart Gudang / Stock opname (Teknisi)
     Route::post('penggunaan_sperpart', [PengambilanSperpartTeknisiController::class, 'store']);
 
     Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
     Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
+    Route::get('autofill_pelihara/{idars}', [PPMController::class, 'autofill_pelihara']);
 
     Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 

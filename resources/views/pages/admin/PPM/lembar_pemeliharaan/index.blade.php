@@ -541,7 +541,7 @@
                   <div class="form-group row">
                     <label for="tanggal_selesai" class="col-xs-3 col-form-label">Tanggal Selesai<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="tanggal_selesai" type="date" class="form-control" id="hasil" placeholder="tanggal_selesai">
+                      <input name="tanggal_selesai" type="date" class="form-control" placeholder="tanggal_selesai">
                     </div>
                   </div>
 
