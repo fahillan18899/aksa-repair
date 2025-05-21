@@ -148,27 +148,27 @@
 
                   @php
                   $persiapan = [
-                    'hand_hygiene' => 'Hand Hygiene',
-                    'menyiapkan_alat_dan_bahan' => 'Menyiapkan alat dan bahan',
-                    'alat_pelindung_diri' => 'Alat pelindung diri',
-                    'mengoprasikan_alat_kalibrasi' => 'Mengoprasikan alat kalibrasi',
-                    'ktd' => 'KTD',
-                    'mengoprasikan_alat' => 'Mengoprasikan alat',
-                    'identifikasi_bahaya' => 'Identifikasi bahaya'
-                    ]
-                  @endphp  
+                  'hand_hygiene' => 'Hand Hygiene',
+                  'menyiapkan_alat_dan_bahan' => 'Menyiapkan alat dan bahan',
+                  'alat_pelindung_diri' => 'Alat pelindung diri',
+                  'mengoprasikan_alat_kalibrasi' => 'Mengoprasikan alat kalibrasi',
+                  'ktd' => 'KTD',
+                  'mengoprasikan_alat' => 'Mengoprasikan alat',
+                  'identifikasi_bahaya' => 'Identifikasi bahaya'
+                  ]
+                  @endphp
                   @foreach($persiapan as $name => $label)
-                    <div class="form-group row">
-                      <label for="{{ $name }}" class="col-xs-3 col-form-label">{{ $label }}</label>
-                      <div class="col-xs-9">
-                        <select name="persiapan[{{ $name }}]" class="form-control">
-                          <option value="Ya">Ya</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </div>
+                  <div class="form-group row">
+                    <label for="{{ $name }}" class="col-xs-3 col-form-label">{{ $label }}</label>
+                    <div class="col-xs-9">
+                      <select name="persiapan[{{ $name }}]" class="form-control">
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                      </select>
                     </div>
+                  </div>
                   @endforeach
-                  
+
                   <center>
                     <div class="row" style="border-style: groove;">
                       <h3>PEMANTAUAN FISIK DAN FUNGSI</h3>
@@ -429,25 +429,25 @@
 
                   @php
                   $preventif = [
-                    'pembersihan' => 'Pemberihan',
-                    'pengencangan_bagian_alat' => 'Pengencangan bagian alat',
-                    'pelumasan' => 'Pelumasan',
-                    'kalibrasi_berkala' => 'Kalibrasi berkala',
-                    'penggantian_bahan_habis_pakai' => 'Penggantian bahan habis pakai'
-                    ]
+                  'pembersihan' => 'Pemberihan',
+                  'pengencangan_bagian_alat' => 'Pengencangan bagian alat',
+                  'pelumasan' => 'Pelumasan',
+                  'kalibrasi_berkala' => 'Kalibrasi berkala',
+                  'penggantian_bahan_habis_pakai' => 'Penggantian bahan habis pakai'
+                  ]
                   @endphp
                   @foreach($preventif as $name2 => $label2 )
-                    <div class="form-group row">
-                      <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}</label>
-                      <div class="col-xs-9">
-                        <select name="preverentif[{{ $name2 }}]" class="form-control">
-                          <option value="Baik">Baik</option>
-                          <option value="Tidak">Tidak</option>
-                        </select>
-                      </div>
+                  <div class="form-group row">
+                    <label for="{{ $name2 }}" class="col-xs-3 col-form-label">{{ $label2 }}</label>
+                    <div class="col-xs-9">
+                      <select name="preverentif[{{ $name2 }}]" class="form-control">
+                        <option value="Baik">Baik</option>
+                        <option value="Tidak">Tidak</option>
+                      </select>
                     </div>
+                  </div>
                   @endforeach
-                  
+
                   <center>
                     <div class="row" style="border-style: groove;">
                       <h3>TINDAKAN </h3>
@@ -470,9 +470,14 @@
                   </center>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Part</label>
                     <div class="col-xs-9">
-                      <input name="nama_sukucadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                      <select name="nama_sukucadang" class="form-control">
+                        <option> -- Pilih Part -- </option>
+                        @foreach($part as $item)
+                        <option value="<?= $item['nama'] ?>"><?= $item['nama'] ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
@@ -542,7 +547,14 @@
                       <input name="durasi" type="text" class="form-control" id="hasil" placeholder="Durasi" readonly>
                     </div>
                   </div>
-
+                  
+                  <div class="form-group row">
+                    <label for="tanggal_selesai" class=" col-xs-3 col-form-label">Tanggal Selesai<i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="tanggal_selesai" type="date" class="form-control">
+                    </div>
+                  </div>
+                  
                   <div class="form-group row">
                     <label for="user" class="col-xs-3 col-form-label">User<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -580,7 +592,7 @@
         <div class="panel panel-default thumbnail">
           <div style="overflow-x:auto;">
             <div class="panel-body panel-form">
-              
+
               <!--TABEL-->
               <table class="datatable table table-striped table-bordered" id="scollDatatable" style="width:100%">
                 <thead class="table-light">
@@ -697,7 +709,7 @@
     });
   });
   //FUNGSI CAMERA
-// *Function autofill form perbaikan* //
+  // *Function autofill form perbaikan* //
   $(document).ready(function() {
     $('#id_ase1t').on('click', function() {
       let idAset = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
@@ -915,43 +927,44 @@
   });
 </script>
 <script>
-    // Menampilkan waktu saat ini di kolom input waktu mulai
-    var currentTime = new Date();
-    var currentHours = currentTime.getHours();
-    var currentMinutes = currentTime.getMinutes();
-    var currentTimeString = ("0" + currentHours).slice(-2) + ":" + ("0" + currentMinutes).slice(-2);
-    document.getElementById("start-time").value = currentTimeString;
-     document.getElementById("end-time").value = currentTimeString;
-    function hitungSelisih() {
-      var startTime = document.getElementById("start-time").value;
-      var endTime = document.getElementById("end-time").value;
+  // Menampilkan waktu saat ini di kolom input waktu mulai
+  var currentTime = new Date();
+  var currentHours = currentTime.getHours();
+  var currentMinutes = currentTime.getMinutes();
+  var currentTimeString = ("0" + currentHours).slice(-2) + ":" + ("0" + currentMinutes).slice(-2);
+  document.getElementById("start-time").value = currentTimeString;
+  document.getElementById("end-time").value = currentTimeString;
 
-      var start = new Date("1970-01-01 " + startTime);
-      var end = new Date("1970-01-01 " + endTime);
+  function hitungSelisih() {
+    var startTime = document.getElementById("start-time").value;
+    var endTime = document.getElementById("end-time").value;
 
-      var diff = end - start;
-      var diffHours = Math.floor(diff / (1000 * 60 * 60));
- var diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      document.getElementById("hasil").value = diffHours + " jam " + diffMinutes + " menit";
-    }
+    var start = new Date("1970-01-01 " + startTime);
+    var end = new Date("1970-01-01 " + endTime);
+
+    var diff = end - start;
+    var diffHours = Math.floor(diff / (1000 * 60 * 60));
+    var diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("hasil").value = diffHours + " jam " + diffMinutes + " menit";
+  }
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     const hargaInput = document.getElementById("harga_satuan");
 
     hargaInput.addEventListener("input", function(e) {
-        let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
-        if (value) {
-            e.target.value = formatRupiah(value);
-        } else {
-            e.target.value = "";
-        }
+      let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
+      if (value) {
+        e.target.value = formatRupiah(value);
+      } else {
+        e.target.value = "";
+      }
     });
 
     function formatRupiah(angka) {
-        return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     }
-});
+  });
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -963,19 +976,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const cleanRupiah = (angka) => angka.replace(/[^0-9]/g, "");
 
     const hitungJumlahHarga = () => {
-        const volume = parseFloat(volumeInput.value) || 0;
-        const hargaSatuan = parseFloat(cleanRupiah(hargaSatuanInput.value)) || 0;
-        jumlahHargaInput.value = volume * hargaSatuan ? formatRupiah((volume * hargaSatuan).toString()) : "";
+      const volume = parseFloat(volumeInput.value) || 0;
+      const hargaSatuan = parseFloat(cleanRupiah(hargaSatuanInput.value)) || 0;
+      jumlahHargaInput.value = volume * hargaSatuan ? formatRupiah((volume * hargaSatuan).toString()) : "";
     };
 
     [hargaSatuanInput, volumeInput].forEach(input => {
-        input.addEventListener("input", () => {
-            if (input === hargaSatuanInput) input.value = formatRupiah(cleanRupiah(input.value));
-            hitungJumlahHarga();
-        });
+      input.addEventListener("input", () => {
+        if (input === hargaSatuanInput) input.value = formatRupiah(cleanRupiah(input.value));
+        hitungJumlahHarga();
+      });
     });
-});
-
+  });
 </script>
 @endpush
 @endsection

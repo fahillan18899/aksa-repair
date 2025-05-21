@@ -15,11 +15,12 @@ class LembarPemeliharaanController extends Controller
     public function index()
     {
         $alats = Alat::where('kode_rs', Auth::user()->kode_rs)->get();
+        $part  = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
         $lembarPemeliharaans = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.teknisi.lembar_pemeliharaan.index',
-        compact('alats', 'teknisis', 'lembarPemeliharaans'));
+        compact('alats', 'part', 'teknisis', 'lembarPemeliharaans'));
     }
 
     public function store(Request $request)
