@@ -336,7 +336,7 @@
                           class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-edit"></i>
                         </a>
-                          <a href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" 
+                          <a target="_blank" href="/dashboard_teknisi/perbaikan_teregistrasi/cetak_perbaikan/{{ $item->id_perbaikan_reg }}" 
                           class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Print">
                           <i class="fa fa-print"></i>
                         </a>

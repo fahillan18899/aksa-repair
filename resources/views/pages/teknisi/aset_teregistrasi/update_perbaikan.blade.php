@@ -236,13 +236,5 @@
       </div>
     </div>
   </div>
-
 </div> <!-- /.content -->
 @endsection
-
-
-
-
-<!-- <script src="./assets/js/bs-5.js"></script>
-<script src="../js/scripts.js"></script>
-<script src="./assets/libraries/jquery.min.js"></script> -->

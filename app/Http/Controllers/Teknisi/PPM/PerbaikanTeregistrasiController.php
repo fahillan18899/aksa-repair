@@ -172,7 +172,7 @@ class PerbaikanTeregistrasiController extends Controller
     public function cetak_teknisi($id)
     {
         $item = PerbaikanRegistrasi::where('id_perbaikan_reg', $id)
-        ->where('kode_rs', Auth::user()->kode_rs)->first();
+        ->where('kode_rs', Auth::user()->kode_rs)->get();
 
         return view('pages.teknisi.aset_teregistrasi.cetak_perbaikan', compact('item'));
     }

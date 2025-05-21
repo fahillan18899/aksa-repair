@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Teknisi\PPM;
 
-use App\Http\Controllers\Controller;
-use App\Models\JadwalPemeliharaan;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\JadwalPemeliharaan;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class JadwalPemeliharaanController extends Controller
 {
@@ -14,7 +14,7 @@ class JadwalPemeliharaanController extends Controller
     {
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
 
-        return view('pages.teknisi.jadwal_pemeliharaan.index', ['items' => $items]);
+        return view('pages.teknisi.jadwal_pemeliharaan.index', compact('items'));
     }
 
     public function state()
@@ -22,11 +22,8 @@ class JadwalPemeliharaanController extends Controller
         $items = JadwalPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->get();
         $states = DB::table("gedungs")->where('kode_rs', Auth::user()->kode_rs)->distinct('nama_gedung')->pluck('nama_gedung', 'id_gedung');
 
-        return view('pages.teknisi.jadwal_pemeliharaan.index', [
-
-            'items' => $items,
-            'states' => $states,
-        ]);
+        return view('pages.teknisi.jadwal_pemeliharaan.index',
+        compact('items', 'states'));
     }
 
     public function city($id)
@@ -59,6 +56,9 @@ class JadwalPemeliharaanController extends Controller
             'lokasi_alat' => '',
             'nama_alat' => '',
             'jadwal' => '',
+            'jadwal2' => '',
+            'jadwal3' => '',
+            'jadwal4' => '',
             'kode_rs' => '',
         ]);
         $data['kode_rs'] = Auth::user()->kode_rs;

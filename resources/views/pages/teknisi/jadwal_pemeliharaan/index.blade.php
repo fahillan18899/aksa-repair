@@ -7,7 +7,6 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="pe-7s-date"></i></div>
       <div class="header-title">
@@ -21,14 +20,18 @@
     <!-- demo mode enable alert -->
     <div id="demoModeEnable"></div>
     <!-- alert message -->
-
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+      <p>{{ $message }}</p>
+    </div>
+    @endif
     <!-- content -->
     <div class="row">
       <!--  form area -->
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
           <div class="panel-heading no-print">
-            <h4>Jadwal Pemeliharaan / Tahun</h4>
+            <h1>Jadwal Pemeliharaan / Tahun</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -69,16 +72,23 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 2<i class="text-danger">*</i></label>
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 2</label>
                     <div class="col-xs-9">
                       <input class="form-control" name="jadwal2" type="date" placeholder="Waktu Jadwal" id="slot" value="">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 3<i class="text-danger">*</i></label>
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 3</label>
                     <div class="col-xs-9">
                       <input class="form-control" name="jadwal3" type="date" placeholder="Waktu Jadwal" id="slot" value="">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="slot" class="col-xs-3 col-form-label">Pemeliharaan 4</label>
+                    <div class="col-xs-9">
+                      <input class="form-control" name="jadwal4" type="date" placeholder="Waktu Jadwal" id="slot" value="">
                     </div>
                   </div>
 
@@ -91,7 +101,6 @@
                       </div>
                     </div>
                   </div>
-
                 </form>
               </div>
             </div>
@@ -119,6 +128,7 @@
                     <th class="">Pemeliharaan 1</th>
                     <th class="">Pemeliharaan 2</th>
                     <th class="">Pemeliharaan 3</th>
+                    <th class="">Pemeliharaan 4</th>
                     <th class="">Keterangan</th>
                   </thead>
                   <tbody>
@@ -130,6 +140,7 @@
                       <td>{{ $item->jadwal }}</td>
                       <td>{{ $item->jadwal2 }}</td>
                       <td>{{ $item->jadwal3 }}</td>
+                      <td>{{ $item->jadwal4 }}</td>
                       <td>
                         <form action="{{ url('/dashboard_teknisi/jadwal_pemeliharaan/update', $item->id) }}" class="form-inner" method="post">
                           @csrf
@@ -149,8 +160,6 @@
         </div>
       </div>
     </div>
-
-
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 <script type="text/javascript">

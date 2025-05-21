@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teknisi\PPM;
 
 use App\Models\Alat;
 use App\Models\Teknisi;
+use App\Models\StockOpname;
 use Illuminate\Http\Request;
 use App\Models\LembarPemeliharaan;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class LembarPemeliharaanController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+         $request->validate([
             'id_ppm' => '',
             'tanggal' => 'required|date',
             'kegiatan' => '',
@@ -101,11 +102,19 @@ class LembarPemeliharaanController extends Controller
             'engginer' => '',
             'kode_rs' => '',
         ]);
-        $data['kode_rs'] = Auth::user()->kode_rs;
-        $data['persiapan'] = json_encode($data['persiapan']);
-        $data['pemantauan'] = json_encode($data['pemantauan']);
-        $data['preverentif'] = json_encode($data['preverentif']);
-        LembarPemeliharaan::create($data);
+        $request['kode_rs'] = Auth::user()->kode_rs;
+        $request['persiapan'] = json_encode($request['persiapan']);
+        $request['pemantauan'] = json_encode($request['pemantauan']);
+        $request['preverentif'] = json_encode($request['preverentif']);
+        
+        // Cek stok
+        $stock = StockOpname::where('nama', $request->nama_sukucadang)->first();
+        if (!$stock || $stock->stock < $request->volume) {
+            return back()->with('error', "Stok {$request->nama_sukucadang} tidak cukup!");
+        }
+       LembarPemeliharaan::create($request->post());
+        // Kurangi stok
+        $stock->decrement('stock', $request->volume);
 
         return redirect('/dashboard_teknisi/lembar_pemeliharaan')->with('success', 'Lembar Pemeliharaan berhasil disimpan.');
     }
