@@ -53,6 +53,16 @@
                    </div>
 
                    <div class="form-group row">
+                     <label for="divisi" class="col-xs-3 col-form-label">Divisi <i class="text-danger">*</i></label>
+                     <div class="col-xs-2">
+                       <input name="rs" type="text" class="form-control" id="rs" value="{{ Auth::user()->kode_rs }}" readonly>
+                     </div>
+                     <div class="col-xs-5">
+                       <input name="divisi" type="text" class="form-control" id="divisi" placeholder="Isi dengan divisi user / Ruangan user">
+                     </div>
+                   </div>
+
+                   <div class="form-group row">
                      <label for="user_role" class="col-xs-3 col-form-label">Level user </label>
                      <div class="col-xs-9">
                        <select name="user_role" class="form-control" id="user_role">
@@ -83,7 +93,6 @@
      <div class="row">
        <div class="col-sm-12">
          <div class="panel panel-default thumbnail">
-
            <div class="panel-body panel-form">
              <div class="row">
                <div class="col-md-12 col-sm-12">
@@ -95,6 +104,7 @@
                        <th scope="col">No</th>
                        <th scope="col">Username</th>
                        <th scope="col">Level User</th>
+                       <th scope="col">Divisi</th>
                        <th scope="col">Tombol_Aksi_Table</th>
                      </tr>
                    </thead>
@@ -104,6 +114,7 @@
                        <td>{{ $index + 1 }}</td>
                        <td>{{ $item->username }}</td>
                        <td> {{ $item->user_role }}</td>
+                       <td> {{ $item->rs_divisi }}</td>
                        <td>
                          <a href="{{ route('operator.edit', $item->user_id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="top" title="Edit"> <i class="fa fa-edit"></i></a>
 
@@ -132,7 +143,6 @@
          </div>
        </div>
      </div>
-
    </div> <!-- /.content -->
  </div> <!-- /.content-wrapper -->
  @endsection

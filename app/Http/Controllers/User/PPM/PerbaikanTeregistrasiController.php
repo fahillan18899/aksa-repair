@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\User\PPM;
 
 use App\Helper;
-use App\Http\Controllers\Controller;
-use App\Models\PengembalianRegistrasi;
-use App\Models\PenghapusanRegistrasi;
-use App\Models\PengirimanRegistrasi;
-use App\Models\PerbaikanRegistrasi;
-use App\Models\Registrasi;
 use App\Models\Teknisi;
 use App\Models\Pesanan;
+use App\Models\Registrasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\PerbaikanRegistrasi;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class PerbaikanTeregistrasiController extends Controller
 {
@@ -26,12 +23,10 @@ class PerbaikanTeregistrasiController extends Controller
     public function index()
     {
         $userName_ = Auth::user()->username;
-        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $userName_)->where('active', 1)->get();
-        $result_pengiriman = PengirimanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $result_penghapusan = PenghapusanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $result_pengembalian = PengembalianRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $userName_)->get();
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $divisi)->get();
+        $items = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $divisi)->where('active', 1)->get();
 
         $kodeRs_ = Auth::user()->kode_rs;
 
@@ -50,9 +45,6 @@ class PerbaikanTeregistrasiController extends Controller
 
         return view('pages.user.aset_teregistrasi.index', [
             'items' => $items,
-            'result_pengembalian' => $result_pengembalian,
-            'result_penghapusan' => $result_penghapusan,
-            'result_pengiriman' => $result_pengiriman,
             'kode_aset' => $kode_aset,
             'teknisis' => $teknisis,
             'itemPesanan' => $itemPesanan

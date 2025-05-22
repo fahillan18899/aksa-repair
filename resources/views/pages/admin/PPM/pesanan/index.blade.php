@@ -101,7 +101,7 @@
                   <div class="form-group row">
                     <label for="pelapor_req" class="col-xs-3 col-form-label">Pelapor <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="pelapor_req" type="text" class="form-control" id="pelapor_req" placeholder="Pelapor" value="{{ Auth::user()->username }}" readonly>
+                      <input name="pelapor_req" type="text" class="form-control" id="pelapor_req" placeholder="Pelapor" value="{{ Auth::user()->rs_divisi }}" readonly>
                     </div>
                   </div>
                   <div class="form-group row">

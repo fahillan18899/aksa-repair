@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('kode_rs')->index();
             $table->string('level');
+            $table->string('divisi');
         });
     }
 

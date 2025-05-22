@@ -20,7 +20,8 @@ class PesananUserController extends Controller
     {
         $kodeRs_ = Auth::user()->kode_rs;
         $userName_ = Auth::user()->username;
-        $items = DB::table('pesanans')->where('kode_rs', $kodeRs_)->where('pelapor_req', $userName_)->get();
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
+        $items = DB::table('pesanans')->where('kode_rs', $kodeRs_)->where('pelapor_req', $divisi)->get();
         $dataInv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->where('lokasi_alat', $userName_)->get();
         return view('pages.user.pesanan_user.index', [
 
@@ -28,6 +29,7 @@ class PesananUserController extends Controller
             'dataInv' => $dataInv
             
         ]);
+        
     }
 
     /**
@@ -54,6 +56,7 @@ class PesananUserController extends Controller
             'merek_req' => '',
             'type_req' => '',
             'sn_req' => '',
+            'lokasi_req' => '',
             'kerusakan_req' => '',
             'pelapor_req' => '',
             'tanggal_req' => '',

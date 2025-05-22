@@ -168,17 +168,17 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <th class="">No</th>
-                      <th class="">Id_Perbaikan</th>
-                      <th class="">ID Aset</th>
-                      <th class="">Tanggal Perbaikan</th>
-                      <th class="">Nama Alat</th>
+                      <th class="none">Id_Perbaikan</th>
+                      <th class="none">ID Aset</th>
+                      <th class="">Tanggal</th>
+                      <th class="">Nama</th>
+                      <th class="">Merek</th>
+                      <th class="">Type</th>
+                      <th class="">Serial_Number</th>
+                      <th class="">Lokasi</th>
                       <th class="">Status</th>
-                      <th class="none">Merek Alat</th>
-                      <th class="none">Type Alat</th>
-                      <th class="none">Serial Number</th>
-                      <th class="none">Lokasi Alat</th>
                       <th class="none">Pelapor</th>
-                      <th class="none">Keterangan Kondisi Alat</th>
+                      <th class="">Keterangan</th>
                       <th class="none">Kepala Ruangan</th>
                       <th class="none">Teknisi 1</th>
                       <th class="none">Teknisi 2</th>
@@ -191,9 +191,13 @@
                       <tr class="odd gradeX">
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $item->id_perbaikan_reg }}</td>
-                        <td>{{ $item->ide_perbaikan_reg }}</td>
+                        <td>{{ $item->id_aset_reg }}</td>
                         <td>{{ $item->tanggal_perbaikan_reg }}</td>
                         <td>{{ $item->nama_alat_reg }}</td>
+                        <td>{{ $item->merek_alat_reg }}</td>
+                        <td>{{ $item->type_alat_reg }}</td>
+                        <td>{{ $item->serial_number_reg }}</td>
+                        <td>{{ $item->lokasi_alat_reg }}</td>
                         <td>
                           <form action="" class="form-inner" method="post">
                             @csrf
@@ -202,12 +206,16 @@
                               class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger' }}" type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                           </form>
                         </td>
-                        <td>{{ $item->merek_alat_reg }}</td>
-                        <td>{{ $item->type_alat_reg }}</td>
-                        <td>{{ $item->serial_number_reg }}</td>
-                        <td>{{ $item->lokasi_alat_reg }}</td>
                         <td>{{ $item->pelapor_reg }}</td>
-                        <td>{{ $item->keterangan_kondisi_alat_reg }}</td>
+                        <td>
+                          <form
+                            action="{{ route('kondisi_alat', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'success' : 'warning' }}"
+                              type="submit" disabled>{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
+                          </form>
+                        </td>
                         <td>{{ $item->ka_instalasi_reg }}</td>
                         <td>{{ $item->teknisi_1_reg }}</td>
                         <td>{{ $item->teknisi_2_reg }}</td>
@@ -246,10 +254,10 @@
                     <thead class="table-light">
                       <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Id Aset</th>
-                        <th scope="col">Nama Alat</th>
-                        <th scope="col">Merek Alat</th>
-                        <th scope="col">Type Alat</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Serial Number</th>
                         <th scope="col">Pelapor</th>
                         <th scope="col">Tanggal</th>

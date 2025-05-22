@@ -48,6 +48,8 @@
   ['RSUD ANSARISALEH', 'RS0031'],
   ['RSUD SULTAN SURIANSYAH', 'RS0032'],
   ['RSIY PDHI YOGYAKARTA', 'RS0033'],
+    ['RS PERMATA KUNINGAN', 'RS0034'],
+  ['RS WIJAYA KUSUMA KUNINGAN', 'RS0035'],
   ];
   @endphp
   <div class="login-wrapper">

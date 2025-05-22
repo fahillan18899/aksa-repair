@@ -22,7 +22,10 @@ class OperatorController extends Controller
             'username' => 'required|unique:users|max:255',
             'password' => 'required|min:5',
             'user_role' => '',
+            'rs' => '',
+            'divisi' => '',
         ]);
+        $request['rs_divisi'] = $request['rs'] . $request['divisi'];
         $request['password'] = bcrypt($request->input('password'));
         $request['kode_rs'] = Auth::user()->kode_rs;
         User::create($request->post());

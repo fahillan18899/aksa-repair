@@ -16,12 +16,14 @@ class DashboardUserController extends Controller
 
     public function index()
     {
+        
         $userName_ = Auth::user()->username;
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
         $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', Auth::user()->username)->get();
-        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $userName_)->get();
         $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
+        $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
+        $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $divisi)->get();
+        $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $divisi)->get();
 
         return view('pages.user.dashboard.index', 
         compact('registrasi', 'perbaikanRegistrasi', 'dataPerbaikan', 'itemPesanan', 'lembarPemeliharaan'));
