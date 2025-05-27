@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Http\Controllers\Controller;
+use App\Models\Teknisi;
 use App\Models\Registrasi;
 use App\Models\pemantauan;
-use App\Models\Teknisi;
+use App\Models\StockOpname;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PemantauanController extends Controller
 {
     public function index()
     {
-        $Inv = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $teknisis = Teknisi::where('kode_rs', Auth::user()->kode_rs)->get();
+        $part  = StockOpname::where('kode_rs', Auth::user()->kode_rs)->get();
         $invPemantauan = pemantauan::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.pemantauan.index',
-        compact('Inv', 'invPemantauan', 'teknisis'));
+        compact('invPemantauan', 'part', 'teknisis'));
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
 
             'id_pemantauan' => '',
             'tanggal'  => '',
@@ -73,16 +74,23 @@ class PemantauanController extends Controller
 
         ]);
 
-        if (isset($data['foto_pendukung'])) {
-            $data['foto_pendukung'] = $request->file('foto_pendukung')->store(
+        if (isset($request['foto_pendukung'])) {
+            $request['foto_pendukung'] = $request->file('foto_pendukung')->store(
                 'assets/gallery',
                 'public'
             );
         }
-        $data['kode_rs'] = Auth::user()->kode_rs;
-        $data['persiapan'] = json_encode($data['persiapan']);
-        $data['pemantauan'] = json_encode($data['pemantauan']);
-        pemantauan::create($data);
+        $request['kode_rs'] = Auth::user()->kode_rs;
+        $request['persiapan'] = json_encode($request['persiapan']);
+        $request['pemantauan'] = json_encode($request['pemantauan']);
+
+        // Cek stok
+        $stock = StockOpname::where('nama', $request->nama_sukucadang)->first();
+        if (!$stock || $stock->stock < $request->volume) {
+            return back()->with('error', "Stok {$request->nama_sukucadang} tidak cukup!");
+        }
+        pemantauan::create($request->post());
+        $stock->decrement('stock', $request->volume);
 
         return redirect()->route('pemantauan.index')
         ->with('success', 'Pemantauan Berhasil Disimpan');

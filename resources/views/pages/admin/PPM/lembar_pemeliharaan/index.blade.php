@@ -464,9 +464,14 @@
                   </center>
 
                   <div class="form-group row">
-                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sukucadang</label>
+                    <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Part</label>
                     <div class="col-xs-9">
-                      <input name="nama_sukucadang" type="text" class="form-control" id="nama_sukucadang" placeholder="Nama Sukucadang">
+                      <select name="nama_sukucadang" class="form-control">
+                        <option> -- Pilih Part -- </option>
+                        @foreach($part as $item)
+                        <option value="<?= $item['nama'] ?>"><?= $item['nama'] ?></option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 
@@ -980,7 +985,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
 </script>
 @endpush
 @endsection
