@@ -54,13 +54,13 @@
           <div class="panel-body panel-form">
             <table id="table-register" class="datatable table table-striped table-bordered" style="width:100%">
               <thead class="table-light">
-                <th>Id Aset</th>
+                <th>ID Aset</th>
                 <th class="none">Jenis</th>
                 <th>Nama</th>
                 <th>Merek</th>
                 <th>Type</th>
                 <th class="none">Gambar</th>
-                <th>Serial Number</th>
+                <th>Serial_Number</th>
                 <th>Ruangan</th>
                 <th class="none">Tanggal_Kalibrasi</th>
                 <th class="none">Distributor</th>
@@ -79,7 +79,7 @@
                 <th class="none">No_Inventaris </th>
                 <th class="none">umur_alat</th>
                 <th class="none">Jadwal</th>
-                <th>Tombol_Aksi_Tabel</th>
+                <th>Tombol_Aksi</th>
               </thead>
               <tbody>
                 @forelse ($items as $index => $item)

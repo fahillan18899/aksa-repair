@@ -291,7 +291,7 @@
           <div class="panel-body panel-form">
             <table id="table-register" class="datatable table table-striped table-bordered" style="width:100%">
               <thead class="table-light">
-                <th>Id Aset</th>
+                <th>ID Aset</th>
                 <th>Jenis</th>
                 @if(Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == "RS0020")
                 <th>Nomklatur</th>

@@ -76,7 +76,7 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Id</th>
+                      <th scope="col">ID</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Merek</th>
                       <th scope="col">Type</th>
@@ -269,7 +269,7 @@
                       <th class="">Nama</th>
                       <th class="">Merek</th>
                       <th class="">Type</th>
-                      <th class="">Serial Number</th>
+                      <th class="">Serial_Number</th>
                       <th class="">Lokasi</th>
                       <th class="">Status</th>
                       <th class="">Kondisi Alat </th>
@@ -287,7 +287,7 @@
                       <th class="none">Keluhan Dari alat :</th>
                       <th class="none">Korektif :</th>
                       <th scope="col" class="none">Foto Perbaikan :</th>
-                      <th class="">Tombol Eksekusi</th>
+                      <th class="">Tombol</th>
                     </thead>
                     <tbody>
                       @forelse ($items as $index => $item)
@@ -388,13 +388,13 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
-                        <th scope="col">ID Aset</th>
-                        <th scope="col">Nama Alat</th>
-                        <th scope="col">Merek Alat</th>
-                        <th scope="col">Type Alat</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Serial Number</th>
                         <th scope="col">Pelapor</th>
-                        <th scope="col">Kerusakan Alat</th>
+                        <th scope="col">Kerusakan</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Tombol Aksi</th>
                       </tr>

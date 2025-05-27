@@ -55,7 +55,7 @@
                     <i class="text-danger">*</i><label for="note" class="col-xs-12 col-form-label">Klik Colom Pengisian id aset untuk load data setelah id aset muncul atau ada</label>
                   </div>
                   <div class="form-group row">
-                    <label for="id" class="col-xs-3 col-form-label">Id Aset <i class="text-danger">*</i></label>
+                    <label for="id" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="id" type="text" class="form-control" id="id"
                         placeholder="id alat muncul setelah scan qr / ketik manual id aset alat" style="cursor: pointer;"
@@ -153,16 +153,16 @@
                     <thead class="table-light">
                       <tr>
                         <th scope="col">No</th>
-                        <th scope="col">Id Aset</th>
-                        <th scope="col">Nama Alat</th>
-                        <th scope="col">Merek Alat</th>
-                        <th scope="col">Type Alat</th>
-                        <th scope="col">Serial Number</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Serial_Number</th>
                         <th scope="col">Lokasi</th>
-                        <th scope="col">Kerusakan Alat</th>
+                        <th scope="col">Kerusakan</th>
                         <th scope="col">Pelapor</th>
                         <th scope="col">Tanggal</th>
-                        <th scope="col">Tombol_Aksi_Table</th>
+                        <th scope="col">Tombol</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -123,8 +123,8 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <th class="">No</th>
-                    <th class="">Lokasi Alat</th>
-                    <th class="">Nama Alat</th>
+                    <th class="">Lokasi</th>
+                    <th class="">Nama</th>
                     <th class="">Pemeliharaan 1</th>
                     <th class="">Pemeliharaan 2</th>
                     <th class="">Pemeliharaan 3</th>

@@ -86,15 +86,15 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">ID Aset</th>
-                      <th scope="col">Nama Alat</th>
-                      <th scope="col">Merek Alat</th>
-                      <th scope="col">Type Alat</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Merek</th>
+                      <th scope="col">Type</th>
                       <th scope="col">Serial Number</th>
                       <th scope="col">Pelapor</th>
-                      <th scope="col">Kerusakan Alat</th>
+                      <th scope="col">Kerusakan</th>
                       <th scope="col">Tanggal</th>
-                      <th scope="col">Tombol_Aksi_Table</th>
+                      <th scope="col">Tombol_Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -279,14 +279,14 @@
                   <th scope="col" class="">ID Perbaikan</th>
                   <th scope="col" class="none">ID Aset :</th>
                   <th scope="col" class="none">Tanggal Perbaikan :</th>
-                  <th scope="col" class="">Nama Alat</th>
-                  <th scope="col" class="">Merek Alat</th>
-                  <th scope="col" class="">Type Alat</th>
-                  <th scope="col" class="">Serial Number</th>
-                  <th scope="col" class="none">Lokasi Alat</th>
+                  <th scope="col" class="">Nama</th>
+                  <th scope="col" class="">Merek</th>
+                  <th scope="col" class="">Type</th>
+                  <th scope="col" class="">Serial_Number</th>
+                  <th scope="col" class="none">Lokasi</th>
                   <th scope="col" class="">Status</th>
                   <th scope="col" class="none">Pelapor :</th>
-                  <th scope="col" class="">Keterangan Kondisi Alat :</th>
+                  <th scope="col" class="">Keterangan</th>
                   <th scope="col" class="none">Kepala Ruangan :</th>
                   <th scope="col" class="none">Teknisi 1 :</th>
                   <th scope="col" class="none">Teknisi 2 :</th>
@@ -300,7 +300,7 @@
                   <th scope="col" class="none">Keluhan Dari alat :</th>
                   <th scope="col" class="none">Korektif :</th>
                   <th scope="col" class="none">Foto Perbaikan :</th>
-                  <th scope="col" class="">Tombol Eksekusi</th>
+                  <th scope="col" class="">Tombol</th>
                 </thead>
                 <tbody>
                   @forelse ($items as $index => $item)
@@ -511,11 +511,11 @@
                   <th scope="col" class="none">Tanggal_Perbaikan :</th>
                   <th scope="col" class="none">Tanggal_Pengiriman :</th>
                   <th scope="col" class="none">ID Aset</th>
-                  <th scope="col" class="">Nama_Alat</th>
-                  <th scope="col" class="">Merek_Alat</th>
-                  <th scope="col" class="">Type_Alat</th>
-                  <th scope="col" class="">Seri_Number</th>
-                  <th scope="col" class="">Lokasi_Alat</th>
+                  <th scope="col" class="">Nama</th>
+                  <th scope="col" class="">Merek</th>
+                  <th scope="col" class="">Type</th>
+                  <th scope="col" class="">Seri Number</th>
+                  <th scope="col" class="">Lokasi</th>
                   <th scope="col" class="none">Teknisi 1 :</th>
                   <th scope="col" class="none">Teknisi 2 :</th>
                   <th scope="col" class="none">Teknisi 3 :</th>
@@ -531,7 +531,7 @@
                   <th scope="col" class="none">Alamat Rekan :</th>
                   <th scope="col" class="none">Teknisi Rekanan :</th>
                   <th scope="col" class="none">Telp Teknisi Rekanan :</th>
-                  <th scope="col" class="">Tombol_Aksi_Tabel</th>
+                  <th scope="col" class="">Tombol</th>
                 </thead>
                 <tbody>
                   @forelse ($result_pengiriman as $index => $item)
@@ -756,15 +756,15 @@
                 <thead class="table-light">
                   <th scope="col" class="">No</th>
                   <th scope="col" class="">ID_Perbaikan</th>
-                  <th scope="col" class="">Nama_Alat</th>
+                  <th scope="col" class="">Nama</th>
                   <th scope="col" class="none">Tanggal Perbaikan :</th>
                   <th scope="col" class="">Merek</th>
                   <th scope="col" class="none">ID Aset :</th>
-                  <th scope="col" class="">Type_Alat</th>
+                  <th scope="col" class="">Type</th>
                   <th scope="col" class="none">Tanggal Pengembalian :</th>
-                  <th scope="col" class="">Serial_Number</th>
+                  <th scope="col" class="">Serial Number</th>
                   <th scope="col" class="none">Pelapor :</th>
-                  <th scope="col" class="">Lokasi_Alat</th>
+                  <th scope="col" class="">Lokasi</th>
                   <th scope="col" class="none">Penerima :</th>
                   <th scope="col" class="none">Harga Perbaikan :</th>
                   <th scope="col" class="none">Teknisi 1 :</th>
@@ -783,7 +783,7 @@
                   <th scope="col" class="none">Hasil Verifikasi :</th>
                   <th scope="col" class="none">Hasil Fungsi :</th>
                   <th scope="col" class="none">Pengganti Suku Cadang :</th>
-                  <th scope="col" class="">Tombol_Aksi_Tabel</th>
+                  <th scope="col" class="">Tombol</th>
                 </thead>
                 <tbody>
                   @forelse ($result_pengembalian as $index => $item)
@@ -957,26 +957,26 @@
                 <thead class="table-light">
                   <th scope="col">No</th>
                   <th class="">ID_Perbaikan</th>
-                  <th class="none">Tanggal_Perbaikan</th>
-                  <th class="none">Tanggal_Penggudangan</th>
-                  <th class="">Nama Alat</th>
-                  <th class="">Merek Alat</th>
-                  <th class="">Type Alat</th>
+                  <th class="none">Tanggal_Perbaikan :</th>
+                  <th class="none">Tanggal_Penggudangan :</th>
+                  <th class="">Nama</th>
+                  <th class="">Merek</th>
+                  <th class="">Type</th>
                   <th class="">Serial Number</th>
-                  <th class="">Lokasi Alat</th>
-                  <th class="none">Pelapor</th>
-                  <th class="none">Teknisi_1</th>
-                  <th class="none">Teknisi_2</th>
-                  <th class="none">Teknisi_3</th>
-                  <th class="none">Teknisi_4</th>
-                  <th class="none">Teknisi_5</th>
-                  <th class="none">Nama Sperpart</th>
-                  <th class="none">Volume Sperpart</th>
-                  <th class="none">Harga Satuan Sperpart</th>
-                  <th class="none">Jumlah Harga Sperpart</th>
-                  <th class="none">Kepala Ruangan</th>
-                  <th class="none">Keterangan_Pengguna</th>
-                  <th class="">Tombol_Aksi_Tabel</th>
+                  <th class="">Lokasi</th>
+                  <th class="none">Pelapor :</th>
+                  <th class="none">Teknisi_1 :</th>
+                  <th class="none">Teknisi_2 :</th>
+                  <th class="none">Teknisi_3 :</th>
+                  <th class="none">Teknisi_4 :</th>
+                  <th class="none">Teknisi_5 :</th>
+                  <th class="none">Nama Sperpart :</th>
+                  <th class="none">Volume Sperpart :</th>
+                  <th class="none">Harga Satuan Sperpart :</th>
+                  <th class="none">Jumlah Harga Sperpart :</th>
+                  <th class="none">Kepala Ruangan :</th>
+                  <th class="none">Keterangan_Pengguna :</th>
+                  <th class="">Tombol</th>
                 </thead>
                 <tbody>
                   @forelse ($result_penghapusan as $index => $item)
@@ -1087,12 +1087,12 @@
                     <thead class="table-light">
                       <tr>
                         <th scope="col">ID Aset</th>
-                        <th scope="col">Nama Alat</th>
-                        <th scope="col">Merek Alat</th>
-                        <th scope="col">Type Alat</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Serial Number</th>
                         <th scope="col">Pelapor</th>
-                        <th scope="col">Kerusakan Alat</th>
+                        <th scope="col">Kerusakan</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Tombol Aksi</th>
                       </tr>

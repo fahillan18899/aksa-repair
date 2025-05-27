@@ -128,14 +128,14 @@
                     <table class="datatable table table-striped table-bordered" style="width:100%">
                       <thead class="table-light">
                         <th scope="col">No</th>
-                        <th scope="col">Lokasi Alat</th>
-                        <th scope="col">Nama Alat</th>
-                        <th scope="col">Pemeliharaan 1</th>
-                        <th scope="col">Pemeliharaan 2</th>
-                        <th scope="col">Pemeliharaan 3</th>
-                        <th scope="col">Pemeliharaan 4</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Pemeliharaan_1</th>
+                        <th scope="col">Pemeliharaan_2</th>
+                        <th scope="col">Pemeliharaan_3</th>
+                        <th scope="col">Pemeliharaan_4</th>
                         <th scope="col">Keterangan</th>
-                        <th scope="col">Tombol Aksi</th>
+                        <th scope="col">Tombol</th>
                       </thead>
                       <tbody>
                         @forelse ($items as $index =>$items)

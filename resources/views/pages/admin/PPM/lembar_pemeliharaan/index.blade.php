@@ -593,7 +593,7 @@
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Tanggal Pemeliharaan</th>
-                    <th scope="col">Id Aset</th>
+                    <th scope="col">ID Aset</th>
                     <th scope="col">Nama Alat</th>
                     <th scope="col">Merek</th>
                     <th scope="col">Tipe</th>

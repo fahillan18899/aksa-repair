@@ -48,8 +48,8 @@
                     <table class="table table-hover table-bordered " id="scollDatatable" style="width:100%">
                       <thead class="table-light">
                         <th scope="col">No</th>
-                        <th scope="col">Id Aset</th>
-                        <th scope="col">Nama Alat</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Merek</th>
                         <th scope="col">Tipe</th>
                         <th scope="col">Serial Number</th>

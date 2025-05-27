@@ -58,12 +58,12 @@
                     <table class="datatable table table-striped table-bordered" style="width:100%">
                       <thead class="table-light">
                         <th scope="col">No</th>
-                        <th scope="col">ID_Aset</th>
-                        <th scope="col">Nama_Alat</th>
-                        <th scope="col">Merek_Alat</th>
-                        <th scope="col">Type_Alat</th>
-                        <th scope="col">Serial_Number</th>
-                        <th scope="col">Lokasi_Alat</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Lokasi</th>
                       </thead>
                       <tbody>
                         @forelse ($asetPerbaikanT as $index => $item)
