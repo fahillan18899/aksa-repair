@@ -4,7 +4,7 @@
 @push('addon-style')
 <style>
   .td-custom {
-    padding: 5px 0 5px 80px;
+    padding: 3px 0 3px 80px;
     text-align: left;
     border-color: #b8b4b4;
   }
@@ -20,6 +20,24 @@
     border-radius: 15px;
     cursor: crosshair;
   }
+
+  .modal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+  }
+
+  .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body {
+    flex: 1;
+    overflow-y: auto;
+  }
 </style>
 @endpush
 
@@ -31,111 +49,90 @@
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
           <div class="card" id="PrintMe">
+            @if(Auth::user()->user_role == 'admin')
+            @php
+            $kopSurat = [
+            "RS0000" => "kop_surat_demo.png",
+            "RS0001" => "xxx.png",
+            "RS0002" => "xxx.png",
+            "RS0003" => "xxx.png",
+            "RS0004" => "xxx.png",
+            "RS0005" => "xxx.png",
+            "RS0006" => "xxx.png",
+            "RS0007" => "xxx.png",
+            "RS0008" => "xxx.png",
+            "RS0017" => "kop_surat_kendal.png",
+            ];
+            @endphp
+
+            @if(isset($kopSurat[Auth::user()->kode_rs]))
             <div class="align-center mt-5">
-
+              <img src="{{ url('assets/kop-surat/' . $kopSurat[Auth::user()->kode_rs]) }}" alt="Kop Surat" width="100%">
             </div>
-
-            <div class="card-body">
-              <table id="printContent" width="100%" border="1px dot yellow" cellspacing="10" style="margin-top: 10px;">
-                <thead>
-                  <tr>
-                    <td colspan="2">
-                      @if(Auth::user()->user_role == 'admin')
-                      @php
-                      $kopSurat = [
-                      "RS0000" => "kop_surat_demo.png",
-                      "RS0001" => "xxx.png",
-                      "RS0002" => "xxx.png",
-                      "RS0003" => "xxx.png",
-                      "RS0004" => "xxx.png",
-                      "RS0005" => "xxx.png",
-                      "RS0006" => "xxx.png",
-                      "RS0007" => "xxx.png",
-                      "RS0008" => "xxx.png",
-                      "RS0017" => "kop_surat_kendal.png",
-                      ];
-                      @endphp
-
-                      @if(isset($kopSurat[Auth::user()->kode_rs]))
-                      <img src="{{ url('assets/kop-surat/' . $kopSurat[Auth::user()->kode_rs]) }}"
-                        alt="Kop Surat" width="100%">
-                      @endif
-                      @endif
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="text-center" colspan="2">
-                      <h3>Report Data Inventaris</h3>
-                    </td>
-                  </tr>
-
-                  @php
-                  $fields = [
-                  "Id Aset" => "id_aset",
-                  "Jenis Alat" => "jenis_alat",
-                  "Nama Alat" => "nama_alat",
-                  "Merek" => "merek",
-                  "Type" => "type",
-                  "Serial Number" => "serial_number",
-                  "Lokasi" => "lokasi_alat",
-                  "Penyusutan Aset" => "penyusutan_aset",
-                  "Tanggal Kalibrasi" => "tanggal_kalibrasi",
-                  "Nomor Sertifikat Kalibrasi" => "no_sertifikat_kalibrasi",
-                  ];
-                  @endphp
-
-                  @foreach($fields as $label => $key)
-                  <tr>
-                    <td width="50%" class="td-custom">{{ $label }}</td>
-                    <td class="td-custom">{{ $item[$key] ?? '-' }}</td>
-                  </tr>
-                  @endforeach
-
-                  <tr>
-                    <td class="td-custom"><br></td>
-                    <td class="td-custom"><br></td>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center">Teknisi</td>
-                    <td class="text-center">Kepala Ruangan</td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <!-- Tanda Tangan -->
-                      <img style="margin-left: 100px;" id="ttd_image1" src="" alt="Tanda tangan akan muncul di sini" />
-                      <!-- Tandatangan N-->
-                    </td>
-                    <td>
-                      <!-- Tanda Tangan -->
-                      <img style="margin-left: 100px;" id="ttd_image2" src="" alt="Tanda tangan akan muncul di sini" />
-                      <!-- Tandatangan N-->
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center">{{ $item['teknisi_ppm'] ?? '-' }}</td>
-                    <td class="text-center">.................................</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            @endif
+            @endif
+            <!--TABEL-->
+            <table class="table table-striped table-bordered" style="width:100%; margin-top: 20px; margin-bottom: 20px;">
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center" colspan="2" scope="col">DATA PERBAIKAN ALAT</th>
+                </tr>
+              </thead>
+              <tbody>
+                @php
+                $data = [
+                "ID ASET" => "id_aset",
+                "JENIS ALAT" => "jenis_alat",
+                "NAMA ALAT" => "nama_alat",
+                "MEREK" => "merek",
+                "TYPE" => "type",
+                "LOKASI" => "lokasi_alat",
+                "PENYUSUTAN ASET" => "penyusutan_aset",
+                "TANGGAL KALIBRASI" => "tanggal_kalibrasi",
+                "NOMER SERTIFIKAT KALIBRASI" => "no_sertifikat_kalibrasi"
+                ];
+                @endphp
+                @foreach($data as $label => $key)
+                <tr>
+                  <td class="text-center" width="50%"><b>{{ $label }}</b></td>
+                  <td>{{ $item->$key ?? '-' }}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+            <!--TABEL-->
+            <!--TABEL-->
+            <table class="table table-striped table-bordered" style="width:100%; margin-top: 40px; margin-bottom: 20px;">
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center" scope="col">KEPALA RUANGAN</th>
+                  <th class="text-center" scope="col">TEKNISI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="center"><img style="margin-left: 50px;" id="ttd_image1" src="" alt="Tanda tangan akan muncul disini" /></td>
+                  <td align="center"><img style="margin-left: 50px;" id="ttd_image2" src="" alt="Tanda tangan akan muncul disini" /></td>
+                </tr>
+                <tr>
+                  <td align="center">{{ $item->teknisi_ppm ?? "-" }}</td>
+                  <td align="center">{{ $item->teknisi_ppm ?? "-" }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <!--TABEL-->
           </div>
-
           <div class="panel-footer no-print text-center">
-            <button class="btn btn-primary mb-3" onclick="printTableMonitoring()">Print</button>
-            <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#exampleModal">TTD</button>
+            <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;"
+              data-toggle="modal" data-target="#exampleModal">TTD</button>
+            <button type="button" onclick="printContent('PrintMe')" class="btn btn-danger">
+              <i class="fa fa-print"></i> Print</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- modal  -->
-<!-- Button trigger modal  -->
 <!-- Modal  -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -148,30 +145,73 @@
           <table>
             <tr>
               <!-- ttd 1-->
-              <!-- Area Tanda Tangan -->
-              <div class="row" style="margin-left: 5px;">
-                <div class="col-md-12">
-                  <p>Tanda tangan Teknisi</p>
-                  <canvas id="ttd_canvas1" width="150" height="100"></canvas>
-                  <div class="mt-2">
-                    <button class="btn btn-primary" id="ttd_submitBtn1">Submit</button>
-                    <button class="btn btn-default" id="ttd_clearBtn1">Clear</button>
+              <!-- Content -->
+              <td>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <p>Tanda tangan Kepala Ruangan</p>
                   </div>
                 </div>
-              </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <canvas id="ttd_canvas1" width="150" height="100">
+                      Get a better browser, bro.
+                    </canvas>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" id="ttd_submitBtn1">Submit Signature</button>
+                    <button class="btn btn-default" id="ttd_clearBtn1">Clear Signature</button>
+                  </div>
+                </div>
+                <br />
+                <div class="row hidden">
+                  <div class="col-md-12">
+                    <textarea id="ttd_dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                  </div>
+                </div>
+                <br />
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                  </div>
+                </div>
+              </td>
               <!-- ttd 1N-->
               <!-- ttd 2-->
-              <!-- Area Tanda Tangan -->
-              <div class="row" style="margin-left: 5px;">
-                <div class="col-md-12">
-                  <p>Tanda tangan Teknisi</p>
-                  <canvas id="ttd_canvas2" width="150" height="100"></canvas>
-                  <div class="mt-2">
-                    <button class="btn btn-primary" id="ttd_submitBtn2">Submit</button>
-                    <button class="btn btn-default" id="ttd_clearBtn2">Clear</button>
+              <!-- Content -->
+              <td>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <p>Tanda tangan Teknisi</p>
                   </div>
                 </div>
-              </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <canvas id="ttd_canvas2" width="150" height="100">
+                      Get a better browser, bro.
+                    </canvas>
+                  </div>
+                </div>
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+                    <button class="btn btn-primary" id="ttd_submitBtn2">Submit Signature</button>
+                    <button class="btn btn-default" id="ttd_clearBtn2">Clear Signature</button>
+                  </div>
+                </div>
+                <br />
+                <div class="row hidden">
+                  <div class="col-md-12">
+                    <textarea id="ttd_dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
+                  </div>
+                </div>
+                <br />
+                <div class="row" style="margin-left: 5px;">
+                  <div class="col-md-12">
+
+                  </div>
+                </div>
+              </td>
               <!-- ttd 2N-->
             </tr>
           </table>
@@ -187,177 +227,291 @@
 @endsection
 @push('addon-script')
 <script>
-  // FUNGSI PRINT
-  function printTableMonitoring() {
-    var printContent = document.getElementById("printContent").outerHTML;
-    var originalContent = document.body.innerHTML;
-    document.body.innerHTML =
-      `<html>
-          <head>
-            <title>Print Table</title>
-            <style>
-              table {
-                width: 100%;
-                border-collapse: collapse;
-              }
-              th, td {
-                border: 1px solid black;
-                padding: 8px;
-                text-align: center;
-              }
-              th {
-                background-color:rgb(241, 236, 236);
-                }
-                
-              @media print {
-                .actionColumn {
-                display: none !important;
-                }
-              }
-            </style>
-          </head>
-          <body>
-              ${printContent}
-          </body>
-        </html`;
-    window.print();
-    document.body.innerHTML = originalContent;
-  }
-  // FUNGSI PRINT END
-</script>
-<script>
   // FUNGSI TTD DIGITAL
   // ttd 1
-  document.addEventListener("DOMContentLoaded", function() {
-    const canvas = document.getElementById("ttd_canvas1");
-    const ctx = canvas.getContext("2d");
-    const sigImage = document.getElementById("ttd_image1");
-    const clearBtn = document.getElementById("ttd_clearBtn1");
-    const submitBtn = document.getElementById("ttd_submitBtn1");
+  (function() {
+    window.requestAnimFrame = (function(callback) {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimaitonFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+    })();
 
-    ctx.strokeStyle = "#222";
+    var canvas = document.getElementById("ttd_canvas1");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
 
-    let drawing = false;
-    let lastPos = {
+    var drawing = false;
+    var mousePos = {
       x: 0,
       y: 0
     };
 
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      return {
-        x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left,
-        y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top,
-      };
-    }
 
-    function startDraw(e) {
+    // --
+    var lastPos = mousePos;
+
+    canvas.addEventListener("mousedown", function(e) {
       drawing = true;
-      lastPos = getPos(e);
-    }
+      lastPos = getMousePos(canvas, e);
+    }, false);
 
-    function draw(e) {
-      if (!drawing) return;
-      const pos = getPos(e);
-      ctx.beginPath();
-      ctx.moveTo(lastPos.x, lastPos.y);
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-      lastPos = pos;
-    }
-
-    function stopDraw() {
+    canvas.addEventListener("mouseup", function(e) {
       drawing = false;
+    }, false);
+
+    canvas.addEventListener("mousemove", function(e) {
+      mousePos = getMousePos(canvas, e);
+    }, false);
+    // --
+
+    // Add touch event support for mobile
+    canvas.addEventListener("touchstart", function(e) {
+
+    }, false);
+
+    canvas.addEventListener("touchmove", function(e) {
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchstart", function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchend", function(e) {
+      var me = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(me);
+    }, false);
+
+    function getMousePos(canvasDom, mouseEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: mouseEvent.clientX - rect.left,
+        y: mouseEvent.clientY - rect.top
+      }
     }
+
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      }
+    }
+
+    function renderCanvas() {
+      if (drawing) {
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+        lastPos = mousePos;
+      }
+    }
+    // Add touch event support for mobile N
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchend", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchmove", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+
+    (function drawLoop() {
+      requestAnimFrame(drawLoop);
+      renderCanvas();
+    })();
 
     function clearCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      sigImage.src = "";
+      canvas.width = canvas.width;
     }
+    // Prevent scrolling when touching the canvas N
 
-    function saveSignature() {
-      sigImage.src = canvas.toDataURL();
-    }
+    // Set up the UI
+    var sigText = document.getElementById("ttd_dataUrl1");
+    var sigImage = document.getElementById("ttd_image1");
+    var clearBtn = document.getElementById("ttd_clearBtn1");
+    var submitBtn = document.getElementById("ttd_submitBtn1");
+    clearBtn.addEventListener("click", function(e) {
+      clearCanvas();
+      sigText.innerHTML = "Data URL for your signature will go here!";
+      sigImage.setAttribute("src", "");
+    }, false);
+    submitBtn.addEventListener("click", function(e) {
+      var dataUrl = canvas.toDataURL();
+      sigText.innerHTML = dataUrl;
+      sigImage.setAttribute("src", dataUrl);
+    }, false);
 
-    canvas.addEventListener("mousedown", startDraw);
-    canvas.addEventListener("mousemove", draw);
-    canvas.addEventListener("mouseup", stopDraw);
-    canvas.addEventListener("mouseleave", stopDraw);
-
-    canvas.addEventListener("touchstart", startDraw);
-    canvas.addEventListener("touchmove", draw);
-    canvas.addEventListener("touchend", stopDraw);
-
-    clearBtn.addEventListener("click", clearCanvas);
-    submitBtn.addEventListener("click", saveSignature);
-  });
+  })();
   // ttd S 1
-  // ttd 2
-  document.addEventListener("DOMContentLoaded", function() {
-    const canvas = document.getElementById("ttd_canvas2");
-    const ctx = canvas.getContext("2d");
-    const sigImage = document.getElementById("ttd_image2");
-    const clearBtn = document.getElementById("ttd_clearBtn2");
-    const submitBtn = document.getElementById("ttd_submitBtn2");
 
-    ctx.strokeStyle = "#222";
+  // ttd 2
+  (function() {
+    window.requestAnimFrame = (function(callback) {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimaitonFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+    })();
+
+    var canvas = document.getElementById("ttd_canvas2");
+    var ctx = canvas.getContext("2d");
+    ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
 
-    let drawing = false;
-    let lastPos = {
+    var drawing = false;
+    var mousePos = {
       x: 0,
       y: 0
     };
 
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      return {
-        x: (e.touches ? e.touches[0].clientX : e.clientX) - rect.left,
-        y: (e.touches ? e.touches[0].clientY : e.clientY) - rect.top,
-      };
-    }
 
-    function startDraw(e) {
+    // --
+    var lastPos = mousePos;
+
+    canvas.addEventListener("mousedown", function(e) {
       drawing = true;
-      lastPos = getPos(e);
-    }
+      lastPos = getMousePos(canvas, e);
+    }, false);
 
-    function draw(e) {
-      if (!drawing) return;
-      const pos = getPos(e);
-      ctx.beginPath();
-      ctx.moveTo(lastPos.x, lastPos.y);
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-      lastPos = pos;
-    }
-
-    function stopDraw() {
+    canvas.addEventListener("mouseup", function(e) {
       drawing = false;
+    }, false);
+
+    canvas.addEventListener("mousemove", function(e) {
+      mousePos = getMousePos(canvas, e);
+    }, false);
+    // --
+
+    // Add touch event support for mobile
+    canvas.addEventListener("touchstart", function(e) {
+
+    }, false);
+
+    canvas.addEventListener("touchmove", function(e) {
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousemove", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchstart", function(e) {
+      mousePos = getTouchPos(canvas, e);
+      var touch = e.touches[0];
+      var me = new MouseEvent("mousedown", {
+        clientX: touch.clientX,
+        clientY: touch.clientY
+      });
+      canvas.dispatchEvent(me);
+    }, false);
+
+    canvas.addEventListener("touchend", function(e) {
+      var me = new MouseEvent("mouseup", {});
+      canvas.dispatchEvent(me);
+    }, false);
+
+    function getMousePos(canvasDom, mouseEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: mouseEvent.clientX - rect.left,
+        y: mouseEvent.clientY - rect.top
+      }
     }
+
+    function getTouchPos(canvasDom, touchEvent) {
+      var rect = canvasDom.getBoundingClientRect();
+      return {
+        x: touchEvent.touches[0].clientX - rect.left,
+        y: touchEvent.touches[0].clientY - rect.top
+      }
+    }
+
+    function renderCanvas() {
+      if (drawing) {
+        ctx.moveTo(lastPos.x, lastPos.y);
+        ctx.lineTo(mousePos.x, mousePos.y);
+        ctx.stroke();
+        lastPos = mousePos;
+      }
+    }
+    // Add touch event support for mobile N
+
+    // Prevent scrolling when touching the canvas
+    document.body.addEventListener("touchstart", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchend", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+    document.body.addEventListener("touchmove", function(e) {
+      if (e.target == canvas) {
+        e.preventDefault();
+      }
+    }, false);
+
+    (function drawLoop() {
+      requestAnimFrame(drawLoop);
+      renderCanvas();
+    })();
 
     function clearCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      sigImage.src = "";
+      canvas.width = canvas.width;
     }
+    // Prevent scrolling when touching the canvas N
 
-    function saveSignature() {
-      sigImage.src = canvas.toDataURL();
-    }
+    // Set up the UI
+    var sigText = document.getElementById("ttd_dataUrl2");
+    var sigImage = document.getElementById("ttd_image2");
+    var clearBtn = document.getElementById("ttd_clearBtn2");
+    var submitBtn = document.getElementById("ttd_submitBtn2");
+    clearBtn.addEventListener("click", function(e) {
+      clearCanvas();
+      sigText.innerHTML = "Data URL for your signature will go here!";
+      sigImage.setAttribute("src", "");
+    }, false);
+    submitBtn.addEventListener("click", function(e) {
+      var dataUrl = canvas.toDataURL();
+      sigText.innerHTML = dataUrl;
+      sigImage.setAttribute("src", dataUrl);
+    }, false);
 
-    canvas.addEventListener("mousedown", startDraw);
-    canvas.addEventListener("mousemove", draw);
-    canvas.addEventListener("mouseup", stopDraw);
-    canvas.addEventListener("mouseleave", stopDraw);
-
-    canvas.addEventListener("touchstart", startDraw);
-    canvas.addEventListener("touchmove", draw);
-    canvas.addEventListener("touchend", stopDraw);
-
-    clearBtn.addEventListener("click", clearCanvas);
-    submitBtn.addEventListener("click", saveSignature);
-  });
+  })();
   // ttd S 2
   // FUNGSI TTD DIGITAL END
 </script>

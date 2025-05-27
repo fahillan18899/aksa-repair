@@ -147,12 +147,12 @@
                         <th scope="col">No</th>
                         <th scope="col">Id_Perbaikan</th>
                         <th scope="col">ID_Aset</th>
-                        <th scope="col">Tanggal_Perbaikan</th>
-                        <th scope="col">Nama_Alat</th>
-                        <th scope="col" class="none">Merek_Alat</th>
-                        <th scope="col" class="none">Type_Alat</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col" class="none">Merek</th>
+                        <th scope="col" class="none">Type</th>
                         <th scope="col" class="none">Serial_Number</th>
-                        <th scope="col" class="none">Lokasi_Alat</th>
+                        <th scope="col" class="none">Lokasi</th>
                       </thead>
                       <tbody>
                         @forelse ($dataPerbaikan as $index => $item)
