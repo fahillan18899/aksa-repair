@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function autofill($id)
     {
-        $data = Pesanan::where('id', $id)->first();
+        $data = Pesanan::where('id_req', $id)->first();
         return json_encode($data);
     }
 
@@ -117,7 +117,7 @@ class HomeController extends Controller
 
     public function autofillpart($id)
     {
-        $data = Pesanan::where('id', $id)->first();
+        $data = Pesanan::where('id_req', $id)->first();
         return json_encode($data);
     }
 

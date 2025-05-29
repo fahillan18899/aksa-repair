@@ -22,7 +22,7 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'id' => 'unique:pesanans',
+            'id_req' => 'unique:pesanans',
             'nama_req' => '',
             'merek_req' => '',
             'type_req' => '',
@@ -41,7 +41,7 @@ class PesananController extends Controller
 
     public function destroy($id)
     {
-        $item = Pesanan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item = Pesanan::where('id_req', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         $item->delete();
         return redirect('/dashboard/ppm/pesanan')->with('success', 'Aset Telah Selesai Diperbaiki.');
     }

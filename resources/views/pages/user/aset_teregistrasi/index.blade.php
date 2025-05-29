@@ -59,7 +59,7 @@
                     @forelse ($itemPesanan as $index => $item)
                     <tr>
                       <td>{{ $index + 1 }}</td>
-                      <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id }}<span></td>
+                      <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id_req }}<span></td>
                       <td>{{ $item->nama_req }}</td>
                       <td>{{ $item->merek_req }}</td>
                       <td>{{ $item->type_req }}</td>
@@ -68,7 +68,7 @@
                       <td>{{ $item->tanggal_req }}</td>
                       <td>
                         <form
-                          action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id) }}"
+                          action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id_req) }}"
                           method="POST" class="d-inline">
                           @csrf
                           @method('DELETE')

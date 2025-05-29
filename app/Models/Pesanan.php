@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id_req';      // <- ini WAJIB jika ganti nama id
+    public $incrementing = false;          // <- karena bukan auto-increment
+    protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $guarded = [];
-
-    protected $primaryKey = 'id';
+    protected $fillable = [
+        'id_req', 'nama_req', 'merek_req', 'type_req', 'sn_req',
+        'lokasi_req', 'kerusakan_req', 'pelapor_req', 'tanggal_req', 'kode_rs'
+    ];
 }

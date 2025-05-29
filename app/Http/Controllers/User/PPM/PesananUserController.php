@@ -51,7 +51,7 @@ class PesananUserController extends Controller
     public function store(Request $request)
     {
         $dataPesanan =  $request->validate([
-            'id' => 'unique:pesanans',
+            'id_req' => 'unique:pesanans',
             'nama_req' => '',
             'merek_req' => '',
             'type_req' => '',
@@ -69,6 +69,25 @@ class PesananUserController extends Controller
         Pesanan::create($dataPesanan);
         return redirect('/dashboard_user/pesanan_user')
             ->with('success', 'Data Alat Berhasil di Tambahkan.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = Pesanan::where('id_req', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item->delete();
+        return redirect('/dashboard_user/pesanan_user')->with('success', 'Aset Telah Selesai Diperbaiki.');
+    }
+
+    public function getPesanan_user($id)
+    {
+      $pesanan = Registrasi::where("id_aset", $id)->get();
+      return json_encode($pesanan);
     }
 
     /**
@@ -103,24 +122,5 @@ class PesananUserController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $item = Pesanan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
-        $item->delete();
-        return redirect('/dashboard_user/pesanan_user')->with('success', 'Aset Telah Selesai Diperbaiki.');
-    }
-
-    public function getPesanan_user($id)
-    {
-      $pesanan = Registrasi::where("id_aset", $id)->get();
-      return json_encode($pesanan);
     }
 }

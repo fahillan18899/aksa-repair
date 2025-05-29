@@ -75,7 +75,6 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
                       <th scope="col">ID</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Merek</th>
@@ -86,21 +85,8 @@
                       <th scope="col">Tanggal</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    @forelse ($itemPesanan as $index => $item)
-                    <tr>
-                      <td>{{ $index + 1 }}</td>
-                      <td title="klik untuk copy ke form" style="cursor: pointer;" onclick="copy(this)"><span>{{ $item->id }}<span></td>
-                      <td>{{ $item->nama_req }}</td>
-                      <td>{{ $item->merek_req }}</td>
-                      <td>{{ $item->type_req }}</td>
-                      <td>{{ $item->sn_req }}</td>
-                      <td>{{ $item->pelapor_req }}</td>
-                      <td>{{ $item->kerusakan_req }}</td>
-                      <td>{{ $item->tanggal_req }}</td>
-                    </tr>
-                    @empty
-                    @endforelse
+                  <tbody id="pesananBody">
+                    <!-- DATA AJAX -->
                   </tbody>
                 </table>
                 <!--TABEL-->
@@ -361,231 +347,231 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <!-- modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog2" role="document">
-    <div class="modal-content2">
-      <div class="modal-header" style="color:white; background-color:#042a4a;">
-        <h5 class="modal-title" id="exampleModalLabel">Form Perbaikan ganti sperpart</h5>
-      </div>
-      <div class="modal-body2">
-      <!--Tabel Permintaan Perbaikan-->
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default thumbnail">
-
-            <div class="panel-heading no-print">
-              <div class="row">
-                <div class="col-md-5">
-                  <h2>Tabel Permintaan Perbaikan</h2>
-                </div>
-              </div>
-            </div>
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Kerusakan</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Tombol Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @forelse ($itemPesanan as $index => $item)
-                      <tr>
-                        <td title="klik untuk copy ke form" onclick="copy5(this)" style="cursor: pointer;">{{ $item->id }}</td>
-                        <td>{{ $item->nama_req }}</td>
-                        <td>{{ $item->merek_req }}</td>
-                        <td>{{ $item->type_req }}</td>
-                        <td>{{ $item->sn_req }}</td>
-                        <td>{{ $item->pelapor_req }}</td>
-                        <td>{{ $item->kerusakan_req }}</td>
-                        <td>{{ $item->tanggal_req }}</td>
-                        <td>
-                          <form action="{{ route('pesanan.destroy', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
-                              Validasi Perbaikan
-                            </button>
-                          </form>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog2" role="document">
+      <div class="modal-content2">
+        <div class="modal-header" style="color:white; background-color:#042a4a;">
+          <h5 class="modal-title" id="exampleModalLabel">Form Perbaikan ganti sperpart</h5>
         </div>
-      </div>
-      <!--Tabel Permintaan Perbaikan end-->
-        <div class="panel-body panel-form">
-          <div class="row">
-            <div class="col-md-9 col-sm-12">
-              <form action="{{ route('teknisi.perbaikan_teknisi.create') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-              @csrf
-              <div class="form-group row">
-                <label for="ID Aset reg" class="col-xs-3 col-form-label">ID Aset
-                <i class="text-danger">*</i></label>
-                <div class="col-xs-9">
-                  <input name="id_aset_reg" type="text" class="form-control"
-                  id="id_aset_reg_5" placeholder="Klik id aset alat atau Scan Qr code"
-                  readonly data-toggle="tooltip" data-placement="top"
-                  title="Klik disini untuk load data" style="cursor: pointer;">
-                </div>
-              </div>
-              @php
-              $field5 = [
-                'nama_alat_reg'     => 'Nama Alat',
-                'merek_alat_reg'    => 'Merek',
-                'type_alat_reg'     => 'Type',
-                'serial_number_reg' => 'Serial Number',
-                'lokasi_alat_reg'   => 'Lokasi Alat',
-                ]
-              @endphp
-              @for ($i = 5; $i <= 5; $i++)    
-              @foreach($field5 as $name5 => $label5)
-              <div class="form-group row">
-                <label for="{{ $name5 }}" class="col-xs-3 col-form-label">{{ $label5 }}
-                  <i class="text-danger">*</i></label>
-                <div class="col-xs-9">
-                  <input name="{{ $name5 }}" type="text" class="form-control"
-                    id="{{ $name5 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
-                    style="cursor: not-allowed;">
-                </div>
-              </div>
-              @endforeach
-              @endfor
+        <div class="modal-body2">
+        <!--Tabel Permintaan Perbaikan-->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default thumbnail">
 
-              <div class="form-group row">
-                <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
-                <div class="col-xs-9">
-                  <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg"
-                    placeholder="Kepala Ruangan yang betanggung jawab">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
-                  <i class="text-danger">*</i></label>
-                <div class="col-xs-5">
-                  <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
-                    <option>-- Pilih Teknisi --</option>
-                    @foreach ($teknisis as $teknisi)
-                    <option value="<?= $teknisi['nama_teknisi'] ?>">
-                      <?= $teknisi['nama_teknisi'] ?></option>
-                    @endforeach
-                  </select>
-                </div>
-                <div class="col-xs-3">
-                  <button type="button" class="btn btn-primary mt-2" id="btn_tambah_teknisi5"
-                    data-toggle="tooltip" data-placement="top" title="Tambah Teknisi"
-                    style="cursor: pointer;">+</button>
-                </div>
-              </div>
-
-              @for ($i = 2; $i <= 5; $i++)
-                <div class="form-group row teknisi-field" id="teknisi5_{{ $i }}" style="display: none;">
-                <label for="Teknisi_{{ $i }}_reg" class="col-xs-3 col-form-label">Teknisi {{ $i }}</label>
-                <div class="col-xs-5">
-                  <select name="teknisi_{{ $i }}_reg" class="form-control" id="Teknisi_{{ $i }}_reg">
-                    <option value="-">-- Pilih Teknisi --</option>
-                    @foreach ($teknisis as $teknisi)
-                    <option value="{{ $teknisi['nama_teknisi'] }}">{{ $teknisi['nama_teknisi'] }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                </div>
-              @endfor
-
-              <div class="form-group row">
-                <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
-                <div class="col-xs-9">
-                  <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" 
-                  placeholder="Solusi yang harus dilakukan">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
-                <div class="col-xs-9">
-                  <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
-                </div>
-              </div>
-              
-              <div class="form-group row">
-                <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
-                  <div class="col-xs-9">
-                  <select name="suku_cadang" class="form-control" id="nama_sukucadang1">
-                  <option>-- Pilih Item --</option>
-                    @foreach ($itemSperpart as $part)
-                    <option value="<?= $part['nama'] ?>">
-                      <?= $part['nama'] ?></option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
-                  <div class="col-xs-9">
-                    <input name="volume" type="text" class="form-control" id="volume_part" 
-                    placeholder="Volume sperpart/ banyak yang digunakan">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
-                  <div class="col-xs-9">
-                    <input name="harga_satuan" type="text" class="form-control" id="harga_satuan_part" 
-                    placeholder="Harga Satuan dari sperpart">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
-                  <div class="col-xs-9">
-                    <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga_part" 
-                    placeholder="Jumlah Harga Sperpart" readonly>
-                </div>
-              </div>
-              <input name="pelapor_reg" type="hidden" class="form-control" id="pelapor_reg"placeholder="Terisi Otomatis" readonly>
-              <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="keluhan_dari_alat_reg" placeholder="Terisi Otomatis" readonly>
-              <input name="id_perbaikan_reg" type="hidden" class="form-control" id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly style="cursor: not-allowed;">
-              <input name="tanggal_perbaikan_reg" type="hidden" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo date(now()); ?>" readonly style="cursor: not-allowed;">
-
-              <div class="form-group row">
-                <div class="col-sm-offset-3 col-sm-6">
-                  <div class="ui buttons">
-                    <button class="ui positive button">Tambah</button>
+              <div class="panel-heading no-print">
+                <div class="row">
+                  <div class="col-md-5">
+                    <h2>Tabel Permintaan Perbaikan</h2>
                   </div>
                 </div>
               </div>
-              </form>
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+
+                    <!--TABEL-->
+                    <table class="datatable table table-striped table-bordered" style="width:100%">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Merek</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Serial Number</th>
+                          <th scope="col">Pelapor</th>
+                          <th scope="col">Kerusakan</th>
+                          <th scope="col">Tanggal</th>
+                          <th scope="col">Tombol Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @forelse ($itemPesanan as $index => $item)
+                        <tr>
+                          <td title="klik untuk copy ke form" onclick="copy5(this)" style="cursor: pointer;">{{ $item->id_req }}</td>
+                          <td>{{ $item->nama_req }}</td>
+                          <td>{{ $item->merek_req }}</td>
+                          <td>{{ $item->type_req }}</td>
+                          <td>{{ $item->sn_req }}</td>
+                          <td>{{ $item->pelapor_req }}</td>
+                          <td>{{ $item->kerusakan_req }}</td>
+                          <td>{{ $item->tanggal_req }}</td>
+                          <td>
+                            <form action="{{ route('pesanan.destroy', $item->id_req) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('delete')
+                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
+                                Validasi Perbaikan
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                        @empty
+                        @endforelse
+                      </tbody>
+                    </table>
+                    <!--TABEL-->
+                  </div>
+                  <div class="col-md-3"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer" style="color:black; background-color:#042a4a;">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <!--Tabel Permintaan Perbaikan end-->
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-9 col-sm-12">
+                <form action="{{ route('teknisi.perbaikan_teknisi.create') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                @csrf
+                <div class="form-group row">
+                  <label for="ID Aset reg" class="col-xs-3 col-form-label">ID Aset
+                  <i class="text-danger">*</i></label>
+                  <div class="col-xs-9">
+                    <input name="id_aset_reg" type="text" class="form-control"
+                    id="id_aset_reg_5" placeholder="Klik id aset alat atau Scan Qr code"
+                    readonly data-toggle="tooltip" data-placement="top"
+                    title="Klik disini untuk load data" style="cursor: pointer;">
+                  </div>
+                </div>
+                @php
+                $field5 = [
+                  'nama_alat_reg'     => 'Nama Alat',
+                  'merek_alat_reg'    => 'Merek',
+                  'type_alat_reg'     => 'Type',
+                  'serial_number_reg' => 'Serial Number',
+                  'lokasi_alat_reg'   => 'Lokasi Alat',
+                  ]
+                @endphp
+                @for ($i = 5; $i <= 5; $i++)    
+                @foreach($field5 as $name5 => $label5)
+                <div class="form-group row">
+                  <label for="{{ $name5 }}" class="col-xs-3 col-form-label">{{ $label5 }}
+                    <i class="text-danger">*</i></label>
+                  <div class="col-xs-9">
+                    <input name="{{ $name5 }}" type="text" class="form-control"
+                      id="{{ $name5 }}_{{$i}}" placeholder="Terisi Otomatis" readonly
+                      style="cursor: not-allowed;">
+                  </div>
+                </div>
+                @endforeach
+                @endfor
+
+                <div class="form-group row">
+                  <label for="Ka_Instalasi_reg" class="col-xs-3 col-form-label">Kepala Ruangan</label>
+                  <div class="col-xs-9">
+                    <input name="ka_instalasi_reg" type="text" class="form-control" id="Ka_Instalasi_reg"
+                      placeholder="Kepala Ruangan yang betanggung jawab">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="Teknisi_1_reg" class="col-xs-3 col-form-label">Teknisi 1
+                    <i class="text-danger">*</i></label>
+                  <div class="col-xs-5">
+                    <select name="teknisi_1_reg" class="form-control" id="Teknisi_1_reg">
+                      <option>-- Pilih Teknisi --</option>
+                      @foreach ($teknisis as $teknisi)
+                      <option value="<?= $teknisi['nama_teknisi'] ?>">
+                        <?= $teknisi['nama_teknisi'] ?></option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-xs-3">
+                    <button type="button" class="btn btn-primary mt-2" id="btn_tambah_teknisi5"
+                      data-toggle="tooltip" data-placement="top" title="Tambah Teknisi"
+                      style="cursor: pointer;">+</button>
+                  </div>
+                </div>
+
+                @for ($i = 2; $i <= 5; $i++)
+                  <div class="form-group row teknisi-field" id="teknisi5_{{ $i }}" style="display: none;">
+                  <label for="Teknisi_{{ $i }}_reg" class="col-xs-3 col-form-label">Teknisi {{ $i }}</label>
+                  <div class="col-xs-5">
+                    <select name="teknisi_{{ $i }}_reg" class="form-control" id="Teknisi_{{ $i }}_reg">
+                      <option value="-">-- Pilih Teknisi --</option>
+                      @foreach ($teknisis as $teknisi)
+                      <option value="{{ $teknisi['nama_teknisi'] }}">{{ $teknisi['nama_teknisi'] }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  </div>
+                @endfor
+
+                <div class="form-group row">
+                  <label for="Korektif_reg" class="col-xs-3 col-form-label">Korektif</label>
+                  <div class="col-xs-9">
+                    <input name="korektif_reg" type="text" class="form-control" id="Korektif_reg" 
+                    placeholder="Solusi yang harus dilakukan">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="foto_perbaikan" class="col-xs-3 col-form-label">Foto Pendukung </label>
+                  <div class="col-xs-9">
+                    <input name="foto_perbaikan" class="form-control" type="file" id="foto_perbaikan">
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <label for="nama_sukucadang" class="col-xs-3 col-form-label">Nama Sperpart</label>
+                    <div class="col-xs-9">
+                    <select name="suku_cadang" class="form-control" id="nama_sukucadang1">
+                    <option>-- Pilih Item --</option>
+                      @foreach ($itemSperpart as $part)
+                      <option value="<?= $part['nama'] ?>">
+                        <?= $part['nama'] ?></option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="volume" class="col-xs-3 col-form-label">Volume Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="volume" type="text" class="form-control" id="volume_part" 
+                      placeholder="Volume sperpart/ banyak yang digunakan">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="harga_satuan" class="col-xs-3 col-form-label">Harga Satuan Sperpart </label>
+                    <div class="col-xs-9">
+                      <input name="harga_satuan" type="text" class="form-control" id="harga_satuan_part" 
+                      placeholder="Harga Satuan dari sperpart">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="jumlah_harga" class="col-xs-3 col-form-label">Jumlah Harga Sperpart</label>
+                    <div class="col-xs-9">
+                      <input name="jumlah_harga" type="text" class="form-control" id="jumlah_harga_part" 
+                      placeholder="Jumlah Harga Sperpart" readonly>
+                  </div>
+                </div>
+                <input name="pelapor_reg" type="hidden" class="form-control" id="pelapor_reg"placeholder="Terisi Otomatis" readonly>
+                <input name="keluhan_dari_alat_reg" type="hidden" class="form-control" id="keluhan_dari_alat_reg" placeholder="Terisi Otomatis" readonly>
+                <input name="id_perbaikan_reg" type="hidden" class="form-control" id="Id_Perbaikan_reg" placeholder="Id Perbaikan" value="{{ $kode_aset }}" readonly style="cursor: not-allowed;">
+                <input name="tanggal_perbaikan_reg" type="hidden" class="form-control" id="Tanggal_Perbaikan_reg" placeholder="Tanggal Perbaikan" value="<?php echo date(now()); ?>" readonly style="cursor: not-allowed;">
+
+                <div class="form-group row">
+                  <div class="col-sm-offset-3 col-sm-6">
+                    <div class="ui buttons">
+                      <button class="ui positive button">Tambah</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="color:black; background-color:#042a4a;">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <!-- modal -->
 @endsection
 
@@ -768,4 +754,50 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 </script>
+
+<script>
+  function loadPesanan() {
+    console.log("Memulai loadPesanan()"); // Debug: cek apakah fungsi dijalankan
+
+    $.ajax({
+      url: '{{ route("teknisi.pesanan.data") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        console.log("Data berhasil diterima:", data); // Debug: tampilkan isi data dari server
+
+        let rows = '';
+        data.forEach(item => {
+          console.log(item);
+          rows += `
+            <tr>
+            <td title="klik untuk copy ke form" onclick="copy(this)" style="cursor: pointer;">${item.id_req}</td>
+              <td>${item.nama_req}</td>
+              <td>${item.merek_req}</td>
+              <td>${item.type_req}</td>
+              <td>${item.sn_req}</td>
+              <td>${item.pelapor_req}</td>
+              <td>${item.kerusakan_req}</td>
+              <td>${item.tanggal_req}</td>
+            </tr>
+          `;
+        });
+
+        $('#pesananBody').html(rows);
+        console.log("Tabel berhasil diperbarui."); // Debug: konfirmasi update
+      },
+      error: function(xhr, status, error) {
+        console.error("Gagal memuat data:", error); // Debug: jika terjadi error
+      }
+    });
+  }
+
+  $(document).ready(function() {
+    console.log("Dokumen siap, memulai polling...");
+    loadPesanan(); // pertama kali load
+    setInterval(loadPesanan, 3000); // ulang setiap 5 detik
+  });
+</script>
+
+
 @endpush

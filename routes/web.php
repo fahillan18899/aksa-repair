@@ -49,6 +49,7 @@ use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemel
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PengambilanSperpartTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\PesananTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\ViewTabelController;
 use App\Http\Controllers\Teknisi\PPM\ViewTabelController2;
 use App\Http\Controllers\Teknisi\PPM\ViewTabelController3;
@@ -282,6 +283,9 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
     Route::get('/lembar_pemeliharaan/cetak/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
     Route::post('/lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'store']);
+
+    //Fetch data pesanan user
+    Route::get('/dashboard_teknisi/perbaikan_teknisi/data', [PesananTeknisiController::class, 'getPesanan'])->name('pesanan.data');
 
     // Penggunaan Sperpart Gudang / Stock opname (Teknisi)
     Route::post('penggunaan_sperpart', [PengambilanSperpartTeknisiController::class, 'store']);

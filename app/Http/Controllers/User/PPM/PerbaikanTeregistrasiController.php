@@ -100,7 +100,7 @@ class PerbaikanTeregistrasiController extends Controller
 
     public function destroy($id)
     {
-        $item = Pesanan::where('id', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
+        $item = Pesanan::where('id_req', $id)->where('kode_rs', Auth::user()->kode_rs)->first();
         $item->delete();
         return redirect('dashboard_user/perbaikan_teregistrasi')->with('success', 'Aset Telah Selesai Diperbaiki.');
     }

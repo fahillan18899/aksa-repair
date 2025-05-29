@@ -57,7 +57,7 @@
                   <div class="form-group row">
                     <label for="id" class="col-xs-3 col-form-label">ID Aset <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="id" type="text" class="form-control" id="id"
+                      <input name="id_req" type="text" class="form-control" id="id"
                         placeholder="id alat muncul setelah scan qr / ketik manual id aset alat" style="cursor: pointer;"
                         data-toggle="tooltip" data-placement="top" title="Klik disini untuk load data">
                     </div>
@@ -169,7 +169,7 @@
                       @forelse ($items as $index => $item)
                       <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->id_req }}</td>
                         <td>{{ $item->nama_req }}</td>
                         <td>{{ $item->merek_req }}</td>
                         <td>{{ $item->type_req }}</td>
@@ -179,7 +179,7 @@
                         <td>{{ $item->pelapor_req }}</td>
                         <td>{{ $item->tanggal_req }}</td>
                         <td>
-                          <form action="{{ route('pesanan.destroy' ,$item->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('pesanan.destroy' ,$item->id_req) }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
