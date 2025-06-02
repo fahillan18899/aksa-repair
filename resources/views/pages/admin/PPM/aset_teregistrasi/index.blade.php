@@ -319,7 +319,7 @@
                         action="{{ route('status_perbaikan', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-sm btn-{{ $item->status == 0 ? 'btn-success' : 'btn-danger' }}"
+                        <button class="btn btn-sm btn-{{ $item->status == 0 ? 'success' : 'danger' }}"
                           type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                       </form>
                     </td>
@@ -329,7 +329,7 @@
                         action="{{ route('kondisi_alat', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-sm btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning' }}"
+                        <button class="btn btn-sm btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'success' : 'warning' }}"
                           type="submit">{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
                       </form>
                     </td>
