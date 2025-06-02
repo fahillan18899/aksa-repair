@@ -82,6 +82,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('view_tabel2', ViewTableController2::class);
         Route::resource('view_tabel3', ViewTableController3::class);
 
+        //Fetch  data realtime table dashboard
+        Route::get('data_perbaikan', [PPMController::class, 'getPerbaikan'])->name('perbaikan.data');
+        Route::get('data_pemeliharaan', [PPMController::class, 'getPemeliharaan'])->name('pemeliharaan.data');
+        Route::get('data_permintaan', [PPMController::class, 'getPermintaan'])->name('permintaan.data');
+
         // menu SOP
         Route::resource('sop_pemakaian', SOPPemakaianController::class);
         Route::resource('sop_pemeliharaan', SOPPemeliharaanController::class);
@@ -254,6 +259,9 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
     Route::get('autofill/{idars}', [PPMController::class, 'autofill']);
     Route::resource('/pesanan_user', PesananUserController::class);
     Route::get('/getPesanan_user/{id}', [PesananUserController::class, 'getPesanan_user']);
+
+    //Fetch
+    Route::get('data_perbaikan_user', [DashboardUserController::class, 'getPerbaikanUser'])->name('perbaikanUser.data');
 
     // API internal datatable
     Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');

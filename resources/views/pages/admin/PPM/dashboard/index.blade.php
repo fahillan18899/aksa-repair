@@ -119,7 +119,52 @@
         </div>
       </div>
       <!--Box Jumlah Aset Terkalibrasi end-->
-
+      <!-- Card Tabel Permintaan Perbaikan -->
+       <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="btn-group">
+                    <a class="btn btn-success" href="/dashboard/ppm/pesanan"> <i class="fa fa-plus"></i> Request Perbaikan </a>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <h2>Permintaan Perbaikan User</h2>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-x:auto">
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 com-sm-12">
+                    <!-- TABEL -->
+                     <table class="datatable table table-striped table-bordered" style="width: 100%;">
+                      <thead class="table-light">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Kerusakan</th>
+                        <th scope="col">Pelapor</th>
+                        <th scope="col">Tanggal</th>
+                      </thead>
+                      <tbody id="permintaanBody">
+                        <!-- DATA AJAX -->
+                      </tbody>
+                     </table>
+                    <!-- TABEL -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      <!-- Card Tabel Permintaan Perbaikan -->
       <!--Card Tabel Perbaikan-->
       <div class="row">
         <div class="col-sm-12">
@@ -127,11 +172,6 @@
 
             <div class="panel-heading no-print">
               <div class="row">
-                <div class="col-md-5">
-                  <div class="btn-group">
-                    <a class="btn btn-success" href="/dashboard/ppm/pesanan"> <i class="fa fa-plus"></i> Request Perbaikan </a>
-                  </div>
-                </div>
                 <div class="col-md-5">
                   <h2>Tabel Perbaikan</h2>
                 </div>
@@ -144,30 +184,17 @@
                     <!--TABEL-->
                     <table class="datatable table table-striped table-bordered" style="width:100%">
                       <thead class="table-light">
-                        <th scope="col">No</th>
-                        <th scope="col">Id_Perbaikan</th>
-                        <th scope="col">ID_Aset</th>
                         <th scope="col">Tanggal</th>
                         <th scope="col">Nama</th>
-                        <th scope="col" class="none">Merek</th>
-                        <th scope="col" class="none">Type</th>
-                        <th scope="col" class="none">Serial_Number</th>
-                        <th scope="col" class="none">Lokasi</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Serial_Number</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Keterangan</th>
                       </thead>
-                      <tbody>
-                        @forelse ($dataPerbaikan as $index => $item)
-                        <tr class="odd gradeX">
-                          <td>{{ $index + 1 }}</td>
-                          <td>{{ $item['id_perbaikan_reg'] }}</td>
-                          <td>{{ $item['id_aset_reg'] }}</td>
-                          <td>{{ $item['tanggal_perbaikan_reg'] }}</td>
-                          <td>{{ $item['nama_alat_reg'] }}</td>
-                          <td>{{ $item['merek_alat_reg'] }}</td>
-                          <td>{{ $item['type_alat_reg'] }}</td>
-                          <td>{{ $item['serial_number_reg'] }}</td>
-                          <td>{{ $item['lokasi_alat_reg'] }}</td>
-                          @empty
-                          @endforelse
+                      <tbody id="perbaikanBody">
+                        <!-- DATA AJAX -->
                       </tbody>
                     </table>
                     <!--TABEL-->
@@ -181,6 +208,45 @@
       </div>
     </div>
     <!--Card Tabel Perbaikan-->
+    <!-- Card Tabel Pemeliharaan -->
+     <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+          <div class="panel-heading no-print">
+            <div class="row">
+              <div class="col-md-5">
+                <h2>Tabel Pemeliharaan</h2>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-x:auto">
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!-- TABLE -->
+                   <table class="datatable table table-striped table-bordered" style="width: 100%">
+                    <thead class="table-light">
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">Merek</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Serial Number</th>
+                      <th scope="col">Ruangan</th>
+                    </thead>
+                    <tbody id="pemeliharaanBody">
+                      <!-- DATA AJAX -->
+                    </tbody>
+                   </table>
+                  <!-- TABLE -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    <!-- Card Tabel Pemeliharaan -->
   </div>
 
   <script type="text/javascript">
@@ -241,9 +307,6 @@
 
 
 @push('addon-script')
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
-
 <script>
   $('.datatable').DataTable({
     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
@@ -277,73 +340,147 @@
       }
     ]
   });
-
-
-  const firebaseConfig = {
-    apiKey: "{{ config('app.api_key') }}",
-    authDomain: "{{ config('app.auth_domain') }}",
-    projectId: "{{ config('app.project_id') }}",
-    storageBucket: "{{ config('app.storage_bucket') }}",
-    messagingSenderId: "{{ config('app.message_sender_id') }}",
-    appId: "{{ config('app.app_id') }}",
-    measurementId: "{{ config('app.measurement_id') }}"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  const messaging = firebase.messaging();
-  messaging.requestPermission()
-    .then(function() {
-      console.log('Izin notifikasi diberikan.');
-      getRegToken();
-    })
-    .catch(function(err) {
-      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.');
-    });
-
-  function getRegToken() {
-    messaging.getToken()
-      .then(function(currentToken) {
-        console.log(currentToken)
-        if (currentToken) {
-          setTokenSentToServer(true);
-          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
-          subscribeTokenToTopic(currentToken, userCode)
-          console.log("Notifikasi Di Aktifkan")
-        } else {
-          setTokenSentToServer(false);
-        }
-      })
-      .catch(function(err) {
-        console.log('Terjadi kesalahan saat mengambil token.');
-        setTokenSentToServer(false);
-      });
-  }
-
-  function subscribeTokenToTopic(token, topic) {
-    fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
-      method: 'POST',
-      headers: new Headers({
-        'Authorization': 'key=AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
-      })
-    }).then(response => {
-      if (response.status < 200 || response.status >= 400) {
-        throw 'Error subscribing to topic: ' + response.status + ' - ' + response.text();
-      }
-      console.log('Subscribed to ' + topic);
-      console.log("Notifikasi Di Aktifkan")
-    }).catch(error => {
-      console.error("error");
-    })
-  }
-
-  function setTokenSentToServer(sent) {
-    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-  }
-
-  function isTokenSentToServer() {
-    return window.localStorage.getItem('sentToServer') == 1;
-  }
 </script>
 
+<script>
+  function loadPerbaikan() {
+    // console.log("Memulai loadPerbaikan()"); //Debug fungsi berjalan / tidak
+
+    $.ajax({
+      url: '{{ route("perbaikan.data") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        // console.log("Data berhasil diterima:", data); //Debug tampilkan data yang di get oleh ajax
+
+        let rows ='';
+        data.forEach(item => {
+          // console.log(item);
+          rows += `
+            <tr>
+              <td>${item.tanggal_perbaikan_reg}</td>
+              <td>${item.nama_alat_reg}</td>
+              <td>${item.merek_alat_reg}</td>
+              <td>${item.type_alat_reg}</td>
+              <td>${item.serial_number_reg}</td>
+              <td>${item.lokasi_alat_reg}</td>
+              <td>
+                <button class="btn btn-sm ${item.status == 0 ? 'btn-success' : 'btn-danger'} update-status-btn"
+                data-id="${item.status}" disabled>
+                ${item.status == 0 ? 'Sudah disetujui' : 'Belum disetujui'}
+                </button>            
+              </td>
+              <td>
+                <button class="btn btn-sm ${item.keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning'} update-status-btn"
+                  data-id="${item.id_perbaikan_reg}" disabled>
+                  ${item.keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan'}
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+
+        $('#perbaikanBody').html(rows);
+        // console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        // console.error("Gagal memuat data", error);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    // console.log("Dokumen siap, mulai polling....");
+    loadPerbaikan(); // Pertama kali load
+    setInterval(loadPerbaikan, 3000);
+  });
+</script>
+
+<script>
+  function loadPemeliharaan() {
+    // console.log("Memulai loadPemeliharaan()"); //Debug fungsi berjalan / tidak
+
+    $.ajax({
+      url: '{{ route("pemeliharaan.data") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        // console.log("Data berhasil diterima:", data) //Debug tempilkan data yang di get oleh ajax
+
+        let rows ='';
+        data.forEach(item => {
+          // console.log(item);
+          rows += `
+          <tr>
+            <td>${item.tanggal}</td>
+            <td>${item.id_aset}</td>
+            <td>${item.nama_alat}</td>
+            <td>${item.merek}</td>
+            <td>${item.tipe}</td>
+            <td>${item.serial_number}</td>
+            <td>${item.ruangan}</td>
+          </tr>
+          `;
+        });
+
+        $('#pemeliharaanBody').html(rows);
+        // console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        // console.log("Gagal memuat data", error);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    // console.log("Dokument siap, mulai polling....");
+    loadPemeliharaan(); //Petama kali load
+    setInterval(loadPemeliharaan, 3000);
+  });
+</script>
+
+<script>
+  function loadPermintaan(){
+    console.log("Memulai loadPermintaan()"); //Debug fungsi berjalan / tidak
+
+    $.ajax({
+      url: '{{ route("permintaan.data") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        console.log("Data berhasil diterima:", data); // Debug tampilkan data yang di get ileh ajax
+
+        let rows ='';
+        data.forEach(item => {
+          console.log(item);
+          rows += `
+            <tr>
+              <td>${item.id_req}</td>
+              <td>${item.nama_req}</td>
+              <td>${item.merek_req}</td>
+              <td>${item.type_req}</td>
+              <td>${item.sn_req}</td>
+              <td>${item.lokasi_req}</td>
+              <td>${item.kerusakan_req}</td>
+              <td>${item.pelapor_req}</td>
+              <td>${item.tanggal_req}</td>
+            </tr>
+          `;
+        });
+
+        $('#permintaanBody').html(rows);
+        console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    console.log("Dokumen siap, mulai poling...");
+    loadPermintaan(); //Pertama kali load
+    setInterval(loadPermintaan, 3000);
+  });
+</script>
 @endpush

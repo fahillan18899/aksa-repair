@@ -29,6 +29,13 @@ class DashboardUserController extends Controller
         compact('registrasi', 'perbaikanRegistrasi', 'dataPerbaikan', 'itemPesanan', 'lembarPemeliharaan'));
     }
 
+    public function getPerbaikanUser()
+    {
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
+        $perbaikanUser = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $divisi)->where('active', 1)->orderBy('created_at', 'desc')->get();
+        return response()->json($perbaikanUser);
+    }
+
     // public function dashboard_teknisi()
     // {
     //     $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();

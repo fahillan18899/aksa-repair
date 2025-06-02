@@ -291,7 +291,7 @@
                           <form action="{{ url('/dashboard_teknisi/perbaikan_teknisi/update', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
                             @csrf
                             @method('PUT')
-                            <button class="btn btn-sm btn-{{ $item->status == 0 ? 'warning' : 'danger' }}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
+                            <button class="btn btn-sm btn-{{ $item->status == 0 ? 'success' : 'danger' }}" type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                           </form>
                         </td>
                         <td>

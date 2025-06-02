@@ -57,6 +57,26 @@ class HomeController extends Controller
         );
     }
 
+    //Fetch data table
+    public function getPerbaikan()
+    {
+        $perbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
+        return response()->json($perbaikan);
+    }
+
+        public function getPemeliharaan()
+    {
+        $pemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
+        return response()->json($pemeliharaan);
+    }
+
+    public function getPermintaan()
+    {
+        $permintaan = Pesanan::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
+        return response()->json($permintaan);
+    }
+// wkwkwkkw
+
     public function dataInventaris()
     {
         $items = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
@@ -127,29 +147,29 @@ class HomeController extends Controller
         return json_encode($data);
     }
 
-    public function autofillPengirimanUn($id_perbaikan_un)
-    {
-        $data = DB::table('perbaikan_unregistrasis')->where('id_perbaikan_un', $id_perbaikan_un)->first();
+    // public function autofillPengirimanUn($id_perbaikan_un)
+    // {
+    //     $data = DB::table('perbaikan_unregistrasis')->where('id_perbaikan_un', $id_perbaikan_un)->first();
 
-        return response()->json([
-            'id_perbaikan_un'      => $data->id_perbaikan_un,
-            'tanggal_perbaikan_un' => $data->tanggal_perbaikan_un,
-            'nama_alat_un'         => $data->nama_alat_un,
-            'merek_alat_un'        => $data->merek_alat_un,
-            'type_alat_un'         => $data->type_alat_un,
-            'serial_number_un'     => $data->serial_number_un,
-            'lokasi_alat_un'       => $data->lokasi_alat_un,
-            'pelapor_un'           => $data->pelapor_un,
-            'keterangan_un'        => $data->keterangan_un,
-            'ka_instalasi_un'      => $data->ka_instalasi_un,
-            'teknisi_1_un'         => $data->teknisi_1_un,
-            'teknisi_2_un'         => $data->teknisi_2_un,
-            'teknisi_3_un'         => $data->teknisi_3_un,
-            'suku_cadang_un'       => $data->suku_cadang_un,
-            'volume_un'            => $data->volume_un,
-            'harga_satuan_un'      => $data->harga_satuan_un,
-            'jumlah_harga_un'      => $data->jumlah_harga_un,
-            'keluhan_dari_alat_un' => $data->keluhan_dari_alat_un,
-        ]);
-    }
+    //     return response()->json([
+    //         'id_perbaikan_un'      => $data->id_perbaikan_un,
+    //         'tanggal_perbaikan_un' => $data->tanggal_perbaikan_un,
+    //         'nama_alat_un'         => $data->nama_alat_un,
+    //         'merek_alat_un'        => $data->merek_alat_un,
+    //         'type_alat_un'         => $data->type_alat_un,
+    //         'serial_number_un'     => $data->serial_number_un,
+    //         'lokasi_alat_un'       => $data->lokasi_alat_un,
+    //         'pelapor_un'           => $data->pelapor_un,
+    //         'keterangan_un'        => $data->keterangan_un,
+    //         'ka_instalasi_un'      => $data->ka_instalasi_un,
+    //         'teknisi_1_un'         => $data->teknisi_1_un,
+    //         'teknisi_2_un'         => $data->teknisi_2_un,
+    //         'teknisi_3_un'         => $data->teknisi_3_un,
+    //         'suku_cadang_un'       => $data->suku_cadang_un,
+    //         'volume_un'            => $data->volume_un,
+    //         'harga_satuan_un'      => $data->harga_satuan_un,
+    //         'jumlah_harga_un'      => $data->jumlah_harga_un,
+    //         'keluhan_dari_alat_un' => $data->keluhan_dari_alat_un,
+    //     ]);
+    // }
 }

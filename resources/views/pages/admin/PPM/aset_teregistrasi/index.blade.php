@@ -100,7 +100,7 @@
                   <tbody>
                     @forelse ($itemPesanan as $index => $item)
                     <tr>
-                      <td title="klik untuk copy ke form" onclick="copy(this)" style="cursor: pointer;">{{ $item->id }}</td>
+                      <td title="klik untuk copy ke form" onclick="copy(this)" style="cursor: pointer;">{{ $item->id_req }}</td>
                       <td>{{ $item->nama_req }}</td>
                       <td>{{ $item->merek_req }}</td>
                       <td>{{ $item->type_req }}</td>
@@ -109,7 +109,7 @@
                       <td>{{ $item->kerusakan_req }}</td>
                       <td>{{ $item->tanggal_req }}</td>
                       <td>
-                        <form action="{{ route('pesanan.destroy', $item->id) }}" method="POST" class="d-inline">
+                        <form action="{{ route('pesanan.destroy', $item->id_req) }}" method="POST" class="d-inline">
                           @csrf
                           @method('delete')
                           <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">
@@ -319,7 +319,7 @@
                         action="{{ route('status_perbaikan', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-sm btn-{{ $item->status == 0 ? 'success' : 'warning' }}"
+                        <button class="btn btn-sm btn-{{ $item->status == 0 ? 'btn-success' : 'btn-danger' }}"
                           type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                       </form>
                     </td>
@@ -329,7 +329,7 @@
                         action="{{ route('kondisi_alat', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
                         @csrf
                         @method('PUT')
-                        <button class="btn btn-sm btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'success' : 'warning' }}"
+                        <button class="btn btn-sm btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning' }}"
                           type="submit">{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
                       </form>
                     </td>
@@ -1100,7 +1100,7 @@
                     <tbody>
                       @forelse ($itemPesanan as $index => $item)
                       <tr>
-                        <td title="klik untuk copy ke form" onclick="copy5(this)" style="cursor: pointer;">{{ $item->id }}</td>
+                        <td title="klik untuk copy ke form" onclick="copy5(this)" style="cursor: pointer;">{{ $item->id_req }}</td>
                         <td>{{ $item->nama_req }}</td>
                         <td>{{ $item->merek_req }}</td>
                         <td>{{ $item->type_req }}</td>
@@ -1109,7 +1109,7 @@
                         <td>{{ $item->kerusakan_req }}</td>
                         <td>{{ $item->tanggal_req }}</td>
                         <td>
-                          <form action="{{ route('pesanan.destroy', $item->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('pesanan.destroy', $item->id_req) }}" method="POST" class="d-inline">
                             @csrf
                             @method('delete')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Validasi">

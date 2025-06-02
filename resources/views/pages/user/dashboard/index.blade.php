@@ -160,16 +160,12 @@
                 </div>
               </div>
             </div>
-
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th class="">No</th>
-                      <th class="none">Id_Perbaikan</th>
-                      <th class="none">ID Aset</th>
                       <th class="">Tanggal</th>
                       <th class="">Nama</th>
                       <th class="">Merek</th>
@@ -177,54 +173,10 @@
                       <th class="">Serial_Number</th>
                       <th class="">Lokasi</th>
                       <th class="">Status</th>
-                      <th class="none">Pelapor</th>
                       <th class="">Keterangan</th>
-                      <th class="none">Kepala Ruangan</th>
-                      <th class="none">Teknisi 1</th>
-                      <th class="none">Teknisi 2</th>
-                      <th class="none">Teknisi 3</th>
-                      <th class="none">Keluhan Dari alat</th>
-                      <th class="none">Korektif</th>
                     </thead>
-                    <tbody>
-                      @forelse ($dataPerbaikan as $index => $item)
-                      <tr class="odd gradeX">
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->id_perbaikan_reg }}</td>
-                        <td>{{ $item->id_aset_reg }}</td>
-                        <td>{{ $item->tanggal_perbaikan_reg }}</td>
-                        <td>{{ $item->nama_alat_reg }}</td>
-                        <td>{{ $item->merek_alat_reg }}</td>
-                        <td>{{ $item->type_alat_reg }}</td>
-                        <td>{{ $item->serial_number_reg }}</td>
-                        <td>{{ $item->lokasi_alat_reg }}</td>
-                        <td>
-                          <form action="" class="form-inner" method="post">
-                            @csrf
-                            @method('PUT')
-                            <button
-                              class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger' }}" type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
-                          </form>
-                        </td>
-                        <td>{{ $item->pelapor_reg }}</td>
-                        <td>
-                          <form
-                            action="{{ route('kondisi_alat', $item->id_perbaikan_reg) }}" class="form-inner" method="post">
-                            @csrf
-                            @method('PUT')
-                            <button class="btn btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'success' : 'warning' }}"
-                              type="submit" disabled>{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
-                          </form>
-                        </td>
-                        <td>{{ $item->ka_instalasi_reg }}</td>
-                        <td>{{ $item->teknisi_1_reg }}</td>
-                        <td>{{ $item->teknisi_2_reg }}</td>
-                        <td>{{ $item->teknisi_3_reg }}</td>
-                        <td>{{ $item->keluhan_dari_alat_reg }}</td>
-                        <td>{{ $item->korektif_reg }}</td>
-                      </tr>
-                      @empty
-                      @endforelse
+                    <tbody id="perbaikanUser">
+                      <!-- DATA AJAX -->
                     </tbody>
                   </table>
                   <!--TABEL-->
@@ -298,8 +250,6 @@
 
     </div>
   </div>
-
-
   <!-- /.content -->
 </div>
 @endsection
@@ -372,5 +322,58 @@
   function isTokenSentToServer() {
     return window.localStorage.getItem('sentToServer') == 1;
   }
+</script>
+<script>
+  function loadPerbaikanUser(){
+    console.log("Memulai loadPerbaikanUser"); //Debug fungsi berjalan / tidak
+
+    $.ajax({
+      url: '{{ route("perbaikanUser.data") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        console.log("Data berhasil diterima:", data); //Debug tampilan data yang di get oleh ajax
+
+        let rows ='';
+        data.forEach(item => {
+          console.log(item);
+          rows += `
+            <tr>
+              <td>${item.tanggal_perbaikan_reg}</td>
+              <td>${item.nama_alat_reg}</td>
+              <td>${item.merek_alat_reg}</td>
+              <td>${item.type_alat_reg}</td>
+              <td>${item.serial_number_reg}</td>
+              <td>${item.lokasi_alat_reg}</td>
+              <td>
+                <button class="btn btn-sm ${item.status == 0 ? 'btn-success' : 'btn-danger'} update-status-btn"
+                data-id="${item.status}" disabled>
+                ${item.status == 0 ? 'Sudah disetujui' : 'Belum disetujui'}
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-sm ${item.keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning'} update-status-btn"
+                data-id="${item.id_perbaikan_reg}" disabled>
+                ${item.keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam Perbaikan'}
+                </button>
+              </td>
+            </tr>
+          `;
+        });
+
+        $('#perbaikanUser').html(rows);
+        console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal memuat data", error)
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    console.log("Dokumen siap, mulai polling...");
+    loadPerbaikanUser();
+    setInterval(loadPerbaikanUser, 3000);
+  });
 </script>
 @endpush
