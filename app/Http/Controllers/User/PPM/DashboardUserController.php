@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\User\PPM;
 
-use App\Http\Controllers\Controller;
+use App\Models\Registrasi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\LembarPemeliharaan;
 use App\Models\PerbaikanRegistrasi;
-use App\Models\Registrasi;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardUserController extends Controller
@@ -20,13 +20,15 @@ class DashboardUserController extends Controller
         $userName_ = Auth::user()->username;
         $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
         $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
+        $alatTerkalibrasi      = Registrasi::where('kode_rs', Auth::user()->kode_rs)
+        ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
+        ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->count();
         $itemPesanan = DB::table('pesanans')->where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $divisi)->get();
         $dataPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $divisi)->get();
 
         return view('pages.user.dashboard.index', 
-        compact('registrasi', 'perbaikanRegistrasi', 'dataPerbaikan', 'itemPesanan', 'lembarPemeliharaan'));
+        compact('registrasi', 'perbaikanRegistrasi', 'dataPerbaikan', 'itemPesanan', 'alatTerkalibrasi'));
     }
 
     public function getPerbaikanUser()
