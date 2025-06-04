@@ -119,137 +119,173 @@
         <?php // }
         ?>
       <!-- Box Jumlah Aset Terkalibrasi end  -->
+      <!-- CARD -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default thumbnail">
+              <div class="panel-heading no-print">
+                <div class="row">
+                  <div class="col-md-5">
+                    <h2>Daftar permintaan perbaikan</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <!-- TABEL -->
+                    <table class="datatable table table-striped table-bordered" style="width: 100%">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Merek</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Serial Number</th>
+                          <th scope="col">Pelapor</th>
+                          <th scope="col">Tanggal</th>
+                        </tr>
+                      </thead>
+                      <tbody id="permintaanUserBody">
+                        <!-- DATA AJAX -->
+                      </tbody>
+                    </table> 
+                    <!-- TABEL -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- CARD N-->
+      <!-- CARD -->
+       <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-5">
+                  <h2>Daftar perbaikan alat</h2>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!-- TABEL -->
+                   <table class="datatable table table-striped table-bordered" style="width: 100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Merek</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Serial Number</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Tanggal</th>
+                      </tr>
+                    </thead>
+                    <tbody id="perbaikanTabelBody">
+                      <!-- DATA AJAX -->
+                    </tbody>
+                   </table>
+                  <!-- TABEL -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      <!-- CARD N-->
     </div>
   </div>
-  <?php
-  // if ($this->permission->method('graph', 'read')->access()) {
-  ?>
-  <script type="text/javascript">
-    $(window).on('load', function() {
-      //line chart
-      var ctx = document.getElementById("lineChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: [],
-          datasets: [{
-              label: "<?= 'patient' ?>",
-              borderColor: "#3498DB",
-              borderWidth: "1",
-              //backgroundColor: "rgba(0,0,0,.07)",
-              pointHighlightStroke: "rgba(52,152,219)",
-              data: [<?php //echo $allPatient;
-                      ?>]
-            },
-            {
-              label: "<?= 'appointment' ?>",
-              borderColor: "#37a000",
-              borderWidth: "1",
-              //backgroundColor: "#73BC4D",
-              pointHighlightStroke: "rgba(55,160,0)",
-              data: [<?php [1, 2] // echo $allAppoint;
-                      ?>]
-            },
-            {
-              label: "<?= 'prescription'  ?>",
-              borderColor: "#FFB61E",
-              borderWidth: "1",
-              //backgroundColor: "#1ABC9C",
-              pointHighlightStroke: "rgba(130, 224, 170,1)",
-              data: [<?php // echo $allPrescrip;
-                      ?>]
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            intersect: false
-          },
-          hover: {
-            mode: 'nearest',
-            intersect: true
-          }
-        }
-      });
-    });
-  </script>
-  <?php // }
-  ?>
-
-
   <!-- /.content -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </div>
 @endsection
 
 @push('addon-script')
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
+<script>
+  function loadPermintaanUser() {
+    console.log("Memulai loadPermintaanUser"); //Debug fungsi berjalan / tidak
+    
+    $.ajax({
+      url: '{{route("teknisi.permintaanUser.data")}}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        console.log("Data berhasil diterima:", data) //Debug tampilan data yang di geet dari Ajax
 
-<!-- <script>
-    const firebaseConfig = {
-        apiKey: "{{ config('app.api_key') }}",
-        authDomain: "{{ config('app.auth_domain') }}",
-        projectId: "{{ config('app.project_id') }}",
-        storageBucket: "{{ config('app.storage_bucket') }}",
-        messagingSenderId: "{{ config('app.message_sender_id') }}",
-        appId: "{{ config('app.app_id') }}",
-        measurementId: "{{ config('app.measurement_id') }}"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-    const messaging = firebase.messaging();
-    messaging.requestPermission()
-        .then(function() {
-            getRegToken();
-        })
-        .catch(function(err) {
-            console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.');
+        let rows='';
+        data.forEach(item => {
+          console.log(item);
+          rows += `
+          <tr>
+            <td>${item.id_req}</td>
+            <td>${item.nama_req}</td>
+            <td>${item.merek_req}</td>
+            <td>${item.type_req}</td>
+            <td>${item.sn_req}</td>
+            <td>${item.pelapor_req}</td>
+            <td>${item.tanggal_req}</td>
+          </tr>
+          `;
         });
 
-    function getRegToken() {
-        messaging.getToken()
-            .then(function(currentToken) {
-                console.log(currentToken)
-                if (currentToken) {
-                    setTokenSentToServer(true);
-                    const userCode = "{{ Auth::user()->kode_rs . 'user'}}";
-                    subscribeTokenToTopic(currentToken, userCode)
-                    console.log("Notifikasi Di Aktifkan")
-                } else {
-                    setTokenSentToServer(false);
-                }
-            })
-            .catch(function(err) {
-                console.log('Terjadi kesalahan saat mengambil token.');
-                setTokenSentToServer(false);
-            });
-    }
+        $('#permintaanUserBody').html(rows);
+        console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error)
+      }
+    });
+  }
+  $(document).ready(function(){
+    console.log("Dokumen siap, mulai polling...");
+    loadPermintaanUser();
+    setInterval(loadPermintaanUser, 3000);
+  });
+</script>
 
-    function subscribeTokenToTopic(token, topic) {
-        fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
-            method: 'POST',
-            headers: new Headers({
-                'Authorization': 'key=AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
-            })
-        }).then(response => {
-            if (response.status < 200 || response.status >= 400) {
-                throw 'Error subscribing to topic: ' + response.status + ' - ';
-            }
-            console.log('Subscribed to ' + topic);
-        }).catch(error => {
-            console.error("error");
-        })
-    }
+<script>
+  function loadPerbaikan() {
+    console.log("Mulai loadPerbaikan"); //Debug fungsi berjalan / tidak
 
-    function setTokenSentToServer(sent) {
-        window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-    }
+    $.ajax({
+      url: '{{route("teknisi.perbaikanTeknisi.data")}}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        console.log("Data berhasil diterima:",data)// Debug tampilan data yang di get oleh ajax
 
-    function isTokenSentToServer() {
-        return window.localStorage.getItem('sentToServer') == 1;
-    }
-</script> -->
+        let rows='';
+        data.forEach(item => {
+          console.log(item);
+          rows +=`
+          <tr>
+            <td>${item.id_perbaikan_reg}</td>
+            <td>${item.nama_alat_reg}</td>
+            <td>${item.merek_alat_reg}</td>
+            <td>${item.type_alat_reg}</td>
+            <td>${item.serial_number_reg}</td>
+            <td>${item.lokasi_alat_reg}</td>
+            <td>${item.tanggal_perbaikan_reg}</td>
+          </tr>
+          `;
+        });
+
+        $('#perbaikanTabelBody').html(rows);
+        console.log("Table berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error)
+      }
+    });
+  }
+  $(document).ready(function(){
+    console.log("Dokument siap, mulai polling...");
+    loadPerbaikan();
+    setInterval(loadPerbaikan, 3000);
+  });
+</script>
 @endpush

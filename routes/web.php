@@ -274,6 +274,10 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::resource('view_tabelT2', ViewTabelController2::class);
     Route::resource('view_tabelT3', ViewTabelController3::class);
 
+    //Fetch
+    Route::get('data_permintaan_user', [DashboardTeknisiController::class, 'getPermintaanUser'])->name('permintaanUser.data');
+    Route::get('data_perbaikan_teknisi', [DashboardTeknisiController::class, 'getPerbaikanTeknisi'])->name('perbaikanTeknisi.data');
+
     Route::get('perbaikan_teknisi', [PerbaikanTeregistrasiTeknisiController::class, 'index'])->name('perbaikan_teknisi.index');
     Route::post('perbaikan_teknisi/store', [PerbaikanTeregistrasiTeknisiController::class, 'store'])->name('perbaikan_teknisi.store');
     Route::post('perbaikan_teknisi/create', [PerbaikanTeregistrasiTeknisiController::class, 'create'])->name('perbaikan_teknisi.create');

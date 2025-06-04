@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Teknisi\PPM;
 
+use App\Models\Pesanan;
 use App\Models\Registrasi;
 use App\Models\PerbaikanRegistrasi;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,17 @@ class DashboardUserController extends Controller
         compact('registrasi', 'perbaikanRegistrasi', 'alatTerkalibrasi'));
     }
 
+    public function getPermintaanUser()
+    {
+        $permintaanUser = Pesanan::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
+        return response()->json($permintaanUser);
+    }
+    
+    public function getPerbaikanTeknisi()
+    {
+     $perbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
+     return response()->json($perbaikan);   
+    }
     
     // public function index()
     // {

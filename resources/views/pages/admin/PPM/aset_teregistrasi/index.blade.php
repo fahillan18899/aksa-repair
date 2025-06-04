@@ -320,7 +320,7 @@
                         @csrf
                         @method('PUT')
                         <button class="btn btn-sm btn-{{ $item->status == 0 ? 'success' : 'danger' }}"
-                          type="submit">{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
+                          type="submit" disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                       </form>
                     </td>
                     <td>{{ $item->pelapor_reg }}</td>
@@ -330,7 +330,7 @@
                         @csrf
                         @method('PUT')
                         <button class="btn btn-sm btn-{{ $item->keterangan_kondisi_alat_reg == 0 ? 'success' : 'warning' }}"
-                          type="submit">{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
+                          type="submit" disabled>{{ $item->keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam perbaikan' }}</button>
                       </form>
                     </td>
                     <td>{{ $item->ka_instalasi_reg }}</td>
