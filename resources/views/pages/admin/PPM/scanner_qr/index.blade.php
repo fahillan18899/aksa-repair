@@ -21,105 +21,91 @@
     max-width: 600px;
   }
 </style>
+<!-- Tambahkan dari CDN -->
+<script src="https://unpkg.com/html5-qrcode"></script>
 
-<!-- Tombol Trigger Modal -->
- 
-<div class="text-center my-4" style="padding-top: 100px; margin-left: 150px; padding-bottom: 380px">
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#qrModal">
-    <i class="fa fa-qrcode"></i> Scan QR Code
-  </button>
+<!-- Tombol -->
+<div class="text-center" style="padding-top: 100px;">
+  <button class="btn btn-primary" onclick="startScan()">Scan QR</button>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
+<div id="qrModal" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
       <div class="modal-header">
-        <h5 class="modal-title">QR Code Scanner</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalBtn">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title">QR Scanner</h5>
+        <button type="button" class="close" onclick="stopScan()">&times;</button>
       </div>
-      <div class="modal-body text-center">
-        <div class="preview-container">
-          <video id="preview"></video>
-        </div>
-        <button id="toggleCameraBtn" class="btn btn-secondary">
-          Ganti Kamera
-        </button>
+      <div class="modal-body">
+        <div id="reader" style="width:100%"></div>
+        <button class="btn btn-secondary mt-2" onclick="switchCamera()">Ganti Kamera</button>
       </div>
     </div>
   </div>
 </div>
+
 @endsection
 @push('addon-script')
 <script>
-  let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview'),
-    mirror: false
-  });
+  let currentCameraId = null;
+  let cameraList = [];
+  let currentCameraIndex = 0;
+  let qrScanner;
 
-  let cameras = [];
-  let activeCameraIndex = 0;
+  function startScan() {
+    $('#qrModal').modal('show');
 
-  //Fungsi memilih kamera berdasarkan label
-  function getCameraByFacing(facing) {
-    facing = facing.toLowerCase();
-    return cameras.find(cam =>
-      cam.name.toLowerCase().includes(facing)
-    );
-  }
-
-  //Fungsi untuk memulai kamera dari index atau camera object
-  function startCamera(cameraOrIndex) {
-    let camera = typeof cameraOrIndex === 'number' ? cameras[cameraOrIndex] : cameraOrIndex;
-    if (camera) {
-      scanner.start(camera);
-    } else {
-      alert("Kamera tidak ditemukan");
-    }
-  }
-
-  // Ketika berhasil scan
-  scanner.addListener('scan', function (content) {
-    $('#qrModal').modal('hide');
-    window.location.href = "{{ url('dashboard/ppm/data_alat') }}/" + content;
-  });
-
-  //Modal terbuka load kamera
-  $('#qrModal').on('show.bs.modal', function () {
-    Instascan.Camera.getCameras().then(function (availableCameras) {
-      cameras = availableCameras;
-      console.log("Semua kamera:", cameras);
-
-      let frontCam = getCameraByFacing("front");
-      let fallbackCam = cameras[1];
-
-      if(frontCam) {
-        activeCameraIndex = cameras.indexOf(frontCam);
-        startCamera(frontCam);
-      } else {
-        activeCameraIndex = 1;
-        startCamera(fallbackCam);
+    Html5Qrcode.getCameras().then(cameras => {
+      cameraList = cameras;
+      if (cameras.length === 0) {
+        alert("Tidak ada kamera tersedia.");
+        return;
       }
-    }).catch(function (e) {
-      alert("Gagal memuat kamera" + e);
+
+      currentCameraId = cameras[currentCameraIndex].id;
+
+      qrScanner = new Html5Qrcode("reader");
+      qrScanner.start(
+        currentCameraId,
+        {
+          fps: 10,
+          qrbox: 250
+        },
+        qrCodeMessage => {
+          console.log(`QR Code: ${qrCodeMessage}`);
+          qrScanner.stop().then(() => {
+            $('#qrModal').modal('hide');
+            window.location.href = "{{ url('dashboard/ppm/data_alat') }}/" + qrCodeMessage;
+          });
+        },
+        errorMessage => {
+          // console.log(`Scan error: ${errorMessage}`);
+        }
+      );
+    }).catch(err => {
+      alert("Gagal mengakses kamera: " + err);
     });
-  });
+  }
 
-  // Stop kamera saat modal ditutup
-  $('#qrModal').on('hidden.bs.modal', function () {
-    scanner.stop();
-  });
-
-  //Tombol toggle kamera
-  document.getElementById('toggleCameraBtn').addEventListener('click', function () {
-    if(cameras.length > 1) {
-      activeCameraIndex = (activeCameraIndex + 1) % cameras.length;
-      startCamera(activeCameraIndex);
-    } else {
-      alert("Hanya ada satu kamera.")
+  function stopScan() {
+    if (qrScanner) {
+      qrScanner.stop().then(() => {
+        qrScanner.clear();
+        $('#qrModal').modal('hide');
+      });
     }
-  });
+  }
+
+  function switchCamera() {
+    if (cameraList.length > 1) {
+      stopScan();
+      currentCameraIndex = (currentCameraIndex + 1) % cameraList.length;
+      startScan();
+    } else {
+      alert("Tidak ada kamera lain.");
+    }
+  }
 </script>
+
 @endpush
