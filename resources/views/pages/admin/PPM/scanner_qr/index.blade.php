@@ -8,6 +8,7 @@
     border-radius: 10px;
     overflow: hidden;
     border: 2px solid #ccc;
+    margin-bottom: 1rem;
   }
 
   #preview {
@@ -43,6 +44,9 @@
         <div class="preview-container">
           <video id="preview"></video>
         </div>
+        <button id="toggleCameraBtn" class="btn btn-secondary">
+          Ganti Kamera
+        </button>
       </div>
     </div>
   </div>
@@ -62,22 +66,41 @@
     window.location.href = "{{ url('dashboard/ppm/data_alat') }}/" + content;
   });
 
-  // Buka kamera saat modal dibuka
-  $('#qrModal').on('shown.bs.modal', function () {
-    Instascan.Camera.getCameras().then(cameras => {
-      if (cameras.length > 0) {
-        scanner.start(cameras[0]);
+  //Fungsi untuk memulai kamera tertentu
+  function startCamera(index) {
+    if(cameras.length > 0) {
+      activeCameraIndex = index;
+      scanner.start(cameras[activeCameraIndex]);
+    }
+  }
+
+  //Load camera list dan mulai kamera default saat modal muncul
+  $('#qrModal').on('show.bs.modal', function() {
+    Instascan.Camera.getCameras().then(function(availableCameras){
+      cameras = availableCameras;
+      if(cameras.length > 0) {
+        startCamera(0); //Default kamera belakang
       } else {
-        alert('Kamera tidak ditemukan.');
+        alert("Kamera tidak ditemukan");
       }
-    }).catch(e => {
-      alert('Gagal mengakses kamera: ' + e);
+    }).catch(function (e) {
+      alert("Gagal memuat kamera:" + e);
     });
   });
 
   // Stop kamera saat modal ditutup
   $('#qrModal').on('hidden.bs.modal', function () {
     scanner.stop();
+  });
+
+  //Tombol toggle kamera
+  document.getElementById('toggleCameraBtn').addEventListener('click', function () {
+    if(cameras.length > 1) {
+      activeCameraIndex = (activeCameraIndex + 1) % cameras.length;
+      startCamera(activeCameraIndex);
+    } else {
+      alert("Hanya ada satu kamera.")
+    }
   });
 </script>
 @endpush
