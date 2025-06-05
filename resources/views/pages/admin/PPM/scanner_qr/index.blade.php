@@ -93,13 +93,13 @@
       console.log("Semua kamera:", cameras);
 
       let frontCam = getCameraByFacing("front");
-      let fallbackCam = cameras[0];
+      let fallbackCam = cameras[1];
 
       if(frontCam) {
         activeCameraIndex = cameras.indexOf(frontCam);
         startCamera(frontCam);
       } else {
-        activeCameraIndex = 0;
+        activeCameraIndex = 1;
         startCamera(fallbackCam);
       }
     }).catch(function (e) {
