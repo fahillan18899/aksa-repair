@@ -25,7 +25,7 @@
 <script src="https://unpkg.com/html5-qrcode"></script>
 
 <!-- Tombol -->
-<div class="text-center" style="padding-top: 100px;">
+<div class="text-center" style="padding-top: 500px;">
   <button class="btn btn-primary" onclick="startScan()">Scan QR</button>
 </div>
 
