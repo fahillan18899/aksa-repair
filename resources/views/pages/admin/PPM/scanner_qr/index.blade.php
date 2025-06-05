@@ -3,81 +3,81 @@
 @section('content')
 @section('title', 'Scanner QR')
 <style>
-  /* Ubah warna border input yang tidak valid menjadi merah */
-  .form-control.is-invalid {
-    border-color: red;
+  .preview-container {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #ccc;
+  }
+
+  #preview {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .modal-lg {
+    max-width: 600px;
   }
 </style>
 
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
+<!-- Tombol Trigger Modal -->
+ 
+<div class="text-center my-4" style="padding-top: 100px; margin-left: 150px; padding-bottom: 380px">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#qrModal">
+    <i class="fa fa-qrcode"></i> Scan QR Code
+  </button>
+</div>
 
-    <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-text"></i></div>
-      <div class="header-title">
-        <h1>Scanner QR</h1>
-        <small>Scanner QR</small>
+<!-- Modal -->
+<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">QR Code Scanner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModalBtn">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-  </section>
-  <!-- Main content -->
-  <div class="content">
-    <div class="row" style="display: flex; justify-content: center;">
-      <div class="col-md-6">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-body">
-            <div class="panel panel-default thumbnail">
-              <div class="panel-heading no-print">
-                <h2 class="text-center">Scan QR Code</h2>
-              </div>
-              <div class="panel-body panel-form">
-                <div id="app">
-                  <div class="preview-container">
-                    <video id="preview"></video>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="modal-body text-center">
+        <div class="preview-container">
+          <video id="preview"></video>
         </div>
       </div>
     </div>
   </div>
 </div>
+@endsection
+@push('addon-script')
 <script src="{{ url('assets/js/instascan.min.js') }}"></script>
-
 <script>
   let scanner = new Instascan.Scanner({
     video: document.getElementById('preview'),
     mirror: false
   });
-  scanner.addListener('scan', function(content) {
 
-    function convertBase(num, fromBase, toBase) {
-      let decimal = parseInt(num, fromBase);
-      let result = decimal.toString(toBase);
-      let width = 4;
-      let hasil = result.padStart(width, '0');
-      return hasil;
-    }
-
-    const convertBaseReturn = convertBase(content, 36, 10);
+  // Ketika berhasil scan
+  scanner.addListener('scan', function (content) {
+    $('#qrModal').modal('hide');
     window.location.href = "{{ url('dashboard/ppm/data_alat') }}/" + content;
-    if (String(convertBaseReturn).substring(0, 2) == "24") {
-    }
   });
 
-  Instascan.Camera.getCameras().then(cameras => {
-    if (cameras.length > 0) {
-      scanner.start(cameras[1]);
-    } else {
-      console.error("Please enable Camera!");
-    }
+  // Buka kamera saat modal dibuka
+  $('#qrModal').on('shown.bs.modal', function () {
+    Instascan.Camera.getCameras().then(cameras => {
+      if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+      } else {
+        alert('Kamera tidak ditemukan.');
+      }
+    }).catch(e => {
+      alert('Gagal mengakses kamera: ' + e);
+    });
   });
 
-
+  // Stop kamera saat modal ditutup
+  $('#qrModal').on('hidden.bs.modal', function () {
+    scanner.stop();
+  });
 </script>
-@endsection
+@endpush

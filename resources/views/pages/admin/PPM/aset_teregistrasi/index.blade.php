@@ -1371,171 +1371,171 @@
     });
   });
 </script>
+
 <script>
+  // *Function autofill form perbaikan_part* //
+    $(document).ready(function() {
+      $('#id_aset_reg_5').on('click', function() {
+        let idPart = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
+        console.log("ID yang dimasukan :", idPart); // cek id 
 
-// *Function autofill form perbaikan_part* //
-$(document).ready(function() {
-    $('#id_aset_reg_5').on('click', function() {
-      let idPart = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
-      console.log("ID yang dimasukan :", idPart); // cek id 
+        if (!idPart) return; //Kalo kosong proses berhenti
 
-      if (!idPart) return; //Kalo kosong proses berhenti
-
-      //Ambil data pake API dan kirim ke masing-masing field / input        
-      fetch(`/dashboard/ppm/autofillpart/${encodeURIComponent(idPart)}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("Data dari server: ", data);
-          let item = Array.isArray(data) ? data[0] : data || {};
-          $('#nama_alat_reg_5').val(item.nama_req || '');
-          $('#merek_alat_reg_5').val(item.merek_req || '');
-          $('#serial_number_reg_5').val(item.sn_req || '');
-          $('#lokasi_alat_reg_5').val(item.lokasi_req || '');
-          $('#type_alat_reg_5').val(item.type_req || '');
-          $('#Pelapor_reg_5').val(item.pelapor_req || '');
-          $('#Keluhan_Dari_alat_reg_5').val(item.kerusakan_req || '');
-        })
-        .catch(error => console.error("Error AJAX:", error));
+        //Ambil data pake API dan kirim ke masing-masing field / input        
+        fetch(`/dashboard/ppm/autofillpart/${encodeURIComponent(idPart)}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data dari server: ", data);
+            let item = Array.isArray(data) ? data[0] : data || {};
+            $('#nama_alat_reg_5').val(item.nama_req || '');
+            $('#merek_alat_reg_5').val(item.merek_req || '');
+            $('#serial_number_reg_5').val(item.sn_req || '');
+            $('#lokasi_alat_reg_5').val(item.lokasi_req || '');
+            $('#type_alat_reg_5').val(item.type_req || '');
+            $('#Pelapor_reg_5').val(item.pelapor_req || '');
+            $('#Keluhan_Dari_alat_reg_5').val(item.kerusakan_req || '');
+          })
+          .catch(error => console.error("Error AJAX:", error));
+      });
     });
-  });
   // *Function autofill form perbaikan_part* //
 
   // *Function autofill form perbaikan* //
-  $(document).ready(function() {
-    $('#id_aset_reg').on('click', function() {
-      let idAset = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
-      console.log("ID yang dimasukan :", idAset); // cek id 
+    $(document).ready(function() {
+      $('#id_aset_reg').on('click', function() {
+        let idAset = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel 
+        console.log("ID yang dimasukan :", idAset); // cek id 
 
-      if (!idAset) return; //Kalo kosong proses berhenti
+        if (!idAset) return; //Kalo kosong proses berhenti
 
-      //Ambil data pake API dan kirim ke masing-masing field / input        
-      fetch(`/dashboard_user/autofill/${encodeURIComponent(idAset)}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("Data dari server: ", data);
-          let item = Array.isArray(data) ? data[0] : data || {};
-          $('#nama_alat_reg').val(item.nama_req || '');
-          $('#merek_alat_reg').val(item.merek_req || '');
-          $('#serial_number_reg').val(item.sn_req || '');
-          $('#lokasi_alat_reg').val(item.lokasi_req || '');
-          $('#type_alat_reg').val(item.type_req || '');
-          $('#pelapor_reg').val(item.pelapor_req || '');
-          $('#keluhan_dari_alat_reg').val(item.kerusakan_req || '');
-        })
-        .catch(error => console.error("Error AJAX:", error));
+        //Ambil data pake API dan kirim ke masing-masing field / input        
+        fetch(`/dashboard_user/autofill/${encodeURIComponent(idAset)}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data dari server: ", data);
+            let item = Array.isArray(data) ? data[0] : data || {};
+            $('#nama_alat_reg').val(item.nama_req || '');
+            $('#merek_alat_reg').val(item.merek_req || '');
+            $('#serial_number_reg').val(item.sn_req || '');
+            $('#lokasi_alat_reg').val(item.lokasi_req || '');
+            $('#type_alat_reg').val(item.type_req || '');
+            $('#pelapor_reg').val(item.pelapor_req || '');
+            $('#keluhan_dari_alat_reg').val(item.kerusakan_req || '');
+          })
+          .catch(error => console.error("Error AJAX:", error));
+      });
     });
-  });
   // *Function autofill form perbaikan* //
 
   // *Fuction autofill form pengiriman* //
-  $(document).ready(function() {
-    $('#Perbaikan_reg').on('click', function() {
-      let idPerbaikan = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel
-      console.log("ID yang dimasukan :", idPerbaikan); // cek id
+    $(document).ready(function() {
+      $('#Perbaikan_reg').on('click', function() {
+        let idPerbaikan = $(this).val().trim(); //masukin nilai id yang dipilih ke variabel
+        console.log("ID yang dimasukan :", idPerbaikan); // cek id
 
-      if (!idPerbaikan) return; //Kalo kosong proses berhenti
+        if (!idPerbaikan) return; //Kalo kosong proses berhenti
 
-      //Ambil data pake API dan kirim ke masing-masing field / input 
-      fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan)}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("Data dari server: ", data);
-          let item2 = Array.isArray(data) ? data[0] : data || {};
-          $('#tanggal_perbaikan_reg_2').val(item2.tanggal_perbaikan_reg || '');
-          $('#id_aset_reg_2').val(item2.id_aset_reg || '');
-          $('#nama_alat_reg_2').val(item2.nama_alat_reg || '');
-          $('#merek_alat_reg_2').val(item2.merek_alat_reg || '');
-          $('#type_alat_reg_2').val(item2.type_alat_reg || '');
-          $('#seri_number_reg_2').val(item2.serial_number_reg || '');
-          $('#lokasi_alat_reg_2').val(item2.lokasi_alat_reg || '');
-          $('#pelapor_reg_2').val(item2.pelapor_reg || '');
-          $('#teknisi_1_reg_2').val(item2.teknisi_1_reg || '');
-          $('#teknisi_2_reg_2').val(item2.teknisi_2_reg || '');
-          $('#teknisi_3_reg_2').val(item2.teknisi_3_reg || '');
-          $('#teknisi_4_reg_2').val(item2.teknisi_4_reg || '');
-          $('#teknisi_5_reg_2').val(item2.teknisi_5_reg || '');
-          $('#ka_instalasi_reg_2').val(item2.ka_instalasi_reg || '');
-          $('#suku_cadang_2').val(item2.suku_cadang || '');
-          $('#volume_2').val(item2.volume || '');
-          $('#harga_satuan_2').val(item2.harga_satuan || '');
-          $('#jumlah_harga_2').val(item2.jumlah_harga || '');
-        })
-        .catch(error => console.log("ERROR AJAX:", error));
+        //Ambil data pake API dan kirim ke masing-masing field / input 
+        fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan)}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data dari server: ", data);
+            let item2 = Array.isArray(data) ? data[0] : data || {};
+            $('#tanggal_perbaikan_reg_2').val(item2.tanggal_perbaikan_reg || '');
+            $('#id_aset_reg_2').val(item2.id_aset_reg || '');
+            $('#nama_alat_reg_2').val(item2.nama_alat_reg || '');
+            $('#merek_alat_reg_2').val(item2.merek_alat_reg || '');
+            $('#type_alat_reg_2').val(item2.type_alat_reg || '');
+            $('#seri_number_reg_2').val(item2.serial_number_reg || '');
+            $('#lokasi_alat_reg_2').val(item2.lokasi_alat_reg || '');
+            $('#pelapor_reg_2').val(item2.pelapor_reg || '');
+            $('#teknisi_1_reg_2').val(item2.teknisi_1_reg || '');
+            $('#teknisi_2_reg_2').val(item2.teknisi_2_reg || '');
+            $('#teknisi_3_reg_2').val(item2.teknisi_3_reg || '');
+            $('#teknisi_4_reg_2').val(item2.teknisi_4_reg || '');
+            $('#teknisi_5_reg_2').val(item2.teknisi_5_reg || '');
+            $('#ka_instalasi_reg_2').val(item2.ka_instalasi_reg || '');
+            $('#suku_cadang_2').val(item2.suku_cadang || '');
+            $('#volume_2').val(item2.volume || '');
+            $('#harga_satuan_2').val(item2.harga_satuan || '');
+            $('#jumlah_harga_2').val(item2.jumlah_harga || '');
+          })
+          .catch(error => console.log("ERROR AJAX:", error));
+      });
     });
-  });
   // *Fuction autofill form pengiriman end* //
 
   // *Fuction autofill form pengembalian* //
-  $(document).ready(function() {
-    $('#id_perbaikan_reg2').on('click', function() {
-      let idPerbaikan2 = $(this).val().trim();
-      console.log("ID yang dimasukan :", idPerbaikan2);
+    $(document).ready(function() {
+      $('#id_perbaikan_reg2').on('click', function() {
+        let idPerbaikan2 = $(this).val().trim();
+        console.log("ID yang dimasukan :", idPerbaikan2);
 
-      if (!idPerbaikan2) return;
+        if (!idPerbaikan2) return;
 
-      fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan2)}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("Data dari server: ", data);
-          let item3 = Array.isArray(data) ? data[0] : data || {};
-          $('#tanggal_perbaikan_reg_3').val(item3.tanggal_perbaikan_reg || '');
-          $('#id_aset_reg_3').val(item3.id_aset_reg || '');
-          $('#nama_alat_reg_3').val(item3.nama_alat_reg || '');
-          $('#merek_reg_3').val(item3.merek_alat_reg || '');
-          $('#tipe_reg_3').val(item3.type_alat_reg || '');
-          $('#serial_number_reg_3').val(item3.serial_number_reg || '');
-          $('#pelapor_reg_3').val(item3.pelapor_reg || '');
-          $('#lokasi_alat_reg_3').val(item3.lokasi_alat_reg || '');
-          $('#teknisi1_reg_3').val(item3.teknisi_1_reg || '');
-          $('#teknisi2_reg_3').val(item3.teknisi_2_reg || '');
-          $('#teknisi3_reg_3').val(item3.teknisi_3_reg || '');
-          $('#teknisi4_reg_3').val(item3.teknisi_4_reg || '');
-          $('#teknisi5_reg_3').val(item3.teknisi_5_reg || '');
-          $('#ka_instalasi_reg_3').val(item3.ka_instalasi_reg || '');
-          $('#suku_cadang_3').val(item3.suku_cadang || '');
-          $('#volume_3').val(item3.volume || '');
-          $('#harga_satuan_3').val(item3.harga_satuan || '');
-          $('#jumlah_harga_3').val(item3.jumlah_harga || '');
-        })
-        .catch(error => console.log("ERROR AJAX : ", error))
+        fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan2)}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data dari server: ", data);
+            let item3 = Array.isArray(data) ? data[0] : data || {};
+            $('#tanggal_perbaikan_reg_3').val(item3.tanggal_perbaikan_reg || '');
+            $('#id_aset_reg_3').val(item3.id_aset_reg || '');
+            $('#nama_alat_reg_3').val(item3.nama_alat_reg || '');
+            $('#merek_reg_3').val(item3.merek_alat_reg || '');
+            $('#tipe_reg_3').val(item3.type_alat_reg || '');
+            $('#serial_number_reg_3').val(item3.serial_number_reg || '');
+            $('#pelapor_reg_3').val(item3.pelapor_reg || '');
+            $('#lokasi_alat_reg_3').val(item3.lokasi_alat_reg || '');
+            $('#teknisi1_reg_3').val(item3.teknisi_1_reg || '');
+            $('#teknisi2_reg_3').val(item3.teknisi_2_reg || '');
+            $('#teknisi3_reg_3').val(item3.teknisi_3_reg || '');
+            $('#teknisi4_reg_3').val(item3.teknisi_4_reg || '');
+            $('#teknisi5_reg_3').val(item3.teknisi_5_reg || '');
+            $('#ka_instalasi_reg_3').val(item3.ka_instalasi_reg || '');
+            $('#suku_cadang_3').val(item3.suku_cadang || '');
+            $('#volume_3').val(item3.volume || '');
+            $('#harga_satuan_3').val(item3.harga_satuan || '');
+            $('#jumlah_harga_3').val(item3.jumlah_harga || '');
+          })
+          .catch(error => console.log("ERROR AJAX : ", error))
+      })
     })
-  })
   // *Fuction autofill form pengembalian end* //
 
   // *Fuction autofill form penghapusan* //
-  $(document).ready(function() {
-    $('#Id_Perbaikan_reg3').on('click', function() {
-      let idPerbaikan3 = $(this).val().trim();
-      console.log("ID yang dimasukan : ", idPerbaikan3);
+    $(document).ready(function() {
+      $('#Id_Perbaikan_reg3').on('click', function() {
+        let idPerbaikan3 = $(this).val().trim();
+        console.log("ID yang dimasukan : ", idPerbaikan3);
 
-      if (!idPerbaikan3) return;
+        if (!idPerbaikan3) return;
 
-      fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan3)}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log("Data dari server : ", data);
-          let item4 = Array.isArray(data) ? data[0] : data || {};
-          $('#tanggal_perbaikan_reg_4').val(item4.tanggal_perbaikan_reg || '');
-          $('#nama_alat_reg_4').val(item4.nama_alat_reg || '');
-          $('#merek_alat_reg_4').val(item4.merek_alat_reg || '');
-          $('#type_alat_reg_4').val(item4.type_alat_reg || '');
-          $('#serial_number_reg_4').val(item4.serial_number_reg || '');
-          $('#lokasi_alat_reg_4').val(item4.lokasi_alat_reg || '');
-          $('#pelapor_reg_4').val(item4.pelapor_reg || '');
-          $('#teknisi_1_reg_4').val(item4.teknisi_1_reg || '');
-          $('#teknisi_2_reg_4').val(item4.teknisi_2_reg || '');
-          $('#teknisi_3_reg_4').val(item4.teknisi_3_reg || '');
-          $('#teknisi_4_reg_4').val(item4.teknisi_4_reg || '');
-          $('#teknisi_5_reg_4').val(item4.teknisi_5_reg || '');
-          $('#ka_instalasi_reg_4').val(item4.ka_instalasi_reg || '');
-          $('#suku_cadang_4').val(item4.suku_cadang || '');
-          $('#volume_4').val(item4.volume || '');
-          $('#harga_satuan_4').val(item4.harga_satuan || '');
-          $('#jumlah_harga_4').val(item4.jumlah_harga || '');
-        })
-        .catch(error => console.log("ERROR AJAX : ", error))
+        fetch(`/dashboard/ppm/autofill_pengiriman/${encodeURIComponent(idPerbaikan3)}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Data dari server : ", data);
+            let item4 = Array.isArray(data) ? data[0] : data || {};
+            $('#tanggal_perbaikan_reg_4').val(item4.tanggal_perbaikan_reg || '');
+            $('#nama_alat_reg_4').val(item4.nama_alat_reg || '');
+            $('#merek_alat_reg_4').val(item4.merek_alat_reg || '');
+            $('#type_alat_reg_4').val(item4.type_alat_reg || '');
+            $('#serial_number_reg_4').val(item4.serial_number_reg || '');
+            $('#lokasi_alat_reg_4').val(item4.lokasi_alat_reg || '');
+            $('#pelapor_reg_4').val(item4.pelapor_reg || '');
+            $('#teknisi_1_reg_4').val(item4.teknisi_1_reg || '');
+            $('#teknisi_2_reg_4').val(item4.teknisi_2_reg || '');
+            $('#teknisi_3_reg_4').val(item4.teknisi_3_reg || '');
+            $('#teknisi_4_reg_4').val(item4.teknisi_4_reg || '');
+            $('#teknisi_5_reg_4').val(item4.teknisi_5_reg || '');
+            $('#ka_instalasi_reg_4').val(item4.ka_instalasi_reg || '');
+            $('#suku_cadang_4').val(item4.suku_cadang || '');
+            $('#volume_4').val(item4.volume || '');
+            $('#harga_satuan_4').val(item4.harga_satuan || '');
+            $('#jumlah_harga_4').val(item4.jumlah_harga || '');
+          })
+          .catch(error => console.log("ERROR AJAX : ", error))
+      })
     })
-  })
   // *Fuction autofill form penghapusan end* //
 </script>
 
@@ -1685,6 +1685,24 @@ $(document).ready(function() {
       }
     });
   });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const hargaInput = document.getElementById("harga_perbaikan_reg2");
+
+    hargaInput.addEventListener("input", function(e) {
+        let value = e.target.value.replace(/[^0-9]/g, ""); // Hanya angka
+        if (value) {
+            e.target.value = formatRupiah(value);
+        } else {
+            e.target.value = "";
+        }
+    });
+
+    function formatRupiah(angka) {
+        return "Rp " + angka.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+});
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
