@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\PPM;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class OperatorController extends Controller
 {
@@ -45,11 +45,16 @@ class OperatorController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate(['username' => 'max:255',
+        $request->validate([
+            'username' => 'max:255',
             'password' => 'min:5',
             'user_role' => '',
+            'rs' => '',
+            'divisi' => '',
         ]);
-        $request['password'] = bcrypt($request->input('password'));
+
+        $request['rs_divisi'] = $request['rs'] . $request['divisi'];
+        $request['kode_rs'] = Auth::user()->kode_rs;
         $operator = User::findOrFail($id);
         $operator->update($request->all());
 

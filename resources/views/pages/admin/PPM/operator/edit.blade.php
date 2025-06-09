@@ -38,9 +38,19 @@
                    <div class="form-group row">
                      <label for="username" class="col-xs-3 col-form-label">Username </label>
                      <div class="col-xs-9">
-                       <input name="username" type="text" class="form-control" id="username" placeholder="Username" value="{{ $item->username }}">
+                       <input name="username" id="username" type="text" class="form-control" value="{{ $item->username }}">
                      </div>
                    </div>
+
+                  <div class="form-group row">
+                    <label for="divisi" class="col-xs-3 col-form-label">Divisi</label>
+                    <div class="col-xs-2">
+                      <input name="rs" id="rs" type="text" class="form-control" value="{{ Auth::user()->kode_rs }}" readonly>
+                    </div>
+                    <div class="col-xs-5">
+                      <input name="divisi" id="divisi" type="text" class="form-control" value="{{ $item->divisi }}">
+                    </div>
+                  </div>
 
                    <div class="form-group row">
                      <label for="user_role" class="col-xs-3 col-form-label">Level user </label>

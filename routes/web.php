@@ -70,7 +70,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
     // menu PPM
     Route::prefix('ppm')->group(function () {
-        // menu dashboard SIMRS
+    // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
         Route::resource('data_inventaris', DashboardController::class);
         Route::resource('aset_non_alkes', DashboardController::class);
@@ -86,6 +86,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('data_perbaikan', [PPMController::class, 'getPerbaikan'])->name('perbaikan.data');
         Route::get('data_pemeliharaan', [PPMController::class, 'getPemeliharaan'])->name('pemeliharaan.data');
         Route::get('data_permintaan', [PPMController::class, 'getPermintaan'])->name('permintaan.data');
+        Route::get('count_permintaan', [PPMController::class, 'countPermintaan'])->name('permintaan.count');
+        Route::get('count_perbaikan', [PPMController::class, 'countPerbaikan'])->name('perbaikan.count');
 
         // menu SOP
         Route::resource('sop_pemakaian', SOPPemakaianController::class);
