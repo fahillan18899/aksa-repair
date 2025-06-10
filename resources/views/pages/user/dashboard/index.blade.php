@@ -66,196 +66,199 @@
   @endif
   <!--Slide-->
   <!-- /.content-header -->
-  <!-- Main content -->
+<!-- Main content -->
   <div class="content">
     <div class="row">
-      <!-- Box Jumlah Alat -->
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-olive">
-          <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text"><?= 'JUMLAH ALAT TERGESITRASI' ?></span>
-            <span class="info-box-number">{{ $registrasi }}</span>
 
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
+      <!-- Box Jumlah Alat -->
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-olive">
+            <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><?= 'JUMLAH ALAT TERGESITRASI' ?></span>
+              <span class="info-box-number">{{ $registrasi }}</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y') ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y') ?>
-            </span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
       <!-- Box Jumlah Alat end-->
 
       <!-- Box Jumlah Aset Perbaikan Regis -->
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class=" info-box bg-blue">
-          <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text"><?= 'JUMLAH ASSET PERBAIKAN TERGESITRASI' ?></span>
-            <span class="info-box-number">{{ $perbaikanRegistrasi }} / {{ $registrasi }}</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class=" info-box bg-blue">
+            <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><?= 'JUMLAH ASSET PERBAIKAN TERGESITRASI' ?></span>
+              <span class="info-box-number" id="count_perbaikan">0</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y') ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y') ?>
-            </span>
           </div>
         </div>
-      </div>
       <!-- Box Jumlah Aset Perbaikan Regis end-->
 
-      <!-- Box Jumlah Aset Perbaikan Unregis -->
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-navy-blue">
-          <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">JUMLAH ASSET PERBAIKAN UNRGESITRASI</span>
-            <span class="info-box-number">KOSONG</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
+      <!-- Box Permintaan perbaiian user -->
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-navy-blue">
+            <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">JUMLAH PERMINTAAN PERBAIKAN USER</span>
+              <span class="info-box-number" id="count_permintaan">0</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y') ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y') ?>
-            </span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
-      <!-- Box Jumlah Aset Perbaikan Unregis end -->
+      <!-- Box Permintaan perbaiian user end -->
 
       <!-- Box Jumlah Aset Terkalibrasi -->
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="info-box bg-light-green">
-          <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text"><?= 'JUMLAH ALAT TERPELIHARA' ?></span>
-            <span class="info-box-number">{{ $alatTerkalibrasi }} / {{$registrasi}}</span>
-            <div class="progress">
-              <div class="progress-bar" style="width: 100%"></div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div class="info-box bg-light-green">
+            <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text"><?= 'JUMLAH ALAT TERPELIHARA' ?></span>
+              <span class="info-box-number">{{ $alatTerkalibrasi }} / {{$registrasi}}</span>
+              <div class="progress">
+                <div class="progress-bar" style="width: 100%"></div>
+              </div>
+              <span class="progress-description">
+                <?= date('j F, Y') ?>
+              </span>
             </div>
-            <span class="progress-description">
-              <?= date('j F, Y') ?>
-            </span>
           </div>
-          <!-- /.info-box-content -->
         </div>
-      </div>
       <!-- Box Jumlah Aset Terkalibrasi end -->
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default thumbnail">
 
-            <div class="panel-heading no-print">
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="btn-group">
-                    <a class="btn btn-success" href="/dashboard_user/pesanan_user"> <i class="fa fa-plus"></i> Request Perbaikan </a>
+      <!-- CARD TABEL PERMINTAAN -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default thumbnail">
+
+              <div class="panel-heading no-print">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="btn-group">
+                      <a class="btn btn-success" href="/dashboard_user/pesanan_user"> <i class="fa fa-plus"></i> Request Perbaikan </a>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <h2>Tabel Perbaikan</h2>
                   </div>
                 </div>
-                <div class="col-md-5">
-                  <h2>Tabel Perbaikan</h2>
-                </div>
               </div>
-            </div>
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th class="">Tanggal</th>
-                      <th class="">Nama</th>
-                      <th class="">Merek</th>
-                      <th class="">Type</th>
-                      <th class="">Serial_Number</th>
-                      <th class="">Lokasi</th>
-                      <th class="">Status</th>
-                      <th class="">Keterangan</th>
-                    </thead>
-                    <tbody id="perbaikanUser">
-                      <!-- DATA AJAX -->
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <!--TABEL-->
+                    <table class="datatable table table-striped table-bordered" style="width:100%">
+                      <thead class="table-light">
+                        <th class="">Tanggal</th>
+                        <th class="">Nama</th>
+                        <th class="">Merek</th>
+                        <th class="">Type</th>
+                        <th class="">Serial_Number</th>
+                        <th class="">Lokasi</th>
+                        <th class="">Status</th>
+                        <th class="">Keterangan</th>
+                      </thead>
+                      <tbody id="perbaikanUser">
+                        <!-- DATA AJAX -->
+                      </tbody>
+                    </table>
+                    <!--TABEL-->
+                  </div>
+                  <div class="col-md-3"></div>
                 </div>
-                <div class="col-md-3"></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default thumbnail">
-            <div class="panel-heading no-print">
-              <div class="row">
-                <div class="col-md-5">
-                  <h2>Tabel Permintaan Perbaikan</h2>
+      <!-- CARD TABEL PERMINTAAN N-->
+      
+      <!-- CARD TABEL PERBAIKAN -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default thumbnail">
+              <div class="panel-heading no-print">
+                <div class="row">
+                  <div class="col-md-5">
+                    <h2>Tabel Permintaan Perbaikan</h2>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Tombol_Aksi_Table</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @forelse ($itemPesanan as $index => $item)
-                      <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id_req }}<span></td>
-                        <td>{{ $item->nama_req }}</td>
-                        <td>{{ $item->merek_req }}</td>
-                        <td>{{ $item->type_req }}</td>
-                        <td>{{ $item->sn_req }}</td>
-                        <td>{{ $item->pelapor_req }}</td>
-                        <td>{{ $item->tanggal_req }}</td>
-                        <td>
-                          <form action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id_req) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="validasi"> Validasi perbaikan </button>
-                          </form>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <!--TABEL-->
+                    <table class="datatable table table-striped table-bordered" style="width:100%">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">No</th>
+                          <th scope="col">Id</th>
+                          <th scope="col">Nama</th>
+                          <th scope="col">Merek</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Serial Number</th>
+                          <th scope="col">Pelapor</th>
+                          <th scope="col">Tanggal</th>
+                          <th scope="col">Tombol_Aksi_Table</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @forelse ($itemPesanan as $index => $item)
+                        <tr>
+                          <td>{{ $index + 1 }}</td>
+                          <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id_req }}<span></td>
+                          <td>{{ $item->nama_req }}</td>
+                          <td>{{ $item->merek_req }}</td>
+                          <td>{{ $item->type_req }}</td>
+                          <td>{{ $item->sn_req }}</td>
+                          <td>{{ $item->pelapor_req }}</td>
+                          <td>{{ $item->tanggal_req }}</td>
+                          <td>
+                            <form action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id_req) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="validasi"> Validasi perbaikan </button>
+                            </form>
+                          </td>
+                        </tr>
+                        @empty
+                        @endforelse
+                      </tbody>
+                    </table>
+                    <!--TABEL-->
+                  </div>
+                  <div class="col-md-3"></div>
                 </div>
-                <div class="col-md-3"></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
+      <!-- CARD TABEL PERBAIKAN -->
     </div>
   </div>
-  <!-- /.content -->
+<!-- /.content -->
 </div>
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
 
 @push('addon-script')
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
 
 <script>
@@ -322,58 +325,105 @@
   function isTokenSentToServer() {
     return window.localStorage.getItem('sentToServer') == 1;
   }
-</script>
-<script>
-  function loadPerbaikanUser(){
-    console.log("Memulai loadPerbaikanUser"); //Debug fungsi berjalan / tidak
+</script> -->
 
+<!-- AJAX PERBAIKAN -->
+  <script>
+    function loadPerbaikanUser(){
+      // console.log("Memulai loadPerbaikanUser"); //Debug fungsi berjalan / tidak
+
+      $.ajax({
+        url: '{{ route("perbaikanUser.data") }}',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          // console.log("Data berhasil diterima:", data); //Debug tampilan data yang di get oleh ajax
+
+          let rows ='';
+          data.forEach(item => {
+            // console.log(item);
+            rows += `
+              <tr>
+                <td>${item.tanggal_perbaikan_reg}</td>
+                <td>${item.nama_alat_reg}</td>
+                <td>${item.merek_alat_reg}</td>
+                <td>${item.type_alat_reg}</td>
+                <td>${item.serial_number_reg}</td>
+                <td>${item.lokasi_alat_reg}</td>
+                <td>
+                  <button class="btn btn-sm ${item.status == 0 ? 'btn-success' : 'btn-danger'} update-status-btn"
+                  data-id="${item.status}" disabled>
+                  ${item.status == 0 ? 'Sudah disetujui' : 'Belum disetujui'}
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-sm ${item.keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning'} update-status-btn"
+                  data-id="${item.id_perbaikan_reg}" disabled>
+                  ${item.keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam Perbaikan'}
+                  </button>
+                </td>
+              </tr>
+            `;
+          });
+
+          $('#perbaikanUser').html(rows);
+          // console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+        },
+        error: function(xhr, status, error) {
+          console.log("Gagal memuat data", error)
+        }
+      });
+    }
+
+    $(document).ready(function(){
+      // console.log("Dokumen siap, mulai polling...");
+      loadPerbaikanUser();
+      setInterval(loadPerbaikanUser, 3000);
+    });
+  </script>
+<!-- AJAX PERBAIKAN N-->
+
+<!-- COUNT PERMINTAAN PERBAIKAN -->
+ <script>
+  function jumlahPermintaanUser() {
     $.ajax({
-      url: '{{ route("perbaikanUser.data") }}',
+      url: '{{ route("permintaanUser.count") }}',
       method: 'GET',
-      dataType: 'json',
-      success: function(data) {
-        console.log("Data berhasil diterima:", data); //Debug tampilan data yang di get oleh ajax
-
-        let rows ='';
-        data.forEach(item => {
-          console.log(item);
-          rows += `
-            <tr>
-              <td>${item.tanggal_perbaikan_reg}</td>
-              <td>${item.nama_alat_reg}</td>
-              <td>${item.merek_alat_reg}</td>
-              <td>${item.type_alat_reg}</td>
-              <td>${item.serial_number_reg}</td>
-              <td>${item.lokasi_alat_reg}</td>
-              <td>
-                <button class="btn btn-sm ${item.status == 0 ? 'btn-success' : 'btn-danger'} update-status-btn"
-                data-id="${item.status}" disabled>
-                ${item.status == 0 ? 'Sudah disetujui' : 'Belum disetujui'}
-                </button>
-              </td>
-              <td>
-                <button class="btn btn-sm ${item.keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning'} update-status-btn"
-                data-id="${item.id_perbaikan_reg}" disabled>
-                ${item.keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam Perbaikan'}
-                </button>
-              </td>
-            </tr>
-          `;
-        });
-
-        $('#perbaikanUser').html(rows);
-        console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
+      success: function(response) {
+        $('#count_permintaan').text(response.countPermintaan);
       },
       error: function(xhr, status, error) {
-        console.log("Gagal memuat data", error)
+        console.log("Gagal mengambil data permintaan:", error);
       }
     });
   }
 
-  $(document).ready(function(){
-    console.log("Dokumen siap, mulai polling...");
-    loadPerbaikanUser();
-    setInterval(loadPerbaikanUser, 3000);
-  });
-</script>
+  $(document).ready(function() {
+    jumlahPermintaanUser();
+    setInterval(jumlahPermintaanUser, 3000);
+  })
+ </script>
+<!-- COUNT PERMINTAAN PERBAIKAN N-->
+
+<!-- COUNT PERBAIKAN -->
+ <script>
+  function jumlahPerbaikanUser() {
+    $.ajax({
+      url: '{{ route("perbaikanUser.count") }}',
+      method: 'GET',
+      success: function(response) {
+        $('#count_perbaikan').text(response.countPerbaikan);
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal mengambil data perbaikan:", error);
+      }
+    });
+  }
+
+  $(document).ready(function() {
+    jumlahPerbaikanUser();
+    setInterval(jumlahPerbaikanUser, 3000);
+  })
+ </script>
+<!-- COUNT PERBAIKAN N-->
 @endpush

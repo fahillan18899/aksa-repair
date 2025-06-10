@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\User\PPM;
 
+use App\Models\Pesanan;
 use App\Models\Registrasi;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\LembarPemeliharaan;
 use App\Models\PerbaikanRegistrasi;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +30,7 @@ class DashboardUserController extends Controller
         compact('registrasi', 'perbaikanRegistrasi', 'dataPerbaikan', 'itemPesanan', 'alatTerkalibrasi'));
     }
 
+    //Fetch 
     public function getPerbaikanUser()
     {
         $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
@@ -38,27 +38,17 @@ class DashboardUserController extends Controller
         return response()->json($perbaikanUser);
     }
 
-    // public function dashboard_teknisi()
-    // {
-    //     $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
+    public function countPermintaan()
+    {
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
+        $countPermintaan = Pesanan::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_req', $divisi)->count();
+        return response()->json(['countPermintaan' => $countPermintaan]);
+    }
 
-    //     return view('pages.teknisi.dashboard.index',
-    //         [
-    //             'registrasi' => $registrasi,
-    //             'perbaikanRegistrasi' => $perbaikanRegistrasi,
-    //             'perbaikanUnregistrasi' => $perbaikanUnregistrasi,
-    //             'lembarPemeliharaan' => $lembarPemeliharaan,
-    //         ]);
-    // }
-
-        // public function json()
-    // {
-    //     $query = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nama_alat', 'merek', 'type', 'gambar', 'serial_number', 'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 'harga_perolehan', 'sumber_dana', 'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 'umur_alat', 'jadwal_pemeliharaan'])->where('kode_rs', Auth::user()->kode_rs);
-    //     $c = Datatables::eloquent($query)->make(false);
-
-    //     return $c;
-    // }
+    public function countPerbaikan()
+    {
+        $divisi = DB::table('users')->where('user_id', Auth::id())->value('rs_divisi');
+        $countPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->where('pelapor_reg', $divisi)->count();
+        return response()->json(['countPerbaikan' => $countPerbaikan]);
+    }
 }

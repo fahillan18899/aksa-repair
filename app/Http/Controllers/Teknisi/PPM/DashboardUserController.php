@@ -7,7 +7,6 @@ use App\Models\Registrasi;
 use App\Models\PerbaikanRegistrasi;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Yajra\DataTables\Facades\DataTables;
 
 class DashboardUserController extends Controller
 {
@@ -25,6 +24,7 @@ class DashboardUserController extends Controller
         compact('registrasi', 'perbaikanRegistrasi', 'alatTerkalibrasi'));
     }
 
+    //Fetch
     public function getPermintaanUser()
     {
         $permintaanUser = Pesanan::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
@@ -37,26 +37,15 @@ class DashboardUserController extends Controller
      return response()->json($perbaikan);   
     }
     
-    // public function index()
-    // {
-    //     $registrasi = Registrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $perbaikanUnregistrasi = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
-    //     $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->count();
+    public function countPermintaan()
+    {
+        $countPermintaan = Pesanan::where('kode_rs', Auth::user()->kode_rs)->count();
+        return response()->json(['countPermintaan' => $countPermintaan]);
+    }
 
-    //     return view('pages.teknisi.dashboard.index',
-    //     compact('registrasi', 'perbaikanRegistrasi', 'perbaikanUnregistrasi', 'lembarPemeliharaan'));
-    // }
-
-    // public function json()
-    // {
-    //     $query = Registrasi::query()->select(['id_aset', 'jenis_alat', 'nama_alat', 'merek', 'type', 'gambar', 'serial_number', 
-    //     'lokasi_alat', 'tanggal_kalibrasi', 'distributor', 'distributor', 'alamat_distributor', 'tlp_distributor', 'email_distributor', 
-    //     'teknisi_distributor', 'tlp_t_distributor', 'no_sertifikat_kalibrasi', 'teknisi_ppm', 'harga_perolehan', 'sumber_dana', 
-    //     'tahun_perolehan', 'akl', 'akd', 'no_inventaris_1', 'umur_alat', 'jadwal_pemeliharaan'])
-    //     ->where('kode_rs', Auth::user()->kode_rs);
-    //     $c = DataTables::eloquent($query)->make(false);
-
-    //     return $c;
-    // }
+    public function countPerbaikan()
+    {
+        $countPerbaikan = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->count();
+        return response()->json(['countPerbaikan' => $countPerbaikan]);
+    }
 }

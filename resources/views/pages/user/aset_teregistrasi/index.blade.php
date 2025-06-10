@@ -147,7 +147,7 @@
                             @csrf
                             @method('PUT')
                             <button
-                              class="btn btn-{{ $item->status == 0 ? 'warning' : 'danger' }}"
+                              class="btn btn-{{ $item->status == 0 ? 'success' : 'danger' }}"
                               type="submit"
                               disabled>{{ $item->status == 0 ? 'Sudah di Setujui' : 'Belum di Setujui' }}</button>
                           </form>

@@ -264,6 +264,8 @@ Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
 
     //Fetch
     Route::get('data_perbaikan_user', [DashboardUserController::class, 'getPerbaikanUser'])->name('perbaikanUser.data');
+    Route::get('count_permintaan_user', [DashboardUserController::class, 'countPermintaan'])->name('permintaanUser.count');
+    Route::get('count_perbaikan_user', [DashboardUserController::class, 'countPerbaikan'])->name('perbaikanUser.count');
 
     // API internal datatable
     Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
@@ -279,6 +281,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     //Fetch
     Route::get('data_permintaan_user', [DashboardTeknisiController::class, 'getPermintaanUser'])->name('permintaanUser.data');
     Route::get('data_perbaikan_teknisi', [DashboardTeknisiController::class, 'getPerbaikanTeknisi'])->name('perbaikanTeknisi.data');
+    Route::get('count_permintaan_teknisi', [DashboardTeknisiController::class, 'countPermintaan'])->name('permintaanTeknisi.count');
+    Route::get('count_perbaikan_teknisi', [DashboardTeknisiController::class, 'countPerbaikan'])->name('perbaikanTeknisi.count');
 
     Route::get('perbaikan_teknisi', [PerbaikanTeregistrasiTeknisiController::class, 'index'])->name('perbaikan_teknisi.index');
     Route::post('perbaikan_teknisi/store', [PerbaikanTeregistrasiTeknisiController::class, 'store'])->name('perbaikan_teknisi.store');
