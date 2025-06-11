@@ -21,9 +21,28 @@
   <div class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel text-center">
+      @if(Auth::user()->user_role == 'teknisi')
+      @php
+        $logoRs = [
+          "RS0000" => "profile.png", "RS0001" => "rs_badarudin_kasim.png", "RS0002" => "rsi_wonosobo.png", "RS0003" => "rs_panti_wilasa.png",
+          "RS0004" => "rsud_cilegon.png", "RS0005" => "rs_pondok_kopi.png", "RS0006" => "rsud_temanggung.png",
+          "RS0007" => "rsu_jafar_medika.png", "RS0008" => "rs_pku_wonosobo.png", "RS0009" => "rsud_karanganyar.png",
+          "RS0010" => "labkesda_bekasi.png", "RS0011" => "rsud_ungaran.png", "RS0012" => "rs_palang_biru.png", "RS0013" => "rsud_sanggau.png",
+          "RS0014" => "rs_pku_muhammadiyah_tegal.png", "RS0015" => "rs_umi_barokah.png", "RS0016" => "rsui_boyolali.png", 
+          "RS0017" => "rs_darul_istiqomah_kendal.png", "RS0018" => "rs_panti_nugroho.png", "RS0019" => "rs_prima_sehat_pekalongan.png",
+          "RS0020" => "rsi_klaten.png", "RS0021" => "rsi_at_tin.png", "RS0022" => "rs_harapan_ibu.png", "RS0023" => "rsjd_soedjarwadi.png",
+          "RS0024" => "rsui_yakssi.png", "RS0025" => "rsui_kustati.png", "RS0026" => "rs_amal_sehat.png",
+          "RS0027" => "rs_amal_sehat.png", "RS0028" => "rs_ortopedi_siaga_utama.png", "RS0030" => "rs_nirmala_suri.png",
+          "RS0031" => "rsud_ansarisaleh.png", "RS0032" => "rs_permata_kuningan.png", "RS0033" => "rsiy_pdhi_yogya.png",
+          "RS0034" => "rs_permata_kuningan.png", "RS0035" => "rs_wijaya_kusuma.png"
+          ];
+      @endphp
+      @if(isset($logoRs[Auth::user()->kode_rs]))
       <div class="image" style="margin-top: 60px;">
-        <img src="{{ url('assets_web/img/placeholder/profile.png') }}" class="img-circle" alt="User Image">
+        <img src="{{ url('assets_web/img/placeholder/' . $logoRs[Auth::user()->kode_rs]) }}" class="img-circle" alt="Logo Rs">
       </div>
+      @endif
+      @endif
       <div class="info">
         @if(Auth::user()->user_role == 'teknisi')
         @php
