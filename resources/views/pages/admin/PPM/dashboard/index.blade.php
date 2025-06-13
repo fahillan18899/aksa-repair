@@ -17,10 +17,10 @@
   <!-- /.content-header -->
 
   <!-- Main content -->
-  <div class="content">
+  <div class="content container-fluid">
     <div class="row">
       <!--Box Jumlah Alat -->
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 mb-4">
           <div class="info-box bg-olive">
             <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
 
@@ -41,7 +41,7 @@
       <!--Box Jumlah Alat end-->
 
       <!--Box Jumlah Aset Perbaikan Regis -->
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 mb-4">
           <div class=" info-box bg-blue">
             <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
             <div class="info-box-content">
@@ -63,7 +63,7 @@
       <!--Box Jumlah Aset Perbaikan Regis end-->
 
       <!--Box Jumlah Permintaan Perbaikan -->
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 mb-4">
           <div class="info-box bg-navy-blue">
             <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
             <div class="info-box-content">
@@ -81,7 +81,7 @@
       <!--Box Jumlah Permintaan Perbaikan -->
 
       <!--Box Jumlah Aset Terkalibrasi -->
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-12 col-md-6 mb-4">
           <div class="info-box bg-light-green">
             <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
             <div class="info-box-content">
@@ -118,9 +118,9 @@
             <div class="overflow-x:auto">
               <div class="panel-body panel-form">
                 <div class="row">
-                  <div class="col-md-12 com-sm-12">
+                  <div class="col-md-12 col-sm-12 table-responsive">
                     <!-- TABEL -->
-                     <table class="datatable table table-striped table-bordered" style="width: 100%;">
+                     <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
                         <th scope="col">ID</th>
                         <th scope="col">Nama</th>
@@ -161,9 +161,9 @@
               <div style="overflow-x:auto;">
                 <div class="panel-body panel-form">
                   <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-12 col-sm-12 table-responsive">
                       <!--TABEL-->
-                      <table class="datatable table table-striped table-bordered" style="width:100%">
+                      <table class="datatable table table-striped table-bordered">
                         <thead class="table-light">
                           <th scope="col">Tanggal</th>
                           <th scope="col">Nama</th>
@@ -203,9 +203,9 @@
             <div class="overflow-x:auto">
               <div class="panel-body panel-form">
                 <div class="row">
-                  <div class="col-md-12 col-sm-12">
+                  <div class="col-md-12 col-sm-12 table-responsive">
                     <!-- TABLE -->
-                    <table class="datatable table table-striped table-bordered" style="width: 100%">
+                    <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
                         <th scope="col">Tanggal</th>
                         <th scope="col">ID</th>

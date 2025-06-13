@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\PPM\ViewTableController3;
 use App\Http\Controllers\Admin\PPM\PemantauanController;
 use App\Http\Controllers\Admin\PPM\LkInspeksiController;
 use App\Http\Controllers\Admin\PPM\LkAlatController;
+use App\Http\Controllers\Admin\PPM\QrController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -81,6 +82,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('view_tabel', ViewTableController::class);
         Route::resource('view_tabel2', ViewTableController2::class);
         Route::resource('view_tabel3', ViewTableController3::class);
+        Route::get('/dashboard/qr/form', [QrController::class, 'form'])->name('qr.form');
+        Route::post('qr/generate', [QrController::class, 'generate'])->name('qr.generate');
 
         //Fetch  data realtime table dashboard
         Route::get('data_perbaikan', [PPMController::class, 'getPerbaikan'])->name('perbaikan.data');
