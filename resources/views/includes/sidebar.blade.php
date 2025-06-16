@@ -56,7 +56,7 @@
     <ul class="sidebar-menu">
       <li class="{{ request()->is('dashboard/ppm/home') ? 'active' : '' }}"><a href="/dashboard/ppm/home"><i class="fa fa-home"></i>Dashboard</a></li>
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/pemantauan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_input_pekerjaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_data_barang') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_sph') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_invoice') ? 'active' : '' }}">
         <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i>
           <span>Monitoring Marketing</span>
           <span class="pull-right-container">
@@ -64,10 +64,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Input Pekerjaan</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Data Barang</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">SPH</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Invoice</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_input_pekerjaan') ? 'active' : '' }}"><a href="{{ route('inputPekerjaan.data') }}">Input Pekerjaan</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_data_barang') ? 'active' : '' }}"><a href="{{ route('dataBarang.data') }}">Data Barang</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_sph') ? 'active' : '' }}"><a href="{{ route('sph.data') }}">SPH</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_invoice') ? 'active' : '' }}"><a href="{{ route('invoice.data') }}">Invoice</a></li>
         </ul>
       </li>
       <!---->

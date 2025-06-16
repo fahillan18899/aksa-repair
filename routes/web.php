@@ -60,6 +60,8 @@ use App\Http\Controllers\User\PPM\PermintaanBarangController;
 use App\Http\Controllers\User\PPM\PesananUserController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
+// Repair Aksa
+use App\Http\Controllers\Admin\MonitoringMarketingController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -92,15 +94,15 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('count_permintaan', [PPMController::class, 'countPermintaan'])->name('permintaan.count');
         Route::get('count_perbaikan', [PPMController::class, 'countPerbaikan'])->name('perbaikan.count');
 
-        // menu SOP
-        Route::resource('sop_pemakaian', SOPPemakaianController::class);
-        Route::resource('sop_pemeliharaan', SOPPemeliharaanController::class);
-        Route::resource('sop_perbaikan', SOPPerbaikanController::class);
-        Route::resource('sop_administrasi', SOPAdministrasi::class);
+        // Monitoring Marketing //
+        // Input Pekerjaan
+        Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
+        Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
+        Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
+        Route::get('link_invoice', [MonitoringMarketingController::class, 'getInvoice'])->name('invoice.data');
 
         // menu data kelengkapan
         Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
-
         Route::resource('gedung', GedungController::class);
         Route::resource('alat', AlatController::class);
         Route::resource('teknisi', TeknisiController::class);
