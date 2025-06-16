@@ -28,7 +28,7 @@
               <span class="info-box-text">
                 <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
               <span class="info-box-number">0</span>
-<!-- {{ $registrasi }} -->
+              <!-- {{ $registrasi }} -->
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -153,8 +153,10 @@
 
               <div class="panel-heading no-print">
                 <div class="row">
+                  <div class="col-md-4">
+                  </div>
                   <div class="col-md-5">
-                    <h2>Tabel Perbaikan</h2>
+                    <h2>Daftar Barang Proses Repair</h2>
                   </div>
                 </div>
               </div>
@@ -188,46 +190,6 @@
           </div>
         </div>
       <!--Card Tabel Perbaikan-->
-
-      <!-- Card Tabel Pemeliharaan -->
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="panel panel-default thumbnail">
-            <div class="panel-heading no-print">
-              <div class="row">
-                <div class="col-md-5">
-                  <h2>Tabel Pemeliharaan</h2>
-                </div>
-              </div>
-            </div>
-            <div class="overflow-x:auto">
-              <div class="panel-body panel-form">
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 table-responsive">
-                    <!-- TABLE -->
-                    <table class="datatable table table-striped table-bordered">
-                      <thead class="table-light">
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Ruangan</th>
-                      </thead>
-                      <tbody id="pemeliharaanBody">
-                        <!-- DATA AJAX -->
-                      </tbody>
-                    </table>
-                    <!-- TABLE -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Card Tabel Pemeliharaan -->
     </div>
   </div>
 </div>

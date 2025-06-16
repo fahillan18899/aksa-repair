@@ -609,9 +609,9 @@ hr {
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: rgb(249, 108, 0);
+    background-color: rgb(197, 161, 75);
     color: #fff;
-    box-shadow: 0 1px 3px rgba(249, 108, 0);
+    box-shadow: 0 1px 3px rgb(169, 138, 65);
     -webkit-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;
 }
@@ -793,7 +793,7 @@ hr {
     height: 100vh; /* Agar sidebar penuh tinggi */
     width: 250px; /* Atur lebar sidebar */
     overflow-y: auto; /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: rgb(249, 108, 0); /* Warna background sesuai tema */
+    background-color: #FFB20E; /* Warna background sesuai tema */
     z-index: 1000; /* Pastikan sidebar di atas konten lain */
     font-family: 'Alegreya Sans', sans-serif;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -910,7 +910,7 @@ hr {
 .sidebar-menu > li > a {
     padding: 12px 5px 12px 15px;
     display: block;
-    color: #a6a6a6;
+    color: #000000;
     position: relative;
     font-size: 15px;
     font-weight: 500;
@@ -928,7 +928,7 @@ hr {
 
 .sidebar-menu > li:hover > a,
 .sidebar-menu > li.active > a {
-    color: #fff;
+    color: #ffffff;
     background: #a78000;
 }
 
@@ -978,7 +978,7 @@ hr {
     padding: 5px 0 10px;
     margin: 0;
     padding-left: 35px;
-    background-color:#031c30;
+    background-color:#d8980d;
 }
 
 .sidebar-menu .treeview-menu:before {
@@ -1003,7 +1003,7 @@ hr {
 .sidebar-menu .treeview-menu > li > a {
     padding: 5px 5px 5px 20px;
     display: block;
-    color: #a6a6a6;
+    color: #000000;
     letter-spacing: 0.3px;
 }
 
@@ -1017,7 +1017,7 @@ hr {
 
 .sidebar-menu .treeview-menu > li.active > a,
 .sidebar-menu .treeview-menu > li:hover > a {
-    color: #fff;
+    color: #ffffff;
 }
 
 .sidebar-menu .treeview-menu > li::before {
