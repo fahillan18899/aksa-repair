@@ -23,10 +23,10 @@
 <header class="main-header">
   <a href="" class="logo">
     <span class="logo-mini">
-      <img class="img-fluid" src="{{ url('assets/images/logo.png') }}" alt="">
+      <img class="img-fluid" src="{{ url('assets/images/aksa.png') }}" alt="">
     </span>
     <span class="logo-lg">
-      <img class="img-fluid" src="{{ url('assets/images/logo.png') }}" alt="">
+      <img class="img-fluid" src="{{ url('assets/images/aksa.png') }}" alt="">
     </span>
   </a>
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Wyasa PPM</title>
+  <title>Login - Aksa Repair</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #43cea2, #185a9d);
+      background: linear-gradient(to right,rgb(237, 161, 46),rgb(235, 25, 25));
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -34,7 +34,7 @@
       margin-bottom: 25px;
       font-size: 28px;
       font-weight: 600;
-      color: #185a9d;
+      color:rgb(218, 144, 33);
     }
 
     .form-control {
@@ -45,12 +45,12 @@
       width: 100%;
       border-radius: 8px;
       font-weight: 600;
-      background-color: #185a9d;
-      border-color: #185a9d;
+      background-color:rgb(255, 0, 0);
+      border-color:rgb(225, 113, 85);
     }
 
     .btn-success:hover {
-      background-color: #1572b6;
+      background-color:rgb(218, 160, 77);
     }
 
     .alert {
@@ -65,48 +65,9 @@
 </head>
 
 <body>
-  @php
-  $hospitals = [
-    ['RS DEMO', 'RS0000'],
-    ['RS BADARUDIN KASIM', 'RS0001'],
-    ['RSI WONOSOBO', 'RS0002'],
-    ['RS PANTI WILASA', 'RS0003'],
-    ['RSUD CILEGON', 'RS0004'],
-    ['RS PONDOK KOPI', 'RS0005'],
-    ['RSUD TEMANGGUNG', 'RS0006'],
-    ['RSU JAFAR MEDIKA', 'RS0007'],
-    ['RS PKU WONOSOBO', 'RS0008'],
-    ['RSUD KARANGANYAR', 'RS0009'],
-    ['LABKESDA BEKASI', 'RS0010'],
-    ['RSUD UNGARAN', 'RS0011'],
-    ['RS PALANG BIRU', 'RS0012'],
-    ['RSUD M. TH. DJAMAN SANGGAU', 'RS0013'],
-    ['RS PKU MUHAMMADIYAH TEGAL', 'RS0014'],
-    ['RS UMI BAROKAH', 'RS0015'],
-    ['RSUI BOYOLALI', 'RS0016'],
-    ['RS DARUL ISTIQOMAH KENDAL', 'RS0017'],
-    ['RS PANTI NUGROHO', 'RS0018'],
-    ['RS PRIMA SEHAT PEKALONGAN', 'RS0019'],
-    ['RSI KLATEN', 'RS0020'],
-    ['RSI AT-TIN', 'RS0021'],
-    ['RS HARAPAN IBU PURBALINGGA', 'RS0022'],
-    ['RSJD DR RM SOEDJARWADI', 'RS0023'],
-    ['RSUI YAKSSI', 'RS0024'],
-    ['RSUI KUSTATI', 'RS0025'],
-    ['RSUD DR SOESELO', 'RS0026'],
-    ['RS AMAL SEHAT WONOGIRI', 'RS0027'],
-    ['RS ORTOPEDI SIAGA UTAMA', 'RS0028'],
-    ['RS NIRMALA SURI', 'RS0030'],
-    ['RSUD ANSARISALEH', 'RS0031'],
-    ['RSUD SULTAN SURIANSYAH', 'RS0032'],
-    ['RSIY PDHI YOGYAKARTA', 'RS0033'],
-    ['RS PERMATA KUNINGAN', 'RS0034'],
-    ['RS WIJAYA KUSUMA KUNINGAN', 'RS0035'],
-  ];
-  @endphp
 
   <div class="login-box">
-    <h2 class="login-title">Wyasa PPM Login</h2>
+    <h2 class="login-title">Repair Aksa Login</h2>
 
     @if ($message = Session::get('success'))
     <div class="alert alert-success">{{ $message }}</div>
@@ -132,27 +93,6 @@
         <label for="password">Password</label>
         <input type="password" name="password" placeholder="Masukkan Password" class="form-control" required>
       </div>
-
-      <!-- Optional: Jika ingin kembali menambahkan Fasilitas & Role -->
-      <!--
-      <div class="form-group mt-3">
-        <label for="kode_rs">Fasilitas Kesehatan</label>
-        <select name="kode_rs" class="form-control">
-          @foreach($hospitals as $hospital)
-          <option value="{{ $hospital[1] }}">{{ $hospital[0] }}</option>
-          @endforeach
-        </select>
-      </div>
-      <div class="form-group mt-3">
-        <label for="user_role">Peran Pengguna</label>
-        <select name="user_role" class="form-control">
-          <option value="">Pilih Peran Pengguna</option>
-          <option value="admin">Admin</option>
-          <option value="teknisi">Teknisi</option>
-          <option value="user">User</option>
-        </select>
-      </div>
-      -->
 
       <div class="mt-4">
         <button type="submit" class="btn btn-success">Login</button>

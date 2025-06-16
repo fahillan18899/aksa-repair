@@ -10,7 +10,7 @@
       <div class="header-icon"><i class="pe-7s-home"></i></div>
       <div class="header-title">
         <h1>Dashboard</h1>
-        <small>Dashboard PPM</small>
+        <small>Dashboard Repair</small>
       </div>
     </div>
   </section>
@@ -26,9 +26,9 @@
 
             <div class="info-box-content">
               <span class="info-box-text">
-                <a href="data_inventaris" style="color :white"><?= "JUMLAH ALAT TEREGISTRASI" ?></a></span>
-              <span class="info-box-number">{{ $registrasi }}</span>
-
+                <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
+              <span class="info-box-number">0</span>
+<!-- {{ $registrasi }} -->
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -47,7 +47,7 @@
             <div class="info-box-content">
               <span class="info-box-text">
                 <a href="view_tabel"
-                  style="color :white"><?= "JUMLAH ASSET PERBAIKAN TEREGISTRASI" ?></a>
+                  style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
               </span>
               <span class="info-box-number" id="count_perbaikan">0</span>
               <div class="progress">
@@ -63,7 +63,7 @@
       <!--Box Jumlah Aset Perbaikan Regis end-->
 
       <!--Box Jumlah Permintaan Perbaikan -->
-        <div class="col-12 col-md-6 mb-4">
+        <!-- <div class="col-12 col-md-6 mb-4">
           <div class="info-box bg-navy-blue">
             <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
             <div class="info-box-content">
@@ -77,16 +77,17 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       <!--Box Jumlah Permintaan Perbaikan -->
 
       <!--Box Jumlah Aset Terkalibrasi -->
-        <div class="col-12 col-md-6 mb-4">
+        <!-- <div class="col-12 col-md-6 mb-4">
           <div class="info-box bg-light-green">
             <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
             <div class="info-box-content">
               <span class="info-box-text"><a href="view_tabel3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI" ?></a></span>
-              <span class="info-box-number">{{ $registrasiKalBar }} / {{ $registrasi }}</span>
+              <span class="info-box-number">0</span>
+               {{ $registrasiKalBar }} / {{ $registrasi }} 
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -94,9 +95,8 @@
                 <?= date('j F, Y'); ?>
               </span>
             </div>
-            <!-- /.info-box-content -->
           </div>
-        </div>
+        </div> -->
       <!--Box Jumlah Aset Terkalibrasi end-->
 
       <!-- Card Tabel Permintaan Perbaikan -->
@@ -106,12 +106,12 @@
             <div class="panel-heading no-print">
               <div class="row">
                 <div class="col-md-4">
-                  <div class="btn-group">
+                  <!-- <div class="btn-group">
                     <a class="btn btn-success" href="/dashboard/ppm/pesanan"> <i class="fa fa-plus"></i> Request Perbaikan </a>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-md-5">
-                  <h2>Permintaan Perbaikan User</h2>
+                  <h2>Daftar Barang Selesai Repair</h2>
                 </div>
               </div>
             </div>
@@ -235,7 +235,7 @@
 @endsection
 @push('addon-script')
 <!-- PERBAIKAN -->
-  <script>
+  <!-- <script>
     function loadPerbaikan() {
       // console.log("Memulai loadPerbaikan()"); //Debug fungsi berjalan / tidak
 
@@ -287,11 +287,11 @@
       loadPerbaikan(); // Pertama kali load
       setInterval(loadPerbaikan, 3000);
     });
-  </script>
+  </script> -->
 <!-- PERBAIKAN -->
 
 <!-- PEMELIHARAAN -->
-  <script>
+  <!-- <script>
     function loadPemeliharaan() {
       // console.log("Memulai loadPemeliharaan()"); //Debug fungsi berjalan / tidak
 
@@ -332,11 +332,11 @@
       loadPemeliharaan(); //Petama kali load
       setInterval(loadPemeliharaan, 3000);
     });
-  </script>
+  </script> -->
 <!-- PEMELIHARAAN N-->
 
 <!-- PERMINTAAN PERBAIKAN -->
-  <script>
+  <!-- <script>
     function loadPermintaan(){
       // console.log("Memulai loadPermintaan()"); //Debug fungsi berjalan / tidak
 
@@ -379,11 +379,11 @@
       loadPermintaan(); //Pertama kali load
       setInterval(loadPermintaan, 3000);
     });
-  </script>
+  </script> -->
 <!-- PERMINTAAN PERBAIKAN N-->
 
 <!-- COUNT PERMINTAAN -->
-  <script>
+  <!-- <script>
     function jumlahPermintaan() {
       $.ajax({
         url: '{{ route("permintaan.count") }}',
@@ -401,11 +401,11 @@
       jumlahPermintaan();
       setInterval(jumlahPermintaan, 3000);
     })
-  </script>
+  </script> -->
 <!-- COUNT PERMINTAAN N-->
 
 <!-- COUNT PERBAIKAN -->
- <script>
+ <!-- <script>
   function jumlahPerbaikan() {
     $.ajax({
       url: '{{ route("perbaikan.count") }}',
@@ -423,7 +423,7 @@
     jumlahPerbaikan();
     setInterval(jumlahPerbaikan, 3000);
   })
- </script>
+ </script> -->
 <!-- COUNT PERBAIKAN N-->
 <script>
   $('.datatable').DataTable({

@@ -219,7 +219,7 @@ p {
 /* General Links */
 
 a {
-    color: #37a000;
+    color: #29ff69;
     text-decoration: none;
 }
 
@@ -609,9 +609,9 @@ hr {
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: #042a4a;
+    background-color: rgb(249, 108, 0);
     color: #fff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(249, 108, 0);
     -webkit-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;
 }
@@ -793,7 +793,7 @@ hr {
     height: 100vh; /* Agar sidebar penuh tinggi */
     width: 250px; /* Atur lebar sidebar */
     overflow-y: auto; /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: #042a4a; /* Warna background sesuai tema */
+    background-color: rgb(249, 108, 0); /* Warna background sesuai tema */
     z-index: 1000; /* Pastikan sidebar di atas konten lain */
     font-family: 'Alegreya Sans', sans-serif;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
@@ -923,13 +923,13 @@ hr {
 }
 
 .sidebar-menu > li.active > a {
-    border-left: 3px solid #37a000;
+    border-left: 3px solid #ff3131;
 }
 
 .sidebar-menu > li:hover > a,
 .sidebar-menu > li.active > a {
     color: #fff;
-    background: #064579;
+    background: #a78000;
 }
 
 .sidebar-menu > li > a > .fa,
