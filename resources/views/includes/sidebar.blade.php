@@ -72,7 +72,7 @@
       </li>
       <!---->
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/aset_unregistrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/lembar_pemeliharaan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/pemantauan') ? 'active' : '' }} {{ request()->is('dashboard/ppm/jadwal_pemeliharaan') ? 'active' : '' }}">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }}">
         <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i>
           <span>Monitoring Teknisi</span>
           <span class="pull-right-container">
@@ -80,10 +80,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Approval</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Alat Kembali</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Informasi</a></li>
-          <li class="{{ request()->is('dashboard/ppm/aset_teregistrasi') ? 'active' : '' }}"><a href="/dashboard/ppm/aset_teregistrasi">Cetak QR</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }}"><a href="{{ route('approval.data') }}">Approval</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }}"><a href="{{ route('alatKembali.data') }}">Alat Kembali</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Informasi</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }}"><a href="{{ route('qrGenerate.data') }}">Cetak QR</a></li>
         </ul>
       </li>
       <!---->

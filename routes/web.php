@@ -62,6 +62,7 @@ use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
 // Repair Aksa
 use App\Http\Controllers\Admin\MonitoringMarketingController;
+use App\Http\Controllers\Admin\MonitoringTeknisiController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -95,12 +96,17 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('count_perbaikan', [PPMController::class, 'countPerbaikan'])->name('perbaikan.count');
 
         // Monitoring Marketing //
-        // Input Pekerjaan
         Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
         Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
         Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
         Route::get('link_invoice', [MonitoringMarketingController::class, 'getInvoice'])->name('invoice.data');
 
+        // Monitoring Teknisi //
+        Route::get('link_approval', [MonitoringTeknisiController::class, 'getApproval'])->name('approval.data');
+        Route::get('link_alat_kembali', [MonitoringTeknisiController::class, 'getAlatKembali'])->name('alatKembali.data');
+        Route::get('link_informasi', [MOnitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
+        Route::get('link_cetak_qr', [MonitoringTeknisiController::class, 'getQr'])->name('qrGenerate.data');
+        
         // menu data kelengkapan
         Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
         Route::resource('gedung', GedungController::class);
