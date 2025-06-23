@@ -21,8 +21,6 @@ use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\UmurAlatController;
-use App\Http\Controllers\Admin\PPM\AlatTerkalibrasiController;
-use App\Http\Controllers\Admin\PPM\AlatKorektifController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
@@ -199,9 +197,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Data Umur Alat
         Route::resource('data_umur_alat', UmurAlatController::class);
-
-        //Data Alat Terkalibrasi
-        Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
 
         // Tambah Jenis Alat
         Route::resource('/tambah_jenis_alat', TambahJenisAlatController::class);
