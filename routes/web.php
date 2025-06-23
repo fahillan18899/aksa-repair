@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\HumanResourceController;
-use App\Http\Controllers\Admin\PPM\AlatController;
 use App\Http\Controllers\Admin\PPM\NomklaturController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
@@ -23,10 +21,6 @@ use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
-use App\Http\Controllers\Admin\PPM\SOPAdministrasi;
-use App\Http\Controllers\Admin\PPM\SOPPemakaianController;
-use App\Http\Controllers\Admin\PPM\SOPPemeliharaanController;
-use App\Http\Controllers\Admin\PPM\SOPPerbaikanController;
 use App\Http\Controllers\Admin\PPM\UmurAlatController;
 use App\Http\Controllers\Admin\PPM\AlatTerkalibrasiController;
 use App\Http\Controllers\Admin\PPM\AlatKorektifController;
@@ -69,7 +63,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
 
     // menu human serource
-    Route::resource('human_resource', HumanResourceController::class);
     Route::get('export', [RegistrasiAsetController::class, 'export']);
     Route::post('import', [RegistrasiAsetController::class, 'import']);
 
@@ -115,7 +108,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // menu data kelengkapan
         Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
         Route::resource('gedung', GedungController::class);
-        Route::resource('alat', AlatController::class);
         Route::resource('teknisi', TeknisiController::class);
         Route::resource('ruangan', RuanganController::class);
         Route::resource('nomklatur', NomklaturController::class);

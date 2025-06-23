@@ -18,12 +18,10 @@ class AlatKorektifController extends Controller
     public function index()
     {
         $perbaikanReg = PerbaikanRegistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
-        $perbaikanUn  = PerbaikanUnregistrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         $totalAlat    = Registrasi::where('kode_rs', Auth::user()->kode_rs)->get();
         return view('pages.admin.PPM.data_alat_korektif.index', 
         [
             'perbaikanReg' => $perbaikanReg,
-            'perbaikanUn' => $perbaikanUn,
             'totalAlat' => $totalAlat,
         ]);
     }
