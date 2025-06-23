@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\PPM\NomklaturController;
 use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
-use App\Http\Controllers\Admin\PPM\GedungController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
@@ -107,7 +106,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // menu data kelengkapan
         Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
-        Route::resource('gedung', GedungController::class);
         Route::resource('teknisi', TeknisiController::class);
         Route::resource('ruangan', RuanganController::class);
         Route::resource('nomklatur', NomklaturController::class);
@@ -204,9 +202,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Data Alat Terkalibrasi
         Route::resource('data_alat_terkalibrasi', AlatTerkalibrasiController::class);
-
-        //Data Alat Korektif
-        Route::resource('data_alat_korektif', AlatKorektifController::class);
 
         // Tambah Jenis Alat
         Route::resource('/tambah_jenis_alat', TambahJenisAlatController::class);
