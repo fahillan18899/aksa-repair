@@ -63,6 +63,7 @@ use Illuminate\Support\Facades\Route;
 // Repair Aksa
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
+use App\Http\Controllers\Admin\MonitoringAkuntanController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -107,6 +108,10 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_informasi', [MOnitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_cetak_qr', [MonitoringTeknisiController::class, 'getQr'])->name('qrGenerate.data');
         
+        //Monitoring Akuntan
+        Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
+        Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
+
         // menu data kelengkapan
         Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
         Route::resource('gedung', GedungController::class);
