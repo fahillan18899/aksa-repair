@@ -21,9 +21,6 @@ use App\Http\Controllers\Admin\PPM\PengggunaanSperpartController;
 use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
-use App\Http\Controllers\Admin\PPM\PemantauanController;
-use App\Http\Controllers\Admin\PPM\LkInspeksiController;
-use App\Http\Controllers\Admin\PPM\LkAlatController;
 use App\Http\Controllers\Admin\PPM\QrController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
@@ -175,30 +172,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Penggunaan Sperpart Gudang / Stock opname
         Route::post('penggunaan_sperpart', [PengggunaanSperpartController::class, 'store']);
-
-        //Pemantauan
-        Route::resource('/pemantauan', PemantauanController::class);
-        Route::get('/getPemantauan/{id}', [PemantauanController::class, 'getPemantauan']);
-
-        //LK Alat
-        Route::get('/lk_alat', [LkAlatController::class, 'index']);
-        //Anestesi
-            Route::post('/tambahAnesthesi', [LkAlatController::class, 'store']);
-            Route::get('/lk_alat/edit_anestesi/{id}/edit', [LkAlatController::class, 'edit']);
-            Route::get('/lk_alat/show_anestesi/{id}/show', [LkAlatController::class, 'show']);
-            Route::put('/lk_alat/edit_anestesi/{id}', [LkAlatController::class, 'update'])->name('update_anestesi.update');
-            Route::delete('tambahAnesthesi/{id}', [LkAlatController::class, 'destroy']);
-        //end anestesi    
-        Route::get('/getLkAlat/{id}', [LkAlatController::class, 'getLkAlat']);
-
-        Route::get('lk_inspeksi', [LkInspeksiController::class, 'index']);
-        Route::get('/lk_inspeksi/data', [LkInspeksiController::class, 'data']);
-        Route::post('/lk_inspeksi', [LkInspeksiController::class, 'store']);
-        Route::get('lk_inspeksi', [LkInspeksiController::class, 'state']);
-        Route::get('lk_inspeksi/{id}', [LkInspeksiController::class, 'city']);
-        Route::get('lk_inspeksi/data', [LkInspeksiController::class, 'data']);
-        Route::post('/dashboard/ppm/lk_inspeksi/data/delete-multiple', [LkInspeksiController::class, 'destroyMultiple'])->name('delete.multiple');
-        // Route::delete('lk_inspeksi/data/{id}', [LkInspeksiController::class, 'destroy']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('dataAset');
