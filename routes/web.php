@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
@@ -151,11 +150,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
         Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
         Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
-
-
-        // lembar_pemeliharaan
-        Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
-        Route::get('lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanController::class, 'show']); /*fungsi print*/
 
         //  stock opname
         Route::resource('stock_opname', StockOpnameController::class);

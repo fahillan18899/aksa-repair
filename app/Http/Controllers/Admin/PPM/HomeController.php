@@ -42,11 +42,9 @@ class HomeController extends Controller
         ->where('tanggal_kalibrasi', '!=', '')->whereNotNull('tanggal_kalibrasi')
         ->whereDate('tanggal_kalibrasi', '!=', '0000-00-00')->count();
         $perbaikanRegistrasi = PerbaikanRegistrasi::where('kode_rs', $kodeRs)->count();
-        $lembarPemeliharaan = LembarPemeliharaan::where('kode_rs', $kodeRs)->count();
 
         return view('pages.admin.PPM.dashboard.index',
-        compact('registrasi', 'registrasiKalBar', 'perbaikanRegistrasi',
-                'lembarPemeliharaan')
+        compact('registrasi', 'registrasiKalBar', 'perbaikanRegistrasi')
         );
     }
 
@@ -69,11 +67,6 @@ class HomeController extends Controller
         return response()->json($perbaikan);
     }
 
-        public function getPemeliharaan()
-    {
-        $pemeliharaan = LembarPemeliharaan::where('kode_rs', Auth::user()->kode_rs)->orderBy('created_at', 'desc')->get();
-        return response()->json($pemeliharaan);
-    }
 
     public function getPermintaan()
     {
