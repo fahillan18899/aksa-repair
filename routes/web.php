@@ -2,12 +2,10 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PPM\NomklaturController;
-use App\Http\Controllers\Admin\PPM\AnalisisDataController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\JadwalPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
 use App\Http\Controllers\Admin\PPM\LaporanKegiatanPpmController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
@@ -71,7 +69,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('aset_non_alkes', DashboardController::class);
         Route::resource('laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('scanner_qr', ScannerQrController::class);
-        Route::resource('analisis_data', AnalisisDataController::class);
         Route::get('data_alat/{id}', [DataAlatController::class, 'index']);
         Route::resource('view_tabel', ViewTableController::class);
         Route::resource('view_tabel2', ViewTableController2::class);
@@ -168,13 +165,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
         Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
 
-        // menu pemeliharaan preventive
-        Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'index']);
-        Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'state']);
-        Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanController::class, 'store'])->name('jadwal_pemeliharaan.store');
-        Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'city']);
-        Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanController::class, 'updateStatus']);
-        Route::delete('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanController::class, 'destroy']);
 
         // lembar_pemeliharaan
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
@@ -191,9 +181,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // operator
         Route::resource('operator', OperatorController::class);
-
-        // Analis Data
-        Route::get('analisis_data', [AnalisisDataController::class, 'index']);
 
         //Data Umur Alat
         Route::resource('data_umur_alat', UmurAlatController::class);
