@@ -1,13 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PPM\NomklaturController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
-use App\Http\Controllers\Admin\PPM\DataKelengkapanController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\LaporanKegiatanController;
-use App\Http\Controllers\Admin\PPM\LaporanKegiatanPpmController;
 use App\Http\Controllers\Admin\PPM\LembarPemeliharaanController;
 use App\Http\Controllers\Admin\PPM\OperatorController;
 use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
@@ -16,11 +12,9 @@ use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
-use App\Http\Controllers\Admin\PPM\RuanganController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\UmurAlatController;
 use App\Http\Controllers\Admin\PPM\StockOpnameController;
-use App\Http\Controllers\Admin\PPM\TeknisiController;
 use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
 use App\Http\Controllers\Admin\PPM\TambahDistributorController;
 use App\Http\Controllers\Admin\PPM\PesananController;
@@ -67,7 +61,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('home', [PPMController::class, 'dashboard']);
         Route::resource('data_inventaris', DashboardController::class);
         Route::resource('aset_non_alkes', DashboardController::class);
-        Route::resource('laporan_kegiatan', LaporanKegiatanController::class);
         Route::resource('scanner_qr', ScannerQrController::class);
         Route::get('data_alat/{id}', [DataAlatController::class, 'index']);
         Route::resource('view_tabel', ViewTableController::class);
@@ -98,12 +91,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //Monitoring Akuntan
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
-
-        // menu data kelengkapan
-        Route::get('data_kelengkapan', [DataKelengkapanController::class, 'index'])->name('data_kelengkapan');
-        Route::resource('teknisi', TeknisiController::class);
-        Route::resource('ruangan', RuanganController::class);
-        Route::resource('nomklatur', NomklaturController::class);
 
         // menu registrasi
         Route::get('registrasi', [RegistrasiAsetController::class, 'oldIndex']);
@@ -169,11 +156,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // lembar_pemeliharaan
         Route::resource('lembar_pemeliharaan', LembarPemeliharaanController::class);
         Route::get('lembar_pemeliharaan/cetak_pemeliharaan/{id}', [LembarPemeliharaanController::class, 'show']); /*fungsi print*/
-
-        // menu laporan
-        Route::get('laporan_kegiatan', [LaporanKegiatanController::class, 'index']);
-        Route::delete('laporan_kegiatan/{id}', [LaporanKegiatanController::class, 'destroy']);
-        Route::delete('laporan_kegiatan_ppm/{id}', [LaporanKegiatanPpmController::class, 'destroyppm']);
 
         //  stock opname
         Route::resource('stock_opname', StockOpnameController::class);
