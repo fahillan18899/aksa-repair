@@ -4,11 +4,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\OperatorController;
-use App\Http\Controllers\Admin\PPM\PengembalianRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PenghapusanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PengirimanRegistrasiController;
-use App\Http\Controllers\Admin\PPM\PerbaikanRegistrasiController;
 use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
 use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
@@ -17,7 +12,6 @@ use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
 use App\Http\Controllers\Admin\PPM\TambahDistributorController;
 use App\Http\Controllers\Admin\PPM\PesananController;
-use App\Http\Controllers\Admin\PPM\PengggunaanSperpartController;
 use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
@@ -84,7 +78,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_informasi', [MOnitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_cetak_qr', [MonitoringTeknisiController::class, 'getQr'])->name('qrGenerate.data');
         
-        //Monitoring Akuntan
+        //Monitoring Akuntan //
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
 
@@ -105,42 +99,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('data_inventaris/tabel_perbaikan/{id}', [PPMController::class, 'tabelKerusakan']);
         Route::get('data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
 
-        // menu pemeliharaan korektif
-        Route::resource('aset_non_alkes', DashboardController::class);
-        Route::get('aset_teregistrasi', [PerbaikanRegistrasiController::class, 'index'])->name('aset_teregistrasi.index');
-        Route::get('aset_teregistrasi/sperpart_perbaikan', [PerbaikanRegistrasiController::class, 'sperpart'])->name('sperpart_perbaikan.sperpart');
-
-        // perbaikansan aset teregistrasi
-        Route::post('aset_teregistrasi/create', [PerbaikanRegistrasiController::class, 'create'])->name('perbaikan.create');
-        Route::post('aset_teregistrasi/store', [PerbaikanRegistrasiController::class, 'store'])->name('perbaikan.store');
-        Route::put('aset_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'update'])->name('update_perbaikan.update');
-        Route::get('update_perbaikan/{id}/edit', [PerbaikanRegistrasiController::class, 'edit'])->name('update_perbaikan.edit');
-        Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanRegistrasiController::class, 'destroy'])->name('perbaikan.destroy');
-        Route::put('aset_teregistrasi/update2/{id}', [PerbaikanRegistrasiController::class, 'kondisiAlat'])->name('kondisi_alat');
-        Route::get('aset_teregistrasi/cetak_perbaikan/{id}', [PerbaikanRegistrasiController::class, 'cetak'])->name('perbaikan.cetak');
-        Route::put('aset_teregistrasi/update/{id}', [PerbaikanRegistrasiController::class, 'updateStatusPerbaikan'])->name('status_perbaikan');
-
-        // Pengiriman Aset Teregistrasi
-        Route::post('tambah_pengiriman', [PengirimanRegistrasiController::class, 'store'])->name('pengiriman.store');
-        Route::put('update_pengiriman/{id}', [PengirimanRegistrasiController::class, 'update'])->name('update_pengiriman.update');
-        Route::get('update_pengiriman/{id}/edit', [PengirimanRegistrasiController::class, 'edit'])->name('update_pengiriman.edit');
-        Route::delete('pengiriman_teregistrasi/{id}', [PengirimanRegistrasiController::class, 'destroy'])->name('pengiriman.destroy');
-        Route::get('aset_teregistrasi/cetak_pengiriman/{id}', [PengirimanRegistrasiController::class, 'cetak'])->name('pengiriman.cetak');
-
-        // pengembalian Aset Teregistrasi
-        Route::post('tambah_pengembalian', [PengembalianRegistrasiController::class, 'store'])->name('pengembalian.store');
-        Route::put('update_pengembalian/{id}', [PengembalianRegistrasiController::class, 'update'])->name('update_pengembalian.update');
-        Route::get('update_pengembalian/{id}/edit', [PengembalianRegistrasiController::class, 'edit'])->name('update_pengembalian.edit');
-        Route::delete('pengembalian_teregistrasi/{id}', [PengembalianRegistrasiController::class, 'destroy'])->name('pengembalian.destroy');
-        Route::get('aset_teregistrasi/cetak_pengembalian/{id}', [PengembalianRegistrasiController::class, 'cetak'])->name('pengembalian.cetak');
-
-        // Penghapusan Aset Teregistrasi
-        Route::post('/tambah_penghapusan', [PenghapusanRegistrasiController::class, 'store'])->name('penghapusan.store');
-        Route::delete('penghapusan_teregistrasi/{id}', [PenghapusanRegistrasiController::class, 'destroy'])->name('penghapusan.destroy');
-        Route::get('/aset_teregistrasi/cetak_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'cetak'])->name('penghapusan.cetak');
-        Route::get('/aset_teregistrasi/update_penghapusan/{id}/edit', [PenghapusanRegistrasiController::class, 'edit'])->name('penghapusan.edit');
-        Route::put('/aset_teregistrasi/update_penghapusan/{id}', [PenghapusanRegistrasiController::class, 'update'])->name('update_penghapusan.update');
-
         // Autofill
         Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
         Route::get('autofill_pelihara/{idars}', [PPMController::class, 'autofill_pelihara']);
@@ -151,9 +109,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //  stock opname
         Route::resource('stock_opname', StockOpnameController::class);
         Route::resource('permintaan_barang_admin', PermintaanBarangAdmin::class);
-
-        // operator
-        Route::resource('operator', OperatorController::class);
 
         //Data Umur Alat
         Route::resource('data_umur_alat', UmurAlatController::class);
@@ -169,9 +124,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Request Perbaikan
          Route::resource('/pesanan', PesananController::class);
          Route::get('/getPesanan/{id}', [PesananController::class, 'getPesanan']);
-
-        // Penggunaan Sperpart Gudang / Stock opname
-        Route::post('penggunaan_sperpart', [PengggunaanSperpartController::class, 'store']);
 
         // API internal datatable
         Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('dataAset');
