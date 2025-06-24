@@ -4,18 +4,14 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\PermintaanBarangAdmin;
-use App\Http\Controllers\Admin\PPM\RegistrasiAsetController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\UmurAlatController;
-use App\Http\Controllers\Admin\PPM\StockOpnameController;
 use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
 use App\Http\Controllers\Admin\PPM\TambahDistributorController;
 use App\Http\Controllers\Admin\PPM\PesananController;
 use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
-use App\Http\Controllers\Admin\PPM\QrController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -41,10 +37,6 @@ use App\Http\Controllers\Admin\MonitoringAkuntanController;
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
 
-    // menu human serource
-    Route::get('export', [RegistrasiAsetController::class, 'export']);
-    Route::post('import', [RegistrasiAsetController::class, 'import']);
-
     // menu PPM
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
@@ -56,8 +48,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('view_tabel', ViewTableController::class);
         Route::resource('view_tabel2', ViewTableController2::class);
         Route::resource('view_tabel3', ViewTableController3::class);
-        Route::get('/dashboard/qr/form', [QrController::class, 'form'])->name('qr.form');
-        Route::post('qr/generate', [QrController::class, 'generate'])->name('qr.generate');
 
         //Fetch  data realtime table dashboard
         Route::get('data_perbaikan', [PPMController::class, 'getPerbaikan'])->name('perbaikan.data');
@@ -82,15 +72,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
 
-        // menu registrasi
-        Route::get('registrasi', [RegistrasiAsetController::class, 'oldIndex']);
-        Route::get('registrasi-aset', [RegistrasiAsetController::class, 'index'])->name('registrasi.index');
-        Route::post('registrasi', [RegistrasiAsetController::class, 'store']);
-        Route::get('registrasi/{registrasi}/edit', [RegistrasiAsetController::class, 'edit'])->name('registrasi');
-        Route::put('registrasi/{registrasi}', [RegistrasiAsetController::class, 'update']);
-        Route::delete('registrasi/{registrasi}', [RegistrasiAsetController::class, 'destroy']);
-        Route::get('/registrasi-aset/getNomklatur/{id}', [RegistrasiAsetController::class, 'getNomklatur']);
-
         // menu data inventaris
         Route::resource('data_inventaris', DashboardController::class);
         Route::get('data_inventaris', [PPMController::class, 'dataInventaris']);
@@ -106,10 +87,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
         Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
 
-        //  stock opname
-        Route::resource('stock_opname', StockOpnameController::class);
-        Route::resource('permintaan_barang_admin', PermintaanBarangAdmin::class);
-
         //Data Umur Alat
         Route::resource('data_umur_alat', UmurAlatController::class);
 
@@ -118,15 +95,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Tambah Distributor
         Route::resource('/tambah_distributor', TambahDistributorController::class);
-        Route::get('/getDistributor/{id}', [RegistrasiAsetController::class, 'getDistributor'])->name('getDistributor');
-
-
-        // Request Perbaikan
-         Route::resource('/pesanan', PesananController::class);
-         Route::get('/getPesanan/{id}', [PesananController::class, 'getPesanan']);
-
-        // API internal datatable
-        Route::get('aset', [RegistrasiAsetController::class, 'json'])->name('dataAset');
 
 
     });
