@@ -6,9 +6,6 @@ use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
 use App\Http\Controllers\Admin\PPM\UmurAlatController;
-use App\Http\Controllers\Admin\PPM\TambahJenisAlatController;
-use App\Http\Controllers\Admin\PPM\TambahDistributorController;
-use App\Http\Controllers\Admin\PPM\PesananController;
 use App\Http\Controllers\Admin\PPM\ViewTableController;
 use App\Http\Controllers\Admin\PPM\ViewTableController2;
 use App\Http\Controllers\Admin\PPM\ViewTableController3;
@@ -89,13 +86,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Data Umur Alat
         Route::resource('data_umur_alat', UmurAlatController::class);
-
-        // Tambah Jenis Alat
-        Route::resource('/tambah_jenis_alat', TambahJenisAlatController::class);
-
-        // Tambah Distributor
-        Route::resource('/tambah_distributor', TambahDistributorController::class);
-
 
     });
 
