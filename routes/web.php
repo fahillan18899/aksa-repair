@@ -5,10 +5,6 @@ use App\Http\Controllers\Admin\PPM\DataAlatController;
 use App\Http\Controllers\Admin\PPM\HomeController;
 use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
 use App\Http\Controllers\Admin\PPM\ScannerQrController;
-use App\Http\Controllers\Admin\PPM\UmurAlatController;
-use App\Http\Controllers\Admin\PPM\ViewTableController;
-use App\Http\Controllers\Admin\PPM\ViewTableController2;
-use App\Http\Controllers\Admin\PPM\ViewTableController3;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
@@ -38,20 +34,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
-        Route::resource('data_inventaris', DashboardController::class);
-        Route::resource('aset_non_alkes', DashboardController::class);
         Route::resource('scanner_qr', ScannerQrController::class);
         Route::get('data_alat/{id}', [DataAlatController::class, 'index']);
-        Route::resource('view_tabel', ViewTableController::class);
-        Route::resource('view_tabel2', ViewTableController2::class);
-        Route::resource('view_tabel3', ViewTableController3::class);
-
-        //Fetch  data realtime table dashboard
-        Route::get('data_perbaikan', [PPMController::class, 'getPerbaikan'])->name('perbaikan.data');
-        Route::get('data_pemeliharaan', [PPMController::class, 'getPemeliharaan'])->name('pemeliharaan.data');
-        Route::get('data_permintaan', [PPMController::class, 'getPermintaan'])->name('permintaan.data');
-        Route::get('count_permintaan', [PPMController::class, 'countPermintaan'])->name('permintaan.count');
-        Route::get('count_perbaikan', [PPMController::class, 'countPerbaikan'])->name('perbaikan.count');
 
         // Monitoring Marketing //
         Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
@@ -68,24 +52,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //Monitoring Akuntan //
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
-
-        // menu data inventaris
-        Route::resource('data_inventaris', DashboardController::class);
-        Route::get('data_inventaris', [PPMController::class, 'dataInventaris']);
-        Route::get('data_inventaris/cetak_aset/{id}', [PPMController::class, 'printDataInventaris']);
-        Route::get('data_inventaris/detail/{id}', [PPMController::class, 'detailData']);
-        Route::get('data_inventaris/tabel_perbaikan/{id}', [PPMController::class, 'tabelKerusakan']);
-        Route::get('data_inventaris/qr_qode/{id}', [PPMController::class, 'qrCodeGenerate']);
-
-        // Autofill
-        Route::get('autofill/{idars}', [PPMController::class, 'autofill'])->name('autofill');
-        Route::get('autofill_pelihara/{idars}', [PPMController::class, 'autofill_pelihara']);
-        Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
-        Route::get('autofill_pengiriman/{idars}', [PPMController::class, 'autofillPengiriman'])->name('autofillPengiriman');
-        Route::get('autofill_pengirimanUn/{id_perbaikan_un}', [PPMController::class, 'autofillPengirimanUn'])->name('autofillPengirimanUn');
-
-        //Data Umur Alat
-        Route::resource('data_umur_alat', UmurAlatController::class);
 
     });
 
