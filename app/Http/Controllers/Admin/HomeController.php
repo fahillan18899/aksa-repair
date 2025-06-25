@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin\PPM;
+namespace App\Http\Controllers\Admin;
 
 use App\Helper;
-use App\Models\Pesanan;
-use App\Models\Registrasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;

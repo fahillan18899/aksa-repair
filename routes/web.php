@@ -1,11 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PPM\DataAlatController;
-use App\Http\Controllers\Admin\PPM\HomeController;
-use App\Http\Controllers\Admin\PPM\HomeController as PPMController;
-use App\Http\Controllers\Admin\PPM\ScannerQrController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\HomeController as PPMController;
 use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemeliharaanTeknisiController;
@@ -34,8 +30,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
-        Route::resource('scanner_qr', ScannerQrController::class);
-        Route::get('data_alat/{id}', [DataAlatController::class, 'index']);
 
         // Monitoring Marketing //
         Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
@@ -46,7 +40,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Monitoring Teknisi //
         Route::get('link_approval', [MonitoringTeknisiController::class, 'getApproval'])->name('approval.data');
         Route::get('link_alat_kembali', [MonitoringTeknisiController::class, 'getAlatKembali'])->name('alatKembali.data');
-        Route::get('link_informasi', [MOnitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
+        Route::get('link_informasi', [MonitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_cetak_qr', [MonitoringTeknisiController::class, 'getQr'])->name('qrGenerate.data');
         
         //Monitoring Akuntan //
@@ -124,11 +118,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 
     Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
-    // API internal datatable
-    // Route::get('/aset', [DashboardTeknisiController::class, 'json'])->name('api-aset-teknisi');
-
 });
 
-Route::get('asd', [HomeController::class, 'notifyUser']);
+Route::get('asd', [PPMController::class, 'notifyUser']);
 
 require __DIR__ . '/other/user_route.php';
