@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController as PPMController;
-use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiController;
+use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiiController;
 use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemeliharaanTeknisiController;
 use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
@@ -18,10 +18,14 @@ use App\Http\Controllers\User\PPM\PermintaanBarangController;
 use App\Http\Controllers\User\PPM\PesananUserController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
-// Repair Aksa
+// Repair Aksa //
+// Admin
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
+// Marketing
+use App\Http\Controllers\Marketing\DashboardMarketingController;
+use App\Http\Controllers\Marketing\InputanPekerjaanController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -55,38 +59,22 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::post('create-generete-qr', [DashboardController::class, "storeQrGen"]);
 });
 
-Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
-    Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
-    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiController::class, 'destroy']);
-    Route::resource('permintaan_barang', PermintaanBarangController::class);
-    Route::get('qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
-    Route::resource('stock_opname_user', StockOpnameUserController::class);
-    Route::get('autofill/{idars}', [PPMController::class, 'autofill']);
-    Route::resource('/pesanan_user', PesananUserController::class);
-    Route::get('/getPesanan_user/{id}', [PesananUserController::class, 'getPesanan_user']);
-
-    //Fetch
-    Route::get('data_perbaikan_user', [DashboardUserController::class, 'getPerbaikanUser'])->name('perbaikanUser.data');
-    Route::get('count_permintaan_user', [DashboardUserController::class, 'countPermintaan'])->name('permintaanUser.count');
-    Route::get('count_perbaikan_user', [DashboardUserController::class, 'countPerbaikan'])->name('perbaikanUser.count');
-
-    // API internal datatable
-    Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
-
+Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
+    Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
+    Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
+    // Route::get('/', [DashboardTeknisiiController::class, 'dashboard_teknisi'])->name('dashboard');
     Route::resource('view_tabelT', ViewTabelController::class);
     Route::resource('view_tabelT2', ViewTabelController2::class);
     Route::resource('view_tabelT3', ViewTabelController3::class);
 
     //Fetch
-    Route::get('data_permintaan_user', [DashboardTeknisiController::class, 'getPermintaanUser'])->name('permintaanUser.data');
-    Route::get('data_perbaikan_teknisi', [DashboardTeknisiController::class, 'getPerbaikanTeknisi'])->name('perbaikanTeknisi.data');
-    Route::get('count_permintaan_teknisi', [DashboardTeknisiController::class, 'countPermintaan'])->name('permintaanTeknisi.count');
-    Route::get('count_perbaikan_teknisi', [DashboardTeknisiController::class, 'countPerbaikan'])->name('perbaikanTeknisi.count');
+    Route::get('data_permintaan_user', [DashboardTeknisiiController::class, 'getPermintaanUser'])->name('permintaanUser.data');
+    Route::get('data_perbaikan_teknisi', [DashboardTeknisiiController::class, 'getPerbaikanTeknisi'])->name('perbaikanTeknisi.data');
+    Route::get('count_permintaan_teknisi', [DashboardTeknisiiController::class, 'countPermintaan'])->name('permintaanTeknisi.count');
+    Route::get('count_perbaikan_teknisi', [DashboardTeknisiiController::class, 'countPerbaikan'])->name('perbaikanTeknisi.count');
 
     Route::get('perbaikan_teknisi', [PerbaikanTeregistrasiTeknisiController::class, 'index'])->name('perbaikan_teknisi.index');
     Route::post('perbaikan_teknisi/store', [PerbaikanTeregistrasiTeknisiController::class, 'store'])->name('perbaikan_teknisi.store');
@@ -119,6 +107,29 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
 
 });
+
+Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
+    Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
+    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiController::class, 'destroy']);
+    Route::resource('permintaan_barang', PermintaanBarangController::class);
+    Route::get('qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
+    Route::resource('stock_opname_user', StockOpnameUserController::class);
+    Route::get('autofill/{idars}', [PPMController::class, 'autofill']);
+    Route::resource('/pesanan_user', PesananUserController::class);
+    Route::get('/getPesanan_user/{id}', [PesananUserController::class, 'getPesanan_user']);
+
+    //Fetch
+    Route::get('data_perbaikan_user', [DashboardUserController::class, 'getPerbaikanUser'])->name('perbaikanUser.data');
+    Route::get('count_permintaan_user', [DashboardUserController::class, 'countPermintaan'])->name('permintaanUser.count');
+    Route::get('count_perbaikan_user', [DashboardUserController::class, 'countPerbaikan'])->name('perbaikanUser.count');
+
+    // API internal datatable
+    Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
+
+});
+
+
 
 Route::get('asd', [PPMController::class, 'notifyUser']);
 

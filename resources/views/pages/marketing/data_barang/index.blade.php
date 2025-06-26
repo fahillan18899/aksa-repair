@@ -1,7 +1,7 @@
 @extends('layouts.teknisi')
 
 @section('content')
-@section('title', 'Stock Opname')
+@section('title', 'Aset Teregistrasi')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -9,10 +9,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="pe-7s-drawer"></i></div>
+      <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Stock Opname</h1>
-        <small>Tabel Stock Opname</small>
+        <h1>Data Barang</h1>
+        <small>Daftar Data Barang</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h3>Tabel Stock Opname</h3>
+            <h1>Daftar Data Barang</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -46,26 +46,17 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Nama SparePart</th>
+                      <th scope="col">No Urut</th>
+                      <th scope="col">Nama</th>
+                      <th scope="col">No Seri</th>
                       <th scope="col">Type</th>
-                      <th scope="col">Jumlah Masuk</th>
-                      <th scope="col">Tanggal Masuk</th>
-                      <th scope="col">Total</th>
+                      <th scope="col">Kerusakan</th>
+                      <th scope="col">Instansi</th>
+                      <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse ($items as $index => $item)
-                    <tr>
-                      <td>{{ $index + 1 }}</td>
-                      <td>{{ $item->nama }}</td>
-                      <td>{{ $item->type }}</td>
-                      <td>{{ $item->jumlah_masuk }}</td>
-                      <td>{{ $item->tanggal_masuk }}</td>
-                      <td>{{ $item->stock }}</td>
-
-                    </tr>
-                    @empty
-                    @endforelse
+                    
                   </tbody>
                 </table>
                 <!--TABEL-->
@@ -77,7 +68,5 @@
       </div>
     </div>
   </div>
-
-
 </div> <!-- /.content -->
 @endsection
