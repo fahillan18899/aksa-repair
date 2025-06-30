@@ -1,7 +1,7 @@
-@extends('layouts.teknisi')
+@extends('layouts.marketing')
 
 @section('content')
-@section('title', 'Aset Teregistrasi')
+@section('title', 'Inputan Pekerjaan')
 <style>
     input[readonly] {
     cursor: not-allowed;

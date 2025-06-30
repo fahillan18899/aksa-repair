@@ -1,4 +1,4 @@
-@extends('layouts.teknisi')
+@extends('layouts.marketing')
 
 @section('content')
 @section('title', 'Aset Teregistrasi')

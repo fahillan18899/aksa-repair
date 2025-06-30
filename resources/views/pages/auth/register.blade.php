@@ -27,8 +27,8 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Wyasa PPM</h3>
-              <small>Silahkan Datang di <strong>Wyasa PPM</strong></small>
+              <h3>Aksa Repair</h3>
+              <small>Silahkan Datang di <strong>Aksa Repair</strong></small>
               <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
@@ -74,6 +74,7 @@
               <label class="control-label" for="user_role">Peran Pengguna</label>
               <select name="user_role" class="form-control" id="user_role">
                 <option value="">Pilih Peran Pengguna</option>
+                <option value="marketing">Marketing</option>
                 <option value="teknisi">Teknisi</option>
                 <option value="user">User</option>
               </select>

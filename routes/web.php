@@ -25,7 +25,9 @@ use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
+use App\Http\Controllers\Marketing\DataBarangController;
 use App\Http\Controllers\Marketing\InputanPekerjaanController;
+use App\Http\Controllers\Marketing\SphController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -62,6 +64,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
     Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
     Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
+    Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
+    Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
