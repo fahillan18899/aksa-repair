@@ -41,7 +41,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-wrench"></i></div>
+      <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
         <h1>MENU PEMBUATAN SPH</h1>
         <small>Pembuatan SPH</small>

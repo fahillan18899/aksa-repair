@@ -73,7 +73,7 @@
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_invoice') ? 'active' : '' }}">
-        <a href="dashboard_marketing/link_invoice">
+        <a href="{{ route('marketing.data.invoice') }}">
           <i class="fa fa-file-text"></i><span>Penagihan Invoice</span>
         </a>
       </li>

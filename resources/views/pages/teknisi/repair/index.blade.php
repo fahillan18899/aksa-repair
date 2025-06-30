@@ -1,9 +1,9 @@
-@extends('layouts.marketing')
+@extends('layouts.teknisi')
 
 @section('content')
-@section('title', 'Inputan Pekerjaan')
+@section('title', 'Repair')
 <style>
-    input[readonly] {
+  input[readonly] {
     cursor: not-allowed;
   }
 
@@ -14,26 +14,26 @@
     height: 100%;
     /* Pastikan modal body penuh */
   }
-  
+
   .modal-dialog2 {
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  margin: 0;
-}
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+  }
 
-.modal-content2 {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+  .modal-content2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-.modal-body2 {
-  flex: 1;
-  overflow-y: auto;
-  color:black; 
-  background-color:white;
-}
+  .modal-body2 {
+    flex: 1;
+    overflow-y: auto;
+    color: black;
+    background-color: white;
+  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -41,10 +41,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
+      <div class="header-icon"><i class="fa fa-wrench"></i></div>
       <div class="header-title">
-        <h1>MENU FORM INPUTAN PEKERJAAN</h1>
-        <small>Form Inputan Pekerjaan</small>
+        <h1>MENU FORM Repair</h1>
+        <small>Form Repair</small>
       </div>
     </div>
   </section>
@@ -61,7 +61,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print" id="form1">
-            <h1>Form Inputan Pekerjaan</h1>
+            <h1>Form Repair</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -70,16 +70,44 @@
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="form-group row">
+                    <label for="no_urut" class=" col-xs-3 col-form-label">No Urut</label>
+                    <div class="col-xs-9">
+                      <input name="no_urut" id="no_urut" class="form-control" type="text" readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="Masukan nama alat disini">
+                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="isi nama alat di sini" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <div class="col-xs-9">
+                      <input name="no_seri" id="no_seri" class="form-control" type="text" placeholder="isi no seri di sini" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="type" class="col-xs-3 form-label">Type</label>
+                    <div class="col-xs-9">
+                      <input name="type" id="type" class="form-control" type="text" placeholder="isi type alat di sini">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="kerusakan" class="col-xs-3 form-label">Kerusakan Alat</label>
+                    <div class="col-xs-9">
+                      <input name="kerusakan" id="kerusakan" class="form-control" type="text" placeholder="isi kerusakan alat di sini">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Masukan Instansi disini">
+                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="isi Instansi di sini" required>
                     </div>
                   </div>
 
@@ -106,7 +134,7 @@
 
           <div class="panel-heading no-print">
             <div class="">
-              <h1>Daftar Inputan Pekerjaan</h1>
+              <h1>Daftar Repair alat</h1>
             </div>
           </div>
           <div style="overflow-x:auto;">
@@ -116,12 +144,16 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th class="">No</th>
-                      <th class="">Nama Alat</th>
-                      <th class="">Instansi</th>
-                      <th class="">Tombol</th>
+                      <th class="">No Urut</th>
+                      <th class="">Nama</th>
+                      <th class="">Merek</th>
+                      <th class="">Type</th>
+                      <th class="">Serial Number</th>
+                      <th class="">Pelapor</th>
+                      <th class="">Tanggal</th>
                     </thead>
                     <tbody>
+                      <!-- DATA AJAX -->
                     </tbody>
                   </table>
                   <!--TABEL-->

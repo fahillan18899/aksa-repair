@@ -2,16 +2,6 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController as PPMController;
-use App\Http\Controllers\Teknisi\PPM\DashboardUserController as DashboardTeknisiiController;
-use App\Http\Controllers\Teknisi\PPM\JadwalPemeliharaanController as JadwalPemeliharaanTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\LembarPemeliharaanController as LembarPemeliharaanTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\PerbaikanTeregistrasiController as PerbaikanTeregistrasiTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\StockOpnameUserController as StockOpnameUserTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\PengambilanSperpartTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\PesananTeknisiController;
-use App\Http\Controllers\Teknisi\PPM\ViewTabelController;
-use App\Http\Controllers\Teknisi\PPM\ViewTabelController2;
-use App\Http\Controllers\Teknisi\PPM\ViewTabelController3;
 use App\Http\Controllers\User\PPM\DashboardUserController;
 use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
 use App\Http\Controllers\User\PPM\PermintaanBarangController;
@@ -28,6 +18,12 @@ use App\Http\Controllers\Marketing\DashboardMarketingController;
 use App\Http\Controllers\Marketing\DataBarangController;
 use App\Http\Controllers\Marketing\InputanPekerjaanController;
 use App\Http\Controllers\Marketing\SphController;
+use App\Http\Controllers\Marketing\InvoiceController;
+// Teknisi //
+use App\Http\Controllers\Teknisi\DashboardTeknisiController;
+use App\Http\Controllers\Teknisi\RepairController;
+use App\Http\Controllers\Teknisi\InformasiController;
+use App\Http\Controllers\Teknisi\QrController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -66,49 +62,14 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
     Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
     Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
+    Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
-    // Route::get('/', [DashboardTeknisiiController::class, 'dashboard_teknisi'])->name('dashboard');
-    Route::resource('view_tabelT', ViewTabelController::class);
-    Route::resource('view_tabelT2', ViewTabelController2::class);
-    Route::resource('view_tabelT3', ViewTabelController3::class);
-
-    //Fetch
-    Route::get('data_permintaan_user', [DashboardTeknisiiController::class, 'getPermintaanUser'])->name('permintaanUser.data');
-    Route::get('data_perbaikan_teknisi', [DashboardTeknisiiController::class, 'getPerbaikanTeknisi'])->name('perbaikanTeknisi.data');
-    Route::get('count_permintaan_teknisi', [DashboardTeknisiiController::class, 'countPermintaan'])->name('permintaanTeknisi.count');
-    Route::get('count_perbaikan_teknisi', [DashboardTeknisiiController::class, 'countPerbaikan'])->name('perbaikanTeknisi.count');
-
-    Route::get('perbaikan_teknisi', [PerbaikanTeregistrasiTeknisiController::class, 'index'])->name('perbaikan_teknisi.index');
-    Route::post('perbaikan_teknisi/store', [PerbaikanTeregistrasiTeknisiController::class, 'store'])->name('perbaikan_teknisi.store');
-    Route::post('perbaikan_teknisi/create', [PerbaikanTeregistrasiTeknisiController::class, 'create'])->name('perbaikan_teknisi.create');
-    Route::get('perbaikan_teknisi/update_perbaikan/{id}/edit', [PerbaikanTeregistrasiTeknisiController::class, 'edit_teknisi']);
-    Route::put('perbaikan_teknisi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'update_teknisi']);   
-    Route::get('perbaikan_teregistrasi/cetak_perbaikan/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'cetak_teknisi']);
-    Route::get('/qr_qode/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'qrCodeGenerate']);
-    Route::put('perbaikan_teknisi/update/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateStatusPerbaikanTeknisi']);
-    Route::put('perbaikan_teknisi/kondisi/{id}', [PerbaikanTeregistrasiTeknisiController::class, 'updateKondisiAlat']);
-
-    Route::get('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'state']);
-    Route::post('jadwal_pemeliharaan', [JadwalPemeliharaanTeknisiController::class, 'store']);
-    Route::get('jadwal_pemeliharaan/{id}', [JadwalPemeliharaanTeknisiController::class, 'city']);
-    Route::put('jadwal_pemeliharaan/update/{id}', [JadwalPemeliharaanTeknisiController::class, 'updateStatusTeknisi']);
-    Route::get('lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'index']);
-    Route::get('/lembar_pemeliharaan/cetak/{id}', [LembarPemeliharaanTeknisiController::class, 'cetak']);/*fungsi print*/
-    Route::post('/lembar_pemeliharaan', [LembarPemeliharaanTeknisiController::class, 'store']);
-
-    //Fetch data pesanan user
-    Route::get('/dashboard_teknisi/perbaikan_teknisi/data', [PesananTeknisiController::class, 'getPesanan'])->name('pesanan.data');
-
-    // Penggunaan Sperpart Gudang / Stock opname (Teknisi)
-    Route::post('penggunaan_sperpart', [PengambilanSperpartTeknisiController::class, 'store']);
-
-    Route::get('/autofill/{idars}', [PPMController::class, 'autofill']);
-    Route::get('autofillpart/{idars}', [PPMController::class, 'autofillpart'])->name('autofillpart');
-    Route::get('autofill_pelihara/{idars}', [PPMController::class, 'autofill_pelihara']);
-
-    Route::resource('stock_opname_teknisi', StockOpnameUserTeknisiController::class);
+    Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
+    Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
+    Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
+    Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
 
 });
 

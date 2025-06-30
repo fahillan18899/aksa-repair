@@ -1,7 +1,7 @@
 @extends('layouts.marketing')
 
 @section('content')
-@section('title', 'Aset Teregistrasi')
+@section('title', 'Data Barang')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
+      <div class="header-icon"><i class="fa fa-archive"></i></div>
       <div class="header-title">
         <h1>Data Barang</h1>
         <small>Daftar Data Barang</small>

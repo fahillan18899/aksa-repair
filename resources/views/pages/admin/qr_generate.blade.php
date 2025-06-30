@@ -84,4 +84,5 @@
   </div>
  </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.marketing')
+@extends('layouts.teknisi')
 @section('content')
 @section('title', 'Dashboard')
 <div class="content-wrapper">
@@ -9,7 +9,7 @@
       <div class="header-icon"><i class="fa fa ti-home"></i></div>
       <div class="header-title">
         <h1>Dashboard</h1>
-        <small>Dashboard Repair Aksa Marketing</small>
+        <small>Dashboard Repair Aksa Teknisi</small>
       </div>
     </div>
   </section>

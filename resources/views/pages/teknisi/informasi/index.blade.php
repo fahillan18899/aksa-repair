@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.teknisi')
 
 @section('content')
-@section('title', 'Data Barang')
+@section('title', 'Informasi')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -9,10 +9,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
+      <div class="header-icon"><i class="fa fa-info"></i></div>
       <div class="header-title">
-        <h1>Data Barang</h1>
-        <small>Daftar Data Barang</small>
+        <h1>Informasi</h1>
+        <small>Daftar Informasi</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Data Barang</h1>
+            <h1>Daftar Informasi</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -56,7 +56,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                   </tbody>
                 </table>
                 <!--TABEL-->
@@ -69,5 +69,4 @@
     </div>
   </div>
 </div> <!-- /.content -->
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection

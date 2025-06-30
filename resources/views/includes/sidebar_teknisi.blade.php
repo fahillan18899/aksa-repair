@@ -48,33 +48,28 @@
         @endif
         @endif
         <p>{{ Auth::user()->username }}</p>
-        <a href="#"><i class="fa fa-circle text-success"></i>
+        <a href="#"><i class="fa fa-circle text-primary"></i>
           {{ Auth::user()->user_role }} </a>
       </div>
     </div>
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard_teknisi') ? 'active' : '' }}">
-        <a href="/dashboard_teknisi"><i class="fa fa ti-home"></i> Dashboard</a>
+      <li class="{{ request()->is('dashboard_teknisi/link_dashboard_teknisi') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_inputan_pekerjaan') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.inputanPekerjaan') }}">
-          <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Inputan Pekerjaan</span>
+      <li class="{{ request()->is('dashboard_teknisi/link_repair') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.repair') }}">
+          <i class="fa fa-wrench" aria-hidden="true"></i><span>Repair</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/stock_opname_teknisi') ? 'active' : '' }}">
-        <a href="/dashboard_teknisi/stock_opname_teknisi">
-          <i class="fa fa-archive"></i> <span>Data Barang</span>
+      <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.informasi') }}">
+          <i class="fa fa-info-circle"></i> <span>Informasi</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_sph') ? 'active' : '' }}">
-        <a href="/dashboard_teknisi/link_sph">
-          <i class="fa fa-file-o"></i><span>Pembuatan SPH</span>
-        </a>
-      </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_invoice') ? 'active' : '' }}">
-        <a href="dashboard_teknisi/link_invoice">
-          <i class="fa fa-file-text"></i><span>Penagihan Invoice</span>
+      <li class="{{ request()->is('dashboard_teknisi/link_qr') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.qr') }}">
+          <i class="fa fa-qrcode"></i><span>QR Code</span>
         </a>
       </li>
     </ul>

@@ -1,7 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.marketing')
 
 @section('content')
-@section('title', 'Data Barang')
+@section('title', 'Invoice')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Data Barang</h1>
-        <small>Daftar Data Barang</small>
+        <h1>Invoice</h1>
+        <small>Daftar Invoice</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Data Barang</h1>
+            <h1>Daftar Invoice</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -46,17 +46,14 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">No Urut</th>
                       <th scope="col">Nama</th>
-                      <th scope="col">No Seri</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Kerusakan</th>
+                      <th scope="col">Tanggal</th>
                       <th scope="col">Instansi</th>
                       <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                   </tbody>
                 </table>
                 <!--TABEL-->
@@ -69,5 +66,4 @@
     </div>
   </div>
 </div> <!-- /.content -->
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection

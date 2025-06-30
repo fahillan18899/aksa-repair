@@ -183,13 +183,13 @@ body.hold-transition .main-header .logo {
 
 ::-moz-selection {
     color: #fff;
-    background: #37a000;
+    background: #009dff;
     text-shadow: none;
 }
 
 ::selection {
     color: #fff;
-    background: #37a000;
+    background: #009dff;
     text-shadow: none;
 }
 
@@ -219,7 +219,7 @@ p {
 /* General Links */
 
 a {
-    color: #29ff69;
+    color: #006aff;
     text-decoration: none;
 }
 
