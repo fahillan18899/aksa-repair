@@ -1,24 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-@if (Auth::user()->kode_rs == 'RS0004')
-@push('prepend-style')
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-@endpush
-@endif
 @section('title', 'Dashboard')
-<style>
-  .c-item {
-    height: 480px;
-  }
-
-  .c-img {
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.6);
-  }
-</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -31,40 +14,6 @@
       </div>
     </div>
   </section>
-
-  <!--Slide-->
-  @if (Auth::user()->user_role == 'admin' && Auth::user()->kode_rs == 'RS0004')
-  <div class="mb-5">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img src=" {{ url('assets/images/cilegon4.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon3.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon7.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon2.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-        <div class="carousel-item c-item">
-          <img src="{{ url('assets/images/cilegon6.png') }}" class="d-block w-100 c-img" alt="...">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
-  @endif
-  <!--Slide-->
   <!-- /.content-header -->
 <!-- Main content -->
   <div class="content">
@@ -76,7 +25,7 @@
             <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
             <div class="info-box-content">
               <span class="info-box-text"><?= 'JUMLAH ALAT TERGESITRASI' ?></span>
-              <span class="info-box-number">{{ $registrasi }}</span>
+              <span class="info-box-number">0</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
@@ -131,7 +80,7 @@
             <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
             <div class="info-box-content">
               <span class="info-box-text"><?= 'JUMLAH ALAT TERPELIHARA' ?></span>
-              <span class="info-box-number">{{ $alatTerkalibrasi }} / {{$registrasi}}</span>
+              <span class="info-box-number">0</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -219,26 +168,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @forelse ($itemPesanan as $index => $item)
-                        <tr>
-                          <td>{{ $index + 1 }}</td>
-                          <td title="klik untuk copy ke form" onclick="copy(this)"><span>{{ $item->id_req }}<span></td>
-                          <td>{{ $item->nama_req }}</td>
-                          <td>{{ $item->merek_req }}</td>
-                          <td>{{ $item->type_req }}</td>
-                          <td>{{ $item->sn_req }}</td>
-                          <td>{{ $item->pelapor_req }}</td>
-                          <td>{{ $item->tanggal_req }}</td>
-                          <td>
-                            <form action="{{ url('/dashboard_user/perbaikan_teregistrasi', $item->id_req) }}" method="POST" class="d-inline">
-                              @csrf
-                              @method('DELETE')
-                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="validasi"> Validasi perbaikan </button>
-                            </form>
-                          </td>
-                        </tr>
-                        @empty
-                        @endforelse
+                        
                       </tbody>
                     </table>
                     <!--TABEL-->
@@ -256,174 +186,3 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
-
-@push('addon-script')
-<!-- <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-messaging.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "{{ config('app.api_key') }}",
-    authDomain: "{{ config('app.auth_domain') }}",
-    projectId: "{{ config('app.project_id') }}",
-    storageBucket: "{{ config('app.storage_bucket') }}",
-    messagingSenderId: "{{ config('app.message_sender_id') }}",
-    appId: "{{ config('app.app_id') }}",
-    measurementId: "{{ config('app.measurement_id') }}"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  const messaging = firebase.messaging();
-  messaging.requestPermission()
-    .then(function() {
-      getRegToken();
-    })
-    .catch(function(err) {
-      console.log('Tidak dapat mendapatkan izin untuk memberi notifikasi.');
-    });
-
-  function getRegToken() {
-    messaging.getToken()
-      .then(function(currentToken) {
-        console.log(currentToken)
-        if (currentToken) {
-          setTokenSentToServer(true);
-          const userCode = "{{ Auth::user()->kode_rs . Auth::user()->user_role }}";
-          subscribeTokenToTopic(currentToken, userCode)
-          console.log("Notifikasi Di Aktifkan")
-        } else {
-          setTokenSentToServer(false);
-        }
-      })
-      .catch(function(err) {
-        console.log('Terjadi kesalahan saat mengambil token.');
-        setTokenSentToServer(false);
-      });
-  }
-
-  function subscribeTokenToTopic(token, topic) {
-    fetch('https://iid.googleapis.com/iid/v1/' + token + '/rel/topics/' + topic, {
-      method: 'POST',
-      headers: new Headers({
-        'Authorization': 'key=AAAAatkICYs:APA91bGcQtde2KpTOZEmKmzYJU_VrfBuYeCw79SElSS2QRkyl0XTIro0wJBnhE1kJvHllpzWSS8doQQRS1OLPV6cnhZOJW8Z2S97RAApwUPusTji6VQpYjpzYXjyqCVjMAFHHojxMK0b',
-      })
-    }).then(response => {
-      if (response.status < 200 || response.status >= 400) {
-        throw 'Error subscribing to topic: ' + response.status + ' - ';
-      }
-      console.log('Subscribed to ' + topic);
-    }).catch(error => {
-      console.error("error");
-    })
-  }
-
-  function setTokenSentToServer(sent) {
-    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-  }
-
-  function isTokenSentToServer() {
-    return window.localStorage.getItem('sentToServer') == 1;
-  }
-</script> -->
-
-<!-- AJAX PERBAIKAN -->
-  <script>
-    function loadPerbaikanUser(){
-      // console.log("Memulai loadPerbaikanUser"); //Debug fungsi berjalan / tidak
-
-      $.ajax({
-        url: '{{ route("perbaikanUser.data") }}',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-          // console.log("Data berhasil diterima:", data); //Debug tampilan data yang di get oleh ajax
-
-          let rows ='';
-          data.forEach(item => {
-            // console.log(item);
-            rows += `
-              <tr>
-                <td>${item.tanggal_perbaikan_reg}</td>
-                <td>${item.nama_alat_reg}</td>
-                <td>${item.merek_alat_reg}</td>
-                <td>${item.type_alat_reg}</td>
-                <td>${item.serial_number_reg}</td>
-                <td>${item.lokasi_alat_reg}</td>
-                <td>
-                  <button class="btn btn-sm ${item.status == 0 ? 'btn-success' : 'btn-danger'} update-status-btn"
-                  data-id="${item.status}" disabled>
-                  ${item.status == 0 ? 'Sudah disetujui' : 'Belum disetujui'}
-                  </button>
-                </td>
-                <td>
-                  <button class="btn btn-sm ${item.keterangan_kondisi_alat_reg == 0 ? 'btn-success' : 'btn-warning'} update-status-btn"
-                  data-id="${item.id_perbaikan_reg}" disabled>
-                  ${item.keterangan_kondisi_alat_reg == 0 ? 'Selesai, dikembalikan' : 'Dalam Perbaikan'}
-                  </button>
-                </td>
-              </tr>
-            `;
-          });
-
-          $('#perbaikanUser').html(rows);
-          // console.log("Tabel berhasil diperbaharui"); //Debug konfirmasi update
-        },
-        error: function(xhr, status, error) {
-          console.log("Gagal memuat data", error)
-        }
-      });
-    }
-
-    $(document).ready(function(){
-      // console.log("Dokumen siap, mulai polling...");
-      loadPerbaikanUser();
-      setInterval(loadPerbaikanUser, 3000);
-    });
-  </script>
-<!-- AJAX PERBAIKAN N-->
-
-<!-- COUNT PERMINTAAN PERBAIKAN -->
- <script>
-  function jumlahPermintaanUser() {
-    $.ajax({
-      url: '{{ route("permintaanUser.count") }}',
-      method: 'GET',
-      success: function(response) {
-        $('#count_permintaan').text(response.countPermintaan);
-      },
-      error: function(xhr, status, error) {
-        console.log("Gagal mengambil data permintaan:", error);
-      }
-    });
-  }
-
-  $(document).ready(function() {
-    jumlahPermintaanUser();
-    setInterval(jumlahPermintaanUser, 3000);
-  })
- </script>
-<!-- COUNT PERMINTAAN PERBAIKAN N-->
-
-<!-- COUNT PERBAIKAN -->
- <script>
-  function jumlahPerbaikanUser() {
-    $.ajax({
-      url: '{{ route("perbaikanUser.count") }}',
-      method: 'GET',
-      success: function(response) {
-        $('#count_perbaikan').text(response.countPerbaikan);
-      },
-      error: function(xhr, status, error) {
-        console.log("Gagal mengambil data perbaikan:", error);
-      }
-    });
-  }
-
-  $(document).ready(function() {
-    jumlahPerbaikanUser();
-    setInterval(jumlahPerbaikanUser, 3000);
-  })
- </script>
-<!-- COUNT PERBAIKAN N-->
-@endpush

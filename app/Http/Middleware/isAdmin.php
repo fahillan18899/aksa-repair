@@ -28,6 +28,8 @@ class IsAdmin
             return redirect()->route('teknisi.dashboard');
         } elseif (Auth::user()->user_role == 'marketing') {
             return redirect()->route('marketing.dashboard');
+        } elseif (Auth::user()->user_role == 'akuntan') {
+            return redirect()->route('akuntan.dashboard');
         }
 
         return redirect()->route('user.dashboard');

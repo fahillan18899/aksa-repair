@@ -24,6 +24,8 @@ use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\RepairController;
 use App\Http\Controllers\Teknisi\InformasiController;
 use App\Http\Controllers\Teknisi\QrController;
+// Akuntan //
+use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -71,6 +73,10 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
 
+});
+
+Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->group(function () {
+    Route::get('link_dashboard_akuntan', [DashboardAkuntanController::class, 'dashboard_akuntan'])->name('dashboard');
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {

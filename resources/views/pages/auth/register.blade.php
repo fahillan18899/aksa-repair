@@ -76,7 +76,7 @@
                 <option value="">Pilih Peran Pengguna</option>
                 <option value="marketing">Marketing</option>
                 <option value="teknisi">Teknisi</option>
-                <option value="user">User</option>
+                <option value="akuntan">Akuntan</option>
               </select>
             </div>
 
