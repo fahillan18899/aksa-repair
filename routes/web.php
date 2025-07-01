@@ -63,7 +63,13 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
     Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
+// Input Pekerjaan //
     Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
+    Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
+    Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
+    Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
+    Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
+// Input Pekerjaan //
     Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
     Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
     Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');

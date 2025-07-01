@@ -48,11 +48,17 @@
                       <th scope="col">No</th>
                       <th scope="col">Nama</th>
                       <th scope="col">Instansi</th>
-                      <th scope="col">Tombol_Aksi_Table</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @forelse($data as $datas)
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->nama_alat }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                    </tr>
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->
