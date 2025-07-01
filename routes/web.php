@@ -26,6 +26,8 @@ use App\Http\Controllers\Teknisi\InformasiController;
 use App\Http\Controllers\Teknisi\QrController;
 // Akuntan //
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
+use App\Http\Controllers\Akuntan\InvoicePermohonanController;
+use App\Http\Controllers\Akuntan\UploadFaktureController;
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -77,6 +79,8 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 
 Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_akuntan', [DashboardAkuntanController::class, 'dashboard_akuntan'])->name('dashboard');
+    Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
+    Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {

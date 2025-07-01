@@ -48,22 +48,22 @@
         @endif
         @endif
         <p>{{ Auth::user()->username }}</p>
-        <a href="#"><i class="fa fa-circle text-success"></i>
+        <a href="#"><i class="fa fa-circle text-primary"></i>
           {{ Auth::user()->user_role }} </a>
       </div>
     </div>
     <!-- sidebar menu -->
     <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard_marketing/link_dashboard_marketing') ? 'active' : '' }}">
-        <a href="#"><i class="fa fa ti-home"></i> Dashboard</a>
+      <li class="{{ request()->is('dashboard_akuntan/link_dashboard_akuntan') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_inputan_pekerjaan') ? 'active' : '' }}">
-        <a href="#">
+      <li class="{{ request()->is('dashboard_akuntan/link_invoice_permohonan') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.invoicePermohonan') }}">
           <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Invoice Permohonan</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_data_barang') ? 'active' : '' }}">
-        <a href="#">
+      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.uploadFakture') }}">
           <i class="fa fa-upload"></i> <span>Upload Faktur Pajak</span>
         </a>
       </li>
