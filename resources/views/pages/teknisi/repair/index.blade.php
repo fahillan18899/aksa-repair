@@ -6,34 +6,6 @@
   input[readonly] {
     cursor: not-allowed;
   }
-
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Pastikan modal body penuh */
-  }
-
-  .modal-dialog2 {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
-  }
-
-  .modal-content2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-body2 {
-    flex: 1;
-    overflow-y: auto;
-    color: black;
-    background-color: white;
-  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -67,15 +39,9 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.post.repair') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-                  <div class="form-group row">
-                    <label for="no_urut" class=" col-xs-3 col-form-label">No Urut</label>
-                    <div class="col-xs-9">
-                      <input name="no_urut" id="no_urut" class="form-control" type="text" readonly>
-                    </div>
-                  </div>
-
+                  <input name="no_urut" id="no_urut" class="form-control" type="hidden">
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
@@ -98,9 +64,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="kerusakan" class="col-xs-3 form-label">Kerusakan Alat</label>
+                    <label for="kerusakan_alat" class="col-xs-3 form-label">Kerusakan Alat</label>
                     <div class="col-xs-9">
-                      <input name="kerusakan" id="kerusakan" class="form-control" type="text" placeholder="isi kerusakan alat di sini">
+                      <input name="kerusakan_alat" id="kerusakan_alat" class="form-control" type="text" placeholder="isi kerusakan alat di sini">
                     </div>
                   </div>
 
@@ -144,16 +110,38 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th class="">No Urut</th>
-                      <th class="">Nama</th>
-                      <th class="">Merek</th>
-                      <th class="">Type</th>
-                      <th class="">Serial Number</th>
-                      <th class="">Pelapor</th>
-                      <th class="">Tanggal</th>
+                      <th>No Urut</th>
+                      <th>Nama</th>
+                      <th>Serial Number</th>
+                      <th>Type</th>
+                      <th>Kerusakan</th>
+                      <th>Instansi</th>
+                      <th>Tombol</th>
                     </thead>
                     <tbody>
-                      <!-- DATA AJAX -->
+                      @forelse($item as $items)
+                      <tr>
+                        <td>{{ $items->no_urut }}</td>
+                        <td>{{ $items->nama_alat }}</td>
+                        <td>{{ $items->no_seri }}</td>
+                        <td>{{ $items->type }}</td>
+                        <td>{{ $items->kerusakan_alat }}</td>
+                        <td>{{ $items->instansi }}</td>
+                        <td>
+                          <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          </a>
+                          <form action="{{ route('teknisi.delete.repair', $items->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
                     </tbody>
                   </table>
                   <!--TABEL-->

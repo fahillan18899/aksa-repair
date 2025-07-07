@@ -77,7 +77,13 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
+// Repair //
     Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
+    Route::post('link_repair', [RepairController::class, 'post'])->name('post.repair');
+    Route::get('link_repair/edit/{id}', [RepairController::class, 'edit'])->name('edit.repair');
+    Route::put('link_repair/update/{id}', [RepairController::class, 'update'])->name('update.repair');
+    Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
+// Repair //
     Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
 
