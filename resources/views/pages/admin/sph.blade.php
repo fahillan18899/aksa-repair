@@ -45,15 +45,18 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Tanggal</th>
+                      <th scope="col">Lokasi, Tanggal</th>
+                      <th scope="col">No Surat</th>
                       <th scope="col">Instansi</th>
-                      <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @forelse($data as $datas)
+                    <td>{{ $datas->lokasi_tanggal }}</td>
+                    <td>{{ $datas->no_surat }}</td>
+                    <td>{{ $datas->yth }}</td>
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->

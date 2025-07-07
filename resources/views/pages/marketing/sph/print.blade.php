@@ -64,40 +64,40 @@
             <h1>SPH</h1>
           </div>
 
-          <div class="panel-body panel-form">
+          <div class="panel-body panel-form" id="print_me">
             <div class="row">
               <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="col-xs-4" style="margin-left: 700px;">
-                    <input name="lokasi_tanggal" id="lokasi_tanggal" class="form-control" type="text" placeholder="lokasi, tanggal">
+                    <p>{{ $data->lokasi_tanggal }}</p>
                   </div>
                   <div class="form-group row">
                     <label for="no_surat" class="col-xs-2 form-label"><b>No.Surat :</b></label>
                     <div class="col-xs-5">
-                      <input name="no_surat" id="no_surat" type="text" class="form-control" placeholder="isi dengan nomer surat">
+                      <p>{{ $data->no_surat }}</p>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="hal" class="form-label col-xs-2"><b>Hal.</b> :</label>
                     <div class="col-xs-5">
-                      <input name="hal" id="hal" type="text" class="form-control" placeholder="isi dengan perihal surat">
+                      <p>{{ $data->hal }}</p>
                     </div>
                   </div>
                   <br>
                   <p><b>Kepada Yth. :</b></p>
                   <div class="col-xs-4 ml-2">
-                    <input name="yth" id="yth" type="text" class="form-control" placeholder="isi nama orang yang dituju">
+                    <p>{{ $data->yth }}</p>
                   </div>
                   <br>
                   <br>
                   <p>Di Tempat.</p><br>
                   <p>Dengan Hormat,</p><br>
-                  <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa 
+                  <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
                   </p>
-                  
+
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -111,29 +111,29 @@
                     <tbody>
                       <tr>
                         <td class="text-center">1</td>
-                        <td><input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="isi nama alat"></td>
-                        <td><textarea name="keterangan" id="keterangan" class="form-control" placeholder="keterangan perbaikan"></textarea></td>
-                        <td><input name="jumlah" id="jumlah" class="form-control" type="text" placeholder="jumlah alat"></td>
-                        <td><input name="harga" id="harga" class="form-control" type="text" placeholder="harga perbaikan" onkeyup="ppn(this)"></td>
+                        <td>{{ $data->nama_alat }}</td>
+                        <td>{{ $data->keterangan }}</td>
+                        <td>{{ $data->jumlah }}</td>
+                        <td>{{ $data->harga }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Harga Tanpa Pajak</b></td>
-                        <td><input name="harga_tanpa_pajak" id="harga_tanpa_pajak" type="text" class="form-control" placeholder="terisi otomatis" readonly onkeyup="ppn()"></td>
+                        <td>{{ $data->harga_tanpa_pajak }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Pajak 11%</b></td>
-                        <td><input name="pajak" id="pajak" class="form-control" type="text" placeholder="terisi otomatis" readonly onkeyup="ppn()"></td>
+                        <td>{{ $data->pajak }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Total</b></td>
-                        <td><input name="total" id="total" class="form-control" type="text" placeholder="terisi otomatis" readonly onkeyup="ppn()"></td>
+                        <td>{{ $data->total }}</td>
                       </tr>
                     </tbody>
                   </table>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
-                        <div class="panel-heading no-print">
+                        <div class="panel-heading">
                           <p><u><b>Kondisi Penawaran</b></u></p><br>
                           <p>1. <b>Harga Sudah Termasuk :</b></p>
                           <p style="margin-left: 15px;">PPn 11%</p>
@@ -145,7 +145,7 @@
                       </div>
                     </div>
                   </div>
-                  <p>Demikian, suatu penghargaan  yang besar bagi kami segera mendapatkan respone yang terbaik atas informasi yang kami sampaikan
+                  <p>Demikian, suatu penghargaan yang besar bagi kami segera mendapatkan respone yang terbaik atas informasi yang kami sampaikan
                     ini semoga bermanfaat dan terimakasih atas kerja samanya, sukses untuk kita bersama.
                   </p>
                   <table class="table" style="width: 20%;">
@@ -163,105 +163,43 @@
                       </tr>
                     </tbody>
                   </table>
-                   <div class="form-group row">
-                    <div class="col-sm-offset-3 col-sm-6">
-                      <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
-                      </div>
-                    </div>
-                  </div>
                 </form>
               </div>
               <div class="col-md-3"></div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-offset-3 col-sm-6">
+              <button type="button" onclick="printMy('print_me')"
+                class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-print"></i> Print</button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!--Form Perbaikan end-->
-    <!--Tabel Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print">
-            <div class="">
-              <h1>Daftar SPH</h1>
-            </div>
-          </div>
-          <div style="overflow-x:auto;">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th>Lokasi, Tanggal</th>
-                      <th>No Surat</th>
-                      <th>Instansi</th>
-                      <th>Tombol</th>
-                    </thead>
-                    <tbody>
-                      @forelse($item as $items)
-                      <td>{{ $items->lokasi_tanggal }}</td>
-                      <td>{{ $items->no_surat }}</td>
-                      <td>{{ $items->yth }}</td>
-                      <td>
-                        <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Print">
-                          <i class="fa fa-print" aria-hidden="true"></i>
-                        </a>
-                      </td>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tabel Perbaikan-->
   </div>
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
 @push('addon-script')
 <script>
-  function ppn(input) {
-
-    let angka = input.value.replace(/[^\d]/g, ''); //Hapus semua kecuali angka
-
-    if(!angka) {
-      input.value = '';
-      return;
-    }
-
-    const formatter = new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-
-    const angkaFloat = parseFloat(angka);
-    input.value = formatter.format(angkaFloat);
-
-    const harga = document.getElementById('harga').value;
-    const hargac = parseFloat(harga.replace(/[^\d]/g, ''));
-    const ppn = hargac * 11 / 100;
-    const total = hargac + ppn;
-
-    const hargaRp = hargac.toLocaleString('id-ID', {style: 'currency', currency: 'IDR', minimumFractionDigits: 0});
-    const pajakRp = ppn.toLocaleString('id-ID', {style: 'currency', currency: 'IDR', minimumFractionDigits: 0});
-    const totalRp = total.toLocaleString('id-ID', {style: 'currency', currency: 'IDR', minimumFractionDigits: 0});
-
-    document.getElementById('harga_tanpa_pajak').value = hargaRp;
-    document.getElementById('pajak').value = pajakRp;
-    document.getElementById('total').value = totalRp;
+  // FUNGSI PRINT
+  function printMy(print_me) {
+    var printContent = document.getElementById("print_me").outerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML =
+      `<html>
+          <head>
+            <title>Print Table</title>
+          </head>
+          <body>
+              ${printContent}
+          </body>
+        </html>`;
+    window.print();
+    document.body.innerHTML = originalContent;
   }
+  // FUNGSI PRINT END
 </script>
-
 @endpush

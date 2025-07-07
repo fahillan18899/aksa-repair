@@ -15,9 +15,17 @@ return new class extends Migration
     {
         Schema::create('sphs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('tanggal');
-            $table->string('instansi');
+            $table->string('lokasi_tanggal');
+            $table->string('no_surat');
+            $table->string('hal');
+            $table->string('yth');
+            $table->string('nama_alat');
+            $table->string('keterangan');
+            $table->string('jumlah');
+            $table->string('harga');
+            $table->string('harga_tanpa_pajak');
+            $table->string('pajak');
+            $table->string('total');
             $table->timestamps();
         });
     }
