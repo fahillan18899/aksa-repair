@@ -60,6 +60,22 @@ class RepairController extends Controller
         ->with('success', 'Data berhasil di ubah');
     }
 
+    public function status($id)
+    {
+        $item = DataBarang::findOrFail($id);
+        $item->status = $item->status === '0' ? '1' : '0';
+        $item->save();
+        return back();
+    }
+
+    public function ket($id)
+    {
+        $item = DataBarang::findOrFail($id);
+        $item->ket = $item->ket === '0' ? '1' : '0';
+        $item->save();
+        return back();
+    }
+
     public function delete($id)
     {
         $item = DataBarang::findOrFail($id);

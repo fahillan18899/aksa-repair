@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('kerusakan_alat');
             $table->string('instansi');
+            $table->string('status');
+            $table->string('ket');
             $table->timestamps();
         });
     }

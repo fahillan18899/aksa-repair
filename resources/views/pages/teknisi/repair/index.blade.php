@@ -116,6 +116,8 @@
                       <th>Type</th>
                       <th>Kerusakan</th>
                       <th>Instansi</th>
+                      <th>Status</th>
+                      <th>Keterangan</th>
                       <th>Tombol</th>
                     </thead>
                     <tbody>
@@ -127,6 +129,24 @@
                         <td>{{ $items->type }}</td>
                         <td>{{ $items->kerusakan_alat }}</td>
                         <td>{{ $items->instansi }}</td>
+                        <td>
+                          <form action="{{ route('teknisi.status.repair', $items->id) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-sm btn-{{ $items->status == 0 ? 'danger' : 'success'}}" type="submit">
+                              {{ $items->status == 0 ? 'Kembali' : 'Approve' }}
+                            </button>
+                          </form>
+                        </td>
+                        <td>
+                          <form action="{{ route('teknisi.ket.repair', $items->id) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-sm btn-{{ $items->ket == 0 ? 'primary' : 'warning' }}" type="submit">
+                              {{ $items->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                            </button>
+                          </form>
+                        </td>
                         <td>
                           <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
