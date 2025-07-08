@@ -75,6 +75,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
     Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
     Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
+    Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
 // SPH //
     Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
 });

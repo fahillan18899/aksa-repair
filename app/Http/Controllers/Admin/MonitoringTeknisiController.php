@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Approval;
+use App\Models\DataBarang;
 use App\Models\AlatKembali;
 use App\Models\Informasi;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class MonitoringTeknisiController extends Controller
 {
     public function getApproval()
     {
-        $data = Approval::all();
+        $data = DataBarang::all();
         return view('pages.admin.approval',
         compact('data'));
     }

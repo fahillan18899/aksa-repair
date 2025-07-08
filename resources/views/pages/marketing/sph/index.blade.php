@@ -210,6 +210,13 @@
                         <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Print">
                           <i class="fa fa-print" aria-hidden="true"></i>
                         </a>
+                        <form action="{{ route('marketing.delete.sph', $items->id) }}" method="POST" class="d-inline">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                          </button>
+                        </form>
                       </td>
                       @empty
                       @endforelse

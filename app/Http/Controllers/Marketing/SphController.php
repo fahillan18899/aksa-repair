@@ -42,4 +42,12 @@ class SphController extends Controller
         return view('pages.marketing.sph.print',
         compact('data'));
     }
+
+    public function delete($id)
+    {
+        $item = Sph::findOrFail($id);
+        $item->delete();
+        return redirect()->route('marketing.data.sph')
+        ->with('success', 'Sph berhasil dihapus');
+    }
 }
