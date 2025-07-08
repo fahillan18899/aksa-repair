@@ -56,7 +56,27 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @forelse($data as $datas)
+                    <tr>
+                      <td>{{ $datas->no_urut }}</td>
+                      <td>{{ $datas->nama_alat }}</td>
+                      <td>{{ $datas->no_seri }}</td>
+                      <td>{{ $datas->type }}</td>
+                      <td>{{ $datas->kerusakan_alat }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $datas->status == 0 ? 'danger' : 'success' }}" disabled>
+                          {{ $datas->status == 0 ? 'Kembali' : 'Approve' }}
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $datas->ket == 0 ? 'primary' : 'warning' }}" disabled>
+                          {{ $datas->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                        </button>
+                      </td>
+                    </tr>
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->

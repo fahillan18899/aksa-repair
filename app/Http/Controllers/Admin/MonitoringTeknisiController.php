@@ -12,14 +12,14 @@ class MonitoringTeknisiController extends Controller
 {
     public function getApproval()
     {
-        $data = DataBarang::all();
+        $data = DataBarang::where('status', '1')->get();
         return view('pages.admin.approval',
         compact('data'));
     }
 
     public function getAlatKembali()
     {
-        $data = AlatKembali::all();
+        $data = DataBarang::where('status', '0')->get();
         return view('pages.admin.alat_kembali',
         compact('data'));
     }

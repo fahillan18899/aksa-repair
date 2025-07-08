@@ -27,7 +27,7 @@
             <div class="info-box-content">
               <span class="info-box-text">
                 <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
-              <span class="info-box-number">0</span>
+              <span class="info-box-number">{{ $countSelesai }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -48,7 +48,7 @@
                 <a href="view_tabel"
                   style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
               </span>
-              <span class="info-box-number" id="count_perbaikan">0</span>
+              <span class="info-box-number" id="count_perbaikan">{{ $countPerbaikan }}</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -61,42 +61,6 @@
         </div>
       <!--Box Jumlah Aset Perbaikan Regis end-->
 
-      <!--Box Jumlah Permintaan Perbaikan -->
-        <!-- <div class="col-12 col-md-6 mb-4">
-          <div class="info-box bg-navy-blue">
-            <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text"><a href="view_tabel2" style="color : white"><?= "JUMLAH PERMINTAAN PERBAIKAN USER" ?></a></span>
-              <span class="info-box-number" id="count_permintaan">0</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span class="progress-description">
-                <?= date('j F, Y'); ?>
-              </span>
-            </div>
-          </div>
-        </div> -->
-      <!--Box Jumlah Permintaan Perbaikan -->
-
-      <!--Box Jumlah Aset Terkalibrasi -->
-        <!-- <div class="col-12 col-md-6 mb-4">
-          <div class="info-box bg-light-green">
-            <span class="info-box-icon"><i class="fa fa-cogs"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text"><a href="view_tabel3" style="color: white"><?= "JUMLAH ALAT TERKALIBRASI" ?></a></span>
-              <span class="info-box-number">0</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span class="progress-description">
-                <?= date('j F, Y'); ?>
-              </span>
-            </div>
-          </div>
-        </div> -->
-      <!--Box Jumlah Aset Terkalibrasi end-->
-
       <!-- Card Tabel Permintaan Perbaikan -->
        <div class="row">
         <div class="col-sm-12">
@@ -104,9 +68,6 @@
             <div class="panel-heading no-print">
               <div class="row">
                 <div class="col-md-4">
-                  <!-- <div class="btn-group">
-                    <a class="btn btn-success" href="/dashboard/ppm/pesanan"> <i class="fa fa-plus"></i> Request Perbaikan </a>
-                  </div> -->
                 </div>
                 <div class="col-md-5">
                   <h2>Daftar Barang Selesai Repair</h2>
@@ -120,18 +81,39 @@
                     <!-- TABEL -->
                      <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Kerusakan</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Tanggal</th>
+                        <tr>
+                          <th>No Urut</th>
+                          <th>Nama</th>
+                          <th>Serial Number</th>
+                          <th>Type</th>
+                          <th>Kerusakan</th>
+                          <th>Instansi</th>
+                          <th>Status</th>
+                          <th>Keterangan</th>
+                        </tr>
                       </thead>
-                      <tbody id="permintaanBody">
-                        <!-- DATA AJAX -->
+                      <tbody>
+                        @forelse($itemSelesai as $item)
+                        <tr>
+                          <td>{{ $item->no_urut }}</td>
+                          <td>{{ $item->nama_alat }}</td>
+                          <td>{{ $item->no_seri }}</td>
+                          <td>{{ $item->type }}</td>
+                          <td>{{ $item->kerusakan_alat }}</td>
+                          <td>{{ $item->instansi }}</td>
+                          <td>
+                            <button class="btn btn-sm btn-{{ $item->status == 0 ? 'danger' : 'success' }}" disabled>
+                              {{ $item->status == 0 ? 'Kembali' : 'Approve' }}
+                            </button>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-{{ $item->ket == 0 ? 'primary' : 'warning' }}" disabled>
+                              {{ $item->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                            </button>
+                          </td>
+                        </tr>
+                        @empty
+                        @endforelse
                       </tbody>
                      </table>
                     <!-- TABEL -->
@@ -165,17 +147,39 @@
                       <!--TABEL-->
                       <table class="datatable table table-striped table-bordered">
                         <thead class="table-light">
-                          <th scope="col">Tanggal</th>
-                          <th scope="col">Nama</th>
-                          <th scope="col">Merek</th>
-                          <th scope="col">Type</th>
-                          <th scope="col">Serial_Number</th>
-                          <th scope="col">Lokasi</th>
-                          <th scope="col">Status</th>
-                          <th scope="col">Keterangan</th>
+                          <tr>
+                            <th>No Urut</th>
+                            <th>Nama</th>
+                            <th>Serial Number</th>
+                            <th>Type</th>
+                            <th>Kerusakan</th>
+                            <th>Instansi</th>
+                            <th>Status</th>
+                            <th>Keterangan</th>
+                          </tr>
                         </thead>
-                        <tbody id="perbaikanBody">
-                          <!-- DATA AJAX -->
+                        <tbody>
+                          @forelse($itemPerbaikan as $item2)
+                          <tr>
+                            <td>{{ $item2->no_urut }}</td>
+                            <td>{{ $item2->nama_alat }}</td>
+                            <td>{{ $item2->no_seri }}</td>
+                            <td>{{ $item2->type }}</td>
+                            <td>{{ $item2->kerusakan_alat }}</td>
+                            <td>{{ $item2->instansi }}</td>
+                            <td>
+                              <button class="btn btn-sm btn-{{ $item2->status == 0 ? 'danger' : 'success' }}" disabled>
+                                {{ $item2->status == 0 ? 'Kembali' : 'Approve' }}
+                              </button>
+                            </td>
+                            <td>
+                              <button class="btn btn-sm btn-{{ $item2->ket == 0 ? 'primary' : 'warning' }}" disabled>
+                                {{ $item2->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                              </button>
+                            </td>
+                          </tr>
+                          @empty
+                          @endforelse
                         </tbody>
                       </table>
                       <!--TABEL-->

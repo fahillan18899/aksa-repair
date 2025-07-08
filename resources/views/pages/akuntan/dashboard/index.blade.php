@@ -24,7 +24,7 @@
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><?= "JUMLAH BARANG SELESAI REPAIR" ?></span>
-            <span class="info-box-number">0</span>
+            <span class="info-box-number">{{ $countSelesai }}</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -44,7 +44,7 @@
             <span class="info-box-text">
               <a href="#" style="color: white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
             </span>
-            <span class="info-box-number" id="count_perbaikan">0</span>
+            <span class="info-box-number" id="count_perbaikan">{{ $countPerbaikan }}</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -73,17 +73,38 @@
                   <table class="datatable table table-striped table-bordered" style="width: 100%">
                     <thead class="table-light">
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Pelapor</th>
-                        <th scope="col">Tanggal</th>
+                        <th>No Urut</th>
+                        <th>Nama</th>
+                        <th>No Seri</th>
+                        <th>Type</th>
+                        <th>Kerusakan</th>
+                        <th>Instansi</th>
+                        <th>Status</th>
+                        <th>Keterangan</th>
                       </tr>
                     </thead>
-                    <tbody id="permintaanUserBody">
-                      <!-- DATA AJAX -->
+                    <tbody>
+                      @forelse($itemSelesai as $item)
+                      <tr>
+                        <td>{{ $item->no_urut }}</td>
+                        <td>{{ $item->nama_alat }}</td>
+                        <td>{{ $item->no_seri }}</td>
+                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->kerusakan_alat }}</td>
+                        <td>{{ $item->instansi }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-{{ $item->status == 0 ? 'danger' : 'success' }}" disabled>
+                            {{ $item->status == 0 ? 'Kembali' : 'Approve' }}
+                          </button>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-{{ $item->status == 0 ? 'primary' : 'warning' }}" disabled>
+                            {{ $item->status == 0 ? 'Selesai' : 'Dalama Proses' }}
+                          </button>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
                     </tbody>
                   </table>
                   <!-- TABEL -->
@@ -113,17 +134,38 @@
                   <table class="datatable table table-striped table-bordered" style="width: 100%">
                     <thead class="table-light">
                       <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Merek</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Serial Number</th>
-                        <th scope="col">Lokasi</th>
-                        <th scope="col">Tanggal</th>
+                        <th>No Urut</th>
+                        <th>Nama</th>
+                        <th>No Seri</th>
+                        <th>Type</th>
+                        <th>Kerusakan</th>
+                        <th>Instansi</th>
+                        <th>Status</th>
+                        <th>Keterangan</th>
                       </tr>
                     </thead>
-                    <tbody id="perbaikanTabelBody">
-                      <!-- DATA AJAX -->
+                    <tbody>
+                      @forelse($itemPerbaikan as $item2)
+                      <tr>
+                        <td>{{ $item2->no_urut }}</td>
+                        <td>{{ $item2->nama_alat }}</td>
+                        <td>{{ $item2->no_seri }}</td>
+                        <td>{{ $item2->type }}</td>
+                        <td>{{ $item2->kerusakan_alat }}</td>
+                        <td>{{ $item2->instansi }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-{{ $item2->status == 0 ? 'danger' : 'success' }}" disabled>
+                            {{ $item2->status == 0 ? 'Kembali' : 'Approve' }}
+                          </button>
+                        </td>
+                        <td>
+                          <button class="btn btn-sm btn-{{ $item2->ket == 0 ? 'primary' : 'warning' }}" disabled>
+                            {{ $item2->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                          </button>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
                     </tbody>
                   </table>
                   <!-- TABEL -->
