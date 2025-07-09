@@ -27,7 +27,7 @@
             <div class="info-box-content">
               <span class="info-box-text">
                 <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
-              <span class="info-box-number">{{ $countSelesai }}</span>
+              <span class="info-box-number" id="count_1">0</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -48,7 +48,7 @@
                 <a href="view_tabel"
                   style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
               </span>
-              <span class="info-box-number" id="count_perbaikan">{{ $countPerbaikan }}</span>
+              <span class="info-box-number" id="count_2">0</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
               </div>
@@ -92,28 +92,8 @@
                           <th>Keterangan</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        @forelse($itemSelesai as $item)
-                        <tr>
-                          <td>{{ $item->no_urut }}</td>
-                          <td>{{ $item->nama_alat }}</td>
-                          <td>{{ $item->no_seri }}</td>
-                          <td>{{ $item->type }}</td>
-                          <td>{{ $item->kerusakan_alat }}</td>
-                          <td>{{ $item->instansi }}</td>
-                          <td>
-                            <button class="btn btn-sm btn-{{ $item->status == 0 ? 'danger' : 'success' }}" disabled>
-                              {{ $item->status == 0 ? 'Kembali' : 'Approve' }}
-                            </button>
-                          </td>
-                          <td>
-                            <button class="btn btn-sm btn-{{ $item->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                              {{ $item->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
-                            </button>
-                          </td>
-                        </tr>
-                        @empty
-                        @endforelse
+                      <tbody id="id_repair">
+                        <!-- DATA AJAX -->
                       </tbody>
                      </table>
                     <!-- TABEL -->
@@ -158,28 +138,8 @@
                             <th>Keterangan</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          @forelse($itemPerbaikan as $item2)
-                          <tr>
-                            <td>{{ $item2->no_urut }}</td>
-                            <td>{{ $item2->nama_alat }}</td>
-                            <td>{{ $item2->no_seri }}</td>
-                            <td>{{ $item2->type }}</td>
-                            <td>{{ $item2->kerusakan_alat }}</td>
-                            <td>{{ $item2->instansi }}</td>
-                            <td>
-                              <button class="btn btn-sm btn-{{ $item2->status == 0 ? 'danger' : 'success' }}" disabled>
-                                {{ $item2->status == 0 ? 'Kembali' : 'Approve' }}
-                              </button>
-                            </td>
-                            <td>
-                              <button class="btn btn-sm btn-{{ $item2->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                                {{ $item2->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
-                              </button>
-                            </td>
-                          </tr>
-                          @empty
-                          @endforelse
+                        <tbody id="id_repair2">
+                          <!-- DATA AJAX -->
                         </tbody>
                       </table>
                       <!--TABEL-->
@@ -198,6 +158,138 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
 @push('addon-script')
+<script>
+  function api1(){
+    // console.log("Memulai api1()"); //Debig fungsi berjalan / tidak
+    $.ajax({
+      url : '{{ route("api1") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        // console.log("Data berhasil diterima:", data); //Debug data yang di get oleh ajax
+        let rows = '';
+        data.forEach(item=> {
+          // console.log(item);
+          rows += `
+          <tr>
+            <td>${item.no_urut}</td>
+            <td>${item.nama_alat}</td>
+            <td>${item.no_seri}</td>
+            <td>${item.type}</td>
+            <td>${item.kerusakan_alat}</td>
+            <td>${item.instansi}</td>
+            <td>
+              <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success'}" disabled>
+                ${item.status == 0 ? 'Kembali' : 'Approve'}
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
+                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+              </button>
+            </td>
+          </tr>
+          `;
+        });
+
+        $('#id_repair').html(rows);
+        // console.log("Table berhasil diperbaharui"); //Debug konfirmasi update
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error);
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    // console.log("Dokumen siap, mulai polling....");
+    api1(); //Pertamakali load
+    setInterval(api1, 3000);
+  })
+</script>
+<script>
+ function api2(){
+  $.ajax({
+    url: '{{ route("api2") }}',
+    method: 'GET',
+    dataType: 'json',
+    success: function(data){
+      let rows = '';
+      data.forEach(item=>{
+        rows += `
+        <tr>
+        <td>${item.no_urut}</td>
+        <td>${item.nama_alat}</td>
+        <td>${item.no_seri}</td>
+        <td>${item.type}</td>
+        <td>${item.kerusakan_alat}</td>
+        <td>${item.instansi}</td>
+        <td>
+          <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success'}" disabled>
+            ${item.status == 0 ? 'Kembali' : 'Approve'}
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
+            ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}          
+          </button>
+        </td>
+        </tr>
+        `;
+      });
+      $('#id_repair2').html(rows);
+    },
+    error: function(xhr, status, error){
+      console.log("Gagal memuat data",error);
+    }
+  });
+ }
+
+ $(document).ready(function(){
+  api2();
+  setInterval(api2, 3000);
+ })
+</script>
+<script>
+  function countSelesai()
+  {
+  //  console.log("Memulai countSelesai()"); //Debig fungsi berjalan / tidak
+    $.ajax({
+      url: '{{ route("count.selesai") }}',
+      method: 'GET',
+      success: function(response) {
+        // console.log("Data berhasil diterima:", response); //Debug data yang di get oleh ajax
+        $('#count_1').text(response.count1)
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal mengambil data permintaan:", error);
+      }
+    });
+  }
+  $(document).ready(function(){
+    countSelesai();
+    setInterval(countSelesai, 3000);
+  })
+</script>
+<script>
+  function countProses()
+  {
+    $.ajax({
+      url: '{{ route("count.proses") }}',
+      method: 'GET',
+      success: function(response) {
+        $('#count_2').text(response.count2)
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal mengambil data :", error);
+      }
+    });
+  }
+  $(document).ready(function(){
+    countProses();
+    setInterval(countProses, 3000);
+  })
+</script>
 <script>
   $('.datatable').DataTable({
     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",

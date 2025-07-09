@@ -37,6 +37,12 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
 
+        //Fetch Dashboard
+        Route::get('api_repair_selesai', [PPMController::class, 'repair_selesai'])->name('api1');
+        Route::get('api_repair_proses', [PPMController::class, 'repair_proses'])->name('api2');
+        Route::get('api_rapair_count1', [PPMController::class, 'count1'])->name('count.selesai');
+        Route::get('api_repair_count2', [PPMController::class, 'count2'])->name('count.proses');
+
         // Monitoring Marketing //
         Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
         Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
