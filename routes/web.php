@@ -69,6 +69,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
     Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
+    //Fetch dashboard marketing
+    Route::get('fetch_selsai', [DashboardMarketingController::class, 'fetch_selesai'])->name('fetch.selesai');
+    Route::get('fetch_proses', [DashboardMarketingController::class, 'fetch_proses'])->name('fetch.proses');
+    Route::get('count_selesai', [DashboardMarketingController::class, 'count_selesai'])->name('count.selesaiM');
+    Route::get('count_proses', [DashboardMarketingController::class, 'count_proses'])->name('count.prosesM');
 // Input Pekerjaan //
     Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
     Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
