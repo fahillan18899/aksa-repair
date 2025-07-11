@@ -24,7 +24,7 @@
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><?= "JUMLAH BARANG SELESAI REPAIR" ?></span>
-            <span class="info-box-number">{{ $countSelesai }}</span>
+            <span class="info-box-number" id="id_selesaiA">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -44,7 +44,7 @@
             <span class="info-box-text">
               <a href="#" style="color: white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
             </span>
-            <span class="info-box-number" id="count_perbaikan">{{ $countPerbaikan }}</span>
+            <span class="info-box-number" id="id_prosesA">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -83,28 +83,8 @@
                         <th>Keterangan</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @forelse($itemSelesai as $item)
-                      <tr>
-                        <td>{{ $item->no_urut }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->no_seri }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->kerusakan_alat }}</td>
-                        <td>{{ $item->instansi }}</td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item->status == 0 ? 'danger' : 'success' }}" disabled>
-                            {{ $item->status == 0 ? 'Kembali' : 'Approve' }}
-                          </button>
-                        </td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item->status == 0 ? 'primary' : 'warning' }}" disabled>
-                            {{ $item->status == 0 ? 'Selesai' : 'Dalama Proses' }}
-                          </button>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
+                    <tbody id="id_selesai">
+                      <!-- DATA AJAX -->
                     </tbody>
                   </table>
                   <!-- TABEL -->
@@ -144,28 +124,8 @@
                         <th>Keterangan</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      @forelse($itemPerbaikan as $item2)
-                      <tr>
-                        <td>{{ $item2->no_urut }}</td>
-                        <td>{{ $item2->nama_alat }}</td>
-                        <td>{{ $item2->no_seri }}</td>
-                        <td>{{ $item2->type }}</td>
-                        <td>{{ $item2->kerusakan_alat }}</td>
-                        <td>{{ $item2->instansi }}</td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item2->status == 0 ? 'danger' : 'success' }}" disabled>
-                            {{ $item2->status == 0 ? 'Kembali' : 'Approve' }}
-                          </button>
-                        </td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item2->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                            {{ $item2->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
-                          </button>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
+                    <tbody id="id_proses">
+                      <!-- DATA AJAX -->
                     </tbody>
                   </table>
                   <!-- TABEL -->
@@ -182,3 +142,125 @@
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 </div>
 @endsection
+@push('addon-script')
+<script>
+  function real_selesai(){
+    $.ajax({
+      url: '{{ route("akuntan.real.selesai") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data){
+        let rows = '';
+        data.forEach(item =>{
+          rows += `
+          <tr>
+            <td>${item.no_urut}</td>
+            <td>${item.nama_alat}</td>
+            <td>${item.no_seri}</td>
+            <td>${item.type}</td>
+            <td>${item.kerusakan_alat}</td>
+            <td>${item.instansi}</td>
+            <td>
+              <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success' }" disabled>
+                ${item.status == 0 ? 'Kembali' : 'Approve'}
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
+                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+              </button>
+            </td>
+          </tr>
+          `;
+        });
+        $('#id_selesai').html(rows);
+      },
+      error:function(xhr, status, error){
+        console.log("Gagal memuat data", error);
+      }
+    })
+  }
+  $(document).ready(function(){
+    real_selesai();
+    setInterval(real_selesai, 3000);
+  })
+</script>
+<script>
+  function real_proses(){
+    $.ajax({
+      url: '{{ route("akuntan.real.proses") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data){
+        let rows = '';
+        data.forEach(item=> {
+          rows += `
+          <tr>
+            <td>${item.no_urut}</td>
+            <td>${item.nama_alat}</td>
+            <td>${item.no_seri}</td>
+            <td>${item.type}</td>
+            <td>${item.kerusakan_alat}</td>
+            <td>${item.instansi}</td>
+            <td>
+              <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success'}" disabled>
+                ${item.status == 0 ? 'Kembali' : 'Approve'}
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
+                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+              </button>
+            </td>
+          </tr>
+          `;
+        });
+        $('#id_proses').html(rows);
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error);
+      }
+    })
+  }
+  $(document).ready(function(){
+    real_proses();
+    setInterval(real_proses, 3000)
+  })
+</script>
+<script>
+  function count_selesaiA(){
+    $.ajax({
+      url: '{{ route("akuntan.count.selesaiA") }}',
+      method: 'GET',
+      success: function(response){
+        $('#id_selesaiA').text(response.countSelesaiA)
+      },
+      error: function(xhr, status, error){
+        console.log("Gagal memuat data", error)
+      }
+    });
+  }
+  $(document).ready(function(){
+    count_selesaiA();
+    setInterval(count_selesaiA, 3000);
+  })
+</script>
+<script>
+  function count_prosesA(){
+    $.ajax({
+      url: '{{ route("akuntan.count.prosesA") }}',
+      method: 'GET',
+      success: function(response){
+        $('#id_prosesA').text(response.countProsesA)
+      },
+      erro: function(xhr, status, error){
+        console.log("Gagal memuat data", errro)
+      }
+    });
+  }
+  $(document).ready(function(){
+    count_prosesA();
+    setInterval(count_prosesA, 3000);
+  })
+</script>
+@endpush

@@ -109,6 +109,12 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 
 Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_akuntan', [DashboardAkuntanController::class, 'dashboard_akuntan'])->name('dashboard');
+    //Fetch akuntan
+    Route::get('real_selesai', [DashboardAkuntanController::class, 'real_selesai'])->name('real.selesai');
+    Route::get('real_proses', [DashboardAkuntanController::class, 'real_proses'])->name('real.proses');
+    Route::get('count_selesaiA', [DashboardAkuntanController::class, 'count_selesaiA'])->name('count.selesaiA');
+    Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
+
     Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
     Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
 });
