@@ -104,6 +104,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
 // Repair //
     Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
+    Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
 
 });
 

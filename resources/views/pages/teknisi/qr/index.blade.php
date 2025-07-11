@@ -31,9 +31,6 @@
       </ul>
     </div>
     @endif
-
-
-
     <!-- content -->
     <div class="row">
       <div class="col-sm-12">
@@ -42,18 +39,18 @@
             <div class="row">
               <div class="col-md-9 col-sm-12">
                 <h2>Generate QR</h2>
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('teknisi.generate.qr') }}">
                   @csrf
                   <div class="form-group row">
-                    <label for="no_urut_awal" class="col-xs-3 form-label">No Urut Awal</label>
+                    <label for="id_pertama" class="col-xs-3 form-label">no urut awal</label>
                     <div class="col-xs-4">
-                      <input name="no_urut_awal" id="no_urut_awal" class="form-control" type="text" required>
+                      <input name="id_pertama" id="id_pertama" class="form-control" type="text" required>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="no_urut_akhir" class="col-xs-3 form-label">No Urut Akhir</label>
+                    <label for="id_terakhir" class="col-xs-3 form-label">no urut akhir</label>
                     <div class="col-xs-4">
-                      <input name="no_urut_akhir" id="no_urut_akhir" class="form-control" type="text" required>
+                      <input name="id_terakhir" id="id_terakhir" class="form-control" type="text" required>
                     </div>
                   </div>
                   
@@ -64,8 +61,6 @@
                       </div>
                     </div>
                   </div>
-
-                  
                 </form>
               </div>
               <div class="col-md-3"></div>
