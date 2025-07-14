@@ -117,6 +117,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
 
     Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
+    Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
     Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
 });
 

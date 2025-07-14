@@ -15,9 +15,18 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('tanggal');
-            $table->string('instansi');
+            $table->string('yth');
+            $table->date('tgl_invoice');
+            $table->string('no_invoice');
+            $table->string('no_pesanan');
+            $table->string('barang_jasa');
+            $table->string('keterangan');
+            $table->string('unit');
+            $table->string('harga_satuan');
+            $table->string('harga');
+            $table->string('harga_tanpa_pajak');
+            $table->string('pajak');
+            $table->string('total');
             $table->timestamps();
         });
     }
