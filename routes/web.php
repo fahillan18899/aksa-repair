@@ -115,12 +115,16 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     Route::get('real_proses', [DashboardAkuntanController::class, 'real_proses'])->name('real.proses');
     Route::get('count_selesaiA', [DashboardAkuntanController::class, 'count_selesaiA'])->name('count.selesaiA');
     Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
-
+//invoice permohonan
     Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
     Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
     Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
     Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
+//invoice permohonan
+
     Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
+    Route::post('link_upload_fakture/upload', [UploadFaktureController::class, 'upload'])->name('upload.uploadFakture');
+    Route::delete('link_upload_fakture/{id}', [UploadFaktureController::class, 'delete'])->name('delete.uploadFakture');
 });
 
 Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {

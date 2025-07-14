@@ -12,5 +12,5 @@ class Vakture extends Model
     public $incrementing = true;       // <- karena auto-increment
     protected $keyType = 'string';     // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'nama', 'tanggal'];
+    protected $fillable = [ 'id', 'nama', 'path'];
 }
