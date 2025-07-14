@@ -43,4 +43,12 @@ class InvoicePermohonanController extends Controller
         return view('pages.akuntan.invoice_permohonan.print',
         compact('item'));
     }
+
+    public function delete($id)
+    {
+        $item = Invoice::findOrFail($id);
+        $item->delete();
+        return redirect()->route('akuntan.data.invoicePermohonan')
+        ->with('success', 'Invoice berhasil dihapus');
+    }
 }

@@ -202,9 +202,16 @@
                           <td>{{ $items->no_invoice }}</td>
                           <td>{{ $items->no_pesanan }}</td>
                           <td>
-                            <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="View">
+                            <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
                               <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
+                            <form action="{{ route('akuntan.delete.invoicePermohonan', $items->id) }}" method="POST" class="d-inline">
+                              @csrf
+                              @method('DELETE')
+                              <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                              </button>
+                            </form>
                           </td>
                         </tr>
                       @empty
