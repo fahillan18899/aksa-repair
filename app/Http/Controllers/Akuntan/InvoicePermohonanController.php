@@ -36,4 +36,11 @@ class InvoicePermohonanController extends Controller
         return redirect()->route('akuntan.data.invoicePermohonan')
         ->with('success', 'Invoice berhasil di simpan');
     }
+
+    public function print($id)
+    {
+        $item = Invoice::findOrFail($id);
+        return view('pages.akuntan.invoice_permohonan.print',
+        compact('item'));
+    }
 }

@@ -192,6 +192,7 @@
                         <th>Tanggal</th>
                         <th>Nomer Invoice</th>
                         <th>Nomer Pesanan</th>
+                        <th>Tombol</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -200,6 +201,11 @@
                           <td>{{ $items->tgl_invoice }}</td>
                           <td>{{ $items->no_invoice }}</td>
                           <td>{{ $items->no_pesanan }}</td>
+                          <td>
+                            <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="View">
+                              <i class="fa fa-eye" aria-hidden="true"></i>
+                            </a>
+                          </td>
                         </tr>
                       @empty
                       @endforelse
