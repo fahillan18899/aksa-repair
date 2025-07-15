@@ -83,7 +83,6 @@
           <li class="{{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }}"><a href="{{ route('approval.data') }}">Approval</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }}"><a href="{{ route('alatKembali.data') }}">Alat Kembali</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Informasi</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }}"><a href="{{ route('qrGenerate.data') }}">Cetak QR</a></li>
         </ul>
       </li>
       <!---->
