@@ -7,33 +7,19 @@
     cursor: not-allowed;
   }
 
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Pastikan modal body penuh */
-  }
-
-  .modal-dialog2 {
+  .table-striped {
     width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
+    border-collapse: collapse;
   }
 
-  .modal-content2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  .table-striped th,
+  .table-striped td {
+    border: 1px solid black;
+    padding: 8px;
   }
 
-  .modal-body2 {
-    flex: 1;
-    overflow-y: auto;
-    color: black;
-    background-color: white;
-  }
+  .panel { border: 1px solid black; }
+
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -66,7 +52,7 @@
 
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
-              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
+              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 350px; margin-left: 600px;">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
@@ -98,7 +84,7 @@
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
                   </p>
 
-                  <table class="table table-striped table-bordered">
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th class="text-center">No</th>
@@ -111,25 +97,25 @@
                     <tbody>
                       <tr>
                         <td class="text-center">1</td>
-                        <td>{{ $data->nama_alat }}</td>
-                        <td>{{ $data->keterangan }}</td>
-                        <td>{{ $data->jumlah }}</td>
-                        <td>{{ $data->harga }}</td>
+                        <td align="center">{{ $data->nama_alat }}</td>
+                        <td align="center">{{ $data->keterangan }}</td>
+                        <td align="center">{{ $data->jumlah }}</td>
+                        <td align="center">{{ $data->harga }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Harga Tanpa Pajak</b></td>
-                        <td>{{ $data->harga_tanpa_pajak }}</td>
+                        <td align="center">{{ $data->harga_tanpa_pajak }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Pajak 11%</b></td>
-                        <td>{{ $data->pajak }}</td>
+                        <td align="center">{{ $data->pajak }}</td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Total</b></td>
-                        <td>{{ $data->total }}</td>
+                        <td align="center">{{ $data->total }}</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -156,7 +142,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd"></td>
+                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd" style="opacity: 0.3;"></td>
                       </tr>
                       <tr>
                         <td><b><u>Najwa Alfia R</u></b></td>
@@ -168,13 +154,13 @@
               <div class="col-md-3"></div>
             </div>
           </div>
+        </div>
           <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
               <button type="button" onclick="printMy('print_me')"
-                class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-print"></i> Print</button>
+                class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
             </div>
           </div>
-        </div>
       </div>
     </div>
     <!--Form Perbaikan end-->
@@ -193,7 +179,22 @@
           <head>
             <title>Print Table</title>
           </head>
+          <style>
+            .table-striped {
+            width: 100%;
+            border--collapse: collapse;
+            }
+
+            .table-striped th,
+            .table-striped td {
+            border: 1px solid black;
+            padding: 8px
+            }
+
+            .panel { border: 1px solid black }
+          </style>
           <body>
+          <h1>SPH</h1>
               ${printContent}
           </body>
         </html>`;

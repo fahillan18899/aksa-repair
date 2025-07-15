@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.marketing')
 
 @section('content')
 @section('title', 'Permohonan Invoice')
@@ -38,9 +38,7 @@
     padding: 8px;
   }
 
-  .panel {
-    border: 1px solid black;
-  }
+  .panel { border: 1px solid black; }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -216,43 +214,43 @@
     document.body.innerHTML =
       `
     <html>
-    <style>
-    .invoice-header {
-      position: relative;
-    }
-
-    .invoice-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 250px;
-      z-index: 0;
-    }
-
-    .invoice-header .form-group,
-    .invoice-header label,
-    .invoice-header input,
-    .invoice-header textarea {
-      position: relative;
-      z-index: 1;
-    }
-
-    .table-striped {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .table-striped th,
-    .table-striped td {
-      border: 1px solid black;
-      padding: 8px;
-    }
-
-    .panel { border: 1px solid black; }
-    </style>
       <head>
         <title>Print Invoice</title>
       </head>
+      <style>
+      .invoice-header {
+        position: relative;
+      }
+
+      .invoice-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        z-index: 0;
+      }
+
+      .invoice-header .form-group,
+      .invoice-header label,
+      .invoice-header input,
+      .invoice-header textarea {
+        position: relative;
+        z-index: 1;
+      }
+
+      .table-striped {
+      width: 100%;
+      border-collapse: collapse;
+      }
+
+      .table-striped th,
+      .table-striped td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      .panel { border: 1px solid black; }
+    </style>
       <body>
       <h1>INVOICE</h1>
         ${printContent}

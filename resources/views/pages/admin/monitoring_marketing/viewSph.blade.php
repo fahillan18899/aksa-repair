@@ -7,33 +7,20 @@
     cursor: not-allowed;
   }
 
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Pastikan modal body penuh */
-  }
+ .table-striped {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  .modal-dialog2 {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
-  }
+.table-striped th,
+.table-striped td {
+  border: 1px solid black;
+  padding: 8px;
+}
 
-  .modal-content2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-body2 {
-    flex: 1;
-    overflow-y: auto;
-    color: black;
-    background-color: white;
-  }
+.panel {
+    border: 1px solid black;
+}
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -66,10 +53,10 @@
 
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
-              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
-              <div class="col-md-9 col-sm-12">
+              <div class="col-sm-12">
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 350px; margin-left: 600px;">
                   <div class="col-xs-4" style="margin-left: 700px;">
                     <p>{{ $item->lokasi_tanggal }}</p>
                   </div>
@@ -98,7 +85,7 @@
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
                   </p>
 
-                  <table class="table table-striped table-bordered">
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th class="text-center">No</th>
@@ -130,6 +117,8 @@
                       </tr>
                     </tbody>
                   </table>
+                  <br>
+                  <br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -193,6 +182,22 @@
           <head>
             <title>Print Table</title>
           </head>
+          <style>
+          .table-striped {
+            width: 100%;
+            border-collapse: collapse;
+          }
+
+          .table-striped th,
+          .table-striped td {
+            border: 1px solid black;
+            padding: 8px;
+          }
+
+          .panel {
+            border: 1px solid black;
+          }
+          </style>
           <body>
           <h1>SPH</h1>
               ${printContent}

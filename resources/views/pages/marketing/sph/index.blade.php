@@ -207,8 +207,8 @@
                       <td>{{ $items->no_surat }}</td>
                       <td>{{ $items->yth }}</td>
                       <td>
-                        <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Print">
-                          <i class="fa fa-print" aria-hidden="true"></i>
+                        <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>
                         <form action="{{ route('marketing.delete.sph', $items->id) }}" method="POST" class="d-inline">
                           @csrf

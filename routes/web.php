@@ -91,6 +91,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
 // SPH //
     Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
+    Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
