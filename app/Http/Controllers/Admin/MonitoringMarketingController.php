@@ -14,28 +14,42 @@ class MonitoringMarketingController extends Controller
     public function getInputPekerjaan()
     {
         $data = InputPekerjaan::all();
-        return view('pages.admin.input_data',
+        return view('pages.admin.monitoring_marketing.input_data',
         compact('data'));
     }
 
     public function getDataBarang()
     {
         $data = DataBarang::all();
-        return view('pages.admin.data_barang',
+        return view('pages.admin.monitoring_marketing.data_barang',
         compact('data'));
     }
 
     public function getSph()
     {
         $data = Sph::all();
-        return view('pages.admin.sph',
+        return view('pages.admin.monitoring_marketing.sph',
         compact('data'));
+    }
+
+    public function viewSph($id)
+    {
+        $item = Sph::findOrFail($id);
+        return view('pages.admin.monitoring_marketing.viewSph',
+        compact('item'));
     }
 
     public function getInvoice()
     {
         $data = Invoice::all();
-        return view('pages.admin.invoice',
+        return view('pages.admin.monitoring_marketing.invoice',
         compact('data'));
+    }
+
+    public function viewInvo($id)
+    {
+        $item = Invoice::findOrFail($id);
+        return view('pages.admin.monitoring_marketing.viewInvo',
+        compact('item'));
     }
 }

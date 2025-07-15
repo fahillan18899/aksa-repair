@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Invoice')
+@section('title', 'SPH')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Invoice</h1>
-        <small>Daftar Invoice</small>
+        <h1>SPH</h1>
+        <small>Daftar SPH</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Invoice</h1>
+            <h1>Daftar SPH</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,15 +45,24 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Instansi</th>
-                      <th scope="col">Tombol Aksi</th>
+                      <th>Lokasi, Tanggal</th>
+                      <th>No Surat</th>
+                      <th>Instansi</th>
+                      <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @forelse($data as $datas)
+                    <td>{{ $datas->lokasi_tanggal }}</td>
+                    <td>{{ $datas->no_surat }}</td>
+                    <td>{{ $datas->yth }}</td>
+                    <td>
+                      <a href="{{ route('sph.view', $datas->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->
