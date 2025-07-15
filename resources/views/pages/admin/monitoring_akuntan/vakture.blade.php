@@ -45,15 +45,21 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Instansi</th>
-                      <th scope="col">Tombol Aksi</th>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>Link Download</th>
+                      <th>Tanggal Upload</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @foreach($data as $index => $datas)
+                    <tr>
+                      <td>{{ $index + 1 }}</td>
+                      <td>{{ $datas->nama }}</td>
+                      <td><a href="{{ URL::asset('storage/'.$datas->path) }}" target="_blank">Download</a></td>
+                      <td>{{ $datas->created_at->format('d-m-Y') }}</td>
+                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
                 <!--TABEL-->

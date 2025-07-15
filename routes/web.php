@@ -57,6 +57,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         
         //Monitoring Akuntan //
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
+        Route::get('link_invoice_akun/view/{id}', [MonitoringAkuntanController::class, 'viewInv'])->name('invoiceAkuntan.viewInv');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
 
     });

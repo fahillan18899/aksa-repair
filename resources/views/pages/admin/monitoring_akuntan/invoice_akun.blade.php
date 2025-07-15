@@ -45,15 +45,27 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Tanggal</th>
-                      <th scope="col">Instansi</th>
-                      <th scope="col">Tombol Aksi</th>
+                      <th>Tanggal</th>
+                      <th>Nomer Invoice</th>
+                      <th>Nomer Pesanan</th>
+                      <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    @forelse($data as $datas)
+                    <tr>
+                      <td>{{ $datas->tgl_invoice }}</td>
+                      <td>{{ $datas->no_invoice }}</td>
+                      <td>{{ $datas->no_pesanan }}</td>
+                      <td>
+                        <a href="{{ route('invoiceAkuntan.viewInv', $datas->id) }}" class="btn btn-xs btn-primary" 
+                          data-toggle="tooltip" data-placement="top" title="View">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->
