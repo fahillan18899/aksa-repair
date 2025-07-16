@@ -37,6 +37,8 @@
     border: 1px solid black;
     padding: 8px;
   }
+
+  .panel { border: 1px solid black }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -98,13 +100,7 @@
                         <p>{{ $item->no_pesanan }}</p>
                       </div>
                     </div>
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
+                  </div><br><br><br><br><br><br>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -154,7 +150,7 @@
                         </td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table><br><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -243,6 +239,8 @@
     border: 1px solid black;
     padding: 8px;
     }
+
+    .panel { border: 1px solid black }
     </style>
       <head>
         <title>Print Invoice</title>

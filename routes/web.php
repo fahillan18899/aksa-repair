@@ -76,6 +76,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::get('fetch_proses', [DashboardMarketingController::class, 'fetch_proses'])->name('fetch.proses');
     Route::get('count_selesai', [DashboardMarketingController::class, 'count_selesai'])->name('count.selesaiM');
     Route::get('count_proses', [DashboardMarketingController::class, 'count_proses'])->name('count.prosesM');
+
 // Input Pekerjaan //
     Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
     Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
@@ -124,9 +125,12 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     Route::get('real_proses', [DashboardAkuntanController::class, 'real_proses'])->name('real.proses');
     Route::get('count_selesaiA', [DashboardAkuntanController::class, 'count_selesaiA'])->name('count.selesaiA');
     Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
+
 //invoice permohonan
     Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
     Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
+    Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
+    Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
     Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
     Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
 //invoice permohonan

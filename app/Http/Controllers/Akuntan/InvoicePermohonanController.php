@@ -37,6 +37,36 @@ class InvoicePermohonanController extends Controller
         ->with('success', 'Invoice berhasil di simpan');
     }
 
+    public function edit($id)
+    {
+        $item = Invoice::findOrFail($id);
+        return view('pages.akuntan.invoice_permohonan.edit',
+        compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'yth'               => 'nullable',
+            'tgl_invoice'       => 'nullable',
+            'no_invoice'        => 'nullable',
+            'no_pesanan'        => 'nullable',
+            'barang_jasa'       => 'nullable',
+            'keterangan'        => 'nullable',
+            'unit'              => 'nullable',
+            'harga_satuan'      => 'nullable',
+            'harga'             => 'nullable',
+            'harga_tanpa_pajak' => 'nullable',
+            'pajak'             => 'nullable',
+            'total'             => 'nullable',
+        ]);
+
+        $item = Invoice::findOrFail($id);
+        $item->update($validate);
+        return redirect()->route('akuntan.data.invoicePermohonan')
+        ->with('success', 'Invoice berhasil di ubah');
+    }
+
     public function print($id)
     {
         $item = Invoice::findOrFail($id);

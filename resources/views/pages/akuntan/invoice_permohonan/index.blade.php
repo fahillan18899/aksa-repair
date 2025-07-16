@@ -205,6 +205,9 @@
                             <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
                               <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
+                            <a href="{{ route('akuntan.edit.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit">
+                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </a>
                             <form action="{{ route('akuntan.delete.invoicePermohonan', $items->id) }}" method="POST" class="d-inline">
                               @csrf
                               @method('DELETE')
