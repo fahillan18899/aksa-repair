@@ -12,5 +12,5 @@ class Informasi extends Model
     public $incrementing = true;       // <- karena auto-increment
     protected $keyType = 'string';     // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'nomer_urut', 'nama', 'no_seri', 'type', 'kerusakan', 'instansi'];
+    protected $fillable = [ 'id', 'nama', 'merek', 'type', 'no_seri', 'created_at', 'updated_at'];
 }

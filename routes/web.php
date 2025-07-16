@@ -105,7 +105,13 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
     Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
 // Repair //
+//Informasi //
     Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
+    Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
+    Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
+    Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
+    Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
+//Informasi //
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
     Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
 
