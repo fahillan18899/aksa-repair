@@ -62,6 +62,48 @@
               <div class="panel-heading no-print">
                 <div class="row">
                   <div class="col-md-5">
+                    <h2>Daftar Pekerjaan</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                    <!-- TABEL -->
+                    <table class="datatable table table-striped table-bordered" style="width: 100%">
+                      <thead class="table-light">
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Alat</th>
+                          <th>Instansi</th>
+                        </tr>
+                      </thead>
+                      <tbody> 
+                        @forelse($itemPekerjaan as $item)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $item->nama_alat }}</td>
+                          <td>{{ $item->instansi }}</td>
+                        </tr>
+                        @empty
+                        @endforelse
+                      </tbody>
+                    </table> 
+                    <!-- TABEL -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- CARD N-->
+      <!-- CARD -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default thumbnail">
+              <div class="panel-heading no-print">
+                <div class="row">
+                  <div class="col-md-5">
                     <h2>Daftar barang selesai repair</h2>
                   </div>
                 </div>

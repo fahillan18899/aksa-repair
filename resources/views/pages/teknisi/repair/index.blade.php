@@ -27,6 +27,60 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+    <!--Tabel Perbaikan-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Daftar Pekerjaan</h1>
+            </div>
+          </div>
+          <div style="overflow-x:auto;">
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th>No</th>
+                        <th>Nama Alat</th>
+                        <th>Instansi</th>
+                        <th>Tombol</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @forelse($data as $datas)
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $datas->nama_alat }}</td>
+                        <td>{{ $datas->instansi }}</td>
+                        <td>
+                          <form action="{{ route('teknisi.deleteI.repair', $datas->id) }}" method="POST" class="d-inline">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                          </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
+                  <!--TABEL-->
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Tabel Perbaikan-->
     <!--Form Perbaikan-->
     <div class="row">
       <div class="col-sm-12">

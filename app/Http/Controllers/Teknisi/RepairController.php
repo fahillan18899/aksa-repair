@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teknisi;
 
 use App\Http\Controllers\Controller;
 use App\Models\DataBarang;
+use App\Models\InputPekerjaan;
 use Illuminate\Http\Request;
 
 class RepairController extends Controller
@@ -11,8 +12,9 @@ class RepairController extends Controller
     public function index()
     {
         $item = DataBarang::all();
+        $data = InputPekerjaan::all();
         return view('pages.teknisi.repair.index', 
-        compact('item'));
+        compact('item', 'data'));
     }
 
     public function post(Request $request)
@@ -79,6 +81,14 @@ class RepairController extends Controller
     public function delete($id)
     {
         $item = DataBarang::findOrFail($id);
+        $item->delete();
+        return redirect()->route('teknisi.data.repair')
+        ->with('success', 'Data berhasil di hapus');
+    }
+
+    public function deleteI($id)
+    {
+        $item = InputPekerjaan::findOrfail($id);
         $item->delete();
         return redirect()->route('teknisi.data.repair')
         ->with('success', 'Data berhasil di hapus');
