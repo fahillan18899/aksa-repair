@@ -43,8 +43,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN SPH</h1>
-        <small>Pembuatan SPH</small>
+        <h1>EDIT SPH</h1>
+        <small>Edit SPH</small>
       </div>
     </div>
   </section>
@@ -68,27 +68,28 @@
             <div class="row">
               <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('marketing.update.sph', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  @method('PUT')
                   <div class="col-xs-4" style="margin-left: 700px;">
-                    <input name="lokasi_tanggal" id="lokasi_tanggal" class="form-control" type="text" placeholder="lokasi, tanggal">
+                    <input name="lokasi_tanggal" id="lokasi_tanggal" class="form-control" type="text" value="{{ $item->lokasi_tanggal }}">
                   </div>
                   <div class="form-group row">
                     <label for="no_surat" class="col-xs-2 form-label"><b>No.Surat :</b></label>
                     <div class="col-xs-5">
-                      <input name="no_surat" id="no_surat" type="text" class="form-control" placeholder="isi dengan nomer surat">
+                      <input name="no_surat" id="no_surat" type="text" class="form-control" value="{{ $item->no_surat }}">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="hal" class="form-label col-xs-2"><b>Hal.</b> :</label>
                     <div class="col-xs-5">
-                      <input name="hal" id="hal" type="text" class="form-control" placeholder="isi dengan perihal surat">
+                      <input name="hal" id="hal" type="text" class="form-control" value="{{ $item->hal }}">
                     </div>
                   </div>
                   <br>
                   <p><b>Kepada Yth. :</b></p>
                   <div class="col-xs-4 ml-2">
-                    <input name="yth" id="yth" type="text" class="form-control" placeholder="isi nama orang yang dituju">
+                    <input name="yth" id="yth" type="text" class="form-control" value="{{ $item->yth }}">
                   </div>
                   <br>
                   <br>
@@ -111,10 +112,10 @@
                     <tbody>
                       <tr>
                         <td class="text-center">1</td>
-                        <td><input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="isi nama alat"></td>
-                        <td><textarea name="keterangan" id="keterangan" class="form-control" placeholder="keterangan perbaikan"></textarea></td>
-                        <td><input name="jumlah" id="jumlah" class="form-control" type="text" placeholder="jumlah alat"></td>
-                        <td><input name="harga" id="harga" class="form-control" type="text" placeholder="harga perbaikan" onkeyup="ppn(this)"></td>
+                        <td><input name="nama_alat" id="nama_alat" type="text" class="form-control" value="{{ $item->nama_alat }}"></td>
+                        <td><input name="keterangan" id="keterangan" class="form-control" value="{{ $item->keterangan }}"></td>
+                        <td><input name="jumlah" id="jumlah" class="form-control" type="text" value="{{ $item->jumlah }}"></td>
+                        <td><input name="harga" id="harga" class="form-control" type="text" placeholder="isi kembali" onkeyup="ppn(this)"></td>
                       </tr>
                       <tr>
                         <td colspan="4"><b>Harga Tanpa Pajak</b></td>
@@ -130,43 +131,10 @@
                       </tr>
                     </tbody>
                   </table>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="panel panel-default thumbnail">
-                        <div class="panel-heading no-print">
-                          <p><u><b>Kondisi Penawaran</b></u></p><br>
-                          <p>1. <b>Harga Sudah Termasuk :</b></p>
-                          <p style="margin-left: 15px;">PPn 11%</p>
-                          <p>2. <b>Sistem Pembayaran :</b>100% Lunas diawal <i>(Chas in Advance),</i> ditransfer ke :</p>
-                          <p style="margin-left: 15px; color: blue;"><b>Bank BNI | a.n.: PT. Aksa Jaya Sentosa | No.Rek.: 1783871355.</b></p>
-                          <p>3. <b>Masa Berlaku Penawaran:</b> 30(tiga-puluh) hari sejak tanggal penawaran / dapat berubah sewaktu-wakut.</p>
-                          <p>4. Garansi Perbaikan : 1(satu) minggu</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p>Demikian, suatu penghargaan  yang besar bagi kami segera mendapatkan respone yang terbaik atas informasi yang kami sampaikan
-                    ini semoga bermanfaat dan terimakasih atas kerja samanya, sukses untuk kita bersama.
-                  </p>
-                  <table class="table" style="width: 20%;">
-                    <thead>
-                      <tr>
-                        <th class="text-center">Hormat Kami</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd"></td>
-                      </tr>
-                      <tr>
-                        <td><b><u>Najwa Alfia R</u></b></td>
-                      </tr>
-                    </tbody>
-                  </table>
                    <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
+                        <button class="ui positive button">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -179,62 +147,6 @@
       </div>
     </div>
     <!--Form Perbaikan end-->
-    <!--Tabel Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print">
-            <div class="">
-              <h1>Daftar SPH</h1>
-            </div>
-          </div>
-          <div style="overflow-x:auto;">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th>Lokasi, Tanggal</th>
-                      <th>No Surat</th>
-                      <th>Instansi</th>
-                      <th>Tombol</th>
-                    </thead>
-                    <tbody>
-                      @forelse($item as $items)
-                      <td>{{ $items->lokasi_tanggal }}</td>
-                      <td>{{ $items->no_surat }}</td>
-                      <td>{{ $items->yth }}</td>
-                      <td>
-                        <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
-                        <a href="{{ route('marketing.edit.sph', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                        <form action="{{ route('marketing.delete.sph', $items->id) }}" method="POST" class="d-inline">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                          </button>
-                        </form>
-                      </td>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tabel Perbaikan-->
   </div>
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

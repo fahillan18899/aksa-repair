@@ -45,12 +45,14 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th scope="col">No Urut</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">No Seri</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Kerusakan</th>
-                      <th scope="col">Instansi</th>
+                      <th>No Urut</th>
+                      <th>Nama</th>
+                      <th>No Seri</th>
+                      <th>Type</th>
+                      <th>Kerusakan</th>
+                      <th>Instansi</th>
+                      <th>Status</th>
+                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -62,6 +64,16 @@
                       <td>{{ $items->type }}</td>
                       <td>{{ $items->kerusakan_alat }}</td>
                       <td>{{ $items->instansi }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $items->status == 0 ? 'danger' : 'success' }}" disabled>
+                          {{ $items->status == 0 ? 'Kembali' : 'Approve' }}
+                        </button>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $items->ket == 0 ? 'primary' : 'warning' }}" disabled>
+                          {{ $items->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                        </button>
+                      </td>
                     </tr>
                     @empty
                     @endforelse

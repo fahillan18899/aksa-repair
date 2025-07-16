@@ -148,7 +148,7 @@
                           </form>
                         </td>
                         <td>
-                          <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
                           <form action="{{ route('teknisi.delete.repair', $items->id) }}" method="POST" class="d-inline">
