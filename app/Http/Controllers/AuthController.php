@@ -39,6 +39,11 @@ class AuthController extends Controller
         return view('pages.auth.register');
     }
 
+    public function scanner()
+    {
+        return view('pages.auth.scan');
+    }
+
     public function processRegistration(Request $request)
     {
         $data = $request->validate([

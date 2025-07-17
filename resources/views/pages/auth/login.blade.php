@@ -97,6 +97,7 @@
       <div class="mt-4">
         <button type="submit" class="btn btn-success">Login</button>
         <button type="button" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button>
+        <button type="button" class="btn btn-secondary"><a href="{{ url('/scan') }}">Scan</a></button>
       </div>
     </form>
   </div>
