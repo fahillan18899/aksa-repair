@@ -67,6 +67,11 @@
           <i class="fa fa-info-circle"></i> <span>Informasi</span>
         </a>
       </li>
+      <li class="{{ request()->is('dashboard_teknisi/link_ba') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.ba') }}">
+          <i class="fa fa-file-text-o"></i> <span>Berita Acara</span>
+        </a>
+      </li>
       <li class="{{ request()->is('dashboard_teknisi/link_qr') ? 'active' : '' }}">
         <a href="{{ route('teknisi.data.qr') }}">
           <i class="fa fa-qrcode"></i><span>QR Code</span>

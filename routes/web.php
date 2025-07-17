@@ -23,6 +23,7 @@ use App\Http\Controllers\Marketing\InvoiceController;
 use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\RepairController;
 use App\Http\Controllers\Teknisi\InformasiController;
+use App\Http\Controllers\Teknisi\BeritaAcaraController;
 use App\Http\Controllers\Teknisi\QrController;
 // Akuntan //
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
@@ -116,6 +117,9 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
     Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
 //Informasi //
+    Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');
+    Route::post('link_ba/upload', [BeritaAcaraController::class, 'upload'])->name('upload.ba');
+    Route::delete('link_ba/{id}', [BeritaAcaraController::class, 'delete'])->name('delete.ba');
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
     Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
 
