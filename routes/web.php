@@ -9,6 +9,7 @@ use App\Http\Controllers\User\PPM\PesananUserController;
 use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
 // Repair Aksa //
+use App\Http\Controllers\DataAlatController;
 // Admin
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
@@ -29,6 +30,9 @@ use App\Http\Controllers\Teknisi\QrController;
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
+
+//Data Scan
+Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
