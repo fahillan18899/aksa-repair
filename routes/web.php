@@ -56,6 +56,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_approval', [MonitoringTeknisiController::class, 'getApproval'])->name('approval.data');
         Route::get('link_alat_kembali', [MonitoringTeknisiController::class, 'getAlatKembali'])->name('alatKembali.data');
         Route::get('link_informasi', [MonitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
+        Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
         
         //Monitoring Akuntan //
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
@@ -84,7 +85,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
     Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
     Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
-// Input Pekerjaan //
+// Input Pekerjaan end//
     Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
 // SPH //
     Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
@@ -93,7 +94,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
     Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
     Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
-// SPH //
+// SPH end//
     Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
     Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
 });
@@ -109,17 +110,19 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
     Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
     Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
-// Repair //
+// Repair end//
 //Informasi //
     Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
     Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
     Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
     Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
     Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
-//Informasi //
+//Informasi end//
+//Berita Acara //
     Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');
     Route::post('link_ba/upload', [BeritaAcaraController::class, 'upload'])->name('upload.ba');
     Route::delete('link_ba/{id}', [BeritaAcaraController::class, 'delete'])->name('delete.ba');
+//Berita Acara end//
     Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
     Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
 

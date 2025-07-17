@@ -72,7 +72,7 @@
       </li>
       <!---->
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }}">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }} ">
         <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i>
           <span>Monitoring Teknisi</span>
           <span class="pull-right-container">
@@ -83,6 +83,7 @@
           <li class="{{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }}"><a href="{{ route('approval.data') }}">Approval</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }}"><a href="{{ route('alatKembali.data') }}">Alat Kembali</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Informasi</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }}"><a href="{{ route('beritaAcara.data') }}">Berita Acara</a></li>
         </ul>
       </li>
       <!---->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\DataBarang;
 use App\Models\Informasi;
+use App\Models\BeritaAcara;
 use Illuminate\Http\Request;
 
 class MonitoringTeknisiController extends Controller
@@ -27,6 +28,13 @@ class MonitoringTeknisiController extends Controller
     {
         $data = Informasi::all();
         return view('pages.admin.monitoring_teknisi.informasi',
+        compact('data'));
+    }
+
+    public function getBeritaAcara()
+    {
+        $data = BeritaAcara::all();
+        return view('pages.admin.monitoring_teknisi.berita_acara',
         compact('data'));
     }
 
