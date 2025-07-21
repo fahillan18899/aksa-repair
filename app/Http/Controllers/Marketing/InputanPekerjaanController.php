@@ -18,9 +18,30 @@ class InputanPekerjaanController extends Controller
     public function post(Request $request)
     {
         $validated = $request->validate([
-            'nama_alat' => 'required',
-            'instansi' => 'required',
+            'no_urut'        => 'nullable',
+            'nama_alat'      => 'nullable',
+            'merek'          => 'nullable',
+            'type'           => 'nullable',
+            'no_seri'        => 'nullable',
+            'instansi'       => 'nullable',
+            'kerusakan'      => 'nullable',
+            'foto'           => 'nullable',
         ]);
+
+        // Buat foto
+        $file = $request->file('foto');
+        $fileName = $file->getClientOriginalName();
+        //Simpan ke storage/app/foto
+        $path = $file->storeAs('public/foto',$fileName);
+        $validated['foto'] = 'foto/'.$fileName;
+
+        //Buat no urut
+        $count = InputPekerjaan::count() + 1;
+        $noUrut = str_pad($count, 5, '0', STR_PAD_LEFT);
+        $validated['no_urut']= $noUrut;
+        
+
+
         InputPekerjaan::create($validated);
         return redirect()->route('marketing.data.inputanPekerjaan')
         ->with('success', 'Data berhasil disimpan');

@@ -41,17 +41,53 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.inputanPekerjaan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  <input name="no_urut" id="no_urut" class="form-control" type="hidden">
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="Masukan nama alat disini" required>
+                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="Masukan nama alat" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="merek" id="merek" type="text" class="form-control" placeholder="Masukan merek alat" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="type" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="type" id="type" type="text" class="form-control" placeholder="Masukan type alat" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="no_seri" id="no_seri" type="text" class="form-control" placeholder="Masukan no seri alat" required>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Masukan Instansi disini" required>
+                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Masukan Instansi" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="kerusakan" class="col-xs-3 form-lable">Kerusakan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="kerusakan" id="kerusakan" type="text" class="form-control" placeholder="Masukan kerusakan alat" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="foto" class="col-xs-3 col-form-lable">Foto / Video</label>
+                    <div class="col-xs-9">
+                      <input name="foto" id="foto" type="file" class="form-control">
                     </div>
                   </div>
 
@@ -89,18 +125,28 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th>No</th>
+                      <th>No Urut</th>
                       <th>Nama Alat</th>
+                      <th>Merek</th>
+                      <th>Type</th>
+                      <th>No Seri</th>
                       <th>Instansi</th>
+                      <th>Kerusakan</th>
+                      <th>Foto</th>
                       <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($item as $items)
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $items->no_urut }}</td>
                         <td>{{ $items->nama_alat }}</td>
+                        <td>{{ $items->merek }}</td>
+                        <td>{{ $items->type }}</td>
+                        <td>{{ $items->no_seri }}</td>
                         <td>{{ $items->instansi }}</td>
+                        <td>{{ $items->kerusakan }}</td>
+                        <td><a href="{{ URL::asset('storage/'.$items->foto) }}" target="_blank">Download</a></td>
                         <td>
                           <a href="{{ route('marketing.edit.inputanPekerjaan', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
