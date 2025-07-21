@@ -1,12 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\HomeController as PPMController;
-use App\Http\Controllers\User\PPM\DashboardUserController;
-use App\Http\Controllers\User\PPM\PerbaikanTeregistrasiController;
-use App\Http\Controllers\User\PPM\PermintaanBarangController;
-use App\Http\Controllers\User\PPM\PesananUserController;
-use App\Http\Controllers\User\PPM\StockOpnameUserController;
 use Illuminate\Support\Facades\Route;
 // Repair Aksa //
 use App\Http\Controllers\DataAlatController;
@@ -68,114 +63,98 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
 
     });
-
-    // menu generate QR
-    Route::get('genarete_qr', [DashboardController::class, "qrGen"]);
-    Route::get('create-generete-qr', [DashboardController::class, "createQrGen"]);
-    Route::post('create-generete-qr', [DashboardController::class, "storeQrGen"]);
 });
 
 Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
     Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
-    //Fetch dashboard marketing
-    Route::get('fetch_selsai', [DashboardMarketingController::class, 'fetch_selesai'])->name('fetch.selesai');
-    Route::get('fetch_proses', [DashboardMarketingController::class, 'fetch_proses'])->name('fetch.proses');
-    Route::get('count_selesai', [DashboardMarketingController::class, 'count_selesai'])->name('count.selesaiM');
-    Route::get('count_proses', [DashboardMarketingController::class, 'count_proses'])->name('count.prosesM');
-
-// Input Pekerjaan //
-    Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
-    Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
-    Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
-    Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
-    Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
-// Input Pekerjaan end//
     Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
-// SPH //
-    Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
-    Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
-    Route::get('link_sph/edit/{id}', [SphController::class, 'edit'])->name('edit.sph');
-    Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
-    Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
-    Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
-// SPH end//
-    Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
-    Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
+    //Fetch dashboard marketing //
+        Route::get('fetch_selsai', [DashboardMarketingController::class, 'fetch_selesai'])->name('fetch.selesai');
+        Route::get('fetch_proses', [DashboardMarketingController::class, 'fetch_proses'])->name('fetch.proses');
+        Route::get('count_selesai', [DashboardMarketingController::class, 'count_selesai'])->name('count.selesaiM');
+        Route::get('count_proses', [DashboardMarketingController::class, 'count_proses'])->name('count.prosesM');
+    //Fetch dashboard marketing end//
+
+    // Input Pekerjaan //
+        Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
+        Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
+        Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
+        Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
+        Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
+    // Input Pekerjaan end//
+    
+    // SPH //
+        Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
+        Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
+        Route::get('link_sph/edit/{id}', [SphController::class, 'edit'])->name('edit.sph');
+        Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
+        Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
+        Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
+    // SPH end//
+
+    //Invoice //
+        Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
+        Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
+    //Invoice end//
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
-// Repair //
-    Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
-    Route::post('link_repair', [RepairController::class, 'post'])->name('post.repair');
-    Route::get('link_repair/edit/{id}', [RepairController::class, 'edit'])->name('edit.repair');
-    Route::put('link_repair/update/{id}', [RepairController::class, 'update'])->name('update.repair');
-    Route::put('link_repair/status/{id}', [RepairController::class, 'status'])->name('status.repair');
-    Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
-    Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
-    Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
-// Repair end//
-//Informasi //
-    Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
-    Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
-    Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
-    Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
-    Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
-//Informasi end//
-//Berita Acara //
-    Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');
-    Route::post('link_ba/upload', [BeritaAcaraController::class, 'upload'])->name('upload.ba');
-    Route::delete('link_ba/{id}', [BeritaAcaraController::class, 'delete'])->name('delete.ba');
-//Berita Acara end//
-    Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
-    Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
+    // Repair //
+        Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
+        Route::post('link_repair', [RepairController::class, 'post'])->name('post.repair');
+        Route::get('link_repair/edit/{id}', [RepairController::class, 'edit'])->name('edit.repair');
+        Route::put('link_repair/update/{id}', [RepairController::class, 'update'])->name('update.repair');
+        Route::put('link_repair/status/{id}', [RepairController::class, 'status'])->name('status.repair');
+        Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
+        Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
+        Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
+    // Repair end//
 
+    //Informasi //
+        Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
+        Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
+        Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
+        Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
+        Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
+    //Informasi end//
+
+    //Berita Acara //
+        Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');
+        Route::post('link_ba/upload', [BeritaAcaraController::class, 'upload'])->name('upload.ba');
+        Route::delete('link_ba/{id}', [BeritaAcaraController::class, 'delete'])->name('delete.ba');
+    //Berita Acara end//
+
+    //Qr Generate //
+        Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
+        Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
+    //Qr Generate end//
 });
 
 Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_akuntan', [DashboardAkuntanController::class, 'dashboard_akuntan'])->name('dashboard');
-    //Fetch akuntan
-    Route::get('real_selesai', [DashboardAkuntanController::class, 'real_selesai'])->name('real.selesai');
-    Route::get('real_proses', [DashboardAkuntanController::class, 'real_proses'])->name('real.proses');
-    Route::get('count_selesaiA', [DashboardAkuntanController::class, 'count_selesaiA'])->name('count.selesaiA');
-    Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
+    //Fetch akuntan //
+        Route::get('real_selesai', [DashboardAkuntanController::class, 'real_selesai'])->name('real.selesai');
+        Route::get('real_proses', [DashboardAkuntanController::class, 'real_proses'])->name('real.proses');
+        Route::get('count_selesaiA', [DashboardAkuntanController::class, 'count_selesaiA'])->name('count.selesaiA');
+        Route::get('count_prosesA', [DashboardAkuntanController::class, 'count_prosesA'])->name('count.prosesA');
+    //Fetch akuntan end//
 
-//invoice permohonan
-    Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
-    Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
-    Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
-    Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
-    Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
-    Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
-//invoice permohonan
+    //invoice permohonan //
+        Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
+        Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
+        Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
+        Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
+        Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
+        Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
+    //invoice permohonan end//
 
-    Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
-    Route::post('link_upload_fakture/upload', [UploadFaktureController::class, 'upload'])->name('upload.uploadFakture');
-    Route::delete('link_upload_fakture/{id}', [UploadFaktureController::class, 'delete'])->name('delete.uploadFakture');
+    //Fakture //
+        Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
+        Route::post('link_upload_fakture/upload', [UploadFaktureController::class, 'upload'])->name('upload.uploadFakture');
+        Route::delete('link_upload_fakture/{id}', [UploadFaktureController::class, 'delete'])->name('delete.uploadFakture');
+    //Fakture end//
 });
-
-Route::prefix('dashboard_user')->middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardUserController::class, 'index'])->name('user.dashboard');
-    Route::resource('perbaikan_teregistrasi', PerbaikanTeregistrasiController::class);
-    Route::delete('perbaikan_teregistrasi/{id}', [PerbaikanTeregistrasiController::class, 'destroy']);
-    Route::resource('permintaan_barang', PermintaanBarangController::class);
-    Route::get('qr_qode/{id}', [PerbaikanTeregistrasiController::class, 'qrCodeGenerate']);
-    Route::resource('stock_opname_user', StockOpnameUserController::class);
-    Route::get('autofill/{idars}', [PPMController::class, 'autofill']);
-    Route::resource('/pesanan_user', PesananUserController::class);
-    Route::get('/getPesanan_user/{id}', [PesananUserController::class, 'getPesanan_user']);
-
-    //Fetch
-    Route::get('data_perbaikan_user', [DashboardUserController::class, 'getPerbaikanUser'])->name('perbaikanUser.data');
-    Route::get('count_permintaan_user', [DashboardUserController::class, 'countPermintaan'])->name('permintaanUser.count');
-    Route::get('count_perbaikan_user', [DashboardUserController::class, 'countPerbaikan'])->name('perbaikanUser.count');
-
-    // API internal datatable
-    Route::get('aset', [DashboardUserController::class, 'json'])->name('api-aset-user');
-
-});
-
-
 
 Route::get('asd', [PPMController::class, 'notifyUser']);
 
