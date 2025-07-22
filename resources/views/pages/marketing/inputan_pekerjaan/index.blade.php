@@ -146,7 +146,13 @@
                         <td>{{ $items->no_seri }}</td>
                         <td>{{ $items->instansi }}</td>
                         <td>{{ $items->kerusakan }}</td>
-                        <td><a href="{{ URL::asset('storage/'.$items->foto) }}" target="_blank">Download</a></td>
+                        <td>
+                          @if($items->foto && file_exists(storage_path('app/public/'.$items->foto)))
+                            <a href="{{ URL::asset('storage/'.$items->foto) }}" target="_blank">Download</a>
+                          @else
+                            <a href="#" onclick="alert('Foto tidak ada'); return false;">Download</a>
+                          @endif
+                        </td>
                         <td>
                           <a href="{{ route('marketing.edit.inputanPekerjaan', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

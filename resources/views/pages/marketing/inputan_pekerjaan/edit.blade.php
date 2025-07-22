@@ -50,6 +50,27 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="merek" class="col-xs-3 col-form-label">Merek <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="merek" id="merek" type="text" class="form-control" value="{{ $item->merek }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="type" class="col-xs-3 col-form-label">Type <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="type" id="type" type="text" class="form-control" value="{{ $item->type }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="no_seri" id="no_seri" type="text" class="form-control" value="{{ $item->no_seri }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
                       <input name="instansi" id="instansi" type="text" class="form-control" value="{{ $item->instansi }}" required>
@@ -57,9 +78,23 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="kerusakan" class="col-xs-3 col-form-label">Kerusakan <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="kerusakan" id="kerusakan" type="text" class="form-control" value="{{ $item->kerusakan }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="foto" class="col-xs-3 col-form-label">Foto</label>
+                    <div class="col-xs-9">
+                      <input name="foto" id="foto" type="file" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
+                        <button class="ui positive button">Edit</button>
                       </div>
                     </div>
                   </div>

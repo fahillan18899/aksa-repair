@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Marketing;
 use App\Http\Controllers\Controller;
 use App\Models\InputPekerjaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InputanPekerjaanController extends Controller
 {
@@ -29,11 +30,16 @@ class InputanPekerjaanController extends Controller
         ]);
 
         // Buat foto
-        $file = $request->file('foto');
-        $fileName = $file->getClientOriginalName();
-        //Simpan ke storage/app/foto
-        $path = $file->storeAs('public/foto',$fileName);
-        $validated['foto'] = 'foto/'.$fileName;
+        if($request->hasFile('foto')){
+            $file = $request->file('foto');
+            $fileName = $file->getClientOriginalName();
+            //Simpan ke storage/app/foto
+            $path = $file->storeAs('public/foto',$fileName);
+            $validated['foto'] = 'foto/'.$fileName;
+        } 
+        else { $validated['foto'] = null; }
+
+
 
         //Buat no urut
         $count = InputPekerjaan::count() + 1;
@@ -57,9 +63,24 @@ class InputanPekerjaanController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'nama_alat' => 'required',
-            'instansi' => 'required',
+            'nama_alat' => 'nullable',
+            'merek'     => 'nullable',
+            'type'      => 'nullable',
+            'no_seri'   => 'nullable',
+            'instansi'  => 'nullable',
+            'kerusakan' => 'nullable',
+            'foto'      => 'nullable',
         ]);
+
+        if($request->hasFile('foto')){
+            //Buat Foto
+            $file = $request->file('foto');
+            $fileName = $file->getClientOriginalName();
+             //Simpan ke storage foto
+            $path = $file->storeAs('public/foto',$fileName);
+            $validate['foto'] = 'foto/'.$fileName;
+        }
+        else { $validate['foto'] = null; }
 
         $item = InputPekerjaan::findOrFail($id);
         $item->update($validate);
@@ -70,6 +91,10 @@ class InputanPekerjaanController extends Controller
     public function delete($id)
     {
         $item = InputPekerjaan::findOrFail($id);
+        //Hapus file di storage
+        if(Storage::exists('public/' . $item->foto)){
+            Storage::delete('public/' . $item->foto);
+        }
         $item->delete();
         return redirect()->route('marketing.data.inputanPekerjaan')
         ->with('success', 'Data berhasil dihapus');

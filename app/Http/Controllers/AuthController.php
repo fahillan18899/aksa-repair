@@ -47,10 +47,13 @@ class AuthController extends Controller
     public function processRegistration(Request $request)
     {
         $data = $request->validate([
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:4',
-            'user_role' => 'required',
-            'kode_rs' => 'required',
+            'username' => 'nullable|string|max:255|unique:users',
+            'password' => 'nullable|string|min:4',
+            'user_role' => 'nullable',
+            'kode_rs' => 'nullable',
+            'rs' => 'nullable',
+            'divisi' => 'nullable',
+            'rs_divisi' => 'nullable',
         ], [
             'username.unique' => 'Username Sudah Di Gunakan',
             'password.required' => 'Password Wajib Diisi',

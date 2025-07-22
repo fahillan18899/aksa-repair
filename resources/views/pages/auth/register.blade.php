@@ -58,6 +58,18 @@
               <input type="username" placeholder="Username" name="username" id="username" class="form-control">
             </div>
             <div class="form-group">
+              <label class="control-label" for="rs">RS</label>
+              <input type="text" placeholder="rs" name="rs" id="rs" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="divisi">Divisi</label>
+              <input type="text" placeholder="divisi" name="divisi" id="divisi" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="rs_divisi">RS Divisi</label>
+              <input type="text" placeholder="rs_divisi" name="rs_divisi" id="rs_divisi" class="form-control">
+            </div>
+            <div class="form-group">
               <label class="control-label" for="password">Password</label>
               <input type="password" placeholder="Password" name="password" id="password" class="form-control">
             </div>
@@ -77,6 +89,7 @@
                 <option value="marketing">Marketing</option>
                 <option value="teknisi">Teknisi</option>
                 <option value="akuntan">Akuntan</option>
+                <option value="admin">Admin</option>
               </select>
             </div>
 
