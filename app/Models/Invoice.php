@@ -13,5 +13,5 @@ class Invoice extends Model
     protected $keyType = 'string';     // <- jika id_req berupa string
 
     protected $fillable = [ 'id', 'yth', 'tgl_invoice', 'no_invoice', 'no_pesanan', 'barang_jasa', 'keterangan',
-                            'unit', 'harga_satuan', 'harga', 'harga_tanpa_pajak', 'pajak', 'total'];
+                            'unit', 'harga_satuan', 'harga', 'harga_tanpa_pajak', 'pajak', 'total', 'status'];
 }

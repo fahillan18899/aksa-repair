@@ -189,18 +189,30 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
+                        <th>Instansi</th>
                         <th>Tanggal</th>
                         <th>Nomer Invoice</th>
                         <th>Nomer Pesanan</th>
+                        <th>Status</th>
                         <th>Tombol</th>
                       </tr>
                     </thead>
                     <tbody>
                       @forelse($item as $items)
                         <tr>
+                          <td>{{ $items->yth }}</td>
                           <td>{{ $items->tgl_invoice }}</td>
                           <td>{{ $items->no_invoice }}</td>
                           <td>{{ $items->no_pesanan }}</td>
+                          <td>
+                            <form action="{{ route('akuntan.status.invoicePermohonan', $items->id) }}" class="form-inner" method="post">
+                              @csrf
+                              @method('PUT')
+                              <button class="btn btn-sm btn-{{ $items->status == 0 ? 'success' : 'danger' }}" type="submit">
+                                {{ $items->status == 0 ? 'Lunas' : 'Belum Lunas' }}
+                              </button>
+                            </form>
+                          </td>
                           <td>
                             <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
                               <i class="fa fa-eye" aria-hidden="true"></i>

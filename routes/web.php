@@ -147,6 +147,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
         Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
         Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
         Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
+        Route::put('link_invoice_permohonan/status/{id}', [InvoicePermohonanController::class, 'status'])->name('status.invoicePermohonan');
         Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
         Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
     //invoice permohonan end//

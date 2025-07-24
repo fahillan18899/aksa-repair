@@ -74,6 +74,15 @@ class InvoicePermohonanController extends Controller
         compact('item'));
     }
 
+    public function status($id)
+    {
+        $item = Invoice::findOrFail($id);
+        $item->status = $item->status === '0' ? '1' : '0';
+        $item->save();
+        return back();
+
+    }
+
     public function delete($id)
     {
         $item = Invoice::findOrFail($id);
