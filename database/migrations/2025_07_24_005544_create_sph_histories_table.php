@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sphs', function (Blueprint $table) {
+        Schema::create('sph_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->text('lokasi_tanggal')->nullable();
             $table->text('no_surat')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('harga_tanpa_pajak')->nullable();
             $table->text('pajak')->nullable();
             $table->text('total')->nullable();
+            $table->text('user')->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sphs');
+        Schema::dropIfExists('sph_histories');
     }
 };

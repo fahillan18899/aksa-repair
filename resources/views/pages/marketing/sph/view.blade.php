@@ -7,11 +7,11 @@
     cursor: not-allowed;
   }
 
-  p{
+  p {
     font-size: large;
   }
 
-  label{
+  label {
     font-size: large;
   }
 
@@ -26,8 +26,9 @@
     padding: 8px;
   }
 
-  .panel { border: 1px solid black; }
-
+  .panel {
+    border: 1px solid black;
+  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -65,24 +66,24 @@
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="col-xs-4" style="margin-left: 700px;">
-                    <p>{{ $data->lokasi_tanggal }}</p>
+                    <p>{{ $item->lokasi_tanggal }}</p>
                   </div>
                   <div class="form-group row">
                     <label for="no_surat" class="col-xs-2 form-label"><b>No.Surat :</b></label>
                     <div class="col-xs-5">
-                      <p>{{ $data->no_surat }}</p>
+                      <p>{{ $item->no_surat }}</p>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="hal" class="form-label col-xs-2"><b>Hal.</b> :</label>
                     <div class="col-xs-5">
-                      <p>{{ $data->hal }}</p>
+                      <p>{{ $item->hal }}</p>
                     </div>
                   </div>
                   <br>
                   <p><b>Kepada Yth. :</b></p>
                   <div class="col-xs-4 ml-2">
-                    <p>{{ $data->yth }}</p>
+                    <p>{{ $item->yth }}</p>
                   </div>
                   <br>
                   <br>
@@ -97,12 +98,12 @@
                       <th class="text-center">KETERANGAN</th>
                     </thead>
                     <tbody>
-                        @foreach($data->nama_alat as $index => $alat)
-                          <tr>
-                            <td align="center">{{ $alat }}</td>
-                            <td align="center">{{ $data->keterangan[$index] ?? '-' }}</td>
-                          </tr>
-                        @endforeach
+                      @foreach($item->nama_alat as $index => $alat)
+                      <tr>
+                        <td align="center">{{ $alat }}</td>
+                        <td align="center">{{ $item->keterangan[$index] ?? '-' }}</td>
+                      </tr>
+                      @endforeach
                     </tbody>
                   </table><br>
                   <table class="table-striped">
@@ -116,10 +117,10 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center">{{ $data->jumlah }}</td>
-                        <td align="center">{{ $data->harga }}</td>
-                        <td align="center">{{ $data->diskon }}%</td>
-                        <td align="center">{{ $data->harga_diskon }}</td>
+                        <td align="center">{{ $item->jumlah }}</td>
+                        <td align="center">{{ $item->harga }}</td>
+                        <td align="center">{{ $item->diskon }}%</td>
+                        <td align="center">{{ $item->harga_diskon }}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -132,15 +133,15 @@
                     <tbody>
                       <tr>
                         <td class="text-center"><b>Harga tanpa pajak</b></td>
-                        <td align="center">{{ $data->harga_tanpa_pajak }}</td>
+                        <td align="center">{{ $item->harga_tanpa_pajak }}</td>
                       </tr>
                       <tr>
                         <td class="text-center"><b>Pajak 11%</b></td>
-                        <td align="center">{{ $data->pajak }}</td>
+                        <td align="center">{{ $item->pajak }}</td>
                       </tr>
                       <tr>
                         <td class="text-center"><b>Total</b></td>
-                        <td align="center">{{ $data->total }}</td>
+                        <td align="center">{{ $item->total }}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -182,12 +183,6 @@
             </div>
           </div>
         </div>
-          <div class="form-group row">
-            <div class="col-sm-offset-3 col-sm-6">
-              <button type="button" onclick="printMy('print_me')"
-                class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
-            </div>
-          </div>
       </div>
     </div>
     <!--Form Perbaikan end-->
@@ -195,43 +190,3 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
-@push('addon-script')
-<script>
-  // FUNGSI PRINT
-  function printMy(print_me) {
-    var printContent = document.getElementById("print_me").outerHTML;
-    var originalContent = document.body.innerHTML;
-    document.body.innerHTML =
-      `<html>
-          <head>
-            <title>Print Table</title>
-          </head>
-          <style>
-            .table-striped {
-            width: 100%;
-            border-collapse: collapse;
-            }
-
-            .table-striped th,
-            .table-striped td {
-            border: 1px solid black;
-            padding: 8px;
-            font-size: large;
-            }
-
-            p{ font-size: large; }
-            label{ font-size: large; }
-
-            .panel { border: 1px solid black }
-          </style>
-          <body>
-          <h1>SURAT PENAWARAN HARGA</h1>
-              ${printContent}
-          </body>
-        </html>`;
-    window.print();
-    document.body.innerHTML = originalContent;
-  }
-  // FUNGSI PRINT END
-</script>
-@endpush
