@@ -51,60 +51,67 @@
 
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
-              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 300px; margin-left: 600px;">
+                <img src="{{ url('assets/images/aksa.png') }}" alt="Logo" style="height: 100px; margin-right: 20px;">
+                <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="height: 100px; margin-left: 400px;">
               <div class="col-md-9 col-sm-12">
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  <br>
+                  <div class="row" style="margin-left: 600px;">
+                    <p>Boyolali</p>
+                  </div>
+                  <div class="row" style="margin-left: 600px;" >
+                    <p>{{\Carbon\Carbon::now()->translatedFormat('d-m-y')}}</p>
+                  </div>
                   <h2>PIHAK PERTAMA</h2>
                   <div class="form-group row">
-                    <label for="nama_1" class="col-xs-2 form-label"><b>Nama :</b></label>
+                    <label for="nama_1" class="col-xs-5 form-label"><b>Nama :</b></label>
                     <div class="col-xs-5">
                       {{ $item->nama_1 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="jabatan_1" class="col-xs-2 form-label">Jabatan :</label>
+                    <label for="jabatan_1" class="col-xs-5 form-label">Jabatan :</label>
                     <div class="col-xs-5">
                       {{ $item->jabatan_1 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="bagian_1" class="col-xs-2 form-label">Departement / Bagian :</label>
+                    <label for="bagian_1" class="col-xs-5 form-label">Departement / Bagian :</label>
                     <div class="col-xs-5">
                       {{ $item->bagian_1 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="kontak_1" class="col-xs-2 form-label">Kontak :</label>
+                    <label for="kontak_1" class="col-xs-5 form-label">Kontak :</label>
                     <div class="col-xs-5">
                       {{ $item->kontak_1 }}
                     </div>
                   </div>
                   <h2>PIHAK KEDUA</h2>
                   <div class="form-group row">
-                    <label for="nama_2" class="col-xs-2 form-label">Nama :</label>
+                    <label for="nama_2" class="col-xs-5 form-label">Nama :</label>
                     <div class="col-xs-5">
                       {{ $item->nama_2 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="jabatan_2" class="col-xs-2 form-label">Jabatan :</label>
+                    <label for="jabatan_2" class="col-xs-5 form-label">Jabatan :</label>
                     <div class="col-xs-5">
                       {{ $item->jabatan_2 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="bagian_2" class="col-xs-2 form-label">Departemen / Bagian :</label>
+                    <label for="bagian_2" class="col-xs-5 form-label">Departemen / Bagian :</label>
                     <div class="col-xs-5">
                       {{ $item->bagian_2 }}
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="kontak_2" class="col-xs-2 form-label">Kontak :</label>
+                    <label for="kontak_2" class="col-xs-5 form-label">Kontak :</label>
                     <div class="col-xs-5">
                       {{ $item->kontak_2 }}
                     </div>
                   </div>
-                  <br>
                   <h2>RINCIAN ALAT YANG DISERAHKAN</h2>
                   <table class="table-striped">
                     <thead>
@@ -230,7 +237,7 @@
             .panel { border: 1px solid black }
           </style>
           <body>
-          <h1>SURAT SERAH TERIMA ALAT</h1>
+              <h1>SURAT SERAH TERIMA ALAT</h1>  
               ${printContent}
           </body>
         </html>`;

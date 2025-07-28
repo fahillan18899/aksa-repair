@@ -67,8 +67,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
-              <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner col-sm-12" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <h2>PIHAK PERTAMA</h2>
                   <div class="form-group row">
@@ -193,7 +192,6 @@
                     </div>
                   </div>
                 </form>
-              </div>
               <div class="col-md-3"></div>
             </div>
           </div>
@@ -210,7 +208,7 @@
             <div class="row">
               <div class="col-md-5">
               </div>
-              <h1>Daftar SPH</h1>
+              <h1>Daftar Surat Serah Terima</h1>
             </div>
           </div>
           <div style="overflow-x:auto;">
