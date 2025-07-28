@@ -18,6 +18,7 @@ use App\Http\Controllers\Marketing\InvoiceController;
 // Teknisi //
 use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\RepairController;
+use App\Http\Controllers\Teknisi\SuratTerimaController;
 use App\Http\Controllers\Teknisi\InformasiController;
 use App\Http\Controllers\Teknisi\BeritaAcaraController;
 use App\Http\Controllers\Teknisi\QrController;
@@ -111,7 +112,17 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
         Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
         Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
         Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
+        Route::get('link_repair/data_pekerjaan/{id}', [RepairController::class, 'fetch'])->name('fetch.repair');
     // Repair end//
+
+    //Serah Terima //
+        Route::get('link_surat_terima', [SuratTerimaController::class, 'index'])->name('data.suratTerima');
+        Route::post('link_surat_terima', [SuratTerimaController::class, 'post'])->name('post.suratTerima');
+        Route::get('link_surat_terima/view/{id}', [SuratTerimaController::class, 'view'])->name('view.suratTerima');
+        Route::get('link_surat_terima/edit/{id}', [SuratTerimaController::class, 'edit'])->name('edit.suratTerima');
+        Route::put('link_surat_terima/update/{id}', [SuratTerimaController::class, 'update'])->name('update.suratTerima');
+        Route::delete('link_surat_terima/{id}', [SuratTerimaController::class, 'delete'])->name('delete.suratTerima');
+    //Serah Terima End //
 
     //Informasi //
         Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');

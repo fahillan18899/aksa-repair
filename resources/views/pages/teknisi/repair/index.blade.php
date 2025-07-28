@@ -45,7 +45,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
-                        <th>No</th>
+                        <th>No Urut</th>
                         <th>Nama Alat</th>
                         <th>Instansi</th>
                         <th>Tombol</th>
@@ -54,7 +54,7 @@
                     <tbody>
                       @forelse($data as $datas)
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td onclick="paste(this)" title="Klik untuk kirim no urut" style="cursor: pointer;">{{ $datas->no_urut }}</td>
                         <td>{{ $datas->nama_alat }}</td>
                         <td>{{ $datas->instansi }}</td>
                         <td>
@@ -97,37 +97,44 @@
                   @csrf
                   <input name="no_urut" id="no_urut" class="form-control" type="hidden">
                   <div class="form-group row">
+                    <label for="" class="col-xs-3 col-form-label">No Urut <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input id="no_urut2" type="text" class="form-control" placeholder="Klik no urut di table untuk kirim disini" 
+                      data-toggle="tooltip" data-placement="top" title="Klik untuk isi data alat" style="cursor: pointer;" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="isi nama alat di sini" required>
+                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
                     <div class="col-xs-9">
-                      <input name="no_seri" id="no_seri" class="form-control" type="text" placeholder="isi no seri di sini" required>
+                      <input name="no_seri" id="no_seri" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="type" class="col-xs-3 form-label">Type</label>
                     <div class="col-xs-9">
-                      <input name="type" id="type" class="form-control" type="text" placeholder="isi type alat di sini">
+                      <input name="type" id="type" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="kerusakan_alat" class="col-xs-3 form-label">Kerusakan Alat</label>
                     <div class="col-xs-9">
-                      <input name="kerusakan_alat" id="kerusakan_alat" class="form-control" type="text" placeholder="isi kerusakan alat di sini">
+                      <input name="kerusakan_alat" id="kerusakan_alat" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="isi Instansi di sini" required>
+                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Terisi otomatis" readonly required>
                     </div>
                   </div>
 
@@ -196,8 +203,22 @@
                           <form action="{{ route('teknisi.ket.repair', $items->id) }}" class="form-inner" method="post">
                             @csrf
                             @method('PUT')
-                            <button class="btn btn-sm btn-{{ $items->ket == 0 ? 'primary' : 'warning' }}" type="submit">
-                              {{ $items->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
+                            <button type="submit" class="btn btn-sm
+                            @switch ($items->ket)
+                              @case(1) btn-danger @break
+                              @case(2) btn-warning @break
+                              @case(3) btn-info @break
+                              @case(4) btn-secondary @break
+                              @case(5) btn-success @break
+                            @endswitch">
+                              @switch($items->ket)
+                                @case(1) troble  @break
+                                @case(2) proses  @break
+                                @case(3) dalam perbaikan  @break
+                                @case(4) rusak  @break
+                                @case(5) selesai  @break
+                                @default Tidak diketahui
+                              @endswitch
                             </button>
                           </form>
                         </td>
@@ -232,3 +253,40 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
+@push('addon-script')
+<script>
+  function paste(that) {
+    var inp = document.createElement('input');
+    document.body.appendChild(inp)
+    inp.value = that.textContent
+    inp.select();
+    document.execCommand('copy', false);
+    inp.remove();
+    document.getElementById('no_urut2').value = inp.value = that.textContent;
+  }
+</script>
+<script>
+  $(document).ready(function(){
+    $('#no_urut2').on('click', function(){
+      let noUrut = $(this).val().trim();
+      console.log("ID yang dimasukan :", noUrut);
+
+      if(!noUrut) return;
+
+
+      fetch(`/dashboard_teknisi/link_repair/data_pekerjaan/${encodeURIComponent(noUrut)}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("Data dari server :", data);
+        let item = Array.isArray(data) ? data[0] : data || {};
+        $('#nama_alat').val(item.nama_alat || '');
+        $('#no_seri').val(item.no_seri || '');
+        $('#type').val(item.type || '');
+        $('#kerusakan_alat').val(item.kerusakan || '');
+        $('#instansi').val(item.instansi || '');
+      })
+      .catch(error => console.error("Error AJAX", error));
+    });
+  });
+</script>
+@endpush

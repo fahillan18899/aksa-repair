@@ -73,9 +73,15 @@ class RepairController extends Controller
     public function ket($id)
     {
         $item = DataBarang::findOrFail($id);
-        $item->ket = $item->ket === '0' ? '1' : '0';
+        $item->ket = $item->ket >= 5 ? 1 :  $item->ket + 1;
         $item->save();
         return back();
+    }
+
+    public function fetch($id)
+    {
+        $data = InputPekerjaan::where('no_urut', $id)->first();
+        return response()->json($data);
     }
 
     public function delete($id)
