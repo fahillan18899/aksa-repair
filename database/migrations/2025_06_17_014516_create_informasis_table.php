@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('informasis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('merek');
-            $table->string('type');
-            $table->string('no_seri');
+            $table->text('nama')->nullable();
+            $table->text('merek')->nullable();
+            $table->text('type')->nullable();
+            $table->text('no_seri')->nullable();
+            $table->text('harga')->nullable();
+            $table->text('toko')->nullable();
             $table->timestamps();
         });
     }

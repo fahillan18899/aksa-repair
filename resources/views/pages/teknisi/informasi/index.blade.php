@@ -71,6 +71,20 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="harga" class="col-xs-3 form-label">Harga</label>
+                    <div class="col-xs-9">
+                      <input name="harga" id="harga" class="form-control" type="text" placeholder="isi harga part" onkeyup="rp(this)">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="toko" class="col-xs-3 form-label">Toko</label>
+                    <div class="col-xs-9">
+                      <input name="toko" id="toko" class="form-control" type="text" placeholder="isi nama toko sperpart">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>
@@ -107,6 +121,8 @@
                       <th>Merek</th>
                       <th>Type</th>
                       <th>No Seri</th>
+                      <th>Toko</th>
+                      <th>Harga</th>
                       <th>Tombol Aksi</th>
                     </tr>
                   </thead>
@@ -117,6 +133,8 @@
                       <td>{{ $items->merek }}</td>
                       <td>{{ $items->type }}</td>
                       <td>{{ $items->no_seri }}</td>
+                      <td>{{ $items->harga }}</td>
+                      <td>{{ $items->toko }}</td>
                       <td>
                         <a href="{{ route('teknisi.edit.informasi', $items->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -147,3 +165,24 @@
 </div> <!-- /.content -->
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
+@push('addon-script')
+<!-- RUPIAH 1-->
+  <script>
+    function rp(input){
+      let angka = input.value.replace(/[^,\d]/g, '');
+      let split = angka.split(',');
+      let sisa = split[0].length % 3;
+      let rupiah = split[0].substr(0, sisa);
+      let ribuan = split[0].substr(sisa).match(/\d{3}/g);
+
+      if (ribuan) {
+          let separator = sisa ? '.' : '';
+          rupiah += separator + ribuan.join('.');
+      }
+
+      rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+      input.value = 'Rp ' + rupiah;
+    }
+  </script>
+<!-- RUPIAH 1-->
+@endpush

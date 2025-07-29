@@ -72,6 +72,20 @@
                   </div>
 
                   <div class="form-group row">
+                    <label for="harga" class="col-xs-3 form-label">Harga</label>
+                    <div class="col-xs-9">
+                      <input name="harga" id="harga" class="form-control" type="text" placeholder="isi harga part" onkeyup="rp(this)" value="{{ $item->harga }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="toko" class="col-xs-3 form-label">Toko</label>
+                    <div class="col-xs-9">
+                      <input name="toko" id="toko" class="form-control" type="text" placeholder="isi nama toko sperpart" value="{{ $item->toko }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>

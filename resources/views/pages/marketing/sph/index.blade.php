@@ -151,21 +151,42 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center"><input name="part[1]" id="part_1" type="text" class="form-control"></td>
+                        <td class="text-center">
+                          <select name="part[1]" id="part_1" type="text" class="form-control">
+                            <option >Pilih Part</option>
+                            @foreach($part as $parts)
+                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
+                            @endforeach
+                          </select>
+                        </td>
                         <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[3]" id="jumlah_1" type="text" class="form-control" onkeyup="part1()"></td>
                         <td class="text-center"><input name="part[4]" id="total_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[5]" id="biaya_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="part[6]" id="part_2" type="text" class="form-control"></td>
+                        <td class="text-center">
+                          <select name="part[6]" id="part_2" type="text" class="form-control">
+                            <option >Pilih Part</option>
+                            @foreach($part as $parts)
+                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
+                            @endforeach
+                          </select>
+                        </td>
                         <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[8]" id="jumlah_2" type="text" class="form-control" onkeyup="part2()"></td>
                         <td class="text-center"><input name="part[9]" id="total_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[10]" id="biaya_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="part[11]" id="part_3" type="text" class="form-control"></td>
+                        <td class="text-center">
+                          <select name="part[11]" id="part_3" type="text" class="form-control">
+                            <option >Pilih Part</option>
+                            @foreach($part as $parts)
+                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
+                            @endforeach
+                          </select>
+                        </td>
                         <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[13]" id="jumlah_3" type="text" class="form-control" onkeyup="part3()"></td>
                         <td class="text-center"><input name="part[14]" id="total_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
@@ -630,6 +651,80 @@
     }
   </script>
 <!-- PERHITUNGAN PART -->
+
+<!-- PART AUTOFILL SELECT -->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select[id="part_1"]').on('change', function() {
+        var stateID = $(this).val();
+        console.log(stateID);
+        if (stateID) {
+          $.ajax({
+            url: 'link_sph/part/' + stateID,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+              console.log(data);
+              $.each(data, function(key, value) {
+                $('input[id="harga_1"]').val(value.harga);
+              });
+            }
+          });
+        } else {
+          $('input[id="harga_1"]').empty();
+        }
+      })
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select[id="part_2"]').on('change', function() {
+        var stateID = $(this).val();
+        console.log(stateID);
+        if (stateID) {
+          $.ajax({
+            url: 'link_sph/part/' + stateID,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+              console.log(data);
+              $.each(data, function(key, value) {
+                $('input[id="harga_2"]').val(value.harga);
+              });
+            }
+          });
+        } else {
+          $('input[id="harga_2"]').empty();
+        }
+      })
+    });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select[id="part_3"]').on('change', function() {
+        var stateID = $(this).val();
+        console.log(stateID);
+        if (stateID) {
+          $.ajax({
+            url: 'link_sph/part/' + stateID,
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+              console.log(data);
+              $.each(data, function(key, value) {
+                $('input[id="harga_3"]').val(value.harga);
+              });
+            }
+          });
+        } else {
+          $('input[id="harga_3"]').empty();
+        }
+      })
+    });
+  </script>
+<!-- PART AUTOFILL SELECT -->
 
 <script>
   $(document).ready(function() {

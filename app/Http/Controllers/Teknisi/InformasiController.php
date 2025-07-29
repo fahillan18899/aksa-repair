@@ -22,6 +22,8 @@ class InformasiController extends Controller
             'merek'   => 'nullable',
             'type'    => 'nullable',
             'no_seri' => 'nullable',
+            'harga' => 'nullable',
+            'toko' => 'nullable',
         ]);
 
         Informasi::create($validate);
@@ -43,6 +45,8 @@ class InformasiController extends Controller
             'merek'   => 'nullable',
             'type'    => 'nullable',
             'no_seri' => 'nullable',
+            'harga' => 'nullable',
+            'toko' => 'nullable',
         ]);
 
         $item = Informasi::findOrFail($id);

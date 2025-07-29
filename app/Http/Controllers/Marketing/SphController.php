@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
+use App\Models\Informasi;
 use App\Models\Sph;
 use App\Models\SphHistory;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class SphController extends Controller
         $item = Sph::all();
         $count = Sph::count() +1;
         $user = Auth::user()->rs_divisi;
+        $part = Informasi::all();
         $noUrut = str_pad($count, 4, '0', STR_PAD_LEFT);
         $bulanAngka = \Carbon\Carbon::now()->format('n');
         $tahun = \Carbon\Carbon::now()->format('Y');
@@ -22,7 +24,7 @@ class SphController extends Controller
                         6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX', 10 => 'X',
                         11 => 'XI', 12 => 'XII'][$bulanAngka];
         return view('pages.marketing.sph.index',
-        compact('item', 'noUrut', 'bulanRomawi', 'tahun', 'user'));
+        compact('item', 'noUrut', 'bulanRomawi', 'tahun', 'user', 'part'));
     }
 
     public function post(Request $request)
@@ -97,10 +99,13 @@ class SphController extends Controller
     public function edit($id)
     {
         $item = Sph::findOrFail($id);
+        $part = Informasi::all();
+        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
+        $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.marketing.sph.edit',
-        compact('item'));
+        compact('item', 'part'));
     }
 
     public function update(Request $request, $id)
@@ -225,6 +230,12 @@ class SphController extends Controller
         $data->keterangan = is_string($data->keterangan) ? json_decode($data->keterangan, true) : $data->keterangan;
         return view('pages.marketing.sph.print',
         compact('data'));
+    }
+
+    public function part($nama)
+    {
+      $part = Informasi::where("nama", $nama)->get();
+      return response()->json($part);
     }
 
     public function delete($id)

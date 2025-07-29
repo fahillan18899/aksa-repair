@@ -152,22 +152,22 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center"><input name="part[1]" id="part_1" type="text" placeholder="isi kembali" class="form-control"></td>
-                        <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" placeholder="isi kembali" onkeyup="rp2(this)"></td>
+                        <td class="text-center"><input name="part[1]" id="part_1" type="text" class="form-control" value="{{ $item->part[1] }}"></td>
+                        <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" value="{{ $item->part[2] }}" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[3]" id="jumlah_1" type="text" class="form-control" placeholder="isi kembali" onkeyup="part1()"></td>
                         <td class="text-center"><input name="part[4]" id="total_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[5]" id="biaya_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="part[6]" id="part_2" type="text" placeholder="isi kembali" class="form-control"></td>
-                        <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" placeholder="isi kembali" onkeyup="rp2(this)"></td>
+                        <td class="text-center"><input name="part[6]" id="part_2" type="text" class="form-control" value="{{ $item->part[6] }}"></td>
+                        <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" value="{{ $item->part[7] }}" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[8]" id="jumlah_2" type="text" class="form-control" placeholder="isi kembali" onkeyup="part2()"></td>
                         <td class="text-center"><input name="part[9]" id="total_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[10]" id="biaya_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="part[11]" id="part_3" type="text" placeholder="isi kembali" class="form-control"></td>
-                        <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" placeholder="isi kembali" onkeyup="rp2(this)"></td>
+                        <td class="text-center"><input name="part[11]" id="part_3" type="text" class="form-control" value="{{ $item->part[11] }}"></td>
+                        <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" value="{{ $item->part[12] }}" onkeyup="rp2(this)"></td>
                         <td class="text-center"><input name="part[13]" id="jumlah_3" type="text" class="form-control" placeholder="isi kembali" onkeyup="part3()"></td>
                         <td class="text-center"><input name="part[14]" id="total_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[15]" id="biaya_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>

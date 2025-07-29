@@ -91,6 +91,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
         Route::get('link_sph/edit/{id}', [SphController::class, 'edit'])->name('edit.sph');
         Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
         Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
+        Route::get('link_sph/part/{nama}', [SphController::class, 'part'])->name('part.sph');
         Route::get('link_sph_history/view/{id}', [SphController::class, 'view'])->name('view.sph');
         Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
     // SPH end//
