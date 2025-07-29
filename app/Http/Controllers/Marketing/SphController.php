@@ -14,6 +14,7 @@ class SphController extends Controller
     {
         $item = Sph::all();
         $count = Sph::count() +1;
+        $user = Auth::user()->rs_divisi;
         $noUrut = str_pad($count, 4, '0', STR_PAD_LEFT);
         $bulanAngka = \Carbon\Carbon::now()->format('n');
         $tahun = \Carbon\Carbon::now()->format('Y');
@@ -21,7 +22,7 @@ class SphController extends Controller
                         6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX', 10 => 'X',
                         11 => 'XI', 12 => 'XII'][$bulanAngka];
         return view('pages.marketing.sph.index',
-        compact('item', 'noUrut', 'bulanRomawi', 'tahun'));
+        compact('item', 'noUrut', 'bulanRomawi', 'tahun', 'user'));
     }
 
     public function post(Request $request)

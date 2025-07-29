@@ -76,7 +76,7 @@
                   <div class="form-group row">
                     <label for="no_surat" class="col-xs-2 form-label"><b>No.Surat :</b></label>
                     <div class="col-xs-5">
-                      <input name="no_surat" id="no_surat" type="text" class="form-control" value="{{ $noUrut.'/1.306/AJS-MKT/01/'.$bulanRomawi.'/SPH-REP/'.$tahun}}" readonly>
+                      <input name="no_surat" id="no_surat" type="text" class="form-control" value="{{ $noUrut.'/1.306/AJS-MKT/'.$user.'/'.$bulanRomawi.'/SPH-REP/'.$tahun}}" readonly>
                     </div>
                   </div>
                   <div class="form-group row">
