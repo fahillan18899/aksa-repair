@@ -14,7 +14,8 @@ class Sph extends Model
     protected $keyType = 'string';         // <- jika id_req berupa string
 
     protected $fillable = [ 'lokasi_tanggal', 'no_surat', 'hal', 'yth',
-                            'nama_alat', 'keterangan', 'jumlah', 'harga',
-                            'diskon', 'harga_diskon', 'harga_tanpa_pajak', 
-                            'pajak', 'total', 'created_at', 'updated_at'];
+                            'akom', 'part', 'nama_alat', 'keterangan', 
+                            'jumlah', 'harga', 'diskon', 'harga_diskon', 
+                            'harga_tanpa_pajak', 'pajak', 'total', 
+                            'created_at', 'updated_at'];
 }

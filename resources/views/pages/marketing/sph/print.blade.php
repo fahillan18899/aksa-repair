@@ -93,6 +93,91 @@
                   </p>
                   <table class="table-striped">
                     <thead>
+                      <tr>
+                        <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
+                        <th class="text-center"><b>HARGA / ITEM / KM</b></th>
+                        <th class="text-center"><b>JUMLAH / BELI</b></th>
+                        <th class="text-center"><b>SUB TOTAL</b></th>
+                        <th class="text-center"><b>HARGA YANG DITAWARKAN</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td rowspan="4" class="text-center">AKOMODASI</td>
+                        <td class="text-center">Motor</td>
+                        <td class="text-center">{{ $data->akom[1] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[2] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[3] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[4] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Mobil</td>
+                        <td class="text-center">{{ $data->akom[5] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[6] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[7] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[8] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Uang Makan</td>
+                        <td colspan="3" class="text-center">{{ $data->akom[9] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[10] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Tol</td>
+                        <td colspan="3" class="text-center">{{ $data->akom[11] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->akom[12] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="text-center">Total Biaya Akomodasi</td>
+                        <td colspan="" class="text-center">{{ $data->akom[13] ?? '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table class="table-striped">
+                    <thead>
+                      <tr>
+                        <th class="text-center"><b>NAMA PART</b></th>
+                        <th class="text-center"><b>HARGA</b></th>
+                        <th class="text-center"><b>JUMLAH</b></th>
+                        <th class="text-center"><b>TOTAL  HARGA PART</b></th>
+                        <th class="text-center"><b>BIAYA</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">{{ $data->part[1] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[2] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[3] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[4] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[5] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $data->part[6] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[7] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[8] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[9] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[10] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $data->part[11] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[12] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[13] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[14] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[15] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" class="text-center">Total Biaya Part</td>
+                        <td class="text-center">{{ $data->part[16] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="text-center">Biaya Service</td>
+                        <td colspan="2" class="text-center">{{ $data->part[17] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part[18] ?? '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table><br>
+                  <table class="table-striped">
+                    <thead>
                       <th class="text-center">NAMA ALAT</th>
                       <th class="text-center">KETERANGAN</th>
                     </thead>

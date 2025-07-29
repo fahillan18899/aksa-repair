@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('no_surat')->nullable();
             $table->text('hal')->nullable();
             $table->text('yth')->nullable();
+            $table->json('akom')->nullable();
+            $table->json('part')->nullable();
             $table->json('nama_alat')->nullable();
             $table->json('keterangan')->nullable();
             $table->text('jumlah')->nullable();
