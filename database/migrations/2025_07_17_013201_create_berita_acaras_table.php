@@ -15,8 +15,21 @@ return new class extends Migration
     {
         Schema::create('berita_acaras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('instansi');
-            $table->string('path');
+            $table->json('ba')->nullable();
+            $table->json('rs')->nullable();
+            $table->json('kontak')->nullable();
+            $table->json('alat')->nullable();
+            $table->json('jenis')->nullable();
+            $table->json('skc')->nullable();
+            $table->text('keluhan')->nullable();
+            $table->text('aksi')->nullable();
+            $table->text('hasil')->nullable();
+            $table->text('pj')->nullable();
+            $table->text('teknisi')->nullable();
+            $table->text('tanggal_1')->nullable();
+            $table->text('tanggal_2')->nullable();
+            $table->text('instansi')->nullable();
+            $table->text('path')->nullable();
             $table->timestamps();
         });
     }

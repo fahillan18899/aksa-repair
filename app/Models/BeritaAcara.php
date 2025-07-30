@@ -12,5 +12,7 @@ class BeritaAcara extends Model
     public $incrementing = true;
     public $keyType = 'string';
 
-    protected $fillable = ['id', 'instansi', 'path'];
+    protected $fillable = ['id', 'ba', 'rs', 'kontak', 'alat', 'jenis', 
+                           'skc', 'keluhan', 'aksi', 'hasil', 'pj', 'teknisi', 
+                           'tanggal_1', 'tanggal_2', 'instansi', 'path'];
 }

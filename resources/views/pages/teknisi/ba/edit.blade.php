@@ -56,22 +56,23 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-sm-12">
-                <form action="{{ route('teknisi.post.ba') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.update.ba', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  @method('PUT')
                   <!-- Berita Acara -->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">No.Berita Acara</b></td>
-                        <td class="text-center"><input name="ba[1]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="ba[1]" id="" type="text" class="form-control" value="{{ $item->ba[1] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>No.Urut dari</b></td>
-                        <td class="text-center"><input name="ba[2]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="ba[2]" id="" type="text" class="form-control" value="{{ $item->ba[2] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Tanggal BA</b></td>
-                        <td class="text-center"><input name="ba[3]" id="" type="date" class="form-control"></td>
+                        <td class="text-center"><input name="ba[3]" id="" type="date" class="form-control" value="{{ $item->ba[3] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>No.Referensi</b></td>
-                        <td class="text-center"><input name="ba[4]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="ba[4]" id="" type="text" class="form-control" value="{{ $item->ba[4] ?? '-' }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -81,21 +82,21 @@
                     <tbody>
                       <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">Nama Instansi</b></td>
-                        <td class="text-center" colspan="3"><input name="rs[1]" id="" type="text" class="form-control"></td>
+                        <td class="text-center" colspan="3"><input name="rs[1]" id="" type="text" class="form-control" value="{{ $item->rs[1] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" rowspan="3" width="20%"><b>Alamat</b></td>
-                        <td class="text-center" rowspan="3"><textarea name="rs[2]" id="" type="text" class="form-control"></textarea></td>
+                        <td class="text-center" rowspan="3"><input name="rs[2]" id="" type="text" class="form-control" value="{{ $item->rs[2] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>Jenis Instansi</b></td>
-                        <td class="text-center"><input name="rs[3]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="rs[3]" id="" type="text" class="form-control" value="{{ $item->rs[3] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Telepon</b></td>
-                        <td class="text-center"><input name="rs[4]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="rs[4]" id="" type="text" class="form-control" value="{{ $item->rs[4] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Email</b></td>
-                        <td class="text-center"><input name="rs[5]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="rs[5]" id="" type="text" class="form-control" value="{{ $item->rs[5] ?? '-' }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -105,19 +106,19 @@
                     <tbody>
                       <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">Nama Kontak</b></td>
-                        <td class="text-center" colspan="3"><input name="kontak[1]" id="" type="text" class="form-control"></td>
+                        <td class="text-center" colspan="3"><input name="kontak[1]" id="" type="text" class="form-control" value="{{ $item->kontak[1] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Bagian</b></td>
-                        <td class="text-center"><input name="kontak[2]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="kontak[2]" id="" type="text" class="form-control" value="{{ $item->kontak[2] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>No.HP</b></td>
-                        <td class="text-center"><input name="kontak[3]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="kontak[3]" id="" type="text" class="form-control" value="{{ $item->kontak[3] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Jabatan</b></td>
-                        <td class="text-center"><input name="kontak[4]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="kontak[4]" id="" type="text" class="form-control" value="{{ $item->kontak[4] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>Email</b></td>
-                        <td class="text-center"><input name="kontak[5]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="kontak[5]" id="" type="text" class="form-control" value="{{ $item->kontak[5] ?? '-' }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -127,25 +128,25 @@
                     <tbody>
                       <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">Nama Alat</b></td>
-                        <td class="text-center" colspan="3"><input name="alat[1]" id="" type="text" class="form-control"></td>
+                        <td class="text-center" colspan="3"><input name="alat[1]" id="" type="text" class="form-control" value="{{ $item->alat[1] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Merk</b></td>
-                        <td class="text-center"><input name="alat[2]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[2]" id="" type="text" class="form-control" value="{{ $item->alat[2] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>Lokasi</b></td>
-                        <td class="text-center"><input name="alat[3]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[3]" id="" type="text" class="form-control" value="{{ $item->alat[3] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>Tipe</b></td>
-                        <td class="text-center"><input name="alat[4]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[4]" id="" type="text" class="form-control" value="{{ $item->alat[4] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>Tahun</b></td>
-                        <td class="text-center"><input name="alat[5]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[5]" id="" type="text" class="form-control" value="{{ $item->alat[5] ?? '-' }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>No.Seri</b></td>
-                        <td class="text-center"><input name="alat[6]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[6]" id="" type="text" class="form-control" value="{{ $item->alat[6] ?? '-' }}"></td>
                         <td class="text-center" width="20%"><b>Vendor</b></td>
-                        <td class="text-center"><input name="alat[7]" id="" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="alat[7]" id="" type="text" class="form-control" value="{{ $item->alat[7] ?? '-' }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -193,9 +194,9 @@
                       </tr>
                       <tr>
                         <td class="text-center" width="15%"><b>Ya</b></td>
-                        <td class="text-center"><input name="skc[1]" id="" type="checkbox" class="form-control" value="Ya"></td>
+                        <td class="text-center"><input name="skc[1]" id="" type="checkbox" class="form-control" value="{{ $item->skc[1] ?? '-' }}"></td>
                         <td class="text-center" width="15%"><b>Tidak</b></td>
-                        <td class="text-center"><input name="skc[2]" id="" type="checkbox" class="form-control" value="Tidak"></td>
+                        <td class="text-center"><input name="skc[2]" id="" type="checkbox" class="form-control" value="{{ $item->skc[2] ?? '-' }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -206,7 +207,7 @@
                         <td class="text-center" width="20%"><b>Keluhan / Kondisi Sekarang</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><textarea name="keluhan" id="keluhan" type="text" class="form-control"></textarea></td>
+                        <td class="text-center"><input name="keluhan" id="keluhan" type="text" class="form-control" value="{{ $item->keluhan }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -216,7 +217,7 @@
                         <td class="text-center" width="20%"><b>Aksi / Tindakan</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><textarea name="aksi" id="aksi" type="text" class="form-control"></textarea></td>
+                        <td class="text-center"><input name="aksi" id="aksi" type="text" class="form-control" value="{{ $item->aksi }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -226,7 +227,7 @@
                         <td class="text-center" width="20%"><b>Hasil / Kondisi Akhir</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><textarea name="hasil" id="hasil" type="text" class="form-control"></textarea></td>
+                        <td class="text-center"><input name="hasil" id="hasil" type="text" class="form-control" value="{{ $item->hasil }}"></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -238,9 +239,9 @@
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>PJ ALAT / RUANGAN</b></td>
-                        <td class="text-center"><input name="pj" id="pj" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="pj" id="pj" type="text" class="form-control" value="{{ $item->pj }}"></td>
                         <td class="text-center" width="20%"><b>TEKNISI AJS</b></td>
-                        <td class="text-center"><input name="teknisi" id="teknisi" type="text" class="form-control"></td>
+                        <td class="text-center"><input name="teknisi" id="teknisi" type="text" class="form-control" value="{{ $item->teknisi }}"></td>
                       </tr>
                       <tr>
                         <td class="text-center" width="20%"><b>TANGGAL</b></td>
@@ -254,7 +255,7 @@
                   <div class="form-group row">
                     <div class="col-sm-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
+                        <button class="ui positive button">Edit</button>
                       </div>
                     </div>
                   </div>
@@ -266,68 +267,6 @@
         </div>
       </div>
     </div>
-    <!--Tabel Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print">
-            <div class="row">
-              <div class="col-md-3">
-                <h1>Daftar SPH</h1>
-              </div>
-            </div>
-          </div>
-          <div style="overflow-x:auto;">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Instansi</th>
-                        <th>Alamat</th>
-                        <th>Telepon</th>
-                        <th>Tombol</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->rs[1] }}</td>
-                        <td>{{ $item->rs[2] }}</td>
-                        <td>{{ $item->rs[4] }}</td>
-                        <td>
-                          <a href="{{ route('teknisi.view.ba', $item->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                          <a href="{{ route('teknisi.edit.ba', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-                          <form action="{{ route('teknisi.delete.ba', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                          </form>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tabel Perbaikan-->
   </div>
 </div> <!-- /.content -->
 
