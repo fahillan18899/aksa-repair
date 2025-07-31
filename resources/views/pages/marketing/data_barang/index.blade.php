@@ -70,9 +70,27 @@
                         </button>
                       </td>
                       <td>
-                        <button class="btn btn-sm btn-{{ $items->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                          {{ $items->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
-                        </button>
+                        <form action="{{ route('teknisi.ket.repair', $items->id) }}" class="form-inner" method="post">
+                          @csrf
+                          @method('PUT')
+                          <button type="submit" class="btn btn-sm
+                            @switch ($items->ket)
+                              @case(1) btn-danger @break
+                              @case(2) btn-warning @break
+                              @case(3) btn-info @break
+                              @case(4) btn-secondary @break
+                              @case(5) btn-success @break
+                            @endswitch" disabled>
+                            @switch($items->ket)
+                            @case(1) troble @break
+                            @case(2) proses @break
+                            @case(3) dalam perbaikan @break
+                            @case(4) rusak @break
+                            @case(5) selesai @break
+                            @default Tidak diketahui
+                            @endswitch
+                          </button>
+                        </form>
                       </td>
                     </tr>
                     @empty

@@ -27,7 +27,7 @@
     z-index: 1;
   }
 
-  .table-striped {
+  .table-striped{
     width: 100%;
     border-collapse: collapse;
   }
@@ -38,7 +38,7 @@
     padding: 8px;
   }
 
-  .panel { border: 1px solid black; }
+  .panel { border: 1px solid black }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -48,8 +48,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN INVOICE</h1>
-        <small>Pembuatan invoice</small>
+        <h1>VIEW</h1>
+        <small>View invoice</small>
       </div>
     </div>
   </section>
@@ -82,9 +82,9 @@
                       </div>
                       <div class="col-xs-4">
                         <label class="form-label" for="">Tanggal Invoice :</label>
-                        <p>{{ $item->tgl_invoice }}s</p>
+                        <p>{{ $item->tgl_invoice }}</p>
                       </div>
-                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg" style="margin-top: -10px;">
+                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg">
                     </div>
                     <div class="form-group row">
                       <div class="col-xs-4"></div>
@@ -107,9 +107,7 @@
                         <p>{{ $item->alamat }}</p>
                       </div>
                     </div>
-                  </div>
-                  <br>
-                  <br>
+                  </div><br><br>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -159,7 +157,7 @@
                         </td>
                       </tr>
                     </tbody>
-                  </table><br><br>
+                  </table><br><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -183,7 +181,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd" style="opacity: 0.3;"></td>
+                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="50%" alt="Ttd"></td>
                       </tr>
                       <tr>
                         <td class="text-center"><b><u>Najwa Alfia R</u></b></td>
@@ -217,43 +215,43 @@
     document.body.innerHTML =
       `
     <html>
+    <style>
+    .invoice-header {
+      position: relative;
+    }
+
+    .invoice-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 250px;
+      z-index: 0;
+    }
+
+    .invoice-header .form-group,
+    .invoice-header label,
+    .invoice-header input,
+    .invoice-header textarea {
+      position: relative;
+      z-index: 1;
+      }
+
+    .table-striped {
+      width: 100%;
+      border-collapse : collapse;
+    }
+
+    .table-striped th,
+    .table-striped td {
+    border: 1px solid black;
+    padding: 8px;
+    }
+
+    .panel { border: 1px solid black }
+    </style>
       <head>
         <title>Print Invoice</title>
       </head>
-      <style>
-      .invoice-header {
-        position: relative;
-      }
-
-      .invoice-bg {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 250px;
-        z-index: 0;
-      }
-
-      .invoice-header .form-group,
-      .invoice-header label,
-      .invoice-header input,
-      .invoice-header textarea {
-        position: relative;
-        z-index: 1;
-      }
-
-      .table-striped {
-      width: 100%;
-      border-collapse: collapse;
-      }
-
-      .table-striped th,
-      .table-striped td {
-        border: 1px solid black;
-        padding: 8px;
-      }
-
-      .panel { border: 1px solid black; }
-    </style>
       <body>
       <h1>INVOICE</h1>
         ${printContent}
