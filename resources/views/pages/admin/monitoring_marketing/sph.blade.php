@@ -53,14 +53,16 @@
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
-                    <td>{{ $datas->lokasi_tanggal }}</td>
-                    <td>{{ $datas->no_surat }}</td>
-                    <td>{{ $datas->yth }}</td>
-                    <td>
-                      <a href="{{ route('sph.view', $datas->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                      </a>
-                    </td>
+                    <tr>
+                      <td>{{ $datas->lokasi_tanggal }}</td>
+                      <td>{{ $datas->no_surat }}</td>
+                      <td>{{ $datas->yth }}</td>
+                      <td>
+                        <a href="{{ route('sph.view', $datas->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
                     @empty
                     @endforelse
                   </tbody>

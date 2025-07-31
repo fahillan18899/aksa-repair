@@ -33,9 +33,30 @@ class MonitoringTeknisiController extends Controller
 
     public function getBeritaAcara()
     {
-        $data = BeritaAcara::all();
+        $items = BeritaAcara::all();
+        // perulangan array
+        foreach ($items as $item) {
+        if (is_string($item->rs)) {
+            $item->rs = json_decode($item->rs, true);
+        }
+    }
         return view('pages.admin.monitoring_teknisi.berita_acara',
-        compact('data'));
+        compact('items'));
+    }
+
+    public function viewBa($id)
+    {
+        $item = BeritaAcara::findOrFail($id);
+
+        //Mengubah data menjadi array
+        $item->ba = is_string($item->ba) ? json_decode($item->ba, true) : $item->ba;
+        $item->rs = is_string($item->rs) ? json_decode($item->rs, true) : $item->rs;
+        $item->kontak = is_string($item->kontak) ? json_decode($item->kontak, true) : $item->kontak;
+        $item->alat = is_string($item->alat) ? json_decode($item->alat, true) : $item->alat;
+        $item->jenis = is_string($item->jenis) ? json_decode($item->jenis, true) : $item->jenis;
+        $item->skc = is_string($item->skc) ? json_decode($item->skc, true) : $item->skc;
+        return view('pages.admin.monitoring_teknisi.view_ba',
+        compact('item'));
     }
 
 }

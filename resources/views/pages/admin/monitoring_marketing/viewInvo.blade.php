@@ -50,8 +50,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN INVOICE</h1>
-        <small>Pembuatan invoice</small>
+        <h1>VIEW</h1>
+        <small>View invoice</small>
       </div>
     </div>
   </section>
@@ -182,7 +182,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd" style="opacity: 0.3;"></td>
+                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" alt="Ttd" width="50%"></td>
                       </tr>
                       <tr>
                         <td class="text-center"><b><u>Najwa Alfia R</u></b></td>

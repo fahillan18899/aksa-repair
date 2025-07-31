@@ -29,48 +29,58 @@
     </div>
     @endif
 
+    <!--Tabel Perbaikan-->
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Berita Acara</h1>
-          </div>
-
-          <div class="panel-body panel-form">
             <div class="row">
-              <div class="col-md-12 col-sm-12">
-
-                <!--TABEL-->
-                <table class="datatable table table-striped table-bordered" style="width:100%">
-                  <thead class="table-light">
-                    <tr>
-                      <th>No</th>
-                      <th>Instansi</th>
-                      <th>Link Download</th>
-                      <th>Tanggal Upload</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @foreach($data as $index => $items)
-                    <tr>
-                      <td>{{ $index + 1 }}</td>
-                      <td>{{ $items->instansi }}</td>
-                      <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
-                      <td>{{ $items->created_at->format('d-m-Y') }}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-                <!--TABEL-->
+              <div class="col-md-3">
+                <h1>Daftar SPH</h1>
               </div>
-              <div class="col-md-3"></div>
             </div>
           </div>
-
+          <div style="overflow-x:auto;">
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Instansi</th>
+                        <th>Alamat</th>
+                        <th>Telepon</th>
+                        <th>Tombol</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @forelse($items as $item)
+                      <tr>
+                        <td>{{ $item->rs[1] }}</td>
+                        <td>{{ $item->rs[2] }}</td>
+                        <td>{{ $item->rs[4] }}</td>
+                        <td>
+                          <a href="{{ route('beritaAcara.view', $item->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
+                  <!--TABEL-->
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <!--Tabel Perbaikan-->
   </div>
 </div> <!-- /.content -->
 @endsection

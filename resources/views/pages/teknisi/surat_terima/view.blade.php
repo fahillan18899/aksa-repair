@@ -56,11 +56,8 @@
               <div class="col-md-9 col-sm-12">
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   <br>
-                  <div class="row" style="margin-left: 600px;">
-                    <p>Boyolali</p>
-                  </div>
-                  <div class="row" style="margin-left: 600px;" >
-                    <p>{{\Carbon\Carbon::now()->translatedFormat('d-m-y')}}</p>
+                  <div class="row" style="margin-left: 500px;">
+                    <p>Boyolali {{\Carbon\Carbon::now()->translatedFormat('d-m-y')}}</p>
                   </div>
                   <h2>PIHAK PERTAMA</h2>
                   <div class="form-group row">
