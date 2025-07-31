@@ -12,6 +12,6 @@ class Invoice extends Model
     public $incrementing = true;       // <- karena auto-increment
     protected $keyType = 'string';     // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'yth', 'tgl_invoice', 'no_invoice', 'no_pesanan', 'barang_jasa', 'keterangan',
-                            'unit', 'harga_satuan', 'harga', 'harga_tanpa_pajak', 'pajak', 'total', 'status'];
+    protected $fillable = [ 'id', 'yth', 'tgl_invoice', 'no_invoice', 'no_pesanan', 'alamat', 'barang_jasa', 
+                            'keterangan', 'unit', 'harga_satuan', 'harga', 'harga_tanpa_pajak', 'pajak', 'total', 'status'];
 }

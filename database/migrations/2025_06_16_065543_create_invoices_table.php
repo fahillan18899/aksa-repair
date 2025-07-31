@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('tgl_invoice')->nullable();
             $table->text('no_invoice')->nullable();
             $table->text('no_pesanan')->nullable();
+            $table->text('alamat')->nullable();
             $table->text('barang_jasa')->nullable();
             $table->text('keterangan')->nullable();
             $table->text('unit')->nullable();

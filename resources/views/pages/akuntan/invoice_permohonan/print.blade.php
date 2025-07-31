@@ -100,6 +100,13 @@
                         <p>{{ $item->no_pesanan }}</p>
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <div class="col-xs-4"></div>
+                      <div class="col-xs-4">
+                        <label class="form-label" for="">Alamat :</label>
+                        <p>{{ $item->alamat }}</p>
+                      </div>
+                    </div>
                   </div><br><br><br><br><br><br>
                   <table class="table-striped">
                     <thead>
@@ -174,7 +181,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/aksa.png') }}" alt="Ttd" style="opacity: 0.3;"></td>
+                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="50%" alt="Ttd"></td>
                       </tr>
                       <tr>
                         <td class="text-center"><b><u>Najwa Alfia R</u></b></td>

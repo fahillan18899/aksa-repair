@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Akuntan;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\Sph;
 use Illuminate\Http\Request;
 
 class InvoicePermohonanController extends Controller
@@ -11,8 +12,9 @@ class InvoicePermohonanController extends Controller
     public function index()
     {
         $item = Invoice::all();
+        $sph = Sph::all();
         return view('pages.akuntan.invoice_permohonan.index',
-        compact('item'));
+        compact('item', 'sph'));
     }
 
     public function post(Request $request)
@@ -22,6 +24,7 @@ class InvoicePermohonanController extends Controller
             'tgl_invoice'       => 'nullable',
             'no_invoice'        => 'nullable',
             'no_pesanan'        => 'nullable',
+            'alamat'            => 'nullable',
             'barang_jasa'       => 'nullable',
             'keterangan'        => 'nullable',
             'unit'              => 'nullable',
@@ -51,6 +54,7 @@ class InvoicePermohonanController extends Controller
             'tgl_invoice'       => 'nullable',
             'no_invoice'        => 'nullable',
             'no_pesanan'        => 'nullable',
+            'alamat'            => 'nullable',
             'barang_jasa'       => 'nullable',
             'keterangan'        => 'nullable',
             'unit'              => 'nullable',
@@ -82,6 +86,16 @@ class InvoicePermohonanController extends Controller
         return back();
 
     }
+
+public function fetch($id)
+{
+    $data = Sph::where('no_surat', $id)->first();
+    if (!$data) {
+        return response()->json(['error' => 'Data not found'], 404);
+    }
+    return response()->json($data);
+}
+
 
     public function delete($id)
     {

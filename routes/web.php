@@ -166,6 +166,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
         Route::put('link_invoice_permohonan/status/{id}', [InvoicePermohonanController::class, 'status'])->name('status.invoicePermohonan');
         Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
         Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
+        Route::get('link_invoice_permohonan/data_sph/{id}', [InvoicePermohonanController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');;
     //invoice permohonan end//
 
     //Fakture //
