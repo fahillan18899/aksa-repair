@@ -101,6 +101,14 @@
         </ul>
       </li>
       <!---->
+      <!---->
+      <li class="{{ request()->is('dashboard/ppm/link_operator') ? 'active' : '' }}">
+        <a href="{{ route('operator.data') }}">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <span>Operator</span>
+        </a>
+      </li>
+      <!---->
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->

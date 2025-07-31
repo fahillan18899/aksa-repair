@@ -9,6 +9,7 @@ use App\Http\Controllers\DataAlatController;
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
+use App\Http\Controllers\Admin\OperatorController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
 use App\Http\Controllers\Marketing\DataBarangController;
@@ -63,6 +64,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
         Route::get('link_invoice_akun/view/{id}', [MonitoringAkuntanController::class, 'viewInv'])->name('invoiceAkuntan.viewInv');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
+
+        //Operator//
+        Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
 
     });
 });
