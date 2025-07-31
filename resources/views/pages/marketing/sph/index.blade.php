@@ -66,7 +66,6 @@
 
           <div class="panel-body panel-form">
             <div class="row">
-              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
@@ -254,42 +253,11 @@
                     </tr>
                     </tbody>
                   </table>
-                    
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="panel panel-default thumbnail">
-                        <div class="panel-heading no-print">
-                          <p><u><b>Kondisi Penawaran</b></u></p><br>
-                          <p>1. <b>Harga Sudah Termasuk :</b></p>
-                          <p style="margin-left: 15px;">PPn 11%</p>
-                          <p>2. <b>Sistem Pembayaran :</b>100% Lunas diawal <i>(Chas in Advance),</i> ditransfer ke :</p>
-                          <p style="margin-left: 15px; color: blue;"><b>Bank BNI | a.n.: PT. Aksa Jaya Sentosa | No.Rek.: 1783871355.</b></p>
-                          <p>3. <b>Masa Berlaku Penawaran:</b> 30(tiga-puluh) hari sejak tanggal penawaran / dapat berubah sewaktu-wakut.</p>
-                          <p>4. Garansi Perbaikan : 1(satu) minggu</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <p>Demikian, suatu penghargaan  yang besar bagi kami segera mendapatkan respone yang terbaik atas informasi yang kami sampaikan
                     ini semoga bermanfaat dan terimakasih atas kerja samanya, sukses untuk kita bersama.
                   </p>
-                  <table class="table" style="width: 20%;">
-                    <thead>
-                      <tr>
-                        <th class="text-center">Hormat Kami</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="50%" alt="Ttd"></td>
-                      </tr>
-                      <tr>
-                        <td align="center"><b><u>Najwa Alfia R</u></b></td>
-                      </tr>
-                    </tbody>
-                  </table>
                    <div class="form-group row">
-                    <div class="col-sm-offset-3 col-sm-6">
+                    <div class="col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>
                       </div>

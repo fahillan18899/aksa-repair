@@ -84,7 +84,7 @@
                         <label class="form-label" for="">Tanggal Invoice :</label>
                         <p>{{ $item->tgl_invoice }}s</p>
                       </div>
-                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg">
+                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg" style="margin-top: -10px;">
                     </div>
                     <div class="form-group row">
                       <div class="col-xs-4"></div>
@@ -100,11 +100,14 @@
                         <p>{{ $item->no_pesanan }}</p>
                       </div>
                     </div>
+                    <div class="form-group row">
+                      <div class="col-xs-4"></div>
+                      <div class="col-xs-4">
+                        <label class="form-label" for="">Alamat :</label>
+                        <p>{{ $item->alamat }}</p>
+                      </div>
+                    </div>
                   </div>
-                  <br>
-                  <br>
-                  <br>
-                  <br>
                   <br>
                   <br>
                   <table class="table-striped">
