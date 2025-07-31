@@ -1,28 +1,40 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
-# Install dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     unzip \
+    git \
     curl \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libonig-dev \
     libzip-dev \
     zip \
-    git \
-    && docker-php-ext-install zip pdo_mysql
+    libxml2-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql mbstring zip gd bcmath xml
+
+# Enable Apache rewrite module
+RUN a2enmod rewrite
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /app
+WORKDIR /var/www/html
 
-# Copy project files
+# Copy Laravel project files
 COPY . .
 
-# Install dependencies
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port
-EXPOSE 10000
+# Set file permissions
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Start Laravel app
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+# Expose port 80
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]
