@@ -3,12 +3,31 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OperatorController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.operator.index');
+        $item = User::all();
+        return view('pages.admin.operator.index',
+        compact('item'));
+    }
+
+    public function post(Request $request)
+    {
+        $validate = $request->validate([
+            'username'  => 'nullable',
+            'password'  => 'nullable',
+            'rs_divisi' => 'nullable',
+            'user_role' => 'nullable',
+            'divisi'    => 'nullable',
+            'rs'        => 'nullable',
+            'kode_rs'   => 'nullable'
+        ]);
+        $validate['password'] = bcrypt($request->input('password')); 
+        User::create($validate);
+        return back()->with('success', 'Data User berhasil ditambahkan');
     }
 }

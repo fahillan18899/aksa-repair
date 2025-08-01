@@ -67,6 +67,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Operator//
         Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
+        Route::post('link_operator', [OperatorController::class, 'post'])->name('operator.post');
 
     });
 });
