@@ -27,6 +27,7 @@ use App\Http\Controllers\Teknisi\QrController;
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
+use Matrix\Operators\Operator;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -68,6 +69,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         //Operator//
         Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
         Route::post('link_operator', [OperatorController::class, 'post'])->name('operator.post');
+        Route::get('link_operator/edit/{user_id}', [OperatorController::class, 'edit'])->name('operator.edit');
+        Route::put('link_operator/update/{user_id}', [OperatorController::class, 'update'])->name('operator.update');
+        Route::delete('link_operator/{user_id}', [OperatorController::class, 'delete'])->name('operator.delete');
 
     });
 });
