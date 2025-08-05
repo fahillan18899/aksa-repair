@@ -233,7 +233,7 @@
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" width="10%" alt="Ttd" style="opacity:  0.3;"></td>
+                        <td class="text-center" colspan="2"></td>
                         <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" width="10%" alt="Ttd" style="opacity:  0.3;"></td>
                       </tr>
                       <tr>
