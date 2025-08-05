@@ -66,7 +66,7 @@
 
           <div class="panel-body panel-form">
             <div class="row">
-              <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
+              <!-- <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;"> -->
                 <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner col-sm-12" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <h2>PIHAK PERTAMA</h2>
@@ -137,55 +137,8 @@
                       <!-- DATA DINAMIS -->
                     </tbody>
                   </table>
-
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h2>PERNYATAAN DAN KETENTUAN</h2>
-                      <p>1. Kelengkapan yang tertera dengan kondisi yang sebenarnya</p>
-                      <p>2. Dari pihak pertama tidak menerima kehilangan alat jikalau alat tersebut tidak tertera</p>
-                      <p>3. Dari pihak kedua dapat menagih kepada pihak pertama jikalau ada kehilangan kelengkapan yang sudah tertera pada surat</p>
-                    </div>
-                  </div><br>
                   <div class="form-group row">
-                    <div class="col-xs-6">
-                      <table class="table" style="width: 60%;">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Pihak yang menyerahkan,</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td align="center"><img src="{{ url('assets/images/aksa.png') }}" width="30%" alt="Ttd" style="opacity: 0.3;"></td>
-                          </tr>
-                          <tr>
-                            <td align="center"><b><u>.....................</u></b></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="col-xs-6">
-                      <table class="table" style="width: 60%; margin-left: 300px">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Pihak yang menerima,</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td align="center"><img src="{{ url('assets/images/aksa.png') }}" width="30%" alt="Ttd" style="opacity: 0.3;"></td>
-                          </tr>
-                          <tr>
-                            <td align="center"><b><u>.....................</u></b></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div><br>
-                  <p>*Catatan: Formulir ini berlaku sebagai bukti sah serah terima alat dan dibuat dalam 2(dua) rangkap,</p>
-                  <p>masing masing untk pihak yang menyerahkan dan menerima</p>
-                  <div class="form-group row">
-                    <div class="col-sm-offset-3 col-sm-6">
+                    <div class="col-sm-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>
                       </div>
