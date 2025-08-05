@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teknisi')
 
 @section('content')
 @section('title', 'Berita Acara')
@@ -92,100 +92,77 @@
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
               <div class="col-sm-12">
-                <img src="{{ url('assets/images/ba_aksa.png') }}" alt="kop" style="width: 300px;"><br>
+                <!-- <img src="{{ url('assets/images/ba_aksa.png') }}" alt="kop" style="width: 200px;"><br> -->
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <!-- Berita Acara -->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">No.Berita Acara</b></td>
-                        <td class="text-center">{{ $item->ba[1] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>No.Urut dari</b></td>
-                        <td class="text-center">{{ $item->ba[2] ?? '-' }}</td>
+                        <td width="20%"><div class="group-form row"><label style="color: blue;" for="noBeritaAcara" class="from-lable col-xs-6">No.Berita Acara :</label><div class="col-xs-5">{{ $item->ba[1] ?? '-' }}</div></div></td>
+                        <td width="20%"><div class="group-form row"><label for="No.Urut dari" class="from-lable col-xs-6">No.Urut dari :</label><div class="col-xs-5">{{ $item->ba[2] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Tanggal BA</b></td>
-                        <td class="text-center">{{ $item->ba[3] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>No.Referensi</b></td>
-                        <td class="text-center">{{ $item->ba[4] ?? '-' }}</td>
+                        <td width="20%"><div class="group-form row"><label for="Tanggal BA" class="from-lable col-xs-6">Tanggal BA :</label><div class="col-xs-5">{{ $item->ba[3] ?? '-' }}</div></div></td>
+                        <td width="20%"><div class="group-form row"><label for="No.Referensi" class="from-lable col-xs-6">No.Referensi :</label><div class="col-xs-5">{{ $item->ba[4] ?? '-' }}</div></div></td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <!-- Berita Acara -->
                   <!-- Rs -->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">Nama Instansi</b></td>
-                        <td class="text-center" colspan="3">{{ $item->rs[1] ?? '-' }}</td>
+                         <td width="20%" colspan="4"><div class="group-form row"><label for="Nama Instansi" class="from-lable col-xs-3" style="color: blue;">Nama Instansi :</label><div class="col-xs-5">{{ $item->rs[1] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" rowspan="3" width="20%"><b>Alamat</b></td>
-                        <td class="text-center" rowspan="3">{{ $item->rs[2] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>Jenis Instansi</b></td>
-                        <td class="text-center">{{ $item->rs[3] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Alamat" class="from-lable col-xs-5">Alamat :</label><div class="col-xs-5">{{ $item->rs[2] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Jenis Instansi" class="from-lable col-xs-5">Jenis Instansi :</label><div class="col-xs-5">{{ $item->rs[3] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Telepon</b></td>
-                        <td class="text-center">{{ $item->rs[4] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center" width="20%"><b>Email</b></td>
-                        <td class="text-center">{{ $item->rs[5] ?? '-' }}</td>
+                         <td width="20%" colspan="2"><div class="group-form row"><label for="Telepon" class="from-lable col-xs-5">Telepon :</label><div class="col-xs-5">{{ $item->rs[4] ?? '-' }}</div></div></td>
+                         <td width="20%" colspan="2"><div class="group-form row"><label for="Email" class="from-lable col-xs-5">Email :</label><div class="col-xs-5">{{ $item->rs[5] ?? '-' }}</div></div></td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <!-- Rs -->
                   <!-- Kontak -->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">Nama Kontak</b></td>
-                        <td class="text-center" colspan="3">{{ $item->kontak[1] ?? '-' }}</td>
+                        <td width="20%" colspan="4"><div class="group-form row"><label for="Nama Kontak" class="from-lable col-xs-3" style="color: blue;">Nama Kontak :</label><div class="col-xs-5">{{ $item->kontak[1] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Bagian</b></td>
-                        <td class="text-center">{{ $item->kontak[2] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>No.HP</b></td>
-                        <td class="text-center">{{ $item->kontak[3] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Bagian" class="from-lable col-xs-4">Bagian :</label><div class="col-xs-5">{{ $item->kontak[2] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="No.HP" class="from-lable col-xs-4">No.HP :</label><div class="col-xs-5">{{ $item->kontak[3] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Jabatan</b></td>
-                        <td class="text-center">{{ $item->kontak[4] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>Email</b></td>
-                        <td class="text-center">{{ $item->kontak[5] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Jabatan" class="from-lable col-xs-4">Jabatan :</label><div class="col-xs-5">{{ $item->kontak[4] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Email" class="from-lable col-xs-4">Email :</label><div class="col-xs-5">{{ $item->kontak[5] ?? '-' }}</div></div></td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <!-- Kontak -->
                   <!-- Alat -->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">Nama Alat</b></td>
-                        <td class="text-center" colspan="3">{{ $item->alat[1] ?? '-' }}</td>
+                        <td width="20%" colspan="4"><div class="group-form row"><label for="Nama Alat" class="from-lable col-xs-2" style="color: blue;">Nama Alat :</label><div class="col-xs-5">{{ $item->alat[1] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Merk</b></td>
-                        <td class="text-center">{{ $item->alat[2] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>Lokasi</b></td>
-                        <td class="text-center">{{ $item->alat[3] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Merk" class="from-lable col-xs-3">Merk :</label><div class="col-xs-5">{{ $item->alat[2] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Lokasi" class="from-lable col-xs-3">Lokasi :</label><div class="col-xs-5">{{ $item->alat[3] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>Tipe</b></td>
-                        <td class="text-center">{{ $item->alat[4] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>Tahun</b></td>
-                        <td class="text-center">{{ $item->alat[5] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Tipe" class="from-lable col-xs-3">Tipe :</label><div class="col-xs-5">{{ $item->alat[4] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Tahun" class="from-lable col-xs-3">Tahun :</label><div class="col-xs-5">{{ $item->alat[5] ?? '-' }}</div></div></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>No.Seri</b></td>
-                        <td class="text-center">{{ $item->alat[6] ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>Vendor</b></td>
-                        <td class="text-center">{{ $item->alat[7] ?? '-' }}</td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="No.Seri" class="from-lable col-xs-3">No.Seri :</label><div class="col-xs-5">{{ $item->alat[6] ?? '-' }}</div></div></td>
+                        <td width="20%" colspan="2"><div class="group-form row"><label for="Vendor" class="from-lable col-xs-3">Vendor :</label><div class="col-xs-5">{{ $item->alat[7] ?? '-' }}</div></div></td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <!-- Alat -->
                   <!-- Jenis -->
                   <table class="table-striped" width="100%">
@@ -196,71 +173,45 @@
                         <td colspan="2" class="text-center" width="20%"><b style="color: blue;">Lokasi Pekerjaan</b></td>
                       </tr>
                       <tr>
+                        <td class="text-center" width="15%"><b>Servis/PPM</b></td>
                         <td class="text-center">{{ $item->jenis[1] ?? 'Tidak' }}</td>
-                        <td class="text-center" width="15%"><b>Kontrak Servis/PPM</b></td>
+                        <td class="text-center" width="15%"><b>Maintenance/Repair</b></td>
                         <td class="text-center">{{ $item->jenis[2] ?? 'Tidak' }}</td>
-                        <td class="text-center" width="15%"><b>Pemeliharaan / Perbaikan</b></td>
-                        <td class="text-center">{{ $item->jenis[3] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>di tempat instansi</b></td>
+                        <td class="text-center">{{ $item->jenis[3] ?? 'Tidak' }}</td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->jenis[4] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>Panggilan (on call)</b></td>
-                        <td class="text-center">{{ $item->jenis[5] ?? 'Tidak' }}</td>
+                        <td class="text-center">{{ $item->jenis[4] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>Instalasi / Uji Fungsi</b></td>
+                        <td class="text-center">{{ $item->jenis[5] ?? 'Tidak' }}</td>
+                        <td class="text-center" width="15%"><b>kantor</b></td>
                         <td class="text-center">{{ $item->jenis[6] ?? 'Tidak' }}</td>
-                        <td class="text-center" width="15%"><b>di Workshop kantor</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->jenis[7] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>Garansi</b></td>
-                        <td class="text-center">{{ $item->jenis[8] ?? 'Tidak' }}</td>
+                        <td class="text-center">{{ $item->jenis[7] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>Kalibrasi</b></td>
-                        <td class="text-center">{{ $item->jenis[9] ?? 'Tidak' }}</td>
+                        <td class="text-center">{{ $item->jenis[8] ?? 'Tidak' }}</td>
                         <td class="text-center" width="15%"><b>Pihak ke-3</b></td>
+                        <td class="text-center">{{ $item->jenis[9] ?? 'Tidak' }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <!-- Jenis -->
-                  <!-- SKC -->
+                  <!-- SKC DLL-->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td colspan="4" class="text-center" width="20%"><b style="color: blue;">SKC</b></td>
+                        <td class="text-center" width="20%"><b style="color: blue;">SKC</b></td>
+                        <td class="text-center" width="20%"><b style="color: blue;">Keluhan</b></td>
+                        <td class="text-center" width="20%"><b style="color: blue;">Tindakan</b></td>
+                        <td class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
                       </tr>
                       <tr>
                         <td class="text-center">{{ $item->skc[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->skc[2] ?? '-' }}</td>
-                      </tr>
-                    </tbody>
-                  </table><br>
-                  <!-- SKC -->
-                  <table class="table-striped" width="100%">
-                    <tbody>
-                      <tr>
-                        <td class="text-center" width="20%"><b>Keluhan / Kondisi Sekarang</b></td>
-                      </tr>
-                      <tr>
                         <td class="text-center">{{ $item->keluhan ?? '-' }}</td>
-                      </tr>
-                    </tbody>
-                  </table><br>
-                  <table class="table-striped" width="100%">
-                    <tbody>
-                      <tr>
-                        <td class="text-center" width="20%"><b>Aksi / Tindakan</b></td>
-                      </tr>
-                      <tr>
                         <td class="text-center">{{ $item->aksi ?? '-' }}</td>
-                      </tr>
-                    </tbody>
-                  </table><br>
-                  <table class="table-striped" width="100%">
-                    <tbody>
-                      <tr>
-                        <td class="text-center" width="20%"><b>Hasil / Kondisi Akhir</b></td>
-                      </tr>
-                      <tr>
                         <td class="text-center">{{ $item->hasil ?? '-' }}</td>
                       </tr>
                     </tbody>
@@ -268,11 +219,11 @@
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image1" width="20%" alt="Ttd"></td>
+                        <td class="text-center" colspan="2"><img src="" id="ttd_image1" width="20%" alt="Ttd"></td>
                         <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>PJ ALAT / RUANGAN</b></td>
+                        <td class="text-center" width="20%"><b>PJ ALAT</b></td>
                         <td class="text-center">{{ $item->pj ?? '-' }}</td>
                         <td class="text-center" width="20%"><b>TEKNISI AJS</b></td>
                         <td class="text-center">{{ $item->teknisi ?? '-' }}</td>
@@ -449,24 +400,6 @@
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
-
-  // Gambar background aksa.png
-  var bgImage = new Image();
-  bgImage.src = "{{ url('assets/images/aksa.png') }}"; // Blade syntax
-  bgImage.onload = function () {
-    drawBackground();
-  };
-
-  function drawBackground() {
-    ctx.globalAlpha = 0.3; // transparansi
-    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1.0; // reset untuk signature
-  }
-
-  function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBackground();
-  }
 
     var drawing = false;
     var mousePos = {
