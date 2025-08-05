@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('vaktures', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('tanggal');
+            $table->text('nama')->nullable();
+            $table->text('path')->nullable();
+            $table->text('tanggal')->nullable();
             $table->timestamps();
         });
     }

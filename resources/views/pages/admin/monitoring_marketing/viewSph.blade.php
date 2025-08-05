@@ -239,7 +239,7 @@
                           <p>2. <b>Sistem Pembayaran :</b>100% Lunas diawal <i>(Chas in Advance),</i> ditransfer ke :</p>
                           <p style="margin-left: 15px; color: blue;"><b>Bank BNI | a.n.: PT. Aksa Jaya Sentosa | No.Rek.: 1783871355.</b></p>
                           <p>3. <b>Masa Berlaku Penawaran:</b> 30(tiga-puluh) hari sejak tanggal penawaran / dapat berubah sewaktu-wakut.</p>
-                          <p>4. Garansi Perbaikan : 1(satu) minggu</p>
+                          <p>4. Garansi Perbaikan : 1 sampai 2 bulan</p>
                         </div>
                       </div>
                     </div>
