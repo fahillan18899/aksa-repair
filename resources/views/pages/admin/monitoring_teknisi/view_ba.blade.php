@@ -1,4 +1,4 @@
-@extends('layouts.teknisi')
+@extends('layouts.admin')
 
 @section('content')
 @section('title', 'Berita Acara')
@@ -218,10 +218,10 @@
                   </table><br>
                   <table class="table-striped" width="100%">
                     <tbody>
-                      <tr>
+                      <!-- <tr>
                         <td class="text-center" colspan="2"><img src="" id="ttd_image1" width="20%" alt="Ttd"></td>
                         <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td class="text-center" width="20%"><b>PJ ALAT</b></td>
                         <td class="text-center">{{ $item->pj ?? '-' }}</td>
@@ -241,14 +241,14 @@
               <div class="col-md-3"></div>
             </div>
           </div>
-          <div class="form-group row">
+          <!-- <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
               <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;"
               data-toggle="modal" data-target="#exampleModal">TTD</button>
               <button type="button" onclick="printMy('print_me')"
                 class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
