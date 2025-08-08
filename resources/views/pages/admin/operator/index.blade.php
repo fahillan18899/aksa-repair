@@ -122,7 +122,7 @@
                     @forelse($item as $items)
                       <tr>
                         <td>{{ $items->username }}</td>
-                        <td>{{ $items->divisi }}</td>
+                        <td>{{ $items->user_role }}</td>
                         <td>{{ $items->rs_divisi }}</td>
                         <td>
                           <a href="{{ route('operator.edit', $items->user_id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
