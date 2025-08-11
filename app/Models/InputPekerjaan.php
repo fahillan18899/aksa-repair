@@ -13,5 +13,7 @@ class InputPekerjaan extends Model
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'merek', 'type', 'no_seri', 'instansi', 'kerusakan', 'instansi', 'foto', 'created_at', 'updated_at'];
+    protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'merek', 'type', 'no_seri', 
+                            'instansi', 'kerusakan', 'instansi', 'foto', 'user',
+                            'created_at', 'updated_at'];
 }

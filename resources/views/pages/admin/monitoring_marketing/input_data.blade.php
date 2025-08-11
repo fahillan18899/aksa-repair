@@ -46,7 +46,11 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Nama</th>
+                      <th scope="col">Marketing</th>
+                      <th scope="col">Nama Alat</th>
+                      <th scope="col">Merk</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Serial Number</th>
                       <th scope="col">Instansi</th>
                     </tr>
                   </thead>
@@ -54,7 +58,11 @@
                     @forelse($data as $datas)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->user }}</td>
                       <td>{{ $datas->nama_alat }}</td>
+                      <td>{{ $datas->merek }}</td>
+                      <td>{{ $datas->type }}</td>
+                      <td>{{ $datas->no_seri }}</td>
                       <td>{{ $datas->instansi }}</td>
                     </tr>
                     @empty

@@ -41,7 +41,8 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.inputanPekerjaan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
-                  <input name="no_urut" id="no_urut" class="form-control" type="hidden">
+                  <input class="form-control" type="hidden" name="no_urut">
+                  <input class="form-control" type="hidden" name="user" value="{{ Auth::user()->username }}">
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">

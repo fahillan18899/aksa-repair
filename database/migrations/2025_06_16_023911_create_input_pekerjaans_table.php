@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('instansi')->nullable();
             $table->text('kerusakan')->nullable();
             $table->text('foto')->nullable();
+            $table->text('user')->nullable();
             $table->timestamps();
         });
     }
