@@ -20,14 +20,18 @@ return new class extends Migration
             $table->text('no_invoice')->nullable();
             $table->text('no_pesanan')->nullable();
             $table->text('alamat')->nullable();
-            $table->text('barang_jasa')->nullable();
-            $table->text('keterangan')->nullable();
-            $table->text('unit')->nullable();
-            $table->text('harga_satuan')->nullable();
+            $table->json('akom')->nullable();
+            $table->json('part')->nullable();
+            $table->json('nama_alat')->nullable();
+            $table->json('keterangan')->nullable();
+            $table->text('jumlah')->nullable();
             $table->text('harga')->nullable();
+            $table->text('diskon')->nullable();
+            $table->text('harga_diskon')->nullable();
             $table->text('harga_tanpa_pajak')->nullable();
             $table->text('pajak')->nullable();
             $table->text('total')->nullable();
+            $table->text('status')->default('1');
             $table->timestamps();
         });
     }

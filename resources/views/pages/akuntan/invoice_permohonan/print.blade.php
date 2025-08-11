@@ -107,57 +107,147 @@
                         <p>{{ $item->alamat }}</p>
                       </div>
                     </div>
-                  </div><br><br><br><br><br><br>
-                  <table class="table-striped">
+                  </div><br><br>
+                  <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center"><b>BARANG / JASA</b></th>
-                        <th class="text-center"><b>KETERANGAN</b></th>
-                        <th class="text-center"><b>UNIT</b></th>
-                        <th class="text-center"><b>HARGA SATUAN</b></th>
-                        <th class="text-center"><b>TOTAL</b></th>
+                        <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
+                        <th class="text-center"><b>HARGA / ITEM / KM</b></th>
+                        <th class="text-center"><b>JUMLAH / BELI</b></th>
+                        <th class="text-center"><b>SUB TOTAL</b></th>
+                        <th class="text-center"><b>HARGA YANG DITAWARKAN</b></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="text-center">1</td>
-                        <td align="center">
-                          <p>{{ $item->barang_jasa }}</p>
-                        </td>
-                        <td align="center">
-                          <p>{{ $item->keterangan }}</p>
-                        </td>
-                        <td align="center">
-                          <p>{{ $item->unit }}</p>
-                        </td>
-                        <td align="center">
-                          <p>{{ $item->harga_satuan }}</p>
-                        </td>
-                        <td align="center">
-                          <p>{{ $item->harga }}</p>
-                        </td>
+                        <td rowspan="4" class="text-center">AKOMODASI</td>
+                        <td class="text-center">Motor</td>
+                        <td class="text-center">{{ $item->akom[1] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[2] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[3] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[4] ?? '-' }}</td>
                       </tr>
                       <tr>
-                        <td colspan="5"><b>Sub total</b></td>
-                        <td align="center">
-                          <p>{{ $item->harga_tanpa_pajak }}</p>
-                        </td>
+                        <td class="text-center">Mobil</td>
+                        <td class="text-center">{{ $item->akom[5] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[6] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[7] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[8] ?? '-' }}</td>
                       </tr>
                       <tr>
-                        <td colspan="5"><b>PPN 11%</b></td>
-                        <td align="center">
-                          <p>{{ $item->pajak }}</p>
-                        </td>
+                        <td class="text-center">Uang Makan</td>
+                        <td colspan="3" class="text-center">{{ $item->akom[9] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[10] ?? '-' }}</td>
                       </tr>
                       <tr>
-                        <td colspan="5"><b>Total</b></td>
-                        <td align="center">
-                          <p>{{ $item->total }}</p>
-                        </td>
+                        <td class="text-center">Tol</td>
+                        <td colspan="3" class="text-center">{{ $item->akom[11] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->akom[12] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="5" class="text-center">Total Biaya Akomodasi</td>
+                        <td colspan="" class="text-center">{{ $item->akom[13] ?? '-' }}</td>
                       </tr>
                     </tbody>
-                  </table><br><br><br>
+                  </table>
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="text-center"><b>NAMA PART</b></th>
+                        <th class="text-center"><b>HARGA</b></th>
+                        <th class="text-center"><b>JUMLAH</b></th>
+                        <th class="text-center"><b>TOTAL HARGA PART</b></th>
+                        <th class="text-center"><b>BIAYA</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">{{ $item->part[1] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[2] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[3] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[4] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[5] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $item->part[6] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[7] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[8] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[9] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[10] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $item->part[11] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[12] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[13] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[14] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[15] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="4" class="text-center">Total Biaya Part</td>
+                        <td class="text-center">{{ $item->part[16] ?? '-' }}</td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="text-center">Biaya Service</td>
+                        <td colspan="2" class="text-center">{{ $item->part[17] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part[18] ?? '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table table-striped table-bordered" id="dinamic">
+                    <thead>
+                      <tr>
+                        <th class="text-center"><b>NAMA ALAT</b></th>
+                        <th class="text-center"><b>KETERANGAN</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($item->nama_alat as $index => $nama)
+                            <tr>
+                                <td align="center">{{ is_array($nama) ? implode(', ', $nama) : $nama }}</td>
+                                <td align="center">{{ is_array($item->keterangan[$index] ?? '') ? implode(', ', $item->keterangan[$index]) : ($item->keterangan[$index] ?? '') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                  </table>
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="text-center"><b>JUMLAH</b></th>
+                        <th class="text-center"><b>HARGA</b></th>
+                        <th class="text-center"><b>DISKON</b></th>
+                        <th class="text-center"><b>HARGA DISKON</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td align="center">{{ $item->jumlah }}</td>
+                        <td align="center">{{ $item->harga }}</td>
+                        <td align="center">{{ $item->diskon }} %</td>
+                        <td align="center">{{ $item->harga_diskon }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th colspan="2" class="text-center">PERHITUNGAN</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center"><b>Harga Tanpa Pajak</b></td>
+                        <td align="center" width="50%">{{ $item->harga_tanpa_pajak }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center"><b>Pajak 11%</b></td>
+                        <td align="center">{{ $item->pajak }}</td>
+                      </tr>
+                      <tr>
+                        <td class="text-center"><b>Total</b></td>
+                        <td align="center">{{ $item->total }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">

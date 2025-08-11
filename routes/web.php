@@ -170,6 +170,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
 
     //invoice permohonan //
         Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
+        Route::get('link_invoice_permohonan/view/{id}', [InvoicePermohonanController::class, 'view'])->name('view.invoicePermohonan');
         Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
         Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
         Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
