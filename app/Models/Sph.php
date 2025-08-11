@@ -16,6 +16,6 @@ class Sph extends Model
     protected $fillable = [ 'lokasi_tanggal', 'no_surat', 'hal', 'yth',
                             'akom', 'part', 'nama_alat', 'keterangan', 
                             'jumlah', 'harga', 'diskon', 'harga_diskon', 
-                            'harga_tanpa_pajak', 'pajak', 'total', 
+                            'harga_tanpa_pajak', 'pajak', 'total', 'user', 
                             'created_at', 'updated_at'];
 }

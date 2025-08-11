@@ -85,6 +85,7 @@ class SphController extends Controller
             'harga_tanpa_pajak' => 'nullable',
             'pajak'             => 'nullable',
             'total'             => 'nullable',
+            'user'              => 'nullable',
         ]);
 
         $validate['akom'] = json_encode($request->akom);
@@ -166,6 +167,7 @@ class SphController extends Controller
             'harga_tanpa_pajak' => 'nullable',
             'pajak'             => 'nullable',
             'total'             => 'nullable',
+            'user'              => 'nullable',
         ]);
 
         $item = Sph::findOrFail($id);

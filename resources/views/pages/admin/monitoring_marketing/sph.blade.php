@@ -45,6 +45,7 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
+                      <th>Marketing</th>
                       <th>Lokasi, Tanggal</th>
                       <th>No Surat</th>
                       <th>Instansi</th>
@@ -54,6 +55,7 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
+                      <td>{{ $datas->user }}</td>
                       <td>{{ $datas->lokasi_tanggal }}</td>
                       <td>{{ $datas->no_surat }}</td>
                       <td>{{ $datas->yth }}</td>

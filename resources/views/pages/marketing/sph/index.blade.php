@@ -69,6 +69,7 @@
               <div class="col-md-9 col-sm-12">
                 <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
+                  <input name="user" type="hidden" value="{{ Auth::user()->username }}">
                   <div class="col-xs-4" style="margin-left: 700px;">
                     <input name="lokasi_tanggal" id="lokasi_tanggal" class="form-control" type="text" value="Boyolali, {{\Carbon\Carbon::now()->translatedFormat('d F Y')}}" readonly>
                   </div>

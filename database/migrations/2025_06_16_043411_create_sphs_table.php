@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('harga_tanpa_pajak')->nullable();
             $table->text('pajak')->nullable();
             $table->text('total')->nullable();
+            $table->text('user')->nullable();
             $table->timestamps();
         });
     }

@@ -71,6 +71,7 @@
                 <form action="{{ route('marketing.update.sph', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
+                  <input name="user" type="hidden" value="{{ $item->user }}">
                   <div class="col-xs-4" style="margin-left: 700px;">
                     <input name="lokasi_tanggal" id="lokasi_tanggal" class="form-control" type="text" value="{{ $item->lokasi_tanggal }}" readonly>
                   </div>
