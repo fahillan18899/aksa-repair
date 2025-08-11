@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('input_pekerjaans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_urut');
-            $table->string('nama_alat');
-            $table->string('merek');
-            $table->string('type');
-            $table->string('no_seri');
-            $table->string('instansi');
-            $table->string('kerusakan');
-            $table->string('foto');
+            $table->text('no_urut')->nullable();
+            $table->text('nama_alat')->nullable();
+            $table->text('merek')->nullable();
+            $table->text('type')->nullable();
+            $table->text('no_seri')->nullable();
+            $table->text('instansi')->nullable();
+            $table->text('kerusakan')->nullable();
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }

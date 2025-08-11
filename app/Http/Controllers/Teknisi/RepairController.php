@@ -70,10 +70,10 @@ class RepairController extends Controller
         return back();
     }
 
-    public function ket($id)
+    public function ket(Request $request,$id)
     {
         $item = DataBarang::findOrFail($id);
-        $item->ket = $item->ket >= 5 ? 1 :  $item->ket + 1;
+        $item->ket = $request->ket;
         $item->save();
         return back();
     }

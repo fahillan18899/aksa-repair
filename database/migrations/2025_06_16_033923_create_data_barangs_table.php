@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('data_barangs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('no_urut');
-            $table->string('nama_alat');
-            $table->string('no_seri');
-            $table->string('type');
-            $table->string('kerusakan_alat');
-            $table->string('instansi');
-            $table->string('status');
-            $table->string('ket');
+            $table->text('no_urut')->nullable();
+            $table->text('nama_alat')->nullable();
+            $table->text('no_seri')->nullable();
+            $table->text('type')->nullable();
+            $table->text('kerusakan_alat')->nullable();
+            $table->text('instansi')->nullable();
+            $table->text('status')->default('1');
+            $table->text('ket')->nullable();
             $table->timestamps();
         });
     }

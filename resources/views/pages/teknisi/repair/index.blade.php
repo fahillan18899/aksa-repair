@@ -200,28 +200,29 @@
                           </form>
                         </td>
                         <td>
-                          <form action="{{ route('teknisi.ket.repair', $items->id) }}" class="form-inner" method="post">
+                          <form action="{{ route('teknisi.ket.repair', $items->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <button type="submit" class="btn btn-sm
-                            @switch ($items->ket)
-                              @case(1) btn-danger @break
-                              @case(2) btn-warning @break
-                              @case(3) btn-info @break
-                              @case(4) btn-secondary @break
-                              @case(5) btn-success @break
-                            @endswitch">
-                              @switch($items->ket)
-                                @case(1) troble  @break
-                                @case(2) proses  @break
-                                @case(3) dalam perbaikan  @break
-                                @case(4) rusak  @break
-                                @case(5) selesai  @break
-                                @default Tidak diketahui
-                              @endswitch
-                            </button>
+
+                            <select name="ket" class="form-select form-select-sm
+                              @switch ($items->ket)
+                                @case(1) border-danger text-danger @break
+                                @case(2) border-warning text-warning @break
+                                @case(3) border-info text-info @break
+                                @case(4) border-secondary text-secondary @break
+                                @case(5) border-success text-success @break
+                              @endswitch"
+                              onchange="this.form.submit()">
+                              
+                              <option value="1" {{ $items->ket == 1 ? 'selected' : '' }}>trouble</option>
+                              <option value="2" {{ $items->ket == 2 ? 'selected' : '' }}>proses</option>
+                              <option value="3" {{ $items->ket == 3 ? 'selected' : '' }}>dalam perbaikan</option>
+                              <option value="4" {{ $items->ket == 4 ? 'selected' : '' }}>rusak</option>
+                              <option value="5" {{ $items->ket == 5 ? 'selected' : '' }}>selesai</option>
+                            </select>
                           </form>
                         </td>
+
                         <td>
                           <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>

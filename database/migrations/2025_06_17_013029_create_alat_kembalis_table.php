@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('alat_kembalis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nomer_urut');
-            $table->string('nama');
-            $table->string('no_seri');
-            $table->string('type');
-            $table->string('kerusakan');
-            $table->string('instansi');
+            $table->text('nomer_urut')->nullable();
+            $table->text('nama')->nullable();
+            $table->text('no_seri')->nullable();
+            $table->text('type')->nullable();
+            $table->text('kerusakan')->nullable();
+            $table->text('instansi')->nullable();
             $table->timestamps();
         });
     }
