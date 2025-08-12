@@ -183,6 +183,7 @@
                   </div><br>
                   <div class="form-group row">
                     <div class="col-xs-6">
+                      <br><br>
                       <table class="table" style="width: 60%;">
                         <thead>
                           <tr>
@@ -200,6 +201,7 @@
                       </table>
                     </div>
                     <div class="col-xs-6">
+                      <br><br>
                       <table class="table" style="width: 60%; margin-left: 210px">
                         <thead>
                           <tr>

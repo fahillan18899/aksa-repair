@@ -18,14 +18,14 @@ class SuratTerimaController extends Controller
     public function post(Request $request)
     {
         $validate = $request->validate([
-            'nama_1' => 'nullable',
+            'nama_1'    => 'nullable',
             'jabatan_1' => 'nullable',
-            'bagian_1' => 'nullable',
-            'kontak_1' => 'nullable',
-            'nama_2' => 'nullable',
+            'bagian_1'  => 'nullable',
+            'kontak_1'  => 'nullable',
+            'nama_2'    => 'nullable',
             'jabatan_2' => 'nullable',
-            'bagian_2' => 'nullable',
-            'kontak_2' => 'nullable',
+            'bagian_2'  => 'nullable',
+            'kontak_2'  => 'nullable',
             //ARRAY
             'nama_alat' => 'array',
             'nama_alat.*.1' => 'nullable',

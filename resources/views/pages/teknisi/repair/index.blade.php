@@ -240,6 +240,9 @@
                           <a href="{{ route('teknisi.ba.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="BA">
                             <i class="fa fa-file-text-o" aria-hidden="true"></i>
                           </a>
+                          <a href="{{ route('teknisi.st.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Serah Terima">
+                            <i class="fa fa-file-text" aria-hidden="true"></i>
+                          </a>
                         </td>
                       </tr>
                       @empty

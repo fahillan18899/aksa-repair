@@ -62,9 +62,17 @@ class RepairController extends Controller
         ->with('success', 'Data berhasil di ubah');
     }
 
-    public function repairBa($id) {
+    public function repairBa($id) 
+    {
         $item = InputPekerjaan::findOrFail($id);
         return view('pages.teknisi.repair.ba_repair',
+        compact('item'));
+    }
+
+    public function repairSt($id)
+    {
+        $item = InputPekerjaan::findOrFail($id);
+        return view('pages.teknisi.repair.st_repair',
         compact('item'));
     }
 
