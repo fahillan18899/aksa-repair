@@ -97,6 +97,7 @@
                   <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa 
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
                   </p>
+                  <div style="overflow-x:auto;">
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -139,6 +140,8 @@
                       </tr>
                     </tbody>
                   </table>
+                  </div>
+                  <div style="overflow-x:auto;">
                   <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -203,7 +206,9 @@
                       </tr>
                     </tbody>
                   </table>
+                  </div>
                   <a class="btn btn-primary" id="add" style="margin-bottom: 5px;">Tambah Alat</a>
+                  <div style="overflow-x:auto;">
                   <table class="table table-striped table-bordered" id="dinamic">
                     <thead>
                       <tr>
@@ -215,6 +220,8 @@
                       <!-- DATA DINAMIS -->
                     </tbody>
                   </table>
+                  </div>
+                  <div style="overflow-x:auto;">
                   <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
@@ -233,6 +240,8 @@
                     </tr>
                     </tbody>
                   </table>
+                  </div>
+                  <div style="overflow-x:auto;">
                   <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
@@ -254,6 +263,7 @@
                     </tr>
                     </tbody>
                   </table>
+                  </div>
                   <p>Demikian, suatu penghargaan  yang besar bagi kami segera mendapatkan respone yang terbaik atas informasi yang kami sampaikan
                     ini semoga bermanfaat dan terimakasih atas kerja samanya, sukses untuk kita bersama.
                   </p>
