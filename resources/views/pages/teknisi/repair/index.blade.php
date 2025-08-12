@@ -180,6 +180,7 @@
                       <th>Status</th>
                       <th>Keterangan</th>
                       <th>Tombol</th>
+                      <th>Aksi</th>
                     </thead>
                     <tbody>
                       @forelse($item as $items)
@@ -234,6 +235,11 @@
                               <i class="fa fa-trash-o" aria-hidden="hidden"></i>
                             </button>
                           </form>
+                        </td>
+                        <td>
+                          <a href="{{ route('teknisi.ba.repair', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="BA">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          </a>
                         </td>
                       </tr>
                       @empty
