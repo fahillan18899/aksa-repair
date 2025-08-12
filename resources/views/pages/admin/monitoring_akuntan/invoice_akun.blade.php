@@ -45,6 +45,7 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
+                      <th>Instansi</th>
                       <th>Tanggal</th>
                       <th>Nomer Invoice</th>
                       <th>Nomer Pesanan</th>
@@ -54,6 +55,7 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
+                      <td>{{ $datas->yth }}</td>
                       <td>{{ $datas->tgl_invoice }}</td>
                       <td>{{ $datas->no_invoice }}</td>
                       <td>{{ $datas->no_pesanan }}</td>

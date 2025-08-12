@@ -82,7 +82,7 @@
                       </div>
                       <div class="col-xs-4">
                         <label class="form-label" for="">Tanggal Invoice :</label>
-                        <p>{{ $item->tgl_invoice }}s</p>
+                        <p>{{ $item->tgl_invoice }}</p>
                       </div>
                       <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg" style="margin-top: -40px">
                     </div>
@@ -110,14 +110,14 @@
                       </div>
                     </div>
                   </div><br><br>
-                  <table class="table table-striped table-bordered">
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
-                        <th class="text-center"><b>HARGA / ITEM / KM</b></th>
-                        <th class="text-center"><b>JUMLAH / BELI</b></th>
-                        <th class="text-center"><b>SUB TOTAL</b></th>
-                        <th class="text-center"><b>HARGA YANG DITAWARKAN</b></th>
+                        <th class="text-center"><b>HARGA_/_ITEM_/_KM</b></th>
+                        <th class="text-center"><b>JUMLAH_/_BELI</b></th>
+                        <th class="text-center"><b>SUB_TOTAL</b></th>
+                        <th class="text-center"><b>HARGA_YANG_DITAWARKAN</b></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -151,8 +151,8 @@
                         <td colspan="" class="text-center">{{ $item->akom[13] ?? '-' }}</td>
                       </tr>
                     </tbody>
-                  </table>
-                  <table class="table table-striped table-bordered">
+                  </table><br>
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th class="text-center"><b>NAMA PART</b></th>
@@ -194,8 +194,8 @@
                         <td class="text-center">{{ $item->part[18] ?? '-' }}</td>
                       </tr>
                     </tbody>
-                  </table>
-                  <table class="table table-striped table-bordered" id="dinamic">
+                  </table><br>
+                  <table class="table-striped" id="dinamic">
                     <thead>
                       <tr>
                         <th class="text-center"><b>NAMA ALAT</b></th>
@@ -210,8 +210,8 @@
                             </tr>
                         @endforeach
                     </tbody>
-                  </table>
-                  <table class="table table-striped table-bordered">
+                  </table><br>
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th class="text-center"><b>JUMLAH</b></th>
@@ -228,8 +228,8 @@
                         <td align="center">{{ $item->harga_diskon }}</td>
                       </tr>
                     </tbody>
-                  </table>
-                  <table class="table table-striped table-bordered">
+                  </table><br><br>
+                  <table class="table-striped">
                     <thead>
                       <tr>
                         <th colspan="2" class="text-center">PERHITUNGAN</th>
@@ -249,7 +249,7 @@
                         <td align="center">{{ $item->total }}</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
