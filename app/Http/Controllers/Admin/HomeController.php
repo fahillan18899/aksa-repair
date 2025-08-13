@@ -18,13 +18,13 @@ class HomeController extends Controller
 
     public function repair_selesai()
     {
-        $dataApi1 = DataBarang::where('ket', '0')->get();
+        $dataApi1 = DataBarang::where('ket', '5')->get();
         return response()->json($dataApi1);
     }
 
     public function repair_proses()
     {
-        $dataApi2 = DataBarang::where('ket', '1')->get();
+        $dataApi2 = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->get();
         return response()->json($dataApi2);
     }
 

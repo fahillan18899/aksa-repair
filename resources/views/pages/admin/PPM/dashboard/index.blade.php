@@ -20,49 +20,49 @@
   <div class="content container-fluid">
     <div class="row">
       <!--Box Jumlah Alat -->
-        <div class="col-12 col-md-6 mb-4">
-          <div class="info-box bg-olive">
-            <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
+      <div class="col-12 col-md-6 mb-4">
+        <div class="info-box bg-olive">
+          <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">
-                <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
-              <span class="info-box-number" id="count_1">0</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span class="progress-description">
-                <?= date('j F, Y'); ?>
-              </span>
+          <div class="info-box-content">
+            <span class="info-box-text">
+              <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
+            <span class="info-box-number" id="count_1">0</span>
+            <div class="progress">
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
+            <span class="progress-description">
+              <?= date('j F, Y'); ?>
+            </span>
           </div>
         </div>
+      </div>
       <!--Box Jumlah Alat end-->
 
       <!--Box Jumlah Aset Perbaikan Regis -->
-        <div class="col-12 col-md-6 mb-4">
-          <div class=" info-box bg-blue">
-            <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">
-                <a href="view_tabel"
-                  style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
-              </span>
-              <span class="info-box-number" id="count_2">0</span>
-              <div class="progress">
-                <div class="progress-bar" style="width: 100%"></div>
-              </div>
-              <span class="progress-description">
-                <?= date('j F, Y'); ?>
-              </span>
+      <div class="col-12 col-md-6 mb-4">
+        <div class=" info-box bg-blue">
+          <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">
+              <a href="view_tabel"
+                style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
+            </span>
+            <span class="info-box-number" id="count_2">0</span>
+            <div class="progress">
+              <div class="progress-bar" style="width: 100%"></div>
             </div>
-            <!-- /.info-box-content -->
+            <span class="progress-description">
+              <?= date('j F, Y'); ?>
+            </span>
           </div>
+          <!-- /.info-box-content -->
         </div>
+      </div>
       <!--Box Jumlah Aset Perbaikan Regis end-->
 
       <!-- Card Tabel Permintaan Perbaikan -->
-       <div class="row">
+      <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default thumbnail">
             <div class="panel-heading no-print">
@@ -79,7 +79,7 @@
                 <div class="row">
                   <div class="col-md-12 col-sm-12 table-responsive">
                     <!-- TABEL -->
-                     <table class="datatable table table-striped table-bordered">
+                    <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
                         <tr>
                           <th>No Urut</th>
@@ -95,7 +95,7 @@
                       <tbody id="id_repair">
                         <!-- DATA AJAX -->
                       </tbody>
-                     </table>
+                    </table>
                     <!-- TABEL -->
                   </div>
                 </div>
@@ -103,54 +103,54 @@
             </div>
           </div>
         </div>
-       </div>
+      </div>
       <!-- Card Tabel Permintaan Perbaikan -->
 
       <!--Card Tabel Perbaikan-->
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="panel panel-default thumbnail">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
 
-              <div class="panel-heading no-print">
-                <div class="row">
-                  <div class="col-md-4">
-                  </div>
-                  <div class="col-md-5">
-                    <h2>Daftar Barang Proses Repair</h2>
-                  </div>
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-5">
+                  <h2>Daftar Barang Proses Repair</h2>
                 </div>
               </div>
-              <div style="overflow-x:auto;">
-                <div class="panel-body panel-form">
-                  <div class="row">
-                    <div class="col-md-12 col-sm-12 table-responsive">
-                      <!--TABEL-->
-                      <table class="datatable table table-striped table-bordered">
-                        <thead class="table-light">
-                          <tr>
-                            <th>No Urut</th>
-                            <th>Nama</th>
-                            <th>Serial Number</th>
-                            <th>Type</th>
-                            <th>Kerusakan</th>
-                            <th>Instansi</th>
-                            <th>Status</th>
-                            <th>Keterangan</th>
-                          </tr>
-                        </thead>
-                        <tbody id="id_repair2">
-                          <!-- DATA AJAX -->
-                        </tbody>
-                      </table>
-                      <!--TABEL-->
-                    </div>
-                    <div class="col-md-3"></div>
+            </div>
+            <div style="overflow-x:auto;">
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 table-responsive">
+                    <!--TABEL-->
+                    <table class="datatable table table-striped table-bordered">
+                      <thead class="table-light">
+                        <tr>
+                          <th>No Urut</th>
+                          <th>Nama</th>
+                          <th>Serial Number</th>
+                          <th>Type</th>
+                          <th>Kerusakan</th>
+                          <th>Instansi</th>
+                          <th>Status</th>
+                          <th>Keterangan</th>
+                        </tr>
+                      </thead>
+                      <tbody id="id_repair2">
+                        <!-- DATA AJAX -->
+                      </tbody>
+                    </table>
+                    <!--TABEL-->
                   </div>
+                  <div class="col-md-3"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
       <!--Card Tabel Perbaikan-->
     </div>
   </div>
@@ -159,16 +159,16 @@
 @endsection
 @push('addon-script')
 <script>
-  function api1(){
+  function api1() {
     // console.log("Memulai api1()"); //Debig fungsi berjalan / tidak
     $.ajax({
-      url : '{{ route("api1") }}',
+      url: '{{ route("api1") }}',
       method: 'GET',
       dataType: 'json',
       success: function(data) {
         // console.log("Data berhasil diterima:", data); //Debug data yang di get oleh ajax
         let rows = '';
-        data.forEach(item=> {
+        data.forEach(item => {
           // console.log(item);
           rows += `
           <tr>
@@ -185,7 +185,7 @@
             </td>
             <td>
               <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
-                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}          
               </button>
             </td>
           </tr>
@@ -195,28 +195,28 @@
         $('#id_repair').html(rows);
         // console.log("Table berhasil diperbaharui"); //Debug konfirmasi update
       },
-      error: function(xhr, status, error){
+      error: function(xhr, status, error) {
         console.log("Gagal memuat data", error);
       }
     });
   }
 
-  $(document).ready(function(){
+  $(document).ready(function() {
     // console.log("Dokumen siap, mulai polling....");
     api1(); //Pertamakali load
     setInterval(api1, 3000);
   })
 </script>
 <script>
- function api2(){
-  $.ajax({
-    url: '{{ route("api2") }}',
-    method: 'GET',
-    dataType: 'json',
-    success: function(data){
-      let rows = '';
-      data.forEach(item=>{
-        rows += `
+  function api2() {
+    $.ajax({
+      url: '{{ route("api2") }}',
+      method: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        let rows = '';
+        data.forEach(item => {
+          rows += `
         <tr>
         <td>${item.no_urut}</td>
         <td>${item.nama_alat}</td>
@@ -230,30 +230,42 @@
           </button>
         </td>
         <td>
-          <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
-            ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}          
-          </button>
-        </td>
+              <button class="btn btn-sm 
+              ${item.ket == 1 ? 'btn-danger' : 
+                item.ket == 2 ? 'btn-warning' : 
+                item.ket == 3 ? 'btn-info' :
+                item.ket == 4 ? 'btn-secondary' : 
+                item.ket == 5 ? 'btn-success' :
+                'btn-light'}" disabled>
+
+                ${item.ket == 1 ? 'Trouble' :  
+                  item.ket == 2 ? 'Proses' :
+                  item.ket == 3 ? 'Dalam Perbaikan' :
+                  item.ket == 4 ? 'Rusak' :
+                  item.ket == 5 ? 'Selesai' :
+                  'Tidak diketahui'
+                }
+              </button>
+            </td>
         </tr>
         `;
-      });
-      $('#id_repair2').html(rows);
-    },
-    error: function(xhr, status, error){
-      console.log("Gagal memuat data",error);
-    }
-  });
- }
+        });
+        $('#id_repair2').html(rows);
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal memuat data", error);
+      }
+    });
+  }
 
- $(document).ready(function(){
-  api2();
-  setInterval(api2, 3000);
- })
+  $(document).ready(function() {
+    api2();
+    setInterval(api2, 3000);
+  })
 </script>
 <script>
-  function countSelesai()
-  {
-  //  console.log("Memulai countSelesai()"); //Debig fungsi berjalan / tidak
+  function countSelesai() {
+    //  console.log("Memulai countSelesai()"); //Debig fungsi berjalan / tidak
     $.ajax({
       url: '{{ route("count.selesai") }}',
       method: 'GET',
@@ -266,26 +278,25 @@
       }
     });
   }
-  $(document).ready(function(){
+  $(document).ready(function() {
     countSelesai();
     setInterval(countSelesai, 3000);
   })
 </script>
 <script>
-  function countProses()
-  {
+  function countProses() {
     $.ajax({
       url: '{{ route("count.proses") }}',
       method: 'GET',
       success: function(response) {
         $('#count_2').text(response.count2)
       },
-      error: function(xhr, status, error){
+      error: function(xhr, status, error) {
         console.log("Gagal mengambil data :", error);
       }
     });
   }
-  $(document).ready(function(){
+  $(document).ready(function() {
     countProses();
     setInterval(countProses, 3000);
   })

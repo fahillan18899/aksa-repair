@@ -49,6 +49,7 @@
                       <th>Tanggal</th>
                       <th>Nomer Invoice</th>
                       <th>Nomer Pesanan</th>
+                      <th>Status</th>
                       <th>Tombol</th>
                     </tr>
                   </thead>
@@ -59,6 +60,11 @@
                       <td>{{ $datas->tgl_invoice }}</td>
                       <td>{{ $datas->no_invoice }}</td>
                       <td>{{ $datas->no_pesanan }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $datas->status == 0 ? 'success' : 'danger' }}" disabled>
+                          {{ $datas->status == 0 ? 'Lunas' : 'Belum Lunas' }}
+                        </button>
+                      </td>
                       <td>
                         <a href="{{ route('invoiceAkuntan.viewInv', $datas->id) }}" class="btn btn-xs btn-primary" 
                           data-toggle="tooltip" data-placement="top" title="View">
