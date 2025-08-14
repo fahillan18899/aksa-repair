@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('instansi')->nullable();
             $table->text('status')->default('1');
             $table->text('ket')->nullable();
+            $table->text('user')->nullable();
             $table->timestamps();
         });
     }

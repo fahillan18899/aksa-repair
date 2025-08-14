@@ -14,5 +14,5 @@ class DataBarang extends Model
     protected $keyType = 'string';         // <- jika id_req berupa string
 
     protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'no_seri', 'type', 'kerusakan_alat',
-     'instansi', 'created_at', 'updated_at'];
+     'instansi', 'user', 'created_at', 'updated_at'];
 }

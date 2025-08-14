@@ -13,7 +13,8 @@ class SphController extends Controller
 {
     public function index()
     {
-        $item = Sph::all();
+        $users = Auth::user()->username;
+        $item = Sph::where('user', $users)->get();
         $count = Sph::count() +1;
         $user = Auth::user()->rs_divisi;
         $part = Informasi::all();

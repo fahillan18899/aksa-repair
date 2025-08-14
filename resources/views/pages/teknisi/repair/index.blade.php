@@ -138,6 +138,8 @@
                     </div>
                   </div>
 
+                  <input name="user" id="user" type="hidden">
+
                   <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
@@ -294,6 +296,7 @@
         $('#type').val(item.type || '');
         $('#kerusakan_alat').val(item.kerusakan || '');
         $('#instansi').val(item.instansi || '');
+        $('#user').val(item.user || '');
       })
       .catch(error => console.error("Error AJAX", error));
     });

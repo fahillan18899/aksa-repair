@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SphHistory extends Model
 {
     use HasFactory;
-    protected $table = 'sph_history';
+    protected $table = 'sph_histories';
     protected $primaryKey = 'id';      // <- ini WAJIB jika ganti nama id
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string

@@ -21,11 +21,12 @@ class RepairController extends Controller
     {
         $validate = $request->validate([
             'no_urut'        => 'nullable',
-            'nama_alat'      => 'required',
-            'no_seri'        => 'required',
-            'type'           => 'required',
-            'kerusakan_alat' => 'required',
-            'instansi'       => 'required',
+            'nama_alat'      => 'nullable',
+            'no_seri'        => 'nullable',
+            'type'           => 'nullable',
+            'kerusakan_alat' => 'nullable',
+            'instansi'       => 'nullable',
+            'user'           => 'nullable'
         ]);
 
         $count = DataBarang::count() + 1;

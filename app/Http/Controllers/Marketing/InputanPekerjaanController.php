@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Marketing;
 use App\Http\Controllers\Controller;
 use App\Models\InputPekerjaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class InputanPekerjaanController extends Controller
 {
     public function index() 
     {
-        $item = InputPekerjaan::all();
+        $user = Auth::user()->username;
+        $item = InputPekerjaan::where('user', $user)->get();
         return view('pages.marketing.inputan_pekerjaan.index',
         compact('item'));
     }
