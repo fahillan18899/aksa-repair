@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('pajak')->nullable();
             $table->text('total')->nullable();
             $table->text('status')->default('1');
+            $table->text('user')->nullable();
             $table->timestamps();
         });
     }

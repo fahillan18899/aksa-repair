@@ -228,7 +228,7 @@
                         <td align="center">{{ $data->total }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table><br><br><br><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">

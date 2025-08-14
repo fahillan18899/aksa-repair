@@ -14,5 +14,5 @@ class Invoice extends Model
 
     protected $fillable = [ 'id', 'yth', 'tgl_invoice', 'no_invoice', 'no_pesanan', 'alamat', 
                             'akom', 'part', 'nama_alat', 'keterangan', 'jumlah', 'harga', 'diskon',
-                            'harga_diskon', 'harga_tanpa_pajak', 'pajak', 'total', 'created_at', 'updated_at'];
+                            'harga_diskon', 'harga_tanpa_pajak', 'pajak', 'total', 'user', 'created_at', 'updated_at'];
 }

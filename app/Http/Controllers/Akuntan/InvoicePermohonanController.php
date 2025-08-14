@@ -76,6 +76,7 @@ class InvoicePermohonanController extends Controller
             'harga_tanpa_pajak' => 'nullable',
             'pajak'             => 'nullable',
             'total'             => 'nullable',
+            'user'              => 'nullable',
             
         ]);
 

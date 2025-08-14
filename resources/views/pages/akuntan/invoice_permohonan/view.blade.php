@@ -44,6 +44,7 @@
                 <form action="{{ route('akuntan.post.invoicePermohonan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="form-group row">
+                    <input name="user" type="hidden" value="{{ $item->user }}">
                     <div class="col-xs-4">
                       <label for="yth" class="form-label">Kepada Yth :</label>
                       <input name="yth" id="yth" class="form-control" type="text" value="{{ $item->yth }}" readonly>

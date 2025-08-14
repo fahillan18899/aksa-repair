@@ -88,7 +88,7 @@
                   <br>
                   <p><b>Kepada Yth. :</b></p>
                   <div class="col-xs-4 ml-2">
-                    <input name="yth" id="yth" type="text" class="form-control" placeholder="isi nama orang yang dituju">
+                    <input name="yth" id="yth" type="text" class="form-control" placeholder="isi nama orang yang dituju" required>
                   </div>
                   <br>
                   <br>
@@ -112,26 +112,26 @@
                       <tr>
                         <td rowspan="4" class="text-center">AKOMODASI</td>
                         <td class="text-center">Motor</td>
-                        <td class="text-center"><input name="akom[1]" id="motor_1" type="text" class="form-control" onkeyup="rp2(this)"></td>
-                        <td class="text-center"><input name="akom[2]" id="motor_2" type="text" class="form-control" onkeyup="akom1()"></td>
+                        <td class="text-center"><input name="akom[1]" id="motor_1" type="text" class="form-control" onkeyup="rp2(this)" required></td>
+                        <td class="text-center"><input name="akom[2]" id="motor_2" type="number" class="form-control" onkeyup="akom1()" required></td>
                         <td class="text-center"><input name="akom[3]" id="motor_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="akom[4]" id="motor_4" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
                         <td class="text-center">Mobil</td>
-                        <td class="text-center"><input name="akom[5]" id="mobil_1" type="text" class="form-control" onkeyup="rp2(this)"></td>
-                        <td class="text-center"><input name="akom[6]" id="mobil_2" type="text" class="form-control" onkeyup="akom2()"></td>
+                        <td class="text-center"><input name="akom[5]" id="mobil_1" type="text" class="form-control" onkeyup="rp2(this)" required></td>
+                        <td class="text-center"><input name="akom[6]" id="mobil_2" type="number" class="form-control" onkeyup="akom2()" required></td>
                         <td class="text-center"><input name="akom[7]" id="mobil_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="akom[8]" id="mobil_4" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
                         <td class="text-center">Uang Makan</td>
-                        <td colspan="3" class="text-center"><input name="akom[9]" id="uang_makan_1" type="text" class="form-control" onkeyup="rp3(this)"></td>
+                        <td colspan="3" class="text-center"><input name="akom[9]" id="uang_makan_1" type="text" class="form-control" onkeyup="rp3(this)" required></td>
                         <td class="text-center"><input name="akom[10]" id="uang_makan_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
                         <td class="text-center">Tol</td>
-                        <td colspan="3" class="text-center"><input name="akom[11]" id="tol_1" type="text" class="form-control" onkeyup="rp4(this)"></td>
+                        <td colspan="3" class="text-center"><input name="akom[11]" id="tol_1" type="text" class="form-control" onkeyup="rp4(this)" required></td>
                         <td class="text-center"><input name="akom[12]" id="tol_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                       <tr>
@@ -162,8 +162,8 @@
                             @endforeach
                           </select>
                         </td>
-                        <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" onkeyup="rp2(this)"></td>
-                        <td class="text-center"><input name="part[3]" id="jumlah_1" type="text" class="form-control" onkeyup="part1()"></td>
+                        <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
+                        <td class="text-center"><input name="part[3]" id="jumlah_1" type="number" class="form-control" onkeyup="part1()" required></td>
                         <td class="text-center"><input name="part[4]" id="total_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[5]" id="biaya_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
@@ -176,8 +176,8 @@
                             @endforeach
                           </select>
                         </td>
-                        <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" onkeyup="rp2(this)"></td>
-                        <td class="text-center"><input name="part[8]" id="jumlah_2" type="text" class="form-control" onkeyup="part2()"></td>
+                        <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
+                        <td class="text-center"><input name="part[8]" id="jumlah_2" type="number" class="form-control" onkeyup="part2()" required></td>
                         <td class="text-center"><input name="part[9]" id="total_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[10]" id="biaya_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
@@ -190,8 +190,8 @@
                             @endforeach
                           </select>
                         </td>
-                        <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" onkeyup="rp2(this)"></td>
-                        <td class="text-center"><input name="part[13]" id="jumlah_3" type="text" class="form-control" onkeyup="part3()"></td>
+                        <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
+                        <td class="text-center"><input name="part[13]" id="jumlah_3" type="number" class="form-control" onkeyup="part3()" required></td>
                         <td class="text-center"><input name="part[14]" id="total_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                         <td class="text-center"><input name="part[15]" id="biaya_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
@@ -201,7 +201,7 @@
                       </tr>
                       <tr>
                         <td colspan="2" class="text-center">Biaya Service</td>
-                        <td colspan="2" class="text-center"><input name="part[17]" id="service" type="text" class="form-control" onkeyup="rp5(this)"></td>
+                        <td colspan="2" class="text-center"><input name="part[17]" id="service" type="text" class="form-control" onkeyup="rp5(this)" required></td>
                         <td class="text-center"><input name="part[18]" id="serviceT" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
                       </tr>
                     </tbody>
@@ -217,7 +217,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- DATA DINAMIS -->
+                      <tr>
+                        <td><input name="nama_alat[1]" type="text" class="form-control" placeholder="isi nama alat" required></td>
+                        <td><textarea name="keterangan[1]" class="form-control" placeholder="keterangan perbaikan" required></textarea></td>
+                      </tr>
                     </tbody>
                   </table>
                   </div>
@@ -233,9 +236,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td><input name="jumlah" id="jumlah" class="form-control" type="text" placeholder="jumlah alat"></td>
+                      <td><input name="jumlah" id="jumlah" class="form-control" type="text" placeholder="jumlah alat" required></td>
                       <td><input name="harga" id="harga" class="form-control" type="text" placeholder="terisi otomatis" readonly></td>
-                      <td><input name="diskon" id="diskon" type="text" class="form-control" placeholder="isi diskon" onkeyup="ppn()"></td>
+                      <td><input name="diskon" id="diskon" type="text" class="form-control" placeholder="isi diskon" onkeyup="ppn()" required></td>
                       <td><input name="harga_diskon" id="harga_diskon" type="text" class="form-control" onkeyup="ppn()" placeholder="terisi otomatis" readonly></td>
                     </tr>
                     </tbody>
@@ -707,7 +710,7 @@
 
 <script>
   $(document).ready(function() {
-    let row = 1; //Menyimpan jumlah baris
+    let row = 2; //Menyimpan jumlah baris
 
     //Fungsi menambah baris
     $("#add").click(function() {
