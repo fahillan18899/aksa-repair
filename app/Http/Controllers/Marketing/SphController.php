@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Informasi;
 use App\Models\Sph;
 use App\Models\SphHistory;
+use App\Models\SphOld;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SphController extends Controller
 {
@@ -239,6 +241,48 @@ class SphController extends Controller
     {
       $part = Informasi::where("nama", $nama)->get();
       return response()->json($part);
+    }
+
+    public function sphOld()
+    {
+        $item = \App\Models\SphOld::latest()->get();
+        return view('pages.marketing.sph.sph_old',
+        compact('item'));
+    }
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'sph' => 'required',
+        ]);
+
+        $file = $request->file('sph');
+        $fileName = $file->getClientOriginalName();
+        //Simpan ke storage/app/public/sph
+        $path = $file->storeAs('public/documents/',$fileName);
+
+
+        //Simpan nama di db
+        $user = Auth::user()->username;
+        SphOld::create([
+            'nama' => $fileName,
+            'path' => 'documents/'.$fileName,
+            'users' => $user,
+        ]);
+        return back()->with('success', 'Document ('. $fileName . ') berhasil di upload');
+    }
+
+public function deleteDoc($id)
+    {
+        $item = SphOld::findOrFail($id);
+        //Hapus File di storage
+        if(Storage::exists('public/' . $item->path)){
+            Storage::delete('public/' . $item->path);
+        }
+        //Hapus data di db
+        $item->delete();
+
+        return back()->with('success', 'Dokumen Berhasil dihapus');
     }
 
     public function delete($id)
