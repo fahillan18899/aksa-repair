@@ -1,7 +1,7 @@
 @extends('layouts.akuntan')
 
 @section('content')
-@section('title', 'SPH')
+@section('title', 'Document Invoice')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Document SPH</h1>
+            <h1>Daftar Document Invoice</h1>
           </div>
 
           <div class="panel-body panel-form">

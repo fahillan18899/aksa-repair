@@ -64,7 +64,7 @@
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_data_barang') ? 'active' : '' }}">
         <a href="{{ route('marketing.data.dataBarang') }}">
-          <i class="fa fa-archive"></i> <span>Data Barang</span>
+          <i class="fa fa-archive"></i> <span>Status Pengerjaan</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_sph') ? 'active' : '' }}">
