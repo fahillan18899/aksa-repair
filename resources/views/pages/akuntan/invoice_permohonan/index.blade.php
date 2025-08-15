@@ -108,6 +108,22 @@
             <div class="">
               <h1>Daftar Invoice</h1>
             </div>
+            <form id="uploadForm" action="{{ route('akuntan.upload.invoicePermohonan') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="row">
+                <div class="col-sm-3">
+                  <input name="invoice" class="form-control" type="file" required>
+                </div>
+                <div class="col-sm-1">
+                  <button id="uploadBtn" class="btn btn-primary btn-sm" type="submit">
+                    <i class="fa fa-upload" aria-hidden="true">Upload</i>
+                  </button>
+                </div>
+                <div class="col-sm-1">
+                  <a class="btn btn-success" href="{{ route('akuntan.invoiceOld.invoicePermohonan') }}">Document Invoice</a>
+                </div>
+              </div>
+            </form>
           </div>
           <div style="overflow-x:auto;">
             <div class="panel-body panel-form">
@@ -175,3 +191,13 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
+@push('addon-script')
+<script>
+    document.getElementById('uploadBtn').addEventListener('click', function () {
+    const confirmation = confirm("Pastikan dokumen yang di upload benar");
+    if (confirmation) {
+      document.getElementById('uploadForm').submit();
+    }
+  });
+</script>
+@endpush
