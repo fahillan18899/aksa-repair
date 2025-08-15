@@ -199,23 +199,42 @@
                     </tbody>
                   </table>
                   <!-- Jenis -->
-                  <!-- SKC DLL-->
+                  <!-- KELUHAN-->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">SKC</b></td>
                         <td class="text-center" width="20%"><b style="color: blue;">Keluhan</b></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $item->keluhan ?? '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- KELUHAN END-->
+                  <!-- TINDAKAN-->
+                  <table class="table-striped" width="100%">
+                    <tbody>
+                      <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">Tindakan</b></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">{{ $item->aksi ?? '-' }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- KELUHAN-->
+                  <!-- HASIL-->
+                  <table class="table-striped" width="100%">
+                    <tbody>
+                      <tr>
                         <td class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->skc[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->keluhan ?? '-' }}</td>
-                        <td class="text-center">{{ $item->aksi ?? '-' }}</td>
                         <td class="text-center">{{ $item->hasil ?? '-' }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>  
+                  <!-- HASIL END-->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
