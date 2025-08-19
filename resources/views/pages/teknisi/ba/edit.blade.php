@@ -207,7 +207,7 @@
                         <td class="text-center" width="20%"><b>Keluhan / Kondisi Sekarang</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="keluhan" id="keluhan" type="text" class="form-control" value="{{ $item->keluhan }}"></td>
+                        <td><textarea name="keluhan" id="keluhan" type="text" class="form-control">{{ $item->keluhan }}</textarea></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -217,7 +217,7 @@
                         <td class="text-center" width="20%"><b>Aksi / Tindakan</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="aksi" id="aksi" type="text" class="form-control" value="{{ $item->aksi }}"></td>
+                        <td><textarea name="aksi" id="aksi" type="text" class="form-control">{{ $item->aksi }}</textarea></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -227,7 +227,7 @@
                         <td class="text-center" width="20%"><b>Hasil / Kondisi Akhir</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center"><input name="hasil" id="hasil" type="text" class="form-control" value="{{ $item->hasil }}"></td>
+                        <td><textarea name="hasil" id="hasil" type="text" class="form-control">{{ $item->hasil }}</textarea></td>
                       </tr>
                     </tbody>
                   </table><br>

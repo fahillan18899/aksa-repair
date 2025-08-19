@@ -11,7 +11,7 @@
   .table-striped th,
   .table-striped td {
     border: 2px solid black;
-    padding: 8px;
+    padding: 3px;
   }
 
   .panel {
@@ -206,7 +206,7 @@
                         <td class="text-center" width="20%"><b style="color: blue;">Keluhan</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->keluhan ?? '-' }}</td>
+                        <td class="text-center"><pre style="text-align: center; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->keluhan ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
                   </table>
@@ -218,7 +218,7 @@
                         <td class="text-center" width="20%"><b style="color: blue;">Tindakan</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->aksi ?? '-' }}</td>
+                        <td class="text-center"><pre style="text-align: center; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->aksi ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
                   </table>
@@ -230,10 +230,10 @@
                         <td class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->hasil ?? '-' }}</td>
+                        <td class="text-center"><pre style="text-align: center; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
-                  </table>  
+                  </table><br>
                   <!-- HASIL END-->
                   <table class="table-striped" width="100%">
                     <tbody>
@@ -385,7 +385,7 @@
             .table-striped th,
             .table-striped td {
             border: 1px solid black;
-            padding: 8px;
+            padding: 3px;
             }
             .panel { border: 1px solid black }
           </style>

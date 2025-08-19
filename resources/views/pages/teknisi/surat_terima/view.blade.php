@@ -87,75 +87,53 @@
 
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
-                <img src="{{ url('assets/images/aksa.png') }}" alt="Logo" style="height: 100px; margin-right: 20px;">
+                <!-- <img src="{{ url('assets/images/aksa.png') }}" alt="Logo" style="height: 100px; margin-right: 20px;"> -->
                 <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="height: 100px; margin-left: 400px;">
               <div class="col-md-9 col-sm-12">
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   <br>
-                  <div class="row" style="margin-left: 500px;">
-                    <p>Boyolali {{\Carbon\Carbon::now()->translatedFormat('d-m-y')}}</p>
-                  </div>
-                  <h2>PIHAK PERTAMA</h2>
+                  <div class="row" style="margin-left: 10px;">
+                    <p>Boyolali {{\Carbon\Carbon::now()->translatedFormat('d-F-Y')}}</p>
+                  </div><br>
                   <div class="form-group row">
-                    <label for="nama_1" class="col-xs-5 form-label"><b>Nama :</b></label>
-                    <div class="col-xs-5">
-                      {{ $item->nama_1 }}
-                    </div>
+                    <div class="col-xs-6"><h3>PIHAK PERTAMA</h3></div>
+                    <div class="col-xs-3"><h3>PIHAK KEDUA</h3></div>
                   </div>
                   <div class="form-group row">
-                    <label for="jabatan_1" class="col-xs-5 form-label">Jabatan :</label>
-                    <div class="col-xs-5">
-                      {{ $item->jabatan_1 }}
-                    </div>
+                    <label for="nama_1" class="col-xs-3 form-label"><b>Nama :</b></label>
+                    <div class="col-xs-3">{{ $item->nama_1 }}</div>
+                    <label for="nama_2" class="col-xs-3 form-label"><b>Nama :</b></label>
+                    <div class="col-xs-3">{{ $item->nama_2 }}</div>
                   </div>
                   <div class="form-group row">
-                    <label for="bagian_1" class="col-xs-5 form-label">Departement / Bagian :</label>
-                    <div class="col-xs-5">
-                      {{ $item->bagian_1 }}
-                    </div>
+                    <label for="jabatan_1" class="col-xs-3 form-label">Jabatan :</label>
+                    <div class="col-xs-3">{{ $item->jabatan_1 }}</div>
+                    <label for="jabatan_2" class="col-xs-3 form-label">Jabatan :</label>
+                    <div class="col-xs-3">{{ $item->jabatan_2 }}</div>
                   </div>
                   <div class="form-group row">
-                    <label for="kontak_1" class="col-xs-5 form-label">Kontak :</label>
-                    <div class="col-xs-5">
-                      {{ $item->kontak_1 }}
-                    </div>
-                  </div>
-                  <h2>PIHAK KEDUA</h2>
-                  <div class="form-group row">
-                    <label for="nama_2" class="col-xs-5 form-label">Nama :</label>
-                    <div class="col-xs-5">
-                      {{ $item->nama_2 }}
-                    </div>
+                    <label for="bagian_1" class="col-xs-3 form-label">Departement :</label>
+                    <div class="col-xs-3">{{ $item->bagian_1 }}</div>
+                    <label for="bagian_2" class="col-xs-3 form-label">Departement :</label>
+                    <div class="col-xs-3">{{ $item->bagian_2 }}</div>
                   </div>
                   <div class="form-group row">
-                    <label for="jabatan_2" class="col-xs-5 form-label">Jabatan :</label>
-                    <div class="col-xs-5">
-                      {{ $item->jabatan_2 }}
-                    </div>
+                    <label for="kontak_1" class="col-xs-3 form-label">Kontak :</label>
+                    <div class="col-xs-3">{{ $item->kontak_1 }}</div>
+                    <label for="kontak_2" class="col-xs-3 form-label">Kontak :</label>
+                    <div class="col-xs-3">{{ $item->kontak_2 }}</div>
                   </div>
-                  <div class="form-group row">
-                    <label for="bagian_2" class="col-xs-5 form-label">Departemen / Bagian :</label>
-                    <div class="col-xs-5">
-                      {{ $item->bagian_2 }}
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="kontak_2" class="col-xs-5 form-label">Kontak :</label>
-                    <div class="col-xs-5">
-                      {{ $item->kontak_2 }}
-                    </div>
-                  </div>
-                  <h2>RINCIAN ALAT YANG DISERAHKAN</h2>
+                  <h3>RINCIAN ALAT YANG DISERAHKAN</h3>
                   <table class="table-striped">
                     <thead>
                       <tr>
-                        <th class="text-center"><b>Nama alat</b></th>
-                        <th class="text-center"><b>Merk / Type</b></th>
-                        <th class="text-center"><b>No seri</b></th>
-                        <th class="text-center"><b>kondisi</b></th>
-                        <th class="tex-center"><b>kelengkapan</b></th>
-                        <th class="text-center"><b>jumlah</b></th>
-                        <th class="tex-center"><b>keterangan</b></th>
+                        <th class="text-center"><b>Nama_alat</b></th>
+                        <th class="text-center"><b>Merk/Type</b></th>
+                        <th class="text-center"><b>No_seri</b></th>
+                        <th class="text-center"><b>Kondisi</b></th>
+                        <th class="text-center"><b>Kelengkapan</b></th>
+                        <th class="text-center"><b>Jumlah</b></th>
+                        <th class="tex-center"><b>Keterangan</b></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -175,7 +153,7 @@
                   <br>
                   <div class="row">
                     <div class="col-sm-12">
-                      <h2>PERNYATAAN DAN KETENTUAN</h2>
+                      <h3>PERNYATAAN DAN KETENTUAN</h3>
                       <p>1. Kelengkapan yang tertera dengan kondisi yang sebenarnya</p>
                       <p>2. Dari pihak pertama tidak menerima kehilangan alat jikalau alat tersebut tidak tertera</p>
                       <p>3. Dari pihak kedua dapat menagih kepada pihak pertama jikalau ada kehilangan kelengkapan yang sudah tertera pada surat</p>
@@ -183,7 +161,7 @@
                   </div><br>
                   <div class="form-group row">
                     <div class="col-xs-6">
-                      <br><br>
+                      <br>
                       <table class="table" style="width: 60%;">
                         <thead>
                           <tr>
@@ -192,17 +170,17 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td align="center"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image1" width="30%" alt="Ttd" ></td>
+                            <td align="center"><img src="" id="ttd_image1" width="30%" alt="Ttd" ></td>
                           </tr>
                           <tr>
-                            <td align="center"><b><u>.....................</u></b></td>
+                            <td align="center">{{ $item->nama_2 }}</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                     <div class="col-xs-6">
-                      <br><br>
-                      <table class="table" style="width: 60%; margin-left: 210px">
+                      <br>
+                      <table class="table" style="width: 60%; margin-left: 175px">
                         <thead>
                           <tr>
                             <th class="text-center">Pihak yang menerima,</th>
@@ -213,12 +191,12 @@
                             <td align="center"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="30%" alt="Ttd" ></td>
                           </tr>
                           <tr>
-                            <td align="center"><b><u>.....................</u></b></td>
+                            <td align="center">{{ $item->nama_1 }}</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
-                  </div><br>
+                  </div>
                   <p>*Catatan: Formulir ini berlaku sebagai bukti sah serah terima alat dan dibuat dalam 2(dua) rangkap,</p>
                   <p>masing masing untk pihak yang menyerahkan dan menerima</p>
                 </form>
@@ -393,24 +371,6 @@
     var ctx = canvas.getContext("2d");
     ctx.strokeStyle = "#222222";
     ctx.lineWidth = 4;
-
-// Gambar background aksa.png
-  var bgImage = new Image();
-  bgImage.src = "{{ url('assets/images/aksa.png') }}"; // Blade syntax
-  bgImage.onload = function () {
-    drawBackground();
-  };
-
-  function drawBackground() {
-    // ctx.globalAlpha = 0.3; // transparansi
-    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1.0; // reset untuk signature
-  }
-
-  function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBackground();
-  }
 
     var drawing = false;
     var mousePos = {
