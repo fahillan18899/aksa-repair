@@ -21,6 +21,11 @@ return new class extends Migration
             $table->text('yth')->nullable();
             $table->json('akom')->nullable();
             $table->json('part')->nullable();
+            $table->json('harga_part')->nullable();
+            $table->json('jumlah_part')->nullable();
+            $table->json('total_part')->nullable();
+            $table->json('biaya_part')->nullable();
+            $table->json('part_total')->nullable();
             $table->json('nama_alat')->nullable();
             $table->json('keterangan')->nullable();
             $table->text('jumlah')->nullable();

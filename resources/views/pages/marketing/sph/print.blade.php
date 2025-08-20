@@ -90,7 +90,7 @@
                   <p>Dengan Hormat,</p><br>
                   <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
-                  </p>
+                  </p><br><br>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -139,40 +139,35 @@
                         <th class="text-center"><b>NAMA PART</b></th>
                         <th class="text-center"><b>HARGA</b></th>
                         <th class="text-center"><b>JUMLAH</b></th>
-                        <th class="text-center"><b>TOTAL  HARGA PART</b></th>
+                        <th class="text-center"><b>TOTAL HARGA PART</b></th>
                         <th class="text-center"><b>BIAYA</b></th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach($data->part as $index => $parts)
                       <tr>
-                        <td class="text-center">{{ $data->part[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[2] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[3] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[4] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[5] ?? '-' }}</td>
+                        <td class="text-center">{{ $parts }}</td>
+                        <td class="text-center">{{ $data->harga_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->jumlah_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->total_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->biaya_part[$index] ?? '-' }}</td>
                       </tr>
+                      @endforeach
+                    </tbody>
+                  </table><br>
+                  <table class="table-striped">
+                    <thead>
                       <tr>
-                        <td class="text-center">{{ $data->part[6] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[7] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[8] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[9] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[10] ?? '-' }}</td>
+                        <th class="text-center"><b>TOTAL BIAYA PART</b></th>
+                        <th class="text-center"><b>BIAYA SERVICE</b></th>
+                        <th class="text-center"><b>HARGA SERVICE</b></th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <tr>
-                        <td class="text-center">{{ $data->part[11] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[12] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[13] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[14] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[15] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="4" class="text-center">Total Biaya Part</td>
-                        <td class="text-center">{{ $data->part[16] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" class="text-center">Biaya Service</td>
-                        <td colspan="2" class="text-center">{{ $data->part[17] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->part[18] ?? '-' }}</td>
+                        <td class="text-center">{{ $data->part_total[1] }}</td>
+                        <td class="text-center">{{ $data->part_total[2] }}</td>
+                        <td class="text-center">{{ $data->part_total[3] }}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -228,7 +223,7 @@
                         <td align="center">{{ $data->total }}</td>
                       </tr>
                     </tbody>
-                  </table><br><br><br><br><br>
+                  </table><br><br><br><br><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -238,7 +233,7 @@
                           <p>2. <b>Sistem Pembayaran :</b>100% Lunas diawal <i>(Chas in Advance),</i> ditransfer ke :</p>
                           <p style="margin-left: 15px; color: blue;"><b>Bank BNI | a.n.: PT. Aksa Jaya Sentosa | No.Rek.: 1783871355.</b></p>
                           <p>3. <b>Masa Berlaku Penawaran:</b> 30(tiga-puluh) hari sejak tanggal penawaran / dapat berubah sewaktu-wakut.</p>
-                          <p>4. Garansi Perbaikan : 1 sampai 2 bulan</p>
+                          <p>4. Garansi Perbaikan : 1 sampai 2 bulan (Menyesuaikan kategori alat)</p>
                         </div>
                       </div>
                     </div>

@@ -141,72 +141,50 @@
                       </tbody>
                     </table>
                   </div>
-                  <div style="overflow-x:auto;">
-                    <table class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th class="text-center"><b>NAMA PART</b></th>
-                          <th class="text-center"><b>HARGA</b></th>
-                          <th class="text-center"><b>JUMLAH</b></th>
-                          <th class="text-center"><b>TOTAL HARGA PART</b></th>
-                          <th class="text-center"><b>BIAYA</b></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="text-center">
-                            <select name="part[1]" id="part_1" type="text" class="form-control">
-                              <option>Pilih Part</option>
-                              @foreach($part as $parts)
-                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
-                              @endforeach
-                            </select>
-                          </td>
-                          <td class="text-center"><input name="part[2]" id="harga_1" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
-                          <td class="text-center"><input name="part[3]" id="jumlah_1" type="number" class="form-control" onkeyup="part1()" required></td>
-                          <td class="text-center"><input name="part[4]" id="total_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                          <td class="text-center"><input name="part[5]" id="biaya_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <select name="part[6]" id="part_2" type="text" class="form-control">
-                              <option>Pilih Part</option>
-                              @foreach($part as $parts)
-                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
-                              @endforeach
-                            </select>
-                          </td>
-                          <td class="text-center"><input name="part[7]" id="harga_2" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
-                          <td class="text-center"><input name="part[8]" id="jumlah_2" type="number" class="form-control" onkeyup="part2()" required></td>
-                          <td class="text-center"><input name="part[9]" id="total_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                          <td class="text-center"><input name="part[10]" id="biaya_part_2" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">
-                            <select name="part[11]" id="part_3" type="text" class="form-control">
-                              <option>Pilih Part</option>
-                              @foreach($part as $parts)
-                              <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
-                              @endforeach
-                            </select>
-                          </td>
-                          <td class="text-center"><input name="part[12]" id="harga_3" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" readonly required></td>
-                          <td class="text-center"><input name="part[13]" id="jumlah_3" type="number" class="form-control" onkeyup="part3()" required></td>
-                          <td class="text-center"><input name="part[14]" id="total_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                          <td class="text-center"><input name="part[15]" id="biaya_part_3" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                        </tr>
-                        <tr>
-                          <td colspan="4" class="text-center">Total Biaya Part</td>
-                          <td class="text-center"><input name="part[16]" id="total_biaya_part" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                        </tr>
-                        <tr>
-                          <td colspan="2" class="text-center">Biaya Service</td>
-                          <td colspan="2" class="text-center"><input name="part[17]" id="service" type="text" class="form-control" onkeyup="rp5(this)" required></td>
-                          <td class="text-center"><input name="part[18]" id="serviceT" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                  <a class="btn btn-primary" id="add2" style="margin-bottom: 5px;">Tambah Part</a>
+                  <table class="table table-striped table-bordered" id="dinamic2">
+                    <thead>
+                      <tr>
+                        <th class="text-center"><b>NAMA PART</b></th>
+                        <th class="text-center"><b>HARGA</b></th>
+                        <th class="text-center"><b>JUMLAH</b></th>
+                        <th class="text-center"><b>TOTAL HARGA PART</b></th>
+                        <th class="text-center"><b>BIAYA</b></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">
+                          <select name="part[1]" id="part_1" type="text" class="form-control" required>
+                            <option value="-">Pilih Part</option>
+                            @foreach($part as $parts)
+                            <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
+                            @endforeach
+                          </select>
+                        </td>
+                        <td class="text-center"><input name="harga_part[1]" id="harga_1" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" value="0" readonly required></td>
+                        <td class="text-center"><input name="jumlah_part[1]" id="jumlah_1" type="number" class="form-control" onkeyup="part1(event)" required></td>
+                        <td class="text-center"><input name="total_part[1]" id="total_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
+                        <td class="text-center"><input name="biaya_part[1]" id="biaya_part_1" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Total Biaya Part</th>
+                        <th>Biaya Service</th>
+                        <th>Harga Service</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input name="part_total[1]" id="total_biaya_part" class="form-control" type="text" placeholder="Terisi Otomatis" readonly></td>
+                        <td><input name="part_total[2]" id="service" class="form-control" type="text" onkeyup="rp5(this)" required></td>
+                        <td><input name="part_total[3]" id="serviceT" class="form-control" type="text" placeholder="Terisi Otomatis" readonly></td>
+                      </tr>
+                    </tbody>
+                  </table>
                   <a class="btn btn-primary" id="add" style="margin-bottom: 5px;">Tambah Alat</a>
                   <div style="overflow-x:auto;">
                     <table class="table table-striped table-bordered" id="dinamic">
@@ -608,68 +586,46 @@
 
 <!-- PERHITUNGAN PART -->
 <script>
-  function part1() {
-    const harga1 = document.getElementById('harga_1').value.replace(/[^0-9]/g, '');
+  function part1(event) {
+    let input = event.target;
+    let rowId = input.id.split('_')[1]; // ambil nomor baris dari id "jumlah_1", "jumlah_2", dst.
+
+    const harga1 = document.getElementById('harga_' + rowId).value.replace(/[^0-9]/g, '');
     const harga1c = parseFloat(harga1) || 0
-    const jumlah1 = parseFloat(document.getElementById('jumlah_1').value);
+    const jumlah1 = parseFloat(document.getElementById('jumlah_' + rowId).value) || 0;
     const total1 = harga1c * jumlah1;
     const total1Rp = total1.toLocaleString('id-ID', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0
     });
-    document.getElementById('total_part_1').value = total1Rp;
-    document.getElementById('biaya_part_1').value = total1Rp;
+    document.getElementById('total_part_' + rowId).value = total1Rp;
+    document.getElementById('biaya_part_' + rowId).value = total1Rp;
+
+    totalPart(); // update total semua baris
   }
 </script>
-<script>
-  function part2() {
-    const harga2 = document.getElementById('harga_2').value.replace(/[^0-9]/g, '');
-    const harga2c = parseFloat(harga2) || 0
-    const jumlah2 = parseFloat(document.getElementById('jumlah_2').value);
-    const total2 = harga2c * jumlah2;
-    const total2Rp = total2.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-    document.getElementById('total_part_2').value = total2Rp;
-    document.getElementById('biaya_part_2').value = total2Rp;
-  }
-</script>
-<script>
-  function part3() {
-    const harga3 = document.getElementById('harga_3').value.replace(/[^0-9]/g, '');
-    const harga3c = parseFloat(harga3) || 0
-    const jumlah3 = parseFloat(document.getElementById('jumlah_3').value);
-    const total3 = harga3c * jumlah3;
-    const total3Rp = total3.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-    document.getElementById('total_part_3').value = total3Rp;
-    document.getElementById('biaya_part_3').value = total3Rp;
-    totalPart()
-  }
-</script>
+
 <script>
   function totalPart() {
-    const biaya1 = document.getElementById('biaya_part_1').value.replace(/[^0-9]/g, '');
-    const biaya1c = parseFloat(biaya1) || 0
-    const biaya2 = document.getElementById('biaya_part_2').value.replace(/[^0-9]/g, '');
-    const biaya2c = parseFloat(biaya2) || 0
-    const biaya3 = document.getElementById('biaya_part_3').value.replace(/[^0-9]/g, '');
-    const biaya3c = parseFloat(biaya3) || 0
-    const totalBiaya = biaya1c + biaya2c + biaya3c;
+    let totalBiaya = 0;
+
+    document.querySelectorAll('[id^="biaya_part_"]').forEach(input => {
+      const value = input.value.replace(/[^0-9]/g, '');
+      const biaya = parseFloat(value) || 0;
+      totalBiaya += biaya;
+    });
+
     const totalBiayaRp = totalBiaya.toLocaleString('id-ID', {
       style: 'currency',
       currency: 'IDR',
       minimumFractionDigits: 0
     });
+
     document.getElementById('total_biaya_part').value = totalBiayaRp;
   }
 </script>
+
 <script>
   function service() {
     const service = document.getElementById('service').value //ambil nilai dari input
@@ -693,74 +649,24 @@
 
 <!-- PART AUTOFILL SELECT -->
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('select[id="part_1"]').on('change', function() {
-      var stateID = $(this).val();
-      console.log(stateID);
-      if (stateID) {
-        $.ajax({
-          url: 'link_sph/part/' + stateID,
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-              $('input[id="harga_1"]').val(value.harga);
-            });
-          }
-        });
-      } else {
-        $('input[id="harga_1"]').empty();
-      }
-    })
-  });
-</script>
+  $(document).on('change', 'select[id^="part_"]', function() {
+    let id = $(this).attr('id').split('_')[1]; // ambil angka dari id, misal: part_2 -> 2
+    let partValue = $(this).val();
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('select[id="part_2"]').on('change', function() {
-      var stateID = $(this).val();
-      console.log(stateID);
-      if (stateID) {
-        $.ajax({
-          url: 'link_sph/part/' + stateID,
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-              $('input[id="harga_2"]').val(value.harga);
-            });
-          }
-        });
-      } else {
-        $('input[id="harga_2"]').empty();
-      }
-    })
-  });
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('select[id="part_3"]').on('change', function() {
-      var stateID = $(this).val();
-      console.log(stateID);
-      if (stateID) {
-        $.ajax({
-          url: 'link_sph/part/' + stateID,
-          type: "GET",
-          dataType: "json",
-          success: function(data) {
-            console.log(data);
-            $.each(data, function(key, value) {
-              $('input[id="harga_3"]').val(value.harga);
-            });
-          }
-        });
-      } else {
-        $('input[id="harga_3"]').empty();
-      }
-    })
+    if (partValue) {
+      $.ajax({
+        url: 'link_sph/part/' + partValue,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          $.each(data, function(key, value) {
+            $('#harga_' + id).val(value.harga);
+          });
+        }
+      });
+    } else {
+      $('#harga_' + id).val('');
+    }
   });
 </script>
 <!-- PART AUTOFILL SELECT -->
@@ -788,11 +694,101 @@
 </script>
 
 <script>
-    document.getElementById('uploadBtn').addEventListener('click', function () {
+  $(document).ready(function() {
+    let row2 = 2; //Menyimpan jumlah baris
+
+    //Fungsi menambah baris
+    $("#add2").click(function() {
+      let newRow =
+        `
+          <tr>
+            <td class="text-center">
+              <select name="part[${row2}]" id="part_${row2}" type="text" class="form-control">
+                <option value="-">Pilih Part</option>
+                @foreach($part as $parts)
+                <option value="{{ $parts->nama }}">{{ $parts->nama }}</option>
+                @endforeach
+              </select>
+            </td>
+            <td class="text-center"><input name="harga_part[${row2}]" id="harga_${row2}" type="text" class="form-control" onkeyup="rp2(this)" placeholder="terisi otomatis" value="0" readonly required></td>
+            <td class="text-center"><input name="jumlah_part[${row2}]" id="jumlah_${row2}" type="number" class="form-control" onkeyup="part1(event)" required></td>
+            <td class="text-center"><input name="total_part[${row2}]" id="total_part_${row2}" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
+            <td class="text-center"><input name="biaya_part[${row2}]" id="biaya_part_${row2}" type="text" class="form-control" placeholder="terisi otomatis" readonly></td>
+          </tr>
+      `;
+
+      //Menambah baris baru ke tbody
+      $("#dinamic2 tbody").append(newRow);
+      row2++;
+
+      // Hitung total baris di tabel
+      let totalRows = $("#dinamic2 tbody tr").length;
+
+      // Jika baris 3 atau lebih, sembunyikan tombol tambah
+      if (totalRows >= 3) {
+        $("#add2").hide();
+      }
+    });
+
+  })
+</script>
+
+<script>
+  document.getElementById('uploadBtn').addEventListener('click', function() {
     const confirmation = confirm("Pastikan dokumen yang di upload benar");
     if (confirmation) {
       document.getElementById('uploadForm').submit();
     }
   });
 </script>
+
+<!-- <script>
+  function part2() {
+    const harga2 = document.getElementById('harga_2').value.replace(/[^0-9]/g, '');
+    const harga2c = parseFloat(harga2) || 0
+    const jumlah2 = parseFloat(document.getElementById('jumlah_2').value);
+    const total2 = harga2c * jumlah2;
+    const total2Rp = total2.toLocaleString('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    });
+    document.getElementById('total_part_2').value = total2Rp;
+    document.getElementById('biaya_part_2').value = total2Rp;
+    totalPart()
+  }
+</script>
+<script>
+  function part3() {
+    const harga3 = document.getElementById('harga_3').value.replace(/[^0-9]/g, '');
+    const harga3c = parseFloat(harga3) || 0
+    const jumlah3 = parseFloat(document.getElementById('jumlah_3').value);
+    const total3 = harga3c * jumlah3;
+    const total3Rp = total3.toLocaleString('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    });
+    document.getElementById('total_part_3').value = total3Rp;
+    document.getElementById('biaya_part_3').value = total3Rp;
+    totalPart()
+  }
+</script> -->
+<!-- <script>
+  function totalPart() {
+    const biaya1 = document.getElementById('biaya_part_1').value.replace(/[^0-9]/g, '');
+    const biaya1c = parseFloat(biaya1) || 0
+    const biaya2 = document.getElementById('biaya_part_2').value.replace(/[^0-9]/g, '');
+    const biaya2c = parseFloat(biaya2) || 0
+    const biaya3 = document.getElementById('biaya_part_3').value.replace(/[^0-9]/g, '');
+    const biaya3c = parseFloat(biaya3) || 0
+    const totalBiaya = biaya1c + biaya2c + biaya3c;
+    const totalBiayaRp = totalBiaya.toLocaleString('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    });
+    document.getElementById('total_biaya_part').value = totalBiayaRp;
+  }
+</script> -->
 @endpush

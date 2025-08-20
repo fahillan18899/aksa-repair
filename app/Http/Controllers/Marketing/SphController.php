@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Marketing;
 
-use App\Http\Controllers\Controller;
-use App\Models\Informasi;
 use App\Models\Sph;
-use App\Models\SphHistory;
 use App\Models\SphOld;
+use App\Models\Informasi;
+use App\Models\SphHistory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -55,21 +55,26 @@ class SphController extends Controller
             'part.*.1'          => 'nullable',
             'part.*.2'          => 'nullable',
             'part.*.3'          => 'nullable',
-            'part.*.4'          => 'nullable',
-            'part.*.5'          => 'nullable',
-            'part.*.6'          => 'nullable',
-            'part.*.7'          => 'nullable',
-            'part.*.8'          => 'nullable',
-            'part.*.9'          => 'nullable',
-            'part.*.10'         => 'nullable',
-            'part.*.11'         => 'nullable',
-            'part.*.12'         => 'nullable',
-            'part.*.13'         => 'nullable',
-            'part.*.14'         => 'nullable',
-            'part.*.15'         => 'nullable',
-            'part.*.16'         => 'nullable',
-            'part.*.17'         => 'nullable',
-            'part.*.18'         => 'nullable',
+            'harga_part'        => 'array',
+            'harga_part.*.1'    => 'nullable',
+            'harga_part.*.2'    => 'nullable',
+            'harga_part.*.3'    => 'nullable',
+            'jumlah_part'       => 'array',
+            'jumlah_part.*.1'   => 'nullable',
+            'jumlah_part.*.2'   => 'nullable',
+            'jumlah_part.*.3'   => 'nullable',
+            'total_part'        => 'nullable',
+            'total_part.*.1'    => 'nullable',
+            'total_part.*.2'    => 'nullable',
+            'total_part.*.3'    => 'nullable',
+            'biaya_part'        => 'nullable',
+            'biaya_part.*.1'    => 'nullable',
+            'biaya_part.*.2'    => 'nullable',
+            'biaya_part.*.3'    => 'nullable',
+            'part_total'        => 'array',
+            'part_total.*.1'    => 'nullable',
+            'part_total.*.2'    => 'nullable',
+            'part_total.*.3'    => 'nullable',
             'nama_alat'         => 'array',
             'nama_alat.*.1'     => 'nullable',
             'nama_alat.*.2'     => 'nullable',
@@ -93,6 +98,11 @@ class SphController extends Controller
 
         $validate['akom'] = json_encode($request->akom);
         $validate['part'] = json_encode($request->part);
+        $validate['harga_part'] = json_encode($request->harga_part);
+        $validate['jumlah_part'] = json_encode($request->jumlah_part);
+        $validate['total_part'] = json_encode($request->total_part);
+        $validate['biaya_part'] = json_encode($request->biaya_part);
+        $validate['part_total'] = json_encode($request->part_total);
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
         Sph::create($validate);
@@ -104,8 +114,14 @@ class SphController extends Controller
     {
         $item = Sph::findOrFail($id);
         $part = Informasi::all();
+        // Mengubah data menjadi array
         $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
+        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
+        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;
+        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) : $item->total_part;
+        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) : $item->biaya_part;
+        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) : $item->part_total;
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.marketing.sph.edit',
@@ -137,21 +153,26 @@ class SphController extends Controller
             'part.*.1'          => 'nullable',
             'part.*.2'          => 'nullable',
             'part.*.3'          => 'nullable',
-            'part.*.4'          => 'nullable',
-            'part.*.5'          => 'nullable',
-            'part.*.6'          => 'nullable',
-            'part.*.7'          => 'nullable',
-            'part.*.8'          => 'nullable',
-            'part.*.9'          => 'nullable',
-            'part.*.10'         => 'nullable',
-            'part.*.11'         => 'nullable',
-            'part.*.12'         => 'nullable',
-            'part.*.13'         => 'nullable',
-            'part.*.14'         => 'nullable',
-            'part.*.15'         => 'nullable',
-            'part.*.16'         => 'nullable',
-            'part.*.17'         => 'nullable',
-            'part.*.18'         => 'nullable',
+            'harga_part'        => 'array',
+            'harga_part.*.1'    => 'nullable',
+            'harga_part.*.2'    => 'nullable',
+            'harga_part.*.3'    => 'nullable',
+            'jumlah_part'       => 'array',
+            'jumlah_part.*.1'   => 'nullable',
+            'jumlah_part.*.2'   => 'nullable',
+            'jumlah_part.*.3'   => 'nullable',
+            'total_part'        => 'nullable',
+            'total_part.*.1'    => 'nullable',
+            'total_part.*.2'    => 'nullable',
+            'total_part.*.3'    => 'nullable',
+            'biaya_part'        => 'nullable',
+            'biaya_part.*.1'    => 'nullable',
+            'biaya_part.*.2'    => 'nullable',
+            'biaya_part.*.3'    => 'nullable',
+            'part_total'        => 'array',
+            'part_total.*.1'    => 'nullable',
+            'part_total.*.2'    => 'nullable',
+            'part_total.*.3'    => 'nullable',
             'nama_alat'         => 'array',
             'nama_alat.*.1'     => 'nullable',
             'nama_alat.*.2'     => 'nullable',
@@ -183,6 +204,11 @@ class SphController extends Controller
             'yth' => $item->yth,
             'akom' => $item->akom,
             'part' => $item->part,
+            'harga_part' => $item->harga_part,
+            'jumlah_part' => $item->jumlah_part,
+            'total_part' => $item->total_part,
+            'biaya_part' => $item->biaya_part,
+            'part_total' => $item->part_total,
             'nama_alat' => $item->nama_alat,
             'keterangan' => $item->keterangan,
             'jumlah' => $item->jumlah,
@@ -197,6 +223,11 @@ class SphController extends Controller
 
         $validate['akom'] = json_encode($request->akom);
         $validate['part'] = json_encode($request->part);
+        $validate['harga_part'] = json_encode($request->harga_part);
+        $validate['jumlah_part'] = json_encode($request->jumlah_part);
+        $validate['total_part'] = json_encode($request->total_part);
+        $validate['biaya_part'] = json_encode($request->biaya_part);
+        $validate['part_total'] = json_encode($request->part_total);
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
         $item->update($validate);
@@ -215,9 +246,14 @@ class SphController extends Controller
     {
         $item = SphHistory::findOrFail($id);
 
-        //Mengubah data menjadi array
+        // Mengubah data menjadi array
         $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
+        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
+        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;
+        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) : $item->total_part;
+        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) : $item->biaya_part;
+        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) : $item->part_total;
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.marketing.sph.view',
@@ -231,6 +267,11 @@ class SphController extends Controller
         // Mengubah data menjadi array
         $data->akom = is_string($data->akom) ? json_decode($data->akom, true) : $data->akom;
         $data->part = is_string($data->part) ? json_decode($data->part, true) : $data->part;
+        $data->harga_part = is_string($data->harga_part) ? json_decode($data->harga_part, true) : $data->harga_part;
+        $data->jumlah_part = is_string($data->jumlah_part) ? json_decode($data->jumlah_part, true) : $data->jumlah_part;
+        $data->total_part = is_string($data->total_part) ? json_decode($data->total_part, true) : $data->total_part;
+        $data->biaya_part = is_string($data->biaya_part) ? json_decode($data->biaya_part, true) : $data->biaya_part;
+        $data->part_total = is_string($data->part_total) ? json_decode($data->part_total, true) : $data->part_total;
         $data->nama_alat = is_string($data->nama_alat) ? json_decode($data->nama_alat, true) : $data->nama_alat;
         $data->keterangan = is_string($data->keterangan) ? json_decode($data->keterangan, true) : $data->keterangan;
         return view('pages.marketing.sph.print',
