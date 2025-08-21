@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'View SPH')
+@section('title', 'Pembuatan SPH')
 <style>
   input[readonly] {
     cursor: not-allowed;
   }
 
-  p {
+  p{
     font-size: large;
   }
 
-  label {
+  label{
     font-size: large;
   }
 
@@ -26,9 +26,8 @@
     padding: 8px;
   }
 
-  .panel {
-    border: 1px solid black;
-  }
+  .panel { border: 1px solid black; }
+
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -38,8 +37,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>VIEW</h1>
-        <small>View SPH</small>
+        <h1>MENU PEMBUATAN SPH</h1>
+        <small>Pembuatan SPH</small>
       </div>
     </div>
   </section>
@@ -91,7 +90,7 @@
                   <p>Dengan Hormat,</p><br>
                   <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
-                  </p>
+                  </p><br><br>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -145,35 +144,30 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach($item->part as $index => $parts)
                       <tr>
-                        <td class="text-center">{{ $item->part[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[2] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[3] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[4] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[5] ?? '-' }}</td>
+                        <td class="text-center">{{ $parts }}</td>
+                        <td class="text-center">{{ $item->harga_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->jumlah_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->total_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->biaya_part[$index] ?? '-' }}</td>
                       </tr>
+                      @endforeach
+                    </tbody>
+                  </table><br>
+                  <table class="table-striped">
+                    <thead>
                       <tr>
-                        <td class="text-center">{{ $item->part[6] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[7] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[8] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[9] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[10] ?? '-' }}</td>
+                        <th class="text-center"><b>TOTAL BIAYA PART</b></th>
+                        <th class="text-center"><b>BIAYA SERVICE</b></th>
+                        <th class="text-center"><b>HARGA SERVICE</b></th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <tr>
-                        <td class="text-center">{{ $item->part[11] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[12] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[13] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[14] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[15] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="4" class="text-center">Total Biaya Part</td>
-                        <td class="text-center">{{ $item->part[16] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" class="text-center">Biaya Service</td>
-                        <td colspan="2" class="text-center">{{ $item->part[17] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[18] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part_total[1] }}</td>
+                        <td class="text-center">{{ $item->part_total[2] }}</td>
+                        <td class="text-center">{{ $item->part_total[3] }}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -183,12 +177,12 @@
                       <th class="text-center">KETERANGAN</th>
                     </thead>
                     <tbody>
-                      @foreach($item->nama_alat as $index => $alat)
-                      <tr>
-                        <td align="center">{{ $alat }}</td>
-                        <td align="center">{{ $item->keterangan[$index] ?? '-' }}</td>
-                      </tr>
-                      @endforeach
+                        @foreach($item->nama_alat as $index => $alat)
+                          <tr>
+                            <td align="center">{{ $alat }}</td>
+                            <td align="center">{{ $item->keterangan[$index] ?? '-' }}</td>
+                          </tr>
+                        @endforeach
                     </tbody>
                   </table><br>
                   <table class="table-striped">
@@ -229,7 +223,7 @@
                         <td align="center">{{ $item->total }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table><br><br><br><br><br><br>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -239,7 +233,7 @@
                           <p>2. <b>Sistem Pembayaran :</b>100% Lunas diawal <i>(Chas in Advance),</i> ditransfer ke :</p>
                           <p style="margin-left: 15px; color: blue;"><b>Bank BNI | a.n.: PT. Aksa Jaya Sentosa | No.Rek.: 1783871355.</b></p>
                           <p>3. <b>Masa Berlaku Penawaran:</b> 30(tiga-puluh) hari sejak tanggal penawaran / dapat berubah sewaktu-wakut.</p>
-                          <p>4. Garansi Perbaikan : 1 sampai 2 bulan</p>
+                          <p>4. Garansi Perbaikan : 1 sampai 2 bulan (Menyesuaikan kategori alat)</p>
                         </div>
                       </div>
                     </div>
@@ -268,12 +262,12 @@
             </div>
           </div>
         </div>
-        <div class="form-group row">
-          <div class="col-sm-offset-3 col-sm-6">
-            <button type="button" onclick="printMy('print_me')"
-              class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
+          <div class="form-group row">
+            <div class="col-sm-offset-3 col-sm-6">
+              <button type="button" onclick="printMy('print_me')"
+                class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
+            </div>
           </div>
-        </div>
       </div>
     </div>
     <!--Form Perbaikan end-->

@@ -72,62 +72,20 @@
                         <label class="form-label" for="">Tanggal Invoice :</label>
                         <input name="tgl_invoice" class="form-control" type="date" value="{{ $item->tgl_invoice }}">
                       </div>
-                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg">
                     </div>
                     <div class="form-group row">
-                      <div class="col-xs-4"></div>
                       <div class="col-xs-4">
                         <label class="form-label" for="">Nomor Invoice :</label>
                         <input name="no_invoice" id="no_invoice" class="form-control" type="text" value="{{ $item->no_invoice }}">
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-4"></div>
                       <div class="col-xs-4">
                         <label class="form-label" for="">Nomor Pesanan :</label>
                         <input name="no_pesanan" id="no_pesanan" class="form-control" type="text" value="{{ $item->no_pesanan }}">
                       </div>
                     </div>
                   </div>
-                  <br>
-                  <br>
-                  <br>
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                      <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center"><b>BARANG / JASA</b></th>
-                        <th class="text-center"><b>KETERANGAN</b></th>
-                        <th class="text-center"><b>UNIT</b></th>
-                        <th class="text-center"><b>HARGA SATUAN</b></th>
-                        <th class="text-center"><b>TOTAL</b></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-center">1</td>
-                        <td><input name="barang_jasa" id="barang_jasa" type="text" class="form-control" value="{{ $item->barang_jasa }}"></td>
-                        <td><input name="keterangan" id="keterangan" class="form-control" value="{{ $item->keterangan }}"></td>
-                        <td><input name="unit" id="unit" class="form-control" type="text" placeholder="Isi kembali unit" required></td>
-                        <td><input name="harga_satuan" id="harga_satuan" class="form-control" type="text" placeholder="Isi kembali harga" onkeyup="ppn(this)" required></td>
-                        <td><input name="harga" id="harga" class="form-control" type="text" placeholder="Terisi otomatis" readonly onkeyup="ppn()"></td>
-                      </tr>
-                      <tr>
-                        <td colspan="5"><b>Sub total</b></td>
-                        <td><input name="harga_tanpa_pajak" id="harga_tanpa_pajak" type="text" class="form-control" placeholder="Terisi otomatis" readonly onkeyup="ppn()"></td>
-                      </tr>
-                      <tr>
-                        <td colspan="5"><b>PPN 11%</b></td>
-                        <td><input name="pajak" id="pajak" class="form-control" type="text" placeholder="Terisi otomatis" readonly onkeyup="ppn()"></td>
-                      </tr>
-                      <tr>
-                        <td colspan="5"><b>Total</b></td>
-                        <td><input name="total" id="total" class="form-control" type="text" placeholder="Terisi otomatis" readonly onkeyup="ppn()"></td>
-                      </tr>
-                    </tbody>
-                  </table>
                   <div class="form-group row">
-                    <div class="col-sm-offset-3 col-sm-6">
+                    <div class="col-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Edit</button>
                       </div>
