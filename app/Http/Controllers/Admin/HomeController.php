@@ -30,13 +30,13 @@ class HomeController extends Controller
 
     public function count1()
     {
-        $count1 = DataBarang::where('ket', '0')->count();
+        $count1 = DataBarang::where('ket', '5')->count();
         return response()->json(['count1' => $count1]);
     }
 
     public function count2()
     {
-        $count2 = DataBarang::where('ket', '1')->count();
+        $count2 = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->count();
         return response()->json(['count2' => $count2]);
     }
 

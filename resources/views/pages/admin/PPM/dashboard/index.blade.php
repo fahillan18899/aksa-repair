@@ -184,8 +184,8 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
-                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}          
+              <button class="btn btn-sm ${item.ket == 0 ? 'btn-success' : 'btn-success'}" disabled>
+                ${item.ket == 0 ? 'Selesai' : 'Selesai'}          
               </button>
             </td>
           </tr>

@@ -166,8 +166,8 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
-                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+              <button class="btn btn-sm ${item.ket == 0 ? 'btn-success' : 'btn-success'}" disabled>
+                ${item.ket == 0 ? 'Selesai' : 'Selesai'}
               </button>
             </td>
           </tr>
@@ -208,8 +208,21 @@
               </button>
             </td>
             <td>
-              <button class="btn btn-sm ${item.ket == 0 ? 'btn-primary' : 'btn-warning'}" disabled>
-                ${item.ket == 0 ? 'Selesai' : 'Dalam Perbaikan'}
+              <button class="btn btn-sm 
+              ${item.ket == 1 ? 'btn-danger' : 
+                item.ket == 2 ? 'btn-warning' : 
+                item.ket == 3 ? 'btn-info' :
+                item.ket == 4 ? 'btn-secondary' : 
+                item.ket == 5 ? 'btn-success' :
+                'btn-light'}" disabled>
+
+                ${item.ket == 1 ? 'Trouble' :  
+                  item.ket == 2 ? 'Proses' :
+                  item.ket == 3 ? 'Dalam Perbaikan' :
+                  item.ket == 4 ? 'Rusak' :
+                  item.ket == 5 ? 'Selesai' :
+                  'Tidak diketahui'
+                }
               </button>
             </td>
           </tr>

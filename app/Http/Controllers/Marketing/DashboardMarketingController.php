@@ -16,25 +16,25 @@ class DashboardMarketingController extends Controller
 
     public function fetch_selesai()
     {
-        $repair = DataBarang::where('ket', '0')->get();
+        $repair = DataBarang::where('ket', '5')->get();
         return response()->json($repair);
     }
 
     public function fetch_proses()
     {
-        $proses = DataBarang::where('ket', '1')->get();
+        $proses = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->get();
         return response()->json($proses);
     }
 
     public function count_selesai()
     {
-        $countSelesai = DataBarang::where('ket', '0')->count();
+        $countSelesai = DataBarang::where('ket', '5')->count();
         return response()->json(['countSelesai' => $countSelesai]);
     }
 
     public function count_proses()
     {
-        $countProses = DataBarang::where('ket', '1')->count();
+        $countProses = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->count();
         return response()->json(['countProses' => $countProses]);
     }
 }
