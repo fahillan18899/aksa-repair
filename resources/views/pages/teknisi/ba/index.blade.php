@@ -274,8 +274,24 @@
           <div class="panel-heading no-print">
             <div class="row">
               <div class="col-md-3">
-                <h1>Daftar SPH</h1>
+                <h1>Daftar Berita Acara</h1>
               </div>
+              <form id="uploadForm" action="{{ route('teknisi.upload.ba') }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="row">
+                <div class="col-sm-3">
+                  <input name="ba" class="form-control" type="file" required>
+                </div>
+                <div class="col-sm-1">
+                  <button id="uploadBtn" class="btn btn-primary btn-sm" type="submit">
+                    <i class="fa fa-upload" aria-hidden="true">Upload</i>
+                  </button>
+                </div>
+                <div class="col-sm-1">
+                  <a class="btn btn-success" href="{{ route('teknisi.data.baOld') }}">Document Berita Acara</a>
+                </div>
+              </div>
+            </form>
             </div>
           </div>
           <div style="overflow-x:auto;">
@@ -330,5 +346,14 @@
     <!--Tabel Perbaikan-->
   </div>
 </div> <!-- /.content -->
-
 @endsection
+@push('addon-script')
+<script>
+    document.getElementById('uploadBtn').addEventListener('click', function () {
+    const confirmation = confirm("Pastikan dokumen yang di upload benar");
+    if (confirmation) {
+      document.getElementById('uploadForm').submit();
+    }
+  });
+</script>
+@endpush

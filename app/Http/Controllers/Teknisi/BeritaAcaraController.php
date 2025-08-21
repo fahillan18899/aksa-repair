@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teknisi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BeritaAcara;
+use App\Models\BaOld;
 use Illuminate\Support\Facades\Storage;
 
 class BeritaAcaraController extends Controller
@@ -175,22 +176,28 @@ public function post(Request $request)
         ->with('success', 'Data berhasil di ubah');
     }
 
+    public function baOld()
+    {
+        $item = \App\Models\BaOld::latest()->get();
+        return view('pages.teknisi.ba.ba_old',
+        compact('item'));
+    }
+
     public function upload(Request $request)
     {
-        $validate = $request->validate([
-
+        $request->validate([
             'ba' => 'required',
         ]);
 
         $file = $request->file('ba');
         $fileName = $file->getClientOriginalName();
-        //Simpan ke storege/app/public/ba
-        $path = $file->storeAs('public/ba/',$fileName);
+        //Simpan ke storege/app/public/documents
+        $path = $file->storeAs('public/documents/',$fileName);
 
         //Simpan nama di db
-        BeritaAcara::create([
-            'instansi' =>$fileName,
-            'path' => 'ba/'.$fileName,
+        BaOld::create([
+            'nama' => $fileName,
+            'path' => 'documents/'.$fileName,
         ]);
         return back()->with('success', 'Berita Acara ('. $fileName . ') berhasil di upload');
     }
@@ -198,6 +205,13 @@ public function post(Request $request)
     public function delete($id)
     {
         $item = BeritaAcara::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Berita acara berhasil di hapus');
+    }
+
+    public function deleteDoc($id)
+    {
+        $item = BaOld::findOrFail($id);
         //Hapus File di storage
         if(Storage::exists('public/' . $item->path)){
             Storage::delete('public/' . $item->path);
@@ -206,4 +220,5 @@ public function post(Request $request)
         $item->delete();
         return back()->with('success', 'Berita acara berhasil di hapus');
     }
+       
 }
