@@ -46,6 +46,7 @@
                   <thead class="table-light">
                     <tr>
                       <th>No Urut</th>
+                      <th>Marketing</th>
                       <th>Nama</th>
                       <th>No Seri</th>
                       <th>Type</th>
@@ -59,6 +60,7 @@
                     @forelse($data as $datas)
                     <tr>
                       <td>{{ $datas->no_urut }}</td>
+                      <td>{{ $datas->user }}</td>
                       <td>{{ $datas->nama_alat }}</td>
                       <td>{{ $datas->no_seri }}</td>
                       <td>{{ $datas->type }}</td>
@@ -70,9 +72,19 @@
                         </button>
                       </td>
                       <td>
-                        <button class="btn btn-sm btn-{{ $datas->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                          {{$datas->ket == 0 ? 'Selesai' : 'Dalam Perbaikan'  }}
-                        </button>
+                          @php
+                            $class = 'btn-light';
+                            $label = 'Tidak diketahui';
+
+                            switch($datas->ket) {
+                              case 1: $class = 'btn-danger'; $label = 'Trouble'; break;
+                              case 2: $class = 'btn-warning'; $label = 'Proses'; break;
+                              case 3: $class = 'btn-info'; $label = 'Dalam Perbaikan'; break;
+                              case 4: $class = 'btn-secondary'; $label = 'Rusak'; break;
+                              case 5: $class = 'btn-success'; $label = 'Selesai'; break;
+                            }
+                          @endphp
+                          <button class="btn btn-sm {{ $class }}" disabled>{{ $label }}</button>
                       </td>
                     </tr>
                     @empty

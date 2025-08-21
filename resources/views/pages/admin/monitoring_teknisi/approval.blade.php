@@ -70,9 +70,19 @@
                         </button>
                       </td>
                       <td>
-                        <button class="btn btn-sm btn-{{ $datas->ket == 0 ? 'primary' : 'warning' }}" disabled>
-                          {{ $datas->ket == 0 ? 'Selesai' : 'Dalam Perbaikan' }}
-                        </button>
+                          @php
+                            $class = 'btn-light';
+                            $label = 'Tidak diketahui';
+
+                            switch($datas->ket) {
+                              case 1: $class = 'btn-danger'; $label = 'Trouble'; break;
+                              case 2: $class = 'btn-warning'; $label = 'Proses'; break;
+                              case 3: $class = 'btn-info'; $label = 'Dalam Perbaikan'; break;
+                              case 4: $class = 'btn-secondary'; $label = 'Rusak'; break;
+                              case 5: $class = 'btn-success'; $label = 'Selesai'; break;
+                            }
+                          @endphp
+                          <button class="btn btn-sm {{ $class }}" disabled>{{ $label }}</button>
                       </td>
                     </tr>
                     @empty

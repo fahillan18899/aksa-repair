@@ -12,7 +12,7 @@ class DataBarangController extends Controller
     public function index()
     {
         $user = Auth::user()->username;
-        $item = DataBarang::where('user', $user);
+        $item = DataBarang::where('user', $user)->get();
         return view('pages.marketing.data_barang.index',
         compact('item'));
     }
