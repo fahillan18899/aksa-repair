@@ -54,6 +54,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
         Route::get('link_invoice', [MonitoringMarketingController::class, 'getInvoice'])->name('invoice.data');
         Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
+        Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
 
         // Monitoring Teknisi //
         Route::get('link_approval', [MonitoringTeknisiController::class, 'getApproval'])->name('approval.data');

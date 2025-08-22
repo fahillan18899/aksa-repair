@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Sph;
 use App\Models\SphOld;
 use App\Models\Invoice;
+use App\Models\InvoiceOld;
 use App\Models\DataBarang;
 use Illuminate\Http\Request;
 use App\Models\InputPekerjaan;
@@ -52,7 +53,7 @@ class MonitoringMarketingController extends Controller
 
     public function sphDoc()
     {
-        $item = \App\Models\SphOld::latest()->get();
+        $item = SphOld::all();
         return view('pages.admin.monitoring_marketing.sph_doc',
         compact('item'));
     }
@@ -72,6 +73,13 @@ class MonitoringMarketingController extends Controller
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) ?? [] : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) ?? [] : $item->keterangan;
         return view('pages.admin.monitoring_marketing.viewInvo',
+        compact('item'));
+    }
+
+    public function invoiceDoc()
+    {
+        $item = InvoiceOld::all();
+        return view('pages.admin.monitoring_marketing.invoice_doc',
         compact('item'));
     }
 }
