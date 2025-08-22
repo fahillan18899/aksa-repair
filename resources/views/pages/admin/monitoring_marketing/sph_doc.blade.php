@@ -46,6 +46,7 @@
                   <thead class="table-light">
                     <tr>
                       <th>No</th>
+                      <th>Marketing</th>
                       <th>Nama</th>
                       <th>Link Download</th>
                       <th>Tanggal Upload</th>
@@ -55,6 +56,7 @@
                     @foreach($item as $index => $items)
                     <tr>
                       <td>{{ $index + 1 }}</td>
+                      <td>{{ $items->users }}</td>
                       <td>{{ $items->nama }}</td>
                       <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
                       <td>{{ $items->created_at->format('d-m-Y') }}</td>
