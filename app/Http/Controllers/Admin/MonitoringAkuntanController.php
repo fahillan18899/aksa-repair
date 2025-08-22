@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Invoice;
 use App\Models\Vakture;
+use App\Models\Invoice;
+use App\Models\InvoiceOld;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MonitoringAkuntanController extends Controller
 {
@@ -25,6 +26,13 @@ class MonitoringAkuntanController extends Controller
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.admin.monitoring_akuntan.viewInv', 
+        compact('item'));
+    }
+
+    public function invoDoc()
+    {
+        $item = InvoiceOld::all();
+        return view('pages.admin.monitoring_akuntan.invo_doc',
         compact('item'));
     }
 

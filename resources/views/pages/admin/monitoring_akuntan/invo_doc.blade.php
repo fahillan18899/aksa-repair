@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Invoice Akuntan')
+@section('title', 'Document Invoice')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Invoice Akuntan</h1>
-        <small>Daftar Invoice Akuntan</small>
+        <h1>INVOICE</h1>
+        <small>Daftar Invoice</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Invoice Akuntan</h1>
+            <h1>Daftar Document Invoice</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,43 +45,30 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th>Instansi</th>
-                      <th>Tanggal</th>
-                      <th>Nomer Invoice</th>
-                      <th>Nomer Pesanan</th>
-                      <th>Status</th>
+                      <th>No</th>
+                      <th>Nama</th>
+                      <th>Link Download</th>
+                      <th>Tanggal Upload</th>
                       <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @forelse($data as $datas)
+                    @foreach($item as $index => $items)
                     <tr>
-                      <td>{{ $datas->yth }}</td>
-                      <td>{{ $datas->tgl_invoice }}</td>
-                      <td>{{ $datas->no_invoice }}</td>
-                      <td>{{ $datas->no_pesanan }}</td>
-                      <td>
-                        <button class="btn btn-sm btn-{{ $datas->status == 0 ? 'success' : 'danger' }}" disabled>
-                          {{ $datas->status == 0 ? 'Lunas' : 'Belum Lunas' }}
-                        </button>
-                      </td>
-                      <td>
-                        <a href="{{ route('invoiceAkuntan.viewInv', $datas->id) }}" class="btn btn-xs btn-primary" 
-                          data-toggle="tooltip" data-placement="top" title="View">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
-                      </td>
+                      <td>{{ $index + 1 }}</td>
+                      <td>{{ $items->nama }}</td>
+                      <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
+                      <td>{{ $items->created_at->format('d-m-Y') }}</td>
                     </tr>
-                    @empty
-                    @endforelse
+                    @endforeach
                   </tbody>
                 </table>
-                <a class="btn btn-success" href="{{ route('invo.doc') }}">Document Invoice</a>
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
