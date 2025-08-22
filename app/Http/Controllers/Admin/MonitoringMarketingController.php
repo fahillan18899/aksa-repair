@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\InputPekerjaan;
-use App\Models\DataBarang;
 use App\Models\Sph;
+use App\Models\SphOld;
 use App\Models\Invoice;
+use App\Models\DataBarang;
 use Illuminate\Http\Request;
+use App\Models\InputPekerjaan;
+use App\Http\Controllers\Controller;
 
 class MonitoringMarketingController extends Controller
 {
@@ -46,6 +47,13 @@ class MonitoringMarketingController extends Controller
         $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.admin.monitoring_marketing.viewSph',
+        compact('item'));
+    }
+
+    public function sphDoc()
+    {
+        $item = \App\Models\SphOld::latest()->get();
+        return view('pages.admin.monitoring_marketing.sph_doc',
         compact('item'));
     }
 
