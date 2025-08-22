@@ -37,7 +37,7 @@
           <div class="panel-heading no-print">
             <div class="row">
               <div class="col-md-3">
-                <h1>Daftar SPH</h1>
+                <h1>Daftar Berita Acara</h1>
               </div>
             </div>
           </div>
@@ -71,6 +71,7 @@
                       @endforelse
                     </tbody>
                   </table>
+                  <a class="btn btn-success" href="{{ route('ba.doc') }}">Document BA</a>
                   <!--TABEL-->
                 </div>
                 <div class="col-md-3"></div>

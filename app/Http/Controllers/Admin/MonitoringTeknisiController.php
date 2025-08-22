@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\DataBarang;
+use App\Models\BaOld;
 use App\Models\Informasi;
+use App\Models\DataBarang;
 use App\Models\BeritaAcara;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MonitoringTeknisiController extends Controller
 {
@@ -56,6 +57,13 @@ class MonitoringTeknisiController extends Controller
         $item->jenis = is_string($item->jenis) ? json_decode($item->jenis, true) : $item->jenis;
         $item->skc = is_string($item->skc) ? json_decode($item->skc, true) : $item->skc;
         return view('pages.admin.monitoring_teknisi.view_ba',
+        compact('item'));
+    }
+
+    public function baDoc()
+    {
+        $item = BaOld::all();
+        return view('pages.admin.monitoring_teknisi.ba_doc',
         compact('item'));
     }
 

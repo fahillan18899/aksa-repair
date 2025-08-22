@@ -62,6 +62,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_informasi', [MonitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
         Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');
+        Route::get('link_berita_acara/ba_doc', [MonitoringTeknisiController::class, 'baDoc'])->name('ba.doc');
         
         //Monitoring Akuntan //
         Route::get('link_invoice_akun', [MonitoringAkuntanController::class, 'getInvoiceAkun'])->name('invoiceAkuntan.data');
