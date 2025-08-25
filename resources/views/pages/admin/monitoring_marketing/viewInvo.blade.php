@@ -48,8 +48,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN INVOICE</h1>
-        <small>Pembuatan invoice</small>
+        <h1>VIEW INVOICE</h1>
+        <small>View invoice</small>
       </div>
     </div>
   </section>
@@ -163,35 +163,30 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach($item->part as $index => $parts)
                       <tr>
-                        <td class="text-center">{{ $item->part[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[2] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[3] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[4] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[5] ?? '-' }}</td>
+                        <td class="text-center">{{ $parts }}</td>
+                        <td class="text-center">{{ $item->harga_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->jumlah_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->total_part[$index] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->biaya_part[$index] ?? '-' }}</td>
                       </tr>
+                      @endforeach
+                    </tbody>
+                  </table><br>
+                  <table class="table-striped">
+                    <thead>
                       <tr>
-                        <td class="text-center">{{ $item->part[6] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[7] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[8] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[9] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[10] ?? '-' }}</td>
+                        <th class="text-center"><b>TOTAL BIAYA PART</b></th>
+                        <th class="text-center"><b>BIAYA SERVICE</b></th>
+                        <th class="text-center"><b>HARGA SERVICE</b></th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <tr>
-                        <td class="text-center">{{ $item->part[11] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[12] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[13] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[14] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[15] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="4" class="text-center">Total Biaya Part</td>
-                        <td class="text-center">{{ $item->part[16] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" class="text-center">Biaya Service</td>
-                        <td colspan="2" class="text-center">{{ $item->part[17] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->part[18] ?? '-' }}</td>
+                        <td class="text-center">{{ $item->part_total[1] }}</td>
+                        <td class="text-center">{{ $item->part_total[2] }}</td>
+                        <td class="text-center">{{ $item->part_total[3] }}</td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -336,7 +331,7 @@
     .table-striped th,
     .table-striped td {
     border: 1px solid black;
-    padding: 8px;
+    padding: 5px;
     }
 
     .panel { border: 1px solid black }
