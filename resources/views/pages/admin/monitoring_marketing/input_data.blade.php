@@ -52,6 +52,7 @@
                       <th scope="col">Type</th>
                       <th scope="col">Serial Number</th>
                       <th scope="col">Instansi</th>
+                      <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -64,6 +65,11 @@
                       <td>{{ $datas->type }}</td>
                       <td>{{ $datas->no_seri }}</td>
                       <td>{{ $datas->instansi }}</td>
+                      <td>
+                        <a href="{{ route('edit.data', $datas->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                      </td>
                     </tr>
                     @empty
                     @endforelse

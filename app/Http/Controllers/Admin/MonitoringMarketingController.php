@@ -20,6 +20,30 @@ class MonitoringMarketingController extends Controller
         compact('data'));
     }
 
+        public function edit($id)
+    {
+        $item = InputPekerjaan::findOrFail($id);
+        return view('pages.admin.monitoring_marketing.edit',
+        compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'nama_alat' => 'nullable',
+            'merek'     => 'nullable',
+            'type'      => 'nullable',
+            'no_seri'   => 'nullable',
+            'instansi'  => 'nullable',
+            'kerusakan' => 'nullable',
+        ]);
+
+        $item = InputPekerjaan::findOrFail($id);
+        $item->update($validate);
+        return redirect()->route('inputPekerjaan.data')
+        ->with('success', 'Data berhasil di ubah');
+    }
+
     public function getDataBarang()
     {
         $data = DataBarang::all();

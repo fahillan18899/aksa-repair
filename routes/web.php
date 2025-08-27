@@ -48,6 +48,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Monitoring Marketing //
         Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
+        Route::get('link_input_pekerjaan/edit/{id}', [MonitoringMarketingController::class, 'edit'])->name('edit.data');
+        Route::put('link_input_pekerjaan/update/{id}', [MonitoringMarketingController::class, 'update'])->name('update.data');
         Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
         Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
         Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
