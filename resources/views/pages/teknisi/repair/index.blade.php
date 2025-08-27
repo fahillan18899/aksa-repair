@@ -46,6 +46,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Marketing</th>
                         <th>Nama Alat</th>
                         <th>Instansi</th>
                         <th>Tombol</th>
@@ -55,6 +56,7 @@
                       @forelse($data as $datas)
                       <tr>
                         <td onclick="paste(this)" title="Klik untuk kirim no urut" style="cursor: pointer;">{{ $datas->no_urut }}</td>
+                        <td>{{ $datas->user }}</td>
                         <td>{{ $datas->nama_alat }}</td>
                         <td>{{ $datas->instansi }}</td>
                         <td>
