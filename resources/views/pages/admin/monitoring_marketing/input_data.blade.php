@@ -69,6 +69,13 @@
                         <a href="{{ route('edit.data', $datas->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
+                          <form action="{{ route('delete.inputPekerjaan', $datas->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </button>
+                          </form>
                       </td>
                     </tr>
                     @empty

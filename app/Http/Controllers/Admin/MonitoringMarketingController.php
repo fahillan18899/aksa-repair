@@ -27,6 +27,14 @@ class MonitoringMarketingController extends Controller
         compact('item'));
     }
 
+    public function delete($id)
+    {
+        $item = InputPekerjaan::findOrFail($id);
+        $item->delete();
+        return redirect()->route('inputPekerjaan.data')
+        ->with('success', 'Data berhasil dihapus');
+    }
+
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
