@@ -109,14 +109,6 @@
         </a>
       </li>
       <!---->
-      <!---->
-      <li class="{{ request()->is('dashboard/ppm/link_instansi') ? 'active' : '' }}">
-        <a href="{{ route('instansi.data') }}">
-          <i class="fa fa-hospital-o" aria-hidden="true"></i>
-          <span>Instansi</span>
-        </a>
-      </li>
-      <!---->
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->

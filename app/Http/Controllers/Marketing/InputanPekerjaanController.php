@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
 use App\Models\InputPekerjaan;
-use App\Models\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,9 +14,8 @@ class InputanPekerjaanController extends Controller
     {
         $user = Auth::user()->username;
         $item = InputPekerjaan::where('user', $user)->get();
-        $ins = Instansi::all();
         return view('pages.marketing.inputan_pekerjaan.index',
-        compact('item', 'ins'));
+        compact('item'));
     }
 
     public function post(Request $request)
@@ -65,9 +63,8 @@ class InputanPekerjaanController extends Controller
     public function edit($id)
     {
         $item = InputPekerjaan::findOrFail($id);
-        $ins = Instansi::all();
         return view('pages.marketing.inputan_pekerjaan.edit',
-        compact('item', 'ins'));
+        compact('item'));
     }
 
     public function update(Request $request, $id)
