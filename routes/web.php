@@ -10,7 +10,6 @@ use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
 use App\Http\Controllers\Admin\OperatorController;
-use App\Http\Controllers\Admin\InstansiController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
 use App\Http\Controllers\Marketing\DataBarangController;
