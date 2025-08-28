@@ -67,6 +67,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
+                        <th>Marketing</th>
                         <th>No Surat</th>
                         <th>Instansi</th>
                         <th>Lokasi, Tanggal</th>
@@ -76,7 +77,8 @@
                     <tbody>
                       @forelse($sph as $sphs)
                       <tr>
-                        <td onclick="paste(this)" title="Klik untuk kirim no surat" style="cursor: pointer;">{{ $sphs->no_surat }}</td>
+                        <td>{{ $sphs->user }}</td>
+                        <td>{{ $sphs->no_surat }}</td>
                         <td>{{ $sphs->yth }}</td>
                         <td>{{ $sphs->lokasi_tanggal }}</td>
                         <td>
