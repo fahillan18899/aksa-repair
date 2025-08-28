@@ -3,7 +3,7 @@
 @section('content')
 @section('title', 'Inputan Pekerjaan')
 <style>
-    input[readonly] {
+  input[readonly] {
     cursor: not-allowed;
   }
 </style>
@@ -27,6 +27,16 @@
       <p>{{ $message }}</p>
     </div>
     @endif
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+
     <!--Form Perbaikan-->
     <div class="row">
       <div class="col-sm-12">
@@ -76,7 +86,9 @@
                     <div class="col-xs-9">
                       <select name="instansi" id="instansi" class="form-control" required>
                         <option>Pilih Instansi</option>
-                        <option value="A">A</option>
+                        @foreach($ins as $inss)
+                        <option value="{{ $inss->instansi }}">{{ $inss->instansi }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
@@ -125,23 +137,23 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                <!-- TABEL -->
-                <table class="datatable table table-striped table-bordered" style="width:100%">
-                  <thead class="table-light">
-                    <tr>
-                      <th>No Urut</th>
-                      <th>Nama Alat</th>
-                      <th>Merek</th>
-                      <th>Type</th>
-                      <th>No Seri</th>
-                      <th>Instansi</th>
-                      <th>Kerusakan</th>
-                      <th>Foto</th>
-                      <th>Tombol</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @forelse($item as $items)
+                  <!-- TABEL -->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th>No Urut</th>
+                        <th>Nama Alat</th>
+                        <th>Merek</th>
+                        <th>Type</th>
+                        <th>No Seri</th>
+                        <th>Instansi</th>
+                        <th>Kerusakan</th>
+                        <th>Foto</th>
+                        <th>Tombol</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @forelse($item as $items)
                       <tr>
                         <td>{{ $items->no_urut }}</td>
                         <td>{{ $items->nama_alat }}</td>
@@ -152,9 +164,9 @@
                         <td>{{ $items->kerusakan }}</td>
                         <td>
                           @if($items->foto && file_exists(storage_path('app/public/'.$items->foto)))
-                            <a href="{{ URL::asset('storage/'.$items->foto) }}" target="_blank">Download</a>
+                          <a href="{{ URL::asset('storage/'.$items->foto) }}" target="_blank">Download</a>
                           @else
-                            <a href="#" onclick="alert('Foto tidak ada'); return false;">Download</a>
+                          <a href="#" onclick="alert('Foto tidak ada'); return false;">Download</a>
                           @endif
                         </td>
                         <td>
@@ -170,11 +182,11 @@
                           </form>
                         </td>
                       </tr>
-                    @empty
-                    @endforelse
-                  </tbody>
-                </table>
-                <!-- TABEL -->
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
+                  <!-- TABEL -->
                 </div>
                 <div class="col-md-3"></div>
               </div>

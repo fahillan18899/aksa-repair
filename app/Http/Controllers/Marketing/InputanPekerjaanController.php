@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
 use App\Models\InputPekerjaan;
+use App\Models\Instansi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -14,8 +15,9 @@ class InputanPekerjaanController extends Controller
     {
         $user = Auth::user()->username;
         $item = InputPekerjaan::where('user', $user)->get();
+        $ins = Instansi::all();
         return view('pages.marketing.inputan_pekerjaan.index',
-        compact('item'));
+        compact('item', 'ins'));
     }
 
     public function post(Request $request)
@@ -42,14 +44,18 @@ class InputanPekerjaanController extends Controller
         } 
         else { $validated['foto'] = null; }
 
-
-
         //Buat no urut
         $count = InputPekerjaan::count() + 1;
         $noUrut = str_pad($count, 5, '0', STR_PAD_LEFT);
         $validated['no_urut']= $noUrut;
-        
 
+        //Pengecekan user dan instansi
+        $cek = InputPekerjaan::where('instansi', $validated['instansi'])
+                              ->where('user', '!=', $validated['user'])->first();
+
+        if($cek) {
+            return back()->withErrors(['instansi' => 'Instansi sudah memiliki marketing']);
+        }
 
         InputPekerjaan::create($validated);
         return redirect()->route('marketing.data.inputanPekerjaan')
@@ -59,8 +65,9 @@ class InputanPekerjaanController extends Controller
     public function edit($id)
     {
         $item = InputPekerjaan::findOrFail($id);
+        $ins = Instansi::all();
         return view('pages.marketing.inputan_pekerjaan.edit',
-        compact('item'));
+        compact('item', 'ins'));
     }
 
     public function update(Request $request, $id)
@@ -84,6 +91,14 @@ class InputanPekerjaanController extends Controller
             $validate['foto'] = 'foto/'.$fileName;
         }
         else { $validate['foto'] = null; }
+
+        //Pengecekan user dan instansi
+        $cek = InputPekerjaan::where('instansi', $validate['instansi'])
+                              ->where('user', '!=', $validate['user'])->first();
+
+        if($cek) {
+            return back()->withErrors(['instansi' => 'Instansi sudah memiliki marketing']);
+        }
 
         $item = InputPekerjaan::findOrFail($id);
         $item->update($validate);
