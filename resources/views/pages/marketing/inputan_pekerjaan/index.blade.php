@@ -74,7 +74,10 @@
                   <div class="form-group row">
                     <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Masukan Instansi" required>
+                      <select name="instansi" id="instansi" class="form-control" required>
+                        <option>Pilih Instansi</option>
+                        <option value="A">A</option>
+                      </select>
                     </div>
                   </div>
 

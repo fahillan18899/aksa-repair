@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
 use App\Http\Controllers\Admin\OperatorController;
+use App\Http\Controllers\Admin\InstansiController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
 use App\Http\Controllers\Marketing\DataBarangController;
@@ -79,6 +80,12 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::put('link_operator/update/{user_id}', [OperatorController::class, 'update'])->name('operator.update');
         Route::delete('link_operator/{user_id}', [OperatorController::class, 'delete'])->name('operator.delete');
 
+        //Instansi//
+        Route::get('link_instansi', [InstansiController::class, 'index'])->name('instansi.data');
+        Route::post('link_instansi', [InstansiController::class, 'post'])->name('instansi.post');
+        Route::get('link_instansi/edit/{id}', [InstansiController::class, 'edit'])->name('instansi.edit');
+        Route::put('link_instansi/update/{id}', [InstansiController::class, 'update'])->name('instansi.update');
+        Route::delete('link_instansi/{id}', [InstansiController::class, 'delete'])->name('instansi.delete');
     });
 });
 
