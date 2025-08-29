@@ -1,7 +1,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register - Wyasa PPM</title>
+  <title>Register - Monitoring Kalibrasi</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -27,8 +27,8 @@
               <i class="pe-7s-unlock"></i>
             </div>
             <div class="header-title">
-              <h3>Aksa Repair</h3>
-              <small>Silahkan Datang di <strong>Aksa Repair</strong></small>
+              <h3>Monitoring Kalibrasi</h3>
+              <small>Silahkan Datang di <strong>Monitoring Kalibrasi</strong></small>
               <small>Silahkan Isi data anda dengan Sesuai <small>
             </div>
           </div>
@@ -58,16 +58,16 @@
               <input type="username" placeholder="Username" name="username" id="username" class="form-control">
             </div>
             <div class="form-group">
-              <label class="control-label" for="rs">RS</label>
-              <input type="text" placeholder="rs" name="rs" id="rs" class="form-control">
+              <label class="control-label" for="rs">PT</label>
+              <input type="text" placeholder="PT" name="rs" id="rs" class="form-control">
             </div>
             <div class="form-group">
               <label class="control-label" for="divisi">Divisi</label>
               <input type="text" placeholder="divisi" name="divisi" id="divisi" class="form-control">
             </div>
             <div class="form-group">
-              <label class="control-label" for="rs_divisi">RS Divisi</label>
-              <input type="text" placeholder="rs_divisi" name="rs_divisi" id="rs_divisi" class="form-control">
+              <label class="control-label" for="rs_divisi">PT Divisi</label>
+              <input type="text" placeholder="PT_divisi" name="rs_divisi" id="rs_divisi" class="form-control">
             </div>
             <div class="form-group">
               <label class="control-label" for="password">Password</label>

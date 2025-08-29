@@ -219,7 +219,7 @@ p {
 /* General Links */
 
 a {
-    color: #006aff;
+    color: #f2f4f7;
     text-decoration: none;
 }
 
@@ -609,9 +609,9 @@ hr {
     padding: 0 15px;
     font-weight: 300;
     overflow: hidden;
-    background-color: rgb(197, 161, 75);
+    background-color: rgb(162, 218, 244);
     color: #fff;
-    box-shadow: 0 1px 3px rgb(169, 138, 65);
+    box-shadow: 0 1px 3px rgb(140, 189, 212);
     -webkit-transition: width 0.3s ease-in-out;
     transition: width 0.3s ease-in-out;
 }
@@ -928,8 +928,8 @@ hr {
 
 .sidebar-menu > li:hover > a,
 .sidebar-menu > li.active > a {
-    color: #ffffff;
-    background: #a78000;
+    color: #0080ff;
+    background: rgb(162, 218, 244);
 }
 
 .sidebar-menu > li > a > .fa,
@@ -978,7 +978,7 @@ hr {
     padding: 5px 0 10px;
     margin: 0;
     padding-left: 35px;
-    background-color:#d8980d;
+    background-color:rgb(109, 194, 233);
 }
 
 .sidebar-menu .treeview-menu:before {
@@ -1017,7 +1017,7 @@ hr {
 
 .sidebar-menu .treeview-menu > li.active > a,
 .sidebar-menu .treeview-menu > li:hover > a {
-    color: #ffffff;
+    color: #f1f3f5;
 }
 
 .sidebar-menu .treeview-menu > li::before {

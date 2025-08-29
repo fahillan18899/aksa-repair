@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - Aksa Repair</title>
+  <title>Login - Monitoring Kalibrasi</title>
 
   <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right,rgb(237, 161, 46),rgb(235, 25, 25));
+      background: linear-gradient(to right,rgba(6, 205, 240, 1),rgba(6, 167, 236, 1));
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -34,7 +34,7 @@
       margin-bottom: 25px;
       font-size: 28px;
       font-weight: 600;
-      color:rgb(218, 144, 33);
+      color:rgba(98, 210, 235, 1);
     }
 
     .form-control {
@@ -45,12 +45,12 @@
       width: 100%;
       border-radius: 8px;
       font-weight: 600;
-      background-color:rgb(255, 0, 0);
-      border-color:rgb(225, 113, 85);
+      background-color:rgba(33, 153, 218, 1);
+      border-color:rgba(11, 116, 172, 1);
     }
 
     .btn-success:hover {
-      background-color:rgb(218, 160, 77);
+      background-color:rgba(69, 200, 232, 1);
     }
 
     .alert {
@@ -67,7 +67,7 @@
 <body>
 
   <div class="login-box">
-    <h2 class="login-title">Repair Aksa Login</h2>
+    <h2 class="login-title">Monitoring Kalibrasi Login</h2>
 
     @if ($message = Session::get('success'))
     <div class="alert alert-success">{{ $message }}</div>
@@ -96,8 +96,8 @@
 
       <div class="mt-4">
         <button type="submit" class="btn btn-success">Login</button>
-        <!-- <button type="button" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button> -->
-        <button type="button" class="btn btn-secondary"><a href="{{ url('/scan') }}">Scan</a></button>
+        <button type="button" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button>
+        <!-- <button type="button" class="btn btn-secondary"><a href="{{ url('/scan') }}">Scan</a></button> -->
       </div>
     </form>
   </div>

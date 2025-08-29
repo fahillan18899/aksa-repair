@@ -9,7 +9,7 @@
     /* Atur lebar sidebar */
     overflow-y: auto;
     /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: #FFB20E;
+    background-color: #3ab3feff;
     /* Warna background sesuai tema */
     z-index: 1000;
     /* Pastikan sidebar di atas konten lain */
@@ -29,11 +29,11 @@
       @if(Auth::user()->user_role == 'admin')
       @php
         $logoRs = [
-          "RS0000" =>  "profile.png",];
+          "RS0000" =>  "admin.png",];
       @endphp
       @if(isset($logoRs[Auth::user()->kode_rs]))
       <div class="image" style="margin-top: 60px;">
-        <img src="{{ url('assets_web/img/placeholder/' . $logoRs[Auth::user()->kode_rs]) }}" class="img-circle" alt="Logo Rs">
+        <img src="{{ url('assets/images/' . $logoRs[Auth::user()->kode_rs]) }}" class="img-circle" alt="Logo Rs">
       </div>
       @endif
       @endif
@@ -41,7 +41,7 @@
         @if(Auth::user()->user_role == 'admin')
         @php
           $rumahSakit = [
-            "RS0000" => "AKSA",];
+            "RS0000" => "DHS",];
         @endphp
         @if(isset($rumahSakit[Auth::user()->kode_rs]))
         <p>{{ $rumahSakit[Auth::user()->kode_rs] }}</p>
@@ -64,10 +64,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/link_input_pekerjaan') ? 'active' : '' }}"><a href="{{ route('inputPekerjaan.data') }}">Input Pekerjaan</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_data_barang') ? 'active' : '' }}"><a href="{{ route('dataBarang.data') }}">Status Pekerjaan</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_sph') ? 'active' : '' }}"><a href="{{ route('sph.data') }}">SPH</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_invoice') ? 'active' : '' }}"><a href="{{ route('invoice.data') }}">Invoice</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_input_pekerjaan') ? 'active' : '' }}"><a href="{{ route('inputPekerjaan.data') }}">Input Customer</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_data_barang') ? 'active' : '' }}"><a href="{{ route('dataBarang.data') }}">Data invoice</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_sph') ? 'active' : '' }}"><a href="{{ route('sph.data') }}">Kegiatan Kalibrasi</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_invoice') ? 'active' : '' }}"><a href="{{ route('invoice.data') }}">Pembayaran</a></li>
         </ul>
       </li>
       <!---->
@@ -80,25 +80,35 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }}"><a href="{{ route('approval.data') }}">Approval</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }}"><a href="{{ route('alatKembali.data') }}">Alat Kembali</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Informasi</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }}"><a href="{{ route('beritaAcara.data') }}">Berita Acara</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_approval') ? 'active' : '' }}"><a href="{{ route('approval.data') }}">Data Customer</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_alat_kembali') ? 'active' : '' }}"><a href="{{ route('alatKembali.data') }}">Pengerjaan kalibrasi</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Documentasi Kalibrasi</a></li>
+          <!-- <li class="{{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }}"><a href="{{ route('beritaAcara.data') }}">Berita Acara</a></li> -->
         </ul>
       </li>
       <!---->
       <!---->
       <li class="treeview  {{ request()->is('dashboard/ppm/link_invoice_akun') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }} ">
-        <a href="#"><i class="fa fa-balance-scale" aria-hidden="true"></i>
-          <span>Monitoring Akuntan</span>
+        <a href="#"><i class="fa fa-usd" aria-hidden="true"></i></i>
+          <span>Monitoring Keuangan</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/link_invoice_akun') ? 'active' : '' }}"><a href="{{ route('invoiceAkuntan.data') }}">Invoice</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Upload Vakture</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_invoice_akun') ? 'active' : '' }}"><a href="{{ route('invoiceAkuntan.data') }}">Data Customer</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Pembuatan invoice</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Alur pembayaran</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Chas back</a></li>
         </ul>
+      </li>
+      <!---->
+      <!---->
+      <li class="{{ request()->is('dashboard/ppm/link_operator') ? 'active' : '' }}">
+        <a href="{{ route('operator.data') }}">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          <span>Pekerjaan Selesai</span>
+        </a>
       </li>
       <!---->
       <!---->
