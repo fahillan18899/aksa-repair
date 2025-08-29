@@ -47,7 +47,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('api_repair_count2', [PPMController::class, 'count2'])->name('count.proses');
 
         // Monitoring Marketing //
-        Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
+        Route::get('link_input_customer', [MonitoringMarketingController::class, 'index'])->name('index.inputCs');
         Route::get('link_input_pekerjaan/edit/{id}', [MonitoringMarketingController::class, 'edit'])->name('edit.data');
         Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
         Route::put('link_input_pekerjaan/update/{id}', [MonitoringMarketingController::class, 'update'])->name('update.data');

@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Input Pekerjaan</h1>
-        <small>Daftar Input Pekerjaan</small>
+        <h1>Input Customer</h1>
+        <br>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Input Pekerjaan</h1>
+            <h1>Daftar Input Customer</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -46,30 +46,27 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
+                      <th scope="col">Nama Customer</th>
+                      <th scope="col">Jumlah Alat</th>
+                      <th scope="col">Wilayah</th>
                       <th scope="col">Marketing</th>
-                      <th scope="col">Nama Alat</th>
-                      <th scope="col">Merk</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Serial Number</th>
-                      <th scope="col">Instansi</th>
                       <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $datas->user }}</td>
-                      <td>{{ $datas->nama_alat }}</td>
-                      <td>{{ $datas->merek }}</td>
-                      <td>{{ $datas->type }}</td>
-                      <td>{{ $datas->no_seri }}</td>
-                      <td>{{ $datas->instansi }}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                       <td>
-                        <a href="{{ route('edit.data', $datas->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <a href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                          <form action="{{ route('delete.inputPekerjaan', $datas->id) }}" method="POST" class="d-inline">
+                          <form action="#" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

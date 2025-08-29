@@ -13,10 +13,10 @@ use App\Http\Controllers\Controller;
 
 class MonitoringMarketingController extends Controller
 {
-    public function getInputPekerjaan()
+    public function index()
     {
         $data = InputPekerjaan::all();
-        return view('pages.admin.monitoring_marketing.input_data',
+        return view('pages.admin.monitoring_marketing.input_cs',
         compact('data'));
     }
 
