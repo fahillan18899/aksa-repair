@@ -52,10 +52,10 @@ class MonitoringMarketingController extends Controller
         ->with('success', 'Data berhasil di ubah');
     }
 
-    public function getDataBarang()
+    public function index2()
     {
         $data = DataBarang::all();
-        return view('pages.admin.monitoring_marketing.data_barang',
+        return view('pages.admin.monitoring_marketing.data_invoice',
         compact('data'));
     }
 

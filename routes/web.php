@@ -49,9 +49,10 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Monitoring Marketing //
         Route::get('link_input_customer', [MonitoringMarketingController::class, 'index'])->name('index.inputCs');
         Route::get('link_input_pekerjaan/edit/{id}', [MonitoringMarketingController::class, 'edit'])->name('edit.data');
-        Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
         Route::put('link_input_pekerjaan/update/{id}', [MonitoringMarketingController::class, 'update'])->name('update.data');
-        Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
+        Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
+        // --- //
+        Route::get('link_data_invoice', [MonitoringMarketingController::class, 'index2'])->name('index.invoice');
         Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
         Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
         Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
