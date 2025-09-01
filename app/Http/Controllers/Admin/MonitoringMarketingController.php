@@ -8,28 +8,28 @@ use App\Models\Invoice;
 use App\Models\InvoiceOld;
 use App\Models\DataBarang;
 use Illuminate\Http\Request;
-use App\Models\InputPekerjaan;
+use App\Models\InputCustomer;
 use App\Http\Controllers\Controller;
 
 class MonitoringMarketingController extends Controller
 {
     public function index()
     {
-        $data = InputPekerjaan::all();
+        $data = InputCustomer::all();
         return view('pages.admin.monitoring_marketing.input_cs',
         compact('data'));
     }
 
         public function edit($id)
     {
-        $item = InputPekerjaan::findOrFail($id);
+        $item = InputCustomer::findOrFail($id);
         return view('pages.admin.monitoring_marketing.edit',
         compact('item'));
     }
 
     public function delete($id)
     {
-        $item = InputPekerjaan::findOrFail($id);
+        $item = InputCustomer::findOrFail($id);
         $item->delete();
         return redirect()->route('inputPekerjaan.data')
         ->with('success', 'Data berhasil dihapus');
@@ -46,7 +46,7 @@ class MonitoringMarketingController extends Controller
             'kerusakan' => 'nullable',
         ]);
 
-        $item = InputPekerjaan::findOrFail($id);
+        $item = InputCustomer::findOrFail($id);
         $item->update($validate);
         return redirect()->route('inputPekerjaan.data')
         ->with('success', 'Data berhasil di ubah');

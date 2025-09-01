@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('input_pekerjaans', function (Blueprint $table) {
+        Schema::create('input_cutomers', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('no_urut')->nullable();
-            $table->text('nama_alat')->nullable();
-            $table->text('merek')->nullable();
-            $table->text('type')->nullable();
-            $table->text('no_seri')->nullable();
-            $table->text('instansi')->nullable();
-            $table->text('kerusakan')->nullable();
-            $table->text('foto')->nullable();
             $table->text('user')->nullable();
+            $table->text('nama_customer')->nullable();
+            $table->text('jumlah')->nullable();
+            $table->text('wilayah')->nullable();
             $table->timestamps();
         });
     }
