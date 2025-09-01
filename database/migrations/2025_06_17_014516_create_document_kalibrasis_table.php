@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('informasis', function (Blueprint $table) {
+        Schema::create('document_kalibrasis', function (Blueprint $table) {
             $table->increments('id');
             $table->text('nama')->nullable();
             $table->text('merek')->nullable();

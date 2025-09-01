@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Informasi')
+@section('title', 'Dokumen Kalibrasi')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Informasi</h1>
-        <small>Daftar Informasi</small>
+        <h1>Dokumen Kalibrasi</h1>
+        <small>Daftar Dokumen Kalibrasi</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Informasi</h1>
+            <h1>Daftar Dokumen Kalibrasi</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,19 +45,19 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th>Nama</th>
-                      <th>Merek</th>
-                      <th>Type</th>
-                      <th>No Seri</th>
+                      <th>Instansi</th>
+                      <th>Marketing</th>
+                      <th>Jumlah</th>
+                      <th>Document</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td>{{ $datas->nama }}</td>
-                      <td>{{ $datas->merek }}</td>
-                      <td>{{ $datas->type }}</td>
-                      <td>{{ $datas->no_seri }}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     @empty
                     @endforelse

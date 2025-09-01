@@ -72,7 +72,7 @@
       </li>
       <!---->
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/link_data_cs') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_pengerjaan_kalibrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }} ">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_data_cs') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_pengerjaan_kalibrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_document_kalibrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_cetak_qr') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }} ">
         <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i>
           <span>Monitoring Teknisi</span>
           <span class="pull-right-container">
@@ -82,7 +82,7 @@
         <ul class="treeview-menu">
           <li class="{{ request()->is('dashboard/ppm/link_data_cs') ? 'active' : '' }}"><a href="{{ route('index.dataCs') }}">Data Customer</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_pengerjaan_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.pengerjaan') }}">Pengerjaan kalibrasi</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_informasi') ? 'active' : '' }}"><a href="{{ route('informasi.data') }}">Documentasi Kalibrasi</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_document_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.docKal') }}">Documentasi Kalibrasi</a></li>
           <!-- <li class="{{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }}"><a href="{{ route('beritaAcara.data') }}">Berita Acara</a></li> -->
         </ul>
       </li>

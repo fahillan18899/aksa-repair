@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BaOld;
-use App\Models\Informasi;
+use App\Models\DocumnetKalibrasi;
 use App\Models\DataCustomer;
 use App\Models\KegiatanKalibrasi;
 use App\Models\BeritaAcara;
@@ -26,10 +26,10 @@ class MonitoringTeknisiController extends Controller
         compact('data'));
     }
 
-    public function getInformasi()
+    public function index7()
     {
-        $data = Informasi::all();
-        return view('pages.admin.monitoring_teknisi.informasi',
+        $data = DocumnetKalibrasi::all();
+        return view('pages.admin.monitoring_teknisi.dokument_kalibrasi',
         compact('data'));
     }
 
