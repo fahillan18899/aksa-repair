@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Kegiatan Kalibrasi')
+@section('title', 'Pengerjaan Kalibrasi')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Kegiatan Kalibrasi</h1>
-        <small>Daftar Kegiatan Kalibrasi</small>
+        <h1>Pengerjaan Kalibrasi</h1>
+        <small>Daftar Pengerjaan Kalibrasi</small>
       </div>
     </div>
   </section>
@@ -32,35 +32,34 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
-          
+
           <div class="panel-heading no-print">
-            <h1>Daftar Kegiatan Kalibrasi</h1>
+            <h1>Daftar Pengerjaan Kalibrasi</h1>
           </div>
 
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-12 col-sm-12">
-
                 <!--TABEL-->
-                <table class="datatable table table-striped table-bordered" style="width:100%">
-                  <thead class="table-light">
-                    <tr>
-                      <th>Instansi</th>
-                      <th>Jadwal</th>
-                      <th>Proses</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @forelse($data as $datas)
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    @empty
-                    @endforelse
-                  </tbody>
-                </table>
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Instansi</th>
+                        <th>Jadwal</th>
+                        <th>Proses</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @forelse($data as $datas)
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>

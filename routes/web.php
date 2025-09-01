@@ -64,7 +64,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         // Monitoring Teknisi //
         Route::get('link_data_cs', [MonitoringTeknisiController::class, 'index5'])->name('index.dataCs');
-        Route::get('link_alat_kembali', [MonitoringTeknisiController::class, 'getAlatKembali'])->name('alatKembali.data');
+        Route::get('link_pengerjaan_kalibrasi', [MonitoringTeknisiController::class, 'index6'])->name('index.pengerjaan');
         Route::get('link_informasi', [MonitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
         Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');

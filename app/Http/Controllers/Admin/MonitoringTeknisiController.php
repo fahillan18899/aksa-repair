@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\BaOld;
 use App\Models\Informasi;
-use App\Models\InputCustomer;
 use App\Models\DataCustomer;
+use App\Models\KegiatanKalibrasi;
 use App\Models\BeritaAcara;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,10 +19,10 @@ class MonitoringTeknisiController extends Controller
         compact('data'));
     }
 
-    public function getAlatKembali()
+    public function index6()
     {
-        $data = InputCustomer::where('status', '0')->get();
-        return view('pages.admin.monitoring_teknisi.alat_kembali',
+        $data = KegiatanKalibrasi::all();
+        return view('pages.admin.monitoring_teknisi.pengerjaan_kalibrasi',
         compact('data'));
     }
 
