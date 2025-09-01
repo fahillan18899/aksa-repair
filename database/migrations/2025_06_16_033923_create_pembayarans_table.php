@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_barangs', function (Blueprint $table) {
+        Schema::create('pembayarans', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('no_urut')->nullable();
-            $table->text('nama_alat')->nullable();
-            $table->text('no_seri')->nullable();
-            $table->text('type')->nullable();
-            $table->text('kerusakan_alat')->nullable();
+            $table->text('marketing')->nullable();
             $table->text('instansi')->nullable();
-            $table->text('status')->default('1');
-            $table->text('ket')->nullable();
-            $table->text('user')->nullable();
+            $table->text('jumlah')->nullable();
+            $table->text('nominal')->nullable();
+            $table->text('document')->nullable();
+            $table->text('tanggal_bayar')->nullable();
+            $table->text('system_bayar')->nullable();
             $table->timestamps();
         });
     }

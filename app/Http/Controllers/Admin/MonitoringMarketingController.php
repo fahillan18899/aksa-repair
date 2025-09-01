@@ -9,6 +9,7 @@ use App\Models\InvoiceOld;
 use App\Models\InputCustomer;
 use App\Models\KegiatanKalibrasi;
 use App\Http\Controllers\Controller;
+use App\Models\Pembayaran;
 
 class MonitoringMarketingController extends Controller
 {
@@ -91,7 +92,7 @@ class MonitoringMarketingController extends Controller
 
     public function index4()
     {
-        $data = Invoice::all();
+        $data = Pembayaran::all();
         return view('pages.admin.monitoring_marketing.pembayaran',
         compact('data'));
     }
