@@ -4,23 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\BaOld;
 use App\Models\Informasi;
-use App\Models\DataBarang;
+use App\Models\InputCustomer;
+use App\Models\DataCustomer;
 use App\Models\BeritaAcara;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class MonitoringTeknisiController extends Controller
 {
-    public function getApproval()
+    public function index5()
     {
-        $data = DataBarang::where('status', '1')->get();
-        return view('pages.admin.monitoring_teknisi.approval',
+        $data = DataCustomer::all();
+        return view('pages.admin.monitoring_teknisi.data_cs',
         compact('data'));
     }
 
     public function getAlatKembali()
     {
-        $data = DataBarang::where('status', '0')->get();
+        $data = InputCustomer::where('status', '0')->get();
         return view('pages.admin.monitoring_teknisi.alat_kembali',
         compact('data'));
     }

@@ -63,7 +63,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
 
         // Monitoring Teknisi //
-        Route::get('link_approval', [MonitoringTeknisiController::class, 'getApproval'])->name('approval.data');
+        Route::get('link_data_cs', [MonitoringTeknisiController::class, 'index5'])->name('index.dataCs');
         Route::get('link_alat_kembali', [MonitoringTeknisiController::class, 'getAlatKembali'])->name('alatKembali.data');
         Route::get('link_informasi', [MonitoringTeknisiController::class, 'getInformasi'])->name('informasi.data');
         Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
