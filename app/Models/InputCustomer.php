@@ -13,5 +13,5 @@ class InputCustomer extends Model
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'user', 'nama_customer', 'jumlah', 'wilayah', 'created_at', 'updated_at'];
+    protected $fillable = [ 'id', 'marketing', 'nama_customer', 'jumlah', 'wilayah', 'created_at', 'updated_at'];
 }

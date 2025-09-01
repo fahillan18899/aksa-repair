@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('input_cutomers', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('user')->nullable();
+            $table->text('marketing')->nullable();
             $table->text('nama_customer')->nullable();
             $table->text('jumlah')->nullable();
             $table->text('wilayah')->nullable();

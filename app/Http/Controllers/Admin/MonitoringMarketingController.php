@@ -6,7 +6,6 @@ use App\Models\Sph;
 use App\Models\SphOld;
 use App\Models\Invoice;
 use App\Models\InvoiceOld;
-use App\Models\DataBarang;
 use Illuminate\Http\Request;
 use App\Models\InputCustomer;
 use App\Http\Controllers\Controller;
@@ -54,7 +53,7 @@ class MonitoringMarketingController extends Controller
 
     public function index2()
     {
-        $data = DataBarang::all();
+        $data = Invoice::all();
         return view('pages.admin.monitoring_marketing.data_invoice',
         compact('data'));
     }

@@ -15,29 +15,10 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('yth')->nullable();
-            $table->text('tgl_invoice')->nullable();
-            $table->text('no_invoice')->nullable();
-            $table->text('no_pesanan')->nullable();
-            $table->text('alamat')->nullable();
-            $table->json('akom')->nullable();
-            $table->json('part')->nullable();
-            $table->json('harga_part')->nullable();
-            $table->json('jumlah_part')->nullable();
-            $table->json('total_part')->nullable();
-            $table->json('biaya_part')->nullable();
-            $table->json('part_total')->nullable();
-            $table->json('nama_alat')->nullable();
-            $table->json('keterangan')->nullable();
+            $table->text('marketing')->nullable();
+            $table->text('instansi')->nullable();
             $table->text('jumlah')->nullable();
             $table->text('harga')->nullable();
-            $table->text('diskon')->nullable();
-            $table->text('harga_diskon')->nullable();
-            $table->text('harga_tanpa_pajak')->nullable();
-            $table->text('pajak')->nullable();
-            $table->text('total')->nullable();
-            $table->text('status')->default('1');
-            $table->text('user')->nullable();
             $table->timestamps();
         });
     }
