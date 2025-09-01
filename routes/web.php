@@ -53,9 +53,11 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
         // --- //
         Route::get('link_data_invoice', [MonitoringMarketingController::class, 'index2'])->name('index.invoice');
-        Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
-        Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
-        Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
+        // --- //
+        Route::get('link_kegiatan_kalibrasi', [MonitoringMarketingController::class, 'index3'])->name('index.kegiatanKalibrasi');
+        // Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
+        // Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
+        // --- //
         Route::get('link_invoice', [MonitoringMarketingController::class, 'getInvoice'])->name('invoice.data');
         Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
         Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');

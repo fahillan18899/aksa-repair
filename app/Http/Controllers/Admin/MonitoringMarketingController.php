@@ -59,10 +59,10 @@ class MonitoringMarketingController extends Controller
         compact('data'));
     }
 
-    public function getSph()
+    public function index3()
     {
         $data = Sph::all();
-        return view('pages.admin.monitoring_marketing.sph',
+        return view('pages.admin.monitoring_marketing.kegiatan_kalibrasi',
         compact('data'));
     }
 

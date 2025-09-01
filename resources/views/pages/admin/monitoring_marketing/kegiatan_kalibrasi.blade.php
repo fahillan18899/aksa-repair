@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'SPH')
+@section('title', 'Kegiatan Kalibrasi')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>SPH</h1>
-        <small>Daftar SPH</small>
+        <h1>Kegiatan Kalibrasi</h1>
+        <small>Daftar Kegiatan Kalibrasi</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
           
           <div class="panel-heading no-print">
-            <h1>Daftar SPH</h1>
+            <h1>Daftar Kegiatan Kalibrasi</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,31 +45,23 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th>Marketing</th>
-                      <th>Lokasi, Tanggal</th>
-                      <th>No Surat</th>
-                      <th>Instansi</th>
-                      <th>Tombol</th>
+                      <th>Jadwal</th>
+                      <th>Proses</th>
+                      <th>Pekerjaan Selesai</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td>{{ $datas->user }}</td>
-                      <td>{{ $datas->lokasi_tanggal }}</td>
-                      <td>{{ $datas->no_surat }}</td>
-                      <td>{{ $datas->yth }}</td>
-                      <td>
-                        <a href="{{ route('sph.view', $datas->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
-                          <i class="fa fa-eye" aria-hidden="true"></i>
-                        </a>
-                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     @empty
                     @endforelse
                   </tbody>
                 </table>
-                <a class="btn btn-success" href="{{ route('sph.doc') }}">Document SPH</a>
+                <!-- <a class="btn btn-success" href="{{ route('sph.doc') }}">Document SPH</a> -->
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>
