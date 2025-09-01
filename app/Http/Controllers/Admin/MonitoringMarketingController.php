@@ -90,10 +90,10 @@ class MonitoringMarketingController extends Controller
         compact('item'));
     }
 
-    public function getInvoice()
+    public function index4()
     {
         $data = Invoice::all();
-        return view('pages.admin.monitoring_marketing.invoice',
+        return view('pages.admin.monitoring_marketing.pembayaran',
         compact('data'));
     }
 

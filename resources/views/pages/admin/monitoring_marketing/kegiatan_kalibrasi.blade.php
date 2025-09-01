@@ -61,7 +61,6 @@
                     @endforelse
                   </tbody>
                 </table>
-                <!-- <a class="btn btn-success" href="{{ route('sph.doc') }}">Document SPH</a> -->
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>
