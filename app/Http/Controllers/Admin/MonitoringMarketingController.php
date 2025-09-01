@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Sph;
+use Illuminate\Http\Request;
 use App\Models\SphOld;
 use App\Models\Invoice;
 use App\Models\InvoiceOld;
-use Illuminate\Http\Request;
 use App\Models\InputCustomer;
+use App\Models\KegiatanKalibrasi;
 use App\Http\Controllers\Controller;
 
 class MonitoringMarketingController extends Controller
@@ -60,14 +60,14 @@ class MonitoringMarketingController extends Controller
 
     public function index3()
     {
-        $data = Sph::all();
+        $data = KegiatanKalibrasi::all();
         return view('pages.admin.monitoring_marketing.kegiatan_kalibrasi',
         compact('data'));
     }
 
     public function viewSph($id)
     {
-        $item = Sph::findOrFail($id);
+        $item = KegiatanKalibrasi::findOrFail($id);
         // Mengubah data menjadi array
         $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
