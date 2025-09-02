@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Vakture;
+use App\Models\ChasBack;
 use App\Models\Invoice;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
@@ -32,10 +32,10 @@ class MonitoringAkuntanController extends Controller
         compact('data'));
     }
 
-    public function getVakture()
+    public function index11()
     {
-        $data = Vakture::all();
-        return view('pages.admin.monitoring_akuntan.vakture',
+        $data = ChasBack::all();
+        return view('pages.admin.monitoring_akuntan.chas_back',
         compact('data'));
     }
 }

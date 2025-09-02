@@ -88,7 +88,7 @@
       </li>
       <!---->
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/link_data_cutomers') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_invoice_monitoring') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_alur_pembayaran') ? 'active' : '' }} ">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_data_cutomers') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_invoice_monitoring') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_alur_pembayaran') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_chas_back') ? 'active' : '' }} ">
         <a href="#"><i class="fa fa-usd" aria-hidden="true"></i></i>
           <span>Monitoring Keuangan</span>
           <span class="pull-right-container">
@@ -99,7 +99,7 @@
           <li class="{{ request()->is('dashboard/ppm/link_data_cutomers') ? 'active' : '' }}"><a href="{{ route('index.dataCustomer') }}">Data Customer</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_invoice_monitoring') ? 'active' : '' }}"><a href="{{ route('index.monitorInvoice') }}">Pembuatan invoice</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_alur_pembayaran') ? 'active' : '' }}"><a href="{{ route('index.alurBayar') }}">Alur pembayaran</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Chas back</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_chas_back') ? 'active' : '' }}"><a href="{{ route('index.chasBack') }}">Chas back</a></li>
         </ul>
       </li>
       <!---->

@@ -74,7 +74,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_data_cutomers', [MonitoringAkuntanController::class, 'index8'])->name('index.dataCustomer');
         Route::get('link_invoice_monitoring', [MonitoringAkuntanController::class, 'index9'])->name('index.monitorInvoice');
         Route::get('link_alur_pembayaran', [MonitoringAkuntanController::class, 'index10'])->name('index.alurBayar');
-        Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
+        Route::get('link_chas_back', [MonitoringAkuntanController::class, 'index11'])->name('index.chasBack');
 
         //Operator//
         Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
