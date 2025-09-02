@@ -62,9 +62,9 @@
           <i class="fa fa-user-plus" aria-hidden="true"></i><span>Input Customer</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_data_barang') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.dataBarang') }}">
-          <i class="fa fa-archive"></i> <span>Data Invoice</span>
+      <li class="{{ request()->is('dashboard_marketing/link_data_invo') ? 'active' : '' }}">
+        <a href="{{ route('marketing.data.dataInvo') }}">
+          <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Data Invoice</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_sph') ? 'active' : '' }}">

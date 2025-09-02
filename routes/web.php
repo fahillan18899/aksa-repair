@@ -13,8 +13,8 @@ use App\Http\Controllers\Admin\PekerjaanSelesaiController;
 use App\Http\Controllers\Admin\OperatorController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
-use App\Http\Controllers\Marketing\DataBarangController;
-use App\Http\Controllers\Marketing\InputanPekerjaanController;
+use App\Http\Controllers\Marketing\DataInvoiceController;
+use App\Http\Controllers\Marketing\InputCustomerController;
 use App\Http\Controllers\Marketing\SphController;
 use App\Http\Controllers\Marketing\InvoiceController;
 // Teknisi //
@@ -91,7 +91,6 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
 Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->group(function() {
     Route::get('link_dashboard_marketing', [DashboardMarketingController::class, 'dashboard_marketing'])->name('dashboard');
-    Route::get('link_data_barang', [DataBarangController::class, 'index'])->name('data.dataBarang');
     //Fetch dashboard marketing //
         Route::get('fetch_selsai', [DashboardMarketingController::class, 'fetch_selesai'])->name('fetch.selesai');
         Route::get('fetch_proses', [DashboardMarketingController::class, 'fetch_proses'])->name('fetch.proses');
@@ -100,13 +99,17 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     //Fetch dashboard marketing end//
 
     // Input Pekerjaan //
-        Route::get('link_input_customer', [InputanPekerjaanController::class, 'index'])->name('data.inputCs');
-        Route::post('link_input_customer', [InputanPekerjaanController::class, 'post'])->name('post.inputCs');
-        Route::get('link_input_customer/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputCs');
-        Route::put('link_input_customer/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputCs');
-        Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputCs');
+        Route::get('link_input_customer', [InputCustomerController::class, 'index'])->name('data.inputCs');
+        Route::post('link_input_customer', [InputCustomerController::class, 'post'])->name('post.inputCs');
+        Route::get('link_input_customer/edit/{id}', [InputCustomerController::class, 'edit'])->name('edit.inputCs');
+        Route::put('link_input_customer/update/{id}', [InputCustomerController::class, 'update'])->name('update.inputCs');
+        Route::delete('link_inputan_pekerjaan/{id}', [InputCustomerController::class, 'delete'])->name('delete.inputCs');
     // Input Pekerjaan end//
-    
+
+    // Data invoice //
+        Route::get('link_data_invo', [DataInvoiceController::class, 'index'])->name('data.dataInvo');
+    // Data invoice end//
+
     // SPH //
         Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
         Route::get('link_sph_history', [SphController::class, 'history'])->name('history.sph');

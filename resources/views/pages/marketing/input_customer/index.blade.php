@@ -13,7 +13,7 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
+      <div class="header-icon"><i class="fa fa-user-plus" aria-hidden="true"></i></div>
       <div class="header-title">
         <h1>Input Customer</h1>
         <small>Form Input Customer</small>

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class InputanPekerjaanController extends Controller
+class InputCustomerController extends Controller
 {
     public function index() 
     {
