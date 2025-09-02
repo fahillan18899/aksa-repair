@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Vakture;
 use App\Models\Invoice;
-use App\Models\InvoiceOld;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use App\Models\InputCustomer;
 use App\Http\Controllers\Controller;
@@ -25,11 +25,11 @@ class MonitoringAkuntanController extends Controller
         compact('data'));
     }
 
-    public function invoDoc()
+    public function index10()
     {
-        $item = InvoiceOld::all();
-        return view('pages.admin.monitoring_akuntan.invo_doc',
-        compact('item'));
+        $data = Pembayaran::all();
+        return view('pages.admin.monitoring_akuntan.alur_pembayaran',
+        compact('data'));
     }
 
     public function getVakture()

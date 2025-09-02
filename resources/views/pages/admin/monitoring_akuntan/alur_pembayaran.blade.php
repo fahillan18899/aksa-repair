@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Document Invoice')
+@section('title', 'Alur Pembayaran')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>INVOICE</h1>
-        <small>Daftar Invoice</small>
+        <h1>Alur Pembayaran</h1>
+        <small>Daftar Alur Pembayaran</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Document Invoice</h1>
+            <h1>Daftar Alur Pembayaran</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,22 +45,28 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
-                      <th>No</th>
-                      <th>Nama</th>
-                      <th>Link Download</th>
-                      <th>Tanggal Upload</th>
-                      <th>Tombol</th>
+                      <th>Marketing</th>
+                      <th>Instansi</th>
+                      <th>Jumlah Alat</th>
+                      <th>Nominal</th>
+                      <th>Document</th>
+                      <th>Tanggal Pembayaran</th>
+                      <th>System Pembayaran</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($item as $index => $items)
+                    @forelse($data as $datas)
                     <tr>
-                      <td>{{ $index + 1 }}</td>
-                      <td>{{ $items->nama }}</td>
-                      <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
-                      <td>{{ $items->created_at->format('d-m-Y') }}</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
-                    @endforeach
+                    @empty
+                    @endforelse
                   </tbody>
                 </table>
                 <!--TABEL-->
@@ -68,7 +74,6 @@
               <div class="col-md-3"></div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
