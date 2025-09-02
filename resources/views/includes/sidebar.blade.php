@@ -88,7 +88,7 @@
       </li>
       <!---->
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/link_invoice_akun') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }} ">
+      <li class="treeview  {{ request()->is('dashboard/ppm/link_data_cutomers') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }} ">
         <a href="#"><i class="fa fa-usd" aria-hidden="true"></i></i>
           <span>Monitoring Keuangan</span>
           <span class="pull-right-container">
@@ -96,7 +96,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/link_invoice_akun') ? 'active' : '' }}"><a href="{{ route('invoiceAkuntan.data') }}">Data Customer</a></li>
+          <li class="{{ request()->is('dashboard/ppm/link_data_cutomers') ? 'active' : '' }}"><a href="{{ route('index.dataCustomer') }}">Data Customer</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Pembuatan invoice</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Alur pembayaran</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_vakture') ? 'active' : '' }}"><a href="{{ route('vakture.data') }}">Chas back</a></li>

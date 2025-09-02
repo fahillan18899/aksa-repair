@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Vakture;
-use App\Models\Invoice;
 use App\Models\InvoiceOld;
 use Illuminate\Http\Request;
+use App\Models\InputCustomer;
 use App\Http\Controllers\Controller;
 
 class MonitoringAkuntanController extends Controller
 {
-    public function getInvoiceAkun()
+    public function index8()
     {
-        $data = Invoice::all();
-        return view('pages.admin.monitoring_akuntan.invoice_akun',
+        $data = InputCustomer::all();
+        return view('pages.admin.monitoring_akuntan.data_customer',
         compact('data'));
     }
 
     public function viewInv($id)
     {
-        $item = Invoice::findOrFail($id);
+        $item = InputCustomer::findOrFail($id);
         // Mengubah data menjadi array
         $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) ?? [] : $item->part;
