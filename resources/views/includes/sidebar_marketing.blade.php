@@ -67,8 +67,8 @@
           <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Data Invoice</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_sph') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.sph') }}">
+      <li class="{{ request()->is('dashboard_marketing/kegiatan_kalibrasi') ? 'active' : '' }}">
+        <a href="{{ route('marketing.data.kegiatanKalibrasi') }}">
           <i class="fa fa-file-o"></i><span>Kegiatan Kalibrasi</span>
         </a>
       </li>

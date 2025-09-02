@@ -111,7 +111,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     // Data invoice end//
 
     // SPH //
-        Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
+        Route::get('kegiatan_kalibrasi', [SphController::class, 'index'])->name('data.kegiatanKalibrasi');
         Route::get('link_sph_history', [SphController::class, 'history'])->name('history.sph');
         Route::get('link_sph/sph_old', [SphController::class, 'sphOld'])->name('sphOld.sph');
         Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
