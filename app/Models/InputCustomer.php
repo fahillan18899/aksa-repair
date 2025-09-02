@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class InputCustomer extends Model
 {
     use HasFactory;
-    protected $table = 'input_cutomers';
+    protected $table = 'input_customers';
     protected $primaryKey = 'id';      // <- ini WAJIB jika ganti nama id
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'marketing', 'nama_customer', 'jumlah', 'wilayah', 'created_at', 'updated_at'];
+    protected $fillable = [ 'id', 'marketing', 'instansi', 'jumlah', 'wilayah', 'created_at', 'updated_at'];
 }

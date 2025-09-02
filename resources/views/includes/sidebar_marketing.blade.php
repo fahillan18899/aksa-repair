@@ -9,7 +9,7 @@
     /* Atur lebar sidebar */
     overflow-y: auto;
     /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: #FFB20E;
+    background-color: #3ab3feff;
     /* Warna background sesuai tema */
     z-index: 1000;
     /* Pastikan sidebar di atas konten lain */
@@ -41,7 +41,7 @@
         @if(Auth::user()->user_role == 'marketing')
         @php
           $rumahSakit = [
-            "RS0000" => "AKSA"];
+            "RS0000" => "DHS"];
         @endphp
         @if(isset($rumahSakit[Auth::user()->kode_rs]))
         <p>{{ $rumahSakit[Auth::user()->kode_rs] }}</p>
@@ -57,24 +57,24 @@
       <li class="{{ request()->is('dashboard_marketing/link_dashboard_marketing') ? 'active' : '' }}">
         <a href="{{ route('marketing.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_inputan_pekerjaan') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.inputanPekerjaan') }}">
-          <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Inputan Pekerjaan</span>
+      <li class="{{ request()->is('dashboard_marketing/link_input_customer') ? 'active' : '' }}">
+        <a href="{{ route('marketing.data.inputCs') }}">
+          <i class="fa fa-user-plus" aria-hidden="true"></i><span>Input Customer</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_data_barang') ? 'active' : '' }}">
         <a href="{{ route('marketing.data.dataBarang') }}">
-          <i class="fa fa-archive"></i> <span>Status Pengerjaan</span>
+          <i class="fa fa-archive"></i> <span>Data Invoice</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_sph') ? 'active' : '' }}">
         <a href="{{ route('marketing.data.sph') }}">
-          <i class="fa fa-file-o"></i><span>Pembuatan SPH</span>
+          <i class="fa fa-file-o"></i><span>Kegiatan Kalibrasi</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_marketing/link_invoice') ? 'active' : '' }}">
         <a href="{{ route('marketing.data.invoice') }}">
-          <i class="fa fa-file-text"></i><span>Penagihan Invoice</span>
+          <i class="fa fa-file-text"></i><span>Pembayaran</span>
         </a>
       </li>
     </ul>

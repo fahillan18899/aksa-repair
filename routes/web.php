@@ -100,11 +100,11 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     //Fetch dashboard marketing end//
 
     // Input Pekerjaan //
-        Route::get('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'index'])->name('data.inputanPekerjaan');
-        Route::post('link_inputan_pekerjaan', [InputanPekerjaanController::class, 'post'])->name('post.inputanPekerjaan');
-        Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
-        Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
-        Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
+        Route::get('link_input_customer', [InputanPekerjaanController::class, 'index'])->name('data.inputCs');
+        Route::post('link_input_customer', [InputanPekerjaanController::class, 'post'])->name('post.inputCs');
+        Route::get('link_input_customer/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputCs');
+        Route::put('link_input_customer/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputCs');
+        Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputCs');
     // Input Pekerjaan end//
     
     // SPH //
