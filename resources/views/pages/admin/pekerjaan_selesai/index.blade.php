@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Chas Back')
+@section('title', 'Pekerjaan Selesai')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Chas Back</h1>
-        <small>Daftar Chas Back</small>
+        <h1>Pekerjaan Selesai</h1>
+        <small>Daftar Pekerjaan Selesai</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Chas Back</h1>
+            <h1>Daftar Pekerjaan Selesai</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -49,11 +49,13 @@
                       <th>Instansi</th>
                       <th>Jumlah Alat</th>
                       <th>Nominal</th>
+                      <th>Pembayaran</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td></td>

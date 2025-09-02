@@ -104,8 +104,8 @@
       </li>
       <!---->
       <!---->
-      <li class="{{ request()->is('dashboard/ppm/link_operator') ? 'active' : '' }}">
-        <a href="{{ route('operator.data') }}">
+      <li class="{{ request()->is('dashboard/ppm/link_pekerjaan_selesai') ? 'active' : '' }}">
+        <a href="{{ route('index.persai') }}">
           <i class="fa fa-check-square-o" aria-hidden="true"></i>
           <span>Pekerjaan Selesai</span>
         </a>

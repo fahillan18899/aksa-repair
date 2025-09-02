@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\InputCustomer;
 use App\Http\Controllers\Controller;
 
-class MonitoringAkuntanController extends Controller
+class MonitoringKeuanganController extends Controller
 {
     public function index8()
     {

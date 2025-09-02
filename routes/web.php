@@ -8,7 +8,8 @@ use App\Http\Controllers\DataAlatController;
 // Admin
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
-use App\Http\Controllers\Admin\MonitoringAkuntanController;
+use App\Http\Controllers\Admin\MonitoringKeuanganController;
+use App\Http\Controllers\Admin\PekerjaanSelesaiController;
 use App\Http\Controllers\Admin\OperatorController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
@@ -70,11 +71,14 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');
         Route::get('link_berita_acara/ba_doc', [MonitoringTeknisiController::class, 'baDoc'])->name('ba.doc');
         
-        //Monitoring Akuntan //
-        Route::get('link_data_cutomers', [MonitoringAkuntanController::class, 'index8'])->name('index.dataCustomer');
-        Route::get('link_invoice_monitoring', [MonitoringAkuntanController::class, 'index9'])->name('index.monitorInvoice');
-        Route::get('link_alur_pembayaran', [MonitoringAkuntanController::class, 'index10'])->name('index.alurBayar');
-        Route::get('link_chas_back', [MonitoringAkuntanController::class, 'index11'])->name('index.chasBack');
+        //Monitoring Keuangan //
+        Route::get('link_data_cutomers', [MonitoringKeuanganController::class, 'index8'])->name('index.dataCustomer');
+        Route::get('link_invoice_monitoring', [MonitoringKeuanganController::class, 'index9'])->name('index.monitorInvoice');
+        Route::get('link_alur_pembayaran', [MonitoringKeuanganController::class, 'index10'])->name('index.alurBayar');
+        Route::get('link_chas_back', [MonitoringKeuanganController::class, 'index11'])->name('index.chasBack');
+
+        // Pekerjaan Selesai // 
+        Route::get('link_pekerjaan_selesai', [PekerjaanSelesaiController::class, 'index'])->name('index.persai');
 
         //Operator//
         Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
