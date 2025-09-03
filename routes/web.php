@@ -15,8 +15,8 @@ use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Marketing\DashboardMarketingController;
 use App\Http\Controllers\Marketing\DataInvoiceController;
 use App\Http\Controllers\Marketing\InputCustomerController;
-use App\Http\Controllers\Marketing\SphController;
-use App\Http\Controllers\Marketing\InvoiceController;
+use App\Http\Controllers\Marketing\KegiatanKalibrasiController;
+use App\Http\Controllers\Marketing\PembayaranController;
 // Teknisi //
 use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\RepairController;
@@ -110,25 +110,25 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
         Route::get('link_data_invo', [DataInvoiceController::class, 'index'])->name('data.dataInvo');
     // Data invoice end//
 
-    // SPH //
-        Route::get('kegiatan_kalibrasi', [SphController::class, 'index'])->name('data.kegiatanKalibrasi');
-        Route::get('link_sph_history', [SphController::class, 'history'])->name('history.sph');
-        Route::get('link_sph/sph_old', [SphController::class, 'sphOld'])->name('sphOld.sph');
-        Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
-        Route::post('link_sph/upload', [SphController::class, 'upload'])->name('upload.sph');
-        Route::get('link_sph/edit/{id}', [SphController::class, 'edit'])->name('edit.sph');
-        Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
-        Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
-        Route::get('link_sph/part/{nama}', [SphController::class, 'part'])->name('part.sph');
-        Route::get('link_sph_history/view/{id}', [SphController::class, 'view'])->name('view.sph');
-        Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
-        Route::delete('link_sph/sph_old/{id}', [SphController::class, 'deleteDoc'])->name('delete.sph_old');
-    // SPH end//
+    // Kegiatan Kalibrasi //
+        Route::get('kegiatan_kalibrasi', [KegiatanKalibrasiController::class, 'index'])->name('data.kegiatanKalibrasi');
+        Route::get('link_sph_history', [KegiatanKalibrasiController::class, 'history'])->name('history.sph');
+        Route::get('link_sph/sph_old', [KegiatanKalibrasiController::class, 'sphOld'])->name('sphOld.sph');
+        Route::post('link_sph', [KegiatanKalibrasiController::class, 'post'])->name('post.sph');
+        Route::post('link_sph/upload', [KegiatanKalibrasiController::class, 'upload'])->name('upload.sph');
+        Route::get('link_sph/edit/{id}', [KegiatanKalibrasiController::class, 'edit'])->name('edit.sph');
+        Route::put('link_sph/update/{id}', [KegiatanKalibrasiController::class, 'update'])->name('update.sph');
+        Route::get('link_sph/print/{id}', [KegiatanKalibrasiController::class, 'print'])->name('print.sph');
+        Route::get('link_sph/part/{nama}', [KegiatanKalibrasiController::class, 'part'])->name('part.sph');
+        Route::get('link_sph_history/view/{id}', [KegiatanKalibrasiController::class, 'view'])->name('view.sph');
+        Route::delete('link_sph/{id}', [KegiatanKalibrasiController::class, 'delete'])->name('delete.sph');
+        Route::delete('link_sph/sph_old/{id}', [KegiatanKalibrasiController::class, 'deleteDoc'])->name('delete.sph_old');
+    // Kegiatan Kalibrasi end//
 
-    //Invoice //
-        Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
-        Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
-    //Invoice end//
+    //Pembayaran //
+        Route::get('link_pembayaran', [PembayaranController::class, 'index'])->name('data.pembayaran');
+        Route::get('link_invoice/view/{id}', [PembayaranController::class, 'view'])->name('view.invoice');
+    //Pembayaran end//
 });
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {

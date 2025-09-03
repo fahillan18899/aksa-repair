@@ -7,13 +7,13 @@ use App\Models\Invoice;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class PembayaranController extends Controller
 {
     public function index() 
     {
-        $user = Auth::user()->username;
-        $item = Invoice::where('user', $user)->get();
-        return view('pages.marketing.invoice.index',
+        $marketing = Auth::user()->username;
+        $item = Invoice::where('marketing', $marketing)->get();
+        return view('pages.marketing.pembayaran.index',
         compact('item'));
     }
 

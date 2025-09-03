@@ -1,7 +1,7 @@
 @extends('layouts.marketing')
 
 @section('content')
-@section('title', 'Invoice')
+@section('title', 'Pembayaran')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -11,8 +11,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o"></i></div>
       <div class="header-title">
-        <h1>Invoice</h1>
-        <small>Daftar Invoice</small>
+        <h1>Pembayaran</h1>
+        <small>Daftar Pembayaran</small>
       </div>
     </div>
   </section>
@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <h1>Daftar Invoice</h1>
+            <h1>Daftar Pembayaran</h1>
           </div>
 
           <div class="panel-body panel-form">
@@ -45,31 +45,25 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">
                     <tr>
+                      <th>Marketing</th>
                       <th>Instansi</th>
-                      <th>Tanggal</th>
-                      <th>Nomer Invoice</th>
-                      <th>Nomer Pesanan</th>
-                      <th>Status</th>
-                      <th>Tombol Aksi</th>
+                      <th>Jumlah</th>
+                      <th>Nominal</th>
+                      <th>Document</th>
+                      <th>Tanggal Bayar</th>
+                      <th>System Bayar</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($item as $items)
                       <tr>
-                        <td>{{ $items->yth }}</td>
-                        <td>{{ $items->tgl_invoice }}</td>
-                        <td>{{ $items->no_invoice }}</td>
-                        <td>{{ $items->no_pesanan }}</td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $items->status == 0 ? 'success' : 'danger' }}" type="submit" disabled>
-                            {{ $items->status == 0 ? 'Lunas' : 'Belum Lunas' }}
-                          </button>
-                        </td>
-                        <td>
-                          <a href="{{ route('marketing.view.invoice', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                       </tr>
                     @empty
                     @endforelse

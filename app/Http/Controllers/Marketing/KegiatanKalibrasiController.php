@@ -12,7 +12,7 @@ use App\Models\KegiatanKalibrasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class SphController extends Controller
+class KegiatanKalibrasiController extends Controller
 {
     public function index()
     {

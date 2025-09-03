@@ -11,7 +11,7 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
       <div class="header-title">
-        <h1>Data Barang</h1>
+        <h1>Kegiatan Kalibrasi</h1>
         <small>Daftar Kegiatan Kalibrasi</small>
       </div>
     </div>

@@ -11,7 +11,7 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-text-o" aria-hidden="true"></i></div>
       <div class="header-title">
-        <h1>Data Barang</h1>
+        <h1>Data Invoice</h1>
         <small>Daftar Data Invoice</small>
       </div>
     </div>

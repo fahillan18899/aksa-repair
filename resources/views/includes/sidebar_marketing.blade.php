@@ -72,8 +72,8 @@
           <i class="fa fa-file-o"></i><span>Kegiatan Kalibrasi</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_invoice') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.invoice') }}">
+      <li class="{{ request()->is('dashboard_marketing/link_pembayaran') ? 'active' : '' }}">
+        <a href="{{ route('marketing.data.pembayaran') }}">
           <i class="fa fa-file-text"></i><span>Pembayaran</span>
         </a>
       </li>
