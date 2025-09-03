@@ -39,42 +39,41 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.update.repair', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.update.dataCs', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <input name="no_urut" id="no_urut" class="form-control" type="hidden" value="{{ $item->no_urut }}">
+
                   <div class="form-group row">
-                    <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="nama_alat" id="nama_alat" type="text" class="form-control" value="{{ $item->nama_alat }}" required>
+                    <label for="jadwal" class="col-xs-3 col-form-label">Jadwal<i class="text-danger">*</i></label>
+                    <div class="col-xs-4">
+                      <input name="jadwal1" id="jadwal1" type="date" class="form-control" value="{{ $item->jadwal }}" required>
+                    </div>
+                    <div class="col-xs-1">
+                      sd
+                    </div>
+                    <div class="col-xs-4">
+                      <input name="jadwal2" id="jadwal2" type="date" class="form-control" value="{{ $item->jadwal }}" required>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <label for="realisasi" class="col-xs-3 form-label">Realisasi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="no_seri" id="no_seri" class="form-control" type="text" value="{{ $item->no_seri }}" required>
+                      <input name="realisasi" id="realisasi" class="form-control" type="text" value="{{ $item->realisasi }}" required>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="type" class="col-xs-3 form-label">Type</label>
+                    <label for="mobil" class="col-xs-3 col-form-label">Mobil<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="type" id="type" class="form-control" type="text" value="{{ $item->type }}">
+                      <input name="mobil" id="mobil" type="text" class="form-control" value="{{ $item->mobil }}" required>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="kerusakan_alat" class="col-xs-3 form-label">Kerusakan Alat</label>
+                    <label for="teknisi" class="col-xs-3 col-form-label">Teknisi<i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input name="kerusakan_alat" id="kerusakan_alat" class="form-control" type="text" value="{{ $item->kerusakan_alat }}">
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" value="{{ $item->instansi }}" required>
+                      <input name="teknisi" id="teknisi" type="text" class="form-control" value="{{ $item->teknisi }}" required>
                     </div>
                   </div>
 

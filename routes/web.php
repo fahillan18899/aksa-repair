@@ -19,7 +19,7 @@ use App\Http\Controllers\Marketing\KegiatanKalibrasiController;
 use App\Http\Controllers\Marketing\PembayaranController;
 // Teknisi //
 use App\Http\Controllers\Teknisi\DashboardTeknisiController;
-use App\Http\Controllers\Teknisi\RepairController;
+use App\Http\Controllers\Teknisi\DataCustomerController;
 use App\Http\Controllers\Teknisi\SuratTerimaController;
 use App\Http\Controllers\Teknisi\InformasiController;
 use App\Http\Controllers\Teknisi\BeritaAcaraController;
@@ -133,19 +133,15 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
-    // Repair //
-        Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
-        Route::post('link_repair', [RepairController::class, 'post'])->name('post.repair');
-        Route::get('link_repair/ba_repair/{id}', [RepairController::class, 'repairBa'])->name('ba.repair');
-        Route::get('link_repair/st_repair/{id}', [RepairController::class, 'repairSt'])->name('st.repair');
-        Route::get('link_repair/edit/{id}', [RepairController::class, 'edit'])->name('edit.repair');
-        Route::put('link_repair/update/{id}', [RepairController::class, 'update'])->name('update.repair');
-        Route::put('link_repair/status/{id}', [RepairController::class, 'status'])->name('status.repair');
-        Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
-        Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
-        Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
-        Route::get('link_repair/data_pekerjaan/{id}', [RepairController::class, 'fetch'])->name('fetch.repair');
-    // Repair end//
+    // Data Customer //
+        Route::get('data_customer', [DataCustomerController::class, 'index'])->name('data.dataCs');
+        Route::post('data_customer', [DataCustomerController::class, 'post'])->name('post.dataCs');
+        Route::get('data_customer/edit/{id}', [DataCustomerController::class, 'edit'])->name('edit.dataCs');
+        Route::put('data_customer/update/{id}', [DataCustomerController::class, 'update'])->name('update.dataCs');
+        Route::delete('data_customer/{id}', [DataCustomerController::class, 'delete'])->name('delete.dataCs');
+        Route::delete('data_customer/delete/{id}', [DataCustomerController::class, 'deleteI'])->name('deleteI.dataCs');
+        Route::get('data_customer/data_pekerjaan/{id}', [DataCustomerController::class, 'fetch'])->name('fetch.dataCs');
+    // Data Customer end//
 
     //Serah Terima //
         Route::get('link_surat_terima', [SuratTerimaController::class, 'index'])->name('data.suratTerima');

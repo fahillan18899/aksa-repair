@@ -9,7 +9,7 @@
     /* Atur lebar sidebar */
     overflow-y: auto;
     /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: #FFB20E;
+    background-color: #3ab3feff;
     /* Warna background sesuai tema */
     z-index: 1000;
     /* Pastikan sidebar di atas konten lain */
@@ -41,7 +41,7 @@
         @if(Auth::user()->user_role == 'teknisi')
         @php
           $rumahSakit = [
-            "RS0000" => "AKSA"];
+            "RS0000" => "DHS"];
         @endphp
         @if(isset($rumahSakit[Auth::user()->kode_rs]))
         <p>{{ $rumahSakit[Auth::user()->kode_rs] }}</p>
@@ -57,27 +57,17 @@
       <li class="{{ request()->is('dashboard_teknisi/link_dashboard_teknisi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_repair') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.repair') }}">
-          <i class="fa fa-wrench" aria-hidden="true"></i><span>Repair</span>
+      <li class="{{ request()->is('dashboard_teknisi/data_customer') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.dataCs') }}">
+          <i class="fa fa-address-book-o" aria-hidden="true"></i><span>Data Customer</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_teknisi/link_surat_terima') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.suratTerima') }}"><i class="fa fa-file-text"></i>Surat Terima</a>
+        <a href="{{ route('teknisi.data.suratTerima') }}"><i class="fa fa-wrench" aria-hidden="true"></i>Pengerjaan Kalibrasi</a>
       </li>
       <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.data.informasi') }}">
-          <i class="fa fa-info-circle"></i> <span>Informasi</span>
-        </a>
-      </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_ba') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.ba') }}">
-          <i class="fa fa-file-text-o"></i> <span>Berita Acara</span>
-        </a>
-      </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_qr') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.qr') }}">
-          <i class="fa fa-qrcode"></i><span>QR Code</span>
+          <i class="fa fa-file-text-o"></i> <span>Dokumentasi Kalibrasi</span>
         </a>
       </li>
     </ul>

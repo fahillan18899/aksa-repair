@@ -24,7 +24,7 @@
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
           <div class="info-box-content">
             <span class="info-box-text"><?= "JUMLAH BARANG SELESAI REPAIR" ?></span>
-            <span class="info-box-number">{{ $countSelesai }}</span>
+            <span class="info-box-number">-</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -44,7 +44,7 @@
             <span class="info-box-text">
               <a href="#" style="color: white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
             </span>
-            <span class="info-box-number" id="count_perbaikan">{{ $countPerbaikan }}</span>
+            <span class="info-box-number" id="count_perbaikan">-</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -79,14 +79,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @forelse($itemPekerjaan as $item)
-                      <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->instansi }}</td>
-                      </tr>
-                      @empty
-                      @endforelse
+                      
                     </tbody>
                   </table>
                   <!-- TABEL -->
@@ -126,27 +119,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @forelse($itemSelesai as $item)
-                      <tr>
-                        <td>{{ $item->no_urut }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->no_seri }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->kerusakan_alat }}</td>
-                        <td>{{ $item->instansi }}</td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item->status == 0 ? 'danger' : 'success' }}" disabled>
-                            {{ $item->status == 0 ? 'Kembali' : 'Approve' }}
-                          </button>
-                        </td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item->ket == 5 ? 'primary' : 'primary' }}" disabled>
-                            {{ $item->ket == 0 ? 'Selesai' : 'Selesai' }}
-                          </button>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
+                      
                     </tbody>
                   </table>
                   <!-- TABEL -->
@@ -187,38 +160,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @forelse($itemPerbaikan as $item2)
-                      <tr>
-                        <td>{{ $item2->no_urut }}</td>
-                        <td>{{ $item2->nama_alat }}</td>
-                        <td>{{ $item2->no_seri }}</td>
-                        <td>{{ $item2->type }}</td>
-                        <td>{{ $item2->kerusakan_alat }}</td>
-                        <td>{{ $item2->instansi }}</td>
-                        <td>
-                          <button class="btn btn-sm btn-{{ $item2->status == 0 ? 'danger' : 'success' }}" disabled>
-                            {{ $item2->status == 0 ? 'Kembali' : 'Approve' }}
-                          </button>
-                        </td>
-                        <td>
-                          @php
-                            $class = 'btn-light';
-                            $label = 'Tidak diketahui';
-
-                            switch($item2->ket) {
-                              case 1: $class = 'btn-danger'; $label = 'Trouble'; break;
-                              case 2: $class = 'btn-warning'; $label = 'Proses'; break;
-                              case 3: $class = 'btn-info'; $label = 'Dalam Perbaikan'; break;
-                              case 4: $class = 'btn-secondary'; $label = 'Rusak'; break;
-                              case 5: $class = 'btn-success'; $label = 'Selesai'; break;
-                            }
-                          @endphp
-                          <button class="btn btn-sm {{ $class }}" disabled>{{ $label }}</button>
-                        </td>
-
-                      </tr>
-                      @empty
-                      @endforelse
+                      
                     </tbody>
                   </table>
                   <!-- TABEL -->
