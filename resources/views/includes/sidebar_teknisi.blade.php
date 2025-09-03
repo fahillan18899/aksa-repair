@@ -63,7 +63,7 @@
         </a>
       </li>
       <li class="{{ request()->is('dashboard_teknisi/link_surat_terima') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.suratTerima') }}"><i class="fa fa-wrench" aria-hidden="true"></i>Pengerjaan Kalibrasi</a>
+        <a href="{{ route('teknisi.data.kalibrasi') }}"><i class="fa fa-wrench" aria-hidden="true"></i>Pengerjaan Kalibrasi</a>
       </li>
       <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.data.informasi') }}">

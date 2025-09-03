@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('mobil')->nullable();
             $table->text('teknisi')->nullable();
             $table->text('wilayah')->nullable();
+            $table->integer('pengerjaan')->defined("0");
             $table->timestamps();
         });
     }

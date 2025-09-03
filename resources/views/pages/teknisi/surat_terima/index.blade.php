@@ -1,38 +1,10 @@
 @extends('layouts.teknisi')
 
 @section('content')
-@section('title', 'Surat Terima')
+@section('title', 'Pengerjaan Kalibrasi')
 <style>
   input[readonly] {
     cursor: not-allowed;
-  }
-
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Pastikan modal body penuh */
-  }
-
-  .modal-dialog2 {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
-  }
-
-  .modal-content2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-body2 {
-    flex: 1;
-    overflow-y: auto;
-    color: black;
-    background-color: white;
   }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -43,8 +15,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN SERAH TERIMA ALAT</h1>
-        <small>Pembuatan serah terima alat</small>
+        <h1>Pengerjaan Kalibrasi</h1>
+        <small>Pengerjaan Kalibrasi</small>
       </div>
     </div>
   </section>
@@ -55,103 +27,6 @@
       <p>{{ $message }}</p>
     </div>
     @endif
-    <!--Form Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print" id="form1">
-            <h1>SERAH TERIMA ALAT</h1>
-          </div>
-
-          <div class="panel-body panel-form">
-            <div class="row">
-              <!-- <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;"> -->
-                <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner col-sm-12" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                  @csrf
-                  <h2>PIHAK PERTAMA</h2>
-                  <div class="form-group row">
-                    <label for="nama_1" class="col-xs-2 form-label"><b>Nama :</b></label>
-                    <div class="col-xs-5">
-                      <input name="nama_1" id="nama_1" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="jabatan_1" class="col-xs-2 form-label">Jabatan</label>
-                    <div class="col-xs-5">
-                      <input name="jabatan_1" id="jabatan_1" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="bagian_1" class="col-xs-2 form-label">Departement / Bagian</label>
-                    <div class="col-xs-5">
-                      <input name="bagian_1" id="bagian_1" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="kontak_1" class="col-xs-2 form-label">Kontak</label>
-                    <div class="col-xs-5">
-                      <input name="kontak_1" id="kontak_1" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <h2>PIHAK KEDUA</h2>
-                  <div class="form-group row">
-                    <label for="nama_2" class="col-xs-2 form-label">Nama</label>
-                    <div class="col-xs-5">
-                      <input name="nama_2" id="nama_2" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="jabatan_2" class="col-xs-2 form-label">Jabatan</label>
-                    <div class="col-xs-5">
-                      <input name="jabatan_2" id="jabatan_2" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="bagian_2" class="col-xs-2 form-label">Departemen / Bagian</label>
-                    <div class="col-xs-5">
-                      <input name="bagian_2" id="bagian_2" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="kontak_2" class="col-xs-2 form-label">Kontak</label>
-                    <div class="col-xs-5">
-                      <input name="kontak_2" id="konta_2" type="text" class="form-control">
-                    </div>
-                  </div>
-                  <a class="btn btn-primary" id="add" style="margin-bottom: 5px;">Tambah Alat</a>
-                  <h2>RINCIAN ALAT YANG DISERAHKAN</h2>
-                  <table class="table table-striped table-bordered" id="dinamic">
-                    <thead>
-                      <tr>
-                        <th class="text-center"><b>Nama alat</b></th>
-                        <th class="text-center"><b>Merk / Type</b></th>
-                        <th class="text-center"><b>No seri</b></th>
-                        <th class="text-center"><b>kondisi</b></th>
-                        <th class="tex-center"><b>kelengkapan</b></th>
-                        <th class="text-center"><b>jumlah</b></th>
-                        <th class="tex-center"><b>keterangan</b></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- DATA DINAMIS -->
-                    </tbody>
-                  </table>
-                  <div class="form-group row">
-                    <div class="col-sm-3 col-sm-6">
-                      <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              <div class="col-md-3"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Form Perbaikan end-->
     <!--Tabel Perbaikan-->
     <div class="row">
       <div class="col-sm-12">
@@ -159,9 +34,9 @@
 
           <div class="panel-heading no-print">
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-4">
               </div>
-              <h1>Daftar Surat Serah Terima</h1>
+              <h1>Daftar Pengerjaan Kalibrasi</h1>
             </div>
           </div>
           <div style="overflow-x:auto;">
@@ -172,32 +47,22 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
-                        <th>Nama</th>
-                        <th>Jabatan</th>
-                        <th>Bagian</th>
-                        <th>Kontak</th>
-                        <th>Tombol</th>
+                        <th>Instansi</th>
+                        <th>Jadwal</th>
+                        <th>Proses Kalibrasi</th>
                       </tr>
                     </thead>
                     <tbody>
                       @forelse($item as $items)
                       <tr>
-                        <td>{{ $items->nama_2 }}</td>
-                        <td>{{ $items->jabatan_2 }}</td>
-                        <td>{{ $items->bagian_2 }}</td>
-                        <td>{{ $items->kontak_2 }}</td>
+                        <td>{{ $items->instansi }}</td>
+                        <td>{{ $items->jadwal }}</td>
                         <td>
-                          <a href="{{ route('teknisi.view.suratTerima', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                          <a href="{{ route('teknisi.edit.suratTerima', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-                          <form action="{{ route('teknisi.delete.suratTerima', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('teknisi.pengerjaan.kalibrasi', $items->id) }}" class="form-inner" method="post">
                             @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            @method('PUT')
+                            <button class="btn btn-sm btn-{{ $items->pengerjaan == 0 ? 'danger' : 'success'}}" type="submit">
+                              {{ $items->pengerjaan == 0 ? 'Pengerjaan' : 'Selesai' }}
                             </button>
                           </form>
                         </td>
@@ -221,32 +86,5 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
 @push('addon-script')
-
-<script>
-  $(document).ready(function() {
-    let row = 1; //Menyimpan jumlah baris
-
-    //Fungsi menambah baris
-    $("#add").click(function() {
-      let newRow =
-        `
-      <tr>
-        <td><input name="nama_alat[${row}]" type="text" class="form-control" placeholder="isi nama alat"></td>
-        <td><input name="merek_type[${row}]" type="text" class="form-control" placeholder="keterangan perbaikan"></td>
-        <td><input name="no_seri[${row}]" type="text" class="form-control" placeholder="no seri"></td>
-        <td><input name="kondisi[${row}]" type="text" class="form-control" placeholder="kondisi alat"></td>
-        <td><input name="kelengkapan[${row}]" type="text" class="form-control" placeholder="kelengkapan"></td>
-        <td><input name="jumlah[${row}]" type="text" class="form-control" placeholder="jumlah alat"></td>
-        <td><input name="keterangan[${row}]" type="text" class="form-control" placeholder="keterangan alat"></td>
-      </tr>
-      `;
-
-      //Menambah baris baru ke tbody
-      $("#dinamic tbody").append(newRow);
-      row++;
-    });
-
-  })
-</script>
 
 @endpush

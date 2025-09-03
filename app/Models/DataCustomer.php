@@ -14,6 +14,6 @@ class DataCustomer extends Model
     protected $keyType = 'string';         // <- jika id_req berupa string
 
     protected $fillable = [ 'id', 'jadwal', 'instansi', 'jumlah', 'realisasi', 
-                            'marketing', 'mobil', 'teknisi', 'wilayah', 
+                            'marketing', 'mobil', 'teknisi', 'wilayah', 'pengerjaan',
                             'created_at', 'updated_at'];
 }
