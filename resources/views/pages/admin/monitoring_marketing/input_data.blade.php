@@ -46,6 +46,7 @@
                   <thead class="table-light">
                     <tr>
                       <th scope="col">No</th>
+                      <th scope="col">Tanggal</th>
                       <th scope="col">Marketing</th>
                       <th scope="col">Nama Alat</th>
                       <th scope="col">Merk</th>
@@ -59,6 +60,7 @@
                     @forelse($data as $datas)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                       <td>{{ $datas->user }}</td>
                       <td>{{ $datas->nama_alat }}</td>
                       <td>{{ $datas->merek }}</td>

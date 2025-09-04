@@ -49,6 +49,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
+                        <th>Tanggal</th>
                         <th>Instansi</th>
                         <th>Alamat</th>
                         <th>Telepon</th>
@@ -58,6 +59,7 @@
                     <tbody>
                       @forelse($items as $item)
                       <tr>
+                        <td>{{ $item->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $item->rs[1] }}</td>
                         <td>{{ $item->rs[2] }}</td>
                         <td>{{ $item->rs[4] }}</td>

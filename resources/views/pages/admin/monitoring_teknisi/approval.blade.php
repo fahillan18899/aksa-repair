@@ -46,6 +46,7 @@
                   <thead class="table-light">
                     <tr>
                       <th>No Urut</th>
+                      <th>Tanggal</th>
                       <th>Nama</th>
                       <th>No Seri</th>
                       <th>Type</th>
@@ -59,6 +60,7 @@
                     @forelse($data as $datas)
                     <tr>
                       <td>{{ $datas->no_urut }}</td>
+                      <td>{{ $datas->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                       <td>{{ $datas->nama_alat }}</td>
                       <td>{{ $datas->no_seri }}</td>
                       <td>{{ $datas->type }}</td>

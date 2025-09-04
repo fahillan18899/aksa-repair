@@ -49,6 +49,7 @@
                       <th>Merek</th>
                       <th>Type</th>
                       <th>No Seri</th>
+                      <th>Tanggal</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -58,6 +59,7 @@
                       <td>{{ $datas->merek }}</td>
                       <td>{{ $datas->type }}</td>
                       <td>{{ $datas->no_seri }}</td>
+                      <td>{{ $datas->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                     </tr>
                     @empty
                     @endforelse
