@@ -74,6 +74,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Tanggal</th>
                         <th>Nama</th>
                         <th>No Seri</th>
                         <th>Type</th>
@@ -115,6 +116,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Tanggal</th>
                         <th>Nama</th>
                         <th>No Seri</th>
                         <th>Type</th>
@@ -143,6 +145,16 @@
 </div>
 @endsection
 @push('addon-script')
+<!-- Day.js + Plugin timezone -->
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+
+<script>
+  dayjs.extend(dayjs_plugin_utc);
+  dayjs.extend(dayjs_plugin_timezone);
+</script>
+
 <script>
   function real_selesai(){
     $.ajax({
@@ -152,9 +164,16 @@
       success: function(data){
         let rows = '';
         data.forEach(item =>{
+
+        // Format tanggal created_at
+        const formattedDate = dayjs(item.created_at)
+          .tz("Asia/Jakarta")
+          .format("DD-MM-YYYY HH:mm");
+
           rows += `
           <tr>
             <td>${item.no_urut}</td>
+            <td>${formattedDate}</td>
             <td>${item.nama_alat}</td>
             <td>${item.no_seri}</td>
             <td>${item.type}</td>
@@ -194,9 +213,16 @@
       success: function(data){
         let rows = '';
         data.forEach(item=> {
+
+        // Format tanggal created_at
+        const formattedDate = dayjs(item.created_at)
+          .tz("Asia/Jakarta")
+          .format("DD-MM-YYYY HH:mm");
+
           rows += `
           <tr>
             <td>${item.no_urut}</td>
+            <td>${formattedDate}</td>
             <td>${item.nama_alat}</td>
             <td>${item.no_seri}</td>
             <td>${item.type}</td>
