@@ -74,6 +74,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No</th>
+                        <th>Tanggal</th>
                         <th>Nama Alat</th>
                         <th>Instansi</th>
                       </tr>
@@ -82,6 +83,7 @@
                       @forelse($itemPekerjaan as $item)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->instansi }}</td>
                       </tr>
@@ -116,6 +118,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Serial Number</th>
                         <th>Type</th>
@@ -129,6 +132,7 @@
                       @forelse($itemSelesai as $item)
                       <tr>
                         <td>{{ $item->no_urut }}</td>
+                        <td>{{ $item->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->no_seri }}</td>
                         <td>{{ $item->type }}</td>
@@ -177,6 +181,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Tanggal</th>
                         <th>Nama</th>
                         <th>Serial Number</th>
                         <th>Type</th>
@@ -190,6 +195,7 @@
                       @forelse($itemPerbaikan as $item2)
                       <tr>
                         <td>{{ $item2->no_urut }}</td>
+                        <td>{{ $item2->created_at->timezone('Asia/Jakarta')->format('d-m-y / H:i') }}</td>
                         <td>{{ $item2->nama_alat }}</td>
                         <td>{{ $item2->no_seri }}</td>
                         <td>{{ $item2->type }}</td>

@@ -46,6 +46,7 @@
                     <thead class="table-light">
                       <tr>
                         <th>No Urut</th>
+                        <th>Tanggal</th>
                         <th>Marketing</th>
                         <th>Nama Alat</th>
                         <th>Instansi</th>
@@ -56,6 +57,7 @@
                       @forelse($data as $datas)
                       <tr>
                         <td onclick="paste(this)" title="Klik untuk kirim no urut" style="cursor: pointer;">{{ $datas->no_urut }}</td>
+                        <td>{{ $datas->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $datas->user }}</td>
                         <td>{{ $datas->nama_alat }}</td>
                         <td>{{ $datas->instansi }}</td>
@@ -176,6 +178,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <th>No Urut</th>
+                      <th>Tanggal</th>
                       <th>Nama</th>
                       <th>Serial Number</th>
                       <th>Type</th>
@@ -190,6 +193,7 @@
                       @forelse($item as $items)
                       <tr>
                         <td>{{ $items->no_urut }}</td>
+                        <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $items->nama_alat }}</td>
                         <td>{{ $items->no_seri }}</td>
                         <td>{{ $items->type }}</td>

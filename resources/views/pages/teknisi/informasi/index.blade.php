@@ -121,8 +121,9 @@
                       <th>Merek</th>
                       <th>Type</th>
                       <th>No Seri</th>
-                      <th>Toko</th>
                       <th>Harga</th>
+                      <th>Toko</th>
+                      <th>Tanggal</th>
                       <th>Tombol Aksi</th>
                     </tr>
                   </thead>
@@ -135,6 +136,7 @@
                       <td>{{ $items->no_seri }}</td>
                       <td>{{ $items->harga }}</td>
                       <td>{{ $items->toko }}</td>
+                      <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                       <td>
                         <a href="{{ route('teknisi.edit.informasi', $items->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
