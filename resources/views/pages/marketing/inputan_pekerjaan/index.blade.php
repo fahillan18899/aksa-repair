@@ -136,11 +136,12 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
-                        <th>No Urut</th>
-                        <th>Nama Alat</th>
+                        <th>No_Urut</th>
+                        <th>Tanggal</th>
+                        <th>Nama_Alat</th>
                         <th>Merek</th>
                         <th>Type</th>
-                        <th>No Seri</th>
+                        <th>No_Seri</th>
                         <th>Instansi</th>
                         <th>Kerusakan</th>
                         <th>Foto</th>
@@ -151,6 +152,7 @@
                       @forelse($item as $items)
                       <tr>
                         <td>{{ $items->no_urut }}</td>
+                        <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y H:i') }}</td>
                         <td>{{ $items->nama_alat }}</td>
                         <td>{{ $items->merek }}</td>
                         <td>{{ $items->type }}</td>
