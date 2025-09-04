@@ -219,7 +219,7 @@
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" colspan="2"><img src="" id="ttd_image1" width="20%" alt="Ttd"></td>
+                        <td class="text-center" colspan="2"></td>
                         <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
                       </tr>
                       <tr>
@@ -243,8 +243,7 @@
           </div>
           <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
-              <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;"
-              data-toggle="modal" data-target="#exampleModal">TTD</button>
+              <!-- <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;" data-toggle="modal" data-target="#exampleModal">TTD</button> -->
               <button type="button" onclick="printMy('print_me')"
                 class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
             </div>

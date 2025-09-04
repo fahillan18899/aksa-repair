@@ -155,7 +155,7 @@
                     <div class="col-sm-12">
                       <h3>PERNYATAAN DAN KETENTUAN</h3>
                       <p>1. Kelengkapan yang tertera dengan kondisi yang sebenarnya</p>
-                      <p>2. Dari pihak pertama tidak menerima kehilangan alat jikalau alat tersebut tidak tertera</p>
+                      <p>2. Pihak pertama tidak menerima kehilangan alat jika alat tersebut tidak tertera</p>
                       <p>3. Dari pihak kedua dapat menagih kepada pihak pertama jikalau ada kehilangan kelengkapan yang sudah tertera pada surat</p>
                     </div>
                   </div><br>
@@ -170,7 +170,7 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td align="center"><img src="" id="ttd_image1" width="30%" alt="Ttd" ></td>
+                            <td align="center" style="height: 78px;"></td>
                           </tr>
                           <tr>
                             <td align="center">{{ $item->nama_2 }}</td>
@@ -207,8 +207,7 @@
           <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
               <div class="ui buttons">
-                <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;"
-                data-toggle="modal" data-target="#exampleModal">TTD</button>
+                <!-- <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;" data-toggle="modal" data-target="#exampleModal">TTD</button> -->
                 <button type="button" onclick="printMy('print_me')" class="btn btn-primary" 
                 style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
               </div>
