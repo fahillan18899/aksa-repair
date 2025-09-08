@@ -156,22 +156,6 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
         Route::delete('link_dokumen_kalibrasi/{id}', [DocumenKalibrasiController::class, 'delete'])->name('delete.dokumen');
     //Dokumen kalibrasi end//
 
-    //Berita Acara //
-        Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');
-        Route::get('link_ba/ba_old', [BeritaAcaraController::class, 'baOld'])->name('data.baOld');
-        Route::post('link_ba', [BeritaAcaraController::class, 'post'])->name('post.ba');
-        Route::get('link_ba/view/{id}', [BeritaAcaraController::class, 'view'])->name('view.ba');
-        Route::get('link_ba/edit/{id}', [BeritaAcaraController::class, 'edit'])->name('edit.ba');
-        Route::put('link_ba/update/{id}', [BeritaAcaraController::class, 'update'])->name('update.ba');
-        Route::post('link_ba/upload', [BeritaAcaraController::class, 'upload'])->name('upload.ba');
-        Route::delete('link_ba/{id}', [BeritaAcaraController::class, 'delete'])->name('delete.ba');
-        Route::delete('link_ba/ba_old/{id}', [BeritaAcaraController::class, 'deleteDoc'])->name('delete.baOld');
-    //Berita Acara end//
-
-    //Qr Generate //
-        Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
-        Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
-    //Qr Generate end//
 });
 
 Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->group(function () {

@@ -12,7 +12,7 @@ class DocumenKalibrasiController extends Controller
     public function index()
     {
         $item = DocumnetKalibrasi::all();
-        return view('pages.teknisi.informasi.index',
+        return view('pages.teknisi.dokument_kalibrasi.index',
         compact('item'));
     }
 
@@ -43,7 +43,7 @@ class DocumenKalibrasiController extends Controller
     public function edit($id)
     {
         $item = DocumnetKalibrasi::findOrFail($id);
-        return view('pages.teknisi.informasi.edit',
+        return view('pages.teknisi.dokument_kalibrasi.edit',
         compact('item'));
     }
 
