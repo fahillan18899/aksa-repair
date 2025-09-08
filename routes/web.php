@@ -21,7 +21,7 @@ use App\Http\Controllers\Marketing\PembayaranController;
 use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\DataCustomerController;
 use App\Http\Controllers\Teknisi\PengerjaanKalibrasiController;
-use App\Http\Controllers\Teknisi\InformasiController;
+use App\Http\Controllers\Teknisi\DocumenKalibrasiController;
 use App\Http\Controllers\Teknisi\BeritaAcaraController;
 use App\Http\Controllers\Teknisi\QrController;
 // Akuntan //
@@ -143,18 +143,18 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
         Route::get('data_customer/data_pekerjaan/{id}', [DataCustomerController::class, 'fetch'])->name('fetch.dataCs');
     // Data Customer end//
 
-    //Serah Terima //
+    //Pengerjaan kalibrasi //
         Route::get('link_pengerjaan_kalibrasi', [PengerjaanKalibrasiController::class, 'index'])->name('data.kalibrasi');
         Route::put('link_pengerjaan_kalibrasi/pengerjaan/{id}', [PengerjaanKalibrasiController::class, 'pengerjaan'])->name('pengerjaan.kalibrasi');
-    //Serah Terima End //
+    //Pengerjaan kalibrasi End //
 
-    //Informasi //
-        Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
-        Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
-        Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
-        Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
-        Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
-    //Informasi end//
+    //Dokumen kalibrasi //
+        Route::get('link_dokumen_kalibrasi', [DocumenKalibrasiController::class, 'index'])->name('data.dokumen'); 
+        Route::post('link_dokumen_kalibrasi', [DocumenKalibrasiController::class, 'post'])->name('post.dokumen');
+        Route::get('link_dokumen_kalibrasi/edit/{id}', [DocumenKalibrasiController::class, 'edit'])->name('edit.dokumen');
+        Route::put('link_dokumen_kalibrasi/update/{id}', [DocumenKalibrasiController::class, 'update'])->name('update.dokumen');
+        Route::delete('link_dokumen_kalibrasi/{id}', [DocumenKalibrasiController::class, 'delete'])->name('delete.dokumen');
+    //Dokumen kalibrasi end//
 
     //Berita Acara //
         Route::get('link_ba', [BeritaAcaraController::class, 'index'])->name('data.ba');

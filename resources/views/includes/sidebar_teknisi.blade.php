@@ -62,11 +62,11 @@
           <i class="fa fa-address-book-o" aria-hidden="true"></i><span>Data Customer</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_surat_terima') ? 'active' : '' }}">
+      <li class="{{ request()->is('dashboard_teknisi/link_pengerjaan_kalibrasi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.data.kalibrasi') }}"><i class="fa fa-wrench" aria-hidden="true"></i>Pengerjaan Kalibrasi</a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.informasi') }}">
+      <li class="{{ request()->is('dashboard_teknisi/link_dokumen_kalibrasi') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.data.dokumen') }}">
           <i class="fa fa-file-text-o"></i> <span>Dokumentasi Kalibrasi</span>
         </a>
       </li>
