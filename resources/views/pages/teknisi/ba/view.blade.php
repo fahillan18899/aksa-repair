@@ -223,9 +223,9 @@
                         <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
                       </tr>
                       <tr>
-                        <td class="text-center" width="20%"><b>PJ ALAT</b></td>
+                        <td class="text-center"><b>PJ ALAT</b></td>
                         <td class="text-center">{{ $item->pj ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>TEKNISI AJS</b></td>
+                        <td class="text-center"><b>TEKNISI AJS</b></td>
                         <td class="text-center">{{ $item->teknisi ?? '-' }}</td>
                       </tr>
                       <tr>

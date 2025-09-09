@@ -11,7 +11,7 @@
   .table-striped th,
   .table-striped td {
     border: 2px solid black;
-    padding: 8px;
+    padding: 3px;
   }
 
   .panel {
@@ -199,7 +199,7 @@
                     </tbody>
                   </table>
                   <!-- Jenis -->
-                  <!-- SKC DLL-->
+                  <!-- KELUHAN-->
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
@@ -210,22 +210,22 @@
                       </tr>
                       <tr>
                         <td class="text-center">{{ $item->skc[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->keluhan ?? '-' }}</td>
-                        <td class="text-center">{{ $item->aksi ?? '-' }}</td>
-                        <td class="text-center">{{ $item->hasil ?? '-' }}</td>
+                        <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->keluhan ?? '-' }}</pre></td>
+                        <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->aksi ?? '-' }}</pre></td>
+                        <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
                   </table><br>
                   <table class="table-striped" width="100%">
                     <tbody>
-                      <!-- <tr>
-                        <td class="text-center" colspan="2"><img src="" id="ttd_image1" width="20%" alt="Ttd"></td>
-                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
-                      </tr> -->
                       <tr>
-                        <td class="text-center" width="20%"><b>PJ ALAT</b></td>
+                        <td class="text-center" colspan="2"></td>
+                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center"><b>PJ ALAT</b></td>
                         <td class="text-center">{{ $item->pj ?? '-' }}</td>
-                        <td class="text-center" width="20%"><b>TEKNISI AJS</b></td>
+                        <td class="text-center"><b>TEKNISI AJS</b></td>
                         <td class="text-center">{{ $item->teknisi ?? '-' }}</td>
                       </tr>
                       <tr>
@@ -241,14 +241,13 @@
               <div class="col-md-3"></div>
             </div>
           </div>
-          <!-- <div class="form-group row">
+          <div class="form-group row">
             <div class="col-sm-offset-3 col-sm-6">
-              <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;"
-              data-toggle="modal" data-target="#exampleModal">TTD</button>
+              <!-- <button type="button" class="btn btn-info mb-3" style="margin-right: 10px;" data-toggle="modal" data-target="#exampleModal">TTD</button> -->
               <button type="button" onclick="printMy('print_me')"
                 class="btn btn-primary" style="margin-left: 180px;"><i class="fa fa-print"></i> Print</button>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -366,7 +365,7 @@
             .table-striped th,
             .table-striped td {
             border: 1px solid black;
-            padding: 8px;
+            padding: 3px;
             }
             .panel { border: 1px solid black }
           </style>
@@ -380,313 +379,4 @@
   }
   // FUNGSI PRINT END
 </script>
-
-<script>
-  // FUNGSI TTD DIGITAL
-  // ttd 1
-  (function() {
-    window.requestAnimFrame = (function(callback) {
-      return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimaitonFrame ||
-        function(callback) {
-          window.setTimeout(callback, 1000 / 60);
-        };
-    })();
-
-    var canvas = document.getElementById("ttd_canvas1");
-    var ctx = canvas.getContext("2d");
-    ctx.strokeStyle = "#222222";
-    ctx.lineWidth = 4;
-
-    var drawing = false;
-    var mousePos = {
-      x: 0,
-      y: 0
-    };
-
-
-    // --
-    var lastPos = mousePos;
-
-    canvas.addEventListener("mousedown", function(e) {
-      drawing = true;
-      lastPos = getMousePos(canvas, e);
-    }, false);
-
-    canvas.addEventListener("mouseup", function(e) {
-      drawing = false;
-    }, false);
-
-    canvas.addEventListener("mousemove", function(e) {
-      mousePos = getMousePos(canvas, e);
-    }, false);
-    // --
-
-    // Add touch event support for mobile
-    canvas.addEventListener("touchstart", function(e) {
-
-    }, false);
-
-    canvas.addEventListener("touchmove", function(e) {
-      var touch = e.touches[0];
-      var me = new MouseEvent("mousemove", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      canvas.dispatchEvent(me);
-    }, false);
-
-    canvas.addEventListener("touchstart", function(e) {
-      mousePos = getTouchPos(canvas, e);
-      var touch = e.touches[0];
-      var me = new MouseEvent("mousedown", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      canvas.dispatchEvent(me);
-    }, false);
-
-    canvas.addEventListener("touchend", function(e) {
-      var me = new MouseEvent("mouseup", {});
-      canvas.dispatchEvent(me);
-    }, false);
-
-    function getMousePos(canvasDom, mouseEvent) {
-      var rect = canvasDom.getBoundingClientRect();
-      return {
-        x: mouseEvent.clientX - rect.left,
-        y: mouseEvent.clientY - rect.top
-      }
-    }
-
-    function getTouchPos(canvasDom, touchEvent) {
-      var rect = canvasDom.getBoundingClientRect();
-      return {
-        x: touchEvent.touches[0].clientX - rect.left,
-        y: touchEvent.touches[0].clientY - rect.top
-      }
-    }
-
-    function renderCanvas() {
-      if (drawing) {
-        ctx.moveTo(lastPos.x, lastPos.y);
-        ctx.lineTo(mousePos.x, mousePos.y);
-        ctx.stroke();
-        lastPos = mousePos;
-      }
-    }
-    // Add touch event support for mobile N
-
-    // Prevent scrolling when touching the canvas
-    document.body.addEventListener("touchstart", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-    document.body.addEventListener("touchend", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-    document.body.addEventListener("touchmove", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-
-    (function drawLoop() {
-      requestAnimFrame(drawLoop);
-      renderCanvas();
-    })();
-
-    function clearCanvas() {
-      canvas.width = canvas.width;
-    }
-    // Prevent scrolling when touching the canvas N
-
-    // Set up the UI
-    var sigText = document.getElementById("ttd_dataUrl1");
-    var sigImage = document.getElementById("ttd_image1");
-    var clearBtn = document.getElementById("ttd_clearBtn1");
-    var submitBtn = document.getElementById("ttd_submitBtn1");
-    clearBtn.addEventListener("click", function(e) {
-      clearCanvas();
-      sigText.innerHTML = "Data URL for your signature will go here!";
-      sigImage.setAttribute("src", "");
-    }, false);
-    submitBtn.addEventListener("click", function(e) {
-      var dataUrl = canvas.toDataURL();
-      sigText.innerHTML = dataUrl;
-      sigImage.setAttribute("src", dataUrl);
-    }, false);
-
-  })();
-  // ttd S 1
-
-  // ttd 2
-  (function() {
-    window.requestAnimFrame = (function(callback) {
-      return window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimaitonFrame ||
-        function(callback) {
-          window.setTimeout(callback, 1000 / 60);
-        };
-    })();
-
-    var canvas = document.getElementById("ttd_canvas2");
-    var ctx = canvas.getContext("2d");
-    ctx.strokeStyle = "#222222";
-    ctx.lineWidth = 4;
-
-  // Gambar background aksa.png
-  var bgImage = new Image();
-  bgImage.src = "{{ url('assets/images/aksa.png') }}"; // Blade syntax
-  bgImage.onload = function () {
-    drawBackground();
-  };
-
-  function drawBackground() {
-    ctx.globalAlpha = 0.3; // transparansi
-    ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-    ctx.globalAlpha = 1.0; // reset untuk signature
-  }
-
-  function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBackground();
-  }
-
-    var drawing = false;
-    var mousePos = {
-      x: 0,
-      y: 0
-    };
-
-
-    // --
-    var lastPos = mousePos;
-
-    canvas.addEventListener("mousedown", function(e) {
-      drawing = true;
-      lastPos = getMousePos(canvas, e);
-    }, false);
-
-    canvas.addEventListener("mouseup", function(e) {
-      drawing = false;
-    }, false);
-
-    canvas.addEventListener("mousemove", function(e) {
-      mousePos = getMousePos(canvas, e);
-    }, false);
-    // --
-
-    // Add touch event support for mobile
-    canvas.addEventListener("touchstart", function(e) {
-
-    }, false);
-
-    canvas.addEventListener("touchmove", function(e) {
-      var touch = e.touches[0];
-      var me = new MouseEvent("mousemove", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      canvas.dispatchEvent(me);
-    }, false);
-
-    canvas.addEventListener("touchstart", function(e) {
-      mousePos = getTouchPos(canvas, e);
-      var touch = e.touches[0];
-      var me = new MouseEvent("mousedown", {
-        clientX: touch.clientX,
-        clientY: touch.clientY
-      });
-      canvas.dispatchEvent(me);
-    }, false);
-
-    canvas.addEventListener("touchend", function(e) {
-      var me = new MouseEvent("mouseup", {});
-      canvas.dispatchEvent(me);
-    }, false);
-
-    function getMousePos(canvasDom, mouseEvent) {
-      var rect = canvasDom.getBoundingClientRect();
-      return {
-        x: mouseEvent.clientX - rect.left,
-        y: mouseEvent.clientY - rect.top
-      }
-    }
-
-    function getTouchPos(canvasDom, touchEvent) {
-      var rect = canvasDom.getBoundingClientRect();
-      return {
-        x: touchEvent.touches[0].clientX - rect.left,
-        y: touchEvent.touches[0].clientY - rect.top
-      }
-    }
-
-    function renderCanvas() {
-      if (drawing) {
-        ctx.moveTo(lastPos.x, lastPos.y);
-        ctx.lineTo(mousePos.x, mousePos.y);
-        ctx.stroke();
-        lastPos = mousePos;
-      }
-    }
-    // Add touch event support for mobile N
-
-    // Prevent scrolling when touching the canvas
-    document.body.addEventListener("touchstart", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-    document.body.addEventListener("touchend", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-    document.body.addEventListener("touchmove", function(e) {
-      if (e.target == canvas) {
-        e.preventDefault();
-      }
-    }, false);
-
-    (function drawLoop() {
-      requestAnimFrame(drawLoop);
-      renderCanvas();
-    })();
-
-    function clearCanvas() {
-      canvas.width = canvas.width;
-    }
-    // Prevent scrolling when touching the canvas N
-
-    // Set up the UI
-    var sigText = document.getElementById("ttd_dataUrl2");
-    var sigImage = document.getElementById("ttd_image2");
-    var clearBtn = document.getElementById("ttd_clearBtn2");
-    var submitBtn = document.getElementById("ttd_submitBtn2");
-    clearBtn.addEventListener("click", function(e) {
-      clearCanvas();
-      sigText.innerHTML = "Data URL for your signature will go here!";
-      sigImage.setAttribute("src", "");
-    }, false);
-    submitBtn.addEventListener("click", function(e) {
-      var dataUrl = canvas.toDataURL();
-      sigText.innerHTML = dataUrl;
-      sigImage.setAttribute("src", dataUrl);
-    }, false);
-
-  })();
-  // ttd S 2
-  // FUNGSI TTD DIGITAL END
-</script>
-
 @endpush
