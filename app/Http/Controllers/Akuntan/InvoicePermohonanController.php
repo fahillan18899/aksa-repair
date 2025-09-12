@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Akuntan;
 
-use App\Models\Sph;
-use App\Models\Invoice;
-use App\Models\InvoiceOld;
+use App\Models\CsKeuangan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -13,124 +11,39 @@ class InvoicePermohonanController extends Controller
 {
     public function index()
     {
-        $item = Invoice::all();
-        $sph = Sph::all();
+        $item = CsKeuangan::all();
         return view('pages.akuntan.invoice_permohonan.index',
-        compact('item', 'sph'));
+        compact('item'));
     }
 
     public function post(Request $request)
     {
         $validate = $request->validate([
-            'yth'               => 'nullable',
-            'tgl_invoice'       => 'nullable',
-            'no_invoice'        => 'nullable',
-            'no_pesanan'        => 'nullable',
-            'alamat'            => 'nullable',
-            'akom'              => 'array',
-            'akom.*.1'          => 'nullable',
-            'akom.*.2'          => 'nullable',
-            'akom.*.3'          => 'nullable',
-            'akom.*.4'          => 'nullable',
-            'akom.*.5'          => 'nullable',
-            'akom.*.6'          => 'nullable',
-            'akom.*.7'          => 'nullable',
-            'akom.*.8'          => 'nullable',
-            'akom.*.9'          => 'nullable',
-            'akom.*.10'         => 'nullable',
-            'akom.*.11'         => 'nullable',
-            'akom.*.12'         => 'nullable',
-            'akom.*.13'         => 'nullable',
-            'part'              => 'array',
-            'part.*.1'          => 'nullable',
-            'part.*.2'          => 'nullable',
-            'part.*.3'          => 'nullable',
-            'harga_part'        => 'array',
-            'harga_part.*.1'    => 'nullable',
-            'harga_part.*.2'    => 'nullable',
-            'harga_part.*.3'    => 'nullable',
-            'jumlah_part'       => 'array',
-            'jumlah_part.*.1'   => 'nullable',
-            'jumlah_part.*.2'   => 'nullable',
-            'jumlah_part.*.3'   => 'nullable',
-            'total_part'        => 'nullable',
-            'total_part.*.1'    => 'nullable',
-            'total_part.*.2'    => 'nullable',
-            'total_part.*.3'    => 'nullable',
-            'biaya_part'        => 'nullable',
-            'biaya_part.*.1'    => 'nullable',
-            'biaya_part.*.2'    => 'nullable',
-            'biaya_part.*.3'    => 'nullable',
-            'part_total'        => 'array',
-            'part_total.*.1'    => 'nullable',
-            'part_total.*.2'    => 'nullable',
-            'part_total.*.3'    => 'nullable',
-            'nama_alat'         => 'array',
-            'nama_alat.*.1'     => 'nullable',
-            'nama_alat.*.2'     => 'nullable',
-            'nama_alat.*.3'     => 'nullable',
-            'nama_alat.*.4'     => 'nullable',
-            'keterangan'        => 'array',
-            'keterangan.*.1'    => 'nullable',
-            'keterangan.*.2'    => 'nullable',
-            'keterangan.*.3'    => 'nullable',
-            'keterangan.*.4'    => 'nullable',
-            'keterangan.*.5'    => 'nullable',
-            'jumlah'            => 'nullable',
-            'harga'             => 'nullable',
-            'diskon'            => 'nullable',
-            'harga_diskon'      => 'nullable',
-            'harga_tanpa_pajak' => 'nullable',
-            'pajak'             => 'nullable',
-            'total'             => 'nullable',
-            'user'              => 'nullable',
-            
+            'instansi'    => 'nullable',
+            'jumlah'      => 'nullable',
+            'wilayah'     => 'nullable',
+            'marketing'   => 'nullable',
+            'ba'          => 'nullable',
         ]);
 
-        $validate['akom'] = json_encode($request->akom);
-        $validate['part'] = json_encode($request->part);
-        $validate['harga_part'] = json_encode($request->harga_part);
-        $validate['jumlah_part'] = json_encode($request->jumlah_part);
-        $validate['total_part'] = json_encode($request->total_part);
-        $validate['biaya_part'] = json_encode($request->biaya_part);
-        $validate['part_total'] = json_encode($request->part_total);
-        $validate['nama_alat'] = json_encode($request->nama_alat);
-        $validate['keterangan'] = json_encode($request->keterangan);
-        Invoice::create($validate);
-        return redirect()->route('akuntan.data.invoicePermohonan')
+        // Upload dokument
+        if($request->hasFile('ba')){
+            $file = $request->file('ba');
+            $fileName = $file->getClientOriginalName();
+            //Simpan ke storage/app/foto
+            $path = $file->storeAs('public/ba/',$fileName);
+            $validate['ba'] = 'ba/'.$fileName;
+        } 
+        else { $validate['ba'] = null; }
+
+        CsKeuangan::create($validate);
+        return redirect()->route('akuntan.data.CsKeuangan')
         ->with('success', 'Invoice berhasil di simpan');
-    }
-
-
-    public function view($id)
-    {
-        $item = Sph::findOrFail($id);
-        // Mengubah data menjadi array
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
-        $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
-        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
-        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;
-        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) : $item->total_part;
-        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) : $item->biaya_part;
-        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) : $item->part_total;
-        $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) : $item->nama_alat;
-        $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
-        
-        //No Invoice
-        $count = Invoice::count() +1;
-        $noUrut = str_pad($count, 4, '0', STR_PAD_LEFT);
-        $bulanAngka = \Carbon\Carbon::now()->format('n');
-        $tahun = \Carbon\Carbon::now()->format('Y');
-        $bulanRomawi = [1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV', 5 => 'V',
-                        6 => 'VI', 7 => 'VII', 8 => 'VIII', 9 => 'IX', 10 => 'X',
-                        11 => 'XI', 12 => 'XII'][$bulanAngka];
-        return view('pages.akuntan.invoice_permohonan.view',
-        compact('item', 'noUrut', 'bulanRomawi', 'tahun',));
     }
 
     public function edit($id)
     {
-        $item = Invoice::findOrFail($id);
+        $item = CsKeuangan::findOrFail($id);
         return view('pages.akuntan.invoice_permohonan.edit',
         compact('item'));
     }
@@ -138,98 +51,38 @@ class InvoicePermohonanController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'yth'               => 'nullable',
-            'tgl_invoice'       => 'nullable',
-            'no_invoice'        => 'nullable',
-            'no_pesanan'        => 'nullable',
-            'alamat'            => 'nullable',
+            'instansi'    => 'nullable',
+            'jumlah'      => 'nullable',
+            'wilayah'     => 'nullable',
+            'marketing'   => 'nullable',
+            'ba'          => 'nullable',
         ]);
 
-        $item = Invoice::findOrFail($id);
+        // Upload dokument
+        if($request->hasFile('ba')){
+            $file = $request->file('ba');
+            $fileName = $file->getClientOriginalName();
+            //Simpan ke storage/app/foto
+            $path = $file->storeAs('public/ba/',$fileName);
+            $validate['ba'] = 'ba/'.$fileName;
+        } 
+        else { $validate['ba'] = null; }
+
+        $item = CsKeuangan::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('akuntan.data.invoicePermohonan')
+        return redirect()->route('akuntan.data.CsKeuangan')
         ->with('success', 'Invoice berhasil di ubah');
     }
 
-    public function print($id)
-    {
-        $item = Invoice::findOrFail($id);
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;
-        $item->part = is_string($item->part) ? json_decode($item->part, true) ?? [] : $item->part;
-        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) ?? [] : $item->harga_part;
-        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) ?? [] : $item->jumlah_part;
-        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) ?? [] : $item->total_part;
-        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) ?? [] : $item->biaya_part;
-        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) ?? [] : $item->part_total;
-        $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) ?? [] : $item->nama_alat;
-        $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) ?? [] : $item->keterangan;
-        // dd($item->nama_alat, $item->keterangan);
-        return view('pages.akuntan.invoice_permohonan.print',
-        compact('item'));
-    }
-
-    public function status($id)
-    {
-        $item = Invoice::findOrFail($id);
-        $item->status = $item->status === '0' ? '1' : '0';
-        $item->save();
-        return back();
-
-    }
-
-    public function fetch($id)
-    {
-        $data = Sph::where('no_surat', $id)->first();
-        if (!$data) {
-            return response()->json(['error' => 'Data not found'], 404);
-        }
-        return response()->json($data);
-    }
-
-    public function invoiceOld()
-    {
-        $item = \App\Models\InvoiceOld::latest()->get();
-        return view('pages.akuntan.invoice_permohonan.invoice_old',
-        compact('item'));
-    }
-
-    public function upload(Request $request)
-    {
-        $request->validate([
-            'invoice' => 'required',
-        ]);
-
-        $file = $request->file('invoice');
-        $fileName = $file->getClientOriginalName();
-        //Simpan ke storage/app/public/sph
-        $path = $file->storeAs('public/documents/',$fileName);
-
-
-        //Simpan nama di db
-        InvoiceOld::create([
-            'nama' => $fileName,
-            'path' => 'documents/'.$fileName,
-        ]);
-        return back()->with('success', 'Document ('. $fileName . ') berhasil di upload');
-    }
-
-    public function deleteDoc($id)
-    {
-        $item = InvoiceOld::findOrFail($id);
-        //Hapus File di storage
-        if(Storage::exists('public/' . $item->path)){
-            Storage::delete('public/' . $item->path);
-        }
-        //Hapus data di db
-        $item->delete();
-
-        return back()->with('success', 'Dokumen Berhasil dihapus');
-    }
     public function delete($id)
     {
-        $item = Invoice::findOrFail($id);
+        $item = CsKeuangan::findOrFail($id);
+        //Hapus file di storage
+        if(Storage::exists('public/' . $item->ba)){
+            Storage::delete('public/' . $item->ba);
+        }
         $item->delete();
-        return redirect()->route('akuntan.data.invoicePermohonan')
-        ->with('success', 'Invoice berhasil dihapus');
+        return redirect()->route('akuntan.data.CsKeuangan')
+        ->with('success', 'Data berhasil dihapus');
     }
 }

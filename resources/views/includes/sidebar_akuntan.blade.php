@@ -9,7 +9,7 @@
     /* Atur lebar sidebar */
     overflow-y: auto;
     /*Tambahkan scroll jika konten melebihi tinggi */
-    background-color: #FFB20E;
+    background-color: #3ab3feff;
     /* Warna background sesuai tema */
     z-index: 1000;
     /* Pastikan sidebar di atas konten lain */
@@ -41,7 +41,7 @@
         @if(Auth::user()->user_role == 'akuntan')
         @php
         $rumahSakit = [
-        "RS0000" => "AKSA"];
+        "RS0000" => "DHS"];
         @endphp
         @if(isset($rumahSakit[Auth::user()->kode_rs]))
         <p>{{ $rumahSakit[Auth::user()->kode_rs] }}</p>
@@ -57,14 +57,24 @@
       <li class="{{ request()->is('dashboard_akuntan/link_dashboard_akuntan') ? 'active' : '' }}">
         <a href="{{ route('akuntan.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_invoice_permohonan') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.invoicePermohonan') }}">
-          <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Invoice Permohonan</span>
+      <li class="{{ request()->is('dashboard_akuntan/link_dataCs_keuangan') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.CsKeuangan') }}">
+          <i class="fa fa-address-book-o" aria-hidden="true"></i><span>Data Customer</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
         <a href="{{ route('akuntan.data.uploadFakture') }}">
-          <i class="fa fa-upload"></i> <span>Upload Faktur Pajak</span>
+          <i class="fa fa-book" aria-hidden="true"></i> <span>Pembuatan Invoice</span>
+        </a>
+      </li>
+      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.uploadFakture') }}">
+          <i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Alur Pembayaran</span>
+        </a>
+      </li>
+      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.uploadFakture') }}">
+          <i class="fa fa-upload"></i> <span>Chas Back</span>
         </a>
       </li>
     </ul>

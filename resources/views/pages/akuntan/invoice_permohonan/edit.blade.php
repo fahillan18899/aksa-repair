@@ -1,32 +1,7 @@
 @extends('layouts.akuntan')
 
 @section('content')
-@section('title', 'Permohonan Invoice')
-<style>
-  input[readonly] {
-    cursor: not-allowed;
-  }
-
-  .invoice-header {
-    position: relative;
-  }
-
-  .invoice-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 250px;
-    z-index: 0;
-  }
-
-  .invoice-header .form-group,
-  .invoice-header label,
-  .invoice-header input,
-  .invoice-header textarea {
-    position: relative;
-    z-index: 1;
-  }
-</style>
+@section('title', 'Edit Keuangan Customer')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -35,8 +10,8 @@
     <div class="p-l-30 p-r-30">
       <div class="header-icon"><i class="fa fa-file-o"></i></div>
       <div class="header-title">
-        <h1>MENU EDIT INVOICE</h1>
-        <small>Edit invoice</small>
+        <h1>MENU EDIT CUSTOMER</h1>
+        <small>Edit Customer</small>
       </div>
     </div>
   </section>
@@ -53,39 +28,52 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print" id="form1">
-            <h1>INVOICE</h1>
+            <h1>EDIT CUSTOMER</h1>
           </div>
 
           <div class="panel-body panel-form">
             <div class="row">
-              <div class="col-sm-12">
-                <form action="{{ route('akuntan.update.invoicePermohonan', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+              <div class="col-md-9 col-sm-12">
+                <form action="{{ route('akuntan.update.CsKeuangan', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
-                  <div class="invoice-header">
-                    <div class="form-group row">
-                      <div class="col-xs-4">
-                        <label class="form-label" for="">Kepada Yth :</label>
-                        <input name="yth" id="yth" class="form-control" type="text" value="{{ $item->yth }}">
-                      </div>
-                      <div class="col-xs-4">
-                        <label class="form-label" for="">Tanggal Invoice :</label>
-                        <input name="tgl_invoice" class="form-control" type="date" value="{{ $item->tgl_invoice }}">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="col-xs-4">
-                        <label class="form-label" for="">Nomor Invoice :</label>
-                        <input name="no_invoice" id="no_invoice" class="form-control" type="text" value="{{ $item->no_invoice }}">
-                      </div>
-                      <div class="col-xs-4">
-                        <label class="form-label" for="">Nomor Pesanan :</label>
-                        <input name="no_pesanan" id="no_pesanan" class="form-control" type="text" value="{{ $item->no_pesanan }}">
-                      </div>
+                  <div class="form-group row">
+                    <label for="instansi" class="col-xs-3 col-form-label">Instansi <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="instansi" type="text" class="form-control" value="{{ $item->instansi }}" required>
                     </div>
                   </div>
+
                   <div class="form-group row">
-                    <div class="col-3 col-sm-6">
+                    <label for="jumlah" class="col-xs-3 col-form-label">Jumlah alat <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah" type="number" class="form-control" value="{{ $item->jumlah }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="wilayah" class="col-xs-3 col-form-label">Wilayah <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="wilayah" type="text" class="form-control" value="{{ $item->wilayah }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="marketing" class="col-xs-3 col-form-label">Marketing <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="marketing" type="text" class="form-control" value="{{ $item->marketing }}" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="ba" class="col-xs-3 col-form-label">Berita Acara <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="ba" type="file" class="form-control" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Edit</button>
                       </div>

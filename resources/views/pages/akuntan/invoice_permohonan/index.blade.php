@@ -1,30 +1,10 @@
 @extends('layouts.akuntan')
 
 @section('content')
-@section('title', 'Permohonan Invoice')
+@section('title', 'Data Customer')
 <style>
   input[readonly] {
     cursor: not-allowed;
-  }
-
-  .invoice-header {
-    position: relative;
-  }
-
-  .invoice-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 250px;
-    z-index: 0;
-  }
-
-  .invoice-header .form-group,
-  .invoice-header label,
-  .invoice-header input,
-  .invoice-header textarea {
-    position: relative;
-    z-index: 1;
   }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -33,10 +13,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-file-o"></i></div>
+      <div class="header-icon"><i class="fa fa-user-plus" aria-hidden="true"></i></div>
       <div class="header-title">
-        <h1>MENU PEMBUATAN INVOICE</h1>
-        <small>Pembuatan invoice</small>
+        <h1>Data Customer</h1>
+        <small>Form Data Customer</small>
       </div>
     </div>
   </section>
@@ -47,60 +27,81 @@
       <p>{{ $message }}</p>
     </div>
     @endif
-    <!--Tabel Perbaikan-->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+
+    <!-- Form -->
     <div class="row">
       <div class="col-sm-12">
         <div class="panel panel-default thumbnail">
 
-          <div class="panel-heading no-print">
-            <div class="row">
-              <div class="col-md-4">
-                <h1>Daftar SPH</h1>
-              </div>
-            </div>
+          <div class="panel-heading no-print" id="form1">
+            <h1>Form Data Customer</h1>
           </div>
-          <div style="overflow-x:auto;">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Marketing</th>
-                        <th>No Surat</th>
-                        <th>Instansi</th>
-                        <th>Lokasi, Tanggal</th>
-                        <th>Tombol</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @forelse($sph as $sphs)
-                      <tr>
-                        <td>{{ $sphs->user }}</td>
-                        <td>{{ $sphs->no_surat }}</td>
-                        <td>{{ $sphs->yth }}</td>
-                        <td>{{ $sphs->lokasi_tanggal }}</td>
-                        <td>
-                          <a href="{{ route('akuntan.view.invoicePermohonan', $sphs->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
+
+          <div class="panel-body panel-form">
+            <div class="row">
+              <div class="col-md-9 col-sm-12">
+                <form action="{{ route('akuntan.post.CsKeuangan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  @csrf
+                  <div class="form-group row">
+                    <label for="instansi" class="col-xs-3 col-form-label">Instansi <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="instansi" type="text" class="form-control" placeholder="Masukan nama instansi" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="jumlah" class="col-xs-3 col-form-label">Jumlah alat <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="jumlah" type="number" class="form-control" placeholder="Masukan jumlah alat" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="wilayah" class="col-xs-3 col-form-label">Wilayah <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="wilayah" type="text" class="form-control" placeholder="Masukan wilayah / alamat isntansi" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="marketing" class="col-xs-3 col-form-label">Marketing <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="marketing" type="text" class="form-control" placeholder="Masukan nama marketing" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="ba" class="col-xs-3 col-form-label">Berita Acara <i class="text-danger">*</i></label>
+                    <div class="col-xs-9">
+                      <input name="ba" type="file" class="form-control" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-offset-3 col-sm-6">
+                      <div class="ui buttons">
+                        <button class="ui positive button">Tambah</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
+              <div class="col-md-3"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!--Tabel Perbaikan-->
+    <!--Form Perbaikan end-->
     <!--Tabel Perbaikan-->
     <div class="row">
       <div class="col-sm-12">
@@ -108,69 +109,42 @@
 
           <div class="panel-heading no-print">
             <div class="">
-              <h1>Daftar Invoice</h1>
+              <h1>Daftar Inputan Pekerjaan</h1>
             </div>
-            <form id="uploadForm" action="{{ route('akuntan.upload.invoicePermohonan') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-              <div class="row">
-                <div class="col-sm-3">
-                  <input name="invoice" class="form-control" type="file" required>
-                </div>
-                <div class="col-sm-1">
-                  <button id="uploadBtn" class="btn btn-primary btn-sm" type="submit">
-                    <i class="fa fa-upload" aria-hidden="true">Upload</i>
-                  </button>
-                </div>
-                <div class="col-sm-1">
-                  <a class="btn btn-success" href="{{ route('akuntan.invoiceOld.invoicePermohonan') }}">Document Invoice</a>
-                </div>
-              </div>
-            </form>
           </div>
           <div style="overflow-x:auto;">
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
+                  <!-- TABEL -->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
                         <th>Instansi</th>
-                        <th>Tanggal</th>
-                        <th>Nomer Invoice</th>
-                        <th>Nomer Pesanan</th>
-                        <th>Status</th>
+                        <th>Jumlah Alat</th>
+                        <th>Wilayah</th>
+                        <th>Marketing</th>
+                        <th>Berita Acara</th>
                         <th>Tombol</th>
                       </tr>
                     </thead>
                     <tbody>
                       @forelse($item as $items)
                       <tr>
-                        <td>{{ $items->yth }}</td>
-                        <td>{{ $items->tgl_invoice }}</td>
-                        <td>{{ $items->no_invoice }}</td>
-                        <td>{{ $items->no_pesanan }}</td>
+                        <td>{{ $items->instansi }}</td>
+                        <td>{{ $items->jumlah }}</td>
+                        <td>{{ $items->wilayah }}</td>
+                        <td>{{ $items->marketing }}</td>
+                        <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$items->ba) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         <td>
-                          <form action="{{ route('akuntan.status.invoicePermohonan', $items->id) }}" class="form-inner" method="post">
-                            @csrf
-                            @method('PUT')
-                            <button class="btn btn-sm btn-{{ $items->status == 0 ? 'success' : 'danger' }}" type="submit">
-                              {{ $items->status == 0 ? 'Lunas' : 'Belum Lunas' }}
-                            </button>
-                          </form>
-                        </td>
-                        <td>
-                          <a href="{{ route('akuntan.print.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                          </a>
-                          <a href="{{ route('akuntan.edit.invoicePermohonan', $items->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('akuntan.edit.CsKeuangan', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('akuntan.delete.invoicePermohonan', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('akuntan.delete.CsKeuangan', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash" aria-hidden="true"></i>
+                              <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </button>
                           </form>
                         </td>
@@ -179,7 +153,7 @@
                       @endforelse
                     </tbody>
                   </table>
-                  <!--TABEL-->
+                  <!-- TABEL -->
                 </div>
                 <div class="col-md-3"></div>
               </div>
@@ -193,13 +167,3 @@
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 @endsection
-@push('addon-script')
-<script>
-    document.getElementById('uploadBtn').addEventListener('click', function () {
-    const confirmation = confirm("Pastikan dokumen yang di upload benar");
-    if (confirmation) {
-      document.getElementById('uploadForm').submit();
-    }
-  });
-</script>
-@endpush
