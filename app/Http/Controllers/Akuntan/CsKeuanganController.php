@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
-class InvoicePermohonanController extends Controller
+class CsKeuanganController extends Controller
 {
     public function index()
     {
         $item = CsKeuangan::all();
-        return view('pages.akuntan.invoice_permohonan.index',
+        return view('pages.akuntan.cs_keuangan.index',
         compact('item'));
     }
 
@@ -44,7 +44,7 @@ class InvoicePermohonanController extends Controller
     public function edit($id)
     {
         $item = CsKeuangan::findOrFail($id);
-        return view('pages.akuntan.invoice_permohonan.edit',
+        return view('pages.akuntan.cs_keuangan.edit',
         compact('item'));
     }
 

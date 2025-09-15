@@ -22,11 +22,9 @@ use App\Http\Controllers\Teknisi\DashboardTeknisiController;
 use App\Http\Controllers\Teknisi\DataCustomerController;
 use App\Http\Controllers\Teknisi\PengerjaanKalibrasiController;
 use App\Http\Controllers\Teknisi\DocumenKalibrasiController;
-use App\Http\Controllers\Teknisi\BeritaAcaraController;
-use App\Http\Controllers\Teknisi\QrController;
 // Akuntan //
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
-use App\Http\Controllers\Akuntan\InvoicePermohonanController;
+use App\Http\Controllers\Akuntan\CsKeuanganController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
 use Matrix\Operators\Operator;
 
@@ -168,12 +166,12 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     //Fetch akuntan end//
 
     // Data Customer Keuangan //
-    Route::get('link_dataCs_keuangan', [InvoicePermohonanController::class, 'index'])->name('data.CsKeuangan');
-    Route::post('link_dataCs_keuangan', [InvoicePermohonanController::class, 'post'])->name('post.CsKeuangan');
-    Route::get('link_dataCs_keuangan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.CsKeuangan');
-    Route::put('link_dataCs_keuangan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.CsKeuangan');
-    Route::delete('link_dataCs_keuangan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.CsKeuangan');
-    Route::get('link_invoice_permohonan/data_sph/{id}', [InvoicePermohonanController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
+    Route::get('link_dataCs_keuangan', [CsKeuanganController::class, 'index'])->name('data.CsKeuangan');
+    Route::post('link_dataCs_keuangan', [CsKeuanganController::class, 'post'])->name('post.CsKeuangan');
+    Route::get('link_dataCs_keuangan/edit/{id}', [CsKeuanganController::class, 'edit'])->name('edit.CsKeuangan');
+    Route::put('link_dataCs_keuangan/update/{id}', [CsKeuanganController::class, 'update'])->name('update.CsKeuangan');
+    Route::delete('link_dataCs_keuangan/{id}', [CsKeuanganController::class, 'delete'])->name('delete.CsKeuangan');
+    Route::get('link_invoice_permohonan/data_sph/{id}', [CsKeuanganController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
     //invoice permohonan end//
 
     //Fakture //
