@@ -62,18 +62,18 @@
           <i class="fa fa-address-book-o" aria-hidden="true"></i><span>Data Customer</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.uploadFakture') }}">
+      <li class="{{ request()->is('dashboard_akuntan/link_pembuatan_invoice') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.pembuatanInvo') }}">
           <i class="fa fa-book" aria-hidden="true"></i> <span>Pembuatan Invoice</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.uploadFakture') }}">
+        <a href="#">
           <i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Alur Pembayaran</span>
         </a>
       </li>
       <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.uploadFakture') }}">
+        <a href="#">
           <i class="fa fa-upload"></i> <span>Chas Back</span>
         </a>
       </li>

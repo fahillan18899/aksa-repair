@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     use HasFactory;
+    protected $table = 'invoices';
     protected $primaryKey = 'id';      // <- ini WAJIB jika ganti nama id
     public $incrementing = true;       // <- karena auto-increment
     protected $keyType = 'string';     // <- jika id_req berupa string

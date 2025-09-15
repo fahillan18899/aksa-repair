@@ -25,7 +25,7 @@ use App\Http\Controllers\Teknisi\DocumenKalibrasiController;
 // Akuntan //
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\CsKeuanganController;
-use App\Http\Controllers\Akuntan\UploadFaktureController;
+use App\Http\Controllers\Akuntan\PembuatanInvoiceController;
 use Matrix\Operators\Operator;
 
 //Data Scan
@@ -172,13 +172,15 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     Route::put('link_dataCs_keuangan/update/{id}', [CsKeuanganController::class, 'update'])->name('update.CsKeuangan');
     Route::delete('link_dataCs_keuangan/{id}', [CsKeuanganController::class, 'delete'])->name('delete.CsKeuangan');
     Route::get('link_invoice_permohonan/data_sph/{id}', [CsKeuanganController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
-    //invoice permohonan end//
+    // Data Customer Keuangan end//
 
-    //Fakture //
-        Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
-        Route::post('link_upload_fakture/upload', [UploadFaktureController::class, 'upload'])->name('upload.uploadFakture');
-        Route::delete('link_upload_fakture/{id}', [UploadFaktureController::class, 'delete'])->name('delete.uploadFakture');
-    //Fakture end//
+    // Pembuatan Invoice //
+        Route::get('link_pembuatan_invoice', [PembuatanInvoiceController::class, 'index'])->name('data.pembuatanInvo');
+        Route::post('link_pembuatan_invoice', [PembuatanInvoiceController::class, 'post'])->name('post.pembuatanInvo');
+        Route::get('link_pembuatan_invoice/edit/{id}', [PembuatanInvoiceController::class, 'edit'])->name('edit.pembuatanInvo');
+        Route::put('link_pembuatan_invoice/update/{id}', [PembuatanInvoiceController::class, 'update'])->name('update.pembuatanInvo');
+        Route::delete('link_pembuatan_invoice/{id}', [PembuatanInvoiceController::class, 'delete'])->name('delete.pembuatanInvo');
+    // Pembuatan Invoice end //
 });
 
 Route::get('asd', [PPMController::class, 'notifyUser']);
