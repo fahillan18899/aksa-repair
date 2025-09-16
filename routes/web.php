@@ -27,6 +27,7 @@ use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\CsKeuanganController;
 use App\Http\Controllers\Akuntan\PembuatanInvoiceController;
 use App\Http\Controllers\Akuntan\AlurPembayaranController;
+use App\Http\Controllers\Akuntan\ChasBackController;
 use Matrix\Operators\Operator;
 
 //Data Scan
@@ -167,12 +168,12 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     //Fetch akuntan end//
 
     // Data Customer Keuangan //
-    Route::get('link_dataCs_keuangan', [CsKeuanganController::class, 'index'])->name('data.CsKeuangan');
-    Route::post('link_dataCs_keuangan', [CsKeuanganController::class, 'post'])->name('post.CsKeuangan');
-    Route::get('link_dataCs_keuangan/edit/{id}', [CsKeuanganController::class, 'edit'])->name('edit.CsKeuangan');
-    Route::put('link_dataCs_keuangan/update/{id}', [CsKeuanganController::class, 'update'])->name('update.CsKeuangan');
-    Route::delete('link_dataCs_keuangan/{id}', [CsKeuanganController::class, 'delete'])->name('delete.CsKeuangan');
-    Route::get('link_invoice_permohonan/data_sph/{id}', [CsKeuanganController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
+        Route::get('link_dataCs_keuangan', [CsKeuanganController::class, 'index'])->name('data.CsKeuangan');
+        Route::post('link_dataCs_keuangan', [CsKeuanganController::class, 'post'])->name('post.CsKeuangan');
+        Route::get('link_dataCs_keuangan/edit/{id}', [CsKeuanganController::class, 'edit'])->name('edit.CsKeuangan');
+        Route::put('link_dataCs_keuangan/update/{id}', [CsKeuanganController::class, 'update'])->name('update.CsKeuangan');
+        Route::delete('link_dataCs_keuangan/{id}', [CsKeuanganController::class, 'delete'])->name('delete.CsKeuangan');
+        Route::get('link_invoice_permohonan/data_sph/{id}', [CsKeuanganController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
     // Data Customer Keuangan end//
 
     // Pembuatan Invoice //
@@ -192,11 +193,11 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     // Alur Pembayaran end //
     
     // Chas Back //
-        Route::get('link_chas_back', [AlurPembayaranController::class, 'index'])->name('data.alurPembayaran');
-        Route::post('link_chas_back', [AlurPembayaranController::class, 'post'])->name('post.alurPembayaran');
-        Route::get('link_chas_back/edit/{id}', [AlurPembayaranController::class, 'edit'])->name('edit.alurPembayaran');
-        Route::put('link_chas_back/update/{id}', [AlurPembayaranController::class, 'update'])->name('update.alurPembayaran');
-        Route::delete('link_chas_back/{id}', [AlurPembayaranController::class, 'delete'])->name('delete.alurPembayaran');
+        Route::get('link_chass_back', [ChasBackController::class, 'index'])->name('data.chasBack');
+        Route::post('link_chass_back', [ChasBackController::class, 'post'])->name('post.chasBack');
+        Route::get('link_chass_back/edit/{id}', [ChasBackController::class, 'edit'])->name('edit.chasBack');
+        Route::put('link_chass_back/update/{id}', [ChasBackController::class, 'update'])->name('update.chasBack');
+        Route::delete('link_chass_back/{id}', [ChasBackController::class, 'delete'])->name('delete.chasBack');
     // Chas Back end //
 });
 

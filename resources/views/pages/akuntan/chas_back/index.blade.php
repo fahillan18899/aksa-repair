@@ -1,7 +1,7 @@
 @extends('layouts.akuntan')
 
 @section('content')
-@section('title', 'Alur Pembayaran')
+@section('title', 'Chas Back')
 <style>
   input[readonly] {
     cursor: not-allowed;
@@ -13,10 +13,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></div>
+      <div class="header-icon"><i class="fa fa-money" aria-hidden="true"></i></i></div>
       <div class="header-title">
-        <h1>Alur Pembayaran</h1>
-        <small>Form Alur Pembayaran</small>
+        <h1>Chas Back</h1>
+        <small>Form Chas Back</small>
       </div>
     </div>
   </section>
@@ -43,13 +43,13 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print" id="form1">
-            <h1>Form Alur Pembayaran</h1>
+            <h1>Form Chas Back</h1>
           </div>
 
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('akuntan.post.alurPembayaran') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('akuntan.post.chasBack') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="form-group row">
                     <label for="marketing" class="col-xs-3 col-form-label">Marketing <i class="text-danger">*</i></label>
@@ -80,27 +80,6 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="document" class="col-xs-3 col-form-label">Document <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="document" type="file" class="form-control" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="tanggal" class="col-xs-3 col-form-label">Tanggal Bayar <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="tanggal" type="date" class="form-control" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="sistem" class="col-xs-3 col-form-label">System Pembayaran <i class="text-danger">*</i></label>
-                    <div class="col-xs-9">
-                      <input name="sistem" type="text" class="form-control" required>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
                     <div class="col-sm-offset-3 col-sm-6">
                       <div class="ui buttons">
                         <button class="ui positive button">Tambah</button>
@@ -123,7 +102,7 @@
 
           <div class="panel-heading no-print">
             <div class="">
-              <h1>Daftar Alur Pembayaran</h1>
+              <h1>Daftar Chas Back</h1>
             </div>
           </div>
           <div style="overflow-x:auto;">
@@ -138,9 +117,6 @@
                         <th>Instansi</th>
                         <th>Jumlah alat</th>
                         <th>Nominal</th>
-                        <th>Tanggal bayar</th>
-                        <th>System pembayaran</th>
-                        <th>Document</th>
                         <th>Tombol</th>
                       </tr>
                     </thead>
@@ -151,14 +127,11 @@
                         <td>{{ $items->instansi }}</td>
                         <td>{{ $items->jumlah }}</td>
                         <td>{{ $items->nominal }}</td>
-                        <td>{{ $items->tanggal }}</td>
-                        <td>{{ $items->sistem }}</td>
-                        <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$items->document) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         <td>
-                          <a href="{{ route('akuntan.edit.alurPembayaran', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('akuntan.edit.chasBack', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('akuntan.delete.alurPembayaran', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('akuntan.delete.chasBack', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -208,4 +181,4 @@
   }
 </script>
 <!-- RUPIAH 1-->
- @endpush
+@endpush

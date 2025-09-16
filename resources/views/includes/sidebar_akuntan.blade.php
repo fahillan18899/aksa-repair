@@ -72,9 +72,9 @@
           <i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Alur Pembayaran</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="#">
-          <i class="fa fa-upload"></i> <span>Chas Back</span>
+      <li class="{{ request()->is('dashboard_akuntan/link_chass_back') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.chasBack') }}">
+          <i class="fa fa-money" aria-hidden="true"></i><span>Chas Back</span>
         </a>
       </li>
     </ul>

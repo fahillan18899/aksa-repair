@@ -16,7 +16,7 @@ class AlurPembayaranController extends Controller
     }
 
     public function post(Request $request)
-{
+    {
         $validate = $request->validate([
             'marketing' => 'nullable',
             'instansi'  => 'nullable',
