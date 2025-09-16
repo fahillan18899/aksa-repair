@@ -67,8 +67,8 @@
           <i class="fa fa-book" aria-hidden="true"></i> <span>Pembuatan Invoice</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="#">
+      <li class="{{ request()->is('dashboard_akuntan/link_alur_pembayarann') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.data.alurPembayaran') }}">
           <i class="fa fa-arrow-right" aria-hidden="true"></i> <span>Alur Pembayaran</span>
         </a>
       </li>

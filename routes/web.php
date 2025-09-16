@@ -26,6 +26,7 @@ use App\Http\Controllers\Teknisi\DocumenKalibrasiController;
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\CsKeuanganController;
 use App\Http\Controllers\Akuntan\PembuatanInvoiceController;
+use App\Http\Controllers\Akuntan\AlurPembayaranController;
 use Matrix\Operators\Operator;
 
 //Data Scan
@@ -181,6 +182,22 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
         Route::put('link_pembuatan_invoice/update/{id}', [PembuatanInvoiceController::class, 'update'])->name('update.pembuatanInvo');
         Route::delete('link_pembuatan_invoice/{id}', [PembuatanInvoiceController::class, 'delete'])->name('delete.pembuatanInvo');
     // Pembuatan Invoice end //
+    
+    // Alur Pembayaran //
+        Route::get('link_alur_pembayarann', [AlurPembayaranController::class, 'index'])->name('data.alurPembayaran');
+        Route::post('link_alur_pembayarann', [AlurPembayaranController::class, 'post'])->name('post.alurPembayaran');
+        Route::get('link_alur_pembayarann/edit/{id}', [AlurPembayaranController::class, 'edit'])->name('edit.alurPembayaran');
+        Route::put('link_alur_pembayarann/update/{id}', [AlurPembayaranController::class, 'update'])->name('update.alurPembayaran');
+        Route::delete('link_alur_pembayarann/{id}', [AlurPembayaranController::class, 'delete'])->name('delete.alurPembayaran');
+    // Alur Pembayaran end //
+    
+    // Chas Back //
+        Route::get('link_chas_back', [AlurPembayaranController::class, 'index'])->name('data.alurPembayaran');
+        Route::post('link_chas_back', [AlurPembayaranController::class, 'post'])->name('post.alurPembayaran');
+        Route::get('link_chas_back/edit/{id}', [AlurPembayaranController::class, 'edit'])->name('edit.alurPembayaran');
+        Route::put('link_chas_back/update/{id}', [AlurPembayaranController::class, 'update'])->name('update.alurPembayaran');
+        Route::delete('link_chas_back/{id}', [AlurPembayaranController::class, 'delete'])->name('delete.alurPembayaran');
+    // Chas Back end //
 });
 
 Route::get('asd', [PPMController::class, 'notifyUser']);

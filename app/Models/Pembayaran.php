@@ -13,6 +13,6 @@ class Pembayaran extends Model
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'no_seri', 'type', 'kerusakan_alat',
-     'instansi', 'user', 'created_at', 'updated_at'];
+    protected $fillable = [ 'id', 'marketing', 'instansi', 'jumlah', 'nominal', 
+                            'document', 'tanggal', 'sistem', 'created_at', 'updated_at'];
 }
