@@ -67,9 +67,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_data_cs', [MonitoringTeknisiController::class, 'index5'])->name('index.dataCs');
         Route::get('link_pengerjaan_kalibrasi', [MonitoringTeknisiController::class, 'index6'])->name('index.pengerjaan');
         Route::get('link_document_kalibrasi', [MonitoringTeknisiController::class, 'index7'])->name('index.docKal');
-        Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
-        Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');
-        Route::get('link_berita_acara/ba_doc', [MonitoringTeknisiController::class, 'baDoc'])->name('ba.doc');
+        // Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
+        // Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');
+        // Route::get('link_berita_acara/ba_doc', [MonitoringTeknisiController::class, 'baDoc'])->name('ba.doc');
         
         //Monitoring Keuangan //
         Route::get('link_data_cutomers', [MonitoringKeuanganController::class, 'index8'])->name('index.dataCustomer');

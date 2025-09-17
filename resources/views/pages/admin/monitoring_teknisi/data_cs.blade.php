@@ -58,15 +58,15 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->jadwal }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->realisasi }}</td>
+                      <td>{{ $datas->marketing }}</td>
+                      <td>{{ $datas->mobil }}</td>
+                      <td>{{ $datas->teknisi }}</td>
+                      <td>{{ $datas->wilayah }}</td>
                     </tr>
                     @empty
                     @endforelse

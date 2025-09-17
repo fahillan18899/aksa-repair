@@ -21,7 +21,7 @@ class MonitoringTeknisiController extends Controller
 
     public function index6()
     {
-        $data = KegiatanKalibrasi::all();
+        $data = DataCustomer::all();
         return view('pages.admin.monitoring_teknisi.pengerjaan_kalibrasi',
         compact('data'));
     }
