@@ -47,17 +47,19 @@
                     <tr>
                       <th>No</th>
                       <th>Marketing</th>
-                      <th>Nama</th>
-                      <th>Tanggal</th>
+                      <th>Instansi</th>
+                      <th>Jumlah Alat</th>
+                      <th>Harga</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->marketing }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->harga }}</td>
                     </tr>
                     @empty
                     @endforelse

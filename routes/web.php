@@ -60,8 +60,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         // Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
         // --- //
         Route::get('link_pembayaran', [MonitoringMarketingController::class, 'index4'])->name('index.pembayaran');
-        Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
-        Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
+        // Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
+        // Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
 
         // Monitoring Teknisi //
         Route::get('link_data_cs', [MonitoringTeknisiController::class, 'index5'])->name('index.dataCs');

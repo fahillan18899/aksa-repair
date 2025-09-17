@@ -50,30 +50,16 @@
                       <th scope="col">Jumlah Alat</th>
                       <th scope="col">Wilayah</th>
                       <th scope="col">Marketing</th>
-                      <th scope="col">Tombol Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </a>
-                          <form action="#" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                          </form>
-                      </td>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->wilayah }}</td>
+                      <td>{{ $datas->marketing }}</td>
                     </tr>
                     @empty
                     @endforelse

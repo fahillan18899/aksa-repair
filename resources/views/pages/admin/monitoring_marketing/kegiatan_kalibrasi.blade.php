@@ -53,9 +53,13 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jadwal }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $datas->pengerjaan == 0 ? 'success' : 'danger'}}" type="submit" disabled>
+                          {{ $datas->pengerjaan == 0 ? 'Selesai' : 'Pengerjaan' }}
+                        </button>
+                      </td>
                     </tr>
                     @empty
                     @endforelse
