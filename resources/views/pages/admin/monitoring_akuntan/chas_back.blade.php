@@ -54,10 +54,10 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $datas->marketing }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->nominal }}</td>
                     </tr>
                     @empty
                     @endforelse

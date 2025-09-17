@@ -55,11 +55,11 @@
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->wilayah }}</td>
+                      <td>{{ $datas->marketing }}</td>
+                      <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$datas->ba) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                     </tr>
                     @empty
                     @endforelse

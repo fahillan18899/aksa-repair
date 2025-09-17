@@ -49,21 +49,27 @@
                       <th>Instansi</th>
                       <th>Jumlah Alat</th>
                       <th>Nominal</th>
-                      <th>Document</th>
                       <th>Tanggal Pembayaran</th>
                       <th>System Pembayaran</th>
+                      <th>Status</th>
+                      <th>Document</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($data as $datas)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $datas->marketing }}</td>
+                      <td>{{ $datas->instansi }}</td>
+                      <td>{{ $datas->jumlah }}</td>
+                      <td>{{ $datas->nominal }}</td>
+                      <td>{{ $datas->tanggal }}</td>
+                      <td>{{ $datas->sistem }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $datas->status == 0 ? 'danger' : 'success'}}" type="submit" disabled>
+                          {{ $datas->status == 0 ? 'Proses / Termin' : 'Selesai / Lunas' }}
+                        </button>
+                      </td>
+                      <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$datas->document) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                     </tr>
                     @empty
                     @endforelse
