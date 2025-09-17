@@ -49,22 +49,28 @@
                       <th>Instansi</th>
                       <th>Jumlah</th>
                       <th>Nominal</th>
-                      <th>Document</th>
                       <th>Tanggal Bayar</th>
                       <th>System Bayar</th>
+                      <th>Status</th>
+                      <th>Document</th>
                     </tr>
                   </thead>
                   <tbody>
                     @forelse($item as $items)
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      </tr>
+                    <tr>
+                      <td>{{ $items->marketing }}</td>
+                      <td>{{ $items->instansi }}</td>
+                      <td>{{ $items->jumlah }}</td>
+                      <td>{{ $items->nominal }}</td>
+                      <td>{{ $items->tanggal }}</td>
+                      <td>{{ $items->sistem }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $items->status == 0 ? 'danger' : 'success'}}" type="submit" disabled>
+                          {{ $items->status == 0 ? 'Proses / Termin' : 'Selesai / Lunas' }}
+                        </button>
+                      </td>
+                      <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$items->document) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                    </tr>
                     @empty
                     @endforelse
                   </tbody>

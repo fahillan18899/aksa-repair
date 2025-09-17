@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Marketing;
 
 use App\Http\Controllers\Controller;
-use App\Models\DataBarang;
+use App\Models\Pembayaran;
+use App\Models\DataCustomer;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
@@ -14,27 +15,27 @@ class DashboardMarketingController extends Controller
         return view('pages.marketing.dashboard.index');
     }
 
-    public function fetch_selesai()
-    {
-        $repair = DataBarang::where('ket', '5')->get();
-        return response()->json($repair);
-    }
-
-    public function fetch_proses()
-    {
-        $proses = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->get();
-        return response()->json($proses);
-    }
-
     public function count_selesai()
     {
-        $countSelesai = DataBarang::where('ket', '5')->count();
+        $countSelesai = Pembayaran::where('status', 1)->count();
         return response()->json(['countSelesai' => $countSelesai]);
     }
 
     public function count_proses()
     {
-        $countProses = DataBarang::whereIn('ket', ['1', '2', '3', '4'])->count();
+        $countProses = DataCustomer::where('pengerjaan', 1)->count();
         return response()->json(['countProses' => $countProses]);
+    }
+
+    public function fetch_selesai()
+    {
+        $repair = Pembayaran::where('status', 1)->get();
+        return response()->json($repair);
+    }
+
+    public function fetch_proses()
+    {
+        $proses = DataCustomer::where('pengerjaan', 1)->get();
+        return response()->json($proses);
     }
 }

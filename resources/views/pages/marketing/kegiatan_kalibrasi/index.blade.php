@@ -55,7 +55,11 @@
                     <tr>
                       <td>{{ $items->instansi }}</td>
                       <td>{{ $items->jadwal }}</td>
-                      <td>{{ $items->proses }}</td>
+                      <td>
+                        <button class="btn btn-sm btn-{{ $items->pengerjaan == 0 ? 'success' : 'danger'}}" type="submit" disabled>
+                          {{ $items->pengerjaan == 0 ? 'Selesai' : 'Pengerjaan' }}
+                          </button>
+                      </td>
                     </tr>
                     @empty
                     @endforelse
