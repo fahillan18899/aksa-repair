@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('document')->nullable();
             $table->text('tanggal_bayar')->nullable();
             $table->text('system_bayar')->nullable();
+            $table->integer('status')->define(1);
             $table->timestamps();
         });
     }

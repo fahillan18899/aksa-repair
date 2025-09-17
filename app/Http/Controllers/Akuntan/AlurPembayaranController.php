@@ -77,6 +77,14 @@ class AlurPembayaranController extends Controller
         ->with('success', 'data berhasil di ubah');
     }
 
+    public function status($id)
+    {
+        $item = Pembayaran::findOrFail($id);
+        $item->status = $item->status === 0 ? 1 : 0;
+        $item->save();
+        return back();
+    }
+
     public function delete($id)
     {
         $item = Pembayaran::findOrFail($id);

@@ -10,7 +10,7 @@
       <div class="header-icon"><i class="pe-7s-home"></i></div>
       <div class="header-title">
         <h1>Dashboard</h1>
-        <small>Dashboard Repair</small>
+        <small>Dashboard Kalibrasi Monitoring</small>
       </div>
     </div>
   </section>
@@ -19,15 +19,15 @@
   <!-- Main content -->
   <div class="content container-fluid">
     <div class="row">
-      <!--Box Jumlah Alat -->
+      <!--Box Kalibrasi Selesai -->
       <div class="col-12 col-md-6 mb-4">
         <div class="info-box bg-olive">
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
 
           <div class="info-box-content">
             <span class="info-box-text">
-              <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
-            <span class="info-box-number" id="count_1">0</span>
+              <a href="data_inventaris" style="color :white"><?= "JUMLAH INSTANSI SELESAI KALIBRASI" ?></a></span>
+            <span class="info-box-number" id="count1">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -37,18 +37,18 @@
           </div>
         </div>
       </div>
-      <!--Box Jumlah Alat end-->
+      <!--Box Selesai end-->
 
-      <!--Box Jumlah Aset Perbaikan Regis -->
+      <!--Box Proses -->
       <div class="col-12 col-md-6 mb-4">
         <div class=" info-box bg-blue">
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">
               <a href="view_tabel"
-                style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
+                style="color :white"><?= "JUMLAH INSTANSI PROSES KALIBRASI" ?></a>
             </span>
-            <span class="info-box-number" id="count_2">0</span>
+            <span class="info-box-number" id="count2">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
             </div>
@@ -59,7 +59,7 @@
           <!-- /.info-box-content -->
         </div>
       </div>
-      <!--Box Jumlah Aset Perbaikan Regis end-->
+      <!--Box Proses end-->
 
       <!-- Card Tabel Permintaan Perbaikan -->
       <div class="row">
@@ -70,7 +70,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-5">
-                  <h2>Daftar Barang Selesai Repair</h2>
+                  <h2>Daftar Instansi Selesai Kalibrasi</h2>
                 </div>
               </div>
             </div>
@@ -82,17 +82,16 @@
                     <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
                         <tr>
-                          <th>No Urut</th>
-                          <th>Nama</th>
-                          <th>Serial Number</th>
-                          <th>Type</th>
-                          <th>Kerusakan</th>
-                          <th>Instansi</th>
-                          <th>Status</th>
-                          <th>Keterangan</th>
+                        <th>Marketing</th>
+                        <th>Instansi</th>
+                        <th>Jumlah alat</th>
+                        <th>Nominal</th>
+                        <th>Tanggal bayar</th>
+                        <th>System pembayaran</th>
+                        <th>Status</th>
                         </tr>
                       </thead>
-                      <tbody id="id_repair">
+                      <tbody id="id_selesai">
                         <!-- DATA AJAX -->
                       </tbody>
                     </table>
@@ -116,7 +115,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-5">
-                  <h2>Daftar Barang Proses Repair</h2>
+                  <h2>Daftar Instansi Proses Kalibrasi</h2>
                 </div>
               </div>
             </div>
@@ -128,14 +127,9 @@
                     <table class="datatable table table-striped table-bordered">
                       <thead class="table-light">
                         <tr>
-                          <th>No Urut</th>
-                          <th>Nama</th>
-                          <th>Serial Number</th>
-                          <th>Type</th>
-                          <th>Kerusakan</th>
                           <th>Instansi</th>
-                          <th>Status</th>
-                          <th>Keterangan</th>
+                          <th>Jadwal</th>
+                          <th>Proses</th>
                         </tr>
                       </thead>
                       <tbody id="id_repair2">
@@ -159,6 +153,46 @@
 @endsection
 @push('addon-script')
 <script>
+  function countSelesai() {
+    //  console.log("Memulai countSelesai()"); //Debig fungsi berjalan / tidak
+    $.ajax({
+      url: '{{ route("count.selesai") }}',
+      method: 'GET',
+      success: function(response) {
+        // console.log("Data berhasil diterima:", response); //Debug data yang di get oleh ajax
+        $('#count1').text(response.count1)
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal mengambil data permintaan:", error);
+      }
+    });
+  }
+  $(document).ready(function() {
+    countSelesai();
+    setInterval(countSelesai, 3000);
+  })
+</script>
+
+<script>
+  function countProses() {
+    $.ajax({
+      url: '{{ route("count.proses") }}',
+      method: 'GET',
+      success: function(response) {
+        $('#count2').text(response.count2)
+      },
+      error: function(xhr, status, error) {
+        console.log("Gagal mengambil data :", error);
+      }
+    });
+  }
+  $(document).ready(function() {
+    countProses();
+    setInterval(countProses, 3000);
+  })
+</script>
+
+<script>
   function api1() {
     // console.log("Memulai api1()"); //Debig fungsi berjalan / tidak
     $.ajax({
@@ -172,27 +206,22 @@
           // console.log(item);
           rows += `
           <tr>
-            <td>${item.no_urut}</td>
-            <td>${item.nama_alat}</td>
-            <td>${item.no_seri}</td>
-            <td>${item.type}</td>
-            <td>${item.kerusakan_alat}</td>
+            <td>${item.marketing}</td>
             <td>${item.instansi}</td>
+            <td>${item.jumlah}</td>
+            <td>${item.nominal}</td>
+            <td>${item.tanggal}</td>
+            <td>${item.sistem}</td>
             <td>
               <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success'}" disabled>
-                ${item.status == 0 ? 'Kembali' : 'Approve'}
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-sm ${item.ket == 0 ? 'btn-success' : 'btn-success'}" disabled>
-                ${item.ket == 0 ? 'Selesai' : 'Selesai'}          
+                ${item.status == 0 ? 'Proses / Termin' : 'Selesai  / Lunas'}
               </button>
             </td>
           </tr>
           `;
         });
 
-        $('#id_repair').html(rows);
+        $('#id_selesai').html(rows);
         // console.log("Table berhasil diperbaharui"); //Debug konfirmasi update
       },
       error: function(xhr, status, error) {
@@ -218,35 +247,13 @@
         data.forEach(item => {
           rows += `
         <tr>
-        <td>${item.no_urut}</td>
-        <td>${item.nama_alat}</td>
-        <td>${item.no_seri}</td>
-        <td>${item.type}</td>
-        <td>${item.kerusakan_alat}</td>
         <td>${item.instansi}</td>
+        <td>${item.jadwal}</td>
         <td>
-          <button class="btn btn-sm ${item.status == 0 ? 'btn-danger' : 'btn-success'}" disabled>
-            ${item.status == 0 ? 'Kembali' : 'Approve'}
+          <button class="btn btn-sm ${item.pengerjaan == 0 ? 'btn-success' : 'btn-danger'}" disabled>
+            ${item.status == 0 ? 'Selesai' : 'Pengerjaan'}
           </button>
         </td>
-        <td>
-              <button class="btn btn-sm 
-              ${item.ket == 1 ? 'btn-danger' : 
-                item.ket == 2 ? 'btn-warning' : 
-                item.ket == 3 ? 'btn-info' :
-                item.ket == 4 ? 'btn-secondary' : 
-                item.ket == 5 ? 'btn-success' :
-                'btn-light'}" disabled>
-
-                ${item.ket == 1 ? 'Trouble' :  
-                  item.ket == 2 ? 'Proses' :
-                  item.ket == 3 ? 'Dalam Perbaikan' :
-                  item.ket == 4 ? 'Rusak' :
-                  item.ket == 5 ? 'Selesai' :
-                  'Tidak diketahui'
-                }
-              </button>
-            </td>
         </tr>
         `;
         });
@@ -263,44 +270,7 @@
     setInterval(api2, 3000);
   })
 </script>
-<script>
-  function countSelesai() {
-    //  console.log("Memulai countSelesai()"); //Debig fungsi berjalan / tidak
-    $.ajax({
-      url: '{{ route("count.selesai") }}',
-      method: 'GET',
-      success: function(response) {
-        // console.log("Data berhasil diterima:", response); //Debug data yang di get oleh ajax
-        $('#count_1').text(response.count1)
-      },
-      error: function(xhr, status, error) {
-        console.log("Gagal mengambil data permintaan:", error);
-      }
-    });
-  }
-  $(document).ready(function() {
-    countSelesai();
-    setInterval(countSelesai, 3000);
-  })
-</script>
-<script>
-  function countProses() {
-    $.ajax({
-      url: '{{ route("count.proses") }}',
-      method: 'GET',
-      success: function(response) {
-        $('#count_2').text(response.count2)
-      },
-      error: function(xhr, status, error) {
-        console.log("Gagal mengambil data :", error);
-      }
-    });
-  }
-  $(document).ready(function() {
-    countProses();
-    setInterval(countProses, 3000);
-  })
-</script>
+
 <script>
   $('.datatable').DataTable({
     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",

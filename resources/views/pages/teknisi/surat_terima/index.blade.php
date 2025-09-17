@@ -61,8 +61,8 @@
                           <form action="{{ route('teknisi.pengerjaan.kalibrasi', $items->id) }}" class="form-inner" method="post">
                             @csrf
                             @method('PUT')
-                            <button class="btn btn-sm btn-{{ $items->pengerjaan == 0 ? 'danger' : 'success'}}" type="submit">
-                              {{ $items->pengerjaan == 0 ? 'Pengerjaan' : 'Selesai' }}
+                            <button class="btn btn-sm btn-{{ $items->pengerjaan == 0 ? 'success' : 'danger'}}" type="submit">
+                              {{ $items->pengerjaan == 0 ? 'Selesai' : 'Pengerjaan' }}
                             </button>
                           </form>
                         </td>

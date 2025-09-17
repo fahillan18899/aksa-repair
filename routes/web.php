@@ -34,18 +34,18 @@ use Matrix\Operators\Operator;
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
-    // menu dashboard SIMRS
+    // menu dashboard KALIBRASI MONITORING
 
-    // menu PPM
+    // menu KALIBRASI MONITORING
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
 
         //Fetch Dashboard
-        Route::get('api_repair_selesai', [PPMController::class, 'repair_selesai'])->name('api1');
-        Route::get('api_repair_proses', [PPMController::class, 'repair_proses'])->name('api2');
         Route::get('api_rapair_count1', [PPMController::class, 'count1'])->name('count.selesai');
         Route::get('api_repair_count2', [PPMController::class, 'count2'])->name('count.proses');
+        Route::get('api_repair_selesai', [PPMController::class, 'repair_selesai'])->name('api1');
+        Route::get('api_repair_proses', [PPMController::class, 'repair_proses'])->name('api2');
 
         // Monitoring Marketing //
         Route::get('link_input_customer', [MonitoringMarketingController::class, 'index'])->name('index.inputCs');
@@ -189,6 +189,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
         Route::post('link_alur_pembayarann', [AlurPembayaranController::class, 'post'])->name('post.alurPembayaran');
         Route::get('link_alur_pembayarann/edit/{id}', [AlurPembayaranController::class, 'edit'])->name('edit.alurPembayaran');
         Route::put('link_alur_pembayarann/update/{id}', [AlurPembayaranController::class, 'update'])->name('update.alurPembayaran');
+        Route::put('link_alur_pembayarann/status/{id}', [AlurPembayaranController::class, 'status'])->name('status.alurPembayaran');
         Route::delete('link_alur_pembayarann/{id}', [AlurPembayaranController::class, 'delete'])->name('delete.alurPembayaran');
     // Alur Pembayaran end //
     

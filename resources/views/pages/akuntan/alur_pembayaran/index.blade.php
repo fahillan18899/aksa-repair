@@ -140,6 +140,7 @@
                         <th>Nominal</th>
                         <th>Tanggal bayar</th>
                         <th>System pembayaran</th>
+                        <th>Status</th>
                         <th>Document</th>
                         <th>Tombol</th>
                       </tr>
@@ -153,6 +154,15 @@
                         <td>{{ $items->nominal }}</td>
                         <td>{{ $items->tanggal }}</td>
                         <td>{{ $items->sistem }}</td>
+                        <td>
+                          <form action="{{ route('akuntan.status.alurPembayaran', $items->id) }}" class="form-inner" method="post">
+                            @csrf
+                            @method('PUT')
+                            <button class="btn btn-sm btn-{{ $items->status == 0 ? 'danger' : 'success'}}" type="submit">
+                              {{ $items->status == 0 ? 'Proses / Termin' : 'Selesai / Lunas' }}
+                            </button>
+                          </form>
+                        </td>
                         <td><a class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="View" href="{{ URL::asset('storage/'.$items->document) }}" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         <td>
                           <a href="{{ route('akuntan.edit.alurPembayaran', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
