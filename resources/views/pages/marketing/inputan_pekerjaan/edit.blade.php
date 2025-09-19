@@ -42,6 +42,7 @@
                 <form action="{{ route('marketing.update.inputanPekerjaan', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
+                  <input class="form-control" type="hidden" name="user" value="{{ Auth::user()->username }}">
                   <div class="form-group row">
                     <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                     <div class="col-xs-9">

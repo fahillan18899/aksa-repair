@@ -77,6 +77,7 @@ class InputanPekerjaanController extends Controller
             'instansi'  => 'nullable',
             'kerusakan' => 'nullable',
             'foto'      => 'nullable',
+            'user'      => 'nullable',
         ]);
 
         if($request->hasFile('foto')){
