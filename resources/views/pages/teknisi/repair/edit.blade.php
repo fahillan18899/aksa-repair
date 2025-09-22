@@ -51,16 +51,23 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <label for="type" class="col-xs-3 form-label">Type</label>
                     <div class="col-xs-9">
-                      <input name="no_seri" id="no_seri" class="form-control" type="text" value="{{ $item->no_seri }}" required>
+                      <input name="type" id="type" class="form-control" type="text" value="{{ $item->type }}">
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="type" class="col-xs-3 form-label">Type</label>
+                    <label for="merek" class="col-xs-3 form-label">Merek</label>
                     <div class="col-xs-9">
-                      <input name="type" id="type" class="form-control" type="text" value="{{ $item->type }}">
+                      <input name="merek" id="merek" class="form-control" type="text" value="{{ $item->merek }}">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <div class="col-xs-9">
+                      <input name="no_seri" id="no_seri" class="form-control" type="text" value="{{ $item->no_seri }}" required>
                     </div>
                   </div>
 

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->increments('id');
             $table->text('no_urut')->nullable();
             $table->text('nama_alat')->nullable();
-            $table->text('no_seri')->nullable();
+            $table->text('merek')->nullable();
             $table->text('type')->nullable();
+            $table->text('no_seri')->nullable();
             $table->text('kerusakan_alat')->nullable();
             $table->text('instansi')->nullable();
             $table->text('status')->default('1');

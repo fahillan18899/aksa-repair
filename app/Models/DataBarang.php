@@ -13,6 +13,6 @@ class DataBarang extends Model
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'no_seri', 'type', 'kerusakan_alat',
+    protected $fillable = [ 'id', 'no_urut', 'nama_alat', 'merek', 'type', 'no_seri', 'kerusakan_alat',
      'instansi', 'user', 'created_at', 'updated_at'];
 }

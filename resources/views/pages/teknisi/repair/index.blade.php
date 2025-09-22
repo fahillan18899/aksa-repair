@@ -115,9 +115,9 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <label for="merek" class="col-xs-3 form-label">Merek</label>
                     <div class="col-xs-9">
-                      <input name="no_seri" id="no_seri" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
+                      <input name="merek" id="merek" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
@@ -125,6 +125,13 @@
                     <label for="type" class="col-xs-3 form-label">Type</label>
                     <div class="col-xs-9">
                       <input name="type" id="type" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="no_seri" class="col-xs-3 col-form-label">No Seri</label>
+                    <div class="col-xs-9">
+                      <input name="no_seri" id="no_seri" class="form-control" type="text" placeholder="Terisi otomatis" required readonly>
                     </div>
                   </div>
 
@@ -180,8 +187,9 @@
                       <th>No Urut</th>
                       <th>Tanggal</th>
                       <th>Nama</th>
-                      <th>Serial Number</th>
+                      <th>Merek</th>
                       <th>Type</th>
+                      <th>Serial Number</th>
                       <th>Kerusakan</th>
                       <th>Instansi</th>
                       <th>Status</th>
@@ -195,8 +203,9 @@
                         <td>{{ $items->no_urut }}</td>
                         <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $items->nama_alat }}</td>
-                        <td>{{ $items->no_seri }}</td>
+                        <td>{{ $items->merek }}</td>
                         <td>{{ $items->type }}</td>
+                        <td>{{ $items->no_seri }}</td>
                         <td>{{ $items->kerusakan_alat }}</td>
                         <td>{{ $items->instansi }}</td>
                         <td>
@@ -298,8 +307,9 @@
         console.log("Data dari server :", data);
         let item = Array.isArray(data) ? data[0] : data || {};
         $('#nama_alat').val(item.nama_alat || '');
-        $('#no_seri').val(item.no_seri || '');
+        $('#merek').val(item.merek || '');
         $('#type').val(item.type || '');
+        $('#no_seri').val(item.no_seri || '');
         $('#kerusakan_alat').val(item.kerusakan || '');
         $('#instansi').val(item.instansi || '');
         $('#user').val(item.user || '');

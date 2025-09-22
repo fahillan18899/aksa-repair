@@ -22,8 +22,9 @@ class RepairController extends Controller
         $validate = $request->validate([
             'no_urut'        => 'nullable',
             'nama_alat'      => 'nullable',
-            'no_seri'        => 'nullable',
+            'merek'          => 'nullable',
             'type'           => 'nullable',
+            'no_seri'        => 'nullable',
             'kerusakan_alat' => 'nullable',
             'instansi'       => 'nullable',
             'user'           => 'nullable'
@@ -51,8 +52,9 @@ class RepairController extends Controller
         $validate = $request->validate([
             'no_urut'        => 'required',
             'nama_alat'      => 'required',
-            'no_seri'        => 'required',
+            'merek'          => 'required',
             'type'           => 'required',
+            'no_seri'        => 'required',
             'kerusakan_alat' => 'required',
             'instansi'       => 'required',
         ]);
@@ -65,14 +67,14 @@ class RepairController extends Controller
 
     public function repairBa($id) 
     {
-        $item = InputPekerjaan::findOrFail($id);
+        $item = DataBarang::findOrFail($id);
         return view('pages.teknisi.repair.ba_repair',
         compact('item'));
     }
 
     public function repairSt($id)
     {
-        $item = InputPekerjaan::findOrFail($id);
+        $item = DataBarang::findOrFail($id);
         return view('pages.teknisi.repair.st_repair',
         compact('item'));
     }
