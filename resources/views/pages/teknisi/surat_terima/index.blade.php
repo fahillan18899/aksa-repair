@@ -73,50 +73,50 @@
                   <div class="form-group row">
                     <label for="nama_1" class="col-xs-2 form-label"><b>Nama :</b></label>
                     <div class="col-xs-5">
-                      <input name="nama_1" id="nama_1" type="text" class="form-control">
+                      <input name="nama_1" id="nama_1" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="jabatan_1" class="col-xs-2 form-label">Jabatan</label>
                     <div class="col-xs-5">
-                      <input name="jabatan_1" id="jabatan_1" type="text" class="form-control">
+                      <input name="jabatan_1" id="jabatan_1" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="bagian_1" class="col-xs-2 form-label">Departement / Bagian</label>
                     <div class="col-xs-5">
-                      <input name="bagian_1" id="bagian_1" type="text" class="form-control">
+                      <input name="bagian_1" id="bagian_1" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="kontak_1" class="col-xs-2 form-label">Kontak</label>
                     <div class="col-xs-5">
-                      <input name="kontak_1" id="kontak_1" type="text" class="form-control">
+                      <input name="kontak_1" id="kontak_1" type="text" class="form-control" required>
                     </div>
                   </div>
                   <h2>PIHAK KEDUA</h2>
                   <div class="form-group row">
                     <label for="nama_2" class="col-xs-2 form-label">Nama</label>
                     <div class="col-xs-5">
-                      <input name="nama_2" id="nama_2" type="text" class="form-control">
+                      <input name="nama_2" id="nama_2" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="jabatan_2" class="col-xs-2 form-label">Jabatan</label>
                     <div class="col-xs-5">
-                      <input name="jabatan_2" id="jabatan_2" type="text" class="form-control">
+                      <input name="jabatan_2" id="jabatan_2" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="bagian_2" class="col-xs-2 form-label">Departemen / Bagian</label>
                     <div class="col-xs-5">
-                      <input name="bagian_2" id="bagian_2" type="text" class="form-control">
+                      <input name="bagian_2" id="bagian_2" type="text" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="kontak_2" class="col-xs-2 form-label">Kontak</label>
                     <div class="col-xs-5">
-                      <input name="kontak_2" id="konta_2" type="text" class="form-control">
+                      <input name="kontak_2" id="konta_2" type="text" class="form-control" required>
                     </div>
                   </div>
                   <a class="btn btn-primary" id="add" style="margin-bottom: 5px;">Tambah Alat</a>
@@ -140,7 +140,7 @@
                   <div class="form-group row">
                     <div class="col-sm-3 col-sm-6">
                       <div class="ui buttons">
-                        <button class="ui positive button">Tambah</button>
+                        <button class="ui positive button" id="save" disabled>Save</button>
                       </div>
                     </div>
                   </div>
@@ -233,13 +233,13 @@
       let newRow =
         `
       <tr>
-        <td><input name="nama_alat[${row}]" type="text" class="form-control" placeholder="isi nama alat"></td>
-        <td><input name="merek_type[${row}]" type="text" class="form-control" placeholder="keterangan perbaikan"></td>
-        <td><input name="no_seri[${row}]" type="text" class="form-control" placeholder="no seri"></td>
-        <td><input name="kondisi[${row}]" type="text" class="form-control" placeholder="kondisi alat"></td>
-        <td><input name="kelengkapan[${row}]" type="text" class="form-control" placeholder="kelengkapan"></td>
-        <td><input name="jumlah[${row}]" type="text" class="form-control" placeholder="jumlah alat"></td>
-        <td><input name="keterangan[${row}]" type="text" class="form-control" placeholder="keterangan alat"></td>
+        <td><input name="nama_alat[${row}]" type="text" class="form-control" placeholder="isi nama alat" required></td>
+        <td><input name="merek_type[${row}]" type="text" class="form-control" placeholder="keterangan perbaikan" required></td>
+        <td><input name="no_seri[${row}]" type="text" class="form-control" placeholder="no seri" required></td>
+        <td><input name="kondisi[${row}]" type="text" class="form-control" placeholder="kondisi alat" required></td>
+        <td><input name="kelengkapan[${row}]" type="text" class="form-control" placeholder="kelengkapan" required></td>
+        <td><input name="jumlah[${row}]" type="text" class="form-control" placeholder="jumlah alat" required></td>
+        <td><input name="keterangan[${row}]" type="text" class="form-control" placeholder="keterangan alat" required></td>
       </tr>
       `;
 
@@ -249,6 +249,12 @@
     });
 
   })
+</script>
+
+<script>
+  document.getElementById("add").addEventListener("click", function() {
+    document.getElementById("save").disabled = false;
+  });
 </script>
 
 @endpush
