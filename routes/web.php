@@ -121,6 +121,13 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
 
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
+    // Fetch dashboard teknisi //
+        Route::get('countS_teknisi', [DashboardTeknisiController::class, 'countS_teknisi'])->name('countS');
+        Route::get('countP_teknisi', [DashboardTeknisiController::class, 'countP_teknisi'])->name('countP');
+        Route::get('selesai_teknisi', [DashboardTeknisiController::class, 'selesai_teknisi'])->name('selesai');
+        Route::get('proses_teknisi', [DashboardTeknisiController::class, 'proses_teknisi'])->name('proses');
+    // Fetch dashboard teknisi End//
+
     // Data Customer //
         Route::get('data_customer', [DataCustomerController::class, 'index'])->name('data.dataCs');
         Route::post('data_customer', [DataCustomerController::class, 'post'])->name('post.dataCs');

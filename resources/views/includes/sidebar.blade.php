@@ -83,7 +83,6 @@
           <li class="{{ request()->is('dashboard/ppm/link_data_cs') ? 'active' : '' }}"><a href="{{ route('index.dataCs') }}">Data Customer</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_pengerjaan_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.pengerjaan') }}">Pengerjaan kalibrasi</a></li>
           <li class="{{ request()->is('dashboard/ppm/link_document_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.docKal') }}">Documentasi Kalibrasi</a></li>
-          <!-- <li class="{{ request()->is('dashboard/ppm/link_berita_acara') ? 'active' : '' }}"><a href="{{ route('beritaAcara.data') }}">Berita Acara</a></li> -->
         </ul>
       </li>
       <!---->

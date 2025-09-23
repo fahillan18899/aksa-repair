@@ -183,7 +183,7 @@
       dataType: 'json',
       success: function(data){
         let rows = '';
-        data.forEach(item=> {
+        data.forEach(item => {
           rows += `
           <tr>
             <td>${item.marketing}</td>
@@ -220,7 +220,7 @@
       dataType: 'json',
       success: function(data){
         let rows = '';
-        data.forEach(item=> {
+        data.forEach(item => {
           rows += `
           <tr>
             <td>${item.instansi}</td>
