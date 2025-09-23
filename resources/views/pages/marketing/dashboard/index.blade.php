@@ -23,7 +23,7 @@
           <div class="info-box bg-olive">
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text"><?= "JUMLAH BARANG SELESAI REPAIR" ?></span>
+              <span class="info-box-text">JUMLAH BARANG SELESAI REPAIR</span>
               <span class="info-box-number" id="count_selesai">0</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>
@@ -41,9 +41,7 @@
           <div class=" info-box bg-blue">
             <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
             <div class="info-box-content">
-              <span class="info-box-text">
-                <a href="#" style="color: white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
-              </span>
+              <span class="info-box-text">JUMLAH BARANG PROSES REPAIR</span>
               <span class="info-box-number" id="count_proses">0</span>
               <div class="progress">
                 <div class="progress-bar" style="width: 100%"></div>

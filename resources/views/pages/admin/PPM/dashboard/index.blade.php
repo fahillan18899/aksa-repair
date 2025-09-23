@@ -19,14 +19,13 @@
   <!-- Main content -->
   <div class="content container-fluid">
     <div class="row">
-      <!--Box Jumlah Alat -->
+      <!--Box Selesai -->
       <div class="col-12 col-md-6 mb-4">
         <div class="info-box bg-olive">
           <span class="info-box-icon"><i class="fa fa-check-circle"></i></span>
 
           <div class="info-box-content">
-            <span class="info-box-text">
-              <a href="data_inventaris" style="color :white"><?= "JUMLAH BARANG SELESAI REPAIR" ?></a></span>
+            <span class="info-box-text">JUMLAH BARANG SELESAI REPAIR</span>
             <span class="info-box-number" id="count_1">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
@@ -37,17 +36,14 @@
           </div>
         </div>
       </div>
-      <!--Box Jumlah Alat end-->
+      <!--Box Selesai end-->
 
-      <!--Box Jumlah Aset Perbaikan Regis -->
+      <!--Box Proses -->
       <div class="col-12 col-md-6 mb-4">
         <div class=" info-box bg-blue">
           <span class="info-box-icon"><i class="fa fa-wrench"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">
-              <a href="view_tabel"
-                style="color :white"><?= "JUMLAH BARANG PROSES REPAIR" ?></a>
-            </span>
+            <span class="info-box-text">JUMLAH BARANG PROSES REPAIR</span>
             <span class="info-box-number" id="count_2">0</span>
             <div class="progress">
               <div class="progress-bar" style="width: 100%"></div>
@@ -56,10 +52,9 @@
               <?= date('j F, Y'); ?>
             </span>
           </div>
-          <!-- /.info-box-content -->
         </div>
       </div>
-      <!--Box Jumlah Aset Perbaikan Regis end-->
+      <!--Box Proses end-->
 
       <!-- Card Tabel Permintaan Perbaikan -->
       <div class="row">
