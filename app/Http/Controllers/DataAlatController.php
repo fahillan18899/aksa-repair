@@ -10,7 +10,7 @@ class DataAlatController extends Controller
 {
     public function index($id)
     {
-        $data = DataBarang::where('no_urut', $id)->first();
+        $data = DataBarang::where('id', $id)->first();
             return view('pages.data_alat',compact('data'));
         }
     }

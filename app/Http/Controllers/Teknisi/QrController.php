@@ -25,7 +25,7 @@ class QrController extends Controller
         $end = $request->id_terakhir;
 
         //Ambil semua alat yang dalam rentang nilai
-        $alat = DataBarang::whereBetween('no_urut', [$start, $end])->get();
+        $alat = DataBarang::whereBetween('id', [$start, $end])->get();
 
         if($alat->isEmpty()){
             return back()->with('error', 'Data alat tidak ditemukan');

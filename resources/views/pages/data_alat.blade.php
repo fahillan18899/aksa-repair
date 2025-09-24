@@ -64,8 +64,8 @@
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <th class="text-center">No Urut</th>
-                <td class="text-center">{{ $data->no_urut }}</td>
+                <th class="text-center">ID</th>
+                <td class="text-center">{{ $data->id }}</td>
               </tr>
               <tr>
                 <th class="text-center">Nama Alat</th>
@@ -86,6 +86,10 @@
               <tr>
                 <th class="text-center">Instansi</th>
                 <td class="text-center">{{ $data->instansi }}</td>
+              </tr>
+              <tr>
+                <th class="text-center">Tanggal</th>
+                <td class="text-center">{{ $data->created_at }}</td>
               </tr>
             </tbody>
           </table>
