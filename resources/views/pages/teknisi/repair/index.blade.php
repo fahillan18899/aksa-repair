@@ -45,7 +45,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
-                        <th>No Urut</th>
+                        <th>ID</th>
                         <th>Tanggal</th>
                         <th>Marketing</th>
                         <th>Nama Alat</th>
@@ -56,7 +56,7 @@
                     <tbody>
                       @forelse($data as $datas)
                       <tr>
-                        <td onclick="paste(this)" title="Klik untuk kirim no urut" style="cursor: pointer;">{{ $datas->no_urut }}</td>
+                        <td onclick="paste(this)" title="Klik untuk kirim no urut" style="cursor: pointer;">{{ $datas->id }}</td>
                         <td>{{ $datas->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $datas->user }}</td>
                         <td>{{ $datas->nama_alat }}</td>
@@ -103,7 +103,7 @@
                   <div class="form-group row">
                     <label for="" class="col-xs-3 col-form-label">No Urut <i class="text-danger">*</i></label>
                     <div class="col-xs-9">
-                      <input id="no_urut2" type="text" class="form-control" placeholder="Klik no urut di table untuk kirim disini" 
+                      <input id="no_urut2" type="text" class="form-control" placeholder="Klik ID di table untuk kirim disini" 
                       data-toggle="tooltip" data-placement="top" title="Klik untuk isi data alat" style="cursor: pointer;" readonly>
                     </div>
                   </div>
@@ -184,7 +184,7 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th>No Urut</th>
+                      <th>ID</th>
                       <th>Tanggal</th>
                       <th>Nama</th>
                       <th>Merek</th>
@@ -200,7 +200,7 @@
                     <tbody>
                       @forelse($item as $items)
                       <tr>
-                        <td>{{ $items->no_urut }}</td>
+                        <td>{{ $items->id }}</td>
                         <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $items->nama_alat }}</td>
                         <td>{{ $items->merek }}</td>

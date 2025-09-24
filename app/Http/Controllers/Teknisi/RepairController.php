@@ -97,7 +97,7 @@ class RepairController extends Controller
 
     public function fetch($id)
     {
-        $data = InputPekerjaan::where('no_urut', $id)->first();
+        $data = InputPekerjaan::where('id', $id)->first();
         return response()->json($data);
     }
 
