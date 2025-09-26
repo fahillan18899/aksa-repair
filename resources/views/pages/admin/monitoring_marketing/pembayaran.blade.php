@@ -75,7 +75,6 @@
                     @endforelse
                   </tbody>
                 </table>
-                <!-- <a class="btn btn-success" href="{{ route('invoice.doc') }}">Document Invoice</a> -->
                 <!--TABEL-->
               </div>
               <div class="col-md-3"></div>

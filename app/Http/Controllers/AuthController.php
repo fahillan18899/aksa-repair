@@ -28,7 +28,7 @@ class AuthController extends Controller
 
         $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard/ppm/home');
+            return redirect()->route("data.dashboard");
         }
 
         return redirect('/')->withSuccess('Detail Login Tidak Valid');

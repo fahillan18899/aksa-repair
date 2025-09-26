@@ -54,9 +54,11 @@
     </div>
     <!-- SIDE BAR MENU -->
     <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard/ppm/home') ? 'active' : '' }}"><a href="/dashboard/ppm/home"><i class="fa fa-home"></i>Dashboard</a></li>
+      <li class="{{ request()->is('dashboard/kalibrasi_monitoring/home') ? 'active' : '' }}">
+        <a href="{{ route('data.dashboard') }}"><i class="fa fa-home"></i>Dashboard</a>
+      </li>
       <!---->
-      <li class="treeview  {{ request()->is('dashboard/ppm/link_input_customer') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_data_invoice') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_kegiatan_kalibrasi') ? 'active' : '' }} {{ request()->is('dashboard/ppm/link_pembayaran') ? 'active' : '' }}">
+      <li class="treeview  {{ request()->is('dashboard/kalibrasi_monitoring/link_input_customer') ? 'active' : '' }} {{ request()->is('dashboard/kalibrasi_monitoring/link_data_invoice') ? 'active' : '' }} {{ request()->is('dashboard/kalibrasi_monitoring/link_kegiatan_kalibrasi') ? 'active' : '' }} {{ request()->is('dashboard/kalibrasi_monitoring/link_pembayaran') ? 'active' : '' }}">
         <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i>
           <span>Monitoring Marketing</span>
           <span class="pull-right-container">
@@ -64,10 +66,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ request()->is('dashboard/ppm/link_input_customer') ? 'active' : '' }}"><a href="{{ route('index.inputCs') }}">Input Customer</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_data_invoice') ? 'active' : '' }}"><a href="{{ route('index.invoice') }}">Data invoice</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_kegiatan_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.kegiatanKalibrasi') }}">Kegiatan Kalibrasi</a></li>
-          <li class="{{ request()->is('dashboard/ppm/link_pembayaran') ? 'active' : '' }}"><a href="{{ route('index.pembayaran') }}">Pembayaran</a></li>
+          <li class="{{ request()->is('dashboard/kalibrasi_monitoring/link_input_customer') ? 'active' : '' }}"><a href="{{ route('index.inputCs') }}">Input Customer</a></li>
+          <li class="{{ request()->is('dashboard/kalibrasi_monitoring/link_data_invoice') ? 'active' : '' }}"><a href="{{ route('index.invoice') }}">Data invoice</a></li>
+          <li class="{{ request()->is('dashboard/kalibrasi_monitoring/link_kegiatan_kalibrasi') ? 'active' : '' }}"><a href="{{ route('index.kegiatanKalibrasi') }}">Kegiatan Kalibrasi</a></li>
+          <li class="{{ request()->is('dashboard/kalibrasi_monitoring/link_pembayaran') ? 'active' : '' }}"><a href="{{ route('index.pembayaran') }}">Pembayaran</a></li>
         </ul>
       </li>
       <!---->

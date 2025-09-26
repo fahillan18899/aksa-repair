@@ -3,8 +3,7 @@
 
 use App\Http\Controllers\Admin\HomeController as PPMController;
 use Illuminate\Support\Facades\Route;
-// Repair Aksa //
-use App\Http\Controllers\DataAlatController;
+// Monitoring Kalibrasi //
 // Admin
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
@@ -30,16 +29,11 @@ use App\Http\Controllers\Akuntan\AlurPembayaranController;
 use App\Http\Controllers\Akuntan\ChasBackController;
 use Matrix\Operators\Operator;
 
-//Data Scan
-Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
-
+// ROUTE KALIBRASI MONITORING //
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
-    // menu dashboard KALIBRASI MONITORING
-
-    // menu KALIBRASI MONITORING
-    Route::prefix('ppm')->group(function () {
+    Route::prefix('kalibrasi_monitoring')->group(function () {
     // ROUTE DASHBOARD
-        Route::get('home', [PPMController::class, 'dashboard']);
+        Route::get('home', [PPMController::class, 'dashboard'])->name('data.dashboard');
 
         //Fetch Dashboard
         Route::get('api_rapair_count1', [PPMController::class, 'count1'])->name('count.selesai');
@@ -54,22 +48,14 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
         // --- //
         Route::get('link_data_invoice', [MonitoringMarketingController::class, 'index2'])->name('index.invoice');
-        // --- //
         Route::get('link_kegiatan_kalibrasi', [MonitoringMarketingController::class, 'index3'])->name('index.kegiatanKalibrasi');
-        // Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
-        // Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
-        // --- //
         Route::get('link_pembayaran', [MonitoringMarketingController::class, 'index4'])->name('index.pembayaran');
-        // Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
-        // Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
-
+        // --- //
+        
         // Monitoring Teknisi //
         Route::get('link_data_cs', [MonitoringTeknisiController::class, 'index5'])->name('index.dataCs');
         Route::get('link_pengerjaan_kalibrasi', [MonitoringTeknisiController::class, 'index6'])->name('index.pengerjaan');
         Route::get('link_document_kalibrasi', [MonitoringTeknisiController::class, 'index7'])->name('index.docKal');
-        // Route::get('link_berita_acara', [MonitoringTeknisiController::class, 'getBeritaAcara'])->name('beritaAcara.data');
-        // Route::get('link_berita_acara/view/{id}', [MonitoringTeknisiController::class, 'viewBa'])->name('beritaAcara.view');
-        // Route::get('link_berita_acara/ba_doc', [MonitoringTeknisiController::class, 'baDoc'])->name('ba.doc');
         
         //Monitoring Keuangan //
         Route::get('link_data_cutomers', [MonitoringKeuanganController::class, 'index8'])->name('index.dataCustomer');
