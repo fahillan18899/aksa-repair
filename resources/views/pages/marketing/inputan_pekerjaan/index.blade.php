@@ -82,9 +82,16 @@
                   </div>
 
                   <div class="form-group row">
-                    <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i></label>
+                    <label for="instansi" class="col-xs-3 col-form-label">Instansi<i class="text-danger">*</i>
+                    <a href="{{ route('marketing.data.instansi') }}" class="btn btn-sm btn-success" style="margin-left:10px" data-toggle="tooltip" data-placement="top" title="Tambah Instansi">+</a></label>
+                    
                     <div class="col-xs-9">
-                      <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Masukan Instansi" required>
+                      <select name="instansi" class="form-control">
+                        <option>-- PILIH INSTANSI --</option>
+                        @foreach ($instansis as $ins)
+                        <option value="{{ $ins->instansi }}">{{ $ins->instansi }}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
 

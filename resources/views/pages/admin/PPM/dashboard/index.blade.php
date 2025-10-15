@@ -65,6 +65,60 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-5">
+                  <h2>Daftar Instansi</h2>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-x:auto">
+              <div class="panel-body panel-form">
+                <div class="row">
+                  <div class="col-md-12 col-sm-12 table-responsive">
+                    <!-- TABEL -->
+                      <table class="datatable table table-striped table-bordered">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Nama Instansi</th>
+                            <th>Belum</th>
+                            <th>Sudah</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @forelse ($instansis as $item)
+                            @php
+                                $counts = $statusCounts[$item->instansi] ?? null;
+                            @endphp
+                            <tr>
+                              <td>
+                                <a href="{{ route('ins.detail', ['instansi'=> urlencode($item->instansi)]) }}">
+                                  {{ $item->instansi }}
+                                </a>
+                              </td>
+                              <td>{{ $counts?->count_sudah ?? 0 }}</td>
+                              <td>{{ $counts?->count_belum ?? 0 }}</td>
+                            </tr>  
+                          @empty
+                          @endforelse
+                        </tbody>
+                      </table>
+                    <!-- TABEL -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card Tabel Permintaan Perbaikan -->
+
+      <!-- Card Tabel Permintaan Perbaikan -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default thumbnail">
+            <div class="panel-heading no-print">
+              <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-5">
                   <h2>Daftar Barang Selesai Repair</h2>
                 </div>
               </div>

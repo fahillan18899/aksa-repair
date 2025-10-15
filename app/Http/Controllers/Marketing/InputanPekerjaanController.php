@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Marketing;
 
-use App\Http\Controllers\Controller;
-use App\Models\InputPekerjaan;
+use App\Models\Instansi;
 use Illuminate\Http\Request;
+use App\Models\InputPekerjaan;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class InputanPekerjaanController extends Controller
@@ -14,7 +15,15 @@ class InputanPekerjaanController extends Controller
     {
         $user = Auth::user()->username;
         $item = InputPekerjaan::where('user', $user)->get();
+        $instansis = Instansi::all();
         return view('pages.marketing.inputan_pekerjaan.index',
+        compact('item', 'instansis'));
+    }
+
+    public function instansi() 
+    {
+        $item = Instansi::all();
+        return view('pages.marketing.inputan_pekerjaan.instansi',
         compact('item'));
     }
 
@@ -60,10 +69,28 @@ class InputanPekerjaanController extends Controller
         ->with('success', 'Data berhasil disimpan');
     }
 
+    public function postIns(Request $request)
+    {
+        $validated = $request->validate([
+            'instansi'        => 'nullable',
+        ]);
+
+        Instansi::create($validated);
+        return redirect()->route('marketing.data.inputanPekerjaan')
+        ->with('success', 'Data berhasil disimpan');
+    }
+
     public function edit($id)
     {
         $item = InputPekerjaan::findOrFail($id);
         return view('pages.marketing.inputan_pekerjaan.edit',
+        compact('item'));
+    }
+
+    public function editIns($id)
+    {
+        $item = Instansi::findOrFail($id);
+        return view('pages.marketing.inputan_pekerjaan.edit_ins',
         compact('item'));
     }
 
@@ -104,6 +131,18 @@ class InputanPekerjaanController extends Controller
         ->with('success', 'Data berhasil di ubah');
     }
 
+    public function updateIns(Request $request, $id)
+    {
+        $validate = $request->validate([
+         'instansi'        => 'nullable',  
+        ]);
+
+        $item = Instansi::findOrFail($id);
+        $item->update($validate);
+        return redirect()->route('marketing.data.inputanPekerjaan')
+        ->with('success', 'Data berhasil di ubah');
+    }
+
     public function delete($id)
     {
         $item = InputPekerjaan::findOrFail($id);
@@ -111,6 +150,14 @@ class InputanPekerjaanController extends Controller
         if(Storage::exists('public/' . $item->foto)){
             Storage::delete('public/' . $item->foto);
         }
+        $item->delete();
+        return redirect()->route('marketing.data.inputanPekerjaan')
+        ->with('success', 'Data berhasil dihapus');
+    }
+
+    public function deleteIns($id)
+    {
+        $item = Instansi::findOrFail($id);
         $item->delete();
         return redirect()->route('marketing.data.inputanPekerjaan')
         ->with('success', 'Data berhasil dihapus');

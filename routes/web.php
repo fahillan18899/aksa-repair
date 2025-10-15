@@ -28,6 +28,7 @@ use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
 use Matrix\Operators\Operator;
+use Symfony\Component\Console\Input\Input;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -39,6 +40,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
         Route::get('home', [PPMController::class, 'dashboard']);
+        Route::get('instansi_detail/{instansi}', [PPMController::class, 'insDetail'])->name('ins.detail');
 
         //Fetch Dashboard
         Route::get('api_repair_selesai', [PPMController::class, 'repair_selesai'])->name('api1');
@@ -98,6 +100,11 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
         Route::get('link_inputan_pekerjaan/edit/{id}', [InputanPekerjaanController::class, 'edit'])->name('edit.inputanPekerjaan');
         Route::put('link_inputan_pekerjaan/update/{id}', [InputanPekerjaanController::class, 'update'])->name('update.inputanPekerjaan');
         Route::delete('link_inputan_pekerjaan/{id}', [InputanPekerjaanController::class, 'delete'])->name('delete.inputanPekerjaan');
+        Route::get('tambah_instansi', [InputanPekerjaanController::class, 'instansi'])->name('data.instansi');
+        Route::post('tambah_instansi', [InputanPekerjaanController::class, 'postIns'])->name('post.ins');
+        Route::get('tambah_instansi/edit/{id}', [InputanPekerjaanController::class, 'editIns'])->name('edit.ins');
+        Route::put('tambah_instansi/update/{id}', [InputanPekerjaanController::class, 'updateIns'])->name('update.ins');
+        Route::delete('tambah_instansi/{id}', [InputanPekerjaanController::class, 'deleteIns'])->name('delete.ins');
     // Input Pekerjaan end//
     
     // SPH //
