@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Teknisi;
 
-use App\Http\Controllers\Controller;
 use App\Models\DataBarang;
-use App\Models\InputPekerjaan;
 use Illuminate\Http\Request;
+use App\Models\InputPekerjaan;
+use App\Http\Controllers\Controller;
 
 class RepairController extends Controller
 {
@@ -29,10 +29,6 @@ class RepairController extends Controller
             'instansi'       => 'nullable',
             'user'           => 'nullable'
         ]);
-
-        $count = DataBarang::count() + 1;
-        $nomerUrut = str_pad($count, 5, '0', STR_PAD_LEFT);
-        $validate['no_urut']= $nomerUrut;
         
         DataBarang::create($validate);
         return redirect()->route('teknisi.data.repair')

@@ -53,8 +53,10 @@ class InputanPekerjaanController extends Controller
 
         //Buat no urut
         $count = InputPekerjaan::count() + 1;
-        $noUrut = str_pad($count, 5, '0', STR_PAD_LEFT);
-        $validated['no_urut']= $noUrut;
+        $user = Auth::user()->rs_divisi;
+        $cont1 =  str_pad($count, 4, '0', STR_PAD_LEFT);
+        $noMrk = $user . '/' . $cont1;
+        $validated['no_urut']= $noMrk;
 
         //Pengecekan user dan instansi
         $cek = InputPekerjaan::where('instansi', $validated['instansi'])

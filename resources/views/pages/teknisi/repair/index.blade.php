@@ -184,7 +184,7 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th>ID</th>
+                      <th>No</th>
                       <th>Tanggal</th>
                       <th>Nama</th>
                       <th>Merek</th>
@@ -200,7 +200,7 @@
                     <tbody>
                       @forelse($item as $items)
                       <tr>
-                        <td>{{ $items->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $items->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $items->nama_alat }}</td>
                         <td>{{ $items->merek }}</td>
@@ -300,12 +300,12 @@
 
       if(!noUrut) return;
 
-
       fetch(`/dashboard_teknisi/link_repair/data_pekerjaan/${encodeURIComponent(noUrut)}`)
       .then(response => response.json())
       .then(data => {
         console.log("Data dari server :", data);
         let item = Array.isArray(data) ? data[0] : data || {};
+        $('#no_urut').val(item.no_urut || '');
         $('#nama_alat').val(item.nama_alat || '');
         $('#merek').val(item.merek || '');
         $('#type').val(item.type || '');
