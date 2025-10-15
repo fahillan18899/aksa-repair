@@ -49,7 +49,6 @@
                       <th>Nama</th>
                       <th>Link Download</th>
                       <th>Tanggal Upload</th>
-                      <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -59,15 +58,6 @@
                       <td>{{ $items->nama }}</td>
                       <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
                       <td>{{ $items->created_at->format('d-m-Y') }}</td>
-                      <td>
-                        <form action="{{ route('marketing.delete.sph_old', $items->id) }}" method="POST">
-                          @csrf
-                          @method('DELETE')
-                          <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placemnet="top" title="Hapus">
-                            <i class="fa fa-trash"></i>
-                          </button>
-                        </form>
-                      </td>
                     </tr>
                     @endforeach
                   </tbody>

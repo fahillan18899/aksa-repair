@@ -9,7 +9,6 @@ use App\Models\SphHistory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class SphController extends Controller
 {
@@ -311,19 +310,6 @@ class SphController extends Controller
             'users' => $user,
         ]);
         return back()->with('success', 'Document ('. $fileName . ') berhasil di upload');
-    }
-
-public function deleteDoc($id)
-    {
-        $item = SphOld::findOrFail($id);
-        //Hapus File di storage
-        if(Storage::exists('public/' . $item->path)){
-            Storage::delete('public/' . $item->path);
-        }
-        //Hapus data di db
-        $item->delete();
-
-        return back()->with('success', 'Dokumen Berhasil dihapus');
     }
 
     public function delete($id)
