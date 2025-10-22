@@ -69,8 +69,7 @@ class InputanPekerjaanController extends Controller
         ]);
 
         Instansi::create($validated);
-        return redirect()->route('marketing.data.inputanPekerjaan')
-        ->with('success', 'Data berhasil disimpan');
+        return back()->with('success', 'Data berhasil disimpan');
     }
 
     public function edit($id)
@@ -143,7 +142,6 @@ class InputanPekerjaanController extends Controller
     {
         $item = Instansi::findOrFail($id);
         $item->delete();
-        return redirect()->route('marketing.input_pekerjaan.index')
-        ->with('success', 'Data berhasil dihapus');
+        return back()->with('success', 'Data berhasil dihapus');
     }
 }

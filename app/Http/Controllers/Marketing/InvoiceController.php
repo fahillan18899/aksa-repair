@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Marketing;
 
-use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -17,7 +16,7 @@ class InvoiceController extends Controller
         compact('item'));
     }
 
-    public function view($id)
+    public function show($id)
     {
         $item = Invoice::findOrFail($id);
         $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;

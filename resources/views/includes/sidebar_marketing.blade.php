@@ -72,8 +72,8 @@
           <i class="fa fa-file-o"></i><span>Pembuatan SPH</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_invoice') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.invoice') }}">
+      <li class="{{ request()->is('dashboard_marketing/invoice_merketing') ? 'active' : '' }}">
+        <a href="{{ route('marketing.invoice_merketing.index') }}">
           <i class="fa fa-file-text"></i><span>Penagihan Invoice</span>
         </a>
       </li>

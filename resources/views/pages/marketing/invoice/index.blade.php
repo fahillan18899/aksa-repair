@@ -66,7 +66,7 @@
                           </button>
                         </td>
                         <td>
-                          <a href="{{ route('marketing.view.invoice', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
+                          <a href="{{ route('marketing.invoice_merketing.show', $items->id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="View">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
                         </td>
