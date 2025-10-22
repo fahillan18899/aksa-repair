@@ -57,8 +57,8 @@
       <li class="{{ request()->is('dashboard_teknisi/link_dashboard_teknisi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_repair') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.repair') }}">
+      <li class="{{ request()->is('dashboard_teknisi/repair') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.repair.index') }}">
           <i class="fa fa-wrench" aria-hidden="true"></i><span>Repair</span>
         </a>
       </li>

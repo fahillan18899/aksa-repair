@@ -103,7 +103,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.post.repair') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.repair.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <input name="no_urut" id="no_urut" class="form-control" type="hidden">
                   <div class="form-group row">
@@ -154,7 +154,6 @@
                       <input name="instansi" id="instansi" type="text" class="form-control" placeholder="Terisi otomatis" readonly required>
                     </div>
                   </div>
-
                   <input name="user" id="user" type="hidden">
 
                   <div class="form-group row">
@@ -248,10 +247,10 @@
                         </td>
 
                         <td>
-                          <a href="{{ route('teknisi.edit.repair', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('teknisi.repair.edit', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('teknisi.delete.repair', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('teknisi.repair.destroy', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

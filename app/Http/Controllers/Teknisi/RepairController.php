@@ -17,7 +17,7 @@ class RepairController extends Controller
         compact('item', 'data'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'no_urut'        => 'nullable',
@@ -33,8 +33,7 @@ class RepairController extends Controller
         InputPekerjaan::where('no_urut', $request->no_urut)->update(['status' => 1]);
 
         DataBarang::create($validate);
-        return redirect()->route('teknisi.data.repair')
-        ->with('success', 'Data berhasil disimpan');
+        return back()->with('success', 'Data berhasil disimpan');
 
     }
 
@@ -59,8 +58,15 @@ class RepairController extends Controller
 
         $item = DataBarang::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('teknisi.data.repair')
+        return redirect()->route('teknisi.repair.index')
         ->with('success', 'Data berhasil di ubah');
+    }
+
+    public function destroy($id)
+    {
+        $item = DataBarang::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Data berhasil di hapus');
     }
 
     public function repairBa($id) 
@@ -99,19 +105,10 @@ class RepairController extends Controller
         return response()->json($data);
     }
 
-    public function delete($id)
-    {
-        $item = DataBarang::findOrFail($id);
-        $item->delete();
-        return redirect()->route('teknisi.data.repair')
-        ->with('success', 'Data berhasil di hapus');
-    }
-
     public function deleteI($id)
     {
         $item = InputPekerjaan::findOrfail($id);
         $item->delete();
-        return redirect()->route('teknisi.data.repair')
-        ->with('success', 'Data berhasil di hapus');
+        return back()->with('success', 'Data berhasil di hapus');
     }
 }

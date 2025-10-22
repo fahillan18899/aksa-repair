@@ -39,7 +39,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.update.repair', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.repair.update', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <input name="no_urut" id="no_urut" class="form-control" type="hidden" value="{{ $item->no_urut }}">

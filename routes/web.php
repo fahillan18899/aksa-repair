@@ -118,15 +118,11 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
 Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->group(function () {
     Route::get('link_dashboard_teknisi', [DashboardTeknisiController::class, 'dashboard_teknisi'])->name('dashboard');
     // Repair //
-        Route::get('link_repair', [RepairController::class, 'index'])->name('data.repair');
-        Route::post('link_repair', [RepairController::class, 'post'])->name('post.repair');
+        Route::resource('repair', RepairController::class);
         Route::get('link_repair/ba_repair/{id}', [RepairController::class, 'repairBa'])->name('ba.repair');
         Route::get('link_repair/st_repair/{id}', [RepairController::class, 'repairSt'])->name('st.repair');
-        Route::get('link_repair/edit/{id}', [RepairController::class, 'edit'])->name('edit.repair');
-        Route::put('link_repair/update/{id}', [RepairController::class, 'update'])->name('update.repair');
         Route::put('link_repair/status/{id}', [RepairController::class, 'status'])->name('status.repair');
         Route::put('link_repair/ket/{id}', [RepairController::class, 'ket'])->name('ket.repair');
-        Route::delete('link_repair/{id}', [RepairController::class, 'delete'])->name('delete.repair');
         Route::delete('link_repair/delete/{id}', [RepairController::class, 'deleteI'])->name('deleteI.repair');
         Route::get('link_repair/data_pekerjaan/{id}', [RepairController::class, 'fetch'])->name('fetch.repair');
     // Repair end//
