@@ -67,7 +67,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('marketing.post.sph') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('marketing.sph.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <input name="user" type="hidden" value="{{ Auth::user()->username }}">
                   <div class="col-xs-4" style="margin-left: 700px;">
@@ -316,13 +316,13 @@
                         <td>{{ $items->no_surat }}</td>
                         <td>{{ $items->lokasi_tanggal }}</td>
                         <td>
-                          <a href="{{ route('marketing.print.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
+                          <a href="{{ route('marketing.sph.show', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
-                          <a href="{{ route('marketing.edit.sph', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('marketing.sph.edit', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('marketing.delete.sph', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('marketing.sph.destroy', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
@@ -741,54 +741,4 @@
     }
   });
 </script>
-
-<!-- <script>
-  function part2() {
-    const harga2 = document.getElementById('harga_2').value.replace(/[^0-9]/g, '');
-    const harga2c = parseFloat(harga2) || 0
-    const jumlah2 = parseFloat(document.getElementById('jumlah_2').value);
-    const total2 = harga2c * jumlah2;
-    const total2Rp = total2.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-    document.getElementById('total_part_2').value = total2Rp;
-    document.getElementById('biaya_part_2').value = total2Rp;
-    totalPart()
-  }
-</script>
-<script>
-  function part3() {
-    const harga3 = document.getElementById('harga_3').value.replace(/[^0-9]/g, '');
-    const harga3c = parseFloat(harga3) || 0
-    const jumlah3 = parseFloat(document.getElementById('jumlah_3').value);
-    const total3 = harga3c * jumlah3;
-    const total3Rp = total3.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-    document.getElementById('total_part_3').value = total3Rp;
-    document.getElementById('biaya_part_3').value = total3Rp;
-    totalPart()
-  }
-</script> -->
-<!-- <script>
-  function totalPart() {
-    const biaya1 = document.getElementById('biaya_part_1').value.replace(/[^0-9]/g, '');
-    const biaya1c = parseFloat(biaya1) || 0
-    const biaya2 = document.getElementById('biaya_part_2').value.replace(/[^0-9]/g, '');
-    const biaya2c = parseFloat(biaya2) || 0
-    const biaya3 = document.getElementById('biaya_part_3').value.replace(/[^0-9]/g, '');
-    const biaya3c = parseFloat(biaya3) || 0
-    const totalBiaya = biaya1c + biaya2c + biaya3c;
-    const totalBiayaRp = totalBiaya.toLocaleString('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-      minimumFractionDigits: 0
-    });
-    document.getElementById('total_biaya_part').value = totalBiayaRp;
-  }
-</script> -->
 @endpush

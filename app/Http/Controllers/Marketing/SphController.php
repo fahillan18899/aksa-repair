@@ -29,7 +29,7 @@ class SphController extends Controller
         compact('item', 'noUrut', 'bulanRomawi', 'tahun', 'user', 'part'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'lokasi_tanggal'    => 'nullable',
@@ -105,8 +105,7 @@ class SphController extends Controller
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
         Sph::create($validate);
-        return redirect()->route('marketing.data.sph')
-        ->with('success', 'Data berhasil di simpan');
+        return back()->with('success', 'Data berhasil di simpan');
     }
 
     public function edit($id)
@@ -230,8 +229,33 @@ class SphController extends Controller
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
         $item->update($validate);
-        return redirect()->route('marketing.data.sph')
+        return redirect()->route('marketing.sph.index')
         ->with('success', 'Sph berhasil di edit');
+    }
+
+    public function show($id)
+    {
+        $data = Sph::findOrFail($id);
+
+        // Mengubah data menjadi array
+        $data->akom = is_string($data->akom) ? json_decode($data->akom, true) : $data->akom;
+        $data->part = is_string($data->part) ? json_decode($data->part, true) : $data->part;
+        $data->harga_part = is_string($data->harga_part) ? json_decode($data->harga_part, true) : $data->harga_part;
+        $data->jumlah_part = is_string($data->jumlah_part) ? json_decode($data->jumlah_part, true) : $data->jumlah_part;
+        $data->total_part = is_string($data->total_part) ? json_decode($data->total_part, true) : $data->total_part;
+        $data->biaya_part = is_string($data->biaya_part) ? json_decode($data->biaya_part, true) : $data->biaya_part;
+        $data->part_total = is_string($data->part_total) ? json_decode($data->part_total, true) : $data->part_total;
+        $data->nama_alat = is_string($data->nama_alat) ? json_decode($data->nama_alat, true) : $data->nama_alat;
+        $data->keterangan = is_string($data->keterangan) ? json_decode($data->keterangan, true) : $data->keterangan;
+        return view('pages.marketing.sph.print',
+        compact('data'));
+    }
+
+    public function destroy($id)
+    {
+        $item = Sph::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Sph berhasil dihapus');
     }
 
     public function history()
@@ -257,24 +281,6 @@ class SphController extends Controller
         $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) : $item->keterangan;
         return view('pages.marketing.sph.view',
         compact('item'));
-    }
-
-    public function print($id)
-    {
-        $data = Sph::findOrFail($id);
-
-        // Mengubah data menjadi array
-        $data->akom = is_string($data->akom) ? json_decode($data->akom, true) : $data->akom;
-        $data->part = is_string($data->part) ? json_decode($data->part, true) : $data->part;
-        $data->harga_part = is_string($data->harga_part) ? json_decode($data->harga_part, true) : $data->harga_part;
-        $data->jumlah_part = is_string($data->jumlah_part) ? json_decode($data->jumlah_part, true) : $data->jumlah_part;
-        $data->total_part = is_string($data->total_part) ? json_decode($data->total_part, true) : $data->total_part;
-        $data->biaya_part = is_string($data->biaya_part) ? json_decode($data->biaya_part, true) : $data->biaya_part;
-        $data->part_total = is_string($data->part_total) ? json_decode($data->part_total, true) : $data->part_total;
-        $data->nama_alat = is_string($data->nama_alat) ? json_decode($data->nama_alat, true) : $data->nama_alat;
-        $data->keterangan = is_string($data->keterangan) ? json_decode($data->keterangan, true) : $data->keterangan;
-        return view('pages.marketing.sph.print',
-        compact('data'));
     }
 
     public function part($nama)
@@ -310,13 +316,5 @@ class SphController extends Controller
             'users' => $user,
         ]);
         return back()->with('success', 'Document ('. $fileName . ') berhasil di upload');
-    }
-
-    public function delete($id)
-    {
-        $item = Sph::findOrFail($id);
-        $item->delete();
-        return redirect()->route('marketing.data.sph')
-        ->with('success', 'Sph berhasil dihapus');
     }
 }

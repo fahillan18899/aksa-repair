@@ -68,7 +68,7 @@
             <div class="row">
               <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('marketing.update.sph', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('marketing.sph.update', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <input name="user" type="hidden" value="{{ $item->user }}">

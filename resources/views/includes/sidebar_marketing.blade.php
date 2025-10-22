@@ -67,8 +67,8 @@
           <i class="fa fa-archive"></i> <span>Status Pengerjaan</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_sph') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.sph') }}">
+      <li class="{{ request()->is('dashboard_marketing/sph') ? 'active' : '' }}">
+        <a href="{{ route('marketing.sph.index') }}">
           <i class="fa fa-file-o"></i><span>Pembuatan SPH</span>
         </a>
       </li>
