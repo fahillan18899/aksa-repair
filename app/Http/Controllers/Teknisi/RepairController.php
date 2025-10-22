@@ -30,6 +30,8 @@ class RepairController extends Controller
             'user'           => 'nullable'
         ]);
         
+        InputPekerjaan::where('no_urut', $request->no_urut)->update(['status' => 1]);
+
         DataBarang::create($validate);
         return redirect()->route('teknisi.data.repair')
         ->with('success', 'Data berhasil disimpan');

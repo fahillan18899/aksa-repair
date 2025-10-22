@@ -50,6 +50,7 @@
                         <th>Marketing</th>
                         <th>Nama Alat</th>
                         <th>Instansi</th>
+                        <th>Status</th>
                         <th>Tombol</th>
                       </tr>
                     </thead>
@@ -61,6 +62,11 @@
                         <td>{{ $datas->user }}</td>
                         <td>{{ $datas->nama_alat }}</td>
                         <td>{{ $datas->instansi }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-{{ $datas->status == 0 ? 'danger' : 'success'}}" type="submit" disabled>
+                            {{ $datas->status == 0 ? 'Belum terinput' : 'Terinput' }}
+                          </button>
+                        </td>
                         <td>
                           <form action="{{ route('teknisi.deleteI.repair', $datas->id) }}" method="POST" class="d-inline">
                           @csrf

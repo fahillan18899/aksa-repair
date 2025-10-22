@@ -68,10 +68,10 @@
                       <td>{{ $datas->no_seri }}</td>
                       <td>{{ $datas->instansi }}</td>
                       <td>
-                        <a href="{{ route('edit.data', $datas->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <a href="{{ route('monitoring_marketing.edit', $datas->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                          <form action="{{ route('delete.inputPekerjaan', $datas->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('monitoring_marketing.destroy', $datas->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

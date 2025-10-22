@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\Admin\HomeController as PPMController;
+use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 // Repair Aksa //
 use App\Http\Controllers\DataAlatController;
@@ -39,25 +39,22 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu PPM
     Route::prefix('ppm')->group(function () {
     // ROUTE DASHBOARD
-        Route::get('home', [PPMController::class, 'dashboard']);
-        Route::get('instansi_detail/{instansi}', [PPMController::class, 'insDetail'])->name('ins.detail');
+        Route::get('home', [HomeController::class, 'dashboard']);
+        Route::get('instansi_detail/{instansi}', [HomeController::class, 'insDetail'])->name('ins.detail');
 
         //Fetch Dashboard
-        Route::get('api_repair_selesai', [PPMController::class, 'repair_selesai'])->name('api1');
-        Route::get('api_repair_proses', [PPMController::class, 'repair_proses'])->name('api2');
-        Route::get('api_rapair_count1', [PPMController::class, 'count1'])->name('count.selesai');
-        Route::get('api_repair_count2', [PPMController::class, 'count2'])->name('count.proses');
+        Route::get('api_repair_selesai', [HomeController::class, 'repair_selesai'])->name('api1');
+        Route::get('api_repair_proses', [HomeController::class, 'repair_proses'])->name('api2');
+        Route::get('api_rapair_count1', [HomeController::class, 'count1'])->name('count.selesai');
+        Route::get('api_repair_count2', [HomeController::class, 'count2'])->name('count.proses');
 
         // Monitoring Marketing //
-        Route::get('link_input_pekerjaan', [MonitoringMarketingController::class, 'getInputPekerjaan'])->name('inputPekerjaan.data');
-        Route::get('link_input_pekerjaan/edit/{id}', [MonitoringMarketingController::class, 'edit'])->name('edit.data');
-        Route::delete('link_input_pekerjaan/{id}', [MonitoringMarketingController::class, 'delete'])->name('delete.inputPekerjaan');
-        Route::put('link_input_pekerjaan/update/{id}', [MonitoringMarketingController::class, 'update'])->name('update.data');
-        Route::get('link_data_barang', [MonitoringMarketingController::class, 'getDataBarang'])->name('dataBarang.data');
-        Route::get('link_sph', [MonitoringMarketingController::class, 'getSph'])->name('sph.data');
+        Route::resource('monitoring_marketing', MonitoringMarketingController::class);
+        Route::get('data_barang', [MonitoringMarketingController::class, 'index2'])->name('monitoring_marketing.index2');
+        Route::get('monitoring_sph', [MonitoringMarketingController::class, 'index3'])->name('monitoring_marketing.index3');
         Route::get('link_sph/sph_doc', [MonitoringMarketingController::class, 'sphDoc'])->name('sph.doc');
         Route::get('link_sph/view/{id}', [MonitoringMarketingController::class, 'viewSph'])->name('sph.view');
-        Route::get('link_invoice', [MonitoringMarketingController::class, 'getInvoice'])->name('invoice.data');
+        Route::get('monitoring_invoice', [MonitoringMarketingController::class, 'index4'])->name('monitoring_marketing.index4');
         Route::get('link_invoice/view/{id}', [MonitoringMarketingController::class, 'viewInvo'])->name('invoice.view');
         Route::get('link_invoice/invoice_doc', [MonitoringMarketingController::class, 'invoiceDoc'])->name('invoice.doc');
 
@@ -210,6 +207,6 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     //Fakture end//
 });
 
-Route::get('asd', [PPMController::class, 'notifyUser']);
+Route::get('asd', [HomeController::class, 'notifyUser']);
 
 require __DIR__ . '/other/user_route.php';

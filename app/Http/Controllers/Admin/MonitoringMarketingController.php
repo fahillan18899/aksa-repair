@@ -13,26 +13,19 @@ use App\Http\Controllers\Controller;
 
 class MonitoringMarketingController extends Controller
 {
-    public function getInputPekerjaan()
+ 
+    public function index()
     {
         $data = InputPekerjaan::all();
         return view('pages.admin.monitoring_marketing.input_data',
         compact('data'));
     }
 
-        public function edit($id)
+    public function edit($id)
     {
         $item = InputPekerjaan::findOrFail($id);
         return view('pages.admin.monitoring_marketing.edit',
         compact('item'));
-    }
-
-    public function delete($id)
-    {
-        $item = InputPekerjaan::findOrFail($id);
-        $item->delete();
-        return redirect()->route('inputPekerjaan.data')
-        ->with('success', 'Data berhasil dihapus');
     }
 
     public function update(Request $request, $id)
@@ -48,18 +41,25 @@ class MonitoringMarketingController extends Controller
 
         $item = InputPekerjaan::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('inputPekerjaan.data')
+        return redirect()->route('monitoring_marketing.index')
         ->with('success', 'Data berhasil di ubah');
     }
 
-    public function getDataBarang()
+    public function destroy($id)
+    {
+        $item = InputPekerjaan::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Data berhasil dihapus');
+    }
+
+    public function index2()
     {
         $data = DataBarang::all();
         return view('pages.admin.monitoring_marketing.data_barang',
         compact('data'));
     }
 
-    public function getSph()
+    public function index3()
     {
         $data = Sph::all();
         return view('pages.admin.monitoring_marketing.sph',
@@ -90,7 +90,7 @@ class MonitoringMarketingController extends Controller
         compact('item'));
     }
 
-    public function getInvoice()
+    public function index4()
     {
         $data = Invoice::all();
         return view('pages.admin.monitoring_marketing.invoice',

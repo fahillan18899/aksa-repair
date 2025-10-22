@@ -91,7 +91,8 @@
       </div>
       <div class="form-group mt-3">
         <label for="password">Password</label>
-        <input type="password" name="password" placeholder="Masukkan Password" class="form-control" required>
+        <input type="password" name="password" id="password" placeholder="Masukkan Password" class="form-control" required><br>
+        <div><input type="checkbox" onclick="hilang()">Lihat Password</div>
       </div>
 
       <div class="mt-4">
@@ -106,3 +107,11 @@
   <script src="{{ url('assets/js/bootstrap.min.js') }}"></script>
 </body>
 </html>
+<script>
+  function hilang(){
+    var x = document.getElementById('password');
+    if ( x.type === "password" ){
+      x.type = "text";
+    } else { x.type = "password"; }
+  }
+</script>
