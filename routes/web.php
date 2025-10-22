@@ -132,11 +132,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     //Serah Terima End //
 
     //Informasi //
-        Route::get('link_informasi', [InformasiController::class, 'index'])->name('data.informasi');
-        Route::post('link_informasi', [InformasiController::class, 'post'])->name('post.informasi');
-        Route::get('link_informasi/edit/{id}', [InformasiController::class, 'edit'])->name('edit.informasi');
-        Route::put('link_informasi/update/{id}', [InformasiController::class, 'update'])->name('update.informasi');
-        Route::delete('link_informasi/{id}', [InformasiController::class, 'delete'])->name('delete.informasi');
+        Route::resource('informasi', InformasiController::class);
     //Informasi end//
 
     //Berita Acara //

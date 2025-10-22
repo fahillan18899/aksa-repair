@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Teknisi;
 
-use App\Http\Controllers\Controller;
 use App\Models\Informasi;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class InformasiController extends Controller
 {
@@ -15,20 +15,19 @@ class InformasiController extends Controller
         compact('item'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'nama'    => 'nullable',
             'merek'   => 'nullable',
             'type'    => 'nullable',
             'no_seri' => 'nullable',
-            'harga' => 'nullable',
-            'toko' => 'nullable',
+            'harga'   => 'nullable',
+            'toko'    => 'nullable',
         ]);
 
         Informasi::create($validate);
-        return redirect()->route('teknisi.data.informasi')
-        ->with('success', 'Sperpart berhasil disimpan');
+        return back()->with('success', 'Sperpart berhasil disimpan');
     }
 
     public function edit($id)
@@ -45,21 +44,20 @@ class InformasiController extends Controller
             'merek'   => 'nullable',
             'type'    => 'nullable',
             'no_seri' => 'nullable',
-            'harga' => 'nullable',
-            'toko' => 'nullable',
+            'harga'   => 'nullable',
+            'toko'    => 'nullable',
         ]);
 
         $item = Informasi::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('teknisi.data.informasi')
+        return redirect()->route('teknisi.informasi.index')
         ->with('success', 'Data berhasil di update');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $item = Informasi::findOrFail($id);
         $item->delete();
-        return redirect()->route('teknisi.data.informasi')
-        ->with('success', 'Sperpart berhasil dihapus');
+        return back()->with('success', 'Sperpart berhasil dihapus');
     }
 }

@@ -65,8 +65,8 @@
       <li class="{{ request()->is('dashboard_teknisi/surat_terima') ? 'active' : '' }}">
         <a href="{{ route('teknisi.surat_terima.index') }}"><i class="fa fa-file-text"></i>Surat Terima</a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.informasi') }}">
+      <li class="{{ request()->is('dashboard_teknisi/informasi') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.informasi.index') }}">
           <i class="fa fa-info-circle"></i> <span>Informasi</span>
         </a>
       </li>
