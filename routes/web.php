@@ -101,17 +101,12 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     // Input Pekerjaan end//
     
     // SPH //
-        Route::get('link_sph', [SphController::class, 'index'])->name('data.sph');
+        Route::resource('sph', SphController::class);
         Route::get('link_sph_history', [SphController::class, 'history'])->name('history.sph');
-        Route::get('link_sph/sph_old', [SphController::class, 'sphOld'])->name('sphOld.sph');
-        Route::post('link_sph', [SphController::class, 'post'])->name('post.sph');
-        Route::post('link_sph/upload', [SphController::class, 'upload'])->name('upload.sph');
-        Route::get('link_sph/edit/{id}', [SphController::class, 'edit'])->name('edit.sph');
-        Route::put('link_sph/update/{id}', [SphController::class, 'update'])->name('update.sph');
-        Route::get('link_sph/print/{id}', [SphController::class, 'print'])->name('print.sph');
-        Route::get('link_sph/part/{nama}', [SphController::class, 'part'])->name('part.sph');
         Route::get('link_sph_history/view/{id}', [SphController::class, 'view'])->name('view.sph');
-        Route::delete('link_sph/{id}', [SphController::class, 'delete'])->name('delete.sph');
+        Route::get('link_sph/sph_old', [SphController::class, 'sphOld'])->name('sphOld.sph');
+        Route::post('link_sph/upload', [SphController::class, 'upload'])->name('upload.sph');
+        Route::get('link_sph/part/{nama}', [SphController::class, 'part'])->name('part.sph');
         Route::delete('link_sph/sph_old/{id}', [SphController::class, 'deleteDoc'])->name('delete.sph_old');
     // SPH end//
 
