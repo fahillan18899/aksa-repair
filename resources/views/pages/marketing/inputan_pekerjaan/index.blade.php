@@ -49,7 +49,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('marketing.post.inputanPekerjaan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('marketing.input_pekerjaan.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <input class="form-control" type="hidden" name="no_urut">
                   <input class="form-control" type="hidden" name="user" value="{{ Auth::user()->username }}">
@@ -174,10 +174,10 @@
                           @endif
                         </td>
                         <td>
-                          <a href="{{ route('marketing.edit.inputanPekerjaan', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('marketing.input_pekerjaan.edit', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('marketing.delete.inputanPekerjaan', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('marketing.input_pekerjaan.destroy', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

@@ -57,8 +57,8 @@
       <li class="{{ request()->is('dashboard_marketing/link_dashboard_marketing') ? 'active' : '' }}">
         <a href="{{ route('marketing.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_marketing/link_inputan_pekerjaan') ? 'active' : '' }}">
-        <a href="{{ route('marketing.data.inputanPekerjaan') }}">
+      <li class="{{ request()->is('dashboard_marketing/input_pekerjaan') ? 'active' : '' }}">
+        <a href="{{ route('marketing.input_pekerjaan.index') }}">
           <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Inputan Pekerjaan</span>
         </a>
       </li>

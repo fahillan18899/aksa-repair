@@ -27,7 +27,7 @@ class InputanPekerjaanController extends Controller
         compact('item'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'no_urut'        => 'nullable',
@@ -58,17 +58,8 @@ class InputanPekerjaanController extends Controller
         $noMrk = $user . '/' . $cont1;
         $validated['no_urut']= $noMrk;
 
-        //Pengecekan user dan instansi
-        $cek = InputPekerjaan::where('instansi', $validated['instansi'])
-                              ->where('user', '!=', $validated['user'])->first();
-
-        if($cek) {
-            return back()->withErrors(['instansi' => 'Instansi sudah memiliki marketing']);
-        }
-
         InputPekerjaan::create($validated);
-        return redirect()->route('marketing.data.inputanPekerjaan')
-        ->with('success', 'Data berhasil disimpan');
+        return back()->with('success', 'Data berhasil disimpan');
     }
 
     public function postIns(Request $request)
@@ -119,17 +110,9 @@ class InputanPekerjaanController extends Controller
         }
         else { $validate['foto'] = null; }
 
-        //Pengecekan user dan instansi
-        $cek = InputPekerjaan::where('instansi', $validate['instansi'])
-                              ->where('user', '!=', $validate['user'])->first();
-
-        if($cek) {
-            return back()->withErrors(['instansi' => 'Instansi sudah memiliki marketing']);
-        }
-
         $item = InputPekerjaan::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('marketing.data.inputanPekerjaan')
+        return redirect()->route('marketing.input_pekerjaan.index')
         ->with('success', 'Data berhasil di ubah');
     }
 
@@ -141,11 +124,11 @@ class InputanPekerjaanController extends Controller
 
         $item = Instansi::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('marketing.data.inputanPekerjaan')
+        return redirect()->route('marketing.input_pekerjaan.index')
         ->with('success', 'Data berhasil di ubah');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $item = InputPekerjaan::findOrFail($id);
         //Hapus file di storage
@@ -153,15 +136,14 @@ class InputanPekerjaanController extends Controller
             Storage::delete('public/' . $item->foto);
         }
         $item->delete();
-        return redirect()->route('marketing.data.inputanPekerjaan')
-        ->with('success', 'Data berhasil dihapus');
+        return back()->with('success', 'Data berhasil dihapus');
     }
 
     public function deleteIns($id)
     {
         $item = Instansi::findOrFail($id);
         $item->delete();
-        return redirect()->route('marketing.data.inputanPekerjaan')
+        return redirect()->route('marketing.input_pekerjaan.index')
         ->with('success', 'Data berhasil dihapus');
     }
 }

@@ -39,7 +39,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('marketing.update.inputanPekerjaan', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('marketing.input_pekerjaan.update', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <input class="form-control" type="hidden" name="user" value="{{ Auth::user()->username }}">
