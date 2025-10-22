@@ -111,8 +111,7 @@ Route::name('marketing.')->prefix('dashboard_marketing')->middleware(['auth'])->
     // SPH end//
 
     //Invoice //
-        Route::get('link_invoice', [InvoiceController::class, 'index'])->name('data.invoice');
-        Route::get('link_invoice/view/{id}', [InvoiceController::class, 'view'])->name('view.invoice');
+        Route::resource('invoice_merketing', InvoiceController::class);
     //Invoice end//
 });
 
