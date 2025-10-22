@@ -67,7 +67,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <!-- <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;"> -->
-                <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner col-sm-12" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.surat_terima.store') }}" class="form-inner col-sm-12" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <h2>PIHAK PERTAMA</h2>
                   <div class="form-group row">
@@ -189,13 +189,13 @@
                         <td>{{ $items->bagian_2 }}</td>
                         <td>{{ $items->kontak_2 }}</td>
                         <td>
-                          <a href="{{ route('teknisi.view.suratTerima', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
+                          <a href="{{ route('teknisi.surat_terima.show', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
-                          <a href="{{ route('teknisi.edit.suratTerima', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('teknisi.surat_terima.edit', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('teknisi.delete.suratTerima', $items->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('teknisi.surat_terima.destroy', $items->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

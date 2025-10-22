@@ -128,12 +128,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     // Repair end//
 
     //Serah Terima //
-        Route::get('link_surat_terima', [SuratTerimaController::class, 'index'])->name('data.suratTerima');
-        Route::post('link_surat_terima', [SuratTerimaController::class, 'post'])->name('post.suratTerima');
-        Route::get('link_surat_terima/view/{id}', [SuratTerimaController::class, 'view'])->name('view.suratTerima');
-        Route::get('link_surat_terima/edit/{id}', [SuratTerimaController::class, 'edit'])->name('edit.suratTerima');
-        Route::put('link_surat_terima/update/{id}', [SuratTerimaController::class, 'update'])->name('update.suratTerima');
-        Route::delete('link_surat_terima/{id}', [SuratTerimaController::class, 'delete'])->name('delete.suratTerima');
+        Route::resource('surat_terima', SuratTerimaController::class);
     //Serah Terima End //
 
     //Informasi //

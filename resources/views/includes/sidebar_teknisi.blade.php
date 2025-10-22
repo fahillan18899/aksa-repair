@@ -62,8 +62,8 @@
           <i class="fa fa-wrench" aria-hidden="true"></i><span>Repair</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_surat_terima') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.suratTerima') }}"><i class="fa fa-file-text"></i>Surat Terima</a>
+      <li class="{{ request()->is('dashboard_teknisi/surat_terima') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.surat_terima.index') }}"><i class="fa fa-file-text"></i>Surat Terima</a>
       </li>
       <li class="{{ request()->is('dashboard_teknisi/link_informasi') ? 'active' : '' }}">
         <a href="{{ route('teknisi.data.informasi') }}">

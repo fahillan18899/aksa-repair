@@ -55,7 +55,7 @@
             <div class="row">
               <!-- <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 300px; margin-left: 600px;"> -->
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.update.suratTerima', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.surat_terima.update', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <h2>PIHAK PERTAMA</h2>

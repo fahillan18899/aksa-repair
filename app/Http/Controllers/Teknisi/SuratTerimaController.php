@@ -15,7 +15,7 @@ class SuratTerimaController extends Controller
         compact('item'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'nama_1'    => 'nullable',
@@ -80,11 +80,10 @@ class SuratTerimaController extends Controller
         $validate['keterangan'] = json_encode($request->keterangan);
         $item = SuratTerima::create($validate);
         $item->save();
-        return redirect()->route('teknisi.data.suratTerima')->
-        with('success', 'Data berhasil di simpan');
+        return back()->with('success', 'Data berhasil di simpan');
     }
 
-    public function view($id)
+    public function show($id)
     {
         $item = SuratTerima::findOrFail($id);
 
@@ -101,7 +100,7 @@ class SuratTerimaController extends Controller
         compact('item'));
     }
 
-        public function edit($id)
+    public function edit($id)
     {
         $item = SuratTerima::findOrFail($id);
         $item->jumlah = is_string($item->jumlah) ? json_decode($item->jumlah, true) : $item->jumlah;
@@ -180,15 +179,14 @@ class SuratTerimaController extends Controller
         $validate['jumlah'] = json_encode($request->jumlah);
         $validate['keterangan'] = json_encode($request->keterangan);
         $item->update($validate);
-        return redirect()->route('teknisi.data.suratTerima')
+        return redirect()->route('teknisi.surat_terima.index')
         ->with('success', 'Surat Serah Terima berhasil di edit');
     }
 
-        public function delete($id)
+    public function destroy($id)
     {
         $item = SuratTerima::findOrFail($id);
         $item->delete();
-        return redirect()->route('teknisi.data.suratTerima')
-        ->with('success', 'Serah Terima berhasil dihapus');
+        return back()->with('success', 'Serah Terima berhasil dihapus');
     }
 }
