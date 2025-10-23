@@ -39,7 +39,7 @@
             <div class="row">
               <div class="col-md-9 col-sm-12">
                 <h2>Generate QR</h2>
-                <form method="POST" action="{{ route('teknisi.generate.qr') }}">
+                <form method="POST" action="{{ route('teknisi.qr.store') }}">
                   @csrf
                   <div class="form-group row">
                     <label for="id_pertama" class="col-xs-3 form-label">no urut awal</label>
@@ -69,6 +69,56 @@
         </div>
       </div>
     </div>
+    <!--Tabel Perbaikan-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default thumbnail">
+
+          <div class="panel-heading no-print">
+            <div class="">
+              <h1>Daftar Alat</h1>
+            </div>
+          </div>
+          <div style="overflow-x:auto;">
+            <div class="panel-body panel-form">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <!--TABEL-->
+                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                    <thead class="table-light">
+                      <th>No</th>
+                      <th>No Urut</th>
+                      <th>Nama</th>
+                      <th>Merek</th>
+                      <th>Type</th>
+                      <th>Serial Number</th>
+                      <th>Instansi</th>
+                    </thead>
+                    <tbody>
+                      @forelse($items as $item)
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->nama_alat }}</td>
+                        <td>{{ $item->merek }}</td>
+                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->no_seri }}</td>
+                        <td>{{ $item->instansi }}</td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
+                  </table>
+                  <!--TABEL-->
+                </div>
+                <div class="col-md-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Tabel Perbaikan-->
   </div> <!-- /.content -->
 </div> <!-- /.content-wrapper -->
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>

@@ -90,7 +90,7 @@
           <div class="panel-body panel-form" id="print_me">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('teknisi.post.suratTerima') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.surat_terima.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <h2>PIHAK PERTAMA</h2>
                   <div class="form-group row">

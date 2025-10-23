@@ -59,7 +59,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-sm-12">
-                <form action="{{ route('teknisi.post.ba') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.ba.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <!-- Berita Acara -->
                   <table class="table-striped" width="100%">

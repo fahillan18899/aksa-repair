@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Teknisi;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\DataBarang;
-use PhpParser\Node\Stmt\Return_;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class QrController extends Controller
 {
     public function index()
     {
-        return view('pages.teknisi.qr.index');
+        $items = DataBarang::all();
+        return view('pages.teknisi.qr.index',
+        compact('items'));
     }
 
-    public function generate(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'id_pertama' => 'required|string',

@@ -75,8 +75,8 @@
           <i class="fa fa-file-text-o"></i> <span>Berita Acara</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_qr') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.qr') }}">
+      <li class="{{ request()->is('dashboard_teknisi/qr') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.qr.index') }}">
           <i class="fa fa-qrcode"></i><span>QR Code</span>
         </a>
       </li>

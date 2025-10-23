@@ -143,8 +143,7 @@ Route::name('teknisi.')->prefix('dashboard_teknisi')->middleware(['auth'])->grou
     //Berita Acara end//
 
     //Qr Generate //
-        Route::get('link_qr', [QrController::class, 'index'])->name('data.qr');
-        Route::post('link_qr_generate', [QrController::class, 'generate'])->name('generate.qr');
+        Route::resource('qr', QrController::class);
     //Qr Generate end//
 });
 
