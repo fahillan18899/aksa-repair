@@ -57,8 +57,8 @@
       <li class="{{ request()->is('dashboard_akuntan/link_dashboard_akuntan') ? 'active' : '' }}">
         <a href="{{ route('akuntan.dashboard') }}"><i class="fa fa ti-home"></i> Dashboard</a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_invoice_permohonan') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.invoicePermohonan') }}">
+      <li class="{{ request()->is('dashboard_akuntan/invoice') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.invoice.index') }}">
           <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Invoice Permohonan</span>
         </a>
       </li>

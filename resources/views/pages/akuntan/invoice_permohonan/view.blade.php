@@ -40,7 +40,7 @@
             <div class="row">
               <!-- <img src="{{ url('assets/images/kop_aksa.png') }}" alt="kop" style="width: 250px; margin-left: 700px;"> -->
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('akuntan.post.invoicePermohonan') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('akuntan.invoice.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="form-group row">
                     <input name="user" type="hidden" value="{{ $item->user }}">
@@ -177,7 +177,7 @@
                         <tr>
                           <td><input name="jumlah" class="form-control" type="text" value="{{ $item->jumlah }}" readonly></td>
                           <td><input name="harga"  class="form-control" type="text" value="{{ $item->harga }}" readonly></td>
-                          <td><input name="diskon" class="form-control" type="text" value="{{ $item->diskon }}" readonly></td>
+                          <td><input name="diskon" class="form-control" type="text" value="{{ $item->diskon }}%" readonly></td>
                           <td><input name="harga_diskon" class="form-control" type="text" value="{{ $item->harga_diskon }}" readonly></td>
                         </tr>
                       </tbody>

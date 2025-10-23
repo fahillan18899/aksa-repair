@@ -19,7 +19,7 @@ class InvoicePermohonanController extends Controller
         compact('item', 'sph'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'yth'               => 'nullable',
@@ -97,10 +97,56 @@ class InvoicePermohonanController extends Controller
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
         Invoice::create($validate);
-        return redirect()->route('akuntan.data.invoicePermohonan')
-        ->with('success', 'Invoice berhasil di simpan');
+        return redirect()->route('akuntan.invoice.index')
+        ->with('success', 'Invoice berhasil di buat');
     }
 
+    public function show($id)
+    {
+        $item = Invoice::findOrFail($id);
+        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;
+        $item->part = is_string($item->part) ? json_decode($item->part, true) ?? [] : $item->part;
+        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) ?? [] : $item->harga_part;
+        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) ?? [] : $item->jumlah_part;
+        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) ?? [] : $item->total_part;
+        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) ?? [] : $item->biaya_part;
+        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) ?? [] : $item->part_total;
+        $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) ?? [] : $item->nama_alat;
+        $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) ?? [] : $item->keterangan;
+        // dd($item->nama_alat, $item->keterangan);
+        return view('pages.akuntan.invoice_permohonan.print',
+        compact('item'));
+    }
+
+    public function edit($id)
+    {
+        $item = Invoice::findOrFail($id);
+        return view('pages.akuntan.invoice_permohonan.edit',
+        compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'yth'               => 'nullable',
+            'tgl_invoice'       => 'nullable',
+            'no_invoice'        => 'nullable',
+            'no_pesanan'        => 'nullable',
+            'alamat'            => 'nullable',
+        ]);
+
+        $item = Invoice::findOrFail($id);
+        $item->update($validate);
+        return redirect()->route('akuntan.invoice.index')
+        ->with('success', 'Invoice berhasil di ubah');
+    }
+
+    public function destroy($id)
+    {
+        $item = Invoice::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Invoice berhasil dihapus');
+    }
 
     public function view($id)
     {
@@ -128,53 +174,12 @@ class InvoicePermohonanController extends Controller
         compact('item', 'noUrut', 'bulanRomawi', 'tahun',));
     }
 
-    public function edit($id)
-    {
-        $item = Invoice::findOrFail($id);
-        return view('pages.akuntan.invoice_permohonan.edit',
-        compact('item'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $validate = $request->validate([
-            'yth'               => 'nullable',
-            'tgl_invoice'       => 'nullable',
-            'no_invoice'        => 'nullable',
-            'no_pesanan'        => 'nullable',
-            'alamat'            => 'nullable',
-        ]);
-
-        $item = Invoice::findOrFail($id);
-        $item->update($validate);
-        return redirect()->route('akuntan.data.invoicePermohonan')
-        ->with('success', 'Invoice berhasil di ubah');
-    }
-
-    public function print($id)
-    {
-        $item = Invoice::findOrFail($id);
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;
-        $item->part = is_string($item->part) ? json_decode($item->part, true) ?? [] : $item->part;
-        $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) ?? [] : $item->harga_part;
-        $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) ?? [] : $item->jumlah_part;
-        $item->total_part = is_string($item->total_part) ? json_decode($item->total_part, true) ?? [] : $item->total_part;
-        $item->biaya_part = is_string($item->biaya_part) ? json_decode($item->biaya_part, true) ?? [] : $item->biaya_part;
-        $item->part_total = is_string($item->part_total) ? json_decode($item->part_total, true) ?? [] : $item->part_total;
-        $item->nama_alat = is_string($item->nama_alat) ? json_decode($item->nama_alat, true) ?? [] : $item->nama_alat;
-        $item->keterangan = is_string($item->keterangan) ? json_decode($item->keterangan, true) ?? [] : $item->keterangan;
-        // dd($item->nama_alat, $item->keterangan);
-        return view('pages.akuntan.invoice_permohonan.print',
-        compact('item'));
-    }
-
     public function status($id)
     {
         $item = Invoice::findOrFail($id);
         $item->status = $item->status === '0' ? '1' : '0';
         $item->save();
         return back();
-
     }
 
     public function fetch($id)
@@ -204,7 +209,6 @@ class InvoicePermohonanController extends Controller
         //Simpan ke storage/app/public/sph
         $path = $file->storeAs('public/documents/',$fileName);
 
-
         //Simpan nama di db
         InvoiceOld::create([
             'nama' => $fileName,
@@ -222,14 +226,6 @@ class InvoicePermohonanController extends Controller
         }
         //Hapus data di db
         $item->delete();
-
         return back()->with('success', 'Dokumen Berhasil dihapus');
-    }
-    public function delete($id)
-    {
-        $item = Invoice::findOrFail($id);
-        $item->delete();
-        return redirect()->route('akuntan.data.invoicePermohonan')
-        ->with('success', 'Invoice berhasil dihapus');
     }
 }

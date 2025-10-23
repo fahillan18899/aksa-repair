@@ -157,17 +157,12 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     //Fetch akuntan end//
 
     //invoice permohonan //
+        Route::resource('invoice', InvoicePermohonanController::class);
         Route::get('link_invoice_permohonan/data_sph/{id}', [InvoicePermohonanController::class, 'fetch'])->name('fetch.invoicePermohonan')->where('id', '.*');
-        Route::get('link_invoice_permohonan', [InvoicePermohonanController::class, 'index'])->name('data.invoicePermohonan');
         Route::get('link_invoice_permohonan/invoice_old', [InvoicePermohonanController::class, 'invoiceOld'])->name('invoiceOld.invoicePermohonan');
         Route::get('link_invoice_permohonan/view/{id}', [InvoicePermohonanController::class, 'view'])->name('view.invoicePermohonan');
-        Route::post('link_invoice_permohonan', [InvoicePermohonanController::class, 'post'])->name('post.invoicePermohonan');
         Route::post('link_invoice_permohonan/upload', [InvoicePermohonanController::class, 'upload'])->name('upload.invoicePermohonan');
-        Route::get('link_invoice_permohonan/edit/{id}', [InvoicePermohonanController::class, 'edit'])->name('edit.invoicePermohonan');
-        Route::put('link_invoice_permohonan/update/{id}', [InvoicePermohonanController::class, 'update'])->name('update.invoicePermohonan');
         Route::put('link_invoice_permohonan/status/{id}', [InvoicePermohonanController::class, 'status'])->name('status.invoicePermohonan');
-        Route::get('link_invoice_permohonan/print{id}', [InvoicePermohonanController::class, 'print'])->name('print.invoicePermohonan');
-        Route::delete('link_invoice_permohonan/{id}', [InvoicePermohonanController::class, 'delete'])->name('delete.invoicePermohonan');
         Route::delete('link_invoice_permohonan/invoice_old/{id}', [InvoicePermohonanController::class, 'deleteDoc'])->name('delete.invoice_old');
     //invoice permohonan end//
 
