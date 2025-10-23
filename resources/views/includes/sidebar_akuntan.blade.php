@@ -62,8 +62,8 @@
           <i class="fa fa-file-text-o" aria-hidden="true"></i><span>Invoice Permohonan</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_akuntan/link_upload_fakture') ? 'active' : '' }}">
-        <a href="{{ route('akuntan.data.uploadFakture') }}">
+      <li class="{{ request()->is('dashboard_akuntan/fakture') ? 'active' : '' }}">
+        <a href="{{ route('akuntan.fakture.index') }}">
           <i class="fa fa-upload"></i> <span>Upload Faktur Pajak</span>
         </a>
       </li>

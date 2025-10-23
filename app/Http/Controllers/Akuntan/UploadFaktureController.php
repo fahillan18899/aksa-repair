@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Akuntan;
-use App\Http\Controllers\Controller;
 use App\Models\Vakture;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class UploadFaktureController extends Controller
@@ -15,7 +15,7 @@ class UploadFaktureController extends Controller
         compact('item'));
     }
 
-    public function upload(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'document' => 'required',
@@ -34,7 +34,7 @@ class UploadFaktureController extends Controller
         return back()->with('success', 'Document ('. $fileName .') berhasil di upload');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $item = Vakture::findOrFail($id);
         //Hapus File di storage
@@ -43,7 +43,6 @@ class UploadFaktureController extends Controller
         }
         //Hapus data di db
         $item->delete();
-
         return back()->with('success', 'Dokumen Berhasil dihapus');
     }
 }

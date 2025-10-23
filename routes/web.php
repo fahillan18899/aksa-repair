@@ -27,8 +27,6 @@ use App\Http\Controllers\Teknisi\QrController;
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
-use Matrix\Operators\Operator;
-use Symfony\Component\Console\Input\Input;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -167,9 +165,7 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
     //invoice permohonan end//
 
     //Fakture //
-        Route::get('link_upload_fakture', [UploadFaktureController::class, 'index'])->name('data.uploadFakture');
-        Route::post('link_upload_fakture/upload', [UploadFaktureController::class, 'upload'])->name('upload.uploadFakture');
-        Route::delete('link_upload_fakture/{id}', [UploadFaktureController::class, 'delete'])->name('delete.uploadFakture');
+        Route::resource('fakture', UploadFaktureController::class);
     //Fakture end//
 });
 

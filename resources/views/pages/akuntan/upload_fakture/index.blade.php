@@ -34,7 +34,7 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print">
-            <form action="{{ route('akuntan.upload.uploadFakture') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('akuntan.fakture.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
             <div class="row">
               <div class="col-sm-3">
@@ -73,7 +73,7 @@
                       <td><a href="{{ URL::asset('storage/'.$items->path) }}" target="_blank">Download</a></td>
                       <td>{{ $items->created_at->format('d-m-Y') }}</td>
                       <td>
-                        <form action="{{ route('akuntan.delete.uploadFakture', $items->id) }}" method="POST">
+                        <form action="{{ route('akuntan.fakture.destroy', $items->id) }}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placemnet="top" title="Hapus">
