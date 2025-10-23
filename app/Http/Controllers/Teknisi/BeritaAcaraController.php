@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Teknisi;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\BeritaAcara;
 use App\Models\BaOld;
+use App\Models\BeritaAcara;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class BeritaAcaraController extends Controller
 {
     public function index()
     {
-        $items = BeritaAcara::all();
+        $items = BeritaAcara::latest()->get();
         // perulangan array
         foreach ($items as $item) {
         if (is_string($item->rs)) {
@@ -23,54 +23,54 @@ class BeritaAcaraController extends Controller
         compact('items'));
     }
 
-public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
-            'ba'              => 'array',
-            'ba.*.1'          => 'nullable',
-            'ba.*.2'          => 'nullable',
-            'ba.*.3'          => 'nullable',
-            'ba.*.4'          => 'nullable',
-            'rs'              => 'array',
-            'rs.*.1'          => 'nullable',
-            'rs.*.2'          => 'nullable',
-            'rs.*.3'          => 'nullable',
-            'rs.*.4'          => 'nullable',
-            'rs.*.5'          => 'nullable',
-            'kontak'          => 'array',
-            'kontak.*.1'      => 'nullable',
-            'kontak.*.2'      => 'nullable',
-            'kontak.*.3'      => 'nullable',
-            'kontak.*.4'      => 'nullable',
-            'kontak.*.5'      => 'nullable',
-            'alat'            => 'array',
-            'alat.*.1'        => 'nullable',
-            'alat.*.2'        => 'nullable',
-            'alat.*.3'        => 'nullable',
-            'alat.*.4'        => 'nullable',
-            'alat.*.5'        => 'nullable',
-            'alat.*.6'        => 'nullable',
-            'alat.*.7'        => 'nullable',
-            'jenis'           => 'array',
-            'jenis.*.1'       => 'nullable',
-            'jenis.*.2'       => 'nullable',
-            'jenis.*.3'       => 'nullable',
-            'jenis.*.4'       => 'nullable',
-            'jenis.*.5'       => 'nullable',
-            'jenis.*.6'       => 'nullable',
-            'jenis.*.7'       => 'nullable',
-            'jenis.*.8'       => 'nullable',
-            'jenis.*.9'       => 'nullable',
-            'skc'             => 'array',
-            'skc.*.1'         => 'nullable',
-            'skc.*.2'         => 'nullable',
-            'keluhan'         => 'nullable',
-            'aksi'            => 'nullable',
-            'hasil'           => 'nullable',
-            'pj'              => 'nullable',
-            'teknisi'         => 'nullable',
-            'tanggal_1'       => 'nullable',
-            'tanggal_2'       => 'nullable',
+            'ba'         => 'array',
+            'ba.*.1'     => 'nullable',
+            'ba.*.2'     => 'nullable',
+            'ba.*.3'     => 'nullable',
+            'ba.*.4'     => 'nullable',
+            'rs'         => 'array',
+            'rs.*.1'     => 'nullable',
+            'rs.*.2'     => 'nullable',
+            'rs.*.3'     => 'nullable',
+            'rs.*.4'     => 'nullable',
+            'rs.*.5'     => 'nullable',
+            'kontak'     => 'array',
+            'kontak.*.1' => 'nullable',
+            'kontak.*.2' => 'nullable',
+            'kontak.*.3' => 'nullable',
+            'kontak.*.4' => 'nullable',
+            'kontak.*.5' => 'nullable',
+            'alat'       => 'array',
+            'alat.*.1'   => 'nullable',
+            'alat.*.2'   => 'nullable',
+            'alat.*.3'   => 'nullable',
+            'alat.*.4'   => 'nullable',
+            'alat.*.5'   => 'nullable',
+            'alat.*.6'   => 'nullable',
+            'alat.*.7'   => 'nullable',
+            'jenis'      => 'array',
+            'jenis.*.1'  => 'nullable',
+            'jenis.*.2'  => 'nullable',
+            'jenis.*.3'  => 'nullable',
+            'jenis.*.4'  => 'nullable',
+            'jenis.*.5'  => 'nullable',
+            'jenis.*.6'  => 'nullable',
+            'jenis.*.7'  => 'nullable',
+            'jenis.*.8'  => 'nullable',
+            'jenis.*.9'  => 'nullable',
+            'skc'        => 'array',
+            'skc.*.1'    => 'nullable',
+            'skc.*.2'    => 'nullable',
+            'keluhan'    => 'nullable',
+            'aksi'       => 'nullable',
+            'hasil'      => 'nullable',
+            'pj'         => 'nullable',
+            'teknisi'    => 'nullable',
+            'tanggal_1'  => 'nullable',
+            'tanggal_2'  => 'nullable',
         ]);
 
         $validate['ba'] = json_encode($request->ba);
@@ -80,11 +80,10 @@ public function post(Request $request)
         $validate['jenis'] = json_encode($request->jenis);
         $validate['skc'] = json_encode($request->skc);
         BeritaAcara::create($validate);
-        return redirect()->route('teknisi.data.ba')
-        ->with('success', 'Data berhasil di simpan');
+        return back()->with('success', 'Data berhasil di simpan');
     }
 
-    public function view($id)
+    public function show($id)
     {
         $item = BeritaAcara::findOrFail($id);
 
@@ -117,51 +116,51 @@ public function post(Request $request)
     public function update( Request $request, $id)
     {
         $validate = $request->validate([
-            'ba'              => 'array',
-            'ba.*.1'          => 'nullable',
-            'ba.*.2'          => 'nullable',
-            'ba.*.3'          => 'nullable',
-            'ba.*.4'          => 'nullable',
-            'rs'              => 'array',
-            'rs.*.1'          => 'nullable',
-            'rs.*.2'          => 'nullable',
-            'rs.*.3'          => 'nullable',
-            'rs.*.4'          => 'nullable',
-            'rs.*.5'          => 'nullable',
-            'kontak'          => 'array',
-            'kontak.*.1'      => 'nullable',
-            'kontak.*.2'      => 'nullable',
-            'kontak.*.3'      => 'nullable',
-            'kontak.*.4'      => 'nullable',
-            'kontak.*.5'      => 'nullable',
-            'alat'            => 'array',
-            'alat.*.1'        => 'nullable',
-            'alat.*.2'        => 'nullable',
-            'alat.*.3'        => 'nullable',
-            'alat.*.4'        => 'nullable',
-            'alat.*.5'        => 'nullable',
-            'alat.*.6'        => 'nullable',
-            'alat.*.7'        => 'nullable',
-            'jenis'           => 'array',
-            'jenis.*.1'       => 'nullable',
-            'jenis.*.2'       => 'nullable',
-            'jenis.*.3'       => 'nullable',
-            'jenis.*.4'       => 'nullable',
-            'jenis.*.5'       => 'nullable',
-            'jenis.*.6'       => 'nullable',
-            'jenis.*.7'       => 'nullable',
-            'jenis.*.8'       => 'nullable',
-            'jenis.*.9'       => 'nullable',
-            'skc'             => 'array',
-            'skc.*.1'         => 'nullable',
-            'skc.*.2'         => 'nullable',
-            'keluhan'         => 'nullable',
-            'aksi'            => 'nullable',
-            'hasil'           => 'nullable',
-            'pj'              => 'nullable',
-            'teknisi'         => 'nullable',
-            'tanggal_1'       => 'nullable',
-            'tanggal_2'       => 'nullable',
+            'ba'         => 'array',
+            'ba.*.1'     => 'nullable',
+            'ba.*.2'     => 'nullable',
+            'ba.*.3'     => 'nullable',
+            'ba.*.4'     => 'nullable',
+            'rs'         => 'array',
+            'rs.*.1'     => 'nullable',
+            'rs.*.2'     => 'nullable',
+            'rs.*.3'     => 'nullable',
+            'rs.*.4'     => 'nullable',
+            'rs.*.5'     => 'nullable',
+            'kontak'     => 'array',
+            'kontak.*.1' => 'nullable',
+            'kontak.*.2' => 'nullable',
+            'kontak.*.3' => 'nullable',
+            'kontak.*.4' => 'nullable',
+            'kontak.*.5' => 'nullable',
+            'alat'       => 'array',
+            'alat.*.1'   => 'nullable',
+            'alat.*.2'   => 'nullable',
+            'alat.*.3'   => 'nullable',
+            'alat.*.4'   => 'nullable',
+            'alat.*.5'   => 'nullable',
+            'alat.*.6'   => 'nullable',
+            'alat.*.7'   => 'nullable',
+            'jenis'      => 'array',
+            'jenis.*.1'  => 'nullable',
+            'jenis.*.2'  => 'nullable',
+            'jenis.*.3'  => 'nullable',
+            'jenis.*.4'  => 'nullable',
+            'jenis.*.5'  => 'nullable',
+            'jenis.*.6'  => 'nullable',
+            'jenis.*.7'  => 'nullable',
+            'jenis.*.8'  => 'nullable',
+            'jenis.*.9'  => 'nullable',
+            'skc'        => 'array',
+            'skc.*.1'    => 'nullable',
+            'skc.*.2'    => 'nullable',
+            'keluhan'    => 'nullable',
+            'aksi'       => 'nullable',
+            'hasil'      => 'nullable',
+            'pj'         => 'nullable',
+            'teknisi'    => 'nullable',
+            'tanggal_1'  => 'nullable',
+            'tanggal_2'  => 'nullable',
         ]);
 
         $validate['ba'] = json_encode($request->ba);
@@ -172,8 +171,16 @@ public function post(Request $request)
         $validate['skc'] = json_encode($request->skc);
         $item = BeritaAcara::findOrFail($id);
         $item->update($validate);
-        return redirect()->route('teknisi.data.ba')
+        return redirect()->route('teknisi.ba.index')
         ->with('success', 'Data berhasil di ubah');
+    }
+
+
+    public function destroy($id)
+    {
+        $item = BeritaAcara::findOrFail($id);
+        $item->delete();
+        return back()->with('success', 'Berita acara berhasil di hapus');
     }
 
     public function baOld()
@@ -200,13 +207,6 @@ public function post(Request $request)
             'path' => 'documents/'.$fileName,
         ]);
         return back()->with('success', 'Berita Acara ('. $fileName . ') berhasil di upload');
-    }
-
-    public function delete($id)
-    {
-        $item = BeritaAcara::findOrFail($id);
-        $item->delete();
-        return back()->with('success', 'Berita acara berhasil di hapus');
     }
 
     public function deleteDoc($id)

@@ -56,7 +56,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-sm-12">
-                <form action="{{ route('teknisi.update.ba', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.ba.update', $item->id) }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   @method('PUT')
                   <!-- Berita Acara -->

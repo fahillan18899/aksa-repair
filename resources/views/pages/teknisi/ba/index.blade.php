@@ -56,7 +56,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-sm-12">
-                <form action="{{ route('teknisi.post.ba') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('teknisi.ba.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <!-- Berita Acara -->
                   <table class="table-striped" width="100%">
@@ -302,6 +302,7 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <tr>
+                        <th>No</th>
                         <th>Tanggal</th>
                         <th>Instansi</th>
                         <th>Alamat</th>
@@ -312,18 +313,19 @@
                     <tbody>
                       @forelse($items as $item)
                       <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->created_at->timezone('Asia/Jakarta')->format('d-m-Y / H:i') }}</td>
                         <td>{{ $item->rs[1] }}</td>
                         <td>{{ $item->rs[2] }}</td>
                         <td>{{ $item->rs[4] }}</td>
                         <td>
-                          <a href="{{ route('teknisi.view.ba', $item->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
+                          <a href="{{ route('teknisi.ba.show', $item->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
-                          <a href="{{ route('teknisi.edit.ba', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('teknisi.ba.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                          <form action="{{ route('teknisi.delete.ba', $item->id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('teknisi.ba.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

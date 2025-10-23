@@ -70,8 +70,8 @@
           <i class="fa fa-info-circle"></i> <span>Informasi</span>
         </a>
       </li>
-      <li class="{{ request()->is('dashboard_teknisi/link_ba') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.data.ba') }}">
+      <li class="{{ request()->is('dashboard_teknisi/ba') ? 'active' : '' }}">
+        <a href="{{ route('teknisi.ba.index') }}">
           <i class="fa fa-file-text-o"></i> <span>Berita Acara</span>
         </a>
       </li>
