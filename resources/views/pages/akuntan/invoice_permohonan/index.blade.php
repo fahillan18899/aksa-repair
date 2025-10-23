@@ -88,9 +88,21 @@
                           </button>
                         </td>
                         <td>
-                          <a href="{{ route('akuntan.view.invoicePermohonan', $sphs->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Buat Invoice">
-                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          </a>
+                          @if($sphs->status == 1)
+                            <!-- Tombol disabled jika status = 1 -->
+                            <button class="btn btn-secondary btn-xs" disabled title="Sudah Terinput Invoice">
+                              <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                            </button>
+                          @else
+                            <!-- Tombol aktif jika status = 0 -->
+                            <a href="{{ route('akuntan.view.invoicePermohonan', $sphs->id) }}"
+                              class="btn btn-primary btn-xs"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Buat Invoice">
+                              <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                            </a>
+                          @endif
                         </td>
                       </tr>
                       @empty
