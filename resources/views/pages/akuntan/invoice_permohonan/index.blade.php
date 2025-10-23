@@ -71,6 +71,7 @@
                         <th>No Surat</th>
                         <th>Instansi</th>
                         <th>Lokasi, Tanggal</th>
+                        <th>Status</th>
                         <th>Tombol</th>
                       </tr>
                     </thead>
@@ -82,8 +83,13 @@
                         <td>{{ $sphs->yth }}</td>
                         <td>{{ $sphs->lokasi_tanggal }}</td>
                         <td>
-                          <a href="{{ route('akuntan.view.invoicePermohonan', $sphs->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          <button class="btn btn-sm btn-{{ $sphs->status == 0 ? 'danger' : 'success'}}" type="submit" disabled>
+                            {{ $sphs->status == 0 ? 'Belum terinput' : 'Terinput Invoice' }}
+                          </button>
+                        </td>
+                        <td>
+                          <a href="{{ route('akuntan.view.invoicePermohonan', $sphs->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Buat Invoice">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
                           </a>
                         </td>
                       </tr>

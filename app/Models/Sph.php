@@ -18,5 +18,5 @@ class Sph extends Model
                             'total_part', 'biaya_part', 'part_total', 
                             'nama_alat', 'keterangan', 'jumlah', 'harga', 
                             'diskon', 'harga_diskon', 'harga_tanpa_pajak', 
-                            'pajak', 'total', 'user', 'created_at', 'updated_at'];
+                            'pajak', 'total', 'user', 'status', 'created_at', 'updated_at'];
 }

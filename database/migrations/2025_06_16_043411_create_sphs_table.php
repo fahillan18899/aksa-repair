@@ -36,6 +36,7 @@ return new class extends Migration
             $table->text('pajak')->nullable();
             $table->text('total')->nullable();
             $table->text('user')->nullable();
+            $table->text('status')->define('0');
             $table->timestamps();
         });
     }

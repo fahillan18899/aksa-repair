@@ -96,6 +96,7 @@ class InvoicePermohonanController extends Controller
         $validate['part_total'] = json_encode($request->part_total);
         $validate['nama_alat'] = json_encode($request->nama_alat);
         $validate['keterangan'] = json_encode($request->keterangan);
+        Sph::where('no_surat', $request->no_pesanan)->update(['status' => 1]);
         Invoice::create($validate);
         return redirect()->route('akuntan.invoice.index')
         ->with('success', 'Invoice berhasil di buat');

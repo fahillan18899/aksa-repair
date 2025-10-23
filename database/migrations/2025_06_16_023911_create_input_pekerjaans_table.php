@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('kerusakan')->nullable();
             $table->text('foto')->nullable();
             $table->text('user')->nullable();
+            $table->text('status')->define('0');
             $table->timestamps();
         });
     }
