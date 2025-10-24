@@ -102,6 +102,14 @@
       </li>
       <!---->
       <!---->
+      <li class="{{ request()->is('dashboard/ppm/rekap') ? 'active' : '' }}">
+        <a href="{{ route('rekap.index') }}">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span>Rekap Data Report</span>
+        </a>
+      </li>
+      <!---->
+      <!---->
       <li class="{{ request()->is('dashboard/ppm/link_operator') ? 'active' : '' }}">
         <a href="{{ route('operator.data') }}">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>

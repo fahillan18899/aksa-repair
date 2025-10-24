@@ -9,6 +9,7 @@ use App\Http\Controllers\DataAlatController;
 use App\Http\Controllers\Admin\MonitoringMarketingController;
 use App\Http\Controllers\Admin\MonitoringTeknisiController;
 use App\Http\Controllers\Admin\MonitoringAkuntanController;
+use App\Http\Controllers\Admin\RekapController;
 use App\Http\Controllers\Admin\OperatorController;
 // Marketing
 use App\Http\Controllers\Marketing\DashboardMarketingController;
@@ -69,6 +70,9 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::get('link_invoice_akun/view/{id}', [MonitoringAkuntanController::class, 'viewInv'])->name('invoiceAkuntan.viewInv');
         Route::get('link_invoice_akun/invoice_akun_doc', [MonitoringAkuntanController::class, 'invoDoc'])->name('invo.doc');
         Route::get('link_vakture', [MonitoringAkuntanController::class, 'getVakture'])->name('vakture.data');
+
+        //Report Rekap//
+        Route::resource('rekap', RekapController::class);
 
         //Operator//
         Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
