@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class OperatorController extends Controller
 {
@@ -15,7 +15,7 @@ class OperatorController extends Controller
         compact('item'));
     }
 
-    public function post(Request $request)
+    public function store(Request $request)
     {
         $validate = $request->validate([
             'username'  => 'nullable',
@@ -52,12 +52,11 @@ class OperatorController extends Controller
         $validate['password'] = bcrypt($request->input('password'));
         $item = User::findOrFail($user_id);
         $item->update($validate);
-        return redirect()->route('operator.data')
+        return redirect()->route('operator.index')
         ->with('success', 'Data Berhasil di Edit');
-
     }
 
-    public function delete($user_id)
+    public function destroy($user_id)
     {
         $item = User::findOrFail($user_id);
         $item->delete();

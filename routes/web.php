@@ -75,11 +75,7 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
         Route::resource('rekap', RekapController::class);
 
         //Operator//
-        Route::get('link_operator', [OperatorController::class, 'index'])->name('operator.data');
-        Route::post('link_operator', [OperatorController::class, 'post'])->name('operator.post');
-        Route::get('link_operator/edit/{user_id}', [OperatorController::class, 'edit'])->name('operator.edit');
-        Route::put('link_operator/update/{user_id}', [OperatorController::class, 'update'])->name('operator.update');
-        Route::delete('link_operator/{user_id}', [OperatorController::class, 'delete'])->name('operator.delete');
+        Route::resource('operator', OperatorController::class);
     });
 });
 

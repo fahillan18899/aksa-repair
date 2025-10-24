@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Repair')
+@section('title', 'Edit Operator')
 <style>
   input[readonly] {
     cursor: not-allowed;

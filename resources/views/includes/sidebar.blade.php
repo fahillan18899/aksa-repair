@@ -110,8 +110,8 @@
       </li>
       <!---->
       <!---->
-      <li class="{{ request()->is('dashboard/ppm/link_operator') ? 'active' : '' }}">
-        <a href="{{ route('operator.data') }}">
+      <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}">
+        <a href="{{ route('operator.index') }}">
           <i class="fa fa-user-circle-o" aria-hidden="true"></i>
           <span>Operator</span>
         </a>

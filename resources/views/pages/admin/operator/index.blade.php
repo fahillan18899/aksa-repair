@@ -39,7 +39,7 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-9 col-sm-12">
-                <form action="{{ route('operator.post') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                <form action="{{ route('operator.store') }}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <div class="form-group row">
                     <label for="username" class="col-xs-3 col-form-label">Username<i class="text-danger">*</i></label>
@@ -126,7 +126,7 @@
                         <td>{{ $items->rs_divisi }}</td>
                         <td>
                           <a href="{{ route('operator.edit', $items->user_id) }}" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                          <form action="{{ route('operator.delete', $items->user_id) }}" method="POST" class="d-inline">
+                          <form action="{{ route('operator.destroy', $items->user_id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Hapus"><i class="fa fa-trash" aria-hidden="true"></i></button>
