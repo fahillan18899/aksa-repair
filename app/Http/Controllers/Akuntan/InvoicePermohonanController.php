@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Akuntan;
 
+use Carbon\Carbon;
 use App\Models\Sph;
+use App\Models\Rekap;
 use App\Models\Invoice;
 use App\Models\InvoiceOld;
 use Illuminate\Http\Request;
@@ -180,7 +182,34 @@ class InvoicePermohonanController extends Controller
         $item = Invoice::findOrFail($id);
         $item->status = $item->status === '0' ? '1' : '0';
         $item->save();
-        return back();
+
+        if($item->status == '0'){
+        //cek data agar tidak double
+        $exists = Rekap::where('invoice', $item->no_invoice)->exists();
+        if(!$exists) {
+            $akom = json_decode($item->akom, true);
+            $part = json_decode($item->part_total, true);
+            Rekap::create([
+                'tanggal' => Carbon::now()->toDateString(),
+                'marketing' => $item->user,
+                'instansi' => $item->yth,
+                'akomodasi' => $akom['13'] ?? '-',
+                'sperpart' => $part[1] ?? '-',
+                'sph' => $item->no_pesanan,
+                'invoice' => $item->no_invoice,
+                'nominal' => $item->total,
+                'ppn' => $item->pajak,
+                'pph3' => 0,
+                'admin' => '-',
+                'status' => 'Lunas',
+                'keuntungan' => '-',
+                'ket' => '-',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        }
+        return back()->with('success', 'Status invoice berhasil diperbarui!');
     }
 
     public function fetch($id)

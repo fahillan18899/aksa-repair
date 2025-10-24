@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-@section('title', 'Input Data')
+@section('title', 'Report Rekap Data')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -55,10 +55,12 @@
                       <th>Invoice</th>
                       <th>Nominal</th>
                       <th>PPN</th>
+                      <th>Status Pembayaran</th>
                       <th>PPH3</th>
                       <th>Admin</th>
                       <th>Keuntungan</th>
                       <th>Keterangan</th>
+                      <th>Tombol</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -74,16 +76,16 @@
                       <td>{{ $item->invoice }}</td>
                       <td>{{ $item->nominal }}</td>
                       <td>{{ $item->ppn }}</td>
+                      <td>{{ $item->status }}</td>
                       <td>{{ $item->pph3 }}</td>
                       <td>{{ $item->admin }}</td>
-                      <td>{{ $item->status }}</td>
                       <td>{{ $item->keuntungan }}</td>
                       <td>{{ $item->ket }}</td>
                       <td>
-                        <a href="#" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                        <a href="{{ route('rekap.edit', $item->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
-                          <form action="#" method="POST" class="d-inline">
+                          <form action="{{ route('rekap.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
