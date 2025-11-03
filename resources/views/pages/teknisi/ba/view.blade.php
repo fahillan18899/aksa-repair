@@ -203,16 +203,18 @@
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">SKC</b></td>
                         <td class="text-center" width="20%"><b style="color: blue;">Keluhan</b></td>
                         <td class="text-center" width="20%"><b style="color: blue;">Tindakan</b></td>
-                        <td class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->skc[1] ?? '-' }}</td>
                         <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->keluhan ?? '-' }}</pre></td>
                         <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->aksi ?? '-' }}</pre></td>
-                        <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
                   </table><br>
