@@ -17,42 +17,6 @@
   .panel {
     border: 1px solid black;
   }
-
-  #ttd_canvas1 {
-    border: 2px dotted rgb(21, 20, 20);
-    border-radius: 15px;
-    cursor: crosshair;
-  }
-
-  #ttd_canvas2 {
-    border: 2px dotted rgb(21, 20, 20);
-    border-radius: 15px;
-    cursor: crosshair;
-  }
-
-  #ttd_canvas3 {
-    border: 2px dotted rgb(21, 20, 20);
-    border-radius: 15px;
-    cursor: crosshair;
-  }
-
-  .modal-dialog {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
-  }
-
-  .modal-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-body {
-    flex: 1;
-    overflow-y: auto;
-  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -86,13 +50,17 @@
         <div class="panel panel-default thumbnail">
 
           <div class="panel-heading no-print" id="form1">
-            <h1>BERITA ACARA BEKERJAAN</h1>
+            <h1>SURAT BERITA ACARA</h1>
           </div>
-
           <div class="panel-body panel-form" id="print_me">
+            <table>
+              <tr>
+                <td style="width: 70%"><h1>SURAT BERITA ACARA</h1></td>
+                <td><img src="{{ url('assets/images/kop_ba.png') }}" alt="kop" class="invoice-bg" style="width: 100%"></td>
+              </tr>
+            </table>
             <div class="row">
               <div class="col-sm-12">
-                <!-- <img src="{{ url('assets/images/ba_aksa.png') }}" alt="kop" style="width: 200px;"><br> -->
                 <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                   @csrf
                   <!-- Berita Acara -->
@@ -203,16 +171,18 @@
                   <table class="table-striped" width="100%">
                     <tbody>
                       <tr>
-                        <td class="text-center" width="20%"><b style="color: blue;">SKC</b></td>
-                        <td class="text-center" width="20%"><b style="color: blue;">Keluhan</b></td>
-                        <td class="text-center" width="20%"><b style="color: blue;">Tindakan</b></td>
-                        <td class="text-center" width="20%"><b style="color: blue;">Hasil</b></td>
+                        <td class="text-center"><b style="color: blue;">Keluhan</b></td>
+                        <td class="text-center"><b style="color: blue;">Tindakan</b></td>
                       </tr>
                       <tr>
-                        <td class="text-center">{{ $item->skc[1] ?? '-' }}</td>
                         <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->keluhan ?? '-' }}</pre></td>
                         <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->aksi ?? '-' }}</pre></td>
-                        <td><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="text-center"><b style="color: blue;">Hasil</b></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><pre style="text-align: left; background-color: white; color: black; border: none; font-family: Arial, sans-serif;">{{ $item->hasil ?? '-' }}</pre></td>
                       </tr>
                     </tbody>
                   </table><br>
@@ -220,7 +190,7 @@
                     <tbody>
                       <tr>
                         <td class="text-center" colspan="2"></td>
-                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="20%" alt="Ttd"></td>
+                        <td class="text-center" colspan="2"><img src="{{ url('assets/images/aksa.png') }}" id="ttd_image2" width="10%" alt="Ttd"></td>
                       </tr>
                       <tr>
                         <td class="text-center"><b>PJ ALAT</b></td>
@@ -253,97 +223,6 @@
     </div>
   </div>
 </div> <!-- /.content -->
-<!-- Modal  -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header" style="color:white; background-color:#042a4a;">
-        <h5 class="modal-title" id="exampleModalLabel">View Data</h5>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <table>
-            <tr>
-              <!-- ttd 1-->
-              <!-- Content -->
-              <td>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <p>Tanda tangan Kepala Ruangan</p>
-                  </div>
-                </div>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <canvas id="ttd_canvas1" width="150" height="100">
-                      Get a better browser, bro.
-                    </canvas>
-                  </div>
-                </div>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <button class="btn btn-primary" id="ttd_submitBtn1">Submit Signature</button>
-                    <button class="btn btn-default" id="ttd_clearBtn1">Clear Signature</button>
-                  </div>
-                </div>
-                <br />
-                <div class="row hidden">
-                  <div class="col-md-12">
-                    <textarea id="ttd_dataUrl1" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-                  </div>
-                </div>
-                <br />
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                  </div>
-                </div>
-              </td>
-              <!-- ttd 1N-->
-              <!-- ttd 2-->
-              <!-- Content -->
-              <td>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <p>Tanda tangan Teknisi</p>
-                  </div>
-                </div>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <canvas id="ttd_canvas2" width="150" height="100">
-                      Get a better browser, bro.
-                    </canvas>
-                  </div>
-                </div>
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-                    <button class="btn btn-primary" id="ttd_submitBtn2">Submit Signature</button>
-                    <button class="btn btn-default" id="ttd_clearBtn2">Clear Signature</button>
-                  </div>
-                </div>
-                <br />
-                <div class="row hidden">
-                  <div class="col-md-12">
-                    <textarea id="ttd_dataUrl2" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-                  </div>
-                </div>
-                <br />
-                <div class="row" style="margin-left: 5px;">
-                  <div class="col-md-12">
-
-                  </div>
-                </div>
-              </td>
-              <!-- ttd 2N-->
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- modal -->
 @endsection
 @push('addon-script')
 <script>
@@ -370,7 +249,6 @@
             .panel { border: 1px solid black }
           </style>
           <body>
-          <h1>SURAT BERITA ACARA</h1>
               ${printContent}
           </body>
         </html>`;
