@@ -6,34 +6,6 @@
   input[readonly] {
     cursor: not-allowed;
   }
-
-  .modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Pastikan modal body penuh */
-  }
-
-  .modal-dialog2 {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    margin: 0;
-  }
-
-  .modal-content2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .modal-body2 {
-    flex: 1;
-    overflow-y: auto;
-    color: black;
-    background-color: white;
-  }
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -93,16 +65,6 @@
                           <a href="{{ route('marketing.view.sph', $items->id) }}" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="View">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                           </a>
-                          <!-- <a href="{{ route('marketing.edit.sph', $items->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a> -->
-                          <form action="{{ route('marketing.delete.sph', $items->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </button>
-                          </form>
                         </td>
                       </tr>
                       @empty
