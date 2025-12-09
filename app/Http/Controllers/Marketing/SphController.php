@@ -36,20 +36,6 @@ class SphController extends Controller
             'no_surat'          => 'nullable',
             'hal'               => 'nullable',
             'yth'               => 'nullable',
-            'akom'              => 'array',
-            'akom.*.1'          => 'nullable',
-            'akom.*.2'          => 'nullable',
-            'akom.*.3'          => 'nullable',
-            'akom.*.4'          => 'nullable',
-            'akom.*.5'          => 'nullable',
-            'akom.*.6'          => 'nullable',
-            'akom.*.7'          => 'nullable',
-            'akom.*.8'          => 'nullable',
-            'akom.*.9'          => 'nullable',
-            'akom.*.10'         => 'nullable',
-            'akom.*.11'         => 'nullable',
-            'akom.*.12'         => 'nullable',
-            'akom.*.13'         => 'nullable',
             'part'              => 'array',
             'part.*.1'          => 'nullable',
             'part.*.2'          => 'nullable',
@@ -95,7 +81,6 @@ class SphController extends Controller
             'user'              => 'nullable',
         ]);
 
-        $validate['akom'] = json_encode($request->akom);
         $validate['part'] = json_encode($request->part);
         $validate['harga_part'] = json_encode($request->harga_part);
         $validate['jumlah_part'] = json_encode($request->jumlah_part);
@@ -113,7 +98,6 @@ class SphController extends Controller
         $item = Sph::findOrFail($id);
         $part = Informasi::all();
         // Mengubah data menjadi array
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
         $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
         $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;
@@ -133,20 +117,6 @@ class SphController extends Controller
             'no_surat'          => 'nullable',
             'hal'               => 'nullable',
             'yth'               => 'nullable',
-            'akom'              => 'array',
-            'akom.*.1'          => 'nullable',
-            'akom.*.2'          => 'nullable',
-            'akom.*.3'          => 'nullable',
-            'akom.*.4'          => 'nullable',
-            'akom.*.5'          => 'nullable',
-            'akom.*.6'          => 'nullable',
-            'akom.*.7'          => 'nullable',
-            'akom.*.8'          => 'nullable',
-            'akom.*.9'          => 'nullable',
-            'akom.*.10'         => 'nullable',
-            'akom.*.11'         => 'nullable',
-            'akom.*.12'         => 'nullable',
-            'akom.*.13'         => 'nullable',
             'part'              => 'array',
             'part.*.1'          => 'nullable',
             'part.*.2'          => 'nullable',
@@ -200,7 +170,6 @@ class SphController extends Controller
             'no_surat' => $item->no_surat,
             'hal' => $item->hal,
             'yth' => $item->yth,
-            'akom' => $item->akom,
             'part' => $item->part,
             'harga_part' => $item->harga_part,
             'jumlah_part' => $item->jumlah_part,
@@ -219,7 +188,6 @@ class SphController extends Controller
             'user' => $user,
         ]);
 
-        $validate['akom'] = json_encode($request->akom);
         $validate['part'] = json_encode($request->part);
         $validate['harga_part'] = json_encode($request->harga_part);
         $validate['jumlah_part'] = json_encode($request->jumlah_part);
@@ -238,7 +206,6 @@ class SphController extends Controller
         $data = Sph::findOrFail($id);
 
         // Mengubah data menjadi array
-        $data->akom = is_string($data->akom) ? json_decode($data->akom, true) : $data->akom;
         $data->part = is_string($data->part) ? json_decode($data->part, true) : $data->part;
         $data->harga_part = is_string($data->harga_part) ? json_decode($data->harga_part, true) : $data->harga_part;
         $data->jumlah_part = is_string($data->jumlah_part) ? json_decode($data->jumlah_part, true) : $data->jumlah_part;
@@ -270,7 +237,6 @@ class SphController extends Controller
         $item = SphHistory::findOrFail($id);
 
         // Mengubah data menjadi array
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
         $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
         $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;

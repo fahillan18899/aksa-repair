@@ -3,41 +3,13 @@
 @section('content')
 @section('title', 'Permohonan Invoice')
 <style>
-  input[readonly] {
-    cursor: not-allowed;
-  }
-
-  .invoice-header {
-    position: relative;
-  }
-
-  .invoice-bg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 250px;
-    z-index: 0;
-  }
-
-  .invoice-header .form-group,
-  .invoice-header label,
-  .invoice-header input,
-  .invoice-header textarea {
-    position: relative;
-    z-index: 1;
-  }
-
-  .table-striped{
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .table-striped th,
-  .table-striped td {
-    border: 1px solid black;
-    padding: 8px;
-  }
-
+  input[readonly] { cursor: not-allowed; }
+  .invoice-header { position: relative; }
+  .invoice-bg { position: absolute; top: 0; right: 0; width: 250px; z-index: 0; }
+  .invoice-header .form-group, .invoice-header label, .invoice-header input, .invoice-header textarea {
+    position: relative; z-index: 1; }
+  .table-striped{ width: 100%; border-collapse: collapse }
+  .table-striped th, .table-striped td { border: 1px solid black; padding: 8px; }
   .panel { border: 1px solid black }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -84,7 +56,7 @@
                         <label class="form-label" for="">Tanggal Invoice :</label>
                         <p>{{ $item->tgl_invoice }}</p>
                       </div>
-                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg" style="margin-top: -40px">
+                      <img src="{{ url('assets/images/kop_invoice.png') }}" alt="kop" class="invoice-bg" style="margin-top: -80px">
                     </div>
                     <div class="form-group row">
                       <div class="col-xs-4">
@@ -105,53 +77,9 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-xs-4"></div>
-                      <div class="col-xs-4">
-                        
-                      </div>
+                      <div class="col-xs-4"></div>
                     </div>
-                  </div><br><br>
-                  <table class="table-striped">
-                    <thead>
-                      <tr>
-                        <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
-                        <th class="text-center"><b>HARGA_/_ITEM_/_KM</b></th>
-                        <th class="text-center"><b>JUMLAH_/_BELI</b></th>
-                        <th class="text-center"><b>SUB_TOTAL</b></th>
-                        <th class="text-center"><b>HARGA_YANG_DITAWARKAN</b></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td rowspan="4" class="text-center">AKOMODASI</td>
-                        <td class="text-center">Motor</td>
-                        <td class="text-center">{{ $item->akom[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[2] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[3] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[4] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Mobil</td>
-                        <td class="text-center">{{ $item->akom[5] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[6] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[7] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[8] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Uang Makan</td>
-                        <td colspan="3" class="text-center">{{ $item->akom[9] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[10] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Tol</td>
-                        <td colspan="3" class="text-center">{{ $item->akom[11] ?? '-' }}</td>
-                        <td class="text-center">{{ $item->akom[12] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="5" class="text-center">Total Biaya Akomodasi</td>
-                        <td colspan="" class="text-center">{{ $item->akom[13] ?? '-' }}</td>
-                      </tr>
-                    </tbody>
-                  </table><br>
+                  </div>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -173,7 +101,7 @@
                       </tr>
                       @endforeach
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -189,7 +117,7 @@
                         <td class="text-center">{{ $item->part_total[3] }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped" id="dinamic">
                     <thead>
                       <tr>
@@ -205,7 +133,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -223,7 +151,7 @@
                         <td align="center">{{ $item->harga_diskon }}</td>
                       </tr>
                     </tbody>
-                  </table><br><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -244,7 +172,7 @@
                         <td align="center">{{ $item->total }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -268,7 +196,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="50%" alt="Ttd"></td>
+                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="40%" alt="Ttd"></td>
                       </tr>
                       <tr>
                         <td class="text-center"><b><u>Najwa Alfia R</u></b></td>
@@ -302,40 +230,15 @@
     document.body.innerHTML =
       `
     <html>
-    <style>
-    .invoice-header {
-      position: relative;
-    }
-
-    .invoice-bg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 250px;
-      z-index: 0;
-    }
-
-    .invoice-header .form-group,
-    .invoice-header label,
-    .invoice-header input,
-    .invoice-header textarea {
-      position: relative;
-      z-index: 1;
-      }
-
-    .table-striped {
-      width: 100%;
-      border-collapse : collapse;
-    }
-
-    .table-striped th,
-    .table-striped td {
-    border: 1px solid black;
-    padding: 8px;
-    }
-
-    .panel { border: 1px solid black }
-    </style>
+      <style>
+      .invoice-header { position: relative; }
+      .invoice-bg { position: absolute; top: 0; right: 0; width: 250px; z-index: 0; }
+      .invoice-header .form-group, .invoice-header label, .invoice-header input, .invoice-header textarea {
+        position: relative; z-index: 1; }
+      .table-striped { width: 100%; border-collapse : collapse; }
+      .table-striped th, .table-striped td { border: 1px solid black; padding: 4px; }
+      .panel { border: 1px solid black }
+      </style>
       <head>
         <title>Print Invoice</title>
       </head>

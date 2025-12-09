@@ -13,8 +13,8 @@ class Sph extends Model
     public $incrementing = true;          // <- karena auto-increment
     protected $keyType = 'string';         // <- jika id_req berupa string
 
-    protected $fillable = [ 'lokasi_tanggal', 'no_surat', 'hal', 'yth',
-                            'akom', 'part', 'harga_part', 'jumlah_part', 
+    protected $fillable = [ 'lokasi_tanggal', 'no_surat', 'hal', 'yth', 
+                            'part', 'harga_part', 'jumlah_part', 
                             'total_part', 'biaya_part', 'part_total', 
                             'nama_alat', 'keterangan', 'jumlah', 'harga', 
                             'diskon', 'harga_diskon', 'harga_tanpa_pajak', 

@@ -3,31 +3,12 @@
 @section('content')
 @section('title', 'Pembuatan SPH')
 <style>
-  input[readonly] {
-    cursor: not-allowed;
-  }
-
-  p{
-    font-size: large;
-  }
-
-  label{
-    font-size: large;
-  }
-
-  .table-striped {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  .table-striped th,
-  .table-striped td {
-    border: 1px solid black;
-    padding: 8px;
-  }
-
+  input[readonly] { cursor: not-allowed; }
+  p{ font-size: large; }
+  label{ font-size: large; }
+  .table-striped { width: 100%; border-collapse: collapse; }
+  .table-striped th, .table-striped td { border: 1px solid black; padding: 8px; }
   .panel { border: 1px solid black; }
-
 </style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -90,49 +71,7 @@
                   <p>Dengan Hormat,</p><br>
                   <p>Berdasarkan hasil dari pemeriksaan kerusakan peralatan medik di bawah ini oleh teknisi dari PT. Aksa
                     Jaya Sentosa, maka dengan ini kami menyampaikan surat penawaran harga jasa perbaikan sebagai berikut :
-                  </p><br><br>
-                  <table class="table-striped">
-                    <thead>
-                      <tr>
-                        <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
-                        <th class="text-center"><b>HARGA / ITEM / KM</b></th>
-                        <th class="text-center"><b>JUMLAH / BELI</b></th>
-                        <th class="text-center"><b>SUB TOTAL</b></th>
-                        <th class="text-center"><b>HARGA YANG DITAWARKAN</b></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td rowspan="4" class="text-center">AKOMODASI</td>
-                        <td class="text-center">Motor</td>
-                        <td class="text-center">{{ $data->akom[1] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[2] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[3] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[4] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Mobil</td>
-                        <td class="text-center">{{ $data->akom[5] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[6] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[7] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[8] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Uang Makan</td>
-                        <td colspan="3" class="text-center">{{ $data->akom[9] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[10] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Tol</td>
-                        <td colspan="3" class="text-center">{{ $data->akom[11] ?? '-' }}</td>
-                        <td class="text-center">{{ $data->akom[12] ?? '-' }}</td>
-                      </tr>
-                      <tr>
-                        <td colspan="5" class="text-center">Total Biaya Akomodasi</td>
-                        <td colspan="" class="text-center">{{ $data->akom[13] ?? '-' }}</td>
-                      </tr>
-                    </tbody>
-                  </table><br>
+                  </p>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -154,7 +93,7 @@
                       </tr>
                       @endforeach
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -170,7 +109,7 @@
                         <td class="text-center">{{ $data->part_total[3] }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <th class="text-center">NAMA ALAT</th>
@@ -184,7 +123,7 @@
                           </tr>
                         @endforeach
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -202,7 +141,7 @@
                         <td align="center">{{ $data->harga_diskon }}</td>
                       </tr>
                     </tbody>
-                  </table><br>
+                  </table>
                   <table class="table-striped">
                     <thead>
                       <tr>
@@ -223,7 +162,7 @@
                         <td align="center">{{ $data->total }}</td>
                       </tr>
                     </tbody>
-                  </table><br><br><br><br><br><br>
+                  </table>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="panel panel-default thumbnail">
@@ -249,7 +188,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="60%" alt="Ttd"></td>
+                        <td align="center"><img src="{{ url('assets/images/signature.png') }}" width="40%" alt="Ttd"></td>
                       </tr>
                       <tr>
                         <td align="center"><b><u>Najwa Alfia R</u></b></td>
@@ -287,21 +226,10 @@
             <title>Print Table</title>
           </head>
           <style>
-            .table-striped {
-            width: 100%;
-            border-collapse: collapse;
-            }
-
-            .table-striped th,
-            .table-striped td {
-            border: 1px solid black;
-            padding: 8px;
-            font-size: large;
-            }
-
+            .table-striped { width: 100%; border-collapse: collapse; }
+            .table-striped th, .table-striped td { border: 1px solid black; padding: 8px; font-size: large; }
             p{ font-size: large; }
             label{ font-size: large; }
-
             .panel { border: 1px solid black }
           </style>
           <body>
