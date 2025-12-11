@@ -68,48 +68,6 @@
                     </div>
                   </div>
                   <!-- TABLE -->
-                    <table class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th colspan="2" class="text-center"><b>PENGAJUAN</b></th>
-                          <th class="text-center"><b>HARGA / ITEM / KM</b></th>
-                          <th class="text-center"><b>JUMLAH / BELI</b></th>
-                          <th class="text-center"><b>SUB TOTAL</b></th>
-                          <th class="text-center"><b>HARGA YANG DITAWARKAN</b></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td rowspan="4" class="text-center">AKOMODASI</td>
-                          <td class="text-center">Motor</td>
-                          <td class="text-center"><input name="akom[1]" type="text" class="form-control" value="{{ $item->akom[1] }}" readonly></td>
-                          <td class="text-center"><input name="akom[2]" type="text" class="form-control" value="{{ $item->akom[2] }}" readonly></td>
-                          <td class="text-center"><input name="akom[3]" type="text" class="form-control" value="{{ $item->akom[3] }}" readonly></td>
-                          <td class="text-center"><input name="akom[4]" type="text" class="form-control" value="{{ $item->akom[4] }}" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">Mobil</td>
-                          <td class="text-center"><input name="akom[5]" type="text" class="form-control" value="{{ $item->akom[5] }}" readonly></td>
-                          <td class="text-center"><input name="akom[6]" type="text" class="form-control" value="{{ $item->akom[6] }}" readonly></td>
-                          <td class="text-center"><input name="akom[7]" type="text" class="form-control" value="{{ $item->akom[7] }}" readonly></td>
-                          <td class="text-center"><input name="akom[8]" type="text" class="form-control" value="{{ $item->akom[8] }}" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">Uang Makan</td>
-                          <td colspan="3" class="text-center"><input name="akom[9]" type="text" class="form-control" value="{{ $item->akom[9] }}" readonly></td>
-                          <td class="text-center"><input name="akom[10]" type="text" class="form-control" value="{{ $item->akom[10] }}" readonly></td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">Tol</td>
-                          <td colspan="3" class="text-center"><input name="akom[11]" type="text" class="form-control" value="{{ $item->akom[11] }}" readonly></td>
-                          <td class="text-center"><input name="akom[12]" type="text" class="form-control" value="{{ $item->akom[12] }}" readonly></td>
-                        </tr>
-                        <tr>
-                          <td colspan="5" class="text-center">Total Biaya Akomodasi</td>
-                          <td colspan="" class="text-center"><input name="akom[13]" type="text" class="form-control" value="{{ $item->akom[13] }}" readonly></td>
-                        </tr>
-                      </tbody>
-                    </table>
                     <table class="table table-striped table-bordered" id="dinamic2">
                       <thead>
                         <tr>

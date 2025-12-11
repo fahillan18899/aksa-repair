@@ -29,20 +29,6 @@ class InvoicePermohonanController extends Controller
             'no_invoice'        => 'nullable',
             'no_pesanan'        => 'nullable',
             'alamat'            => 'nullable',
-            'akom'              => 'array',
-            'akom.*.1'          => 'nullable',
-            'akom.*.2'          => 'nullable',
-            'akom.*.3'          => 'nullable',
-            'akom.*.4'          => 'nullable',
-            'akom.*.5'          => 'nullable',
-            'akom.*.6'          => 'nullable',
-            'akom.*.7'          => 'nullable',
-            'akom.*.8'          => 'nullable',
-            'akom.*.9'          => 'nullable',
-            'akom.*.10'         => 'nullable',
-            'akom.*.11'         => 'nullable',
-            'akom.*.12'         => 'nullable',
-            'akom.*.13'         => 'nullable',
             'part'              => 'array',
             'part.*.1'          => 'nullable',
             'part.*.2'          => 'nullable',
@@ -89,7 +75,6 @@ class InvoicePermohonanController extends Controller
             
         ]);
 
-        $validate['akom'] = json_encode($request->akom);
         $validate['part'] = json_encode($request->part);
         $validate['harga_part'] = json_encode($request->harga_part);
         $validate['jumlah_part'] = json_encode($request->jumlah_part);
@@ -107,7 +92,6 @@ class InvoicePermohonanController extends Controller
     public function show($id)
     {
         $item = Invoice::findOrFail($id);
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) ?? [] : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) ?? [] : $item->part;
         $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) ?? [] : $item->harga_part;
         $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) ?? [] : $item->jumlah_part;
@@ -154,8 +138,6 @@ class InvoicePermohonanController extends Controller
     public function view($id)
     {
         $item = Sph::findOrFail($id);
-        // Mengubah data menjadi array
-        $item->akom = is_string($item->akom) ? json_decode($item->akom, true) : $item->akom;
         $item->part = is_string($item->part) ? json_decode($item->part, true) : $item->part;
         $item->harga_part = is_string($item->harga_part) ? json_decode($item->harga_part, true) : $item->harga_part;
         $item->jumlah_part = is_string($item->jumlah_part) ? json_decode($item->jumlah_part, true) : $item->jumlah_part;
@@ -193,7 +175,6 @@ class InvoicePermohonanController extends Controller
                 'tanggal' => Carbon::now()->toDateString(),
                 'marketing' => $item->user,
                 'instansi' => $item->yth,
-                'akomodasi' => $akom['13'] ?? '-',
                 'sperpart' => $part[1] ?? '-',
                 'sph' => $item->no_pesanan,
                 'invoice' => $item->no_invoice,
