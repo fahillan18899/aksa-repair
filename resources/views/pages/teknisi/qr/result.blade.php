@@ -69,7 +69,7 @@
             <div class="card">
 
                 <div class="qr">
-                    {!! QrCode::size(60)->margin(1)->generate($number) !!}
+                    {!! QrCode::size(60)->margin(1)->generate(url('qr-menu/'.$number)) !!}
                 </div>
 
             </div>

@@ -129,7 +129,7 @@
       //Saat berhasil scan qr
       scanner.addListener('scan', function(content) {
         $('#modal1').modal('hide');
-        window.location.href = "{{ url('data_alat') }}/" + content;
+        window.location.href = content;
       });
 
       //Fungsi untuk memulai kamera tertentu
@@ -195,7 +195,7 @@
               console.log(`QR code: ${qrCodeMessage}`);
               qrScanner.stop().then(() => {
                 $('#modal2').modal('hidden');
-                window.location.href = "{{ url('dashboard/data/alat') }}/" + qrCodeMessage;
+                window.location.href = qrCodeMessage;
               });
             },
             errorMessage => {

@@ -33,4 +33,9 @@ class QrController extends Controller
 
             return view('pages.teknisi.qr.result', compact('qrNumbers'));
         }
+
+        public function menu($id)
+        {
+            return view('pages.teknisi.qr.menu', compact('id'));
+        }
 }
