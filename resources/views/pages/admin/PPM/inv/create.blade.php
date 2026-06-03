@@ -39,7 +39,7 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-9 col-sm-12">
-                  <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                  <form action="{{route('inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                     @csrf
                     <input type="hidden" name="id_alat" id="id_alat" class="form-control" value="{{ $qr }}">
                     <div class="form-group row">
@@ -115,7 +115,7 @@
 
           <div class="panel-heading no-print">
             <div class="">
-              <h1>Daftar Repair alat</h1>
+              <h1>Daftar Inventaris</h1>
             </div>
           </div>
           <div style="overflow-x:auto;">
@@ -126,20 +126,45 @@
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <th>No</th>
-                      <th>Tanggal</th>
                       <th>Nama</th>
                       <th>Merek</th>
                       <th>Type</th>
                       <th>Serial Number</th>
-                      <th>Kerusakan</th>
-                      <th>Instansi</th>
-                      <th>Status</th>
-                      <th>Keterangan</th>
-                      <th>Tombol</th>
-                      <th>Aksi</th>
+                      <th>Lokasi</th>
+                      <th>Foto</th>
+                      <th>Tombol Aksi</th>
                     </thead>
                     <tbody>
-                      
+                      @forelse($items as $item)
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->nama_alat }}</td>
+                        <td>{{ $item->merek }}</td>
+                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->seri }}</td>
+                        <td>{{ $item->lokasi }}</td>
+                        <td>
+                          @if($item->foto)
+                              <img src="{{ asset($item->foto) }}"
+                                  width="80"
+                                  class="img-thumbnail">
+                          @endif
+                        </td>
+                        <td>
+                          <a href="" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                          </a>
+                          <form action="" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
                     </tbody>
                   </table>
                   <!--TABEL-->
@@ -157,40 +182,5 @@
 @endsection
 @push('addon-script')
 <script>
-  function paste(that) {
-    var inp = document.createElement('input');
-    document.body.appendChild(inp)
-    inp.value = that.textContent
-    inp.select();
-    document.execCommand('copy', false);
-    inp.remove();
-    document.getElementById('no_urut2').value = inp.value = that.textContent;
-  }
-</script>
-<script>
-  $(document).ready(function(){
-    $('#no_urut2').on('click', function(){
-      let noUrut = $(this).val().trim();
-      console.log("ID yang dimasukan :", noUrut);
-
-      if(!noUrut) return;
-
-      fetch(`/dashboard_teknisi/link_repair/data_pekerjaan/${encodeURIComponent(noUrut)}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log("Data dari server :", data);
-        let item = Array.isArray(data) ? data[0] : data || {};
-        $('#no_urut').val(item.no_urut || '');
-        $('#nama_alat').val(item.nama_alat || '');
-        $('#merek').val(item.merek || '');
-        $('#type').val(item.type || '');
-        $('#no_seri').val(item.no_seri || '');
-        $('#kerusakan_alat').val(item.kerusakan || '');
-        $('#instansi').val(item.instansi || '');
-        $('#user').val(item.user || '');
-      })
-      .catch(error => console.error("Error AJAX", error));
-    });
-  });
 </script>
 @endpush
