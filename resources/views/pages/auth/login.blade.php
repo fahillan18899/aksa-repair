@@ -53,6 +53,18 @@
       background-color:rgb(218, 160, 77);
     }
 
+    .btn-secondary {
+      width: 100%;
+      border-radius: 8px;
+      font-weight: 600;
+      background-color:rgb(255, 234, 0);
+      border-color:rgb(225, 202, 85);
+    }
+
+    .btn-secondary:hover {
+      background-color:rgb(218, 160, 77);
+    }
+
     .alert {
       font-size: 14px;
     }
@@ -67,7 +79,7 @@
 <body>
 
   <div class="login-box">
-    <h2 class="login-title">Repair Aksa Login</h2>
+    <h2 class="login-title">Wyasa PPM Login</h2>
 
     @if ($message = Session::get('success'))
     <div class="alert alert-success">{{ $message }}</div>
@@ -97,7 +109,9 @@
 
       <div class="mt-4">
         <button type="submit" class="btn btn-success">Login</button>
-        <!-- <button type="button" class="btn btn-secondary"><a href="{{ url('/register') }}">Register</a></button> -->
+      </div>
+      <br>
+      <div class="mt-4">
         <button type="button" class="btn btn-secondary"><a href="{{ url('/scan') }}">Scan</a></button>
       </div>
     </form>
