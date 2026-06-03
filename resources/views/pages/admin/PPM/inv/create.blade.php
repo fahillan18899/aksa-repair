@@ -3,8 +3,101 @@
 @section('content')
 @section('title', 'Inventaris')
 <style>
-  input[readonly] {
-    cursor: not-allowed;
+  .panel {
+    border-radius: 12px;
+  }
+
+  .panel-heading h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .form-control {
+    height: 45px;
+    font-size: 14px;
+  }
+
+  textarea.form-control {
+    height: auto;
+  }
+
+  .btn-mobile {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .input-rounded {
+    border-radius: 12px;
+    padding: 10px 14px;
+    height: 45px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* efek saat fokus */
+.input-rounded:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40,167,69,0.15);
+    outline: none;
+}
+
+/* optional: tombol juga dibikin rounded */
+.btn-rounded {
+    border-radius: 12px;
+}
+
+  @media (max-width: 768px) {
+
+    .content-header {
+      text-align: center;
+    }
+
+    .header-title h1 {
+      font-size: 24px;
+    }
+
+    .header-title small {
+      font-size: 14px;
+    }
+
+    .form-group.row {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .form-group .col-xs-9,
+    .form-group .col-sm-9,
+    .form-group .col-md-9 {
+      width: 100%;
+    }
+
+    .form-group .col-xs-3 {
+      width: 100%;
+    }
+
+    .panel-body {
+      padding: 15px;
+    }
+
+    .table {
+      font-size: 12px;
+    }
+
+    .table img {
+      width: 60px !important;
+    }
   }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -13,10 +106,10 @@
   <section class="content-header">
 
     <div class="p-l-30 p-r-30">
-      <div class="header-icon"><i class="fa fa-wrench"></i></div>
+      <div class="header-icon"></div>
       <div class="header-title">
-        <h1>MENU FORM Repair</h1>
-        <small>Form Repair</small>
+        <h1></h1>
+        <small></small>
       </div>
     </div>
   </section>
@@ -39,65 +132,60 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-9 col-sm-12">
-                  <form action="{{route('inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
-                    @csrf
-                    <input type="hidden" name="id_alat" id="id_alat" class="form-control" value="{{ $qr }}">
-                    <div class="form-group row">
-                      <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="nama_alat" id="nama_alat" type="text" class="form-control"  required >
-                      </div>
-                    </div>
+                  <form action="{{route('inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
+                      @csrf
 
-                    <div class="form-group row">
-                      <label for="merek" class="col-xs-3 form-label">Merek <i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="merek" id="merek" class="form-control" type="text" required >
-                      </div>
-                    </div>
+                      <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
 
-                    <div class="form-group row">
-                      <label for="type" class="col-xs-3 form-label">Type <i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="type" id="type" class="form-control" type="text" required >
+                      <!-- Nama Alat -->
+                      <div class="form-group">
+                          <label>Nama Alat <i class="text-danger">*</i></label>
+                          <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" required>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <label for="seri" class="col-xs-3 col-form-label">No Seri <i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="seri" id="seri" class="form-control" type="text" required >
+                      <!-- Merek -->
+                      <div class="form-group">
+                          <label>Merek <i class="text-danger">*</i></label>
+                          <input name="merek" id="merek" type="text" class="form-control input-rounded" required>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <label for="lokasi" class="col-xs-3 form-label">Lokasi <i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="lokasi" id="lokasi" class="form-control" type="text"  required >
+                      <!-- Type -->
+                      <div class="form-group">
+                          <label>Type <i class="text-danger">*</i></label>
+                          <input name="type" id="type" type="text" class="form-control input-rounded" required>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <label for="jadwal" class="col-xs-3 col-form-label">Jadwal Pemeliharaan<i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="jadwal" id="jadwal" type="date" class="form-control" required>
+                      <!-- No Seri -->
+                      <div class="form-group">
+                          <label>No Seri <i class="text-danger">*</i></label>
+                          <input name="seri" id="seri" type="text" class="form-control input-rounded" required>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <label for="foto" class="col-xs-3 col-form-label">Foto Pendukung<i class="text-danger">*</i></label>
-                      <div class="col-xs-9">
-                        <input name="foto" id="foto" type="file" class="form-control"   required>
+                      <!-- Lokasi -->
+                      <div class="form-group">
+                          <label>Lokasi <i class="text-danger">*</i></label>
+                          <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" required>
                       </div>
-                    </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-offset-3 col-sm-6">
-                        <div class="ui buttons">
-                          <button class="ui positive button">Tambah</button>
-                        </div>
+                      <!-- Jadwal -->
+                      <div class="form-group">
+                          <label>Jadwal Pemeliharaan <i class="text-danger">*</i></label>
+                          <input name="jadwal" id="jadwal" type="date" class="form-control input-rounded" required>
                       </div>
-                    </div>
+
+                      <!-- Foto -->
+                      <div class="form-group">
+                          <label>Foto Pendukung <i class="text-danger">*</i></label>
+                          <input name="foto" id="foto" type="file" class="form-control input-rounded" required>
+                      </div>
+
+                      <!-- Button -->
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
+                              <i class="fa fa-save"></i> Tambah
+                          </button>
+                      </div>
+
                   </form>
                 </div>
                 <div class="col-md-3"></div>
@@ -118,7 +206,7 @@
               <h1>Daftar Inventaris</h1>
             </div>
           </div>
-          <div style="overflow-x:auto;">
+          <div class="table-responsive">
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-12 col-sm-12">
@@ -145,9 +233,9 @@
                         <td>{{ $item->lokasi }}</td>
                         <td>
                           @if($item->foto)
-                              <img src="{{ asset('storage/' . $item->foto) }}"
-                                  width="80"
-                                  class="img-thumbnail">
+                          <img src="{{ asset('storage/' . $item->foto) }}"
+                              class="img-thumbnail"
+                              style="width:90px">
                           @endif
                         </td>
                         {{-- <td>
