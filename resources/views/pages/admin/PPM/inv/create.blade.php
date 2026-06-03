@@ -80,7 +80,7 @@
                     <div class="form-group row">
                       <label for="jadwal" class="col-xs-3 col-form-label">Jadwal Pemeliharaan<i class="text-danger">*</i></label>
                       <div class="col-xs-9">
-                        <input name="jadwal" id="jadwal" type="text" class="form-control" required>
+                        <input name="jadwal" id="jadwal" type="date" class="form-control" required>
                       </div>
                     </div>
 
@@ -151,7 +151,7 @@
                           @endif
                         </td>
                         <td>
-                          <a href="" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
                           <form action="" method="POST" class="d-inline">

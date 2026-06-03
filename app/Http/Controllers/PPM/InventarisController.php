@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PPM;
 use App\Http\Controllers\Controller;
 use App\Models\Inv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InventarisController extends Controller
 {
@@ -34,7 +35,6 @@ class InventarisController extends Controller
         ]);
 
         $fotoPath = null;
-
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('alat', 'public');
         }
@@ -51,5 +51,39 @@ class InventarisController extends Controller
         ]);
 
         return back()->with('success', 'Data berhasil disimpan');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'id_alat'   => 'required',
+            'nama_alat' => 'required',
+            'merek'     => 'required',
+            'type'      => 'required',
+            'seri'      => 'required',
+            'lokasi'    => 'required',
+            'jadwal'    => 'required',
+            'foto'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $item = Inv::findOrFail($id);
+
+        // Jika ada foto baru
+        if ($request->hasFile('foto')) {
+
+            // Hapus foto lama
+            if ($item->foto && Storage::disk('public')->exists($item->foto)) {
+                Storage::disk('public')->delete($item->foto);
+            }
+
+            // Upload foto baru
+            $validate['foto'] = $request->file('foto')->store('alat', 'public');
+        }
+
+        $item->update($validate);
+
+        return redirect()
+            ->route('inventaris.index')
+            ->with('success', 'Data berhasil diubah');
     }
 }
