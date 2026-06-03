@@ -28,10 +28,13 @@ use App\Http\Controllers\Teknisi\QrController;
 use App\Http\Controllers\Akuntan\DashboardAkuntanController;
 use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
+//PPM//
+use App\Http\Controllers\PPM\InventarisController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
 Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
+Route::resource('inventaris', InventarisController::class);
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS

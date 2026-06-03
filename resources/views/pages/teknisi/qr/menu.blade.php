@@ -15,7 +15,7 @@
 
         <hr>
 
-        <a href="{{ url('data_alat/'.$id) }}"
+        <a href="{{ route('inventaris.show', $id) }}"
            class="btn btn-primary btn-lg btn-block mb-3">
             Inventaris Alat
         </a>
