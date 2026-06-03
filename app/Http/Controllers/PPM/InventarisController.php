@@ -53,6 +53,13 @@ class InventarisController extends Controller
         return back()->with('success', 'Data berhasil disimpan');
     }
 
+    public function edit($id)
+    {
+        $item = Inv::findOrFail($id);
+        return view('pages.admin.PPM.inv.edit',
+        compact('item'));
+    }
+
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
