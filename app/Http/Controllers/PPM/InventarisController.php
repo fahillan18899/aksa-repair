@@ -34,14 +34,9 @@ class InventarisController extends Controller
         ]);
 
         $fotoPath = null;
+
         if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $namaFoto = time() . '_' . $foto->getClientOriginalName();
-            $foto->move(
-                public_path('uploads/alat'),
-                $namaFoto
-            );
-            $fotoPath = 'uploads/alat/' . $namaFoto;
+            $fotoPath = $request->file('foto')->store('alat', 'public');
         }
 
         Inv::create([

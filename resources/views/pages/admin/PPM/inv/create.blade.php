@@ -145,7 +145,7 @@
                         <td>{{ $item->lokasi }}</td>
                         <td>
                           @if($item->foto)
-                              <img src="{{ asset($item->foto) }}"
+                              <img src="{{ asset('storage/' . $item->foto) }}"
                                   width="80"
                                   class="img-thumbnail">
                           @endif
