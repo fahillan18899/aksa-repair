@@ -15,23 +15,22 @@ class QrController extends Controller
         compact('items'));
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'id_pertama' => 'required|string',
-            'id_terakhir' => 'required|string',
-        ]);
+        public function store(Request $request)
+        {
+            $request->validate([
+                'id_pertama' => 'required|integer|min:1',
+                'id_terakhir' => 'required|integer|min:1',
+            ]);
 
-        $start = $request->id_pertama;
-        $end = $request->id_terakhir;
+            $start = (int) $request->id_pertama;
+            $end = (int) $request->id_terakhir;
 
-        //Ambil semua alat yang dalam rentang nilai
-        $alat = DataBarang::whereBetween('id', [$start, $end])->get();
+            if ($start > $end) {
+                return back()->with('error', 'No urut awal tidak boleh lebih besar dari no urut akhir');
+            }
 
-        if($alat->isEmpty()){
-            return back()->with('error', 'Data alat tidak ditemukan');
+            $qrNumbers = range($start, $end);
+
+            return view('pages.teknisi.qr.result', compact('qrNumbers'));
         }
-
-        return view('pages.teknisi.qr.result', compact('alat'));
-    }
 }
