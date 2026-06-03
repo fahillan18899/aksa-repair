@@ -41,13 +41,7 @@
                 <div class="col-md-9 col-sm-12">
                   <form action="" class="form-inner" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                     @csrf
-                    <input type="hidden" name="qr_number" value="{{ $qr }}">
-                    <div class="form-group row">
-                      <label for="" class="col-xs-3 col-form-label">ID Alat</label>
-                      <div class="col-xs-9">
-                        <input name="id_alat" id="id_alat" type="text" class="form-control">
-                      </div>
-                    </div>
+                    <input type="hidden" name="id_alat" id="id_alat" class="form-control" value="{{ $qr }}">
                     <div class="form-group row">
                       <label for="nama_alat" class="col-xs-3 col-form-label">Nama Alat<i class="text-danger">*</i></label>
                       <div class="col-xs-9">
