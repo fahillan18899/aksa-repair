@@ -76,7 +76,7 @@ class InventarisController extends Controller
         $item->update($validate);
 
         return redirect()
-            ->route('inventaris.index')
+            ->route('inventaris.create')
             ->with('success', 'Data berhasil diubah');
     }
 }
