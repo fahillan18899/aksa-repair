@@ -30,11 +30,13 @@ use App\Http\Controllers\Akuntan\InvoicePermohonanController;
 use App\Http\Controllers\Akuntan\UploadFaktureController;
 //PPM//
 use App\Http\Controllers\PPM\InventarisController;
+use App\Http\Controllers\PPM\PerbaikanController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
 Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
 Route::resource('inventaris', InventarisController::class);
+Route::resource('perbaikan', PerbaikanController::class);
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS

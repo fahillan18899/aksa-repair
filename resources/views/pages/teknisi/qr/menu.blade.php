@@ -89,7 +89,7 @@
         Inventaris Alat
     </a>
 
-    <a href="{{ url('perbaikan/'.$id) }}"
+    <a href="{{ route('perbaikan.create', ['qr' => $id]) }}"
        class="btn btn-warning btn-menu btn-block">
         <i class="fa-solid fa-screwdriver-wrench"></i>
         Perbaikan Alat
