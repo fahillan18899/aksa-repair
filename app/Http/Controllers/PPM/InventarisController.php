@@ -70,23 +70,9 @@ class InventarisController extends Controller
             'seri'      => 'required',
             'lokasi'    => 'required',
             'jadwal'    => 'required',
-            'foto'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $item = Inv::findOrFail($id);
-
-        // Jika ada foto baru
-        if ($request->hasFile('foto')) {
-
-            // Hapus foto lama
-            if ($item->foto && Storage::disk('public')->exists($item->foto)) {
-                Storage::disk('public')->delete($item->foto);
-            }
-
-            // Upload foto baru
-            $validate['foto'] = $request->file('foto')->store('alat', 'public');
-        }
-
         $item->update($validate);
 
         return redirect()
