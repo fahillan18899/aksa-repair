@@ -12,18 +12,20 @@
 
         @page {
             size: A4 portrait;
-            margin: 5mm;
+            margin: 3mm;
         }
 
         body {
-            margin: 10px;
-            font-family: "Times New Roman", serif;
+            margin: 0;
         }
 
         .wrapper {
             display: grid;
             grid-template-columns: repeat(3, 6cm);
-            gap: 3mm;
+
+            column-gap: 2mm;
+            row-gap: 0mm;
+
             justify-content: center;
         }
 
@@ -65,7 +67,7 @@
             }
 
             .wrapper {
-                gap: 3mm;
+                gap: 0.5mm;
             }
         }
     </style>
