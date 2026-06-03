@@ -12,13 +12,13 @@
     <div class="text-center">
 
         <h3>Menu Alat #{{ $id }}</h3>
-
         <hr>
-
-        <a href="{{ route('inventaris.show', $id) }}"
-           class="btn btn-primary btn-lg btn-block mb-3">
+        
+        <a href="{{ route('inventaris.create', ['qr' => $id]) }}" 
+            class="btn btn-primary btn-lg btn-block mb-3">
             Inventaris Alat
         </a>
+        
 
         <a href="{{ url('perbaikan/'.$id) }}"
            class="btn btn-warning btn-lg btn-block mb-3">

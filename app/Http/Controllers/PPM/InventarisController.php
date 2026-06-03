@@ -11,4 +11,11 @@ class InventarisController extends Controller
     {
         return view('pages.admin.PPM.inv.index', compact('items'));
     }
+
+    public function create(Request $request)
+    {
+        $qr = $request->qr;
+
+        return view('pages.admin.PPM.inv.create', compact('qr'));
+    }
 }
