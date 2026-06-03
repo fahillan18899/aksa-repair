@@ -213,7 +213,7 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th>No</th>
+                      <th>Id</th>
                       <th>Nama</th>
                       <th>Merek</th>
                       <th>Type</th>
@@ -225,7 +225,7 @@
                     <tbody>
                       @forelse($items as $item)
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->id_alat }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->merek }}</td>
                         <td>{{ $item->type }}</td>
