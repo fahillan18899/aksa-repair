@@ -132,7 +132,7 @@
                       <th>Serial Number</th>
                       <th>Lokasi</th>
                       <th>Foto</th>
-                      <th>Tombol Aksi</th>
+                      {{-- <th>Tombol Aksi</th> --}}
                     </thead>
                     <tbody>
                       @forelse($items as $item)
@@ -150,18 +150,18 @@
                                   class="img-thumbnail">
                           @endif
                         </td>
-                        <td>
-                          <a href="{{ route('inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                        {{-- <td>
+                          {{-- <a href="{{ route('inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-                          <form action="" method="POST" class="d-inline">
+                          </a> --}}
+                          {{-- <form action="" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
                               <i class="fa fa-trash-o" aria-hidden="hidden"></i>
                             </button>
-                          </form>
-                        </td>
+                          </form> 
+                        </td> --}}
                       </tr>
                       @empty
                       @endforelse
