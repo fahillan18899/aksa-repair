@@ -184,6 +184,10 @@
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                               <i class="fa fa-save"></i> Tambah
                           </button>
+                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
+                            class="btn btn-primary btn-block btn-mobile btn-rounded">
+                              Kembali
+                          </a>
                       </div>
 
                   </form>
