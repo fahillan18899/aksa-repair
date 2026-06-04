@@ -35,8 +35,14 @@
 
 #preview {
     width: 100%;
+    min-height: 350px;
+}
+
+#preview video {
+    width: 100% !important;
+    height: 70vh !important;
+    object-fit: cover;
     border-radius: 10px;
-    background: #000;
 }
 
 .qr-frame {
@@ -215,7 +221,7 @@
 
                   <div class="modal-body text-center">
                       <div class="preview-container">
-                          <video id="preview"></video>
+                          <div id="preview"></div>
                           <div class="qr-frame">
                               <span class="corner tl"></span>
                               <span class="corner tr"></span>
@@ -265,216 +271,347 @@
     <!-- bootstrap js -->
     <script src="{{ url('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
   </body>
-  <script src="{{ url('assets/js/instascan.min.js') }}"></script>
+<script src="https://unpkg.com/@zxing/browser@latest"></script>
+<script src="https://unpkg.com/html5-qrcode"></script>
 <!-- Fungsi scanner android -->
 <script>
-    let scanner = new Instascan.Scanner({
-        video: document.getElementById('preview'),
-        mirror: false
-    });
 
-    let cameras = [];
-    let activeCameraIndex = 0;
+let androidScanner = null;
+let cameras = [];
+let activeCameraIndex = 0;
 
-    // Saat berhasil scan QR
-    scanner.addListener('scan', function(content) {
-        $('#modal1').modal('hide');
-        window.location.href = content;
-    });
+async function startCamera(index) {
 
-    // Memulai kamera tertentu
-    function startCamera(index) {
-        if (cameras.length > 0) {
-            activeCameraIndex = index;
-            scanner.start(cameras[activeCameraIndex]);
+    try {
+
+        activeCameraIndex = index;
+
+        if (!androidScanner) {
+            androidScanner = new Html5Qrcode("preview");
         }
+
+        await androidScanner.start(
+
+            cameras[activeCameraIndex].id,
+
+            {
+                fps: 20,
+
+                qrbox: {
+                    width: 280,
+                    height: 280
+                },
+
+                aspectRatio: 1.0,
+
+                videoConstraints: {
+                    facingMode: "environment",
+                    width: {
+                        ideal: 1920
+                    },
+                    height: {
+                        ideal: 1080
+                    }
+                }
+            },
+
+            (decodedText) => {
+
+                stopAndroidScanner();
+
+                $('#modal1').modal('hide');
+
+                window.location.href = decodedText;
+
+            },
+
+            (errorMessage) => {
+                // abaikan
+            }
+
+        );
+
+    } catch (e) {
+
+        console.log(e);
+
+        alert("Gagal membuka kamera");
+
     }
 
-    // Saat modal dibuka
-    $('#modal1').on('show.bs.modal', function() {
+}
 
-        Instascan.Camera.getCameras()
-        .then(function(availableCameras) {
+async function stopAndroidScanner() {
 
-            cameras = availableCameras;
+    try {
 
-            if (cameras.length === 0) {
-                alert('Kamera tidak ditemukan');
-                return;
-            }
+        if (
+            androidScanner &&
+            androidScanner.isScanning
+        ) {
 
-            // Cari kamera belakang
-            let backCameraIndex = cameras.findIndex(camera =>
-                camera.name &&
-                (
-                    camera.name.toLowerCase().includes('back') ||
-                    camera.name.toLowerCase().includes('rear')
-                )
-            );
+            await androidScanner.stop();
+            await androidScanner.clear();
 
-            if (backCameraIndex >= 0) {
-                startCamera(backCameraIndex);
-            } else {
-                startCamera(0);
-            }
+        }
 
-        })
-        .catch(function(e) {
-            alert("Gagal memuat kamera: " + e);
-        });
+    } catch (e) {
 
-    });
+        console.log(e);
 
-    // Saat modal ditutup
-    $('#modal1').on('hidden.bs.modal', function() {
+    }
 
-        if (scanner) {
-            scanner.stop().catch(function(e) {
-                console.log(e);
+}
+
+$('#modal1').on('show.bs.modal', async function() {
+
+    try {
+
+        cameras =
+            await Html5Qrcode.getCameras();
+
+        if (!cameras.length) {
+
+            alert('Kamera tidak ditemukan');
+            return;
+
+        }
+
+        let backCameraIndex =
+            cameras.findIndex(camera => {
+
+                const label =
+                    (camera.label || '')
+                    .toLowerCase();
+
+                return (
+                    label.includes('back') ||
+                    label.includes('rear') ||
+                    label.includes('environment')
+                );
+
             });
-        }
 
-    });
+        if (backCameraIndex >= 0) {
 
-    // Tombol ganti kamera
-    document.getElementById('toggleCameraBtn')
-    .addEventListener('click', function() {
+            await startCamera(backCameraIndex);
 
-        if (cameras.length > 1) {
-
-            activeCameraIndex =
-                (activeCameraIndex + 1) % cameras.length;
-
-            startCamera(activeCameraIndex);
         } else {
-            alert('Tidak ada kamera lain');
+
+            await startCamera(0);
+
         }
 
-    });
+    } catch (e) {
+
+        console.log(e);
+
+        alert("Gagal memuat kamera");
+
+    }
+
+});
+
+$('#modal1').on('hidden.bs.modal', async function() {
+
+    await stopAndroidScanner();
+
+});
+
+document
+.getElementById('toggleCameraBtn')
+.addEventListener('click', async function() {
+
+    if (cameras.length <= 1) {
+
+        alert('Tidak ada kamera lain');
+        return;
+
+    }
+
+    await stopAndroidScanner();
+
+    activeCameraIndex =
+        (activeCameraIndex + 1) % cameras.length;
+
+    androidScanner =
+        new Html5Qrcode("preview");
+
+    await startCamera(activeCameraIndex);
+
+});
+
 </script>
 <!-- Fungsi scanner android end -->
 
 <!-- Fungsi scanner iphone -->
 <script>
-    let currentCameraId = null;
-    let cameraList = [];
-    let currentCameraIndex = 0;
-    let qrScanner = null;
 
-    function startScan() {
+let currentCameraId = null;
+let cameraList = [];
+let currentCameraIndex = 0;
+let qrScanner = null;
 
-        $('#modal2').modal('show');
+function startScan() {
 
-        Html5Qrcode.getCameras()
-        .then(cameras => {
+    $('#modal2').modal('show');
 
-            cameraList = cameras;
+    Html5Qrcode.getCameras()
 
-            if (cameraList.length === 0) {
-                alert("Tidak ada kamera tersedia.");
-                return;
-            }
+    .then(cameras => {
 
-            currentCameraId =
-                cameraList[currentCameraIndex].id;
+        cameraList = cameras;
 
-            if (!qrScanner) {
-                qrScanner = new Html5Qrcode("reader");
-            }
+        if (cameraList.length === 0) {
 
-            qrScanner.start(
-                currentCameraId,
-                {
-                    fps: 10,
-                    qrbox: 250
+            alert("Tidak ada kamera tersedia.");
+            return;
+
+        }
+
+        currentCameraId =
+            cameraList[currentCameraIndex].id;
+
+        if (!qrScanner) {
+
+            qrScanner =
+                new Html5Qrcode("reader");
+
+        }
+
+        qrScanner.start(
+
+            currentCameraId,
+
+            {
+                fps: 20,
+
+                qrbox: {
+                    width: 280,
+                    height: 280
                 },
 
-                qrCodeMessage => {
+                aspectRatio: 1.0,
 
-                    qrScanner.stop()
-                    .then(() => {
-
-                        qrScanner.clear();
-
-                        $('#modal2').modal('hide');
-
-                        window.location.href = qrCodeMessage;
-
-                    });
-
-                },
-
-                errorMessage => {
-                    // abaikan error scan
+                videoConstraints: {
+                    facingMode: "environment"
                 }
-            );
+            },
 
-        })
-        .catch(err => {
-            alert("Gagal mengakses kamera: " + err);
-        });
-    }
+            qrCodeMessage => {
 
-    function stopScan() {
+                qrScanner.stop()
 
-        if (qrScanner) {
+                .then(() => {
 
-            qrScanner.stop()
-            .then(() => {
+                    qrScanner.clear();
 
-                qrScanner.clear();
+                    $('#modal2').modal('hide');
 
-                $('#modal2').modal('hide');
+                    window.location.href =
+                        qrCodeMessage;
 
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                });
 
-        } else {
+            },
+
+            errorMessage => {
+                // abaikan
+            }
+
+        );
+
+    })
+
+    .catch(err => {
+
+        alert(
+            "Gagal mengakses kamera: " + err
+        );
+
+    });
+
+}
+
+function stopScan() {
+
+    if (qrScanner) {
+
+        qrScanner.stop()
+
+        .then(() => {
+
+            qrScanner.clear();
 
             $('#modal2').modal('hide');
 
-        }
+        })
+
+        .catch(err => {
+
+            console.log(err);
+
+            $('#modal2').modal('hide');
+
+        });
+
+    } else {
+
+        $('#modal2').modal('hide');
+
     }
 
-    function switchCamera() {
+}
 
-        if (cameraList.length > 1) {
+function switchCamera() {
 
-            qrScanner.stop()
-            .then(() => {
+    if (cameraList.length <= 1) {
 
-                qrScanner.clear();
+        alert("Tidak ada kamera lain");
+        return;
 
-                currentCameraIndex =
-                    (currentCameraIndex + 1) % cameraList.length;
-
-                startScan();
-
-            });
-
-        } else {
-
-            alert("Tidak ada kamera lain");
-
-        }
     }
 
-    // Jika modal ditutup manual
-    $('#modal2').on('hidden.bs.modal', function() {
+    qrScanner.stop()
 
-        if (qrScanner) {
+    .then(() => {
 
-            qrScanner.stop()
-            .then(() => {
-                qrScanner.clear();
-            })
-            .catch(() => {});
+        qrScanner.clear();
 
-        }
+        currentCameraIndex =
+            (currentCameraIndex + 1)
+            % cameraList.length;
+
+        startScan();
+
+    })
+
+    .catch(err => {
+
+        console.log(err);
 
     });
+
+}
+
+$('#modal2').on('hidden.bs.modal', function() {
+
+    if (qrScanner) {
+
+        qrScanner.stop()
+
+        .then(() => {
+
+            qrScanner.clear();
+
+        })
+
+        .catch(() => {});
+
+    }
+
+});
+
 </script>
 <!-- Fungsi scanner iphone end -->
 </html>
