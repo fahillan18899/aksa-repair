@@ -31,12 +31,14 @@ use App\Http\Controllers\Akuntan\UploadFaktureController;
 //PPM//
 use App\Http\Controllers\PPM\InventarisController;
 use App\Http\Controllers\PPM\PerbaikanController;
+use App\Http\Controllers\PPM\PeliharaController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
 Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
 Route::resource('inventaris', InventarisController::class);
 Route::resource('perbaikan', PerbaikanController::class);
+Route::resource('pelihara', PeliharaController::class);
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS

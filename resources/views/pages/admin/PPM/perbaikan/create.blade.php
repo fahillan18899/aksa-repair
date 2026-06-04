@@ -181,7 +181,7 @@
                           <option value="Holip">Holip</option>
                           <option value="Marichi">Marichi</option>
                           <option value="Yudha">Yudha</option>
-                          <option value="Dodo">Dodo</option>\
+                          <option value="Dodo">Dodo</option>
                         </select>
                       </div>
 

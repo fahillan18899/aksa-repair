@@ -95,7 +95,7 @@
         Perbaikan Alat
     </a>
 
-    <a href="{{ url('maintenance/'.$id) }}"
+    <a href="{{ route('pelihara.create', ['qr' => $id]) }}"
        class="btn btn-success btn-menu btn-block">
         <i class="fa-solid fa-gears"></i>
         Maintenance Alat
