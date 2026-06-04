@@ -120,7 +120,7 @@ table th, table td{
         <!-- FORM -->
         <div class="form-card">
 
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{route('pelihara.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <h3>Pemeliharaan Alat</h3>
@@ -278,20 +278,30 @@ table th, table td{
 
             <h3>Daftar Perbaikan</h3>
 
-            <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="datatable table table-striped">
                     <thead>
                         <tr>
                             <th>Nama</th>
                             <th>Merek</th>
-                            <th>Type</th>
-                            <th>Lokasi</th>
-                            <th>Teknisi</th>
+                            <th>Tombol Aksi</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                      @forelse($items as $item)
+                      <tr>
+                        <td>{{ $item->nama_alat }}</td>
+                        <td>{{ $item->merek }}</td>
+                        <td>
+                            <a href="{{ route('pelihara.show', $item->id) }}"
+                            class="btn btn-success btn-xs">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                      </tr>
+                      @empty
+                      @endforelse
+                    </tbody>
                 </table>
-            </div>
 
         </div>
 
