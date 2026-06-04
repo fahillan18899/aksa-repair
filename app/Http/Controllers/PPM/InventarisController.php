@@ -76,4 +76,13 @@ class InventarisController extends Controller
 
         return redirect()->route('inventaris.create')->with('success', 'Data berhasil diubah');
     }
+
+    public function destroy($id)
+    {
+        $item = Inv::findOrFail($id);
+        Storage::disk('public')->delete($item->foto);
+        $item->delete();
+
+        return back()->with('success', 'Data Berhasil Dihapus');
+    }
 }
