@@ -63,7 +63,6 @@ class InventarisController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'id_alat'   => 'required',
             'nama_alat' => 'required',
             'merek'     => 'required',
             'type'      => 'required',
@@ -75,8 +74,6 @@ class InventarisController extends Controller
         $item = Inv::findOrFail($id);
         $item->update($validate);
 
-        return redirect()
-            ->route('inventaris.create')
-            ->with('success', 'Data berhasil diubah');
+        return redirect()->route('inventaris.create')->with('success', 'Data berhasil diubah');
     }
 }
