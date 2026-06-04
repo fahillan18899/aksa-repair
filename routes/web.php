@@ -32,6 +32,7 @@ use App\Http\Controllers\Akuntan\UploadFaktureController;
 use App\Http\Controllers\PPM\InventarisController;
 use App\Http\Controllers\PPM\PerbaikanController;
 use App\Http\Controllers\PPM\PeliharaController;
+use App\Http\Controllers\PPM\MonitoringController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -84,6 +85,8 @@ Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
 
         //Operator//
         Route::resource('operator', OperatorController::class);
+
+
     });
 });
 
@@ -176,6 +179,12 @@ Route::name('akuntan.')->prefix('dashboard_akuntan')->middleware(['auth'])->grou
         Route::resource('fakture', UploadFaktureController::class);
     //Fakture end//
 });
+
+Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])->group(function () {
+    //Monitoring//
+    Route::get('dashboard_ppm', [MonitoringController::class, 'dashboardPpm'])->name('dashboardPpm');
+    });
+
 
 Route::get('asd', [HomeController::class, 'notifyUser']);
 

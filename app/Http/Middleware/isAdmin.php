@@ -30,6 +30,8 @@ class IsAdmin
             return redirect()->route('marketing.dashboard');
         } elseif (Auth::user()->user_role == 'akuntan') {
             return redirect()->route('akuntan.dashboard');
+        } elseif (Auth::user()->user_role == 'admin_ppm') {
+            return redirect()->route('monitoring.dashboardPpm');
         }
 
         return redirect()->route('user.dashboard');
