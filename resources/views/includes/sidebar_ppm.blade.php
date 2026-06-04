@@ -35,12 +35,5 @@
       </div>
     </div>
     <!-- sidebar menu -->
-    <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard_teknisi/qr') ? 'active' : '' }}">
-        <a href="{{ route('teknisi.qr.index') }}">
-          <i class="fa fa-qrcode"></i><span>QR Code</span>
-        </a>
-      </li>
-    </ul>
   </div> <!-- /.sidebar -->
 </aside>
