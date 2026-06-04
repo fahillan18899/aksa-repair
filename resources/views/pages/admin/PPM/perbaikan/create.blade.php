@@ -1,7 +1,7 @@
 @extends('layouts.ppm')
 
 @section('content')
-@section('title', 'Inventaris')
+@section('title', 'Perbaikan')
 <style>
   .panel {
     border-radius: 12px;
@@ -126,7 +126,7 @@
           <div class="panel panel-default thumbnail">
 
             <div class="panel-heading no-print" id="form1">
-              <h1>Form Inventaris</h1>
+              <h1>Form Perbaikan</h1>
             </div>
 
             <div class="panel-body panel-form">
@@ -176,13 +176,7 @@
                       <!-- Teknisi -->
                       <div class="form-group">
                         <label>Teknisi</label>
-                        <select name="teknisi" id="teknisi" class="form-control" required>
-                          <option>-- Pilih Teknisi --</option>
-                          <option value="Holip">Holip</option>
-                          <option value="Marichi">Marichi</option>
-                          <option value="Yudha">Yudha</option>
-                          <option value="Dodo">Dodo</option>
-                        </select>
+                        <input name="teknisi" id="teknisi" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Korektif -->
@@ -208,6 +202,10 @@
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                               <i class="fa fa-save"></i> Tambah
                           </button>
+                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
+                            class="btn btn-primary btn-block btn-mobile btn-rounded">
+                              Kembali
+                          </a>
                       </div>
 
                   </form>
