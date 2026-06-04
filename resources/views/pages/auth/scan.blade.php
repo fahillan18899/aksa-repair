@@ -203,6 +203,16 @@
             </div>
           </div>
           <!-- Button iPhone End-->
+
+          <!-- Button exit -->
+              <div class="row">
+                <div class="text-center">
+                  <a href="{{ url('/') }}" class="btn btn-danger">
+                    <i class="fa fa-sign-out"></i> Keluar
+                  </a>
+                </div>
+              </div>
+          <!-- Button exit End-->
           </div>
         </div>
       </div>
