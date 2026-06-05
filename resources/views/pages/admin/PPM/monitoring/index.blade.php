@@ -55,6 +55,32 @@
         </div>
 
     </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="panel panel-bd">
+                <div class="panel-heading">
+                    <h4>Grafik Perbaikan Tahun {{ date('Y') }}</h4>
+                </div>
+
+                <div class="panel-body">
+                    <canvas id="perbaikanBulananChart"></canvas>
+                </div>
+            </div>
+        </div>
+        {{-- - --}}
+        <div class="col-md-6">
+            <div class="panel panel-bd">
+                <div class="panel-heading">
+                    <h4>Grafik Pemeliharaan Tahun {{ date('Y') }}</h4>
+                </div>
+
+                <div class="panel-body">
+                    <canvas id="peliharaBulananChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 @endsection
@@ -88,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-  });
+
     // Chart Pemeliharaan
       new Chart(document.getElementById('peliharaChart'), {
           type: 'pie',
@@ -114,5 +140,91 @@ document.addEventListener('DOMContentLoaded', function () {
               }
           }
       });
+    // Chart Batang Perbaikan
+    new Chart(document.getElementById('perbaikanBulananChart'), {
+        type: 'bar',
+        data: {
+            labels: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'Mei',
+                'Jun',
+                'Jul',
+                'Agu',
+                'Sep',
+                'Okt',
+                'Nov',
+                'Des'
+            ],
+            datasets: [{
+                label: 'Jumlah Perbaikan',
+                data: @json($dataPerbaikanBulanan),
+                backgroundColor: '#36a2eb',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+    // Chart Batang Pelihara
+    new Chart(document.getElementById('peliharaBulananChart'), {
+        type: 'bar',
+        data: {
+            labels: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'Mei',
+                'Jun',
+                'Jul',
+                'Agu',
+                'Sep',
+                'Okt',
+                'Nov',
+                'Des'
+            ],
+            datasets: [{
+                label: 'Jumlah Pemeliharaan',
+                data: @json($dataPeliharaBulanan),
+                backgroundColor: '#17a2b8',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+  });
 </script>
 @endpush

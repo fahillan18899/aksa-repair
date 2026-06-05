@@ -24,12 +24,41 @@ class MonitoringController extends Controller
 
         $alatBelumDipelihara = max(0, $totalAlat - $alatDipelihara);
 
+
+        // BAR CHART PERBAIKAN PER BULAN
+        $perbaikanBulanan = Perbaikan::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->pluck('total', 'bulan')
+            ->toArray();
+
+        $dataPerbaikanBulanan = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $dataPerbaikanBulanan[] = $perbaikanBulanan[$i] ?? 0;
+        }
+
+
+        // BAR CHART PELIHARA PER BULAN
+        $peliharaBulanan = Pelihara::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->pluck('total', 'bulan')
+            ->toArray();
+
+        $dataPeliharaBulanan = [];
+
+        for ($i = 1; $i <= 12; $i++) {
+            $dataPeliharaBulanan[] = $peliharaBulanan[$i] ?? 0;
+        }        
         return view('pages.admin.PPM.monitoring.index', compact(
             'totalAlat',
             'alatDiperbaiki',
             'alatNormal',
             'alatDipelihara',
-            'alatBelumDipelihara'
+            'alatBelumDipelihara',
+            'dataPerbaikanBulanan',
+            'dataPeliharaBulanan'
         ));
     }
 }
