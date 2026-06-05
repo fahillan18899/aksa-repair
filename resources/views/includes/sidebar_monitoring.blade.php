@@ -54,16 +54,16 @@
     </div>
     <!-- SIDE BAR MENU -->
     <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard/ppm/home') ? 'active' : '' }}">
+      <li class="{{ request()->is('dashboard_monitoring/dashboard_ppm') ? 'active' : '' }}">
         <a href="{{ route('monitoring.dashboardPpm') }}"><i class="fa fa-home"></i>
             <span>Dashboard</span>
         </a>
       </li>
       <!---->
-      <li class="{{ request()->is('dashboard/ppm/operator') ? 'active' : '' }}">
-        <a href="">
-          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-          <span>Operator</span>
+      <li class="{{ request()->is('dashboard_monitoring/rekap_inv') ? 'active' : '' }}">
+        <a href="{{ route('monitoring.rekapInv') }}">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span>Rekap Inventaris</span>
         </a>
       </li>
       <!---->

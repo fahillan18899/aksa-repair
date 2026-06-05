@@ -493,20 +493,30 @@ function startScan() {
 
             currentCameraId,
 
-            {
-                fps: 20,
+        {
+            fps: 30,
 
-                qrbox: {
-                    width: 280,
-                    height: 280
-                },
-
-                aspectRatio: 1.0,
-
-                videoConstraints: {
-                    facingMode: "environment"
-                }
+            qrbox: {
+                width: 200,
+                height: 200
             },
+
+            aspectRatio: 1.0,
+
+            disableFlip: false,
+
+            videoConstraints: {
+                facingMode: {
+                    ideal: "environment"
+                },
+                width: {
+                    ideal: 1920
+                },
+                height: {
+                    ideal: 1080
+                }
+            }
+        },
 
             qrCodeMessage => {
 

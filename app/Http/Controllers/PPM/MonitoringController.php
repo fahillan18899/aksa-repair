@@ -61,4 +61,11 @@ class MonitoringController extends Controller
             'dataPeliharaBulanan'
         ));
     }
+
+    public function rekapInv()
+    {
+        $items = Inv::all();
+        return view('pages.admin.PPM.monitoring.rekap_inv',compact('items'));
+    }
+    
 }
