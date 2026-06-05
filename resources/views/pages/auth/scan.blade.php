@@ -98,7 +98,18 @@
 
 #reader video {
     width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
     border-radius: 10px;
+}
+
+#reader__scan_region {
+    min-height: 450px;
+}
+
+#reader__scan_region video {
+    width: 100% !important;
+    height: auto !important;
 }
 
 .modal-header {
@@ -130,7 +141,23 @@
     }
 
     #reader {
-        width: 100%;
+        width: 100% !important;
+    }
+
+    #reader video {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 10px;
+    }
+
+    #reader__scan_region {
+        min-height: 450px;
+    }
+
+    #reader__scan_region video {
+        width: 100% !important;
+        height: auto !important;
     }
 }
 </style>
@@ -508,12 +535,6 @@ function startScan() {
             videoConstraints: {
                 facingMode: {
                     ideal: "environment"
-                },
-                width: {
-                    ideal: 1920
-                },
-                height: {
-                    ideal: 1080
                 }
             }
         },

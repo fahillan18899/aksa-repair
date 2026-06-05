@@ -184,6 +184,7 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     //Monitoring//
     Route::get('dashboard_ppm', [MonitoringController::class, 'dashboardPpm'])->name('dashboardPpm');
     Route::get('rekap_inv', [MonitoringController::class, 'rekapInv'])->name('rekapInv');
+    Route::get('rekap_perbaikan', [MonitoringController::class, 'rekapPerbaikan'])->name('rekapPerbaikan');
     });
 
 

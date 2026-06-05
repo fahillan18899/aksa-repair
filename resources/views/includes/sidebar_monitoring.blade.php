@@ -67,6 +67,14 @@
         </a>
       </li>
       <!---->
+      <!---->
+      <li class="{{ request()->is('dashboard_monitoring/rekap_perbaikan') ? 'active' : '' }}">
+        <a href="{{ route('monitoring.rekapPerbaikan') }}">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span>Rekap Perbaikan</span>
+        </a>
+      </li>
+      <!---->
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->
