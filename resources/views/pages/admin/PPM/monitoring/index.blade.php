@@ -28,6 +28,10 @@
                 </div>
 
                 <div class="panel-body">
+                    <div class="text-center m-b-15">
+                        <h3>{{ $totalAlat }}</h3>
+                        <small>Total Alat Terdaftar</small>
+                    </div>
                     <canvas id="alatChart"></canvas>
                 </div>
             </div>
@@ -41,6 +45,10 @@
                 </div>
 
                 <div class="panel-body">
+                    <div class="text-center m-b-15">
+                        <h3>{{ $alatDipelihara }}</h3>
+                        <small>Alat Sudah Dipelihara</small>
+                    </div>
                     <canvas id="peliharaChart"></canvas>
                 </div>
             </div>
