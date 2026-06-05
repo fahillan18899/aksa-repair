@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Inv;
 use App\Models\Perbaikan;
+use Illuminate\Support\Facades\Storage;
 
 class PerbaikanController extends Controller
 {
@@ -53,5 +54,41 @@ class PerbaikanController extends Controller
         ]);
 
         return back()->with('success', 'Data berhasil disimpan');
+    }
+
+    public function edit($id)
+    {
+        $item = Perbaikan::findOrFail($id);
+        return view('pages.admin.PPM.perbaikan.edit',
+        compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validate = $request->validate([
+            'nama_alat' => 'required',
+            'merek'     => 'required',
+            'type'      => 'required',
+            'seri'      => 'required',
+            'lokasi'    => 'required',
+            'kepala'    => 'required',
+            'teknisi'    => 'required',
+            'korektif'    => 'required',
+            'catatan'    => 'required',
+        ]);
+
+        $item = Perbaikan::findOrFail($id);
+        $item->update($validate);
+
+        return redirect()->route('perbaikan.create', ['qr' => $item->id_alat])->with('success', 'Data berhasil diubah');
+    }
+
+    public function destroy($id)
+    {
+        $item = Perbaikan::findOrFail($id);
+        Storage::disk('public')->delete($item->foto);
+        $item->delete();
+
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }
