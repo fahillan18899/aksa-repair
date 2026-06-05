@@ -73,5 +73,11 @@ class MonitoringController extends Controller
         $items = Perbaikan::all();
         return view('pages.admin.PPM.monitoring.rekap_perbaikan',compact('items'));
     }
+
+    public function rekapPelihara()
+    {
+        $items = pelihara::all();
+        return view('pages.admin.PPM.monitoring.rekap_pelihara',compact('items'));
+    }
     
 }
