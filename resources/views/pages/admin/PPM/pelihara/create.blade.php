@@ -129,13 +129,7 @@ table th, table td{
 
                 <div class="form-group">
                     <label>Teknisi</label>
-                    <select name="teknisi" class="form-control" required>
-                        <option>-- Pilih Teknisi --</option>
-                        <option value="Holip">Holip</option>
-                        <option value="Marichi">Marichi</option>
-                        <option value="Yudha">Yudha</option>
-                        <option value="Dodo">Dodo</option>
-                    </select>
+                    <input name="teknisi" type="text" class="form-control" required>
                 </div>
 
                 <h3>DATA ALAT</h3>
@@ -265,9 +259,16 @@ table th, table td{
                     <input type="file" class="form-control" name="foto_pendukung">
                 </div>
 
-                <button type="submit" class="btn-save">
-                    Simpan
-                </button>
+                <!-- Button -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
+                        <i class="fa fa-save"></i> Tambah
+                    </button>
+                    <a href="{{ route('qr.menu', ['id' => $qr]) }}"
+                    class="btn btn-primary btn-block btn-mobile btn-rounded">
+                        Kembali
+                    </a>
+                </div>
 
             </form>
 
@@ -276,7 +277,7 @@ table th, table td{
         <!-- TABLE -->
         <div class="form-card">
 
-            <h3>Daftar Perbaikan</h3>
+            <h3>Daftar Alat Terpelihara</h3>
 
                 <table class="datatable table table-striped">
                     <thead>
