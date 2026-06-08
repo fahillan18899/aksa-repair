@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teknisi;
 
 use App\Models\DataBarang;
+use App\Models\Inv;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -36,6 +37,7 @@ class QrController extends Controller
 
         public function menu($id)
         {
-            return view('pages.teknisi.qr.menu', compact('id'));
+            $inv = Inv::where('id_alat', $id)->exists();
+            return view('pages.teknisi.qr.menu', compact('id', 'inv'));
         }
 }

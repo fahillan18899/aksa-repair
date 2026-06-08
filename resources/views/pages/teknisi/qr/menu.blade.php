@@ -83,11 +83,22 @@
         <small>ID QR : {{ $id }}</small>
     </div>
 
+    @if($inv)
+
+    <button class="btn btn-secondary btn-menu btn-block" disabled>
+        <i class="fa-solid fa-box"></i>
+        Sudah Terdaftar
+    </button>
+
+    @else
+
     <a href="{{ route('inventaris.create', ['qr' => $id]) }}"
-       class="btn btn-primary btn-menu btn-block">
+    class="btn btn-primary btn-menu btn-block">
         <i class="fa-solid fa-box"></i>
         Inventaris Alat
     </a>
+
+    @endif
 
     <a href="{{ route('perbaikan.create', ['qr' => $id]) }}"
        class="btn btn-warning btn-menu btn-block">

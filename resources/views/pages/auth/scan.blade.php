@@ -99,7 +99,7 @@
 #reader video {
     width: 100% !important;
     height: auto !important;
-    object-fit: contain !important;
+    object-fit: cover !important; /* ganti contain → cover */
     border-radius: 10px;
 }
 
@@ -147,7 +147,7 @@
     #reader video {
         width: 100% !important;
         height: auto !important;
-        object-fit: contain !important;
+        object-fit: cover !important; /* ganti contain → cover */
         border-radius: 10px;
     }
 
@@ -521,21 +521,24 @@ function startScan() {
             currentCameraId,
 
         {
-            fps: 30,
+            fps: 10,
 
             qrbox: {
-                width: 200,
-                height: 200
+                width: 250,
+                height: 250
             },
 
-            aspectRatio: 1.0,
-
+            aspectRatio: 1.7778,
             disableFlip: false,
 
             videoConstraints: {
-                facingMode: {
-                    ideal: "environment"
-                }
+                facingMode: { ideal: "environment" },
+                focusMode: "continuous",       // paksa continuous autofocus
+                focusDistance: 0.0,            // hint: objek dekat (0.0 = macro)
+                advanced: [
+                    { focusMode: "continuous" },
+                    { zoom: 1.0 }              // reset zoom, hindari digital zoom
+                ]
             }
         },
 
