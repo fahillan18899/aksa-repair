@@ -172,6 +172,7 @@ table th, table td{
                         <tr>
                             <td>{{ $label }}</td>
                             <td align="center">
+                                <input type="hidden" name="persiapan[{{ $name }}]" value="Tidak">
                                 <input type="checkbox" name="persiapan[{{ $name }}]" value="Ya" checked>
                             </td>
                         </tr>
@@ -194,48 +195,102 @@ table th, table td{
                         <tbody>
                             <tr>
                                 <td>Badan / Selungkup</td>
-                                <td><input type="checkbox" name="pemantauan[badan1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[badan2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[badan_selungkup1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[badan_selungkup1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[badan_selungkup2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[badan_selungkup2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Kabel Kelenturan</td>
-                                <td><input type="checkbox" name="pemantauan[kabel_kelenturan1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[kabel_kelenturan2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[kabel_kelenturan1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[kabel_kelenturan1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[kabel_kelenturan2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[kabel_kelenturan2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Tombol Saklar</td>
-                                <td><input type="checkbox" name="pemantauan[tombol_saklar1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[tombol_saklar2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[tombol_saklar1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[tombol_saklar1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[tombol_saklar2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[tombol_saklar2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Display Layar</td>
-                                <td><input type="checkbox" name="pemantauan[display_layar1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[display_layar2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[display_layar1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[display_layar1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[display_layar2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[display_layar2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Indikator Bunyi</td>
-                                <td><input type="checkbox" name="pemantauan[indikator_bunyi1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[indikator_bunyi2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[indikator_bunyi1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[indikator_bunyi1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[indikator_bunyi2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[indikator_bunyi2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Alarm Sistem</td>
-                                <td><input type="checkbox" name="pemantauan[alarm_sistem_interlock1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[alarm_sistem_interlock2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[alarm_sistem_interlock1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[alarm_sistem_interlock1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[alarm_sistem_interlock2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[alarm_sistem_interlock2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Sistem Pengunci</td>
-                                <td><input type="checkbox" name="pemantauan[sistem_pengunci1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[sistem_pengunci2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[sistem_pengunci1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[sistem_pengunci1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[sistem_pengunci2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[sistem_pengunci2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Label Penandaan</td>
-                                <td><input type="checkbox" name="pemantauan[label_penandaan1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[label_penandaan2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[label_penandaan1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[label_penandaan1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[label_penandaan2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[label_penandaan2]" value="Baik" checked>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Aksesoris</td>
-                                <td><input type="checkbox" name="pemantauan[aksesoris1]" checked></td>
-                                <td><input type="checkbox" name="pemantauan[aksesoris2]" checked></td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[aksesoris1]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[aksesoris1]" value="Baik" checked>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="pemantauan[aksesoris2]" value="tidak">
+                                    <input type="checkbox" name="pemantauan[aksesoris2]" value="Baik" checked>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -256,7 +311,7 @@ table th, table td{
                 <!-- FOTO -->
                 <div class="form-group">
                     <label>Foto</label>
-                    <input type="file" class="form-control" name="foto_pendukung">
+                    <input type="file" class="form-control" name="foto">
                 </div>
 
                 <!-- Button -->

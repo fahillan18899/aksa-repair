@@ -179,29 +179,173 @@
             <thead>
                 <tr>
                     <th>Atribut</th>
-                    <th width="120">Hasil</th>
+                    <th width="120">Fisik</th>
+                    <th width="120">Fungsi</th>
                 </tr>
             </thead>
             <tbody>
 
-                @forelse($item->pemantauan as $nama => $nilai)
                 <tr>
-                    <td>{{ ucwords(str_replace('_', ' ', $nama)) }}</td>
+                    <td>Badan / Selungkup</td>
                     <td>
-                        @if($nilai == 'Baik')
+                        @if(($item->pemantauan['badan_selungkup1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['badan_selungkup2'] ?? '') == 'Baik')
                             <span class="status-baik">✔ Baik</span>
                         @else
                             <span class="status-tidak">✘ Tidak</span>
                         @endif
                     </td>
                 </tr>
-                @empty
+
                 <tr>
-                    <td colspan="2" class="text-center">
-                        Tidak ada data
+                    <td>Kabel Kelenturan</td>
+                    <td>
+                        @if(($item->pemantauan['kabel_kelenturan1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['kabel_kelenturan2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
                     </td>
                 </tr>
-                @endforelse
+
+                <tr>
+                    <td>Tombol Saklar</td>
+                    <td>
+                        @if(($item->pemantauan['tombol_saklar1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['tombol_saklar2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Display Layar</td>
+                    <td>
+                        @if(($item->pemantauan['display_layar1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['display_layar2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Indikator Bunyi</td>
+                    <td>
+                        @if(($item->pemantauan['indikator_bunyi1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['indikator_bunyi2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Alarm Sistem</td>
+                    <td>
+                        @if(($item->pemantauan['alarm_sistem_interlock1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['alarm_sistem_interlock2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Sistem Pengunci</td>
+                    <td>
+                        @if(($item->pemantauan['sistem_pengunci1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['sistem_pengunci2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Label Penandaan</td>
+                    <td>
+                        @if(($item->pemantauan['label_penandaan1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['label_penandaan2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Aksesoris</td>
+                    <td>
+                        @if(($item->pemantauan['aksesoris1'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if(($item->pemantauan['aksesoris2'] ?? '') == 'Baik')
+                            <span class="status-baik">✔ Baik</span>
+                        @else
+                            <span class="status-tidak">✘ Tidak</span>
+                        @endif
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -235,7 +379,7 @@
     </div>
 
     <!-- FOTO -->
-    @if($item->foto_pendukung)
+    @if($item->foto)
 
     <div class="detail-card">
 
@@ -244,7 +388,7 @@
         </div>
 
         <center>
-            <img src="{{ asset('storage/' . $item->foto_pendukung) }}"
+            <img src="{{ asset('storage/' . $item->foto) }}"
                  class="foto-preview">
         </center>
 
