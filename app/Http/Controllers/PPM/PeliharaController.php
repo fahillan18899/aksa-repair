@@ -12,7 +12,7 @@ class PeliharaController extends Controller
     public function create(Request $request)
     {
         $qr = $request->qr;
-        $items = pelihara::latest()->get();
+        $items = pelihara::where('id_alat', $qr)->get();
         $alat = Inv::where('id_alat', $qr)->firstOrFail();
         return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items'));
     }

@@ -13,7 +13,7 @@ class PerbaikanController extends Controller
     public function create(Request $request)
     {
         $qr = $request->qr;
-        $items = Perbaikan::latest()->get();
+        $items = Perbaikan::where('id_alat', $qr)->get();
         $alat = Inv::where('id_alat', $qr)->firstOrFail();
         return view('pages.admin.PPM.perbaikan.create', compact('qr', 'alat','items'));
     }
