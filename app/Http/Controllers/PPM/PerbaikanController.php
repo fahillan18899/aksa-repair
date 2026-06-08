@@ -53,7 +53,8 @@ class PerbaikanController extends Controller
             'foto'      => $fotoPath,
         ]);
 
-        return back()->with('success', 'Data berhasil disimpan');
+        session()->flash('success', 'Data Berhasil Tersimpan');
+        return back();
     }
 
     public function edit($id)
@@ -79,8 +80,8 @@ class PerbaikanController extends Controller
 
         $item = Perbaikan::findOrFail($id);
         $item->update($validate);
-
-        return redirect()->route('perbaikan.create', ['qr' => $item->id_alat])->with('success', 'Data berhasil diubah');
+        session()->flash('success', 'Data Berhasil Diubah');
+        return redirect()->route('perbaikan.create', ['qr' => $item->id_alat]);
     }
 
     public function destroy($id)
@@ -88,7 +89,7 @@ class PerbaikanController extends Controller
         $item = Perbaikan::findOrFail($id);
         Storage::disk('public')->delete($item->foto);
         $item->delete();
-
-        return back()->with('success', 'Data Berhasil Dihapus');
+        session()->flash('success', 'Data Berhasil Dihapus');
+        return back();
     }
 }

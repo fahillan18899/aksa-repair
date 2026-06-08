@@ -115,11 +115,6 @@
   </section>
   <!-- Main content -->
   <div class="content">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
     <!--Form Perbaikan-->
       <div class="row">
         <div class="col-sm-12">
@@ -140,31 +135,31 @@
                       <!-- Nama Alat -->
                       <div class="form-group">
                           <label>Nama Alat <i class="text-danger">*</i></label>
-                          <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" value="{{ $alat->nama_alat }}" required>
+                          <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" value="{{ $alat->nama_alat }}" readonly required>
                       </div>
 
                       <!-- Merek -->
                       <div class="form-group">
                           <label>Merek <i class="text-danger">*</i></label>
-                          <input name="merek" id="merek" type="text" class="form-control input-rounded" value="{{ $alat->merek }}" required>
+                          <input name="merek" id="merek" type="text" class="form-control input-rounded" value="{{ $alat->merek }}" readonly required>
                       </div>
 
                       <!-- Type -->
                       <div class="form-group">
                           <label>Type <i class="text-danger">*</i></label>
-                          <input name="type" id="type" type="text" class="form-control input-rounded" value="{{ $alat->type }}" required>
+                          <input name="type" id="type" type="text" class="form-control input-rounded" value="{{ $alat->type }}" readonly required>
                       </div>
 
                       <!-- No Seri -->
                       <div class="form-group">
                           <label>No Seri <i class="text-danger">*</i></label>
-                          <input name="seri" id="seri" type="text" class="form-control input-rounded" value="{{ $alat->seri }}" required>
+                          <input name="seri" id="seri" type="text" class="form-control input-rounded" value="{{ $alat->seri }}" readonly required>
                       </div>
 
                       <!-- Lokasi -->
                       <div class="form-group">
                           <label>Lokasi <i class="text-danger">*</i></label>
-                          <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" value="{{ $alat->lokasi }}" required>
+                          <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" value="{{ $alat->lokasi }}" readonly required>
                       </div>
 
                       <!-- Kepala Ruang -->
@@ -252,7 +247,7 @@
                     <tbody>
                       @forelse($items as $item)
                       <tr>
-                        <td>{{ $item->id_alat }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->created_at }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->merek }}</td>
@@ -301,6 +296,18 @@
 </div>
 @endsection
 @push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+    Swal.fire({
+      icon: 'success',
+      title: 'Sukses!',
+      text: '{{ session("success") }}',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    @endif
+  });
 </script>
 @endpush
