@@ -50,7 +50,8 @@ class InventarisController extends Controller
             'foto'      => $fotoPath,
         ]);
 
-        return back()->with('success', 'Data berhasil disimpan');
+        session()->flash('success', 'Data Berhasil Tersimpan');
+        return back();
     }
 
     public function edit($id)
@@ -73,8 +74,8 @@ class InventarisController extends Controller
 
         $item = Inv::findOrFail($id);
         $item->update($validate);
-
-        return redirect()->route('inventaris.create', ['qr' => $item->id_alat])->with('success', 'Data berhasil diubah');
+        session()->flash('success', 'Data Berhasil Diubah');
+        return redirect()->route('inventaris.create', ['qr' => $item->id_alat]);
     }
 
     public function destroy($id)
@@ -82,7 +83,7 @@ class InventarisController extends Controller
         $item = Inv::findOrFail($id);
         Storage::disk('public')->delete($item->foto);
         $item->delete();
-
-        return back()->with('success', 'Data Berhasil Dihapus');
+        session()->flash('success', 'Data Berhasil Dihapus');
+        return back();
     }
 }

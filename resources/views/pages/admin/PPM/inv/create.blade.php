@@ -115,11 +115,6 @@
   </section>
   <!-- Main content -->
   <div class="content">
-    @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-      <p>{{ $message }}</p>
-    </div>
-    @endif
     <!--Form Inventaris-->
       <div class="row">
         <div class="col-sm-12">
@@ -275,6 +270,18 @@
 </div>
 @endsection
 @push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+    Swal.fire({
+      icon: 'success',
+      title: 'Sukses!',
+      text: '{{ session("success") }}',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    @endif
+  });
 </script>
 @endpush
