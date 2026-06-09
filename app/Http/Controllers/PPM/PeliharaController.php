@@ -69,7 +69,8 @@ class PeliharaController extends Controller
         $request['pemantauan'] = json_encode($request['pemantauan']);
 
         pelihara::create($request->post());
-        return back()->with('success', 'Data Berhasil Disimpan');
+        session()->flash('success', 'Data Berhasil Tersimpan');
+        return back();
     }
 
     public function show($id)

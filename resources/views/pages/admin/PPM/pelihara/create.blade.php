@@ -105,18 +105,7 @@ table th, table td{
 <div class="content-wrapper">
 
     <div class="content">
-
-        <!-- ERROR -->
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-<br><br><br>
+        <br><br><br>
         <!-- FORM -->
         <div class="form-card">
 
@@ -333,7 +322,6 @@ table th, table td{
         <div class="form-card">
 
             <h3>Daftar Alat Terpelihara</h3>
-
                 <table class="datatable table table-striped">
                     <thead>
                         <tr>
@@ -364,5 +352,20 @@ table th, table td{
     </div>
 
 </div>
-
 @endsection
+@push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+    Swal.fire({
+      icon: 'success',
+      title: 'Sukses!',
+      text: '{{ session("success") }}',
+      showConfirmButton: false,
+      timer: 2000
+    });
+    @endif
+  });
+</script>
+@endpush
