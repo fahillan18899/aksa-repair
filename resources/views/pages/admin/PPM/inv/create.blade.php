@@ -127,7 +127,7 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-9 col-sm-12">
-                  <form action="{{route('inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
+                  <form action="{{route('ppm.inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
                       @csrf
 
                       <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
@@ -179,7 +179,7 @@
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                               <i class="fa fa-save"></i> Tambah
                           </button>
-                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
+                          <a href="{{ route('ppm.qr.menu', ['id' => $qr]) }}"
                             class="btn btn-primary btn-block btn-mobile btn-rounded">
                               Kembali
                           </a>
@@ -240,10 +240,10 @@
                           @endif
                         </td>
                          <td>
-                           <a href="{{ route('inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                           <a href="{{ route('ppm.inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                         <form action="{{ route('inventaris.destroy', $item->id) }}" method="POST" class="d-inline">
+                         <form action="{{ route('ppm.inventaris.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">

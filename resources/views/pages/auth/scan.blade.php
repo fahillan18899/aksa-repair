@@ -355,13 +355,29 @@ async function startCamera(index) {
                 }
             },
 
-            (decodedText) => {
+            async (decodedText) => {
 
-                stopAndroidScanner();
+                await stopAndroidScanner();
 
                 $('#modal1').modal('hide');
 
-                window.location.href = decodedText;
+                // Jika QR berisi URL lama
+                if (decodedText.includes('/qr-menu/')) {
+
+                    decodedText = decodedText.replace(
+                        '/qr-menu/',
+                        '/dashboard_ppm/qr-menu/'
+                    );
+
+                    window.location.href = decodedText;
+
+                } else {
+
+                    // Jika QR hanya berisi angka
+                    window.location.href =
+                        "{{ url('dashboard_ppm/qr-menu') }}/" + decodedText;
+
+                }
 
             },
 
@@ -545,22 +561,35 @@ function startScan() {
             }
         },
 
-            qrCodeMessage => {
+        async (qrCodeMessage) => {
 
-                qrScanner.stop()
+            await qrScanner.stop();
 
-                .then(() => {
+            await qrScanner.clear();
 
-                    qrScanner.clear();
+            $('#modal2').modal('hide');
 
-                    $('#modal2').modal('hide');
+            console.log("QR:", qrCodeMessage);
 
-                    window.location.href =
-                        qrCodeMessage;
+            // Jika QR berisi URL lama
+            if (qrCodeMessage.startsWith('http')) {
 
-                });
+                qrCodeMessage = qrCodeMessage.replace(
+                    '/qr-menu/',
+                    '/dashboard_ppm/qr-menu/'
+                );
 
-            },
+                window.location.href = qrCodeMessage;
+
+            } else {
+
+                // Jika QR hanya berisi angka
+                window.location.href =
+                    "{{ url('dashboard_ppm/qr-menu') }}/" + qrCodeMessage;
+
+            }
+
+        },
 
             errorMessage => {
                 // abaikan

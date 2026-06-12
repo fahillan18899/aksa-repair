@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class InventarisController extends Controller
 {
-    public function index()
-    {
-        return view('pages.admin.PPM.inv.index', compact('items'));
-    }
 
     public function create(Request $request)
     {
@@ -75,7 +71,7 @@ class InventarisController extends Controller
         $item = Inv::findOrFail($id);
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');
-        return redirect()->route('inventaris.create', ['qr' => $item->id_alat]);
+        return redirect()->route('ppm.inventaris.create', ['qr' => $item->id_alat]);
     }
 
     public function destroy($id)

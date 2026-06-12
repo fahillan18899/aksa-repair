@@ -92,7 +92,7 @@
 
     @else
 
-    <a href="{{ route('inventaris.create', ['qr' => $id]) }}"
+    <a href="{{ route('ppm.inventaris.create', ['qr' => $id]) }}"
     class="btn btn-primary btn-menu btn-block">
         <i class="fa-solid fa-box"></i>
         Inventaris Alat
@@ -100,19 +100,19 @@
 
     @endif
 
-    <a href="{{ route('perbaikan.create', ['qr' => $id]) }}"
+    <a href="{{ route('ppm.perbaikan.create', ['qr' => $id]) }}"
        class="btn btn-warning btn-menu btn-block">
         <i class="fa-solid fa-screwdriver-wrench"></i>
         Perbaikan Alat
     </a>
 
-    <a href="{{ route('pelihara.create', ['qr' => $id]) }}"
+    <a href="{{ route('ppm.pelihara.create', ['qr' => $id]) }}"
        class="btn btn-success btn-menu btn-block">
         <i class="fa-solid fa-gears"></i>
         Maintenance Alat
     </a>
 
-    <a href="{{ url('/scan') }}"
+    <a href="{{ route('ppm.scan') }}"
        class="btn btn-info btn-menu btn-block">
         <i class="fa-solid fa-qrcode"></i>
         Scan QR
