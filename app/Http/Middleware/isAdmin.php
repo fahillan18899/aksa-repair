@@ -32,6 +32,8 @@ class IsAdmin
             return redirect()->route('akuntan.dashboard');
         } elseif (Auth::user()->user_role == 'admin_ppm') {
             return redirect()->route('monitoring.dashboardPpm');
+        } elseif (Auth::user()->user_role == 'teknisi_ppm') {
+            return redirect()->route('ppm.scan');
         }
 
         return redirect()->route('user.dashboard');

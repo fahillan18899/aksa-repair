@@ -3,6 +3,8 @@
 
 use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 // Repair Aksa //
 use App\Http\Controllers\DataAlatController;
 // Admin
@@ -187,6 +189,20 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     Route::get('rekap_perbaikan', [MonitoringController::class, 'rekapPerbaikan'])->name('rekapPerbaikan');
     Route::get('rekap_pelihara', [MonitoringController::class, 'rekapPelihara'])->name('rekapPelihara');
     });
+
+Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
+    //PPM//
+    Route::get('scan', [QrController::class, 'scan'])->name('scan');
+    });
+
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+})->name('logout');
 
 
 Route::get('asd', [HomeController::class, 'notifyUser']);

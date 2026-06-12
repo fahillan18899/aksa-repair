@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>QR Preventive Maintenance</title>
+    <title>QR Label 18mm</title>
 
     <style>
         * {
@@ -11,63 +11,54 @@
         }
 
         @page {
-            size: A4 portrait;
-            margin: 3mm;
+            margin: 0;
         }
 
         body {
             margin: 0;
+            padding: 2mm;
+            font-family: Arial, sans-serif;
         }
 
         .wrapper {
-            display: grid;
-            grid-template-columns: repeat(3, 6cm);
-
-            column-gap: 2mm;
-            row-gap: 0mm;
-
-            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .card {
-            width: 6cm;
-            height: 2.26cm;
-            position: relative;
-
-            background-image: url('{{ url("assets/images/qr_aksa2.png") }}');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-
+        .qr-item {
+            width: 18mm;
+            text-align: center;
+            margin-bottom: 2mm;
             page-break-inside: avoid;
         }
 
         .qr {
-            position: absolute;
-            left: 0.37cm;
-            top: 0.93cm;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr svg {
+            width: 14mm;
+            height: 14mm;
         }
 
         .qr-number {
-            position: absolute;
-
-            left: 0.42cm;
-            top: 1.85cm;
-
-            width: 0.9cm;
-            text-align: center;
-
-            font-size: 7px;
+            margin-top: 0.5mm;
+            font-size: 6pt;
             font-weight: bold;
-            color: #000;
+            line-height: 1;
         }
 
         @media print {
             body {
                 margin: 0;
+                padding: 0;
             }
 
-            .wrapper {
-                gap: 0.5mm;
+            .qr-item {
+                margin-bottom: 1mm;
             }
         }
     </style>
@@ -79,10 +70,14 @@
 
         @foreach ($qrNumbers as $number)
 
-            <div class="card">
+            <div class="qr-item">
+
+                <div class="qr-number">
+                    AKSA
+                </div>
 
                 <div class="qr">
-                    {!! QrCode::size(35)->margin(1)->generate(url('qr-menu/' . $number)) !!}
+                    {!! QrCode::size(80)->margin(1)->generate(url('qr-menu/' . $number)) !!}
                 </div>
 
                 <div class="qr-number">

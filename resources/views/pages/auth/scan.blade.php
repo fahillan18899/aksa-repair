@@ -231,15 +231,18 @@
           </div>
           <!-- Button iPhone End-->
 
-          <!-- Button exit -->
-              <div class="row">
+            <!-- Button exit -->
+            <div class="row">
                 <div class="text-center">
-                  <a href="{{ url('/') }}" class="btn btn-danger">
-                    <i class="fa fa-sign-out"></i> Keluar
-                  </a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-sign-out"></i> Keluar
+                        </button>
+                    </form>
                 </div>
-              </div>
-          <!-- Button exit End-->
+            </div>
+            <!-- Button exit End -->
           </div>
         </div>
       </div>
