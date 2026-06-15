@@ -12,6 +12,7 @@ class Inv extends Model
     protected $table = 'invs';
 
     protected $fillable = [
+        'rs',
         'id_alat',
         'nama_alat',
         'merek',
