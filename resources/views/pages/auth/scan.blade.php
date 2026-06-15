@@ -8,6 +8,8 @@
     <link href="{{ url('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" type="text/css" />
     <!-- style css -->
     <link href="{{ url('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
 <style>
 /* Modal scanner fullscreen mobile */
@@ -174,19 +176,6 @@
                 <h3>Scanner Qr</h3>
                 <small>Tekan tombol untuk scan / aktifkan camera</small>
               </div>
-            </div>
-            <div class="">
-              <br>
-              <!-- alert message -->
-              @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div>
-              @endif
             </div>
           </div>
 
@@ -690,4 +679,31 @@ $('#modal2').on('hidden.bs.modal', function() {
 
 </script>
 <!-- Fungsi scanner iphone end -->
+<!-- Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@if(session('error'))
+<script>
+
+$(document).ready(function () {
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Akses Ditolak',
+        text: '{{ session("error") }}',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#d33',
+        allowOutsideClick: false,
+        showClass: {
+            popup: 'animate__animated animate__shakeX'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOut'
+        }
+    });
+
+});
+
+</script>
+@endif
+<!-- Alert end-->
 </html>
