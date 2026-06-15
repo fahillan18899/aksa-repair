@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\PPM;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Inv;
 use App\Models\pelihara;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class PeliharaController extends Controller
 {
     public function create(Request $request)
     {
         $qr = $request->qr;
+        $rs = Auth::user()->rs;
         $items = pelihara::where('id_alat', $qr)->get();
         $alat = Inv::where('id_alat', $qr)->firstOrFail();
-        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items'));
+        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items', 'rs'));
     }
 
     public function store(Request $request)

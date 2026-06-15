@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('peliharas', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('rs')->nullable();
             $table->text('id_alat')->nullable();
             $table->text('teknisi')->nullable();
             $table->text('nama_alat')->nullable();

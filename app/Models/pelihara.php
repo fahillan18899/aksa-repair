@@ -12,6 +12,7 @@ class pelihara extends Model
     protected $table = 'peliharas';
 
     protected $fillable = [
+        'rs',
         'id_alat',
         'teknisi',
         'nama_alat',
