@@ -14,8 +14,15 @@ class PeliharaController extends Controller
     {
         $qr = $request->qr;
         $rs = Auth::user()->rs;
+        $alat = Inv::where('id_alat', $qr)->first();
+
+        if (!$alat) {
+            return redirect()
+                ->route('ppm.qr.menu', ['id' => $qr])
+                ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
+        }
+        
         $items = pelihara::where('id_alat', $qr)->get();
-        $alat = Inv::where('id_alat', $qr)->firstOrFail();
         return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items', 'rs'));
     }
 

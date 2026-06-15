@@ -119,6 +119,22 @@
     </a>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@if(session('error'))
+<script>
+
+Swal.fire({
+    icon: 'warning',
+    title: 'Tidak Bisa Dilanjutkan',
+    imageUrl: "{{ asset('assets/images/teknisi.jpg') }}",
+    imageWidth: 180,
+    imageHeight: 180,
+    text: @json(session('error')),
+    confirmButtonColor: '#f0ad4e'
+});
+
+</script>
+@endif
 </body>
 </html>
