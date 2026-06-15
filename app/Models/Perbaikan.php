@@ -12,6 +12,7 @@ class Perbaikan extends Model
     protected $table = 'perbaikans';
 
     protected $fillable = [
+        'rs',
         'id_alat',
         'nama_alat',
         'merek',

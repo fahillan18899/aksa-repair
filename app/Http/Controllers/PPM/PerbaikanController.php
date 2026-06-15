@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\PPM;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Inv;
 use App\Models\Perbaikan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class PerbaikanController extends Controller
@@ -13,14 +14,16 @@ class PerbaikanController extends Controller
     public function create(Request $request)
     {
         $qr = $request->qr;
+        $rs = Auth::user()->rs;
         $items = Perbaikan::where('id_alat', $qr)->get();
         $alat = Inv::where('id_alat', $qr)->firstOrFail();
-        return view('pages.admin.PPM.perbaikan.create', compact('qr', 'alat','items'));
+        return view('pages.admin.PPM.perbaikan.create', compact('qr', 'alat','items', 'rs'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'rs'   => 'required',
             'id_alat'   => 'required',
             'nama_alat' => 'required',
             'merek'     => 'required',
@@ -40,6 +43,7 @@ class PerbaikanController extends Controller
         }
 
         Perbaikan::create([
+            'rs'   => $request->rs,
             'id_alat'   => $request->id_alat,
             'nama_alat' => $request->nama_alat,
             'merek'     => $request->merek,

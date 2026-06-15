@@ -131,7 +131,8 @@
                       @csrf
 
                       <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
-
+                      <input type="hidden" name="rs" id="rs" value="{{ $rs }}">
+                      
                       <!-- Nama Alat -->
                       <div class="form-group">
                           <label>Nama Alat <i class="text-danger">*</i></label>
