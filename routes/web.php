@@ -38,7 +38,10 @@ use App\Http\Controllers\PPM\MonitoringController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
-
+Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
+Route::resource('inventaris', InventarisController::class);
+Route::resource('perbaikan', PerbaikanController::class);
+Route::resource('pelihara', PeliharaController::class);
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {
     // menu dashboard SIMRS
@@ -190,10 +193,6 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
     //PPM//
     Route::get('scan', [QrController::class, 'scan'])->name('scan');
-    Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
-    Route::resource('inventaris', InventarisController::class);
-    Route::resource('perbaikan', PerbaikanController::class);
-    Route::resource('pelihara', PeliharaController::class);
     });
 
 Route::post('/logout', function (Request $request) {

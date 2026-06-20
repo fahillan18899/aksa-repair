@@ -92,7 +92,7 @@
 
     @else
 
-    <a href="{{ route('ppm.inventaris.create', ['qr' => $id]) }}"
+    <a href="{{ route('inventaris.create', ['qr' => $id]) }}"
     class="btn btn-primary btn-menu btn-block">
         <i class="fa-solid fa-box"></i>
         Inventaris Alat
@@ -100,41 +100,25 @@
 
     @endif
 
-    <a href="{{ route('ppm.perbaikan.create', ['qr' => $id]) }}"
+    <a href="{{ route('perbaikan.create', ['qr' => $id]) }}"
        class="btn btn-warning btn-menu btn-block">
         <i class="fa-solid fa-screwdriver-wrench"></i>
         Perbaikan Alat
     </a>
 
-    <a href="{{ route('ppm.pelihara.create', ['qr' => $id]) }}"
+    <a href="{{ route('pelihara.create', ['qr' => $id]) }}"
        class="btn btn-success btn-menu btn-block">
         <i class="fa-solid fa-gears"></i>
         Maintenance Alat
     </a>
 
-    <a href="{{ route('ppm.scan') }}"
+    <a href="{{ url('/scan') }}"
        class="btn btn-info btn-menu btn-block">
         <i class="fa-solid fa-qrcode"></i>
         Scan QR
     </a>
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-@if(session('error'))
-<script>
-
-Swal.fire({
-    icon: 'warning',
-    title: 'Tidak Bisa Dilanjutkan',
-    imageUrl: "{{ asset('assets/images/teknisi.jpg') }}",
-    imageWidth: 180,
-    imageHeight: 180,
-    text: @json(session('error')),
-    confirmButtonColor: '#f0ad4e'
-});
-
-</script>
-@endif
 </body>
 </html>

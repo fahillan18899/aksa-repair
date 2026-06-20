@@ -127,11 +127,11 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-9 col-sm-12">
-                  <form action="{{route('ppm.inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
+                  <form action="{{route('inventaris.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
                       @csrf
 
                       <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
-                      <input type="hidden" name="rs" id="rs" value="{{ $rs }}">
+                      <input type="hidden" name="rs" id="rs" value="brebes">
 
                       <!-- Nama Alat -->
                       <div class="form-group">
@@ -180,7 +180,7 @@
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                               <i class="fa fa-save"></i> Tambah
                           </button>
-                          <a href="{{ route('ppm.qr.menu', ['id' => $qr]) }}"
+                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
                             class="btn btn-primary btn-block btn-mobile btn-rounded">
                               Kembali
                           </a>
@@ -195,78 +195,6 @@
         </div>
       </div>
     <!--Form Inventaris end-->
-
-    <!--Tabel Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print">
-            <div class="">
-              <h1>Daftar Inventaris</h1>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th>Id</th>
-                      <th>Nama</th>
-                      <th>Merek</th>
-                      <th>Type</th>
-                      <th>Serial Number</th>
-                      <th>Lokasi</th>
-                      <th>Jadwal</th>
-                      <th>Foto</th>
-                      <th>Tombol Aksi</th>
-                    </thead>
-                    <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->id_alat }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->seri }}</td>
-                        <td>{{ $item->lokasi }}</td>
-                        <td>{{ $item->jadwal }}</td>
-                        <td>
-                          @if($item->foto)
-                          <img src="{{ asset('storage/' . $item->foto) }}"
-                              class="img-thumbnail"
-                              style="width:90px">
-                          @endif
-                        </td>
-                         <td>
-                           <a href="{{ route('ppm.inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-                         <form action="{{ route('ppm.inventaris.destroy', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
-                            </button>
-                          </form> 
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tabel Perbaikan-->
   </div>
 </div>
 @endsection

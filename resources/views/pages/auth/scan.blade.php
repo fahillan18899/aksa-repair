@@ -8,8 +8,6 @@
     <link href="{{ url('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" type="text/css" />
     <!-- style css -->
     <link href="{{ url('assets/css/custom.css') }}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   </head>
 <style>
 /* Modal scanner fullscreen mobile */
@@ -176,6 +174,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/
                 <h3>Scanner Qr</h3>
                 <small>Tekan tombol untuk scan / aktifkan camera</small>
               </div>
+            </div>
+            <div class="">
+              <br>
+              <!-- alert message -->
+              @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+              @endif
             </div>
           </div>
 
@@ -344,29 +355,13 @@ async function startCamera(index) {
                 }
             },
 
-            async (decodedText) => {
+            (decodedText) => {
 
-                await stopAndroidScanner();
+                stopAndroidScanner();
 
                 $('#modal1').modal('hide');
 
-                // Jika QR berisi URL lama
-                if (decodedText.includes('/qr-menu/')) {
-
-                    decodedText = decodedText.replace(
-                        '/qr-menu/',
-                        '/dashboard_ppm/qr-menu/'
-                    );
-
-                    window.location.href = decodedText;
-
-                } else {
-
-                    // Jika QR hanya berisi angka
-                    window.location.href =
-                        "{{ url('dashboard_ppm/qr-menu') }}/" + decodedText;
-
-                }
+                window.location.href = decodedText;
 
             },
 
@@ -550,35 +545,22 @@ function startScan() {
             }
         },
 
-        async (qrCodeMessage) => {
+            qrCodeMessage => {
 
-            await qrScanner.stop();
+                qrScanner.stop()
 
-            await qrScanner.clear();
+                .then(() => {
 
-            $('#modal2').modal('hide');
+                    qrScanner.clear();
 
-            console.log("QR:", qrCodeMessage);
+                    $('#modal2').modal('hide');
 
-            // Jika QR berisi URL lama
-            if (qrCodeMessage.startsWith('http')) {
+                    window.location.href =
+                        qrCodeMessage;
 
-                qrCodeMessage = qrCodeMessage.replace(
-                    '/qr-menu/',
-                    '/dashboard_ppm/qr-menu/'
-                );
+                });
 
-                window.location.href = qrCodeMessage;
-
-            } else {
-
-                // Jika QR hanya berisi angka
-                window.location.href =
-                    "{{ url('dashboard_ppm/qr-menu') }}/" + qrCodeMessage;
-
-            }
-
-        },
+            },
 
             errorMessage => {
                 // abaikan
@@ -679,31 +661,4 @@ $('#modal2').on('hidden.bs.modal', function() {
 
 </script>
 <!-- Fungsi scanner iphone end -->
-<!-- Alert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@if(session('error'))
-<script>
-
-$(document).ready(function () {
-
-    Swal.fire({
-        icon: 'error',
-        title: 'Akses Ditolak',
-        text: '{{ session("error") }}',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#d33',
-        allowOutsideClick: false,
-        showClass: {
-            popup: 'animate__animated animate__shakeX'
-        },
-        hideClass: {
-            popup: 'animate__animated animate__fadeOut'
-        }
-    });
-
-});
-
-</script>
-@endif
-<!-- Alert end-->
 </html>

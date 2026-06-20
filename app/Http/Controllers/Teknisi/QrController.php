@@ -35,30 +35,9 @@ class QrController extends Controller
             return view('pages.teknisi.qr.result', compact('qrNumbers'));
         }
 
-        public function scan()
+        public function menu($id)
         {
-            return view('pages.auth.scan');
+            $inv = Inv::where('id_alat', $id)->exists();
+            return view('pages.teknisi.qr.menu', compact('id', 'inv'));
         }
-
-    public function menu($id)
-    {
-        $inv = Inv::where('id_alat', $id)->first();
-        $userRs = auth()->user()->rs; 
-
-        if ($inv) {
-            if ($inv->rs != $userRs) {
-                return redirect()
-                    ->route('ppm.scan')
-                    ->with('error', 'QR ini bukan milik rumah sakit Anda');
-            }
-            $exists = true;
-        } else {
-            $exists = false;
-        }
-
-        return view('pages.teknisi.qr.menu', [
-            'id' => $id,
-            'inv' => $exists
-        ]);
-    }
 }

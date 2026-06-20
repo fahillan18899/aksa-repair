@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers\PPM;
 
+use App\Http\Controllers\Controller;
 use App\Models\Inv;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class InventarisController extends Controller
 {
+    public function index()
+    {
+        return view('pages.admin.PPM.inv.index', compact('items'));
+    }
 
     public function create(Request $request)
     {
         $qr = $request->qr;
-        $rs = Auth::user()->rs;
-        $items = Inv::where('rs', $rs)->get();
-        return view('pages.admin.PPM.inv.create', compact('qr', 'items', 'rs'));
+        $items = Inv::latest()->get();
+        return view('pages.admin.PPM.inv.create', compact('qr', 'items'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'rs'   => 'required',
+            'rs'        => 'required',
             'id_alat'   => 'required',
             'nama_alat' => 'required',
             'merek'     => 'required',
@@ -75,7 +77,7 @@ class InventarisController extends Controller
         $item = Inv::findOrFail($id);
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');
-        return redirect()->route('ppm.inventaris.create', ['qr' => $item->id_alat]);
+        return redirect()->route('inventaris.create', ['qr' => $item->id_alat]);
     }
 
     public function destroy($id)
