@@ -109,13 +109,13 @@ table th, table td{
         <!-- FORM -->
         <div class="form-card">
 
-            <form action="{{route('ppm.pelihara.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('pelihara.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <h3>Pemeliharaan Alat</h3>
 
                 <input type="hidden" name="id_alat" value="{{ $qr }}">
-                <input type="hidden" name="rs" value="{{ $rs }}">
+                <input type="hidden" name="rs" value="brebes">
 
                 <div class="form-group">
                     <label>Teknisi</label>
@@ -309,7 +309,7 @@ table th, table td{
                     <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                         <i class="fa fa-save"></i> Tambah
                     </button>
-                    <a href="{{ route('ppm.qr.menu', ['id' => $qr]) }}"
+                    <a href="{{ route('qr.menu', ['id' => $qr]) }}"
                     class="btn btn-primary btn-block btn-mobile btn-rounded">
                         Kembali
                     </a>
@@ -337,7 +337,7 @@ table th, table td{
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->merek }}</td>
                         <td>
-                            <a href="{{ route('ppm.pelihara.show', $item->id) }}"
+                            <a href="{{ route('pelihara.show', $item->id) }}"
                             class="btn btn-success btn-xs">
                                 <i class="fa fa-eye"></i>
                             </a>

@@ -13,17 +13,16 @@ class PeliharaController extends Controller
     public function create(Request $request)
     {
         $qr = $request->qr;
-        $rs = Auth::user()->rs;
         $alat = Inv::where('id_alat', $qr)->first();
 
         if (!$alat) {
             return redirect()
-                ->route('ppm.qr.menu', ['id' => $qr])
+                ->route('qr.menu', ['id' => $qr])
                 ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
         }
         
         $items = pelihara::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items', 'rs'));
+        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items'));
     }
 
     public function store(Request $request)
