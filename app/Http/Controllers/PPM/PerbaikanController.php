@@ -18,7 +18,7 @@ class PerbaikanController extends Controller
 
         if (!$alat) {
             return redirect()
-                ->route('ppm.qr.menu', ['id' => $qr])
+                ->route('qr.menu', ['id' => $qr])
                 ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
         }
 
