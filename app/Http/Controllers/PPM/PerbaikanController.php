@@ -14,7 +14,6 @@ class PerbaikanController extends Controller
     public function create(Request $request)
     {
         $qr = $request->qr;
-        $rs = Auth::user()->rs;
         $alat = Inv::where('id_alat', $qr)->first();
 
         if (!$alat) {
@@ -24,7 +23,7 @@ class PerbaikanController extends Controller
         }
 
         $items = Perbaikan::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items', 'rs')
+        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items',)
         );
     }
 
@@ -93,7 +92,7 @@ class PerbaikanController extends Controller
         $item = Perbaikan::findOrFail($id);
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');
-        return redirect()->route('ppm.perbaikan.create', ['qr' => $item->id_alat]);
+        return redirect()->route('perbaikan.create', ['qr' => $item->id_alat]);
     }
 
     public function destroy($id)

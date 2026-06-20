@@ -127,11 +127,11 @@
             <div class="panel-body panel-form">
               <div class="row">
                 <div class="col-md-9 col-sm-12">
-                  <form action="{{route('ppm.perbaikan.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
+                  <form action="{{route('perbaikan.store')}}" class="form-inner" enctype="multipart/form-data" method="post">
                       @csrf
 
                       <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
-                      <input type="hidden" name="rs" id="rs" value="{{ $rs }}">
+                      <input type="hidden" name="rs" id="rs" value="brebes">
                       
                       <!-- Nama Alat -->
                       <div class="form-group">
@@ -198,7 +198,7 @@
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
                               <i class="fa fa-save"></i> Tambah
                           </button>
-                          <a href="{{ route('ppm.qr.menu', ['id' => $qr]) }}"
+                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
                             class="btn btn-primary btn-block btn-mobile btn-rounded">
                               Kembali
                           </a>
@@ -260,17 +260,24 @@
                         <td>{{ $item->korektif }}</td>
                         <td>{{ $item->catatan }}</td>
                         <td>
-                          @if($item->foto)
-                          <img src="{{ asset('storage/' . $item->foto) }}"
-                              class="img-thumbnail"
-                              style="width:90px">
+                          @if($item->foto && file_exists(storage_path('app/public/'.$item->foto)))
+                            <a href="{{ asset('storage/'.$item->foto) }}" class="btn btn-xs btn-warning"
+                            target="_blank" data-toggle="tooltip" data-placement="top" title="Lihat Gambar">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            </a>
+                          @else
+                            <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip"
+                              data-placement="top" title="Gambar"
+                              onclick="alert('Gambar tidak ada'); return false;">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            </a>
                           @endif
                         </td>
                          <td>
-                           <a href="{{ route('ppm.perbaikan.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                           <a href="{{ route('perbaikan.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                         <form action="{{ route('ppm.perbaikan.destroy', $item->id) }}" method="POST" class="d-inline">
+                         <form action="{{ route('perbaikan.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
