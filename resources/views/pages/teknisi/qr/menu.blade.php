@@ -112,7 +112,7 @@
         Maintenance Alat
     </a>
 
-    <a href="{{ url('/scan') }}"
+    <a href="{{ route('scan') }}"
        class="btn btn-info btn-menu btn-block">
         <i class="fa-solid fa-qrcode"></i>
         Scan QR

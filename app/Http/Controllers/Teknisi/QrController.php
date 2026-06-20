@@ -35,6 +35,11 @@ class QrController extends Controller
             return view('pages.teknisi.qr.result', compact('qrNumbers'));
         }
 
+        public function scan()
+        {
+            return view('pages.auth.scan');
+        }
+
         public function menu($id)
         {
             $inv = Inv::where('id_alat', $id)->exists();
