@@ -58,139 +58,236 @@
             <i class="fa-solid fa-qrcode"></i>
             Arahkan QR ke kamera
         </div>
-        <video id="video" autoplay playsinline>
-        </video>
+<video
+id="video"
+autoplay
+muted
+playsinline
+webkit-playsinline>
+</video>
         <div class="frame"></div>
         <button class="btn btn-danger close-btn" onclick="closeScanner()">
             Tutup
         </button>
     </div>
-    <script>
-        let stream = null;
-        let detector = null;
-        let scanning = true;
-        async function startCamera() {
-            try {
-                stream =
-                    await navigator
-                    .mediaDevices
-                    .getUserMedia({
-                        video: {
-                            facingMode: {
-                                ideal: "environment"
-                            },
-                            width: {
-                                ideal: 1920
-                            },
-                            height: {
-                                ideal: 1080
-                            }
-                        }
-                    });
-                const video =
-                    document
-                    .getElementById(
-                        "video"
-                    );
-                video.srcObject =
-                    stream;
-                await video.play();
-                const track =
-                    stream
-                    .getVideoTracks()[0];
-                try {
-                    await track
-                        .applyConstraints({
-                            advanced: [
-                                {
-                                    focusMode: "continuous"
-                                }
-                            ]
-                        });
-                } catch (e) {}
-                startScan();
-            } catch (e) {
-                alert(
-                    "Kamera tidak dapat dibuka"
-                );
-                history.back();
-            }
-        }
-        async function startScan() {
-            if (
-                !(
-                    "BarcodeDetector" in window
-                )
-            ) {
-                alert(
-                    "Browser tidak mendukung QR scanner"
-                );
-                return;
-            }
-            detector =
-                new BarcodeDetector({
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.js"></script>
 
-                    formats: [
-                        "qr_code"
-                    ]
+<script>
 
-                });
-            scanLoop();
-        }
-        async function scanLoop() {
-            const video =
-                document
-                .getElementById(
-                    "video"
-                );
-            while (
-                scanning
-            ) {
-                try {
+let stream = null;
+let scanning = true;
 
-                    const result =
-                        await detector
-                        .detect(
-                            video
-                        );
-                    if (
-                        result.length
-                    ) {
-                        stopCamera();
-                        window.location.href =
-                            result[0]
-                            .rawValue;
-                        return;
-                    }
-                } catch (e) {}
-                await new Promise(
-                    r =>
-                    setTimeout(
-                        r,
-                        100
-                    )
-                );
-            }
-        }
-        function stopCamera() {
-            scanning = false;
-            if (stream) {
-                stream
-                    .getTracks()
-                    .forEach(
-                        t =>
-                        t.stop()
-                    );
-            }
-        }
-        function closeScanner() {
-            stopCamera();
-            window.history.back();
-        }
-        window.onload =
-            startCamera;
-        window.onbeforeunload =
-            stopCamera;
-    </script>
+const video =
+document.getElementById(
+"video"
+);
+
+async function startCamera(){
+
+try{
+
+stream =
+await navigator
+.mediaDevices
+.getUserMedia({
+
+video:{
+
+facingMode:"environment",
+
+width:{
+ideal:1280
+},
+
+height:{
+ideal:720
+}
+
+},
+
+audio:false
+
+});
+
+video.srcObject =
+stream;
+
+await video.play();
+
+requestAnimationFrame(
+scanLoop
+);
+
+}
+
+catch(e){
+
+console.log(e);
+
+alert(
+"Gagal membuka kamera"
+);
+
+}
+
+}
+
+function scanLoop(){
+
+if(
+!scanning
+){
+
+return;
+
+}
+
+if(
+
+video.readyState
+===
+
+video.HAVE_ENOUGH_DATA
+
+){
+
+const canvas =
+document.createElement(
+"canvas"
+);
+
+canvas.width =
+video.videoWidth;
+
+canvas.height =
+video.videoHeight;
+
+const ctx =
+canvas.getContext(
+"2d",
+{
+willReadFrequently:true
+}
+);
+
+ctx.drawImage(
+
+video,
+
+0,
+
+0,
+
+canvas.width,
+
+canvas.height
+
+);
+
+const img =
+ctx.getImageData(
+
+0,
+
+0,
+
+canvas.width,
+
+canvas.height
+
+);
+
+const qr =
+jsQR(
+
+img.data,
+
+canvas.width,
+
+canvas.height,
+
+{
+inversionAttempts:
+"dontInvert"
+}
+
+);
+
+if(
+qr &&
+qr.data
+){
+
+console.log(
+"QR:",
+qr.data
+);
+
+scanning =
+false;
+
+stopCamera();
+
+window.location.replace(
+qr.data
+);
+
+return;
+
+}
+
+}
+
+requestAnimationFrame(
+scanLoop
+);
+
+}
+
+function stopCamera(){
+
+scanning =
+false;
+
+if(
+stream
+){
+
+stream
+.getTracks()
+.forEach(
+track =>
+track.stop()
+);
+
+}
+
+}
+
+function closeScanner(){
+
+stopCamera();
+
+window.history.back();
+
+}
+
+window.addEventListener(
+
+"load",
+
+startCamera
+
+);
+
+window.addEventListener(
+
+"pagehide",
+
+stopCamera
+
+);
+
+</script>
 </body>
 </html>
