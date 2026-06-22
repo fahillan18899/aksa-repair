@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Inv;
 use App\Models\Perbaikan;
 use App\Models\pelihara;
+use Illuminate\Support\Facades\Storage;
 
 class MonitoringController extends Controller
 {
@@ -66,6 +67,15 @@ class MonitoringController extends Controller
     {
         $items = Inv::all();
         return view('pages.admin.PPM.monitoring.rekap_inv',compact('items'));
+    }
+
+    public function deleteInv($id)
+    {
+        $item = Inv::findOrFail($id);
+        Storage::disk('public')->delete($item->foto);
+        $item->delete();
+        session()->flash('success', 'Data Berhasil Dihapus');
+        return back();
     }
 
     public function rekapPerbaikan()

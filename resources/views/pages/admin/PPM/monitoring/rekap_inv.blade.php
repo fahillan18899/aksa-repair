@@ -76,6 +76,13 @@
                                 <i class="fa fa-picture-o" aria-hidden="true"></i>
                             </a>
                           @endif
+                         <form action="{{ route('monitoring.deleteInv', $item->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
+                            </button>
+                          </form> 
                         </td>
                       </tr>
                       @empty
