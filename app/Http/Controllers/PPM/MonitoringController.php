@@ -72,7 +72,10 @@ class MonitoringController extends Controller
     public function deleteInv($id)
     {
         $item = Inv::findOrFail($id);
-        Storage::disk('public')->delete($item->foto);
+        if (!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+            Storage::disk('public')->delete($item->foto);
+        }
+
         $item->delete();
         session()->flash('success', 'Data Berhasil Dihapus');
         return back();
@@ -87,7 +90,10 @@ class MonitoringController extends Controller
     public function deletePerbaikan($id)
     {
         $item = Perbaikan::findOrFail($id);
-        Storage::disk('public')->delete($item->foto);
+        if(!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+            Storage::disk('public')->delete($item->foto);
+        }
+        
         $item->delete();
         session()->flash('success', 'Data Berhasil Dihapus');
         return back();
