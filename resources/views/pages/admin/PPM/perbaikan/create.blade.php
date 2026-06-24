@@ -135,38 +135,38 @@
                       
                       <!-- Nama Alat -->
                       <div class="form-group">
-                          <label>Nama Alat <i class="text-danger">*</i></label>
-                          <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" value="{{ $alat->nama_alat }}" readonly required>
+                        <label>Nama Alat <i class="text-danger">*</i></label>
+                        <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" value="{{ $alat->nama_alat }}" readonly required>
                       </div>
 
                       <!-- Merek -->
                       <div class="form-group">
-                          <label>Merek <i class="text-danger">*</i></label>
-                          <input name="merek" id="merek" type="text" class="form-control input-rounded" value="{{ $alat->merek }}" readonly required>
+                        <label>Merek <i class="text-danger">*</i></label>
+                        <input name="merek" id="merek" type="text" class="form-control input-rounded" value="{{ $alat->merek }}" readonly required>
                       </div>
 
                       <!-- Type -->
                       <div class="form-group">
-                          <label>Type <i class="text-danger">*</i></label>
-                          <input name="type" id="type" type="text" class="form-control input-rounded" value="{{ $alat->type }}" readonly required>
+                        <label>Type <i class="text-danger">*</i></label>
+                        <input name="type" id="type" type="text" class="form-control input-rounded" value="{{ $alat->type }}" readonly required>
                       </div>
 
                       <!-- No Seri -->
                       <div class="form-group">
-                          <label>No Seri <i class="text-danger">*</i></label>
-                          <input name="seri" id="seri" type="text" class="form-control input-rounded" value="{{ $alat->seri }}" readonly required>
+                        <label>No Seri <i class="text-danger">*</i></label>
+                        <input name="seri" id="seri" type="text" class="form-control input-rounded" value="{{ $alat->seri }}" readonly required>
                       </div>
 
                       <!-- Lokasi -->
                       <div class="form-group">
-                          <label>Lokasi <i class="text-danger">*</i></label>
-                          <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" value="{{ $alat->lokasi }}" readonly required>
+                        <label>Lokasi <i class="text-danger">*</i></label>
+                        <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" value="{{ $alat->lokasi }}" readonly required>
                       </div>
 
                       <!-- Kepala Ruang -->
                       <div class="form-group">
-                          <label>Kepala Ruang <i class="text-danger">*</i></label>
-                          <input name="kepala" id="kepala" type="text" class="form-control input-rounded" required>
+                        <label>Kepala Ruang <i class="text-danger">*</i></label>
+                        <input name="kepala" id="kepala" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Teknisi -->
@@ -177,26 +177,26 @@
 
                       <!-- Korektif -->
                       <div class="form-group">
-                          <label>Korektif <i class="text-danger">*</i></label>
-                          <input name="korektif" id="korektif" type="text" class="form-control input-rounded" required>
+                        <label>Korektif <i class="text-danger">*</i></label>
+                        <input name="korektif" id="korektif" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Catatan -->
                       <div class="form-group">
-                          <label>Catatan <i class="text-danger">*</i></label>
-                          <input name="catatan" id="catatan" type="text" class="form-control input-rounded" required>
+                        <label>Catatan <i class="text-danger">*</i></label>
+                        <input name="catatan" id="catatan" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Foto -->
                       <div class="form-group">
-                          <label>Foto Pendukung <i class="text-danger">*</i></label>
-                          <input name="foto" id="foto" type="file" class="form-control input-rounded" required>
+                        <label>Foto Pendukung <i class="text-danger">*</i></label>
+                        <input name="foto" id="foto" type="file" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Button -->
                       <div class="form-group">
                           <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
-                              <i class="fa fa-save"></i> Tambah
+                            <i class="fa fa-save"></i> Tambah
                           </button>
                           <a href="{{ route('qr.menu', ['id' => $qr]) }}"
                             class="btn btn-primary btn-block btn-mobile btn-rounded">
@@ -231,7 +231,7 @@
                   <!--TABEL-->
                   <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
-                      <th>Id</th>
+                      <th>No</th>
                       <th>Date</th>
                       <th>Nama</th>
                       <th>Merek</th>
@@ -242,7 +242,6 @@
                       <th>Teknisi</th>
                       <th>Korektif</th>
                       <th>Catatan</th>
-                      <th>Foto</th>
                       <th>Tombol Aksi</th>
                     </thead>
                     <tbody>
@@ -260,30 +259,9 @@
                         <td>{{ $item->korektif }}</td>
                         <td>{{ $item->catatan }}</td>
                         <td>
-                          @if($item->foto && file_exists(storage_path('app/public/'.$item->foto)))
-                            <a href="{{ asset('storage/'.$item->foto) }}" class="btn btn-xs btn-warning"
-                            target="_blank" data-toggle="tooltip" data-placement="top" title="Lihat Gambar">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            </a>
-                          @else
-                            <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip"
-                              data-placement="top" title="Gambar"
-                              onclick="alert('Gambar tidak ada'); return false;">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            </a>
-                          @endif
-                        </td>
-                         <td>
-                           <a href="{{ route('perbaikan.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
+                          <a href="{{ route('perbaikan.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </a>
-                         <form action="{{ route('perbaikan.destroy', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
-                            </button>
-                          </form> 
                         </td>
                       </tr>
                       @empty
