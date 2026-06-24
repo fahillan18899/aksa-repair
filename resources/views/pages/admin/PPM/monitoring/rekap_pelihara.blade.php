@@ -45,6 +45,7 @@
                 <table class="datatable table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
+                            <th>Date</th>
                             <th>Nama</th>
                             <th>Merek</th>
                             <th>Type</th>
@@ -56,16 +57,23 @@
                     <tbody>
                       @forelse($items as $item)
                       <tr>
+                        <td>{{ $item->created_at }}</td>
                         <td>{{ $item->nama_alat }}</td>
                         <td>{{ $item->merek }}</td>
                         <td>{{ $item->type }}</td>
                         <td>{{ $item->seri }}</td>
                         <td>{{ $item->lokasi }}</td>
                         <td>
-                            <a href="{{ route('pelihara.show', $item->id) }}"
-                            class="btn btn-success btn-xs">
-                                <i class="fa fa-eye"></i>
-                            </a>
+                          <a href="{{ route('pelihara.show', $item->id) }}" class="btn btn-success btn-xs">
+                              <i class="fa fa-eye"></i>
+                          </a>
+                         <form action="{{ route('monitoring.deletePelihara', $item->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
+                            </button>
+                          </form> 
                         </td>
                       </tr>
                       @empty

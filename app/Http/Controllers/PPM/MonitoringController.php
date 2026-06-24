@@ -93,7 +93,7 @@ class MonitoringController extends Controller
         if(!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
             Storage::disk('public')->delete($item->foto);
         }
-        
+
         $item->delete();
         session()->flash('success', 'Data Berhasil Dihapus');
         return back();
@@ -103,6 +103,18 @@ class MonitoringController extends Controller
     {
         $items = pelihara::all();
         return view('pages.admin.PPM.monitoring.rekap_pelihara',compact('items'));
+    }
+
+    public function deletePelihara($id)
+    {
+        $item = pelihara::findOrFail($id);
+        if(!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+            Storage::disk('public')->delete($item->foto);
+        }
+        
+        $item->delete();
+        session()->flash('success', 'Data Berhasil Dihapus');
+        return back();
     }
     
 }
