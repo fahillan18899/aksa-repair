@@ -51,7 +51,7 @@
                       <th>Serial Number</th>
                       <th>Lokasi</th>
                       <th>Jadwal</th>
-                      <th>Foto</th>
+                      <th>Tombol Aksi</th>
                     </thead>
                     <tbody>
                       @forelse($items as $item)

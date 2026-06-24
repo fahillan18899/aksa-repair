@@ -84,6 +84,15 @@ class MonitoringController extends Controller
         return view('pages.admin.PPM.monitoring.rekap_perbaikan',compact('items'));
     }
 
+    public function deletePerbaikan($id)
+    {
+        $item = Perbaikan::findOrFail($id);
+        Storage::disk('public')->delete($item->foto);
+        $item->delete();
+        session()->flash('success', 'Data Berhasil Dihapus');
+        return back();
+    }
+
     public function rekapPelihara()
     {
         $items = pelihara::all();

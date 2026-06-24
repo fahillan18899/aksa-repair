@@ -189,6 +189,7 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     Route::get('rekap_inv', [MonitoringController::class, 'rekapInv'])->name('rekapInv');
     Route::delete('rekap_inv/{id}', [MonitoringController::class, 'deleteInv'])->name('deleteInv');
     Route::get('rekap_perbaikan', [MonitoringController::class, 'rekapPerbaikan'])->name('rekapPerbaikan');
+    Route::delete('rekap_perbaikan/{id}', [MonitoringController::class, 'deletePerbaikan'])->name('deletePerbaikan');
     Route::get('rekap_pelihara', [MonitoringController::class, 'rekapPelihara'])->name('rekapPelihara');
     });
 

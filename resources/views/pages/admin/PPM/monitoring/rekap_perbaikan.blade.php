@@ -72,11 +72,25 @@
                         <td>{{ $item->korektif }}</td>
                         <td>{{ $item->catatan }}</td>
                         <td>
-                          @if($item->foto)
-                          <img src="{{ asset('storage/' . $item->foto) }}"
-                              class="img-thumbnail"
-                              style="width:90px">
+                          @if($item->foto && file_exists(storage_path('app/public/'.$item->foto)))
+                            <a href="{{ asset('storage/'.$item->foto) }}" class="btn btn-xs btn-warning"
+                            target="_blank" data-toggle="tooltip" data-placement="top" title="Lihat Gambar">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            </a>
+                          @else
+                            <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip"
+                              data-placement="top" title="Gambar"
+                              onclick="alert('Gambar tidak ada'); return false;">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i>
+                            </a>
                           @endif
+                         <form action="{{ route('monitoring.deletePerbaikan', $item->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
+                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
+                            </button>
+                          </form> 
                         </td>
                       </tr>
                       @empty
