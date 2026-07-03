@@ -109,44 +109,41 @@ table th, table td{
         <!-- FORM -->
         <div class="form-card">
 
-            <form action="{{route('pelihara.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('pelihara.update', $item->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
-
+                @method('PUT')
                 <h3>Pemeliharaan Alat</h3>
-
-                <input type="hidden" name="id_alat" value="{{ $qr }}">
-                <input type="hidden" name="rs" value="brebes">
 
                 <div class="form-group">
                     <label>Teknisi</label>
-                    <input name="teknisi" type="text" class="form-control" required>
+                    <input name="teknisi" type="text" class="form-control" value="{{ $item->teknisi }}" required>
                 </div>
 
                 <h3>DATA ALAT</h3>
 
                 <div class="form-group">
                     <label>Nama Alat</label>
-                    <input name="nama_alat" class="form-control" value="{{ $alat->nama_alat }}" readonly>
+                    <input name="nama_alat" class="form-control" value="{{ $item->nama_alat }}">
                 </div>
 
                 <div class="form-group">
                     <label>Serial Number</label>
-                    <input name="seri" class="form-control" value="{{ $alat->seri }}" readonly>
+                    <input name="seri" class="form-control" value="{{ $item->seri }}">
                 </div>
 
                 <div class="form-group">
                     <label>Merek</label>
-                    <input name="merek" class="form-control" value="{{ $alat->merek }}" readonly>
+                    <input name="merek" class="form-control" value="{{ $item->merek }}">
                 </div>
 
                 <div class="form-group">
                     <label>Type</label>
-                    <input name="type" class="form-control" value="{{ $alat->type }}" readonly>
+                    <input name="type" class="form-control" value="{{ $item->type }}">
                 </div>
 
                 <div class="form-group">
                     <label>Ruangan</label>
-                    <input name="lokasi" class="form-control" value="{{ $alat->lokasi }}" readonly>
+                    <input name="lokasi" class="form-control" value="{{ $item->lokasi }}">
                 </div>
                 @php
                 $check1 = ['hand_hygiene' => 'Hand Hygiene','menyiapkan_alat_dan_bahan' => 'Menyiapkan alat dan bahan',
@@ -298,59 +295,14 @@ table th, table td{
                     <textarea class="form-control" name="evaluasi" rows="3"></textarea>
                 </div>
 
-                <!-- FOTO -->
-                <div class="form-group">
-                    <label>Foto</label>
-                    <input type="file" class="form-control" name="foto">
-                </div>
-
                 <!-- Button -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
-                        <i class="fa fa-save"></i> Tambah
+                        <i class="fa fa-save"></i> Simpan
                     </button>
-                    <a href="{{ route('qr.menu', ['id' => $qr]) }}"
-                    class="btn btn-primary btn-block btn-mobile btn-rounded">
-                        Kembali
-                    </a>
                 </div>
 
             </form>
-
-        </div>
-
-        <!-- TABLE -->
-        <div class="form-card">
-
-            <h3>Daftar Alat Terpelihara</h3>
-                <table class="datatable table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Merek</th>
-                            <th>Tombol Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>
-                            <a href="{{ route('pelihara.show', $item->id) }}"
-                            class="btn btn-primary btn-xs">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="{{ route('pelihara.edit', $item->id) }}"
-                            class="btn btn-success btn-xs">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                </table>
 
         </div>
 
