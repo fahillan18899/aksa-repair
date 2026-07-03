@@ -56,11 +56,11 @@ class InventarisController extends Controller
         return back();
     }
 
-    public function edit($id)
+    public function editInv($qr)
     {
-        $item = Inv::findOrFail($id);
-        return view('pages.admin.PPM.inv.edit',
-        compact('item'));
+        $item = Inv::where('id_alat', $qr)->firstOrFail();
+
+        return view('pages.admin.PPM.inv.edit', compact('item'));
     }
 
     public function update(Request $request, $id)

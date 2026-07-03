@@ -85,7 +85,7 @@
 
     @if($inv)
 
-        <a href="{{ route('inventaris.edit', $inv) }}" 
+        <a href="{{ route('editInv', ['qr' => $id]) }}" 
         class="btn btn-primary btn-menu btn-block">
             <i class="fa-solid fa-pencil"></i>
             Edit
