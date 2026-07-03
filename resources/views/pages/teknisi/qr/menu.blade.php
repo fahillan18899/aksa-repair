@@ -85,10 +85,11 @@
 
     @if($inv)
 
-    <button class="btn btn-secondary btn-menu btn-block" disabled>
-        <i class="fa-solid fa-box"></i>
-        Sudah Terdaftar
-    </button>
+        <a href="{{ route('inventaris.edit', $inv) }}" 
+        class="btn btn-primary btn-menu btn-block">
+            <i class="fa-solid fa-pencil"></i>
+            Edit
+        </a>
 
     @else
 
@@ -120,7 +121,19 @@
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Sukses!',
+            text: '{{session("success")}}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+        @endif
+    });
+</script>
 @if(session('error'))
 <script>
 

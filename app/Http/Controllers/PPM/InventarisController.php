@@ -77,7 +77,7 @@ class InventarisController extends Controller
         $item = Inv::findOrFail($id);
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');
-        return redirect()->route('inventaris.create', ['qr' => $item->id_alat]);
+        return redirect()->route('qr.menu', ['id' => $item->id_alat]);
     }
 
     public function destroy($id)

@@ -195,53 +195,6 @@
         </div>
       </div>
     <!--Form Inventaris end-->
-    <!--Tabel Perbaikan-->
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="panel panel-default thumbnail">
-
-          <div class="panel-heading no-print">
-            <div class="">
-              <h1>Daftar Inventaris</h1>
-            </div>
-          </div>
-          <div class="table-responsive">
-            <div class="panel-body panel-form">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
-                    <thead class="table-light">
-                      <th>Id</th>
-                      <th>Nama</th>
-                      <th>Merek</th>
-                      <th>Tombol Aksi</th>
-                    </thead>
-                    <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->id_alat }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>
-                          <a href="{{ route('inventaris.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
-                    </tbody>
-                  </table>
-                  <!--TABEL-->
-                </div>
-                <div class="col-md-3"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tabel Perbaikan-->
   </div>
 </div>
 @endsection
