@@ -131,59 +131,67 @@
                       @csrf
 
                       <input type="hidden" name="id_alat" id="id_alat" value="{{ $qr }}">
-                      <input type="hidden" name="rs" id="rs" value="brebes">
+
+                      <!-- RS -->
+                      <div class="form-group">
+                        <label>Rumah sakit <i class="text-danger">*</i></label>
+                        <select name="rs" id="rs" type="text" class="form-control input-rounded" onchange="console.log('ONCHANGE', this.value)" required>
+                          <option value="">-- Pilih Rumah sakit --</option>
+                          <option value="RS MUTIARA BUNDA BREBES">RS MUTIARA BUNDA BREBES</option>
+                        </select>
+                      </div>
 
                       <!-- Nama Alat -->
                       <div class="form-group">
-                          <label>Nama Alat <i class="text-danger">*</i></label>
-                          <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" required>
+                        <label>Nama Alat <i class="text-danger">*</i></label>
+                        <input name="nama_alat" id="nama_alat" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Merek -->
                       <div class="form-group">
-                          <label>Merek <i class="text-danger">*</i></label>
-                          <input name="merek" id="merek" type="text" class="form-control input-rounded" required>
+                        <label>Merek <i class="text-danger">*</i></label>
+                        <input name="merek" id="merek" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Type -->
                       <div class="form-group">
-                          <label>Type <i class="text-danger">*</i></label>
-                          <input name="type" id="type" type="text" class="form-control input-rounded" required>
+                        <label>Type <i class="text-danger">*</i></label>
+                        <input name="type" id="type" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- No Seri -->
                       <div class="form-group">
-                          <label>No Seri <i class="text-danger">*</i></label>
-                          <input name="seri" id="seri" type="text" class="form-control input-rounded" required>
+                        <label>No Seri <i class="text-danger">*</i></label>
+                        <input name="seri" id="seri" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Lokasi -->
                       <div class="form-group">
-                          <label>Lokasi <i class="text-danger">*</i></label>
-                          <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" required>
+                        <label>Lokasi <i class="text-danger">*</i></label>
+                        <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Jadwal -->
                       <div class="form-group">
-                          <label>Jadwal Pemeliharaan <i class="text-danger">*</i></label>
-                          <input name="jadwal" id="jadwal" type="date" class="form-control input-rounded" required>
+                        <label>Jadwal Pemeliharaan <i class="text-danger">*</i></label>
+                        <input name="jadwal" id="jadwal" type="date" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Foto -->
                       <div class="form-group">
-                          <label>Foto Pendukung <i class="text-danger">*</i></label>
-                          <input name="foto" id="foto" type="file" class="form-control input-rounded" required>
+                        <label>Foto Pendukung <i class="text-danger">*</i></label>
+                        <input name="foto" id="foto" type="file" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Button -->
                       <div class="form-group">
-                          <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
-                              <i class="fa fa-save"></i> Tambah
-                          </button>
-                          <a href="{{ route('qr.menu', ['id' => $qr]) }}"
-                            class="btn btn-primary btn-block btn-mobile btn-rounded">
-                              Kembali
-                          </a>
+                        <button type="submit" class="btn btn-success btn-block btn-mobile btn-rounded">
+                            <i class="fa fa-save"></i> Tambah
+                        </button>
+                        <a href="{{ route('qr.menu', ['id' => $qr]) }}"
+                          class="btn btn-primary btn-block btn-mobile btn-rounded">
+                            Kembali
+                        </a>
                       </div>
 
                   </form>
@@ -212,5 +220,21 @@
     });
     @endif
   });
+</script>
+
+<script>
+const rs = document.getElementById("rs");
+
+// Set value saat halaman dibuka
+const saved = localStorage.getItem("selected_rs");
+if (saved) {
+    rs.value = saved;
+}
+
+// Simpan saat berubah
+rs.onchange = function () {
+    console.log("Simpan:", this.value);
+    localStorage.setItem("selected_rs", this.value);
+};
 </script>
 @endpush
