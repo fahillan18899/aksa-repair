@@ -138,6 +138,7 @@
                         <select name="rs" id="rs" type="text" class="form-control input-rounded" onchange="console.log('ONCHANGE', this.value)" required>
                           <option value="">-- Pilih Rumah sakit --</option>
                           <option value="RS MUTIARA BUNDA BREBES">RS MUTIARA BUNDA BREBES</option>
+                          <option value="RS PANTIWILASA SEMARANG">RS PANTIWILASA DR CIPTO SEMARANG</option>
                         </select>
                       </div>
 

@@ -115,7 +115,7 @@ table th, table td{
                 <h3>Pemeliharaan Alat</h3>
 
                 <input type="hidden" name="id_alat" value="{{ $qr }}">
-                <input type="hidden" name="rs" value="brebes">
+                <input type="hidden" name="rs" value="{{ $rs }}">
 
                 <div class="form-group">
                     <label>Teknisi</label>

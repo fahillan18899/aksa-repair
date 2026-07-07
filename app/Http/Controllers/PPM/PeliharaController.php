@@ -5,7 +5,6 @@ namespace App\Http\Controllers\PPM;
 use App\Models\Inv;
 use App\Models\pelihara;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class PeliharaController extends Controller
@@ -14,7 +13,7 @@ class PeliharaController extends Controller
     {
         $qr = $request->qr;
         $alat = Inv::where('id_alat', $qr)->first();
-
+        $rs = $alat->rs;
         if (!$alat) {
             return redirect()
                 ->route('qr.menu', ['id' => $qr])
@@ -22,7 +21,7 @@ class PeliharaController extends Controller
         }
         
         $items = pelihara::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items'));
+        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items','rs'));
     }
 
     public function store(Request $request)

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Inv;
 use App\Models\Perbaikan;
 use App\Models\pelihara;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class MonitoringController extends Controller
@@ -15,16 +16,12 @@ class MonitoringController extends Controller
     {
         // PERBAIKAN
         $totalAlat = Inv::count();
-
         $alatDiperbaiki = Perbaikan::count();
-
         $alatNormal = max(0, $totalAlat - $alatDiperbaiki);
 
         // PELIHARA
         $alatDipelihara = pelihara::count();
-
         $alatBelumDipelihara = max(0, $totalAlat - $alatDipelihara);
-
 
         // BAR CHART PERBAIKAN PER BULAN
         $perbaikanBulanan = Perbaikan::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
@@ -32,13 +29,10 @@ class MonitoringController extends Controller
             ->groupBy('bulan')
             ->pluck('total', 'bulan')
             ->toArray();
-
         $dataPerbaikanBulanan = [];
-
         for ($i = 1; $i <= 12; $i++) {
             $dataPerbaikanBulanan[] = $perbaikanBulanan[$i] ?? 0;
         }
-
 
         // BAR CHART PELIHARA PER BULAN
         $peliharaBulanan = Pelihara::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
@@ -46,7 +40,6 @@ class MonitoringController extends Controller
             ->groupBy('bulan')
             ->pluck('total', 'bulan')
             ->toArray();
-
         $dataPeliharaBulanan = [];
 
         for ($i = 1; $i <= 12; $i++) {
@@ -65,7 +58,8 @@ class MonitoringController extends Controller
 
     public function rekapInv()
     {
-        $items = Inv::all();
+        $rs = Auth::user()->rs;
+        $items = Inv::where('rs', $rs)->get();
         return view('pages.admin.PPM.monitoring.rekap_inv',compact('items'));
     }
 
@@ -83,7 +77,8 @@ class MonitoringController extends Controller
 
     public function rekapPerbaikan()
     {
-        $items = Perbaikan::all();
+        $rs = Auth::user()->rs;
+        $items = Perbaikan::where('rs', $rs)->get();
         return view('pages.admin.PPM.monitoring.rekap_perbaikan',compact('items'));
     }
 
@@ -101,7 +96,8 @@ class MonitoringController extends Controller
 
     public function rekapPelihara()
     {
-        $items = pelihara::all();
+        $rs = Auth::user()->rs;
+        $items = pelihara::where('rs', $rs)->get();
         return view('pages.admin.PPM.monitoring.rekap_pelihara',compact('items'));
     }
 

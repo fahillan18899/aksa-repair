@@ -5,7 +5,6 @@ namespace App\Http\Controllers\PPM;
 use App\Models\Inv;
 use App\Models\Perbaikan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +14,7 @@ class PerbaikanController extends Controller
     {
         $qr = $request->qr;
         $alat = Inv::where('id_alat', $qr)->first();
-
+        $rs = $alat->rs;
         if (!$alat) {
             return redirect()
                 ->route('qr.menu', ['id' => $qr])
@@ -23,7 +22,7 @@ class PerbaikanController extends Controller
         }
 
         $items = Perbaikan::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items',)
+        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items', 'rs')
         );
     }
 
