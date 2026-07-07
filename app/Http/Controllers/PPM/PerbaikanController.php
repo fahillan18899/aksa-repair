@@ -64,7 +64,7 @@ class PerbaikanController extends Controller
         ]);
 
         session()->flash('success', 'Data Berhasil Tersimpan');
-        return back();
+        return redirect()->route('qr.menu', ['id' => $request->id_alat]);
     }
 
     public function edit($id)

@@ -77,7 +77,7 @@ class PeliharaController extends Controller
 
         pelihara::create($request->post());
         session()->flash('success', 'Data Berhasil Tersimpan');
-        return back();
+        return redirect()->route('qr.menu', ['id' => $request->id_alat]);
     }
 
     public function edit($id)
