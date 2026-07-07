@@ -14,13 +14,13 @@ class PerbaikanController extends Controller
     {
         $qr = $request->qr;
         $alat = Inv::where('id_alat', $qr)->first();
-        $rs = $alat->rs;
+        
         if (!$alat) {
             return redirect()
                 ->route('qr.menu', ['id' => $qr])
                 ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
         }
-
+        $rs = $alat->rs;
         $items = Perbaikan::where('id_alat', $qr)->get();
         return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items', 'rs')
         );
