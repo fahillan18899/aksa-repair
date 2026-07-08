@@ -4,9 +4,11 @@ namespace App\Http\Controllers\PPM;
 
 use App\Models\Inv;
 use App\Models\Perbaikan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class PerbaikanController extends Controller
 {
@@ -21,9 +23,33 @@ class PerbaikanController extends Controller
                 ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
         }
         $rs = $alat->rs;
-        $items = Perbaikan::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat', 'items', 'rs')
+        return view('pages.admin.PPM.perbaikan.create',compact('qr', 'alat','rs')
         );
+    }
+
+    public function data($qr)
+    {
+        $query = Perbaikan::query()->select([
+            'id','created_at','nama_alat','merek',
+            'type','seri','lokasi','kepala','teknisi',
+            'korektif','catatan'])->where('id_alat', $qr);
+
+        return DataTables::eloquent($query)
+        ->editColumn('created_at', function ($row){
+            return Carbon::parse($row->created_at)
+            ->timezone('Asia/Jakarta')->format('d-M-Y H:i');
+        })
+         ->addIndexColumn()
+        ->addColumn('aksi', function ($row) {
+                return '<a href="'.route('perbaikan.edit', $row->id).'"
+                        class="btn btn-success btn-xs"
+                        data-toggle="tooltip"
+                        title="Edit">
+                        <i class="fa fa-pencil-square-o"></i>
+                        </a>';
+            })
+            ->rawColumns(['aksi'])
+            ->make(true);
     }
 
     public function store(Request $request)

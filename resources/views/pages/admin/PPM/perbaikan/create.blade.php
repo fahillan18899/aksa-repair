@@ -229,43 +229,24 @@
               <div class="row">
                 <div class="col-md-12 col-sm-12">
                   <!--TABEL-->
-                  <table class="datatable table table-striped table-bordered" style="width:100%">
+                  <table id="table-perbaikan" class="table table-striped table-bordered" width="100%">
                     <thead class="table-light">
-                      <th>No</th>
-                      <th>Date</th>
-                      <th>Nama</th>
-                      <th>Merek</th>
-                      <th>Type</th>
-                      <th>Serial Number</th>
-                      <th>Lokasi</th>
-                      <th>Kepala Ruang</th>
-                      <th>Teknisi</th>
-                      <th>Korektif</th>
-                      <th>Catatan</th>
-                      <th>Tombol Aksi</th>
+                      <tr>
+                        <th>No</th>
+                        <th>Date</th>
+                        <th>Nama</th>
+                        <th>Merek</th>
+                        <th>Type</th>
+                        <th>Serial Number</th>
+                        <th>Lokasi</th>
+                        <th>Kepala Ruang</th>
+                        <th>Teknisi</th>
+                        <th>Korektif</th>
+                        <th>Catatan</th>
+                        <th>Tombol Aksi</th>
+                      </tr>
                     </thead>
                     <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->seri }}</td>
-                        <td>{{ $item->lokasi }}</td>
-                        <td>{{ $item->kepala }}</td>
-                        <td>{{ $item->teknisi }}</td>
-                        <td>{{ $item->korektif }}</td>
-                        <td>{{ $item->catatan }}</td>
-                        <td>
-                          <a href="{{ route('perbaikan.edit', $item->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
                     </tbody>
                   </table>
                   <!--TABEL-->
@@ -295,5 +276,71 @@
     });
     @endif
   });
+</script>
+
+<script>
+  var table = $('#table-perbaikan').DataTable({
+    processing: true,
+    serverSide: true,
+    responsive:true,
+    order:[[1,'desc']],
+    ajax: "{{ route('perbaikan.data', $qr) }}",
+    columns: [
+        {
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            orderable: false,
+            searchable: false
+        },
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data: 'nama_alat',
+            name: 'nama_alat'
+        },
+        {
+            data: 'merek',
+            name: 'merek'
+        },
+        {
+            data: 'type',
+            name: 'type'
+        },
+        {
+            data: 'seri',
+            name: 'seri'
+        },
+        {
+            data: 'lokasi',
+            name: 'lokasi'
+        },
+        {
+            data: 'kepala',
+            name: 'kepala'
+        },
+        {
+            data: 'teknisi',
+            name: 'teknisi'
+        },
+        {
+            data: 'korektif',
+            name: 'korektif'
+        },
+        {
+            data: 'catatan',
+            name: 'catatan'
+        },
+        {
+            data: 'aksi',
+            name: 'aksi',
+            orderable: false,
+            searchable: false
+        }
+
+    ]
+
+});
 </script>
 @endpush
