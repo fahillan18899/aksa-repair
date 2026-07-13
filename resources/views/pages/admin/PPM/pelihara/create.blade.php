@@ -323,32 +323,16 @@ table th, table td{
         <div class="form-card">
 
             <h3>Daftar Alat Terpelihara</h3>
-                <table class="datatable table table-striped">
+                <table id="table-pelihara" class="table table-striped table-bordered">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Merek</th>
                             <th>Tombol Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>
-                            <a href="{{ route('pelihara.show', $item->id) }}"
-                            class="btn btn-primary btn-xs">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="{{ route('pelihara.edit', $item->id) }}"
-                            class="btn btn-success btn-xs">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
                     </tbody>
                 </table>
 
@@ -372,5 +356,42 @@ table th, table td{
     });
     @endif
   });
+</script>
+
+<script>
+    $(document).ready(function() {
+            $('#table-pelihara').DataTable({
+        processing: true,
+        serverSide: true,
+        responsive: true,
+        ajax: "{{ route('pelihara.data', $qr) }}",
+        columns: [
+            {
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex',
+                orderable: false,
+                searchable: false
+            },
+
+            {
+                data: 'nama_alat',
+                name: 'nama_alat'
+            },
+
+            {
+                data: 'merek',
+                name: 'merek'
+            },
+
+            {
+                data: 'aksi',
+                name: 'aksi',
+                orderable: false,
+                searchable: false
+            }
+        ]
+    });
+    });
+
 </script>
 @endpush

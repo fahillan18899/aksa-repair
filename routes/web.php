@@ -44,6 +44,7 @@ Route::resource('inventaris', InventarisController::class);
 Route::get('/inventaris/edit/{qr}', [InventarisController::class, 'editInv'])->name('editInv');
 Route::get('perbaikan/data/{qr}',[PerbaikanController::class, 'data'])->name('perbaikan.data');
 Route::resource('perbaikan', PerbaikanController::class);
+Route::get('pelihara/data/{qr}', [PeliharaController::class, 'data'])->name('pelihara.data');
 Route::resource('pelihara', PeliharaController::class);
 
 Route::prefix('dashboard')->middleware(['auth', 'admin'])->group(function () {

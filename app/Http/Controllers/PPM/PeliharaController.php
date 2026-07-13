@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PPM;
 use App\Models\Inv;
 use App\Models\pelihara;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 use App\Http\Controllers\Controller;
 
 class PeliharaController extends Controller
@@ -20,8 +21,28 @@ class PeliharaController extends Controller
                 ->with('error','Alat belum terinventaris. Silakan lakukan inventaris terlebih dahulu');
         }
         $rs = $alat->rs;
-        $items = pelihara::where('id_alat', $qr)->get();
-        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','items','rs'));
+        return view('pages.admin.PPM.pelihara.create', compact('qr','alat','rs'));
+    }
+
+    public function data($qr)
+    {
+        $query = pelihara::query()->select([
+            'id','created_at','nama_alat','merek'
+        ])->where('id_alat', $qr);
+        return DataTables::eloquent($query)
+        ->addIndexColumn()->addColumn('aksi', function ($row){
+            return '
+            <a href="'.route('pelihara.show', $row->id).'"
+            class="btn btn-primary btn-xs">
+            <i class="fa fa-eye"></i>
+            </a>
+
+            <a href="'.route('pelihara.edit', $row->id).'"
+            class="btn btn-success btn-xs">
+            <i class="fa fa-pencil-square-o"></i>
+            </a>
+            ';
+        })->rawColumns(['aksi'])->make(true);
     }
 
     public function store(Request $request)
