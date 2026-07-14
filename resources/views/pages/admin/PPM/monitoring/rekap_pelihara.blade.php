@@ -42,7 +42,7 @@
               <div class="col-md-12 col-sm-12">
 
                 <!--TABEL-->
-                <table class="datatable table table-striped table-bordered" style="width:100%">
+                <table id="table-rekap" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
                             <th>Date</th>
@@ -55,29 +55,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->seri }}</td>
-                        <td>{{ $item->lokasi }}</td>
-                        <td>
-                          <a href="{{ route('pelihara.show', $item->id) }}" class="btn btn-success btn-xs">
-                              <i class="fa fa-eye"></i>
-                          </a>
-                         <form action="{{ route('monitoring.deletePelihara', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
-                            </button>
-                          </form> 
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
                     </tbody>
                 </table>
                 <!--TABEL-->
@@ -91,3 +68,120 @@
   </div>
 </div> <!-- /.content -->
 @endsection
+@push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+var table = $('#table-rekap').DataTable({
+
+    processing:true,
+    serverSide:true,
+    responsive:true,
+    ajax:"{{ route('monitoring.rekanPelihara.data') }}",
+    columns:[
+
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+
+        {
+            data:'nama_alat',
+            name:'nama_alat'
+        },
+
+        {
+            data:'merek',
+            name:'merek'
+        },
+
+        {
+            data:'type',
+            name:'type'
+        },
+
+        {
+            data:'seri',
+            name:'seri'
+        },
+
+        {
+            data:'lokasi',
+            name:'lokasi'
+        },
+        
+        {
+            data:'aksi',
+            name:'aksi',
+            orderable:false,
+            searchable:false
+        }
+
+    ]
+
+});
+
+const deleteUrl = "{{ route('monitoring.deletePelihara', ':id') }}";
+
+$(document).on('click', '.btn-delete', function () {
+
+    let id = $(this).data('id');
+
+    Swal.fire({
+        title: 'Hapus Data?',
+        text: 'Data yang dihapus tidak dapat dikembalikan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            $.ajax({
+
+                url: deleteUrl.replace(':id', id),
+
+                type: 'DELETE',
+
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+
+                success: function (res) {
+
+                    table.ajax.reload(null, false);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+
+                },
+
+                error: function () {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Gagal menghapus data.'
+                    });
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+@endpush

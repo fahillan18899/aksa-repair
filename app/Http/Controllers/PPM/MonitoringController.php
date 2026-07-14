@@ -251,21 +251,62 @@ class MonitoringController extends Controller
 
     public function rekapPelihara()
     {
+        return view('pages.admin.PPM.monitoring.rekap_pelihara');
+    }
+
+    public function rekapPeliharaData()
+    {
         $rs = Auth::user()->rs;
-        $items = pelihara::where('rs', $rs)->get();
-        return view('pages.admin.PPM.monitoring.rekap_pelihara',compact('items'));
+        $query = pelihara::query()
+        ->select(['id','created_at','nama_alat','merek','type','seri','lokasi'
+        ])->where('rs', $rs);
+        return DataTables::eloquent($query)
+        ->editColumn('created_at', function ($row){
+            return Carbon::parse($row->created_at)
+            ->timezone('Asia/Jakarta')->format('d-M-Y H:i');})
+        ->addColumn('aksi', function ($row) {
+
+            $view = '
+            <a href="'.route('pelihara.show', $row->id).'"
+            class="btn btn-primary btn-xs">
+            <i class="fa fa-eye"></i>
+            </a>
+            ';
+
+            $hapus = '
+                <button
+                    class="btn btn-danger btn-xs btn-delete"
+                    data-id="'.$row->id.'">
+
+                    <i class="fa fa-trash-o"></i>
+
+                </button>
+            ';
+
+            return $view.' '.$hapus;
+
+        })
+
+        ->rawColumns(['aksi'])
+
+        ->make(true);
     }
 
     public function deletePelihara($id)
     {
         $item = pelihara::findOrFail($id);
-        if(!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+
+        // hapus file foto jika ada
+        if ($item->foto && Storage::disk('public')->exists($item->foto)) {
             Storage::disk('public')->delete($item->foto);
         }
-        
+
         $item->delete();
-        session()->flash('success', 'Data Berhasil Dihapus');
-        return back();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil dihapus'
+        ]);
     }
     
 }
