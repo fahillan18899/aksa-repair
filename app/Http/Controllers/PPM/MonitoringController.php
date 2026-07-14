@@ -9,6 +9,7 @@ use App\Models\Perbaikan;
 use App\Models\pelihara;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class MonitoringController extends Controller
 {
@@ -58,21 +59,83 @@ class MonitoringController extends Controller
 
     public function rekapInv()
     {
+        return view('pages.admin.PPM.monitoring.rekap_inv');
+    }
+
+    public function rekapInvData()
+    {
         $rs = Auth::user()->rs;
-        $items = Inv::where('rs', $rs)->get();
-        return view('pages.admin.PPM.monitoring.rekap_inv',compact('items'));
+        $query = Inv::query()
+        ->select(['id','id_alat','nama_alat',
+                  'merek','type','seri','lokasi',
+                  'jadwal','foto'
+        ])->where('rs', $rs);
+        return DataTables::eloquent($query)
+        ->addColumn('aksi', function ($row) {
+
+            $foto = '';
+
+            if ($row->foto && file_exists(storage_path('app/public/'.$row->foto))) {
+
+                $foto = '
+                    <a href="'.asset('storage/'.$row->foto).'"
+                        target="_blank"
+                        class="btn btn-warning btn-xs"
+                        title="Lihat Gambar">
+
+                        <i class="fa fa-picture-o"></i>
+
+                    </a>
+                ';
+
+            } else {
+
+                $foto = '
+                    <button
+                        class="btn btn-warning btn-xs"
+                        onclick="alert(\'Gambar tidak ada\')">
+
+                        <i class="fa fa-picture-o"></i>
+
+                    </button>
+                ';
+
+            }
+
+            $hapus = '
+                <button
+                    class="btn btn-danger btn-xs btn-delete"
+                    data-id="'.$row->id.'">
+
+                    <i class="fa fa-trash-o"></i>
+
+                </button>
+            ';
+
+            return $foto.' '.$hapus;
+
+        })
+
+        ->rawColumns(['aksi'])
+
+        ->make(true);
     }
 
     public function deleteInv($id)
     {
         $item = Inv::findOrFail($id);
-        if (!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+
+        // hapus file foto jika ada
+        if ($item->foto && Storage::disk('public')->exists($item->foto)) {
             Storage::disk('public')->delete($item->foto);
         }
 
         $item->delete();
-        session()->flash('success', 'Data Berhasil Dihapus');
-        return back();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil dihapus'
+        ]);
     }
 
     public function rekapPerbaikan()
