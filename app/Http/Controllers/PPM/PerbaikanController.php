@@ -32,12 +32,33 @@ class PerbaikanController extends Controller
         $query = Perbaikan::query()->select([
             'id','created_at','nama_alat','merek',
             'type','seri','lokasi','kepala','teknisi',
-            'korektif','catatan'])->where('id_alat', $qr);
+            'status','korektif','catatan'])->where('id_alat', $qr);
 
         return DataTables::eloquent($query)
         ->editColumn('created_at', function ($row){
             return Carbon::parse($row->created_at)
             ->timezone('Asia/Jakarta')->format('d-M-Y H:i');
+        })
+        ->addColumn('status_button', function ($row) {
+
+            if ($row->status == '0') {
+                $class = 'btn btn-warning btn-xs';
+                $text = 'Perbaikan';
+            } else {
+                $class = 'btn btn-success btn-xs';
+                $text = 'Selesai';
+            }
+
+            return '
+                <button
+                    class="'.$class.' btn-status"
+                    data-id="'.$row->id.'"
+                    data-status="'.$row->status.'">
+
+                    '.$text.'
+
+                </button>
+            ';
         })
          ->addIndexColumn()
         ->addColumn('aksi', function ($row) {
@@ -48,7 +69,10 @@ class PerbaikanController extends Controller
                         <i class="fa fa-pencil-square-o"></i>
                         </a>';
             })
-            ->rawColumns(['aksi'])
+            ->rawColumns([
+                'aksi',
+                'status_button'
+                ])
             ->make(true);
     }
 
@@ -84,6 +108,7 @@ class PerbaikanController extends Controller
             'lokasi'    => $request->lokasi,
             'kepala'    => $request->kepala,
             'teknisi'   => $request->teknisi,
+            'status'    => 0,
             'korektif'  => $request->korektif,
             'catatan'   => $request->catatan,
             'foto'      => $fotoPath,
@@ -118,6 +143,17 @@ class PerbaikanController extends Controller
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');
         return redirect()->route('perbaikan.create', ['qr' => $item->id_alat]);
+    }
+
+    public function status($id)
+    {
+        $item = Perbaikan::findOrFail($id);
+        $item->status = $item->status == '1' ? '0' : '1';
+        $item->save();
+        return response()->json([
+            'success' => true,
+            'status' => $item->status
+        ]);
     }
 
     public function destroy($id)

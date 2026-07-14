@@ -21,6 +21,7 @@ class Perbaikan extends Model
         'lokasi',
         'kepala',
         'teknisi',
+        'status',
         'korektif',
         'catatan',
         'foto',

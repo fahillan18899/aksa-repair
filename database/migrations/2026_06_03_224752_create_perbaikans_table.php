@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('lokasi')->nullable();
             $table->text('kepala')->nullable();
             $table->text('teknisi')->nullable();
+            $table->tinyInteger('status')->default(0);
             $table->text('korektif')->nullable();
             $table->text('catatan')->nullable();
             $table->text('foto')->nullable();

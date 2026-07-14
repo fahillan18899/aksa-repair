@@ -241,6 +241,7 @@
                         <th>Lokasi</th>
                         <th>Kepala Ruang</th>
                         <th>Teknisi</th>
+                        <th>Status</th>
                         <th>Korektif</th>
                         <th>Catatan</th>
                         <th>Tombol Aksi</th>
@@ -325,6 +326,12 @@
             name: 'teknisi'
         },
         {
+            data:'status_button',
+            name:'status_button',
+            orderable:false,
+            searchable:false
+        },
+        {
             data: 'korektif',
             name: 'korektif'
         },
@@ -340,6 +347,37 @@
         }
 
     ]
+
+});
+
+$(document).on('click', '.btn-status', function () {
+
+    let id = $(this).data('id');
+    let statusUrl = "{{ url('perbaikan/status') }}";
+
+    $.ajax({
+
+        url: statusUrl + '/' + id,
+
+        type: 'PUT',
+
+        data: {
+            _token: '{{ csrf_token() }}'
+        },
+
+        success: function (response) {
+
+            table.ajax.reload(null, false);
+
+        },
+
+        error: function () {
+
+            alert('Terjadi kesalahan');
+
+        }
+
+    });
 
 });
 </script>
