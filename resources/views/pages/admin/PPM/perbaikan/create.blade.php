@@ -221,7 +221,7 @@
 
           <div class="panel-heading no-print">
             <div class="">
-              <h1>Daftar Perbaikan</h1>
+              <h1>Daftar Perbaikan {{ $alat->nama_alat }}</h1>
             </div>
           </div>
           <div class="table-responsive">
@@ -234,6 +234,8 @@
                       <tr>
                         <th>No</th>
                         <th>Date</th>
+                        <th>Korektif</th>
+                        <th>Status</th>
                         <th>Nama</th>
                         <th>Merek</th>
                         <th>Type</th>
@@ -241,8 +243,6 @@
                         <th>Lokasi</th>
                         <th>Kepala Ruang</th>
                         <th>Teknisi</th>
-                        <th>Status</th>
-                        <th>Korektif</th>
                         <th>Catatan</th>
                         <th>Tombol Aksi</th>
                       </tr>
@@ -298,6 +298,16 @@
             name: 'created_at'
         },
         {
+            data: 'korektif',
+            name: 'korektif'
+        },
+        {
+            data:'status_button',
+            name:'status_button',
+            orderable:false,
+            searchable:false
+        },
+        {
             data: 'nama_alat',
             name: 'nama_alat'
         },
@@ -324,16 +334,6 @@
         {
             data: 'teknisi',
             name: 'teknisi'
-        },
-        {
-            data:'status_button',
-            name:'status_button',
-            orderable:false,
-            searchable:false
-        },
-        {
-            data: 'korektif',
-            name: 'korektif'
         },
         {
             data: 'catatan',
