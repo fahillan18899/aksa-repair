@@ -4,6 +4,7 @@ namespace App\Http\Controllers\PPM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Inv;
 use App\Models\Perbaikan;
 use App\Models\pelihara;
@@ -140,21 +141,112 @@ class MonitoringController extends Controller
 
     public function rekapPerbaikan()
     {
+        return view('pages.admin.PPM.monitoring.rekap_perbaikan');
+    }
+
+    public function rekapPerbaikanData()
+    {
         $rs = Auth::user()->rs;
-        $items = Perbaikan::where('rs', $rs)->get();
-        return view('pages.admin.PPM.monitoring.rekap_perbaikan',compact('items'));
+        $query = Perbaikan::query()
+        ->select(['id','id_alat','created_at','nama_alat',
+                  'merek','type','seri','lokasi',
+                  'kepala','teknisi','status',
+                  'korektif','catatan','foto'
+        ])->where('rs', $rs);
+        return DataTables::eloquent($query)
+        ->editColumn('created_at', function ($row){
+            return Carbon::parse($row->created_at)
+            ->timezone('Asia/Jakarta')->format('d-M-Y H:i');})
+        ->addColumn('status_button', function ($row) {
+
+            if ($row->status == '0') {
+                $class = 'btn btn-warning btn-xs';
+                $text = 'Perbaikan';
+            } else {
+                $class = 'btn btn-success btn-xs';
+                $text = 'Selesai';
+            }
+
+            return '
+                <button
+                    class="'.$class.' btn-status"
+                    data-id="'.$row->id.'"
+                    data-status="'.$row->status.'"
+                    disabled>
+
+                    '.$text.'
+
+                </button>
+            ';
+        })
+        ->addColumn('aksi', function ($row) {
+
+            $foto = '';
+
+            if ($row->foto && file_exists(storage_path('app/public/'.$row->foto))) {
+
+                $foto = '
+                    <a href="'.asset('storage/'.$row->foto).'"
+                        target="_blank"
+                        class="btn btn-warning btn-xs"
+                        title="Lihat Gambar">
+
+                        <i class="fa fa-picture-o"></i>
+
+                    </a>
+                ';
+
+            } else {
+
+                $foto = '
+                    <button
+                        class="btn btn-warning btn-xs"
+                        onclick="alert(\'Gambar tidak ada\')">
+
+                        <i class="fa fa-picture-o"></i>
+
+                    </button>
+                ';
+
+            }
+
+            $hapus = '
+                <button
+                    class="btn btn-danger btn-xs btn-delete"
+                    data-id="'.$row->id.'">
+
+                    <i class="fa fa-trash-o"></i>
+
+                </button>
+            ';
+
+            return $foto.' '.$hapus;
+
+        })
+
+        ->rawColumns([
+                'aksi',
+                'status_button'
+                ])
+
+        ->make(true);
     }
 
     public function deletePerbaikan($id)
     {
         $item = Perbaikan::findOrFail($id);
-        if(!empty($item->foto) && Storage::disk('public')->exists($item->foto)) {
+
+        // hapus file foto jika ada
+        if ($item->foto && Storage::disk('public')->exists($item->foto)) {
             Storage::disk('public')->delete($item->foto);
         }
 
         $item->delete();
-        session()->flash('success', 'Data Berhasil Dihapus');
-        return back();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data berhasil dihapus'
+        ]);
     }
 
     public function rekapPelihara()

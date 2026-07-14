@@ -42,59 +42,23 @@
               <div class="col-md-12 col-sm-12">
 
                 <!--TABEL-->
-                <table class="datatable table table-striped table-bordered" style="width:100%">
+                <table id="table-rekap" class="table table-striped table-bordered" style="width:100%">
                     <thead class="table-light">
                       <th>Id</th>
                       <th>Date</th>
                       <th>Nama</th>
                       <th>Merek</th>
                       <th>Type</th>
-                      <th>Serial Number</th>
+                      <th>Serial_Number</th>
                       <th>Lokasi</th>
-                      <th>Kepala Ruang</th>
+                      <th>Kepala_Ruang</th>
                       <th>Teknisi</th>
+                      <th>Status</th>
                       <th>Korektif</th>
                       <th>Catatan</th>
                       <th>Foto</th>
                     </thead>
                     <tbody>
-                      @forelse($items as $item)
-                      <tr>
-                        <td>{{ $item->id_alat }}</td>
-                        <td>{{ $item->created_at }}</td>
-                        <td>{{ $item->nama_alat }}</td>
-                        <td>{{ $item->merek }}</td>
-                        <td>{{ $item->type }}</td>
-                        <td>{{ $item->seri }}</td>
-                        <td>{{ $item->lokasi }}</td>
-                        <td>{{ $item->kepala }}</td>
-                        <td>{{ $item->teknisi }}</td>
-                        <td>{{ $item->korektif }}</td>
-                        <td>{{ $item->catatan }}</td>
-                        <td>
-                          @if($item->foto && file_exists(storage_path('app/public/'.$item->foto)))
-                            <a href="{{ asset('storage/'.$item->foto) }}" class="btn btn-xs btn-warning"
-                            target="_blank" data-toggle="tooltip" data-placement="top" title="Lihat Gambar">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            </a>
-                          @else
-                            <a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip"
-                              data-placement="top" title="Gambar"
-                              onclick="alert('Gambar tidak ada'); return false;">
-                                <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            </a>
-                          @endif
-                         <form action="{{ route('monitoring.deletePerbaikan', $item->id) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Hapus">
-                              <i class="fa fa-trash-o" aria-hidden="hidden"></i>
-                            </button>
-                          </form> 
-                        </td>
-                      </tr>
-                      @empty
-                      @endforelse
                     </tbody>
                 </table>
                 <!--TABEL-->
@@ -108,3 +72,152 @@
   </div>
 </div> <!-- /.content -->
 @endsection
+@push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+var table = $('#table-rekap').DataTable({
+
+    processing:true,
+    serverSide:true,
+    responsive:true,
+    ajax:"{{ route('monitoring.rekapPerbaikan.data') }}",
+    columns:[
+
+        {
+            data:'id_alat',
+            name:'id_alat'
+        },
+
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+
+        {
+            data:'nama_alat',
+            name:'nama_alat'
+        },
+
+        {
+            data:'merek',
+            name:'merek'
+        },
+
+        {
+            data:'type',
+            name:'type'
+        },
+
+        {
+            data:'seri',
+            name:'seri'
+        },
+
+        {
+            data:'lokasi',
+            name:'lokasi'
+        },
+
+        {
+            data:'kepala',
+            name:'kepala'
+        },
+
+        {
+            data:'teknisi',
+            name:'teknisi'
+        },
+
+        {
+            data:'status_button',
+            name:'status_button',
+            orderable:false,
+            searchable:false
+        },
+
+        {
+            data:'korektif',
+            name:'korektif'
+        },
+
+        {
+            data:'catatan',
+            name:'catatan'
+        },
+
+        {
+            data:'aksi',
+            name:'aksi',
+            orderable:false,
+            searchable:false
+        }
+
+    ]
+
+});
+
+const deleteUrl = "{{ route('monitoring.deletePerbaikan', ':id') }}";
+
+$(document).on('click', '.btn-delete', function () {
+
+    let id = $(this).data('id');
+
+    Swal.fire({
+        title: 'Hapus Data?',
+        text: 'Data yang dihapus tidak dapat dikembalikan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            $.ajax({
+
+                url: deleteUrl.replace(':id', id),
+
+                type: 'DELETE',
+
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+
+                success: function (res) {
+
+                    table.ajax.reload(null, false);
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+
+                },
+
+                error: function () {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Gagal menghapus data.'
+                    });
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+@endpush
