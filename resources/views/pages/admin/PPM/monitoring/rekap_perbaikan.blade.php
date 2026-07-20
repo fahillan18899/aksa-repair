@@ -219,5 +219,25 @@ $(document).on('click', '.btn-delete', function () {
 
 });
 
+let isLoading = false;
+
+table.on('preXhr.dt', function () {
+    isLoading = true;
+});
+
+table.on('xhr.dt', function () {
+    isLoading = false;
+});
+
+setInterval(function () {
+
+    if (document.hidden) return;
+
+    if (isLoading) return;
+
+    table.ajax.reload(null, false);
+
+}, 5000);
+
 </script>
 @endpush
