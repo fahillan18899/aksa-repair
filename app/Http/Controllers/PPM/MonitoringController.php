@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\PPM;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Inv;
 use App\Models\Perbaikan;
@@ -16,37 +15,47 @@ class MonitoringController extends Controller
 {
     public function dashboardPpm()
     {
+        $rs = Auth::user()->rs;
+        $tahun = date('Y');
+
         // PERBAIKAN
-        $totalAlat = Inv::count();
-        $alatDiperbaiki = Perbaikan::count();
+        $totalAlat = Inv::where('rs', $rs)->count();
+
+        $alatDiperbaiki = Perbaikan::where('rs', $rs)->count();
+
         $alatNormal = max(0, $totalAlat - $alatDiperbaiki);
 
         // PELIHARA
-        $alatDipelihara = pelihara::count();
+        $alatDipelihara = Pelihara::where('rs', $rs)->count();
+
         $alatBelumDipelihara = max(0, $totalAlat - $alatDipelihara);
 
-        // BAR CHART PERBAIKAN PER BULAN
+        // BAR CHART PERBAIKAN
         $perbaikanBulanan = Perbaikan::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
-            ->whereYear('created_at', date('Y'))
+            ->where('rs', $rs)
+            ->whereYear('created_at', $tahun)
             ->groupBy('bulan')
             ->pluck('total', 'bulan')
             ->toArray();
+
         $dataPerbaikanBulanan = [];
         for ($i = 1; $i <= 12; $i++) {
             $dataPerbaikanBulanan[] = $perbaikanBulanan[$i] ?? 0;
         }
 
-        // BAR CHART PELIHARA PER BULAN
+        // BAR CHART PELIHARA
         $peliharaBulanan = Pelihara::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
-            ->whereYear('created_at', date('Y'))
+            ->where('rs', $rs)
+            ->whereYear('created_at', $tahun)
             ->groupBy('bulan')
             ->pluck('total', 'bulan')
             ->toArray();
-        $dataPeliharaBulanan = [];
 
+        $dataPeliharaBulanan = [];
         for ($i = 1; $i <= 12; $i++) {
             $dataPeliharaBulanan[] = $peliharaBulanan[$i] ?? 0;
-        }        
+        }
+
         return view('pages.admin.PPM.monitoring.index', compact(
             'totalAlat',
             'alatDiperbaiki',
