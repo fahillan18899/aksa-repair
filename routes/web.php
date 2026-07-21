@@ -193,6 +193,7 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     Route::get('rekap_inv/data', [MonitoringController::class, 'rekapInvData'])->name('rekapInv.data');
     Route::get('rekap_inv', [MonitoringController::class, 'rekapInv'])->name('rekapInv');
     Route::delete('rekap_inv/{id}', [MonitoringController::class, 'deleteInv'])->name('deleteInv');
+    Route::get('/rekap/export-excel', [MonitoringController::class,'exportExcel'])->name('exportExcel');
     Route::get('rekap_perbaikan/data', [MonitoringController::class, 'rekapPerbaikanData'])->name('rekapPerbaikan.data');
     Route::get('rekap_perbaikan', [MonitoringController::class, 'rekapPerbaikan'])->name('rekapPerbaikan');
     Route::delete('rekap_perbaikan/{id}', [MonitoringController::class, 'deletePerbaikan'])->name('deletePerbaikan');

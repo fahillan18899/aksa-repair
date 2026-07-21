@@ -40,7 +40,10 @@
           <div class="panel-body panel-form">
             <div class="row">
               <div class="col-md-12 col-sm-12">
-
+              <a href="{{ route('monitoring.exportExcel') }}" class="btn btn-success">
+                  <i class="fa fa-file-excel-o"></i>
+                  Export Excel
+              </a>
                 <!--TABEL-->
                 <table id="table-rekap" class="table table-striped table-bordered" style="width:100%">
                   <thead class="table-light">

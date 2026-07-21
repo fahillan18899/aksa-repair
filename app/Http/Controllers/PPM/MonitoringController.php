@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use App\Models\Inv;
 use App\Models\Perbaikan;
 use App\Models\pelihara;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RekapInvExport;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
@@ -129,6 +131,14 @@ class MonitoringController extends Controller
         ->rawColumns(['aksi'])
 
         ->make(true);
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(
+            new RekapInvExport,
+            'RekapInventaris.xlsx'
+        );
     }
 
     public function deleteInv($id)
