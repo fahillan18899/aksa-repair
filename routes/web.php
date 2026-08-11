@@ -35,6 +35,8 @@ use App\Http\Controllers\PPM\InventarisController;
 use App\Http\Controllers\PPM\PerbaikanController;
 use App\Http\Controllers\PPM\PeliharaController;
 use App\Http\Controllers\PPM\MonitoringController;
+//PPM//MASTER//
+use App\Http\Controllers\PPM\Master\DashboardController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -200,6 +202,11 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     Route::get('rekap_pelihara/data', [MonitoringController::class, 'rekapPeliharaData'])->name('rekanPelihara.data');
     Route::get('rekap_pelihara', [MonitoringController::class, 'rekapPelihara'])->name('rekapPelihara');
     Route::delete('rekap_pelihara/{id}', [MonitoringController::class, 'deletePelihara'])->name('deletePelihara');
+    });
+
+Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(function () {
+    //MASTER//
+    Route::get('dashboard_master', [DashboardController::class, 'dashboardMaster'])->name('dashboardMaster');
     });
 
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
