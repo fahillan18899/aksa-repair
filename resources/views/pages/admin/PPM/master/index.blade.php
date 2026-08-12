@@ -100,22 +100,27 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th style="width:70px;" class="text-center">No</th>
+                                            <th style="width:60px;" class="text-center">No</th>
                                             <th>Rumah Sakit</th>
-                                            <th style="width:180px;" class="text-center">Total Alat</th>
+                                            <th style="width:130px;" class="text-center">Total Alat</th>
+                                            <th style="width: 130px;" class="text-center">Perbaikan</th>
+                                            <th style="width: 150px;" class="text-center">Pemeliharaan</th>
+                                            <th style="width: 130px;" class="text-center">Normal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($rumahSakit as $index => $rs)
                                             <tr>
                                                 <td class="text-center">{{ $index + 1 }}</td>
-                                                <td><strong>{{ $rs->rs }}</strong></td>
-                                                <td class="text-center"> <span class="label label-primary"
-                                                        style="font-size:13px;"> {{ $rs->total_alat }}</span></td>
+                                                <td><a href="{{ route('master.detailRs', ['rs' => $rs->rs]) }}" style="font-weight: bold">{{ $rs->rs }}</a></td>
+                                                <td class="text-center"> <span class="label label-primary" style="font-size:13px;"> {{ $rs->total_alat }}</span></td>
+                                                <td class="text-center"><span class="label label-danger" style="font-size: 13px;">{{ $rs->total_perbaikan }}</span></td>
+                                                <td class="text-center"><span class="label label-warning" style="font-size: 13px;">{{ $rs->total_pemeliharaan }}</span></td>
+                                                <td class="text-center"><span class="label label-success" style="font-size: 13px;">{{$rs->total_normal }}</span></td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="3" class="text-center">Belum ada data alat.</td>
+                                                <td colspan="6" class="text-center">Belum ada data alat.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
@@ -195,14 +200,11 @@
 
 
             // ============= GRAFIK PERBAIKAN BULANAN ============= // 
-
             new Chart(
                 document.getElementById('perbaikanBulananChart'), {
                     type: 'bar',
                     data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov',
-                            'Des'
-                        ],
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
                         datasets: [{
                             label: 'Jumlah Perbaikan',
                             data: @json($dataPerbaikanBulanan),
@@ -230,14 +232,11 @@
             );
 
             // ============= GRAFIK PEMELIHARAAN BULANAN ============= //
-
             new Chart(
                 document.getElementById('peliharaBulananChart'), {
                     type: 'bar',
                     data: {
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov',
-                            'Des'
-                        ],
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
                         datasets: [{
                             label: 'Jumlah Pemeliharaan',
                             data: @json($dataPeliharaBulanan),

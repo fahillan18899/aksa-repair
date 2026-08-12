@@ -60,29 +60,6 @@
         </a>
       </li>
       <!---->
-      <li class="{{ request()->is('dashboard_monitoring/rekap_inv') ? 'active' : '' }}">
-        <a href="{{ route('monitoring.rekapInv') }}">
-          <i class="fa fa-book" aria-hidden="true"></i>
-          <span>Rekap Inventaris</span>
-        </a>
-      </li>
-      <!---->
-      <!---->
-      <li class="{{ request()->is('dashboard_monitoring/rekap_perbaikan') ? 'active' : '' }}">
-        <a href="{{ route('monitoring.rekapPerbaikan') }}">
-          <i class="fa fa-book" aria-hidden="true"></i>
-          <span>Rekap Perbaikan</span>
-        </a>
-      </li>
-      <!---->
-      <!---->
-      <li class="{{ request()->is('dashboard_monitoring/rekap_pelihara') ? 'active' : '' }}">
-        <a href="{{ route('monitoring.rekapPelihara') }}">
-          <i class="fa fa-book" aria-hidden="true"></i>
-          <span>Rekap Pemeliharaan</span>
-        </a>
-      </li>
-      <!---->
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->

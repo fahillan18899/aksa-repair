@@ -207,6 +207,7 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
 Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(function () {
     //MASTER//
     Route::get('dashboard_master', [DashboardController::class, 'dashboardMaster'])->name('dashboardMaster');
+    Route::get('detail_master/{rs}', [DashboardController::class, 'detailRs'])->name('detailRs');
     });
 
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
