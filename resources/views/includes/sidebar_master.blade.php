@@ -54,8 +54,8 @@
     </div>
     <!-- SIDE BAR MENU -->
     <ul class="sidebar-menu">
-      <li class="{{ request()->is('dashboard_monitoring/dashboard_ppm') ? 'active' : '' }}">
-        <a href="{{ route('monitoring.dashboardPpm') }}"><i class="fa fa-home"></i>
+      <li class="{{ request()->is('dashboard_master/dashboard_master') ? 'active' : '' }}">
+        <a href="{{ route('master.dashboardMaster') }}"><i class="fa fa-home"></i>
             <span>Dashboard</span>
         </a>
       </li>

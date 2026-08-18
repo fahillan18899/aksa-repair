@@ -37,6 +37,7 @@ use App\Http\Controllers\PPM\PeliharaController;
 use App\Http\Controllers\PPM\MonitoringController;
 //PPM//MASTER//
 use App\Http\Controllers\PPM\Master\DashboardController;
+use App\Http\Controllers\PPM\Master\DetailRsController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -207,6 +208,12 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
 Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(function () {
     //MASTER//
     Route::get('dashboard_master', [DashboardController::class, 'dashboardMaster'])->name('dashboardMaster');
+    Route::get('detail_inv/data', [DetailRsController::class, 'detailInvData'])->name('detailInv.data');
+    Route::delete('detail_inv/{id}', [DetailRsController::class, 'detaildeleteInv'])->name('detaildeleteInv');
+    Route::get('detail_perbaikan/data', [DetailRsController::class, 'detailPerbaikanData'])->name('detailPerbaikan.data');
+    Route::delete('detail_perbaikan/{id}', [DetailRsController::class, 'detaildeletePerbaikan'])->name('detaildeletePerbaikan');
+    Route::get('detail_pelihara/data', [DetailRsController::class, 'detailPeliharaData'])->name('detailPelihara.data');
+    Route::delete('detail_pelihara/{id}', [DetailRsController::class, 'detaildeletePelihara'])->name('detaildeletePelihara');
     Route::get('detail_master/{rs}', [DashboardController::class, 'detailRs'])->name('detailRs');
     });
 

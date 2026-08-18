@@ -139,6 +139,7 @@
                           <option value="">-- Pilih Rumah sakit --</option>
                           <option value="RS MUTIARA BUNDA BREBES">RS MUTIARA BUNDA BREBES</option>
                           <option value="RS PANTIWILASA DR CIPTO SEMARANG">RS PANTIWILASA DR CIPTO SEMARANG</option>
+                          <option value="demo">DEMO</option>
                         </select>
                       </div>
 

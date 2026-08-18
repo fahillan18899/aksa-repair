@@ -49,36 +49,20 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table id="table-inv" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID Alat</th>
                                         <th>Nama Alat</th>
                                         <th>Merk</th>
                                         <th>Type</th>
                                         <th>Seri</th>
                                         <th>Lokasi</th>
                                         <th>Jadwal</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($inventaris as $index => $alat)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $alat->nama_alat }}</td>
-                                            <td>{{ $alat->merek }}</td>
-                                            <td>{{ $alat->type }}</td>
-                                            <td>{{ $alat->seri }}</td>
-                                            <td>{{ $alat->lokasi }}</td>
-                                            <td>{{ $alat->jadwal }}</td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">
-                                                Belum ada data inventaris.
-                                            </td>
-                                        </tr>
-                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -96,42 +80,25 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table id="table-perbaikan" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>ID Alat</th>
+                                        <th>Tanggal Perbaikan</th>
                                         <th>Nama Alat</th>
                                         <th>Merk</th>
                                         <th>Type</th>
                                         <th>Seri</th>
                                         <th>Lokasi</th>
+                                        <th>Kepala Ruangan</th>
                                         <th>Teknisi</th>
                                         <th>Status</th>
                                         <th>Korektif</th>
                                         <th>Catatan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($perbaikan as $index => $alat)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $alat->nama_alat }}</td>
-                                            <td>{{ $alat->merek }}</td>
-                                            <td>{{ $alat->type }}</td>
-                                            <td>{{ $alat->seri }}</td>
-                                            <td>{{ $alat->lokasi }}</td>
-                                            <td>{{ $alat->teknisi }}</td>
-                                            <td>{{ $alat->status }}</td>
-                                            <td>{{ $alat->korektif }}</td>
-                                            <td>{{ $alat->catatan }}</td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="10" class="text-center">
-                                                Belum ada data perbaikan.
-                                            </td>
-                                        </tr>
-                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -149,7 +116,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table id="table-pelihara" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -162,23 +129,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($pelihara as $index => $alat)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $alat->nama_alat }}</td>
-                                            <td>{{ $alat->seri }}</td>
-                                            <td>{{ $alat->merek }}</td>
-                                            <td>{{ $alat->type }}</td>
-                                            <td>{{ $alat->lokasi }}</td>
-                                            <td>{{ $alat->teknisi }}</td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">
-                                                Belum ada data pemeliharaan.
-                                            </td>
-                                        </tr>
-                                    @endforelse
+
                                 </tbody>
                             </table>
                         </div>
@@ -189,3 +140,288 @@
     </section>
 </div>
 @endsection
+@push('addon-script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+var table = $('#table-inv').DataTable({
+    processing:true,
+    serverSide:true,
+    responsive:true,
+    ajax: {
+        url: "{{ route('master.detailInv.data') }}",
+        data: { rs: "{{ $rs }}" }
+    },
+    columns:[
+        {
+            data:'id_alat',
+            name:'id_alat'
+        },
+        {
+            data:'nama_alat',
+            name:'nama_alat'
+        },
+        {
+            data:'merek',
+            name:'merek'
+        },
+        {
+            data:'type',
+            name:'type'
+        },
+        {
+            data:'seri',
+            name:'seri'
+        },
+        {
+            data:'lokasi',
+            name:'lokasi'
+        },
+        {
+            data:'jadwal',
+            name:'jadwal'
+        },
+        {
+            data:'aksi',
+            name:'aksi',
+            orderable:false,
+            searchable:false
+        }
+    ]
+});
+
+const deleteInv = "{{ route('master.detaildeleteInv', ':id') }}";
+$(document).on('click', '.btn-delete', function () {
+    let id = $(this).data('id');
+    Swal.fire({
+        title: 'Hapus Data?',
+        text: 'Data yang dihapus tidak dapat dikembalikan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: deleteInv.replace(':id', id),
+                type: 'DELETE',
+                data: {_token: '{{ csrf_token() }}'},
+                success: function (res) {
+                    table.ajax.reload(null, false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Gagal menghapus data.'
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+<script>
+var table = $('#table-perbaikan').DataTable({
+    processing:true,
+    serverSide:true,
+    responsive:true,
+    ajax:{
+        url: "{{ route('master.detailPerbaikan.data') }}",
+        data: { rs: "{{ $rs }}" }
+    },
+    columns:[
+        {
+            data:'id_alat',
+            name:'id_alat'
+        },
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data:'nama_alat',
+            name:'nama_alat'
+        },
+        {
+            data:'merek',
+            name:'merek'
+        },
+        {
+            data:'type',
+            name:'type'
+        },
+        {
+            data:'seri',
+            name:'seri'
+        },
+        {
+            data:'lokasi',
+            name:'lokasi'
+        },
+        {
+            data:'kepala',
+            name:'kepala'
+        },
+        {
+            data:'teknisi',
+            name:'teknisi'
+        },
+        {
+            data:'status_button',
+            name:'status_button',
+            orderable:false,
+            searchable:false
+        },
+        {
+            data:'korektif',
+            name:'korektif'
+        },
+        {
+            data:'catatan',
+            name:'catatan'
+        },
+        {
+            data:'aksi',
+            name:'aksi',
+            orderable:false,
+            searchable:false
+        }
+    ]
+});
+const deletePerbaikan = "{{ route('master.detaildeletePerbaikan', ':id') }}";
+$(document).on('click', '.btn-delete', function () {
+    let id = $(this).data('id');
+    Swal.fire({
+        title: 'Hapus Data?',
+        text: 'Data yang dihapus tidak dapat dikembalikan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: deletePerbaikan.replace(':id', id),
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (res) {
+                    table.ajax.reload(null, false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Gagal menghapus data.'
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+<script>
+var table = $('#table-pelihara').DataTable({
+    processing:true,
+    serverSide:true,
+    responsive:true,
+    ajax:{
+        url: "{{ route('master.detailPelihara.data') }}",
+        data: { rs: "{{ $rs }}" }
+    },
+    columns:[
+        {
+            data: 'created_at',
+            name: 'created_at'
+        },
+        {
+            data:'nama_alat',
+            name:'nama_alat'
+        },
+        {
+            data:'merek',
+            name:'merek'
+        },
+        {
+            data:'type',
+            name:'type'
+        },
+        {
+            data:'seri',
+            name:'seri'
+        },
+        {
+            data:'lokasi',
+            name:'lokasi'
+        },
+        {
+            data:'aksi',
+            name:'aksi',
+            orderable:false,
+            searchable:false
+        }
+    ]
+});
+
+const deletePelihara = "{{ route('master.detaildeletePelihara', ':id') }}";
+$(document).on('click', '.btn-delete', function () {
+    let id = $(this).data('id');
+    Swal.fire({
+        title: 'Hapus Data?',
+        text: 'Data yang dihapus tidak dapat dikembalikan!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: deletePelihara.replace(':id', id),
+                type: 'DELETE',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (res) {
+                    table.ajax.reload(null, false);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: res.message,
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Gagal menghapus data.'
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+@endpush

@@ -61,11 +61,6 @@ class DashboardController extends Controller
     public function detailRs($rs)
     {
         // DATA INVENTARIS //
-        $inventaris = Inv::where('rs', $rs)->orderBy('nama_alat')->get();
-        // DATA PERBAIKAN //
-        $perbaikan = Perbaikan::where('rs', $rs)->orderByDesc('created_at')->get();
-        // DATA PEMELIHARAAN // 
-        $pelihara = pelihara::where('rs', $rs)->orderByDesc('created_at')->get();
-        return view('pages.admin.PPM.master.detail_rs', compact('rs', 'inventaris', 'perbaikan', 'pelihara'));
+        return view('pages.admin.PPM.master.detail_rs', compact('rs'));
     }
 }
