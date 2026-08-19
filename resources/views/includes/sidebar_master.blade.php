@@ -55,11 +55,16 @@
     <!-- SIDE BAR MENU -->
     <ul class="sidebar-menu">
       <li class="{{ request()->is('dashboard_master/dashboard_master') ? 'active' : '' }}">
-        <a href="{{ route('master.dashboardMaster') }}"><i class="fa fa-home"></i>
+        <a href="{{ route('master.dashboardMaster') }}"><i class="fa fa-pie-chart"></i>
             <span>Dashboard</span>
         </a>
       </li>
       <!---->
+      <li class="{{ request()->is('dashboard_master/rumah_sakit') ? 'active' : '' }}">
+        <a href="{{ route('master.rumahSakit') }}"><i class="fa fa-hospital-o"></i>
+            <span>Rumah Sakit</span>
+        </a>
+      </li>
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->

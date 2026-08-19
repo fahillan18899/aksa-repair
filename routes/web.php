@@ -38,6 +38,7 @@ use App\Http\Controllers\PPM\MonitoringController;
 //PPM//MASTER//
 use App\Http\Controllers\PPM\Master\DashboardController;
 use App\Http\Controllers\PPM\Master\DetailRsController;
+use App\Http\Controllers\PPM\Master\RumahSakitController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -215,6 +216,8 @@ Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(
     Route::get('detail_pelihara/data', [DetailRsController::class, 'detailPeliharaData'])->name('detailPelihara.data');
     Route::delete('detail_pelihara/{id}', [DetailRsController::class, 'detaildeletePelihara'])->name('detaildeletePelihara');
     Route::get('detail_master/{rs}', [DashboardController::class, 'detailRs'])->name('detailRs');
+    Route::get('rumah_sakit', [RumahSakitController::class, 'rumahSakit'])->name('rumahSakit');
+    Route::get('rumah_sakit/data', [RumahSakitController::class, 'rumahSakitData'])->name('rumahSakit.data');
     });
 
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
