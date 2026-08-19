@@ -39,6 +39,7 @@ use App\Http\Controllers\PPM\MonitoringController;
 use App\Http\Controllers\PPM\Master\DashboardController;
 use App\Http\Controllers\PPM\Master\DetailRsController;
 use App\Http\Controllers\PPM\Master\RumahSakitController;
+use App\Http\Controllers\PPM\Master\InventarisRsController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -218,6 +219,8 @@ Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(
     Route::get('detail_master/{rs}', [DashboardController::class, 'detailRs'])->name('detailRs');
     Route::get('rumah_sakit', [RumahSakitController::class, 'rumahSakit'])->name('rumahSakit');
     Route::get('rumah_sakit/data', [RumahSakitController::class, 'rumahSakitData'])->name('rumahSakit.data');
+    Route::get('inventaris_rs', [InventarisRsController::class, 'invRs'])->name('invRs');
+    Route::get('inventaris_rs/data', [InventarisRsController::class, 'invRsData'])->name('invRs.data');
     });
 
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {
