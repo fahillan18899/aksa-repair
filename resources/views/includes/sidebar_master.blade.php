@@ -77,6 +77,12 @@
             <span>Perbaikan Rumah Sakit</span>
         </a>
       </li>
+      <!---->
+      <li class="{{ request()->is('dashboard_master/pelihara_rs') ? 'active' : '' }}">
+        <a href="{{ route('master.peliharaRs') }}"><i class="fa fa-cogs"></i>
+            <span>Pemeliharaan Rumah Sakit</span>
+        </a>
+      </li>
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->
