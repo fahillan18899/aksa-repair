@@ -5,6 +5,8 @@ namespace App\Http\Controllers\PPM\Master;
 use App\Models\pelihara;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RekapPeliharaRsExport;
 use Psy\Command\EditCommand;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -53,5 +55,13 @@ class PeliharaRsController extends Controller
             return '<a href="' . $url . '" style="font-weight:bold;"> ' . e($row->rs) . ' </a>';
         })
         ->rawColumns(['rs'])->make(true);
+    }
+
+        public function ExPortPelihara()
+    {
+        return Excel::download(
+            new RekapPeliharaRsExport,
+            'RekapPeliharaRs.xlsx'
+        );
     }
 }
