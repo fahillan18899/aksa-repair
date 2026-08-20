@@ -71,6 +71,12 @@
             <span>Inventaris Rumah Sakit</span>
         </a>
       </li>
+      <!---->
+      <li class="{{ request()->is('dashboard_master/perbaikan_rs') ? 'active' : '' }}">
+        <a href="{{ route('master.perbaikanRs') }}"><i class="fa fa-wrench"></i>
+            <span>Perbaikan Rumah Sakit</span>
+        </a>
+      </li>
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->

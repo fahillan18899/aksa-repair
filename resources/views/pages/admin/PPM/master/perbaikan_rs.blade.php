@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Inventaris Rumah Sakit')
+@section('title', 'Perbaikan Rumah Sakit')
 @section('content')
 <div class="content-wrapper">
     {{-- HEADER --}}
@@ -9,31 +9,31 @@
                 <i class="pe-7s-hospital"></i>
             </div>
             <div class="header-title">
-                <h1>Inventaris Rumah Sakit</h1>
-                <small>Daftar Inventaris Rumah Sakit</small>
+                <h1>Perbaikan Rumah Sakit</h1>
+                <small>Daftar Perbaikan Rumah Sakit</small>
             </div>
         </div>
     </section>
     {{-- CONTENT --}}
     <section class="content">
-        {{-- INVENTARIS --}}
+        {{-- PERBAIKAN --}}
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-bd">
                     <div class="panel-heading">
-                        <h4> Daftar Inventaris Rumah Sakit </h4>
+                        <h4> Daftar Perbaikan Rumah Sakit </h4>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table id="table-inv" class="table table-bordered table-striped">
+                            <table id="table-perbaikan-rs" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nama Alat</th>
-                                        <th>Merk</th>
-                                        <th>SN</th>
-                                        <th>Lokasi</th>
+                                        <th>Tanggal</th>
                                         <th>Rumah Sakit</th>
+                                        <th>Nama Alat</th>
+                                        <th>Teknisi</th>
+                                        <th>Status</th>
+                                        <th>Korektif</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,40 +50,43 @@
 @push('addon-script')
 <script>
     $(document).ready(function(){
-        $('#table-inv').DataTable({
+        $('#table-perbaikan-rs').DataTable({
             processing: true,
             serverSide: true,
             responsive: true,
 
-            ajax: "{{ route('master.invRs.data') }}",
+            ajax: "{{ route('master.perbaikanRs.data') }}",
 
             columns: [
                 {
-                    data: 'id_alat',
-                    name: 'id_alat'
+                    data: 'created_at',
+                    name: 'created_at'
+                },
+                {
+                    data: 'rs',
+                    name: 'rs'
                 },
                 {
                     data: 'nama_alat',
                     name: 'nama_alat'
                 },
                 {
-                    data: 'merek',
-                    name: 'merek'
+                    data: 'teknisi',
+                    name: 'teknisi'
                 },
                 {
-                    data: 'seri',
-                    name: 'seri'
+                    data: 'status_button',
+                    name: 'status_button',
+                    orderable: false,
+                    searchable: false,
                 },
                 {
-                    data: 'lokasi',
-                    name: 'lokasi'
+                    data: 'korektif',
+                    name: 'korektif'
                 },
-                {
-                    data: 'rs',
-                    name: 'rs'
-                }
             ],
-            order: [[1, 'asc']]
+
+            order: [[0, 'desc']]
         });
     });
 </script>
