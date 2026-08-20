@@ -6,7 +6,8 @@ use App\Models\Inv;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yajra\DataTables\Facades\DataTables;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RekapInvRsExport;
 use function PHPUnit\Framework\returnArgument;
 use function Termwind\renderUsing;
 
@@ -51,5 +52,13 @@ class InventarisRsController extends Controller
             return '<a href="' . $url . '" style="font-weight:bold;"> ' . e($row->rs) . ' </a>';
         })
         ->rawColumns(['rs'])->make(true);
+    }
+
+    public function ExPortInv()
+    {
+        return Excel::download(
+            new RekapInvRsExport,
+            'RekapInventarisRs.xlsx'
+        );
     }
 }
