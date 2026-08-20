@@ -226,6 +226,7 @@ Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(
     Route::get('inventaris_rs/export-excel', [InventarisRsController::class,'ExPortInv'])->name('ExPortInv');
     Route::get('perbaikan_rs', [PerbaikanRsController::class, 'perbaikanRs'])->name('perbaikanRs');
     Route::get('perbaikan_rs/data', [PerbaikanRsController::class, 'perbaikanRsData'])->name('perbaikanRs.data');
+    Route::get('perbaikan_rs/export-excel', [PerbaikanRsController::class,'ExPortPerbaikan'])->name('ExPortPerbaikan');
     Route::get('pelihara_rs', [PeliharaRsController::class, 'peliharaRs'])->name('peliharaRs');
     Route::get('pelihara_rs/data', [PeliharaRsController::class, 'peliharaRsData'])->name('peliharaRs.data');
     });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\PPM\Master;
 
 use App\Models\Perbaikan;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RekapPerbaikanRsExport;
 use App\Http\Controllers\Controller;
 use Psy\Command\EditCommand;
 use Yajra\DataTables\Facades\DataTables;
@@ -57,5 +59,13 @@ class PerbaikanRsController extends Controller
             return $row->korektif ?? '-';
         })
         ->rawColumns(['rs', 'status_button'])->make(true);
+    }
+
+    public function ExPortPerbaikan()
+    {
+        return Excel::download(
+            new RekapPerbaikanRsExport,
+            'RekapPerbaikanRs.xlsx'
+        );
     }
 }

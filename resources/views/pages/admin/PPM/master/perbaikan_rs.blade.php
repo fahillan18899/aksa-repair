@@ -23,6 +23,10 @@
                     <div class="panel-heading">
                         <h4> Daftar Perbaikan Rumah Sakit </h4>
                     </div>
+                    <a href="{{ route('master.ExPortPerbaikan') }}" class="btn btn-success">
+                        <i class="fa fa-file-excel-o"></i>
+                        Export Excel
+                    </a>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table id="table-perbaikan-rs" class="table table-bordered table-striped">
