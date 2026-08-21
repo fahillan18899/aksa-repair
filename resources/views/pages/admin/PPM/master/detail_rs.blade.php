@@ -6,7 +6,7 @@
     <section class="content-header">
         <div class="p-l-30 p-r-30">
             <div class="header-icon">
-                <i class="pe-7s-hospital"></i>
+                <i class="fa fa-hospital-o"></i>
             </div>
             <div class="header-title">
                 <h1>Detail Rumah Sakit</h1>

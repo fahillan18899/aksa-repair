@@ -7,7 +7,7 @@
         <section class="content-header">
             <div class="p-l-30 p-r-30">
                 <div class="header-icon">
-                    <i class="pe-7s-home"></i>
+                    <i class="fa fa-pie-chart"></i>
                 </div>
                 <div class="header-title">
                     <h1>Dashboard Master</h1>
