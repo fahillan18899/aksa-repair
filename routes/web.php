@@ -42,6 +42,7 @@ use App\Http\Controllers\PPM\Master\RumahSakitController;
 use App\Http\Controllers\PPM\Master\InventarisRsController;
 use App\Http\Controllers\PPM\Master\PerbaikanRsController;
 use App\Http\Controllers\PPM\Master\PeliharaRsController;
+use App\Http\Controllers\PPM\Master\ManagementUserController;
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -230,6 +231,8 @@ Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(
     Route::get('pelihara_rs', [PeliharaRsController::class, 'peliharaRs'])->name('peliharaRs');
     Route::get('pelihara_rs/data', [PeliharaRsController::class, 'peliharaRsData'])->name('peliharaRs.data');
     Route::get('pelihara_rs/export-excel', [PeliharaRsController::class,'ExPortPelihara'])->name('ExPortPelihara');
+    Route::get('management_user', [ManagementUserController::class, 'managUser'])->name('managUser');
+    Route::get('management_user/data', [ManagementUserController::class, 'managUserData'])->name('managUser.data');
     });
 
 Route::name('ppm.')->prefix('dashboard_ppm')->middleware(['auth'])->group(function () {

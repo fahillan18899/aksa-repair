@@ -83,6 +83,12 @@
             <span>Pemeliharaan Rumah Sakit</span>
         </a>
       </li>
+      <!---->
+      <li class="{{request()->is('dashboard_master/management_user') ? 'active' : ''}}">
+        <a href="{{ route('master.managUser') }}"><i class="fa fa-user-circle-o"></i>
+          <span>Management User</span>
+        </a>
+      </li>
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->
