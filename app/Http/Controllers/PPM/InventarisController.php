@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\PPM;
 
-use App\Http\Controllers\Controller;
 use App\Models\Inv;
+use App\Models\MasterAlat;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class InventarisController extends Controller
@@ -20,6 +21,14 @@ class InventarisController extends Controller
         $items = Inv::latest()->get();
         return view('pages.admin.PPM.inv.create', compact('qr', 'items'));
     }
+
+    public function masterAlat(Request $request)
+    {
+        $keyword = $request->get('q');
+        $alat = MasterAlat::where('alat', 'LIKE', '%' .$keyword. '%')
+        ->orderBy('alat')->limit(10)->get(['id','alat']);
+        return response()->json($alat);
+    } 
 
     public function store(Request $request)
     {
@@ -43,11 +52,11 @@ class InventarisController extends Controller
         Inv::create([
             'rs'        => $request->rs,
             'id_alat'   => $request->id_alat,
-            'nama_alat' => $request->nama_alat,
+            'nama_alat' => mb_strtoupper($request->nama_alat, 'UTF-8'),
             'merek'     => $request->merek,
             'type'      => $request->type,
             'seri'      => $request->seri,
-            'lokasi'    => $request->lokasi,
+            'lokasi'    => mb_strtoupper($request->lokasi, 'UTF-8'),
             'jadwal'    => $request->jadwal,
             'foto'      => $fotoPath,
         ]);
@@ -73,7 +82,8 @@ class InventarisController extends Controller
             'lokasi'    => 'required',
             'jadwal'    => 'required',
         ]);
-
+        $validate['nama_alat'] = mb_strtoupper($validate['nama_alat'], 'UTF-8');
+        $validate['lokasi'] = mb_strtoupper($validate['lokasi'], 'UTF-8');
         $item = Inv::findOrFail($id);
         $item->update($validate);
         session()->flash('success', 'Data Berhasil Diubah');

@@ -50,6 +50,7 @@ Route::get('scan', [QrController::class, 'scan'])->name('scan');
 Route::get('/qr-menu/{id}', [QrController::class, 'menu'])->name('qr.menu');
 Route::resource('inventaris', InventarisController::class);
 Route::get('/inventaris/edit/{qr}', [InventarisController::class, 'editInv'])->name('editInv');
+Route::get('master_alat/search', [InventarisController::class, 'masterAlat'])->name('masterAlat');
 Route::get('perbaikan/data/{qr}',[PerbaikanController::class, 'data'])->name('perbaikan.data');
 Route::put('perbaikan/status/{id}', [PerbaikanController::class, 'status'])->name('perbaikan.status');
 Route::resource('perbaikan', PerbaikanController::class);
