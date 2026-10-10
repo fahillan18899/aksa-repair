@@ -35,6 +35,7 @@ use App\Http\Controllers\PPM\InventarisController;
 use App\Http\Controllers\PPM\PerbaikanController;
 use App\Http\Controllers\PPM\PeliharaController;
 use App\Http\Controllers\PPM\MonitoringController;
+use App\Http\Controllers\PPM\RekapBulanController;
 //PPM//MASTER//
 use App\Http\Controllers\PPM\Master\DashboardController;
 use App\Http\Controllers\PPM\Master\DetailRsController;
@@ -43,6 +44,7 @@ use App\Http\Controllers\PPM\Master\InventarisRsController;
 use App\Http\Controllers\PPM\Master\PerbaikanRsController;
 use App\Http\Controllers\PPM\Master\PeliharaRsController;
 use App\Http\Controllers\PPM\Master\ManagementUserController;
+
 
 //Data Scan
 Route::get('data_alat/{id}', [DataAlatController::class, 'index'])->name('scan.dataAlat');
@@ -209,6 +211,8 @@ Route::name('monitoring.')->prefix('dashboard_monitoring')->middleware(['auth'])
     Route::get('rekap_pelihara/data', [MonitoringController::class, 'rekapPeliharaData'])->name('rekanPelihara.data');
     Route::get('rekap_pelihara', [MonitoringController::class, 'rekapPelihara'])->name('rekapPelihara');
     Route::delete('rekap_pelihara/{id}', [MonitoringController::class, 'deletePelihara'])->name('deletePelihara');
+    Route::get('rekap_bulan', [RekapBulanController::class, 'rekapBulan'])->name('rekapBulan');
+    Route::get('download_rekap_bulan/{tahun}/{bulan}', [RekapBulanController::class, 'downloadRekapBulan'])->name('downloadRekapBulan');
     });
 
 Route::name('master.')->prefix('dashboard_master')->middleware(['auth'])->group(function () {

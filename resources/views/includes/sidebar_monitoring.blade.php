@@ -83,6 +83,14 @@
         </a>
       </li>
       <!---->
+      <!---->
+      <li class="{{ request()->is('dashboard_monitoring/rekap_bulan') ? 'active' : '' }}">
+        <a href="{{ route('monitoring.rekapBulan') }}">
+          <i class="fa fa-book" aria-hidden="true"></i>
+          <span>Rekap Laporan Bulanan</span>
+        </a>
+      </li>
+      <!---->
     </ul>
     <!-- SIDE BAR MENU -->
   </div> <!-- /.sidebar -->
