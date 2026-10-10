@@ -15,48 +15,52 @@ use Yajra\DataTables\Facades\DataTables;
 
 class MonitoringController extends Controller
 {
+
     public function dashboardPpm()
     {
         $rs = Auth::user()->rs;
-        $tahun = date('Y');
 
-        // PERBAIKAN
+        // Tanggal bulan berjalan
+        $sekarang = now();
+        $awalBulan = $sekarang->copy()->startOfMonth();
+        $akhirBulan = $sekarang->copy()->endOfMonth();
+        $namaBulan = $sekarang->translatedFormat('F Y');
+
+        // TOTAL INVENTARIS
         $totalAlat = Inv::where('rs', $rs)->count();
 
-        $alatDiperbaiki = Perbaikan::where('rs', $rs)->count();
+        // // VERSI 1: PERBAIKAN YANG MASIH BERLANGSUNG
+        // // Tetap dihitung meskipun bulan sudah berganti
+        // $alatDiperbaiki = Perbaikan::where('rs', $rs)
+        //     ->where('status', '0')
+        //     ->count();
 
+        
+        // VERSI 2: PERBAIKAN BULAN BERJALAN SAJA
+        // Perbaikan bulan sebelumnya tidak ikut dihitung,
+        // meskipun statusnya masih belum selesai
+        $alatDiperbaiki = Perbaikan::where('rs', $rs)
+            ->where('status', '0')
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->count();
+        
+
+        // TOTAL ALAT NORMAL
         $alatNormal = max(0, $totalAlat - $alatDiperbaiki);
 
-        // PELIHARA
-        $alatDipelihara = Pelihara::where('rs', $rs)->count();
+        // PEMELIHARAAN BULAN INI
+        $alatDipelihara = Pelihara::where('rs', $rs)
+            ->whereBetween('created_at', [$awalBulan, $akhirBulan])
+            ->count();
 
         $alatBelumDipelihara = max(0, $totalAlat - $alatDipelihara);
 
-        // BAR CHART PERBAIKAN
-        $perbaikanBulanan = Perbaikan::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
-            ->where('rs', $rs)
-            ->whereYear('created_at', $tahun)
-            ->groupBy('bulan')
-            ->pluck('total', 'bulan')
-            ->toArray();
+        // DATA GRAFIK PERBAIKAN: BULAN INI SAJA
+        $dataPerbaikanBulanan = [$alatDiperbaiki];
 
-        $dataPerbaikanBulanan = [];
-        for ($i = 1; $i <= 12; $i++) {
-            $dataPerbaikanBulanan[] = $perbaikanBulanan[$i] ?? 0;
-        }
-
-        // BAR CHART PELIHARA
-        $peliharaBulanan = Pelihara::selectRaw('MONTH(created_at) as bulan, COUNT(*) as total')
-            ->where('rs', $rs)
-            ->whereYear('created_at', $tahun)
-            ->groupBy('bulan')
-            ->pluck('total', 'bulan')
-            ->toArray();
-
-        $dataPeliharaBulanan = [];
-        for ($i = 1; $i <= 12; $i++) {
-            $dataPeliharaBulanan[] = $peliharaBulanan[$i] ?? 0;
-        }
+        // DATA GRAFIK PEMELIHARAAN: BULAN INI SAJA
+        $dataPeliharaBulanan = [$alatDipelihara];
 
         return view('pages.admin.PPM.monitoring.index', compact(
             'totalAlat',
@@ -65,9 +69,11 @@ class MonitoringController extends Controller
             'alatDipelihara',
             'alatBelumDipelihara',
             'dataPerbaikanBulanan',
-            'dataPeliharaBulanan'
+            'dataPeliharaBulanan',
+            'namaBulan'
         ));
     }
+
 
     public function rekapInv()
     {

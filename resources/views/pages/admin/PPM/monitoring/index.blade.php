@@ -19,67 +19,78 @@
   <!-- Main content -->
   <div class="content container-fluid">
     <div class="row">
-
-        <!-- Pie Chart Perbaikan -->
-        <div class="col-md-6">
-            <div class="panel panel-bd">
-                <div class="panel-heading">
-                    <h4>Status Alat Rumah Sakit</h4>
-                </div>
-
-                <div class="panel-body">
-                    <div class="text-center m-b-15">
-                        <h3>{{ $totalAlat }}</h3>
-                        <small>Total Alat Terdaftar</small>
-                    </div>
-                    <canvas id="alatChart"></canvas>
-                </div>
+      <!-- Pie Chart Perbaikan -->
+      <div class="col-md-6">
+        <div class="panel panel-bd">
+          <div class="panel-heading">
+            <h4>Status Alat Rumah Sakit Bulan {{ $namaBulan }}</h4>
+          </div>
+          <div class="panel-body">
+            <div class="text-center m-b-15">
+              <h3>{{ $totalAlat }}</h3>
+              <small>Total Alat Terdaftar</small>
             </div>
+            <canvas id="alatChart"></canvas>
+          </div>
         </div>
-
-        <!-- Pie Chart Pemeliharaan -->
-        <div class="col-md-6">
-            <div class="panel panel-bd">
-                <div class="panel-heading">
-                    <h4>Status Preventive Maintenance</h4>
-                </div>
-
-                <div class="panel-body">
-                    <div class="text-center m-b-15">
-                        <h3>{{ $alatDipelihara }}</h3>
-                        <small>Alat Sudah Dipelihara</small>
-                    </div>
-                    <canvas id="peliharaChart"></canvas>
-                </div>
+      </div>
+      <!-- Pie Chart Pemeliharaan -->
+      <div class="col-md-6">
+        <div class="panel panel-bd">
+          <div class="panel-heading">
+              <h4>Status Preventive Maintenance Bulan {{ $namaBulan }}</h4>
+          </div>
+          <div class="panel-body">
+            <div class="text-center m-b-15">
+              <h3>{{ $alatDipelihara }}</h3>
+              <small>Alat Sudah Dipelihara</small>
             </div>
+            <canvas id="peliharaChart"></canvas>
+          </div>
         </div>
-
+      </div>
     </div>
+
     <div class="row">
-
-        <div class="col-md-6">
-            <div class="panel panel-bd">
-                <div class="panel-heading">
-                    <h4>Grafik Perbaikan Tahun {{ date('Y') }}</h4>
+      {{-- Ringkasan Perbaikan --}}
+      <div class="col-md-6">
+        <div class="panel panel-bd">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-8">
+                <h4>Perbaikan Bulan Ini</h4>
+                <h2 class="text-primary" style="font-size: 32px; font-weight: bold;">{{ $alatDiperbaiki }} </h2>
+                <p class="text-muted"> Aktivitas perbaikan pada {{ $namaBulan }} </p>
+              </div>
+              <div class="col-xs-4 text-right">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 65px; height: 65px; border-radius: 15px; background-color: #e8f1ff; color: #0d6efd;">
+                  <i class="fa fa-wrench" style="font-size: 30px;"></i>
                 </div>
-
-                <div class="panel-body">
-                    <canvas id="perbaikanBulananChart"></canvas>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-        {{-- - --}}
-        <div class="col-md-6">
-            <div class="panel panel-bd">
-                <div class="panel-heading">
-                    <h4>Grafik Pemeliharaan Tahun {{ date('Y') }}</h4>
-                </div>
+      </div>
 
-                <div class="panel-body">
-                    <canvas id="peliharaBulananChart"></canvas>
+      {{-- Ringkasan Pemeliharaan --}}
+      <div class="col-md-6">
+        <div class="panel panel-bd">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-8">
+                <h4>Pemeliharaan Bulan Ini</h4>
+                <h2 class="text-info" style="font-size: 32px; font-weight: bold;"> {{ $alatDipelihara }} </h2>
+                <p class="text-muted"> Aktivitas pemeliharaan pada {{ $namaBulan }} </p>
+              </div>
+              <div class="col-xs-4 text-right">
+                <div style="display: inline-flex; align-items: center; justify-content: center; width: 65px; height: 65px; border-radius: 15px; background-color: #e0f7fa; color: #17a2b8;">
+                  <i class="fa fa-calendar-check-o" style="font-size: 30px;"></i>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -140,91 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
               }
           }
       });
-    // Chart Batang Perbaikan
-    new Chart(document.getElementById('perbaikanBulananChart'), {
-        type: 'bar',
-        data: {
-            labels: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'Mei',
-                'Jun',
-                'Jul',
-                'Agu',
-                'Sep',
-                'Okt',
-                'Nov',
-                'Des'
-            ],
-            datasets: [{
-                label: 'Jumlah Perbaikan',
-                data: @json($dataPerbaikanBulanan),
-                backgroundColor: '#36a2eb',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-    // Chart Batang Pelihara
-    new Chart(document.getElementById('peliharaBulananChart'), {
-        type: 'bar',
-        data: {
-            labels: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'Mei',
-                'Jun',
-                'Jul',
-                'Agu',
-                'Sep',
-                'Okt',
-                'Nov',
-                'Des'
-            ],
-            datasets: [{
-                label: 'Jumlah Pemeliharaan',
-                data: @json($dataPeliharaBulanan),
-                backgroundColor: '#17a2b8',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: false
-                }
-            }
-        }
-    });
-
   });
 </script>
 @endpush
