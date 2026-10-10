@@ -63,7 +63,7 @@ class DetailRsController extends Controller
     {
         $rs = $request->rs;
         $query = Perbaikan::query()
-        ->select(['id','id_alat','created_at','nama_alat','merek','type','seri','lokasi','kepala',
+        ->select(['id','id_alat','created_at','nama_alat','merek','type','seri','lokasi',
         'teknisi','status','korektif','catatan','foto'])->where('rs', $rs);
         return DataTables::eloquent($query)
         ->editColumn('created_at', function ($row){

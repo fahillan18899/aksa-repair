@@ -90,7 +90,6 @@
                                         <th>Type</th>
                                         <th>Seri</th>
                                         <th>Lokasi</th>
-                                        <th>Kepala Ruangan</th>
                                         <th>Teknisi</th>
                                         <th>Status</th>
                                         <th>Korektif</th>
