@@ -3,101 +3,27 @@
 @section('content')
 @section('title', 'Perbaikan')
 <style>
-  .panel {
-    border-radius: 12px;
-  }
-
-  .panel-heading h1 {
-    margin: 0;
-    font-size: 22px;
-    font-weight: 600;
-  }
-
-  .form-control {
-    height: 45px;
-    font-size: 14px;
-  }
-
-  textarea.form-control {
-    height: auto;
-  }
-
-  .btn-mobile {
-    width: 100%;
-    height: 48px;
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .input-rounded {
-    border-radius: 12px;
-    padding: 10px 14px;
-    height: 45px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
-}
-
+  .panel { border-radius: 12px;}
+  .panel-heading h1 { margin: 0; font-size: 22px; font-weight: 600;}
+  .form-control { height: 45px; font-size: 14px; }
+  textarea.form-control { height: auto; }
+  .btn-mobile { width: 100%; height: 48px; font-size: 16px; font-weight: 600;}
+  .input-rounded { border-radius: 12px; padding: 10px 14px; height: 45px; font-size: 14px; border: 1px solid #ddd; box-shadow: none; transition: all 0.2s ease-in-out;}
 /* efek saat fokus */
-.input-rounded:focus {
-    border-color: #28a745;
-    box-shadow: 0 0 0 3px rgba(40,167,69,0.15);
-    outline: none;
-}
-
+.input-rounded:focus { border-color: #28a745; box-shadow: 0 0 0 3px rgba(40,167,69,0.15); outline: none; }
 /* optional: tombol juga dibikin rounded */
-.btn-rounded {
-    border-radius: 12px;
-}
-
+.btn-rounded { border-radius: 12px;}
   @media (max-width: 768px) {
-
-    .content-header {
-      text-align: center;
-    }
-
-    .header-title h1 {
-      font-size: 24px;
-    }
-
-    .header-title small {
-      font-size: 14px;
-    }
-
-    .form-group.row {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      width: 100%;
-      margin-bottom: 5px;
-      text-align: left;
-      font-weight: 600;
-    }
-
-    .form-group .col-xs-9,
-    .form-group .col-sm-9,
-    .form-group .col-md-9 {
-      width: 100%;
-    }
-
-    .form-group .col-xs-3 {
-      width: 100%;
-    }
-
-    .panel-body {
-      padding: 15px;
-    }
-
-    .table {
-      font-size: 12px;
-    }
-
-    .table img {
-      width: 60px !important;
-    }
+    .content-header { text-align: center; }
+    .header-title h1 { font-size: 24px; }
+    .header-title small { font-size: 14px; }
+    .form-group.row { margin-bottom: 15px; }
+    .form-group label { display: block; width: 100%; margin-bottom: 5px; text-align: left; font-weight: 600;}
+    .form-group .col-xs-9, .form-group .col-sm-9, .form-group .col-md-9 { width: 100%; }
+    .form-group .col-xs-3 { width: 100%; }
+    .panel-body { padding: 15px; }
+    .table { font-size: 12px; }
+    .table img { width: 60px !important; }
   }
 </style>
 <!-- Content Wrapper. Contains page content -->
@@ -161,12 +87,6 @@
                       <div class="form-group">
                         <label>Lokasi <i class="text-danger">*</i></label>
                         <input name="lokasi" id="lokasi" type="text" class="form-control input-rounded" value="{{ $alat->lokasi }}" readonly required>
-                      </div>
-
-                      <!-- Kepala Ruang -->
-                      <div class="form-group">
-                        <label>Kepala Ruang <i class="text-danger">*</i></label>
-                        <input name="kepala" id="kepala" type="text" class="form-control input-rounded" required>
                       </div>
 
                       <!-- Teknisi -->
@@ -241,7 +161,6 @@
                         <th>Type</th>
                         <th>Serial Number</th>
                         <th>Lokasi</th>
-                        <th>Kepala Ruang</th>
                         <th>Teknisi</th>
                         <th>Catatan</th>
                         <th>Tombol Aksi</th>
@@ -327,10 +246,7 @@
             data: 'lokasi',
             name: 'lokasi'
         },
-        {
-            data: 'kepala',
-            name: 'kepala'
-        },
+
         {
             data: 'teknisi',
             name: 'teknisi'

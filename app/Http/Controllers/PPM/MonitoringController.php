@@ -166,7 +166,7 @@ class MonitoringController extends Controller
         $query = Perbaikan::query()
         ->select(['id','id_alat','created_at','nama_alat',
                   'merek','type','seri','lokasi',
-                  'kepala','teknisi','status',
+                  'teknisi','status',
                   'korektif','catatan','foto'
         ])->where('rs', $rs);
         return DataTables::eloquent($query)

@@ -22,7 +22,6 @@ return new class extends Migration
             $table->text('type')->nullable();
             $table->text('seri')->nullable();
             $table->text('lokasi')->nullable();
-            $table->text('kepala')->nullable();
             $table->text('teknisi')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->text('korektif')->nullable();

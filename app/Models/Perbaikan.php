@@ -19,7 +19,6 @@ class Perbaikan extends Model
         'type',
         'seri',
         'lokasi',
-        'kepala',
         'teknisi',
         'status',
         'korektif',

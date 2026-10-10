@@ -51,7 +51,6 @@
                       <th>Type</th>
                       <th>Serial_Number</th>
                       <th>Lokasi</th>
-                      <th>Kepala_Ruang</th>
                       <th>Teknisi</th>
                       <th>Status</th>
                       <th>Korektif</th>
@@ -117,11 +116,6 @@ var table = $('#table-rekap').DataTable({
         {
             data:'lokasi',
             name:'lokasi'
-        },
-
-        {
-            data:'kepala',
-            name:'kepala'
         },
 
         {

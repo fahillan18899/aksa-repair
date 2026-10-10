@@ -31,7 +31,7 @@ class PerbaikanController extends Controller
     {
         $query = Perbaikan::query()->select([
             'id','created_at','nama_alat','merek',
-            'type','seri','lokasi','kepala','teknisi',
+            'type','seri','lokasi','teknisi',
             'status','korektif','catatan'])->where('id_alat', $qr);
 
         return DataTables::eloquent($query)
@@ -86,7 +86,6 @@ class PerbaikanController extends Controller
             'type'      => 'required',
             'seri'      => 'required',
             'lokasi'    => 'required',
-            'kepala'    => 'required',
             'teknisi'   => 'required',
             'korektif'  => 'required',
             'catatan'   => 'required',
@@ -106,7 +105,6 @@ class PerbaikanController extends Controller
             'type'      => $request->type,
             'seri'      => $request->seri,
             'lokasi'    => $request->lokasi,
-            'kepala'    => $request->kepala,
             'teknisi'   => $request->teknisi,
             'status'    => 0,
             'korektif'  => $request->korektif,
@@ -133,7 +131,6 @@ class PerbaikanController extends Controller
             'type'      => 'required',
             'seri'      => 'required',
             'lokasi'    => 'required',
-            'kepala'    => 'required',
             'teknisi'    => 'required',
             'korektif'    => 'required',
             'catatan'    => 'required',
