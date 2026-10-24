@@ -1,39 +1,34 @@
-## About Wyasa SIMRS
+# Hospital Equipment Management System
 
-wyasa SIMRS adalah software ...
+A web-based application for managing hospital data and equipment maintenance reporting, with QR code generation and scanning functionality.
 
+## Overview
 
-## Tools Yang dibutuhkan
+This project provides a web-based system for managing hospital-related data and supporting equipment repair and maintenance reporting workflows.
 
-- xampp
-- GIT
-- code editor
-- imagick xampp
-- composer
+## Features
 
-## Cara Instalasi
+- Hospital data management
+- Equipment repair reporting
+- Equipment maintenance reporting
+- QR code generation
+- QR code scanning
 
-- clone project
-  `https://github.com/ilzamafif/wyasa-simrs.git`
-- buka *GIT bash atau terminal* jalankan `cd wyasa-kalibrasi`
-- jalankan `composer install --ignore-platform-req=ext-gd`
-- copy file `.env.example` menjadi `.env`
-- ubah konfigurasi database dan buat database di phpmyadmin
-- jalankan `php artisan migrate`
-- jalankan `php artisan key:generate`
-- jalankan `php artisan serve`
+## Tech Stack
 
-## Konfigurasi QR Code
-- install software imagick
-- extract `php_imagick.dll` copy ke `htdocs/php/ext`
-- tambahkan `extension=php_imagick` di php.ini
-- tambahkan file file bin dengan extension `extension aplication`
+- **Backend:** PHP, Laravel
+- **Database:** MySQL
+- **Frontend:** JavaScript
 
-### Alur Aplikasi
-### Alur Notifikasi Aplikasi
-![Alur Notifikasi](/docs/notifikasi-fcm.png "MarineGEO logo")
+## Getting Started
 
-- [Link Product](https://e-katalog.lkpp.go.id/katalog/produk/detail/77606157?lang=id&type=general).
-## License
+Setup instructions will be added based on the project's environment and configuration.
 
-The software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Project Status
+
+This project is maintained as a web application development project.
+
+## Author
+
+Developed and maintained by Prakas Restu Fahillan.
+
